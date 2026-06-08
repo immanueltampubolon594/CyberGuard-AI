@@ -7,9 +7,9 @@ _analyzer = ThreatAnalyzer()
 async def analyze_url(url: str):
     """Wrapper untuk ThreatAnalyzer"""
     try:
-        result = await asyncio.to_thread(_analyzer.analyze, url)
+        result = await _analyzer.analyze(url)
         return result
-    
+
     except Exception as e:
         print(f"❌ Analyzer Error: {e}")
         return {
