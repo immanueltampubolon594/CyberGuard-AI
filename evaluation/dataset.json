@@ -1,0 +1,82 @@
+[
+  {
+    "question": "Apa itu social engineering dalam dunia maya?",
+    "ground_truth": "Social engineering adalah teknik manipulasi psikologis untuk mendapatkan informasi atau akses tanpa peretasan teknis."
+  },
+  {
+    "question": "Mengapa tidak boleh menyimpan password di catatan ponsel tanpa kunci?",
+    "ground_truth": "Karena orang lain bisa dengan mudah mengakses akun penting jika ponsel hilang."
+  },
+  {
+    "question": "Apa itu sniffing dalam jaringan?",
+    "ground_truth": "Sniffing adalah penyadapan data dalam jaringan yang dapat digunakan untuk mencuri informasi."
+  },
+  {
+    "question": "Mengapa enkripsi itu penting?",
+    "ground_truth": "Enkripsi membuat data hanya dapat dibaca oleh pihak yang memiliki kunci dekripsi."
+  },
+  {
+    "question": "Apa fungsi firewall dalam keamanan jaringan?",
+    "ground_truth": "Firewall menyaring lalu lintas jaringan dan memblokir akses yang mencurigakan."
+  },
+  {
+    "question": "Bagaimana cara kerja VPN dalam melindungi data?",
+    "ground_truth": "VPN menyembunyikan IP dan mengenkripsi koneksi internet agar data aman."
+  },
+  {
+    "question": "Jelaskan perbedaan malware dan spyware.",
+    "ground_truth": "Malware merusak sistem, spyware mencuri data dengan diam-diam."
+  },
+  {
+    "question": "Apa bahaya menggunakan software bajakan?",
+    "ground_truth": "Software bajakan rawan malware dan tidak mendapat update keamanan."
+  },
+  {
+    "question": "Mengapa harus membaca kebijakan privasi aplikasi?",
+    "ground_truth": "Karena di situ dijelaskan bagaimana data kita digunakan dan disimpan."
+  },
+  {
+    "question": "Apa peran Cyber Guardian secara umum?",
+    "ground_truth": "Cyber Guardian melindungi sistem dari serangan siber dan mendidik pengguna agar waspada."
+  },
+  {
+    "question": "Apa itu phishing dan bagaimana cara menghindarinya?",
+    "ground_truth": "Phishing adalah serangan siber yang mencoba mencuri informasi sensitif dengan menyamar sebagai entitas terpercaya. Cara menghindarinya adalah dengan tidak mengklik link mencurigakan dan selalu verifikasi pengirim."
+  },
+  {
+    "question": "Apa perbedaan antara virus dan ransomware?",
+    "ground_truth": "Virus menyebar dan merusak file sistem, sedangkan ransomware mengenkripsi data korban dan meminta tebusan untuk memulihkannya."
+  },
+  {
+    "question": "Bagaimana cara membuat password yang kuat?",
+    "ground_truth": "Password yang kuat minimal 8 karakter, kombinasi huruf besar, huruf kecil, angka, dan simbol, serta tidak menggunakan informasi pribadi."
+  },
+  {
+    "question": "Apa itu two-factor authentication?",
+    "ground_truth": "Two-factor authentication adalah metode keamanan yang membutuhkan dua verifikasi berbeda untuk masuk ke akun, seperti password dan kode OTP."
+  },
+  {
+    "question": "Apa bahaya menggunakan WiFi publik tanpa VPN?",
+    "ground_truth": "WiFi publik rentan terhadap serangan man-in-the-middle yang dapat mencuri data pribadi dan kredensial akun."
+  },
+  {
+    "question": "Apa itu DDoS attack?",
+    "ground_truth": "DDoS adalah serangan yang membanjiri server dengan traffic berlebihan sehingga layanan tidak bisa diakses oleh pengguna normal."
+  },
+  {
+    "question": "Bagaimana cara mengenali website palsu?",
+    "ground_truth": "Website palsu biasanya memiliki URL yang mirip tapi tidak sama dengan aslinya, tidak ada HTTPS, dan tampilan yang tidak profesional."
+  },
+  {
+    "question": "Apa itu SQL injection?",
+    "ground_truth": "SQL injection adalah serangan yang menyisipkan kode SQL berbahaya ke dalam input aplikasi untuk mengakses atau memanipulasi database."
+  },
+  {
+    "question": "Siapa presiden Indonesia saat ini?",
+    "ground_truth": "Pertanyaan ini di luar topik keamanan siber. CyberGuard hanya menjawab pertanyaan seputar keamanan siber dan ancaman digital."
+  },
+  {
+    "question": "Apa resep nasi goreng yang enak?",
+    "ground_truth": "Pertanyaan ini di luar topik keamanan siber. CyberGuard hanya menjawab pertanyaan seputar keamanan siber dan ancaman digital."
+  }
+] 
