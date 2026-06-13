@@ -1,15 +1,8 @@
-# ══════════════════════════════════════════════════════════════════════
-#  CYBERGUARD AI — CONSTANTS
-#  Semua konstanta, trigger, dan static responses
-# ══════════════════════════════════════════════════════════════════════
+# Config pencarian chunk di vector database
+MATCH_THRESHOLD = 0.65  
+MATCH_COUNT     = 5     
 
-# ── RETRIEVAL CONFIG ──────────────────────────────────────────────────
-
-MATCH_THRESHOLD = 0.65  # Ketat: hanya chunk yang benar-benar relevan
-MATCH_COUNT     = 5     # Sedikit tapi presisi
-
-# ── GREETING TRIGGERS ─────────────────────────────────────────────────
-
+# Daftar sapaan user
 GREETING_TRIGGERS = {
     "halo", "hai", "hi", "hello", "hey", "hei",
     "selamat pagi", "selamat siang", "selamat sore", "selamat malam",
@@ -19,8 +12,8 @@ GREETING_TRIGGERS = {
     "perkenalkan dirimu", "perkenalkan", "kamu itu siapa",
 }
 
-# ── FORBIDDEN TOPICS ──────────────────────────────────────────────────
 
+# Topik yang tidak boleh dijawab chatbot
 FORBIDDEN_TOPICS = [
     "masak", "resep", "nasi", "goreng", "bumbu", "makanan", "minuman",
     "film", "musik", "lagu", "olahraga", "bola", "fashion", "belanja",
@@ -32,8 +25,8 @@ FORBIDDEN_TOPICS = [
     "memasak", "kuliner", "wisata", "traveling",
 ]
 
-# ── STATIC RESPONSES ──────────────────────────────────────────────────
 
+# Response sapaan chatbot
 GREETING_RESPONSE = (
     "Halo! Selamat datang di CyberGuard AI 👋\n\n"
     "Saya adalah asisten keamanan siber yang dirancang khusus untuk membantu Anda "
@@ -46,6 +39,7 @@ GREETING_RESPONSE = (
     "Silakan ajukan pertanyaan Anda seputar keamanan siber! 🔐"
 )
 
+# Response jika pertanyaan di luar topik
 OUT_OF_SCOPE_RESPONSE = (
     "Mohon maaf, pertanyaan tersebut berada di luar cakupan keahlian saya. "
     "Saya hanya dapat memberikan edukasi dan informasi seputar keamanan siber "
@@ -54,6 +48,7 @@ OUT_OF_SCOPE_RESPONSE = (
     "atau kebijakan keamanan informasi. Saya siap membantu! 🔐"
 )
 
+# Response jika data tidak ditemukan
 NOT_FOUND_RESPONSE = (
     "Mohon maaf, informasi mengenai topik tersebut tidak tersedia "
     "dalam basis data keamanan siber CyberGuard saat ini.\n\n"
@@ -62,6 +57,7 @@ NOT_FOUND_RESPONSE = (
     "saya siap membantu! 🔐"
 )
 
+# Prompt utama untuk mengatur perilaku AI
 # ── MASTER PROMPT ─────────────────────────────────────────────────────
 
 MASTER_PROMPT = """Anda adalah CyberGuard Expert AI — asisten keamanan siber resmi \

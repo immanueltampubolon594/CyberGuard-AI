@@ -1,85 +1,173 @@
+# Jalankan FastAPI server
 import uvicorn
+
+# Load environment variable
 from dotenv import load_dotenv
+
+# Import FastAPI
 from fastapi import FastAPI
+
+# Import middleware CORS
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel # Tambahan untuk validasi request model
 
+# Validasi request model
+from pydantic import BaseModel
+
+# Import router endpoint
 from routers import auth, chat
-from services.analyzer_service import analyze_url # Tambahan untuk logika verifikasi
 
+# Import service verifikasi URL
+from services.analyzer_service import analyze_url
+
+# Load file .env
 load_dotenv()
 
-# ── Inisialisasi Aplikasi ────────────────────────────────────
+
+# Inisialisasi aplikasi FastAPI
 app = FastAPI(
+
+    # Nama backend system
     title="CyberGuard AI - Enterprise Security Backend",
-    description="Sistem Terintegrasi: AI Chatbot RAG, Autentikasi JWT, dan Multi-Engine Threat Verification.",
+
+    # Deskripsi backend
+    description=
+    "Sistem Terintegrasi: AI Chatbot RAG, "
+    "Autentikasi JWT, dan Multi-Engine Threat Verification.",
+
+    # Versi aplikasi
     version="4.0.0"
 )
 
-# ── Konfigurasi CORS ─────────────────────────────────────────
+
+# Konfigurasi CORS frontend
 app.add_middleware(
+
+    # Middleware CORS
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+
+    # Origin frontend yang diizinkan
+    allow_origins=[
+        "http://localhost:3000",
+        "http://127.0.0.1:3000"
+    ],
+
+    # Izinkan credentials
     allow_credentials=True,
+
+    # Izinkan semua method
     allow_methods=["*"],
+
+    # Izinkan semua header
     allow_headers=["*"],
 )
 
-# ── Request Model Tambahan ───────────────────────────────────
+
+# Schema request verifikasi URL
 class URLRequest(BaseModel):
+
+    # URL input user
     url: str
 
-# ── Registrasi Router ────────────────────────────────────────
+
+# Registrasi router auth
 app.include_router(auth.router)
+
+# Registrasi router chatbot
 app.include_router(chat.router)
 
-# ── Status Sistem ────────────────────────────────────────────
+
+# Endpoint health check system
 @app.get("/", tags=["System"])
 def health_check():
-    """Mengecek status kesehatan API."""
+
+    # Return status backend
     return {
         "status": "online",
         "message": "CyberGuard Neural Engine is fully active.",
         "version": "4.0.0 (Production Ready)"
     }
 
-# ── THREAT VERIFICATION (Verifikasi Link) ────────────────────
+
+# Endpoint verifikasi URL
 @app.post("/verify-link", tags=["Security Tools"])
 async def verify_link(data: URLRequest):
-    """Verifikasi URL menggunakan sistem Multi-Engine Analyzer."""
+
     try:
+
+        # Analisis ancaman URL
         result = await analyze_url(data.url)
-        
+
+        # Response hasil verifikasi
         response = {
             "success": True,
             "url": data.url,
             "risk": result
         }
-        
-        # Log singkat saja
+
+        # Log monitoring backend
         score = result.get('score', 0)
         level = result.get('level', 'UNKNOWN')
-        print(f"✅ {data.url} → {score}% ({level})")
-        
+
+        print(
+            f"{data.url} → "
+            f"{score}% ({level})"
+        )
+
         return response
-    
+
     except Exception as e:
-        print(f"❌ Verify Error: {e}")
+
+        # Log error backend
+        print(f"Verify Error: {e}")
+
+        # Response error
         return {
             "success": False,
             "url": data.url,
             "error": str(e),
             "risk": {
+
+                # Default risk score
                 "score": 0,
+
+                # Default threat level
                 "level": "SAFE",
-                "reasons": [f"Error: {str(e)}"],
+
+                # Error detail
+                "reasons": [
+                    f"Error: {str(e)}"
+                ],
+
+                # Summary error
                 "summary": "Sistem mengalami masalah.",
+
+                # Rekomendasi user
                 "recommendation": "Silakan coba lagi.",
+
+                # Status validasi URL
                 "is_valid_url": None,
+
+                # Screenshot URL
                 "screenshot": None
             }
         }
 
-# ── Eksekusi Server ──────────────────────────────────────────
+
+# Jalankan backend server
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
+
+    uvicorn.run(
+
+        # File utama FastAPI
+        "main:app",
+
+        # Host backend
+        host="127.0.0.1",
+
+        # Port backend
+        port=8000,
+
+        # Auto reload development
+        reload=True
+    )
+
