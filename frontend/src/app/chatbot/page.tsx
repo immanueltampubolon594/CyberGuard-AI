@@ -68,10 +68,28 @@
     }, []);
 
     // ── Tulis sessions ke localStorage ───────────────────
-  const writeSessions = useCallback((data: ChatSession[]) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    window.dispatchEvent(new CustomEvent("cyberguard_sync", { detail: data })); // ← tambah ini
-  }, []);
+ const writeSessions = useCallback(async (data: ChatSession[]) => {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  window.dispatchEvent(new CustomEvent("cyberguard_sync", { detail: data }));
+
+  // Sync ke Supabase
+  const saved = localStorage.getItem("user");
+  if (!saved) return;
+  const user = JSON.parse(saved);
+
+  for (const session of data) {
+    await fetch("http://127.0.0.1:8000/chat/save", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_email: user.email,
+        session_id: session.id,
+        title     : session.title,
+        messages  : session.messages
+      })
+    });
+  }
+}, []);
 
     // ── Buat sesi baru ────────────────────────────────────
     const createNewChat = useCallback((autoActivate = true): ChatSession => {

@@ -18,16 +18,16 @@
         return hashlib.md5(text.encode('utf-8')).hexdigest()
 
     def ingest_all_datasheets():
-        print("🚀 Memulai proses Ingestion Masal (Anti-Duplikat)...")
+        print("Memulai proses Ingestion Masal (Anti-Duplikat)...")
         
         data_folder = "data/"
         if not os.path.exists(data_folder):
-            print(f"❌ Folder {data_folder} tidak ditemukan!")
+            print(f" Folder {data_folder} tidak ditemukan!")
             return
 
         loader = DirectoryLoader(data_folder, glob="**/*.pdf", loader_cls=PyPDFLoader)
         raw_documents = loader.load()
-        print(f"📄 Berhasil memuat total {len(raw_documents)} halaman.")
+        print(f" Berhasil memuat total {len(raw_documents)} halaman.")
 
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150)
         docs = text_splitter.split_documents(raw_documents)
@@ -53,7 +53,7 @@
 
         # --- BAGIAN 2: BATCHING & UPSERT (Pencegahan di Database) ---
         batch_size = 20 
-        print(f"📦 Memulai sinkronisasi ke database (Batch Size: {batch_size})...")
+        print(f"Memulai sinkronisasi ke database (Batch Size: {batch_size})...")
         
         for i in range(0, total_chunks, batch_size):
             batch = docs[i : i + batch_size]
@@ -62,7 +62,7 @@
             # Ini akan digunakan Supabase untuk mendeteksi apakah data sudah ada atau belum
             batch_ids = [generate_content_hash(d.page_content) for d in batch]
 
-            print(f"⏳ Mengirim batch {i}...")
+            print(f"Mengirim batch {i}...")
             
             try:
                 # Menggunakan .from_documents dengan parameter 'ids'
@@ -75,17 +75,17 @@
                     query_name="match_documents",
                     ids=batch_ids # Mengunci data agar tidak duplikat di DB
                 )
-                print(f"✅ Batch {i} sukses.")
+                print(f"Batch {i} sukses.")
                 
                 if i + batch_size < total_chunks:
-                    print("😴 Jeda 60 detik (Rate Limit Management)...")
+                    print("Jeda 60 detik (Rate Limit Management)...")
                     time.sleep(60) 
                     
             except Exception as e:
-                print(f"❌ Error pada batch {i}: {e}")
+                print(f"Error pada batch {i}: {e}")
                 break
 
-        print(f"🏁 SELESAI! Database Anda sekarang bersih dan up-to-date.")
+        print(f"SELESAI! Database Anda sekarang bersih dan up-to-date.")
 
     if __name__ == "__main__":
         ingest_all_datasheets()
