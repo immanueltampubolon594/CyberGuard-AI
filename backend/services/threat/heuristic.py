@@ -32,7 +32,7 @@ SUSPICIOUS_KEYWORDS = [
 ]
 
 # ============================================
-# 🎰 KEYWORD JUDI (WAJIB ADA!)
+#  KEYWORD JUDI
 # ============================================
 GAMBLING_KEYWORDS = [
     # Game judi
@@ -59,7 +59,7 @@ GAMBLING_KEYWORDS = [
 ]
 
 # ============================================
-# TLD MENCURIGAKAN (Termasuk .live)
+# TLD MENCURIGAKAN 
 # ============================================
 SUSPICIOUS_TLDS = [
     "xyz", "top", "click", "work", "gq", "ml", "cf", "tk", "ga", 
@@ -68,7 +68,7 @@ SUSPICIOUS_TLDS = [
 ]
 
 # ============================================
-# 🏴‍☠️ PIRACY & FILE HOSTING DETECTION (NEW!)
+#  PIRACY & FILE HOSTING DETECTION 
 # ============================================
 
 # Known piracy/file hosting domains
@@ -117,7 +117,7 @@ PIRACY_TLDS = [
 
 
 # ============================================
-# FUNGSI DETEKSI PIRACY (NEW!)
+# FUNGSI DETEKSI PIRACY 
 # ============================================
 def detect_piracy_indicators(url: str, full_domain: str) -> tuple:
     """
@@ -141,7 +141,7 @@ def detect_piracy_indicators(url: str, full_domain: str) -> tuple:
     for piracy_domain in PIRACY_DOMAINS:
         if piracy_domain in full_domain_lower:
             score += 50
-            reasons.append(f"🚫 Known piracy host: {piracy_domain}")
+            reasons.append(f"Known piracy host: {piracy_domain}")
             break
     
     # 2. Check game titles
@@ -152,7 +152,7 @@ def detect_piracy_indicators(url: str, full_domain: str) -> tuple:
     
     if matched_games:
         score += 30
-        reasons.append(f"🎮 Game piracy keyword: {', '.join(matched_games[:3])}")
+        reasons.append(f"Game piracy keyword: {', '.join(matched_games[:3])}")
     
     # 3. Check crack/repack keywords
     matched_crack = []
@@ -162,7 +162,7 @@ def detect_piracy_indicators(url: str, full_domain: str) -> tuple:
     
     if matched_crack:
         score += 25
-        reasons.append(f"💿 Crack/repack keyword: {', '.join(matched_crack[:3])}")
+        reasons.append(f"Crack/repack keyword: {', '.join(matched_crack[:3])}")
     
     # 4. Check dangerous file extensions
     matched_ext = []
@@ -172,24 +172,24 @@ def detect_piracy_indicators(url: str, full_domain: str) -> tuple:
     
     if matched_ext:
         score += 20
-        reasons.append(f"📦 Compressed/installer file: {', '.join(matched_ext[:3])}")
+        reasons.append(f"Compressed/installer file: {', '.join(matched_ext[:3])}")
     
     # 5. Check piracy TLD (hindari duplicate dengan SUSPICIOUS_TLDS)
     extracted = tldextract.extract(url)
     if extracted.suffix in PIRACY_TLDS and extracted.suffix not in SUSPICIOUS_TLDS:
         score += 15
-        reasons.append(f"🌐 TLD .{extracted.suffix} sering dipakai piracy")
+        reasons.append(f"TLD .{extracted.suffix} sering dipakai piracy")
     
     # 6. Check random ID pattern (file hosting signature)
     # Pattern: /abc123xyz/filename.ext
     if re.search(r'/[a-z0-9]{8,}/[^/]+\.(rar|zip|iso|exe)', url_lower):
         score += 25
-        reasons.append("🗂️ Pattern file hosting (random ID + archive)")
+        reasons.append("Pattern file hosting (random ID + archive)")
     
     # 7. Check multi-part archive pattern
     if re.search(r'\.part\d+\.rar', url_lower) or re.search(r'\.part\d+\.zip', url_lower):
         score += 15
-        reasons.append("📚 Multi-part archive (ciri khas crack distribution)")
+        reasons.append("Multi-part archive (ciri khas crack distribution)")
     
     return score, reasons
 
@@ -220,7 +220,7 @@ def heuristic_analysis(url: str) -> dict:
         pass
 
     # ============================================
-    # B. Deteksi Keyword JUDI (PRIORITAS TINGGI!)
+    # B. Deteksi Keyword JUDI 
     # ============================================
     matched_gambling = []
     for keyword in GAMBLING_KEYWORDS:
@@ -230,10 +230,10 @@ def heuristic_analysis(url: str) -> dict:
     if matched_gambling:
         # JUDI = LANGSUNG BERBAHAYA!
         score += 70  # Langsung tinggi!
-        reasons.append(f"🎰 Website judi terdeteksi: {', '.join(matched_gambling[:5])}")
+        reasons.append(f"Website judi terdeteksi: {', '.join(matched_gambling[:5])}")
 
     # ============================================
-    # 🏴‍☠️ B.5 Deteksi PIRACY / CRACK (NEW!)
+    #  B.5 Deteksi PIRACY / CRACK (NEW!)
     # ============================================
     piracy_score, piracy_reasons = detect_piracy_indicators(url, full_domain)
     if piracy_score > 0:
