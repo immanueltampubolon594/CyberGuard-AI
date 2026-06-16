@@ -1,4 +1,4 @@
-  {
+{
   "slug": "ddos",
   "title": "DDoS / DoS Attack",
   "navigation": [
@@ -46,7 +46,15 @@
         "title": "Serangan DDoS Dyn DNS 2016: Internet Lumpuh oleh Mirai Botnet",
         "story": "Pada bulan Oktober 2016, pengguna internet di Amerika Serikat dan Eropa mengalami gangguan masif ketika situs-situs raksasa seperti Twitter, Netflix, Reddit, Spotify, dan GitHub tiba-tiba tidak dapat diakses. Serangan ini tidak menargetkan situs-situs tersebut secara langsung, melainkan menargetkan Dyn, sebuah penyedia layanan DNS (Domain Name System) terkemuka yang digunakan oleh perusahaan-perusahaan tersebut. Serangan DDoS volumetrik ini mencapai puncak 1.2 Terabit per detik, sebuah angka yang belum pernah dilihat sebelumnya pada masa itu. Investigasi mengungkapkan bahwa serangan diluncurkan oleh Botnet Mirai, yang terdiri dari ratusan ribu perangkat IoT seperti kamera keamanan IP dan DVR yang diretas menggunakan password default pabrik. Pembuat Mirai, yang ternyata adalah tiga orang mahasiswa, melepaskan kode sumber malware tersebut ke internet, memicu lahirnya puluhan varian botnet baru yang terus meneror infrastruktur internet hingga hari ini.",
         "lesson": "Serangan DDoS tidak selalu menargetkan Anda secara langsung; menyerang penyedia layanan pihak ketiga (supply chain) yang Anda andalkan bisa sama fatalnya. Kasus ini juga menyoroti bahaya luar biasa dari perangkat IoT yang tidak aman. Produsen perangkat keras wajib menghapus password default dan memaksa pengguna membuat kredensial unik saat setup awal. Bagi perusahaan, mengandalkan satu penyedia DNS adalah single point of failure; menggunakan arsitektur DNS multi-provider dan layanan mitigasi DDoS berbasis Anycast adalah keharusan untuk memastikan ketahanan bisnis di era di mana serangan berukuran Terabit menjadi hal yang lumrah."
-      }
+      },
+      "references": [
+        "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/ - Cloudflare: What is a DDoS Attack?",
+        "https://www.cisa.gov/topics/cybersecurity-best-practices/ddos-attack-mitigation - CISA: DDoS Attack Mitigation",
+        "https://owasp.org/www-community/attacks/Denial_of_Service - OWASP: Denial of Service",
+        "https://attack.mitre.org/techniques/T1498/ - MITRE ATT&CK: Network Denial of Service",
+        "https://www.akamai.com/resources/research-reports/2024-state-of-the-internet-report - Akamai: State of the Internet Report",
+        "https://en.wikipedia.org/wiki/Denial-of-service_attack - Wikipedia: Denial-of-Service Attack"
+      ]
     },
     "1": {
       "subtitle": "Ping Flood & UDP Flood",
@@ -82,7 +90,15 @@
         "title": "Serangan Memcached Amplification ke GitHub (2018)",
         "story": "Pada akhir Februari 2018, GitHub, platform hosting kode terbesar di dunia, menjadi target dari serangan DDoS terbesar yang pernah tercatat pada saat itu. Serangan ini tidak menggunakan botnet tradisional, melainkan mengeksploitasi ribuan server Memcached yang salah konfigurasi dan terekspos ke internet publik. Penyerang mengirimkan permintaan UDP kecil yang memalsukan IP GitHub ke server-server Memcached tersebut. Server Memcached membalas dengan payload data yang sangat besar, menghasilkan traffic masuk ke jaringan GitHub yang memuncak pada angka fantastis 1.35 Terabit per detik. Beruntung, GitHub telah berlangganan layanan mitigasi DDoS dari Akamai. Sistem deteksi otomatis Akamai langsung mendeteksi anomali traffic dalam hitungan milidetik dan secara otomatis mengalihkan semua traffic masuk ke edge server mereka yang memiliki kapasitas masif untuk menyerap serangan tersebut. Meskipun traffic mencapai rekor dunia, GitHub hanya mengalami downtime selama kurang dari 10 menit sebelum layanan pulih sepenuhnya.",
         "lesson": "Serangan amplification membuktikan bahwa Anda tidak perlu memiliki botnet raksasa untuk melumpuhkan perusahaan teknologi besar; Anda hanya perlu menemukan server-server yang salah konfigurasi di internet. Bagi administrator sistem, ini adalah pengingat keras untuk tidak pernah membiarkan layanan database atau caching seperti Memcached, Redis, atau Elasticsearch terekspos langsung ke internet publik tanpa autentikasi dan firewall yang ketat. Bagi perusahaan, insiden ini membuktikan bahwa berlangganan layanan mitigasi DDoS berbasis cloud dengan kapasitas multi-Terabit bukanlah kemewahan, melainkan asuransi bisnis yang mutlak diperlukan di era modern."
-      }
+      },
+      "references": [
+        "https://www.cloudflare.com/learning/ddos/ping-icmp-flood-ddos-attack/ - Cloudflare: Ping/ICMP Flood",
+        "https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack/ - Cloudflare: UDP Flood Attack",
+        "https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack/ - Cloudflare: DNS Amplification",
+        "https://www.cloudflare.com/learning/ddos/memcached-ddos-attack/ - Cloudflare: Memcached DDoS Attack",
+        "https://datatracker.ietf.org/doc/html/rfc2827 - IETF RFC 2827: Network Ingress Filtering (BCP38)",
+        "https://en.wikipedia.org/wiki/Denial-of-service_attack#Amplification - Wikipedia: DDoS Amplification"
+      ]
     },
     "2": {
       "subtitle": "HTTP Flood",
@@ -118,7 +134,15 @@
         "title": "Kelumpuhan Platform Tiket Konser Akibat HTTP Flood Bot",
         "story": "Pada tahun 2023, sebuah platform penjualan tiket konser resmi di Asia Tenggara mengalami insiden yang memalukan dan merugikan secara finansial saat membuka penjualan tiket untuk tur artis internasional yang sangat dinantikan. Dalam hitungan detik setelah penjualan dibuka, server mereka menerima jutaan permintaan HTTP POST ke endpoint 'checkout' dan 'add to cart'. Tim IT awalnya mengira ini adalah lonjakan traffic organik dari jutaan penggemar yang antusias. Namun, mereka segera menyadari bahwa server database mereka terkunci (deadlock) dan CPU mencapai 100%. Investigasi forensik pasca-insiden mengungkap bahwa platform tersebut telah menjadi target HTTP Flood yang dilancarkan oleh sindikat calo tiket (scalpers) menggunakan bot canggih. Bot ini tidak bertujuan untuk melumpuhkan situs selamanya, melainkan untuk memonopoli antrian checkout, mengunci ribuan kursi terbaik di dalam 'keranjang' virtual mereka, dan mencegah penggemar asli untuk membeli. Sindikat ini kemudian menjual tiket yang dikunci tersebut di pasar gelap dengan harga berkali-kali lipat.",
         "lesson": "Tidak semua serangan DDoS bertujuan untuk menghancurkan ketersediaan layanan secara total; beberapa dirancang untuk memanipulasi logika bisnis dan memonopoli sumber daya (Resource Exhaustion). Platform yang menangani acara berkapasitas tinggi atau barang langka tidak bisa hanya mengandalkan skalabilitas server (auto-scaling). Mereka harus mengimplementasikan sistem 'Virtual Waiting Room' (Ruang Tunggu Virtual) yang mengantri pengguna di lapisan tepi (edge) sebelum mereka diizinkan masuk ke aplikasi inti. Selain itu, integrasi CAPTCHA tingkat lanjut dan analisis perilaku bot pada titik-titik krusial seperti checkout sangat penting untuk memastikan bahwa sumber daya server hanya dikonsumsi oleh manusia asli, bukan oleh skrip otomatis yang mencari keuntungan ilegal."
-      }
+      },
+      "references": [
+        "https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/ - Cloudflare: HTTP Flood DDoS Attack",
+        "https://owasp.org/www-community/attacks/HTTP_Flood - OWASP: HTTP Flood",
+        "https://www.imperva.com/learn/application-security/http-flood/ - Imperva: HTTP Flood Attack",
+        "https://www.cloudflare.com/application-services/products/waf/ - Cloudflare: Web Application Firewall",
+        "https://www.imperva.com/learn/application-security/bot-management/ - Imperva: Bot Management",
+        "https://en.wikipedia.org/wiki/Denial-of-service_attack#HTTP_flood - Wikipedia: HTTP Flood"
+      ]
     },
     "3": {
       "subtitle": "SYN Flood",
@@ -154,7 +178,15 @@
         "title": "Serangan SYN Flood Bersejarah pada ISP Panix (1996)",
         "story": "Pada bulan September 1996, penyedia layanan internet (ISP) terkemuka di New York bernama Panix menjadi korban dari salah satu serangan DDoS pertama yang pernah tercatat dalam sejarah internet. Seorang peretas yang tidak dikenal meluncurkan serangan SYN Flood masif terhadap router dan server email Panix. Pada masa itu, sistem operasi dan perangkat keras jaringan belum memiliki mekanisme pertahanan bawaan terhadap eksploitasi 3-way handshake ini. Tabel koneksi router Panix dengan cepat terisi penuh oleh jutaan koneksi setengah terbuka (half-open connections). Akibatnya, seluruh jaringan Panix lumpuh total selama beberapa hari, memutus akses internet dan email bagi ribuan pelanggan bisnis dan individu. Insiden ini memicu kepanikan di komunitas teknik global karena menunjukkan kerentanan fundamental dari protokol TCP yang menjadi tulang punggung internet.",
         "lesson": "Serangan Panix adalah momen 'Sputnik' bagi keamanan jaringan. Insiden ini memaksa para insinyur sistem operasi dan vendor perangkat keras jaringan untuk segera merancang ulang cara mereka menangani koneksi masuk. Dari krisis inilah konsep SYN Cookies lahir dan akhirnya diintegrasikan ke dalam kernel Linux, Windows, dan BSD sebagai fitur keamanan standar. Kasus ini mengajarkan kita bahwa protokol yang dibangun di atas asumsi 'lingkungan yang saling percaya' akan selalu dieksploitasi ketika internet berkembang menjadi ruang publik yang bermusuhan. Selalu pastikan bahwa fitur mitigasi SYN Cookies diaktifkan pada level sistem operasi server Anda dan pada perimeter firewall."
-      }
+      },
+      "references": [
+        "https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/ - Cloudflare: SYN Flood DDoS Attack",
+        "https://en.wikipedia.org/wiki/SYN_flood - Wikipedia: SYN Flood",
+        "https://datatracker.ietf.org/doc/html/rfc4987 - IETF RFC 4987: TCP SYN Flooding Attacks and Common Mitigations",
+        "https://www.imperva.com/learn/application-security/syn-flood/ - Imperva: SYN Flood Attack",
+        "https://cr.yp.to/syncookies.html - Daniel J. Bernstein: SYN Cookies",
+        "https://attack.mitre.org/techniques/T1498/001/ - MITRE ATT&CK: Direct Network Flood"
+      ]
     },
     "4": {
       "subtitle": "Slowloris Attack",
@@ -190,7 +222,15 @@
         "title": "Demonstrasi Slowloris dan Dampaknya pada Infrastruktur Apache",
         "story": "Pada konferensi keamanan DefCon di tahun 2009, peneliti keamanan Robert Hansen (dikenal sebagai RSnake) mendemonstrasikan tool buatannya yang bernama Slowloris. Dalam demonstrasi langsung, ia menunjukkan bagaimana hanya dengan satu laptop yang terhubung ke jaringan WiFi konferensi, ia dapat melumpuhkan seluruh server web yang menjalankan Apache di jaringan lokal hanya dalam hitungan menit. Tool ini tidak mengirim paket jahat atau mengeksploitasi bug memori; ia hanya 'berbicara' sangat lambat kepada server. Rilis publik dari skrip Slowloris memicu gelombang serangan terhadap berbagai situs web pemerintah dan korporasi pada masa itu, karena siapa saja bisa mengunduh skrip tersebut dan menjatuhkan situs web yang tidak dipatch dengan konfigurasi timeout yang tepat. Banyak administrator sistem yang panik karena firewall dan IDS mereka tidak mendeteksi adanya 'serangan' karena volume trafficnya hampir nol.",
         "lesson": "Slowloris mengajarkan industri keamanan siber bahwa ketersediaan (availability) tidak hanya bisa dirusak oleh banjir data, tetapi juga oleh kelumpuhan logika (logic exhaustion). Anda tidak bisa hanya mengandalkan bandwidth besar dan firewall canggih; Anda harus memahami bagaimana aplikasi Anda menangani sumber daya pada level kode dan konfigurasi. Migrasi dari server web thread-based ke event-driven server seperti Nginx, atau penggunaan CDN yang bertindak sebagai buffer, telah menjadi standar arsitektur web modern sebagian besar sebagai respons langsung terhadap popularitas serangan low-and-slow seperti Slowloris dan R-U-Dead-Yet (RUDY)."
-      }
+      },
+      "references": [
+        "https://www.imperva.com/learn/application-security/slowloris-attack/ - Imperva: Slowloris Attack",
+        "https://en.wikipedia.org/wiki/Slowloris_(computer_security) - Wikipedia: Slowloris",
+        "https://www.cloudflare.com/learning/ddos/slowloris-ddos-attack/ - Cloudflare: Slowloris DDoS Attack",
+        "https://ha.cker.info/slowloris/ - RSnake: Slowloris Original Paper",
+        "https://www.nginx.com/blog/mitigating-the-slowloris-attack-with-nginx/ - Nginx: Mitigating Slowloris",
+        "https://attack.mitre.org/techniques/T1499/004/ - MITRE ATT&CK: Application or System Exploitation"
+      ]
     },
     "5": {
       "subtitle": "Botnet DDoS",
@@ -226,7 +266,15 @@
         "title": "Mirai Botnet: Malware Buatan Mahasiswa yang Mengacaukan Internet Global",
         "story": "Pada tahun 2016, tiga mahasiswa perguruan tinggi di Amerika Serikat (Paras Jha, Josiah White, dan Dalton Norman) menciptakan malware bernama Mirai, dinamai dari anime 'The Future of Mirai'. Awalnya, mereka membuat Mirai untuk melancarkan serangan DDoS terhadap server game Minecraft pesaing demi memonopoli pasar server game dan mendapatkan keuntungan finansial dari layanan mitigasi DDoS yang mereka dirikan. Namun, ketika mereka menyadari potensi destruktif dari botnet IoT mereka yang berjumlah ratusan ribu perangkat, mereka mulai menyewakannya untuk serangan balasan terhadap peneliti keamanan yang mencoba membongkar operasi mereka. Puncaknya adalah serangan 1.2 Tbps ke Dyn DNS yang melumpuhkan internet global. Takut ditangkap oleh FBI, ketiga mahasiswa tersebut melepaskan kode sumber (source code) Mirai ke forum peretas HackForums. Tindakan ini membuka kotak Pandora; ribuan peretas di seluruh dunia memodifikasi kode tersebut, melahirkan puluhan varian baru yang hingga hari ini terus menginfeksi jutaan router dan kamera IP, menjadikannya ancaman endemik yang permanen di internet.",
         "lesson": "Kasus Mirai membuktikan bahwa perangkat IoT yang tidak aman adalah ancaman eksistensial bagi stabilitas internet global. Kode yang dilepaskan ke alam liar tidak bisa ditarik kembali dan akan terus berevolusi di tangan aktor yang lebih jahat. Ini memicu dorongan regulasi global, seperti undang-undang di California dan Inggris yang melarang penjualan perangkat IoT dengan password default yang universal. Bagi konsumen dan bisnis, ini adalah pengingat keras bahwa setiap perangkat yang terhubung ke internet adalah potensi senjata yang bisa digunakan melawan Anda atau orang lain. Keamanan jaringan harus mengasumsikan bahwa perangkat IoT akan dikompromikan, sehingga segmentasi jaringan dan pemantauan anomali traffic keluar (egress monitoring) adalah praktik higienis yang tidak bisa ditawar."
-      }
+      },
+      "references": [
+        "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/ - Cloudflare: What is a DDoS Botnet?",
+        "https://en.wikipedia.org/wiki/Mirai_(malware) - Wikipedia: Mirai (Malware)",
+        "https://www.imperva.com/learn/application-security/botnet-ddos-attack/ - Imperva: Botnet DDoS Attack",
+        "https://www.cisa.gov/news-events/alerts/2017/01/18/iot-vulnerabilities-best-practices - CISA: IoT Vulnerabilities Best Practices",
+        "https://www.akamai.com/blog/security/state-of-the-internet-report - Akamai: State of the Internet Report",
+        "https://attack.mitre.org/techniques/T1498/ - MITRE ATT&CK: Network Denial of Service"
+      ]
     }
   }
 }

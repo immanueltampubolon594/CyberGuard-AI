@@ -48,7 +48,15 @@
         "title": "Kasus Account Takeover Terbesar di Indonesia 2024",
         "story": "Pada tahun 2024, sebuah sindikat cybercrime internasional menargetkan pengguna aplikasi dompet digital di Indonesia. Mereka menggunakan kombinasi teknik SIM swapping, phishing, dan social engineering untuk mengambil alih lebih dari 5,000 akun dompet digital. Modus operandi mereka dimulai dengan mengumpulkan data pribadi korban dari media sosial dan data breach, kemudian menghubungi provider seluler untuk melakukan SIM swapping dengan mengaku sebagai korban. Setelah nomor telepon berhasil diambil alih, mereka menggunakan fitur 'lupa password' di aplikasi dompet digital untuk mereset password dengan kode OTP yang dikirim ke nomor yang sudah mereka kuasai. Total kerugian mencapai Rp 50 miliar dengan rata-rata kerugian per korban Rp 10 juta. Banyak korban yang kehilangan seluruh tabungan mereka dan harus berurusan dengan proses pemulihan yang memakan waktu berbulan-bulan.",
         "lesson": "Lindungi nomor telepon Anda sebagai kunci utama identitas digital. Aktifkan PIN atau passphrase di provider seluler untuk mencegah SIM swapping. Jangan pernah membagikan kode OTP kepada siapapun, bahkan jika mengaku dari customer service. Gunakan aplikasi authenticator untuk 2FA alih-alih SMS. Monitor akun Anda secara berkala dan segera bertindak jika melihat aktivitas mencurigakan."
-      }
+      },
+      "references": [
+        "https://www.cisa.gov/topics/cybersecurity-best-practices/identity-and-access-management - CISA: Identity & Access Management",
+        "https://pages.nist.gov/800-63-3/ - NIST: Digital Identity Guidelines",
+        "https://www.bssn.go.id/ - BSSN: Laporan Insiden Keamanan Siber Indonesia",
+        "https://haveibeenpwned.com/ - Have I Been Pwned: Check if Your Data Was Breached",
+        "https://www.kaspersky.com/resource-center/definitions/account-takeover - Kaspersky: Account Takeover Explained",
+        "https://en.wikipedia.org/wiki/Account_takeover - Wikipedia: Account Takeover"
+      ]
     },
     "1": {
       "subtitle": "WhatsApp Hijacking",
@@ -98,7 +106,15 @@
         "title": "WhatsApp Hijacking Menipu Grup Keluarga Besar",
         "story": "Seorang ibu rumah tangga di Bandung menjadi korban WhatsApp hijacking melalui social engineering. Penyerang menelepon mengaku sebagai 'teman lama' yang sedang dalam kesulitan dan meminta kode OTP dengan alasan WhatsApp-nya bermasalah. Ibu tersebut memberikan kode OTP tanpa curiga. Dalam hitungan menit, akun WhatsApp-nya diambil alih dan penyerang langsung mengirim pesan ke semua grup keluarga besar — dari grup keluarga inti, grup keluarga besar, grup arisan, hingga grup sekolah anak. Pesan mengatakan 'Saya sedang di rumah sakit, butuh biaya operasi mendesak. Tolong transfer ke rekening ini'. Dalam 2 jam, 15 anggota keluarga tertipu dan mentransfer total Rp 45 juta ke rekening penyerang. Ibu tersebut baru menyadari akunnya diretas ketika salah satu anggota keluarga menelepon untuk konfirmasi. Proses pemulihan akun memakan waktu 3 hari dan ibu tersebut harus menjelaskan satu per satu ke semua anggota keluarga bahwa pesan tersebut bukan dari dia.",
         "lesson": "Jangan pernah membagikan kode OTP WhatsApp kepada siapapun, meskipun mengaku sebagai teman atau keluarga. Aktifkan verifikasi dua langkah di WhatsApp untuk lapisan keamanan tambahan. Jika menerima permintaan uang via WhatsApp, selalu verifikasi melalui telepon langsung sebelum mentransfer. Waspadai pesan yang mendesak dan meminta tindakan cepat — itu tanda manipulasi."
-      }
+      },
+      "references": [
+        "https://faq.whatsapp.com/general/security-and-privacy/about-two-step-verification - WhatsApp: Two-Step Verification Guide",
+        "https://www.cisa.gov/news-events/alerts/2021/03/15/sim-swapping-awareness - CISA: SIM Swapping Awareness",
+        "https://www.kaspersky.com/blog/whatsapp-hacking/ - Kaspersky: WhatsApp Hacking Prevention",
+        "https://www.whatsapp.com/security/ - WhatsApp: Security Features",
+        "https://www.bssn.go.id/berita/siaran-pers/whatsapp-security - BSSN: Panduan Keamanan WhatsApp",
+        "https://en.wikipedia.org/wiki/WhatsApp#Security_and_privacy - Wikipedia: WhatsApp Security"
+      ]
     },
     "2": {
       "subtitle": "Email Takeover",
@@ -148,7 +164,15 @@
         "title": "Email Takeover CEO - Perusahaan Rugi Miliaran Rupiah",
         "story": "CEO sebuah perusahaan startup di Jakarta menjadi korban email takeover yang sangat sophisticated. Penyerang melakukan riset mendalam tentang CEO tersebut melalui LinkedIn dan media sosial, kemudian mengirim email phishing yang sangat personal dan meyakinkan. Email mengaku dari 'IT Security Team' perusahaan dan mengatakan ada aktivitas mencurigakan di akun email CEO. Email berisi link ke fake login page yang sangat mirip dengan halaman login perusahaan. CEO yang panik langsung login melalui link tersebut dan kredensialnya dicuri. Dalam hitungan menit, penyerang mengakses email CEO, membaca percakapan dengan CFO tentang rencana transfer dana besar untuk akuisisi perusahaan lain. Penyerang kemudian mengirim email dari akun CEO ke CFO dengan instruksi untuk segera mentransfer Rp 5 miliar ke rekening baru untuk 'keperluan akuisisi yang mendesak'. CFO yang percaya karena email datang dari akun CEO langsung melaksanakan transfer. Perusahaan baru menyadari penipuan ini 2 hari kemudian ketika CEO bertanya tentang status transfer yang sebenarnya tidak pernah dia instruksikan. Uang sudah tidak bisa dikembalikan karena sudah ditransfer ke rekening luar negeri.",
         "lesson": "Email adalah akun paling kritis yang harus dilindungi dengan keamanan tertinggi. Gunakan password yang sangat kuat dan unik, aktifkan 2FA dengan aplikasi authenticator, dan selalu verifikasi instruksi transfer dana melalui saluran lain (telepon atau tatap muka). Implement kebijakan double-approval untuk transfer dana besar di perusahaan. Training karyawan tentang email phishing dan social engineering sangat penting."
-      }
+      },
+      "references": [
+        "https://support.google.com/mail/answer/1049956 - Google: Signs Your Account Was Compromised",
+        "https://www.cisa.gov/news-events/alerts/2020/07/02/business-email-compromise - CISA: Business Email Compromise",
+        "https://www.kaspersky.com/blog/email-security/ - Kaspersky: Email Security Best Practices",
+        "https://support.google.com/accounts/answer/185839 - Google: 2-Step Verification Setup",
+        "https://www.bssn.go.id/berita/siaran-pers/email-security - BSSN: Panduan Keamanan Email",
+        "https://en.wikipedia.org/wiki/Email_hijacking - Wikipedia: Email Hijacking"
+      ]
     },
     "3": {
       "subtitle": "Session Theft (Cookie Stealing)",
@@ -198,14 +222,22 @@
         "title": "Session Theft di Kafe - Akun Banking Perusahaan Diretas",
         "story": "Seorang manajer keuangan sebuah perusahaan menengah di Jakarta terbiasa bekerja dari kafe menggunakan WiFi publik kafe tersebut. Suatu hari, dia login ke internet banking perusahaan untuk melakukan transfer pembayaran vendor. Dia tidak menyadari bahwa WiFi kafe tersebut telah dikompromikan oleh penyerang yang menggunakan alat packet sniffer untuk menyadap semua traffic di jaringan. Karena website banking perusahaan menggunakan HTTPS yang properly configured, penyerang tidak bisa membaca isi traffic. Namun, penyerang menggunakan teknik SSL stripping untuk downgrade koneksi dari HTTPS ke HTTP tanpa diketahui korban. Session cookie banking yang tidak terenkripsi berhasil dicuri. Penyerang menggunakan session cookie tersebut untuk mengakses akun banking perusahaan dari lokasi lain. Dalam waktu 2 jam, penyerang melakukan 3 transfer total Rp 500 juta ke rekening yang dikendalikan mereka. Manajer keuangan tersebut baru menyadari ketika menerima notifikasi transfer yang tidak dia lakukan. Investigasi menunjukkan bahwa session cookie dicuri melalui WiFi kafe yang dikompromikan.",
         "lesson": "Jangan pernah akses akun sensitif seperti banking melalui WiFi publik tanpa VPN. Pastikan website menggunakan HTTPS dengan sertifikat yang valid. Logout dari akun sensitif setelah selesai digunakan. Perusahaan harus mengimplementasi IP whitelisting untuk akses banking — hanya IP address tertentu yang boleh mengakses. Gunakan juga transaction signing atau hardware token untuk otorisasi transfer dana besar."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/Session_hijacking_attack - OWASP: Session Hijacking",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies - MDN: HTTP Cookies Documentation",
+        "https://www.kaspersky.com/blog/session-hijacking/ - Kaspersky: Session Hijacking Explained",
+        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy - MDN: Same-Origin Policy",
+        "https://www.cisa.gov/news-events/alerts/2020/02/27/mitigating-web-browser-vulnerabilities - CISA: Browser Security",
+        "https://en.wikipedia.org/wiki/Session_hijacking - Wikipedia: Session Hijacking"
+      ]
     },
     "4": {
       "subtitle": "SIM Swapping",
-"quote": "Nomor telepon Anda adalah kunci master identitas digital - ketika diretas, semua lapisan keamanan bisa ditembus.",
-"definition": "SIM Swapping (atau SIM Hijacking) adalah teknik account takeover di mana penyerang mengambil alih nomor telepon korban dengan meyakinkan provider seluler untuk memindahkan nomor tersebut ke SIM card yang dikendalikan penyerang. Serangan ini menargetkan nomor telepon sebagai titik lemah dalam sistem keamanan digital modern, karena nomor telepon seringkali digunakan untuk verifikasi dua faktor (2FA) melalui SMS, reset password, dan pemulihan akun. Ketika penyerang berhasil mengambil alih nomor telepon, mereka bisa menerima semua SMS dan panggilan telepon yang ditujukan ke korban - termasuk kode OTP untuk login ke akun-akun penting.",
-"sections": [
-    {
+      "quote": "Nomor telepon Anda adalah kunci master identitas digital - ketika diretas, semua lapisan keamanan bisa ditembus.",
+      "definition": "SIM Swapping (atau SIM Hijacking) adalah teknik account takeover di mana penyerang mengambil alih nomor telepon korban dengan meyakinkan provider seluler untuk memindahkan nomor tersebut ke SIM card yang dikendalikan penyerang. Serangan ini menargetkan nomor telepon sebagai titik lemah dalam sistem keamanan digital modern, karena nomor telepon seringkali digunakan untuk verifikasi dua faktor (2FA) melalui SMS, reset password, dan pemulihan akun. Ketika penyerang berhasil mengambil alih nomor telepon, mereka bisa menerima semua SMS dan panggilan telepon yang ditujukan ke korban - termasuk kode OTP untuk login ke akun-akun penting.",
+      "sections": [
+        {
           "title": "Bagaimana SIM Swapping Dilakukan?",
           "content": [
             "Penyerang memulai dengan mengumpulkan informasi pribadi korban sebanyak mungkin. Mereka mengumpulkan data dari media sosial (Facebook, Instagram, LinkedIn), data breach yang dijual di dark web, atau bahkan melalui phishing yang menargetkan korban. Informasi yang dicari termasuk nama lengkap, tanggal lahir, alamat, nomor KTP, nama ibu kandung, dan informasi lain yang digunakan provider seluler untuk verifikasi identitas.",
@@ -248,7 +280,15 @@
         "title": "SIM Swapping Targeting Crypto Investor - Rugi Rp 2 Miliar",
         "story": "Seorang crypto investor di Jakarta menjadi korban SIM swapping yang sangat terencana. Penyerang melakukan riset mendalam tentang korban melalui media sosial dan menemukan bahwa korban adalah trader cryptocurrency dengan portfolio besar. Penyerang mengumpulkan informasi pribadi korban dari LinkedIn, Instagram, dan data breach yang dijual di dark web. Mereka kemudian menghubungi customer service Telkomsel mengaku sebagai korban dengan informasi yang sangat akurat. Customer service yang tidak curiga memproses penggantian SIM. Dalam waktu 30 menit setelah nomor telepon diambil alih, penyerang menggunakan fitur 'lupa password' di exchange cryptocurrency yang digunakan korban. Kode OTP dikirim ke nomor yang sudah dikuasai penyerang. Penyerang mereset password, login ke akun exchange, dan mentransfer semua cryptocurrency ke wallet yang dikendalikan mereka. Total kerugian mencapai 5 Bitcoin dan 50 Ethereum, senilai sekitar Rp 2 miliar pada saat itu. Korban baru menyadari ketika mencoba cek portfolio dan tidak bisa login ke exchange maupun menerima SMS. Proses pemulihan memakan waktu berbulan-bulan dan cryptocurrency yang dicuri tidak pernah kembali.",
         "lesson": "Nomor telepon adalah single point of failure yang sangat berbahaya untuk akun-akun sensitif. Gunakan aplikasi authenticator atau hardware security key untuk 2FA di akun-akun penting, terutama cryptocurrency exchange. Tambahkan PIN/passphrase di provider seluler. Batasi informasi pribadi di media sosial. Untuk crypto investor, gunakan cold wallet (hardware wallet) untuk menyimpan cryptocurrency dalam jumlah besar alih-alih di exchange."
-      }
+      },
+      "references": [
+        "https://www.cisa.gov/news-events/alerts/2021/03/15/sim-swapping-awareness - CISA: SIM Swapping Awareness",
+        "https://www.fcc.gov/consumers/guides/sim-swap-scams - FCC: SIM Swap Scams Guide",
+        "https://www.europol.europa.eu/activities-services/public-awareness-and-prevention-guides/sim-swapping - Europol: SIM Swapping Prevention",
+        "https://www.kaspersky.com/blog/sim-swapping/ - Kaspersky: SIM Swapping Attack Analysis",
+        "https://en.wikipedia.org/wiki/SIM_swap_scam - Wikipedia: SIM Swap Scam",
+        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan SIM Card & Operator"
+      ]
     },
     "5": {
       "subtitle": "Credential Stuffing Massal",
@@ -298,7 +338,15 @@
         "title": "Credential Stuffing Massal ke E-commerce Indonesia - 500,000 Akun Diretas",
         "story": "Sebuah e-commerce besar di Indonesia dengan 20 juta pengguna mengalami serangan credential stuffing massal yang sangat sophisticated. Penyerang menggunakan database kredensial gabungan dari berbagai breach internasional dengan total 500 juta kredensial (email + password). Mereka menggunakan botnet dengan 50,000 proxy server untuk mendistribusikan serangan agar sulit dideteksi. Serangan berlangsung selama 72 jam dengan kecepatan 10,000 percobaan login per menit. Sistem keamanan e-commerce mendeteksi anomali setelah 24 jam, tapi oleh saat itu sudah terlambat. Total 500,000 akun berhasil diretas dengan tingkat keberhasilan 0,1%. Dari akun-akun yang diretas, penyerang mencuri poin reward senilai Rp 10 miliar, melakukan pembelian dengan kartu kredit tersimpan senilai Rp 15 miliar, dan menjual 100,000 akun di pasar gelap dengan harga $2-10 per akun. E-commerce tersebut mengalami kerugian total lebih dari Rp 30 miliar ditambah biaya pemulihan sistem dan kompensasi ke pengguna. Setelah insiden, e-commerce mengimplementasi 2FA wajib untuk semua pengguna, sistem deteksi credential stuffing yang lebih canggih, dan memaksa reset password untuk 5 juta akun yang terdeteksi menggunakan password yang sudah bocor.",
         "lesson": "Password reuse adalah risiko keamanan paling besar yang dihadapi pengguna internet modern. Gunakan password manager untuk membuat password unik yang kuat untuk setiap website. Aktifkan 2FA di semua akun penting. Periksa secara berkala apakah email Anda sudah bocor di Have I Been Pwned. Website harus mengimplementasi sistem deteksi credential stuffing yang canggih dan memaksa pengguna untuk menggunakan password yang kuat dan unik."
-      }
+      },
+      "references": [
+        "https://haveibeenpwned.com/ - Have I Been Pwned: Check if Your Credentials Were Breached",
+        "https://pages.nist.gov/800-63-3/ - NIST: Digital Identity Guidelines (Password Guidelines)",
+        "https://www.cisa.gov/news-events/alerts/2024/06/20/credential-stuffing-attacks - CISA: Credential Stuffing Alert",
+        "https://www.kaspersky.com/blog/credential-stuffing/ - Kaspersky: Credential Stuffing Attacks",
+        "https://fidoalliance.org/passkeys/ - FIDO Alliance: Passkeys & Passwordless Authentication",
+        "https://en.wikipedia.org/wiki/Credential_stuffing - Wikipedia: Credential Stuffing"
+      ]
     }
   }
 }

@@ -48,7 +48,15 @@
         "title": "Serangan MITM pada Jaringan WiFi Publik Bandara Soekarno-Hatta 2023",
         "story": "Pada awal 2023, tim keamanan siber dari sebuah bank swasta besar di Indonesia mengidentifikasi aktivitas mencurigakan pada sesi login mobile banking nasabah yang terhubung melalui WiFi publik di Bandara Soekarno-Hatta. Investigasi forensik mengungkap bahwa penyerang telah memasang rogue access point dengan nama SSID yang mirip dengan WiFi resmi bandara ('FreeAirport-WiFi' vs 'FreeAirport_WiFi'). Perangkat korban yang terhubung secara otomatis ke rogue AP ini kemudian menjadi target serangan Man-in-the-Middle: traffic HTTPS korban di-decrypt menggunakan teknik SSL stripping, kredensial banking dicuri, dan sesi login diambil alih untuk melakukan transfer dana. Dalam waktu 48 jam, lebih dari 200 nasabah menjadi korban dengan total kerugian mencapai 8,7 miliar rupiah. Insiden ini memicu kolaborasi antara BSSN, Polri, dan operator bandara untuk memperkuat keamanan jaringan publik di titik-titik kritis.",
         "lesson": "Kasus ini mengajarkan bahwa jaringan WiFi publik adalah lingkungan yang sangat bermusuhan (hostile environment) untuk transaksi sensitif. Pengguna harus selalu memverifikasi nama SSID resmi dengan staf bandara, menghindari login ke aplikasi banking atau email saat menggunakan WiFi publik, dan selalu memastikan koneksi menggunakan HTTPS dengan sertifikat yang valid (gembok hijau di browser). Bagi penyedia layanan publik, implementasi captive portal dengan autentikasi dua faktor, isolasi klien (client isolation) untuk mencegah komunikasi antar perangkat, dan monitoring traffic untuk mendeteksi rogue AP adalah langkah defensif minimum yang harus diterapkan."
-      }
+      },
+      "references": [
+        "https://www.cisa.gov/topics/cybersecurity-best-practices/network-security - CISA: Network Security Best Practices",
+        "https://www.bssn.go.id/berita/laporan-keamanan-siber - BSSN: Laporan Keamanan Siber Indonesia",
+        "https://owasp.org/www-community/attacks/ - OWASP: Network Attack Categories",
+        "https://www.nist.gov/cyberframework - NIST Cybersecurity Framework",
+        "https://en.wikipedia.org/wiki/Computer_network_attack - Wikipedia: Computer Network Attack",
+        "https://www.cisco.com/c/en/us/products/security/index.html - Cisco: Network Security Solutions"
+      ]
     },
     "1": {
       "subtitle": "Packet Sniffing",
@@ -84,7 +92,15 @@
         "title": "Kebocoran Data Pegawai Kementerian via WiFi Kantor 2022",
         "story": "Pada pertengahan 2022, sebuah kementerian di Indonesia mengalami insiden kebocoran data internal setelah investigasi mengidentifikasi aktivitas packet sniffing pada jaringan WiFi kantor. Penyerang, yang diduga oknum internal atau pihak eksternal yang berhasil mengakses fisik gedung, mengkonfigurasi laptop dengan adapter WiFi dalam mode monitor dan tools Wireshark untuk menyadap traffic tidak terenkripsi. Karena kebijakan keamanan yang lemah, beberapa aplikasi internal masih menggunakan HTTP (bukan HTTPS) untuk komunikasi, dan kredensial login pegawai dikirim dalam plaintext. Dalam waktu dua minggu, penyerang berhasil mengumpulkan ribuan set kredensial, email internal, dan dokumen sensitif. Data tersebut kemudian dijual di forum dark web atau digunakan untuk akses tidak sah ke sistem lain. Insiden ini memicu audit keamanan menyeluruh dan migrasi paksa semua aplikasi internal ke HTTPS dengan sertifikat yang dikelola secara terpusat.",
         "lesson": "Kasus ini menyoroti bahwa ancaman insider dan akses fisik adalah vektor nyata yang sering diabaikan. Pertahanan teknis seperti enkripsi tidak berguna jika kebijakan dan kesadaran pengguna lemah. Pelajaran kritis: 1) Terapkan kebijakan 'HTTPS everywhere' — blokir akses HTTP di firewall dan redirect otomatis ke HTTPS, 2) Gunakan sertifikat internal yang dikelola via PKI (Public Key Infrastructure) untuk aplikasi internal, 3) Implementasi network access control (NAC) untuk memastikan hanya perangkat terotorisasi yang dapat terhubung ke jaringan korporat, 4) Lakukan security awareness training rutin tentang risiko WiFi dan pentingnya memverifikasi koneksi aman."
-      }
+      },
+      "references": [
+        "https://www.wireshark.org/docs/ - Wireshark: Network Protocol Analyzer Documentation",
+        "https://owasp.org/www-community/attacks/Sniffing_Attack - OWASP: Sniffing Attack",
+        "https://www.cisa.gov/news-events/alerts/2020/02/27/mitigating-network-sniffing - CISA: Mitigating Network Sniffing",
+        "https://en.wikipedia.org/wiki/Sniffer - Wikipedia: Packet Sniffer",
+        "https://www.tcpdump.org/manpages/tcpdump.1.html - tcpdump: Network Traffic Analyzer",
+        "https://www.zeek.org/ - Zeek: Network Security Monitor"
+      ]
     },
     "2": {
       "subtitle": "IP Spoofing",
@@ -120,7 +136,15 @@
         "title": "Serangan DNS Amplification ke Provider Cloud Indonesia 2023",
         "story": "Pada Maret 2023, salah satu provider cloud terbesar di Indonesia menjadi target serangan DDoS berbasis DNS amplification yang mencapai puncak 800 Gbps. Investigasi forensik mengungkap bahwa penyerang menggunakan botnet kecil (sekitar 5.000 perangkat IoT) untuk mengirimkan permintaan DNS ANY yang dipalsukan (spoofed source IP = victim) ke ribuan open DNS resolver di seluruh dunia. Resolver-resolver ini membalas dengan respons berukuran besar (mencatatkan faktor amplifikasi ~65x) langsung ke infrastruktur provider korban. Serangan ini berlangsung selama 6 jam dan menyebabkan downtime parsial bagi ratusan klien cloud, termasuk startup fintech dan e-commerce. Provider berhasil memitigasi serangan dengan mengaktifkan layanan scrubbing dari partner global dan mengimplementasikan BCP38 filtering di edge network mereka pasca-insiden.",
         "lesson": "Kasus ini membuktikan bahwa serangan amplifikasi tidak memerlukan botnet raksasa — cukup dengan menemukan server publik yang salah konfigurasi. Bagi administrator jaringan: 1) Nonaktifkan atau batasi query DNS ANY pada resolver internal, 2) Implementasi response rate limiting (RRL) pada DNS server untuk mencegah abuse, 3) Pastikan semua server internal tidak terekspos ke internet publik tanpa autentikasi. Bagi pengguna layanan cloud: pilih provider yang memiliki kapasitas mitigasi DDoS multi-Terabit dan arsitektur Anycast untuk menyerap serangan di edge, sebelum traffic mencapai infrastruktur inti Anda."
-      }
+      },
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc2827 - IETF RFC 2827: Network Ingress Filtering (BCP38)",
+        "https://www.cisa.gov/news-events/alerts/2014/01/10/ntp-amplification-ddos-attacks - CISA: NTP Amplification DDoS Attacks",
+        "https://owasp.org/www-community/attacks/IP_Spoofing - OWASP: IP Spoofing",
+        "https://en.wikipedia.org/wiki/IP_address_spoofing - Wikipedia: IP Address Spoofing",
+        "https://www.akamai.com/blog/security/dns-amplification-attacks - Akamai: DNS Amplification Attacks",
+        "https://www.us-cert.gov/ncas/alerts/TA14-017A - US-CERT: UDP-based Amplification Attacks"
+      ]
     },
     "3": {
       "subtitle": "ARP Spoofing",
@@ -156,7 +180,15 @@
         "title": "Serangan ARP Poisoning pada Jaringan Kantor Startup Fintech Jakarta 2024",
         "story": "Pada Januari 2024, tim keamanan sebuah startup fintech di Jakarta mendeteksi anomali pada traffic internal setelah beberapa pegawai melaporkan akses lambat ke aplikasi internal. Investigasi mengungkap bahwa seorang mantan karyawan yang masih memiliki akses fisik ke gedung telah menginstal Raspberry Pi dengan BetterCAP di colokan jaringan ruang meeting. Perangkat ini secara otomatis melakukan ARP spoofing terhadap gateway dan server internal, mengalihkan traffic ke Raspberry Pi untuk disadap. Penyerang berhasil mencuri session cookie dari aplikasi internal yang tidak menggunakan HTTPS secara konsisten, dan menggunakan cookie tersebut untuk mengakses dashboard admin dan mengekstrak data nasabah. Insiden terungkap ketika sistem NDR (Network Detection and Response) mendeteksi pola traffic yang tidak biasa: satu MAC address mengklaim memiliki banyak IP berbeda dalam waktu singkat. Total kerugian diperkirakan mencapai 2,3 miliar rupiah akibat potensi kebocoran data dan biaya remediasi.",
         "lesson": "Kasus ini menyoroti risiko insider threat dan akses fisik yang sering diabaikan. Pertahanan teknis canggih tidak berguna jika penyerang dapat dengan mudah menyambungkan perangkat ke jaringan kabel. Pelajaran penting: 1) Terapkan port security pada switch: batasi jumlah MAC address per port, aktifkan 802.1X untuk autentikasi perangkat, 2) Gunakan DHCP snooping + Dynamic ARP Inspection pada semua switch managed, 3) Pastikan semua aplikasi internal menggunakan HTTPS dengan sertifikat yang valid, 4) Implementasi network segmentation: pisahkan jaringan karyawan, guest, dan server dengan firewall rules yang ketat, 5) Lakukan exit interview keamanan: cabut akses fisik dan logis segera setelah karyawan resign."
-      }
+      },
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc826 - IETF RFC 826: Address Resolution Protocol (ARP)",
+        "https://owasp.org/www-community/attacks/ARP_Spoofing - OWASP: ARP Spoofing",
+        "https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst3750/software/release/12-2_55_se/configuration/guide/scg3750/swdynarp.pdf - Cisco: Dynamic ARP Inspection",
+        "https://en.wikipedia.org/wiki/ARP_spoofing - Wikipedia: ARP Spoofing",
+        "https://www.bettercap.org/ - BetterCAP: Network Attack & Monitoring Framework",
+        "https://www.wireshark.org/docs/wsug_html_chunked/ChAdvARP.html - Wireshark: ARP Analysis"
+      ]
     },
     "4": {
       "subtitle": "DNS Spoofing",
@@ -192,7 +224,15 @@
         "title": "Kampanye DNS Spoofing Targeting Nasabah Bank Digital Indonesia 2023",
         "story": "Pada akhir 2023, OJK dan BSSN mengidentifikasi kampanye DNS spoofing yang menargetkan nasabah beberapa bank digital di Indonesia. Penyerang mengkompromi router rumah korban melalui eksploitasi CVE pada firmware lama (seperti CVE-2021-44142 pada beberapa model TP-Link), lalu mengubah pengaturan DNS resolver lokal ke server DNS jahat yang mereka kendalikan. Server ini dikonfigurasi untuk mengembalikan IP server phishing untuk domain bank target. Nasabah yang mengakses aplikasi web banking diarahkan ke halaman login palsu yang identik dengan aslinya. Kampanye ini sangat efektif karena tidak memerlukan interaksi korban selain mengakses banking seperti biasa — tidak ada email phishing atau tautan mencurigakan yang perlu diklik. Diperkirakan lebih dari 5.000 nasabah terpapar, dengan ratusan kasus kehilangan dana yang dilaporkan. Insiden ini memicu rekomendasi dari OJK agar bank mengimplementasi certificate pinning dan multi-factor authentication yang tidak bergantung pada SMS.",
         "lesson": "Kasus ini menunjukkan bahwa pertahanan terkuat pun dapat dikalahkan jika rantai kepercayaan terputus di titik yang tidak terduga (router rumah). Pelajaran kritis: 1) Selalu update firmware router dan ganti password default, 2) Gunakan DNS resolver yang mendukung DNSSEC dan filtering (seperti 1.1.1.2 atau 9.9.9.9), 3) Pastikan aplikasi banking menggunakan certificate pinning untuk memverifikasi keaslian server, 4) Aktifkan MFA yang tidak bergantung pada SMS (seperti authenticator app atau biometric), 5) Waspadai perubahan perilaku browser: jika situs banking meminta login ulang tiba-tiba atau tampilan SSL warning muncul, segera tutup dan verifikasi melalui kanal resmi."
-      }
+      },
+      "references": [
+        "https://datatracker.ietf.org/doc/html/rfc1035 - IETF RFC 1035: Domain Name System (DNS)",
+        "https://dnssec.net/ - DNSSEC: DNS Security Extensions",
+        "https://www.cloudflare.com/learning/dns/dns-security/ - Cloudflare: DNS Security",
+        "https://owasp.org/www-community/attacks/DNS_Spoofing - OWASP: DNS Spoofing",
+        "https://en.wikipedia.org/wiki/DNS_spoofing - Wikipedia: DNS Spoofing",
+        "https://www.kaminsky.com/2008/07/09/dns/ - Dan Kaminsky: DNS Vulnerability Disclosure"
+      ]
     },
     "5": {
       "subtitle": "Man-in-the-Middle (MITM)",
@@ -228,7 +268,15 @@
         "title": "Serangan MITM pada Aplikasi Mobile Banking via Rogue AP di Mall Jakarta 2024",
         "story": "Pada Februari 2024, tim keamanan sebuah bank besar di Indonesia mendeteksi sesi login mencurigakan yang berasal dari lokasi geografis yang tidak konsisten. Investigasi mengungkap bahwa penyerang telah memasang rogue access point dengan nama 'FreeMall-WiFi' di area food court sebuah mall besar di Jakarta. AP ini dikonfigurasi dengan SSL stripping dan certificate injection: ketika korban terhubung dan mencoba mengakses aplikasi banking, traffic HTTPS di-downgrade ke HTTP, dan sertifikat palsu yang ditandatangani oleh root CA palsu (yang diinstal via malware sebelumnya) digunakan untuk mempertahankan ilusi koneksi aman. Penyerang berhasil mencuri kredensial dan OTP dari 47 korban dalam 3 hari sebelum terdeteksi. Total kerugian mencapai 4,2 miliar rupiah. Insiden ini memicu kolaborasi antara bank, pengelola mall, dan BSSN untuk melakukan audit keamanan WiFi publik dan kampanye kesadaran pengguna.",
         "lesson": "Kasus ini mengajarkan bahwa serangan MITM modern sering menggabungkan multiple vektor: rogue AP untuk posisi strategis, SSL stripping untuk bypass enkripsi, dan malware untuk instalasi root certificate palsu. Pertahanan berlapis adalah kunci: 1) Pengguna: hindari transaksi sensitif di WiFi publik, selalu verifikasi indikator HTTPS (gembok hijau), dan jangan instal certificate dari sumber tidak dikenal. 2) Developer aplikasi: implementasi certificate pinning, deteksi root/jailbreak, dan MFA yang tidak bergantung pada SMS. 3) Pengelola venue: implementasi captive portal dengan autentikasi dua faktor, client isolation, dan monitoring untuk rogue AP. 4) Bank: terapkan behavioral analytics untuk mendeteksi login dari lokasi/device yang tidak biasa secara real-time."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/Man-in-the-middle_attack - OWASP: Man-in-the-Middle Attack",
+        "https://www.cisa.gov/news-events/alerts/2019/06/19/man-middle-attacks - CISA: Man-in-the-Middle Attacks",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security - MDN: HSTS (HTTP Strict Transport Security)",
+        "https://en.wikipedia.org/wiki/Man-in-the-middle_attack - Wikipedia: Man-in-the-Middle Attack",
+        "https://www.mitmproxy.org/ - mitmproxy: Interactive HTTPS Proxy",
+        "https://csrc.nist.gov/publications/detail/sp/800-207/final - NIST SP 800-207: Zero Trust Architecture"
+      ]
     },
     "6": {
       "subtitle": "Session Hijacking",
@@ -264,7 +312,15 @@
         "title": "Kampanye XSS + Session Hijacking Targeting Pengguna E-Commerce Indonesia 2024",
         "story": "Pada pertengahan 2024, sebuah platform e-commerce besar di Indonesia menjadi target kampanye terkoordinasi yang menggabungkan XSS vulnerability dan session hijacking. Penyerang menemukan celah XSS reflected pada fitur pencarian produk, yang memungkinkan penyisipan script JavaScript malicious melalui URL. Script ini dieksekusi di browser korban yang mengklik tautan phishing (dikirim via WhatsApp dengan kedok 'promo eksklusif'), mencuri cookie sesi, dan mengirimkannya ke server penyerang. Dengan session ID yang dicuri, penyerang dapat mengakses akun korban, melihat riwayat pesanan, dan yang paling berbahaya: menggunakan fitur 'one-click checkout' dengan kartu kredit yang tersimpan untuk melakukan pembelian fiktif ke alamat pengiriman yang dikendalikan penyerang. Dalam 2 minggu, lebih dari 1.200 akun dikompromikan dengan total kerugian transaksi fiktif mencapai 3,8 miliar rupiah. Platform berhasil memitigasi dengan segera mempatch XSS vulnerability, mengimplementasi CSP header, dan memaksa re-authentication untuk semua sesi aktif.",
         "lesson": "Kasus ini menunjukkan bahwa satu celah keamanan (XSS) dapat menjadi pintu masuk untuk serangan berantai yang jauh lebih merusak (session hijacking + financial fraud). Pelajaran kritis: 1) Developer: terapkan input sanitization dan output encoding di semua titik input pengguna, implementasi CSP header dengan policy yang ketat, dan audit keamanan rutin dengan tools seperti OWASP ZAP atau Burp Suite. 2) Platform: implementasi behavioral analytics untuk mendeteksi transaksi tidak biasa (misalnya pembelian dari lokasi/device baru dengan nilai tinggi), dan notifikasi real-time ke pengguna untuk aktivitas sensitif. 3) Pengguna: waspadai tautan mencurigakan bahkan dari kontak yang dikenal (WhatsApp mereka mungkin dikompromikan), gunakan password unik untuk setiap layanan, dan aktifkan MFA di mana tersedia."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/Session_hijacking_attack - OWASP: Session Hijacking",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html - OWASP: Session Management Cheat Sheet",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie - MDN: Set-Cookie Header Documentation",
+        "https://en.wikipedia.org/wiki/Session_hijacking - Wikipedia: Session Hijacking",
+        "https://www.cisa.gov/news-events/alerts/2020/01/27/protecting-against-session-hijacking - CISA: Protecting Against Session Hijacking",
+        "https://beefproject.com/ - BeEF: Browser Exploitation Framework"
+      ]
     }
   }
 }

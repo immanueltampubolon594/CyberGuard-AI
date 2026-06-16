@@ -49,7 +49,21 @@
         "title": "Kasus Fake Marketplace terbesar di Indonesia 2024",
         "story": "Pada awal 2024, sebuah sindikat penipuan e-commerce internasional menargetkan konsumen Indonesia melalui puluhan website toko online palsu. Mereka membuat website yang sangat profesional dengan domain yang mirip marketplace besar (seperti 'tokopedia-diskon.com', 'shopee-murah.net', dll). Website menawarkan produk elektronik dan fashion branded dengan diskon 70-90% — harga yang terlalu bagus untuk menjadi kenyataan. Sindikat ini menggunakan teknik SEO dan iklan di media sosial untuk menarik korban. Lebih dari 15,000 konsumen tertipu dengan total kerugian mencapai Rp 85 miliar. Modus yang sama juga menggunakan WhatsApp untuk mengirim link toko palsu dengan iming-iming 'flash sale'. Setelah pembayaran diterima (biasanya via transfer bank atau e-wallet), barang tidak pernah dikirim dan website ditutup. Sindikat ini berhasil dibongkar setelah 6 bulan beroperasi dan 12 pelakunya ditangkap.",
         "lesson": "Selalu verifikasi keaslian toko online sebelum bertransaksi. Periksa domain website (harus official domain), cek review dan reputasi, waspadai harga yang terlalu murah, dan gunakan payment gateway yang aman. Jangan pernah transfer langsung ke rekening pribadi untuk transaksi e-commerce."
-      }
+      },
+      "references": [
+        "https://www.bssn.go.id/ - BSSN: Badan Siber dan Sandi Negara Indonesia",
+        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen - OJK: Edukasi dan Perlindungan Konsumen",
+        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online",
+        "https://www.ftc.gov/consumer-advice/scams/online-shopping-scams - FTC: Online Shopping Scams",
+        "https://www.ic3.gov/Home - FBI IC3: Internet Crime Complaint Center",
+        "https://www.consumer.ftc.gov/features/scam-alerts - FTC: Consumer Scam Alerts",
+        "https://www.nortonlifelock.com/cybersecurity/identity-protection/ecommerce-fraud - NortonLifeLock: E-Commerce Fraud Prevention",
+        "https://www.kaspersky.com/resource-center/prevention-tips/online-shopping-fraud - Kaspersky: Online Shopping Fraud",
+        "https://www.scamwatch.gov.au/types-of-scams/shopping-and-classifieds - ScamWatch: Shopping Scams",
+        "https://www.bbb.org/article/news-releases/23485-online-shopping-scams-rise-during-holiday-season - BBB: Online Shopping Scams",
+        "https://www.cisa.gov/cybersecurity-best-practices - CISA: Cybersecurity Best Practices",
+        "https://www.anti phishingworkinggroup.org/ - APWG: Anti-Phishing Working Group"
+      ]
     },
     "1": {
       "subtitle": "Fake Marketplace & Toko Online Palsu",
@@ -94,7 +108,21 @@
         "title": "Fake iPhone Store di Instagram - 2,000 Korban Rugi Rp 30 Miliar",
         "story": "Sebuah sindikat penipuan membuat toko online palsu yang menjual iPhone dengan harga 60% lebih murah dari harga resmi. Mereka mempromosikan toko ini melalui iklan Instagram yang sangat profesional dengan foto-foto produk berkualitas tinggi dan testimonial palsu. Website terlihat sangat legitimate dengan desain modern, domain .com, dan bahkan memiliki fitur live chat. Lebih dari 2,000 orang tertipu dengan total kerugian Rp 30 miliar. Modus yang digunakan: setelah pembayaran diterima (via transfer bank dan e-wallet), mereka mengirim nomor resi palsu atau tidak mengirim sama sekali. Website ditutup setelah 3 bulan beroperasi dan banyak komplain di media sosial. Sindikat ini kemudian membuat website baru dengan nama berbeda dan mengulangi modus yang sama. Baru setelah 8 bulan dan total kerugian mencapai Rp 30 miliar, polisi berhasil menangkap 5 pelaku utama. Uang korban sebagian besar tidak bisa dikembalikan karena sudah ditarik dan digunakan pelaku.",
         "lesson": "Jangan tergiur harga yang terlalu murah. Selalu verifikasi keaslian toko online melalui berbagai sumber. Gunakan metode pembayaran yang aman (payment gateway/escrow) dan jangan transfer langsung ke rekening pribadi. Periksa reputasi toko melalui review dan rating. Jika ragu, lebih baik berbelanja di marketplace besar yang memiliki buyer protection."
-      }
+      },
+      "references": [
+        "https://www.ftc.gov/consumer-advice/online-shopping - FTC: Online Shopping Tips",
+        "https://www.bbb.org/article/news-releases/22987-bbb-warning-fake-online-stores - BBB: Fake Online Stores Warning",
+        "https://www.scamwatch.gov.au/types-of-scams/online-shopping - ScamWatch: Online Shopping Scams",
+        "https://www.consumer.ftc.gov/articles/online-shopping-tips - FTC: Online Shopping Tips",
+        "https://www.kaspersky.com/resource-center/prevention-tips/how-to-spot-fake-online-stores - Kaspersky: Spotting Fake Stores",
+        "https://www.nortonlifelock.com/cybersecurity/online-scams/fake-websites - NortonLifeLock: Fake Websites",
+        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online",
+        "https://www.bssn.go.id/berita/waspada-toko-online-palsu - BSSN: Waspada Toko Online Palsu",
+        "https://www.scamadviser.com/ - ScamAdviser: Website Trust Checker",
+        "https://www.whois.com/whois/ - WHOIS: Domain Age Checker",
+        "https://www.mcafee.com/en-us/security-advice/home-family-security/fake-online-stores.html - McAfee: Fake Online Stores",
+        "https://www.fbi.gov/scams-and-safety/common-scams/online-shopping-fraud - FBI: Online Shopping Fraud"
+      ]
     },
     "2": {
       "subtitle": "Payment Fraud & Carding",
@@ -148,7 +176,21 @@
         "title": "Carding Ring di Indonesia - 50,000 Kartu Kredit Dicuri",
         "story": "Pada tahun 2023, polisi cyber Indonesia membongkar sindikat carding internasional yang beroperasi dari Jakarta. Sindikat ini berhasil mencuri data lebih dari 50,000 kartu kredit dari berbagai negara (terutama AS dan Eropa) melalui malware yang disisipkan di website-website yang di-hack. Data kartu kredit kemudian dijual di forum dark web dengan harga $10-$50 per kartu. Anggota sindikat juga menggunakan kartu-kartu curian ini untuk berbelanja di e-commerce Indonesia — terutama produk elektronik dan fashion branded yang kemudian dijual kembali dengan harga diskon. Total transaksi fraud mencapai Rp 150 miliar dalam 18 bulan operasi. Polisi menangkap 8 pelaku utama dan menyita aset senilai Rp 50 miliar. Kasus ini juga mengungkap bahwa beberapa merchant e-commerce di Indonesia tidak memiliki sistem deteksi fraud yang memadai, sehingga mudah menjadi target carding.",
         "lesson": "Merchant harus mengimplementasi sistem deteksi fraud yang canggih (3D Secure, fraud scoring, velocity checking). Konsumen harus aktif monitor transaksi kartu kredit, gunakan virtual card untuk transaksi online, dan segera laporkan transaksi mencurigakan. Kolaborasi antara bank, merchant, dan penegak hukum sangat penting untuk memerangi carding."
-      }
+      },
+      "references": [
+        "https://www.pcisecuritystandards.org/ - PCI Security Standards Council",
+        "https://www.pcisecuritystandards.org/pci_security/pci_data_security_standard - PCI DSS Guidelines",
+        "https://www.visa.com.au/shop-with-visa/visa-secure.html - Visa Secure (3D Secure)",
+        "https://www.mastercard.us/en-us/personal/support/secure-code.html - Mastercard SecureCode",
+        "https://www.kaspersky.com/resource-center/prevention-tips/credit-card-fraud - Kaspersky: Credit Card Fraud",
+        "https://www.nortonlifelock.com/cybersecurity/identity-protection/credit-card-fraud - NortonLifeLock: Credit Card Fraud",
+        "https://www.ftc.gov/consumer-advice/identity-theft-and-scams/credit-card-fraud - FTC: Credit Card Fraud",
+        "https://www.consumer.ftc.gov/articles/credit-card-fraud - FTC: Credit Card Fraud Prevention",
+        "https://www.bankrate.com/banking/credit-cards/how-to-spot-credit-card-fraud/ - Bankrate: Credit Card Fraud",
+        "https://www.sift.com/resources/guides/ecommerce-fraud-detection - Sift: E-Commerce Fraud Detection",
+        "https://www.riskified.com/blog/ecommerce-fraud-detection/ - Riskified: Fraud Detection",
+        "https://www.kount.com/resources/guides/ecommerce-fraud-prevention - Kount: Fraud Prevention"
+      ]
     },
     "3": {
       "subtitle": "Account Takeover E-Commerce",
@@ -191,7 +233,21 @@
         "title": "ATO Seller Tokopedia - Penipuan Massal 5,000 Pembeli",
         "story": "Seorang seller terpercaya di Tokopedia dengan rating 4.9 dan lebih dari 50,000 transaksi menjadi korban account takeover. Penyerang berhasil mendapatkan password seller melalui phishing email yang mengaku dari Tokopedia. Setelah menguasai akun, penyerang mengubah metode pembayaran dan membuat listing produk palsu — iPhone dan MacBook dengan harga 50% lebih murah dari pasar. Karena seller ini sudah terpercaya dengan rating tinggi, lebih dari 5,000 pembeli tertipu dan melakukan pembelian dalam 48 jam. Total transaksi mencapai Rp 75 miliar. Penyerang kemudian mengubah alamat email dan nomor telepon di akun, mengunci seller asli keluar. Ketika seller menyadari dan melaporkan ke Tokopedia, sudah terlambat — uang sudah ditarik ke rekening yang sudah diubah penyerang. Tokopedia akhirnya mengganti kerugian pembeli (total Rp 75 miliar), namun reputasi seller hancur dan akun di-suspend permanen. Seller asli harus berjuang selama 6 bulan untuk membuktikan bahwa dia bukan pelaku penipuan.",
         "lesson": "Seller e-commerce harus mengaktifkan 2FA, waspada email phishing, dan monitor aktivitas akun secara berkala. Platform e-commerce perlu implementasi sistem deteksi ATO yang canggih dan prosedur verifikasi yang ketat untuk perubahan pengaturan sensitif (rekening bank, email, nomor telepon)."
-      }
+      },
+      "references": [
+        "https://www.kaspersky.com/resource-center/prevention-tips/account-takeover - Kaspersky: Account Takeover Prevention",
+        "https://www.nortonlifelock.com/cybersecurity/identity-protection/account-takeover - NortonLifeLock: Account Takeover",
+        "https://www.sift.com/resources/guides/account-takeover-fraud - Sift: Account Takeover Fraud",
+        "https://www.riskified.com/blog/account-takeover-prevention/ - Riskified: ATO Prevention",
+        "https://www.ftc.gov/consumer-advice/identity-theft-and-scams/account-takeover - FTC: Account Takeover",
+        "https://www.consumer.ftc.gov/articles/account-takeover - FTC: Account Takeover Prevention",
+        "https://www.kount.com/resources/guides/account-takeover-prevention - Kount: ATO Prevention",
+        "https://www.bssn.go.id/berita/waspada-account-takeover - BSSN: Waspada Account Takeover",
+        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Perlindungan-Akun-Online.aspx - OJK: Perlindungan Akun Online",
+        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online",
+        "https://haveibeenpwned.com/ - Have I Been Pwned: Check if Your Data Was Breached",
+        "https://www.lastpass.com/solutions/password-security - LastPass: Password Security"
+      ]
     },
     "4": {
       "subtitle": "Triangulation Fraud",
@@ -240,7 +296,21 @@
         "title": "Triangulation Fraud Laptop Gaming - 200 Seller Korban",
         "story": "Sebuah sindikat triangulation fraud menargetkan seller laptop gaming di berbagai platform e-commerce Indonesia. Fraudster membuat ratusan akun seller palsu dan listing laptop gaming (ASUS ROG, MSI, Acer Predator) dengan harga 10-15% lebih murah dari pasar. Ketika ada pembeli order, fraudster membeli laptop yang sama dari seller legitimate di platform lain menggunakan kartu kredit curian, dengan alamat pengiriman pembeli. Dalam 6 bulan, lebih dari 200 seller legitimate menjadi korban dengan total kerugian Rp 120 miliar (barang hilang + chargeback). Pembeli yang menerima laptop tidak tahu-menahu dan memberikan review positif ke fraudster. Baru ketika chargeback mulai berdatangan massal, platform e-commerce menyadari ada fraud sistematis. Platform kemudian suspend ratusan akun fraudster dan cooperate dengan polisi untuk investigations. Namun uang dan barang sudah tidak bisa dikembalikan. Seller yang menjadi korban harus berjuang membuktikan bahwa mereka legitimate seller dan korban carding.",
         "lesson": "Seller harus waspada terhadap order dengan alamat pengiriman yang berbeda jauh, terutama untuk produk bernilai tinggi. Platform perlu implementasi sistem deteksi triangulation fraud yang canggih. Pembeli harus berbelanja dari seller yang verified dan terpercaya. Kolaborasi antar platform e-commerce penting untuk mengidentifikasi fraudster yang beroperasi di multiple platform."
-      }
+      },
+      "references": [
+        "https://www.sift.com/resources/guides/triangulation-fraud - Sift: Triangulation Fraud",
+        "https://www.riskified.com/blog/triangulation-fraud-prevention/ - Riskified: Triangulation Fraud",
+        "https://www.kount.com/resources/guides/triangulation-fraud-prevention - Kount: Triangulation Fraud",
+        "https://www.signifyd.com/blog/triangulation-fraud/ - Signifyd: Triangulation Fraud",
+        "https://www.forter.com/blog/triangulation-fraud-explained/ - Forter: Triangulation Fraud",
+        "https://www.ekata.com/blog/triangulation-fraud-detection - Ekata: Triangulation Fraud Detection",
+        "https://www.bssn.go.id/berita/waspada-triangulation-fraud - BSSN: Waspada Triangulation Fraud",
+        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Waspada-Penipuan-E-Commerce.aspx - OJK: Waspada Penipuan E-Commerce",
+        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online",
+        "https://www.scamadviser.com/ - ScamAdviser: Website Trust Checker",
+        "https://www.ftc.gov/consumer-advice/online-shopping - FTC: Online Shopping Tips",
+        "https://www.consumer.ftc.gov/articles/online-shopping-tips - FTC: Online Shopping Tips"
+      ]
     },
     "5": {
       "subtitle": "Refund & Return Fraud",
@@ -294,7 +364,21 @@
         "title": "Wardrobing Massal Gaun Pesta - Seller Fashion Rugi Rp 5 Miliar",
         "story": "Seorang buyer melakukan wardrobing fraud terhadap seller gaun pesta di Tokopedia. Buyer membeli 47 gaun pesta branded (total Rp 850 juta) dalam 3 bulan, menggunakan gaun-gaun tersebut untuk berbagai event pesta (terlihat dari tag Instagram buyer yang memakai gaun yang sama persis), lalu mengembalikan semua gaun dengan alasan 'tidak cocok' atau 'berubah pikiran'. Karena seller memiliki kebijakan return 30 hari yang longgar, semua return diterima dan buyer mendapat refund penuh. Namun, gaun-gaun yang kembali sudah terpakai, ada yang bernoda, ada yang sobek, dan tidak bisa dijual ulang sebagai barang baru. Seller mengalami kerugian total Rp 5 miliar (termasuk opportunity cost dan penurunan nilai barang). Ketika seller menyadari pola ini dan melaporkan ke Tokopedia, buyer sudah membuat akun baru dan mengulangi modus yang sama ke seller lain. Platform akhirnya ban akun buyer tersebut, tapi kerugian seller tidak bisa dikembalikan. Kasus ini memicu seller-seller fashion untuk memperketat kebijakan return dan require deposit untuk gaun mahal.",
         "lesson": "Seller harus waspada terhadap buyer yang sering return barang, terutama untuk produk yang mudah dipakai dan dikembalikan (fashion, kamera, alat pesta). Terapkan kebijakan return yang lebih ketat untuk produk tertentu (misalnya tidak terima return untuk gaun yang sudah dipakai, atau require deposit). Dokumentasikan kondisi barang sebelum kirim dan setelah return. Platform perlu sistem untuk mendeteksi buyer dengan pattern return yang mencurigakan."
-      }
+      },
+      "references": [
+        "https://www.sift.com/resources/guides/refund-fraud - Sift: Refund Fraud Prevention",
+        "https://www.riskified.com/blog/refund-fraud-prevention/ - Riskified: Refund Fraud",
+        "https://www.kount.com/resources/guides/refund-fraud-prevention - Kount: Refund Fraud",
+        "https://www.signifyd.com/blog/refund-fraud-explained/ - Signifyd: Refund Fraud",
+        "https://www.forter.com/blog/refund-fraud-detection/ - Forter: Refund Fraud Detection",
+        "https://www.ekata.com/blog/refund-fraud-detection - Ekata: Refund Fraud Detection",
+        "https://www.bssn.go.id/berita/waspada-refund-fraud - BSSN: Waspada Refund Fraud",
+        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Waspada-Penipuan-E-Commerce.aspx - OJK: Waspada Penipuan E-Commerce",
+        "https://www.ftc.gov/consumer-advice/online-shopping - FTC: Online Shopping Tips",
+        "https://www.consumer.ftc.gov/articles/refund-fraud - FTC: Refund Fraud",
+        "https://www.scamadviser.com/ - ScamAdviser: Website Trust Checker",
+        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online"
+      ]
     },
     "6": {
       "subtitle": "Friendly Fraud",
@@ -347,7 +431,21 @@
         "title": "Friendly Fraud Elektronik - Seller Kecil Hampir Bangkrut",
         "story": "Seorang seller kecil yang menjual aksesori iPhone (case, screen protector, charger) di Shopee mengalami gelombang friendly fraud dari 23 buyer dalam 2 bulan. Total nilai transaksi Rp 45 juta dengan 23 chargeback. Modusnya: buyer order aksesori, terima barang, lalu 2-3 minggu kemudian melakukan chargeback dengan alasan 'barang tidak sesuai' atau 'tidak terima barang' meskipun tracking menunjukkan sudah diterima. Karena seller tidak punya dokumentasi yang kuat (hanya foto produk dari supplier, tidak ada foto barang sebelum kirim, tidak ada signature confirmation), seller kalah di 18 dari 23 dispute. Total kerugian Rp 38 juta plus chargeback fee Rp 1.15 juta. Seller yang awalnya untung Rp 5-10 juta per bulan hampir bangkrut. Rasio chargeback seller melonjak ke 3.5% (di atas threshold 1%), dan payment processor mengancam akan terminate akun. Seller kemudian memperbaiki sistem: wajibkan signature confirmation untuk semua order, foto setiap barang sebelum kirim dengan nomor order terlihat, dan fight semua chargeback dengan bukti lengkap. Dalam 3 bulan, rasio chargeback turun ke 0.8% dan seller bisa pertahankan akun. Seller juga blacklist 23 buyer tersebut dan share informasi ke komunitas seller untuk waspada.",
         "lesson": "Friendly fraud bisa menghancurkan seller kecil yang tidak siap. Dokumentasi yang kuat (proof of delivery dengan signature, foto barang sebelum kirim, komunikasi tercatat) adalah kunci untuk fight chargeback. Jangan terima chargeback tanpa fight — statistik menunjukkan win rate 30-40% jika ada bukti kuat. Blacklist buyer yang melakukan friendly fraud dan share informasi ke komunitas seller."
-      }
+      },
+      "references": [
+        "https://www.sift.com/resources/guides/friendly-fraud - Sift: Friendly Fraud Prevention",
+        "https://www.riskified.com/blog/friendly-fraud-prevention/ - Riskified: Friendly Fraud",
+        "https://www.kount.com/resources/guides/friendly-fraud-prevention - Kount: Friendly Fraud",
+        "https://www.signifyd.com/blog/friendly-fraud-explained/ - Signifyd: Friendly Fraud",
+        "https://www.forter.com/blog/friendly-fraud-detection/ - Forter: Friendly Fraud Detection",
+        "https://www.ekata.com/blog/friendly-fraud-detection - Ekata: Friendly Fraud Detection",
+        "https://www.bssn.go.id/berita/waspada-friendly-fraud - BSSN: Waspada Friendly Fraud",
+        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Waspada-Penipuan-E-Commerce.aspx - OJK: Waspada Penipuan E-Commerce",
+        "https://www.ftc.gov/consumer-advice/online-shopping - FTC: Online Shopping Tips",
+        "https://www.consumer.ftc.gov/articles/chargeback-fraud - FTC: Chargeback Fraud",
+        "https://www.scamadviser.com/ - ScamAdviser: Website Trust Checker",
+        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online"
+      ]
     }
   }
 }

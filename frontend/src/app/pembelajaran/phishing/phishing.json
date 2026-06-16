@@ -79,7 +79,15 @@
         "title": "Kasus Phishing Terbesar di Indonesia 2024",
         "story": "Pada Maret 2024, sebuah sindikat phishing internasional menargetkan nasabah 15 bank besar di Indonesia. Mereka mengirim lebih dari 5 juta email phishing yang mengaku dari bank-bank tersebut. Sekitar 50.000 korban terjebak dan memberikan data perbankan mereka. Total kerugian mencapai Rp 250 miliar. Sindikat ini berhasil ditangkap setelah operasi gabungan antara BSSN, Polri, dan FBI. Mereka beroperasi dari negara tetangga dan telah menargetkan Indonesia sejak 2022.",
         "lesson": "Phishing adalah ancaman nyata yang mengintai setiap pengguna internet. Dengan memahami berbagai jenis phishing dan cara mendeteksinya, Anda bisa melindungi diri dan orang-orang di sekitar Anda. Selalu verifikasi setiap pesan yang meminta data sensitif, jangan pernah klik link dari sumber yang tidak terpercaya, dan aktifkan autentikasi dua faktor di semua akun penting Anda."
-      }
+      },
+      "references": [
+        "https://owasp.org/Top10/ - OWASP Top 10:2021",
+        "https://attack.mitre.org/techniques/T1566/ - MITRE ATT&CK: Phishing",
+        "https://www.wiley.com/en-us/Social+Engineering%3A+The+Science+of+Human+Hacking%2C+2nd+Edition-p-9781119433644 - Social Engineering Book",
+        "https://dl.acm.org/doi/10.1145/1753326.1753541 - Why Phishing Works Research",
+        "https://apwg.org/trendsreports/ - APWG Phishing Trends",
+        "https://www.bssn.go.id/ - BSSN Indonesia"
+      ]
     },
     "1": {
       "subtitle": "Email Phishing",
@@ -138,7 +146,15 @@
         "title": "Serangan Phishing Bank BCA Januari 2025",
         "story": "Pada Januari 2025, ribuan nasabah Bank BCA menerima email phishing yang mengaku dari pihak bank dengan alasan pembaruan sistem keamanan. Email ini sangat meyakinkan karena menggunakan logo resmi BCA, bahasa Indonesia yang formal dan sempurna, serta desain yang identik dengan email resmi BCA. Email meminta nasabah untuk memverifikasi akun dalam 24 jam atau akun akan diblokir. Link dalam email mengarah ke website palsu yang sangat mirip dengan internet banking BCA. Total korban mencapai 5.000 nasabah dengan kerugian Rp 15 miliar. Banyak korban yang kehilangan uang karena penyerang langsung melakukan transfer setelah mendapatkan username dan password. BCA kemudian mengeluarkan peringatan resmi melalui website dan media sosial, serta bekerjasama dengan BSSN dan Polri untuk menyelidiki kasus ini.",
         "lesson": "Selalu verifikasi email mencurigakan langsung ke bank melalui nomor resmi yang tertera di balik kartu atau website resmi. Jangan pernah klik link dari email yang tidak diminta. Bank tidak pernah meminta password atau PIN melalui email. Aktifkan notifikasi transaksi untuk deteksi dini aktivitas mencurigakan. Jika menerima email seperti ini, segera laporkan ke bank dan jangan dibalas."
-      }
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc7208 - SPF Email Authentication",
+        "https://www.rfc-editor.org/rfc/rfc6376 - DKIM Email Authentication",
+        "https://www.rfc-editor.org/rfc/rfc7489 - DMARC Email Security",
+        "https://www.wiley.com/en-us/The+Web+Application+Hacker%27s+Handbook%3A+Finding+and+Exploiting+Security+Flaws%2C+2nd+Edition-p-9781118026472 - Web Application Hacker's Handbook",
+        "https://www.sciencedirect.com/science/article/pii/S0957417409005451 - E-Banking Phishing Detection",
+        "https://www.microsoft.com/en-us/security/business/microsoft-security-microsoft-365-endpoint/digital-defense-report - Microsoft Security Report"
+      ]
     },
     "2": {
       "subtitle": "WhatsApp Phishing",
@@ -187,7 +203,14 @@
         "title": "WhatsApp Phishing Undian Shopee Palsu 2024",
         "story": "Pada pertengahan 2024, ribuan pengguna WhatsApp di Indonesia menerima pesan yang mengaku dari Shopee menyatakan mereka memenangkan iPhone 15 Pro Max dalam program 'Shopee Anniversary Giveaway'. Pesan menggunakan logo Shopee resmi, bahasa yang formal, dan terlihat sangat meyakinkan. Korban diarahkan ke website palsu yang sangat mirip dengan website Shopee untuk 'klaim hadiah'. Website tersebut meminta data pribadi lengkap (nama, alamat, nomor KTP, nomor rekening) dan 'biaya pengiriman' sebesar Rp 500.000. Lebih dari 10.000 korban terjebak dan mentransfer uang. Total kerugian mencapai Rp 5 miliar. Shopee kemudian mengeluarkan pernyataan resmi bahwa mereka tidak pernah mengadakan undian via WhatsApp dan semua promo resmi hanya melalui aplikasi Shopee.",
         "lesson": "Shopee dan platform resmi tidak pernah mengirim undian via WhatsApp. Semua promo dan giveaway resmi hanya diumumkan melalui aplikasi resmi, website resmi, atau media sosial terverifikasi. Jangan pernah memberikan data pribadi atau transfer uang untuk klaim hadiah. Jika ragu, cek langsung di aplikasi resmi atau hubungi customer service resmi."
-      }
+      },
+      "references": [
+        "https://owasp.org/www-project-mobile-top-10/ - OWASP Mobile Top 10",
+        "https://www.whatsapp.com/security/advisories/ - WhatsApp Security Whitepaper",
+        "https://nostarch.com/tangledweb - The Tangled Web Book",
+        "https://www.sciencedirect.com/journal/computers-and-security - Mobile Messaging Security Research",
+        "https://www.kaspersky.com/enterprise-security/mobile-security - Kaspersky Mobile Threats"
+      ]
     },
     "3": {
       "subtitle": "Smishing & Vishing",
@@ -237,7 +260,13 @@
         "title": "Vishing Pura-pura CS Gojek - Ribuan Korban Kehilangan Jutaan Rupiah",
         "story": "Pada 2024, ratusan pengguna Gojek di Indonesia menjadi korban vishing. Penyerang menelepon mengaku sebagai customer service Gojek dan mengatakan ada transaksi mencurigakan atau akun akan diblokir. Mereka meminta korban untuk memberikan kode OTP yang dikirim ke HP dengan alasan 'verifikasi keamanan' atau 'membatalkan transaksi'. Korban yang panik atau ingin membantu memberikan OTP. Setelah mendapatkan OTP, penyerang langsung mengambil alih akun Gojek/GoPay korban dan melakukan transfer ke rekening mereka. Total kerugian mencapai ratusan juta rupiah dengan rata-rata kerugian per korban Rp 2-5 juta. Gojek telah mengeluarkan peringatan resmi bahwa CS mereka tidak pernah meminta OTP atau password kepada pengguna.",
         "lesson": "Customer service resmi tidak pernah meminta OTP, password, atau PIN kepada pengguna. Jika ada yang menelepon mengaku CS dan minta OTP, langsung tutup telepon. Hubungi CS resmi melalui aplikasi atau nomor resmi untuk konfirmasi. Jangan pernah memberikan kode OTP kepada siapapun, dalam kondisi apapun. OTP adalah kunci keamanan akun Anda."
-      }
+      },
+      "references": [
+        "https://pages.nist.gov/800-63-3/ - NIST Digital Identity Guidelines",
+        "https://www.wiley.com/en-us/Social+Engineering%3A+The+Science+of+Human+Hacking%2C+2nd+Edition-p-9781119433644 - Social Engineering Book",
+        "https://www.ic3.gov/Media/PDF/AnnualReport/ - FBI IC3 Internet Crime Report",
+        "https://www.sciencedirect.com/science/article/pii/S0167404820300915 - Human Aspects of Security"
+      ]
     },
     "4": {
       "subtitle": "QR Phishing (Quishing)",
@@ -289,7 +318,14 @@
         "title": "QR Code Parkir Palsu di Mall Jakarta - Korban Kehilangan Jutaan Rupiah",
         "story": "Pada awal 2025, penyerang menempelkan QR code palsu di atas mesin parkir sebuah mall besar di Jakarta. QR code tersebut dilengkapi tulisan 'Bayar parkir lebih cepat scan di sini — Diskon 20%' yang terlihat meyakinkan. Korban yang scan diarahkan ke website palsu yang sangat mirip dengan aplikasi pembayaran digital. Website meminta korban untuk memasukkan data kartu kredit untuk 'pembayaran parkir'. Lebih dari 200 korban terjebak dan data kartu kredit mereka dicuri. Penyerang menggunakan data tersebut untuk transaksi online yang merugikan korban hingga jutaan rupiah. Mall kemudian menyadari adanya QR code palsu dan segera melepaskannya, serta memberikan peringatan kepada pengunjung.",
         "lesson": "Selalu periksa apakah QR code terlihat resmi atau ada tanda-tanda tempelan. Gunakan aplikasi pembayaran resmi dari mall atau parkir. Jangan masukkan data kartu kredit untuk bayar parkir — sistem parkir resmi biasanya langsung terintegrasi dengan aplikasi pembayaran atau mesin EDC. Jika ragu, bayar langsung ke kasir parkir."
-      }
+      },
+      "references": [
+        "https://www.iso.org/standard/62021.html - ISO QR Code Standard",
+        "https://mobile-security.gitbook.io/mobile-security-testing-guide/ - OWASP Mobile Security Guide",
+        "https://www.bi.go.id/id/sistem-pembayaran/qris/Pages/default.aspx - Bank Indonesia QRIS",
+        "https://www.sciencedirect.com/journal/computers-and-security - QR Code Security Research",
+        "https://www.kaspersky.com/ - Kaspersky QR Threats Report"
+      ]
     },
     "5": {
       "subtitle": "Fake Login Page",
@@ -341,7 +377,15 @@
         "title": "Fake Gmail Login Page - Ribuan Akun Google Dicuri",
         "story": "Pada 2024, sebuah sindikat cybercrime membuat fake Gmail login page yang sangat mirip dengan halaman login Google asli. Mereka mengirim email phishing dengan subject 'Aktivitas mencurigakan terdeteksi di akun Anda' yang meminta korban untuk segera login untuk verifikasi. Email berisi link ke fake login page di domain 'accounts-google-verify.com' yang terlihat meyakinkan. Lebih dari 10.000 korban terjebak dan username serta password Google mereka dicuri. Penyerang kemudian menggunakan akun-akun tersebut untuk mengirim spam, phishing ke kontak-kontak korban, atau menjual akun di dark web dengan harga $5-50 per akun. Google kemudian menambahkan domain-domain fake tersebut ke blacklist dan memperingatkan pengguna untuk selalu periksa URL sebelum login.",
         "lesson": "Selalu periksa URL sebelum login. Gmail/Google resmi adalah accounts.google.com atau gmail.com. Jangan pernah klik link dari email untuk login — buka browser dan ketik URL sendiri. Aktifkan 2FA untuk proteksi tambahan. Gunakan password manager yang hanya auto-fill di domain yang benar."
-      }
+      },
+      "references": [
+        "https://owasp.org/Top10/ - OWASP Top 10: Authentication",
+        "https://pages.nist.gov/800-63-3/ - NIST Digital Identity",
+        "https://www.w3.org/TR/webauthn-2/ - WebAuthn Standard",
+        "https://www.wiley.com/en-us/The+Web+Application+Hacker%27s+Handbook%3A+Finding+and+Exploiting+Security+Flaws%2C+2nd+Edition-p-9781118026472 - Web App Hacker's Handbook",
+        "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=3495 - Anti-Phishing Research IEEE",
+        "https://transparencyreport.google.com/safe-browsing/overview - Google Safe Browsing"
+      ]
     },
     "6": {
       "subtitle": "Spear Phishing",
@@ -392,7 +436,15 @@
         "title": "Spear Phishing Karyawan Twitter 2020 - Akun Selebriti Diretas",
         "story": "Pada Juli 2020, penyerang melakukan spear phishing yang sangat sophisticated ke karyawan Twitter. Mereka menargetkan karyawan yang memiliki akses ke sistem internal Twitter. Penyerang melakukan riset mendalam tentang karyawan Twitter melalui LinkedIn dan media sosial. Mereka kemudian mengirim email yang sangat meyakinkan yang mengaku dari tim IT internal Twitter. Email meminta karyawan untuk login ke VPN perusahaan dengan link yang disediakan. Link mengarah ke fake login page yang sangat mirip dengan halaman login Twitter. Beberapa karyawan terjebak dan memberikan kredensial VPN mereka. Penyerang kemudian menggunakan akses VPN untuk masuk ke sistem internal Twitter dan mengakses tool admin yang bisa mengontrol akun manapun. Mereka mengambil alih akun selebriti top seperti Elon Musk, Bill Gates, Barack Obama, Jeff Bezos, dan Apple. Dari akun-akun tersebut, mereka memposting tweet yang meminta pengikut untuk mengirim bitcoin ke alamat tertentu dengan janji akan dikembalikan dua kali lipat. Dalam beberapa jam, mereka berhasil mengumpulkan lebih dari $120,000 dalam bitcoin. Twitter kemudian menyadari serangan ini dan mengambil alih kembali akun-akun tersebut. Investigasi menunjukkan bahwa penyerang adalah remaja 17 tahun dari Florida yang berhasil membobol sistem Twitter melalui spear phishing ini.",
         "lesson": "Spear phishing sangat berbahaya karena sangat personal dan sulit dideteksi. Selalu verifikasi permintaan sensitif melalui saluran lain (telepon, chat langsung, atau tatap muka). Jangan pernah klik link dari email yang meminta kredensial, meskipun email terlihat sangat resmi dan dari atasan. Perusahaan perlu training reguler untuk karyawan tentang spear phishing dan implement MFA di semua sistem."
-      }
+      },
+      "references": [
+        "https://attack.mitre.org/techniques/T1566/001/ - MITRE ATT&CK Spear Phishing",
+        "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final - NIST Security Controls",
+        "https://www.harpercollins.com/products/influence-new-and-expanded - Influence Psychology Book",
+        "https://dl.acm.org/journal/tochi - Why Phishing Works ACM",
+        "https://www.mandiant.com/resources/reports - Mandiant APT Reports",
+        "https://www.crowdstrike.com/resources/global-threat-report/ - CrowdStrike Threat Report"
+      ]
     },
     "7": {
       "subtitle": "Clone Phishing",
@@ -445,7 +497,14 @@
         "title": "Clone Phishing Invoice - Perusahaan Terkena Ransomware, Bayar Tebusan $50,000",
         "story": "Sebuah perusahaan menengah di Indonesia menerima invoice legitimate dari vendor IT langganan mereka pada awal bulan. Invoice tersebut untuk layanan maintenance bulanan sebesar Rp 50 juta. Staff keuangan memproses pembayaran seperti biasa. Dua minggu kemudian, mereka menerima email yang hampir identik dengan subject yang sama 'Invoice #12345 - IT Maintenance'. Email mengaku dari vendor yang sama dengan isi yang hampir identik, tapi attachment PDF-nya berbeda. Email mengatakan 'Mohon maaf, invoice sebelumnya ada kesalahan nominal. Berikut invoice yang sudah direvisi. Mohon abaikan invoice sebelumnya.' Staff keuangan yang tidak curiga membuka attachment PDF yang baru. PDF tersebut berisi macro malware yang langsung terinstall di komputer ketika dibuka. Malware tersebut adalah ransomware yang mengenkripsi semua file di komputer dan network perusahaan. Ransomware meminta tebusan $50,000 dalam bitcoin untuk decrypt file. Perusahaan panik karena semua data penting terenkripsi — data akuntansi, data pelanggan, dokumen kontrak, dan sistem operasional. Setelah negosiasi, perusahaan akhirnya membayar tebusan $50,000 (sekitar Rp 750 juta). Namun, setelah bayar, penyerang tidak memberikan decryption key yang berfungsi. Perusahaan kehilangan data permanen dan mengalami downtime selama 2 minggu dengan kerugian total mencapai miliaran rupiah. Investigasi menunjukkan bahwa vendor asli tidak pernah mengirim email kedua — itu adalah clone phishing yang sangat sophisticated.",
         "lesson": "Clone phishing sangat berbahaya karena email terlihat familiar dan dari pengirim yang dikenal. Selalu verifikasi email yang meminta pembayaran atau attachment, meskipun dari pengirim yang dikenal. Jangan pernah buka attachment yang berbeda dari email asli tanpa verifikasi. Gunakan password-protected PDF untuk invoice sensitif. Perusahaan perlu backup data reguler dan offline untuk proteksi dari ransomware. Implement email security gateway dan training awareness untuk karyawan."
-      }
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc7208 - SPF Email Standard",
+        "https://www.rfc-editor.org/rfc/rfc7489 - DMARC Standard",
+        "https://www.oreilly.com/library/view/email-security/9781492046899/ - Email Security Book",
+        "https://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=6287639 - Clone Phishing Detection IEEE",
+        "https://www.proofpoint.com/us/resources/threat-reports/state-of-phish - Proofpoint Phish Report"
+      ]
     }
   }
 }

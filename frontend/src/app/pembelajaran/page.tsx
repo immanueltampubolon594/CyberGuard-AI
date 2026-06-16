@@ -9,7 +9,7 @@ import {
   Crosshair, AlertTriangle,
   Search, Database, Key, Network, CreditCard, Mail,
   ChevronDown, ChevronUp, BookOpen,
-  BarChart2, Siren, Globe,
+  BarChart2, Siren, Globe, ShoppingCart,
 } from "lucide-react";
 
 interface Materi {
@@ -63,6 +63,15 @@ const allMateri: Materi[] = [
     desc: "Berbagai modus penipuan digital yang memanfaatkan kepercayaan korban untuk keuntungan finansial melalui platform belanja dan media sosial.",
   },
   {
+    id: "ecommerce-fraud",
+    level: "Dasar",
+    icon: <ShoppingCart size={28} />,
+    thumbnail: "/materi/ecommerce-fraud.jpg",
+    accentColor: "rgba(236,72,153,0.7)",
+    title: "E-Commerce Fraud",
+    desc: "Penipuan dalam transaksi e-commerce seperti toko palsu, payment fraud, account takeover, dan refund fraud yang merugikan pembeli dan penjual.",
+  },
+  {
     id: "malware",
     level: "Menengah",
     icon: <Bug size={28} />,
@@ -114,7 +123,7 @@ const allMateri: Materi[] = [
     thumbnail: "/materi/qr-code-attack.jpg",
     accentColor: "rgba(30, 51, 77, 0.7)",
     title: "QR Code Attack",
-    desc: "Eksploitasi kode QR untuk mengarahkan korban ke situs phishing, mengunduh malware, atau mengalihkan pembayaran QRIS ke rekening penipu.", // ✅ Lebih akurat
+    desc: "Eksploitasi kode QR untuk mengarahkan korban ke situs phishing, mengunduh malware, atau mengalihkan pembayaran QRIS ke rekening penipu.",
   },
   {
     id: "web-attack",
@@ -168,6 +177,7 @@ const subTopicsData: Record<string, string[]> = {
   "social-engineering": ["Impersonation", "Baiting", "Scareware", "Pretexting", "Shoulder Surfing & Dumpster Diving", "Tailgating & Piggybacking"],
   "password-attack":    ["Dictionary Attack", "Brute Force Attack", "Password Spraying", "Credential Stuffing", "Rainbow Table Attack", "Keylogging"],
   "scam-online":        ["Marketplace Scam", "Giveaway & Hadiah Palsu", "Job Scam (Lowongan Palsu)", "Investment & Crypto Scam", "Romance Scam"],
+  "ecommerce-fraud":    ["Fake Marketplace & Toko Online Palsu", "Payment Fraud & Carding", "Account Takeover E-Commerce", "Triangulation Fraud", "Refund & Return Fraud", "Friendly Fraud"],
   "malware":            ["Virus & Worm", "Trojan Horse", "Adware & Spyware", "Ransomware", "Keylogger", "Rootkit", "Botnet Malware", "Malware APK Android"],
   "wifi-attack":        ["WiFi Password Cracking", "Evil Twin Attack", "Deauthentication Attack", "Rogue Access Point", "WPS Cracking"],
   "mobile-banking":     ["Fake Banking App", "OTP Theft", "SIM Swapping", "Overlay Attack", "Banking Trojan & Accessibility Abuse"],

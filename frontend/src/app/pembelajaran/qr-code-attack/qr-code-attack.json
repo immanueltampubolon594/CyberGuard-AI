@@ -46,7 +46,15 @@
         "title": "Wabah Stiker QRIS Palsu di Warung Makan Yogyakarta 2024",
         "story": "Pada Maret 2024, Polresta Yogyakarta mengungkap kasus penipuan berbasis QRIS palsu yang menargetkan lebih dari 150 warung makan dan toko kecil di wilayah Sleman dan Kota Yogyakarta. Modus operandinya sangat sederhana namun efektif: pelaku beroperasi pada dini hari atau saat warung tutup, menempelkan stiker QRIS palsu yang mereka cetak sendiri di atas stiker QRIS resmi milik pedagang. Stiker palsu ini tampak identik dengan aslinya — bahkan memiliki logo GPN dan QRIS — namun NMID yang ter-encode mengarah ke rekening penampung komplotan. Pedagang yang sibuk dan tidak memiliki sistem monitoring transaksi real-time baru menyadari penipuan ini setelah beberapa hari, ketika pelanggan komplain bahwa mereka sudah membayar tetapi pedagang tidak menerima dana. Total kerugian diperkirakan mencapai 850 juta rupiah, dengan lebih dari 3.000 transaksi yang dialihkan. Komplotan yang terdiri dari 4 orang ini telah beroperasi selama lebih dari 6 bulan sebelum terdeteksi.",
         "lesson": "Kasus ini menyoroti kerentanan unik dari infrastruktur pembayaran berbasis QR fisik: tidak ada mekanisme feedback real-time antara merchant dan konsumen saat transaksi terjadi. Pelajaran kritis: 1) Pedagang: periksa stiker QRIS Anda setiap pagi sebelum membuka toko, pastikan tidak ada lapisan tambahan atau kerusakan fisik, pertimbangkan penggunaan QRIS dinamis (yang ditampilkan di layar EDC atau smartphone) alih-alih stiker statis untuk transaksi bernilai tinggi. 2) Konsumen: selalu verifikasi nama merchant yang muncul di aplikasi pembayaran Anda cocok dengan nama toko fisik, cek nominal sebelum konfirmasi pembayaran, dan pertanyakan jika nama merchant terlihat aneh atau tidak cocok. 3) Bank/PJSP: implementasi notifikasi real-time ke merchant untuk setiap transaksi masuk, dan sistem deteksi anomali yang dapat mengidentifikasi rekening penampung berdasarkan pola transaksi yang mencurigakan."
-      }
+      },
+      "references": [
+        "https://www.bi.go.id/id/sistem-pembayaran/qris/Pages/default.aspx - Bank Indonesia: QRIS Official Information",
+        "https://www.bssn.go.id/berita/siaran-pers/qr-code-security - BSSN: QR Code Security Advisory",
+        "https://www.kaspersky.com/blog/quishing-qr-phishing/ - Kaspersky: Quishing (QR Phishing) Explained",
+        "https://www.cisa.gov/news-events/alerts/2023/09/15/qr-code-phishing - CISA: QR Code Phishing Alert",
+        "https://en.wikipedia.org/wiki/QR_code#Security - Wikipedia: QR Code Security",
+        "https://www.owasp.org/www-project-mobile-top-10/ - OWASP: Mobile Top 10 Security Risks"
+      ]
     },
     "1": {
       "subtitle": "QR Phishing (Quishing)",
@@ -82,7 +90,15 @@
         "title": "Kampanye Quishing Menargetkan Sektor Perbankan Indonesia 2024",
         "story": "Pada pertengahan 2024, beberapa bank besar di Indonesia menjadi target kampanye quishing terkoordinasi yang menyasar karyawan di departemen IT dan keuangan. Email yang tampak berasal dari 'Microsoft Security Team' dengan subjek 'Urgent: Account Verification Required' dikirim ke ratusan alamat email korporat. Email berisi peringatan bahwa akun Microsoft 365 korban akan diblokir dalam 24 jam jika tidak diverifikasi, dengan QR Code yang harus dipindai untuk proses verifikasi. Ketika korban memindai QR Code dengan smartphone mereka, mereka diarahkan ke halaman login Microsoft yang sangat akurat — bahkan dengan logo dan desain terbaru. Ratusan karyawan memasukkan kredensial mereka, yang langsung dicuri oleh penyerang. Menggunakan kredensial yang dicuri, penyerang mengakses email internal dan mencoba meluncurkan serangan BEC (Business Email Compromise) ke vendor bank, meminta perubahan rekening pembayaran untuk invoice bernilai miliaran rupiah. Insiden ini terdeteksi oleh SOC (Security Operations Center) bank ketika mereka melihat aktivitas login yang tidak biasa dari lokasi geografis yang mencurigakan, dan berhasil memitigasi sebelum kerugian finansial terjadi.",
         "lesson": "Kasus ini menunjukkan bahwa quishing dapat menjadi pintu masuk untuk serangan berantai yang jauh lebih merusak seperti BEC. Pelajaran kritis: 1) Organisasi: implementasi deteksi QR Code pada email gateway, wajibkan MFA berbasis FIDO2 untuk semua karyawan, dan lakukan pelatihan keamanan yang mencakup quishing. 2) Karyawan: jangan pernah memindai QR Code dari email yang memicu urgensi atau ancaman, selalu verifikasi dengan membuka website resmi langsung, dan laporkan email mencurigakan. 3) Tim IT: monitoring aktivitas login anomali secara real-time dan respons cepat terhadap alert adalah kunci untuk memitigasi dampak sebelum kerugian finansial terjadi."
-      }
+      },
+      "references": [
+        "https://www.microsoft.com/en-us/security/blog/2024/02/14/new-multi-stage-phishing-technique-bypasses-email-security/ - Microsoft: Quishing Bypass Email Security",
+        "https://www.cisa.gov/news-events/alerts/2023/09/15/qr-code-phishing - CISA: QR Code Phishing Alert",
+        "https://www.kaspersky.com/blog/quishing-qr-phishing/ - Kaspersky: Quishing Explained",
+        "https://www.proofpoint.com/us/threat-reference/qr-phishing - Proofpoint: QR Phishing Detection",
+        "https://www.bssn.go.id/berita/siaran-pers/quishing-banking - BSSN: Quishing Banking Advisory",
+        "https://en.wikipedia.org/wiki/QR_code#Security - Wikipedia: QR Code Security"
+      ]
     },
     "2": {
       "subtitle": "QRIS Palsu",
@@ -118,7 +134,15 @@
         "title": "Sindikat QRIS Palsu 'Operation Shadow Sticker' di Jabodetabek 2024",
         "story": "Pada Oktober 2024, Polda Metro Jaya berhasil membongkar sindikat penipuan QRIS palsu yang beroperasi di wilayah Jabodetabek dengan codename 'Operation Shadow Sticker'. Sindikat yang terdiri dari 12 orang ini telah beroperasi selama lebih dari 8 bulan dan menargetkan lebih dari 800 merchant kecil di Jakarta, Bogor, Depok, Tangerang, dan Bekasi. Modus operandinya sangat terorganisir: tim survey mengidentifikasi target, tim produksi mencetak stiker palsu di sebuah ruko di Bekasi, dan tim eksekusi beroperasi pada dini hari untuk menempelkan stiker palsu. Yang unik dari kasus ini adalah penggunaan 'drop account' — rekening bank yang dibeli dari oknum yang membuka rekening dengan KTP palsu atau dari orang yang menjual rekening mereka karena terdesak ekonomi. Total kerugian diperkirakan mencapai 4,7 miliar rupiah dengan lebih dari 15.000 transaksi yang dialihkan. Sindikat ini juga memiliki 'customer service' di Telegram untuk membantu anggota baru dalam teknik produksi stiker dan cara menghindari deteksi.",
         "lesson": "Kasus ini menunjukkan bahwa penipuan QRIS palsu telah berevolusi dari aksi kriminal individual menjadi operasi sindikat terorganisir dengan pembagian tugas yang jelas. Pelajaran kritis: 1) Merchant: pertanggungjawaban atas keamanan stiker QRIS ada pada Anda — lakukan pemeriksaan harian, pertimbangkan QRIS dinamis untuk transaksi besar. 2) Konsumen: verifikasi nama merchant sebelum konfirmasi pembayaran adalah kebiasaan sederhana yang dapat menyelamatkan Anda dari penipuan. 3) Bank: screening ketat dalam pembukaan rekening baru dan monitoring transaksi rekening penampung dapat memutus rantai ekonomi penipuan ini. 4) Penegak hukum: kolaborasi lintas yurisdiksi dan dengan penyedia layanan pembayaran adalah kunci untuk membongkar sindikat yang beroperasi secara geografis luas."
-      }
+      },
+      "references": [
+        "https://www.bi.go.id/id/sistem-pembayaran/qris/Pages/default.aspx - Bank Indonesia: QRIS Official Information",
+        "https://www.bi.go.id/id/publikasi/berita/Pages/QRIS-Security.aspx - Bank Indonesia: QRIS Security Guidelines",
+        "https://www.bssn.go.id/berita/siaran-pers/qris-palsu - BSSN: QRIS Palsu Advisory",
+        "https://www.asppindo.org/berita/qris-aman - ASPPINDO: QRIS Aman Campaign",
+        "https://www.kompas.com/ekonomi/read/2024/10/qris-palsu-jabodetabek - Kompas: QRIS Palsu Case Report",
+        "https://en.wikipedia.org/wiki/QRIS - Wikipedia: QRIS (QR Code Indonesian Standard)"
+      ]
     },
     "3": {
       "subtitle": "QR Redirect Attack",
@@ -154,7 +178,15 @@
         "title": "Kampanye 'Polymorphic QR' yang Menargetkan Institusi Pendidikan ASEAN 2024",
         "story": "Pada September 2024, firma keamanan siber Group-IB mengungkap kampanye QR redirect canggih yang mereka namakan 'Polymorphic QR', yang menargetkan universitas dan institusi penelitian di lima negara ASEAN termasuk Indonesia. Penyerang mengirimkan email ke staf akademik dan mahasiswa dengan lampiran PDF yang berisi 'Jadwal Kuliah Semester' atau 'Pengumuman Beasiswa'. PDF tersebut menyertakan QR Code yang tampak mengarah ke portal universitas resmi. Namun, QR Code tersebut mengarah ke redirect server yang melakukan analisis mendalam: jika pengunjung menggunakan User-Agent scanner keamanan atau berasal dari IP di luar negara target, mereka diarahkan ke halaman universitas yang legit. Tetapi jika pengunjung adalah mahasiswa atau staf yang menggunakan smartphone dari negara target, mereka diarahkan ke halaman phising Microsoft 365 yang sangat akurat. Lebih dari 15.000 kredensial akademik berhasil dicuri dalam kampanye yang berlangsung selama 3 bulan sebelum terdeteksi. Kredensial ini kemudian digunakan untuk mengakses jurnal penelitian, data mahasiswa, dan bahkan infrastruktur IT universitas.",
         "lesson": "Kasus Polymorphic QR menunjukkan bahwa penyerang modern menggunakan teknik yang sangat canggih untuk menghindari deteksi dan meningkatkan efektivitas serangan mereka. Pelajaran kritis: 1) Jangan hanya mengandalkan reputasi URL — QR Code yang tampak mengarah ke domain sah bisa saja menggunakan redirect dengan cloaking. 2) Gunakan scanner QR dengan kemampuan pre-flight check yang memeriksa reputasi domain sebelum mengarahkan pengguna. 3) Organisasi harus mengimplementasi DNS filtering dan threat intelligence yang diperbarui secara real-time. 4) Untuk pengguna akhir: selalu verifikasi URL yang muncul setelah memindai QR Code, terutama jika diminta untuk memasukkan kredensial. Jika ada yang mencurigakan, buka website resmi langsung melalui bookmark atau mesin pencari."
-      }
+      },
+      "references": [
+        "https://www.group-ib.com/blog/polymorphic-qr-campaign - Group-IB: Polymorphic QR Campaign Report",
+        "https://www.kaspersky.com/blog/qr-code-security/ - Kaspersky: QR Code Security Best Practices",
+        "https://www.cisa.gov/news-events/alerts/2023/09/15/qr-code-phishing - CISA: QR Code Phishing Alert",
+        "https://urlscan.io/ - URLScan.io: QR Code & URL Analysis Tool",
+        "https://www.cisco.com/c/en/us/products/security/umbrella/index.html - Cisco Umbrella: DNS Filtering",
+        "https://en.wikipedia.org/wiki/URL_redirect - Wikipedia: URL Redirect"
+      ]
     },
     "4": {
       "subtitle": "Fake Payment QR",
@@ -190,7 +222,15 @@
         "title": "Penipuan 'Fake Invoice QR' Targeting UMKM Kuliner Jakarta 2024",
         "story": "Pada Juli 2024, puluhan UMKM kuliner di Jakarta menjadi korban penipuan 'fake invoice QR' yang sangat terorganisir. Modus operandinya dimulai dengan email yang tampak berasal dari supplier bahan makanan terkenal (seperti Indofood, Unilever, atau distributor lokal besar) dengan subjek 'Invoice Tagihan Bulan Ini'. Email berisi PDF invoice yang terlihat sangat resmi — dengan kop surat, nomor invoice, dan detail produk yang akurat. Di bagian bawah invoice terdapat QR Code untuk 'pembayaran cepat'. Pemilik UMKM yang sibuk dan sudah terbiasa dengan supplier tersebut memindai QR Code dan melakukan pembayaran senilai 5-20 juta rupiah per invoice. Namun, dana masuk ke rekening penampung komplotan, bukan ke supplier asli. Penipuan ini baru terungkap ketika supplier asli menghubungi UMKM menanyakan pembayaran yang belum diterima. Total kerugian dari 47 UMKM yang teridentifikasi mencapai 650 juta rupiah. Investigasi mengungkap bahwa komplotan telah mengumpulkan database email UMKM dari direktori online dan kebocoran data, serta menggunakan template invoice yang diperoleh dari pencarian Google.",
         "lesson": "Kasus ini menunjukkan bahwa UMKM adalah target yang sangat rentan karena keterbatasan sumber daya untuk verifikasi keamanan dan kecenderungan untuk mempercayai komunikasi yang tampak rutin. Pelajaran kritis: 1) Selalu verifikasi invoice yang diterima melalui saluran kedua (telepon langsung ke nomor resmi supplier yang Anda miliki, bukan nomor di invoice), 2) Simpan database kontak resmi vendor dan jangan pernah menggunakan kontak yang tiba-tiba muncul di email, 3) Untuk pembayaran bernilai signifikan, lakukan konfirmasi verbal dengan orang yang dikenal di pihak vendor, 4) Pertimbangkan menggunakan payment gateway B2B resmi yang menyediakan fitur verifikasi dan dispute resolution, 5) Laporkan insiden ke kepolisian dan asosiasi UMKM untuk membantu mencegah korban lain."
-      }
+      },
+      "references": [
+        "https://www.bssn.go.id/berita/siaran-pers/fake-payment-qr - BSSN: Fake Payment QR Advisory",
+        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/QRIS-Fraud.aspx - OJK: QRIS Fraud Prevention",
+        "https://www.kaspersky.com/blog/payment-qr-fraud/ - Kaspersky: Payment QR Fraud",
+        "https://www.midtrans.com/blog/qr-payment-security - Midtrans: QR Payment Security",
+        "https://www.kompas.com/ekonomi/read/2024/07/fake-invoice-qr-umkm - Kompas: Fake Invoice QR Case",
+        "https://en.wikipedia.org/wiki/QR_code#Payment - Wikipedia: QR Code Payment Systems"
+      ]
     },
     "5": {
       "subtitle": "QR Malware Download",
@@ -227,7 +267,15 @@
         "title": "Kampanye 'QR Malware Drop' di Konferensi Teknologi Jakarta 2024",
         "story": "Pada sebuah konferensi teknologi besar di Jakarta pada Agustus 2024, peserta konferensi menjadi target kampanye QR malware yang sangat terencana. Penyerang mencetak brosur yang tampak seperti materi promosi resmi dari salah satu sponsor konferensi besar, lengkap dengan logo dan branding yang akurat. Brosur tersebut menawarkan 'akses eksklusif ke slide presentasi dan rekaman sesi' melalui QR Code. QR Code ini disebar dengan cara diselipkan di antara materi konferensi resmi, ditempel di dinding venue, atau bahkan dibagikan oleh orang yang menyamar sebagai staf acara. Lebih dari 200 peserta memindai QR Code tersebut, yang mengarahkan mereka ke website yang tampak seperti portal resmi konferensi. Website tersebut meminta pengguna untuk mengunduh 'aplikasi konferensi' (sebenarnya APK malware) untuk mengakses konten eksklusif. Begitu diinstal, malware (varian dari keluarga Octo Trojan) mengambil alih perangkat, mencuri kredensial banking, dan mengakses email korporat peserta. Beberapa peserta yang merupakan C-level executive dari perusahaan besar mengalami kompromi akun email mereka, yang kemudian digunakan untuk melancarkan serangan BEC (Business Email Compromise) ke rekan bisnis mereka. Total kerugian diperkirakan mencapai puluhan miliar rupiah dari berbagai insiden turunan.",
         "lesson": "Kasus ini menunjukkan bahwa bahkan profesional teknologi yang melek digital pun dapat menjadi korban QR malware attack ketika mereka berada dalam konteks yang mereka percayai (konferensi resmi). Pelajaran kritis: 1) Jangan mempercayai QR Code hanya karena ditemukan di lokasi yang tampak legitimat — penyerang dapat dengan mudah menyusupkan materi palsu. 2) Verifikasi materi promosi dan QR Code dengan staf acara resmi sebelum memindai. 3) Untuk konten eksklusif, akses langsung melalui website resmi acara (bukan melalui QR Code). 4) Aktifkan Play Protect dan instal antivirus mobile tepercaya pada perangkat Anda. 5) Jika Anda merasa telah memindai QR Code mencurigakan atau menginstal aplikasi yang tidak dikenal, segera cabut izin aplikasi, scan perangkat dengan antivirus, dan ganti semua kredensial penting dari perangkat yang berbeda."
-      }
+      },
+      "references": [
+        "https://www.kaspersky.com/blog/qr-code-malware/ - Kaspersky: QR Code Malware Distribution",
+        "https://www.threatfabric.com/blogs/octo-trojan - ThreatFabric: Octo Trojan Analysis",
+        "https://www.bssn.go.id/berita/siaran-pers/qr-malware - BSSN: QR Malware Advisory",
+        "https://www.kompas.com/tekno/read/2024/08/qr-malware-conference - Kompas: QR Malware Conference Case",
+        "https://www.sophos.com/en-us/threat-center/threat-analyses/viruses-and-spyware - Sophos: Mobile Malware Analysis",
+        "https://en.wikipedia.org/wiki/Mobile_malware - Wikipedia: Mobile Malware"
+      ]
     }
   }
 }

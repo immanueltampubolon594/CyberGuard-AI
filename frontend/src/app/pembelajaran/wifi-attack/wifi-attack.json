@@ -48,7 +48,15 @@
         "title": "Serangan KRACK (2017): Kerentanan Fatal di WPA2 yang Melumpuhkan Miliaran Perangkat",
         "story": "Pada Oktober 2017, peneliti keamanan Mathy Vanhoef dari KU Leuven Belgia mengungkap kerentanan serius yang dinamai KRACK (Key Reinstallation Attack) yang mempengaruhi hampir semua implementasi WPA2, standar keamanan WiFi yang digunakan oleh miliaran perangkat di seluruh dunia. KRACK mengeksploitasi kelemahan dalam proses 4-way handshake yang digunakan saat perangkat klien terhubung ke jaringan WiFi. Dengan memanipulasi dan replaying handshake messages, penyerang bisa memaksa klien untuk menginstal ulang kunci enkripsi yang sudah ada, yang dalam banyak implementasi (terutama Android dan Linux) mengakibatkan kunci enkripsi di-reset ke nilai nol. Dengan kunci enkripsi nol, semua traffic yang dikirim oleh klien bisa dibaca dan dimanipulasi oleh penyerang tanpa perlu mengetahui password WiFi. Yang paling berbahaya, serangan ini tidak memerlukan password WiFi - penyerang hanya perlu berada dalam jangkauan sinyal. Google, Microsoft, Apple, dan vendor lainnya segera merilis patch, namun miliaran perangkat IoT, router lama, dan perangkat yang tidak terupdate tetap rentan hingga hari ini.",
         "lesson": "KRACK membuktikan bahwa bahkan standar keamanan yang dianggap aman (WPA2 digunakan selama lebih dari 10 tahun) bisa memiliki kerentanan fundamental. Patching dan update firmware adalah keharusan, bukan pilihan - terutama untuk perangkat IoT yang seringkali diabaikan. Transisi ke WPA3 harus dipercepat, namun bahkan WPA3 bukan silver bullet. Defense in depth - menggunakan VPN di atas WiFi, memastikan semua traffic dienkripsi dengan HTTPS, dan memonitor anomali jaringan - tetap diperlukan meskipun menggunakan standar keamanan terbaru."
-      }
+      },
+      "references": [
+        "https://www.krackattacks.com/ - KRACK Attacks: Key Reinstallation Attack Research",
+        "https://www.cisa.gov/news-events/alerts/2017/10/19/wpa2-krack-vulnerability - CISA: WPA2 KRACK Vulnerability",
+        "https://www.kaspersky.com/blog/krack-attack/ - Kaspersky: KRACK Attack Analysis",
+        "https://www.wi-fi.org/discover-wi-fi/security - WiFi Alliance: WPA3 Security",
+        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan WiFi Indonesia",
+        "https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access - Wikipedia: WPA/WPA2/WPA3 Standards"
+      ]
     },
     "1": {
       "subtitle": "WiFi Password Cracking",
@@ -96,7 +104,15 @@
         "title": "Kasus Pembajakan WiFi Rumahan untuk Aktivitas Ilegal",
         "story": "Pada 2022, kepolisian di sebuah kota besar di Indonesia menangkap seorang pemuda yang menggunakan WiFi tetangga untuk melakukan aktivitas ilegal seperti carding (transaksi fraud dengan kartu kredit curian) dan mendownload konten ilegal. Pemuda ini menggunakan laptop dengan Kali Linux dan USB WiFi adapter untuk capture handshake WiFi tetangga yang menggunakan password lemah (nama+kombinasi angka sederhana). Setelah berhasil crack password dalam hitungan menit dengan wordlist Indonesia, ia secara rutin menggunakan WiFi tetangga tersebut untuk aktivitas ilegalnya, mengubah MAC address laptopnya secara berkala untuk menghindari deteksi. Korban (tetangga) baru menyadari ketika polisi datang untuk menyelidiki aktivitas ilegal yang ternyata menggunakan IP address dari router korban. Meskipun akhirnya terbukti bahwa korban tidak terlibat, ia mengalami trauma dan harus berurusan dengan proses hukum selama berbulan-bulan untuk membuktikan ketidaklibatannya.",
         "lesson": "WiFi yang tidak diamankan dengan baik bukan hanya risiko privasi, tetapi bisa menjadi alat untuk kejahatan yang menimpa pemilik jaringan. Password WiFi harus kuat dan acak, bukan berdasarkan informasi personal yang mudah ditebak. WPA3 seharusnya menjadi standar minimal untuk router baru. Pemilik WiFi juga harus memonitor perangkat yang terhubung dan segera bertindak jika ada yang mencurigakan. Bagi penegak hukum, kasus seperti ini menunjukkan pentingnya investigasi yang mendalam untuk membedakan antara pemilik jaringan yang lalai dengan pelaku kejahatan yang memanfaatkan kelalaian tersebut."
-      }
+      },
+      "references": [
+        "https://hashcat.net/hashcat/ - Hashcat: Advanced Password Recovery Tool",
+        "https://www.aircrack-ng.org/ - Aircrack-ng: WiFi Security Testing Suite",
+        "https://www.kaspersky.com/blog/wifi-password-cracking/ - Kaspersky: WiFi Password Cracking",
+        "https://pages.nist.gov/800-63-3/ - NIST: Digital Identity Guidelines (Password Strength)",
+        "https://www.wi-fi.org/discover-wi-fi/wpa3 - WiFi Alliance: WPA3 Features",
+        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan Password WiFi"
+      ]
     },
     "2": {
       "subtitle": "Evil Twin Attack",
@@ -116,7 +132,7 @@
           "title": "Skenario Serangan dan Dampaknya",
           "content": [
             "Skenario paling umum adalah serangan di tempat publik seperti kafe, bandara, atau hotel. Penyerang duduk di sudut dengan laptop, membuat Evil Twin dengan SSID seperti 'CoffeeShop_FreeWiFi' atau 'Airport_FreeWiFi'. Pengguna yang mencari WiFi gratis akan terhubung tanpa curiga. Begitu terhubung, semua traffic HTTP (yang tidak terenkripsi) bisa dibaca oleh penyerang - termasuk website yang dikunjungi, form yang diisi, dan data yang dikirim.",
-            "Untuk target yang lebih spesifik, penyerang melakukan 'targeted evil twin'. Misalnya, meniru WiFi perusahaan dengan SSID 'CompanyCorp-Internal' dan memparkir di dekat gedung kantor. Karyawan yang secara tidak sengaja terhubung ke AP palsu (mungkin karena sinyal lebih kuat atau WiFi asli sedang gangguan) akan mengekspos traffic internal perusahaan. Meskipun traffic HTTPS terenkripsi, metadata (domain yang dikunjungi, jumlah data yang ditransfer) tetap bisa dianalisis untuk intelligence gathering.",
+            "Untuk target yang lebih spesifik, penyerang melakukan 'targeted evil twin'. Misalnya, meniru WiFi perusahaan dengan SSID 'CompanyCorp-Internal' dan memarkir di dekat gedung kantor. Karyawan yang secara tidak sengaja terhubung ke AP palsu (mungkin karena sinyal lebih kuat atau WiFi asli sedang gangguan) akan mengekspos traffic internal perusahaan. Meskipun traffic HTTPS terenkripsi, metadata (domain yang dikunjungi, jumlah data yang ditransfer) tetap bisa dianalisis untuk intelligence gathering.",
             "Evil Twin juga digunakan untuk serangan 'SSL stripping' di mana penyerang (berperan sebagai man-in-the-middle) mengubah koneksi HTTPS korban menjadi HTTP sebelum meneruskannya ke website asli. Teknik seperti SSLStrip (oleh Moxie Marlinspike) bisa melakukannya secara otomatis. Meskipun sebagian besar website modern menggunakan HSTS (HTTP Strict Transport Security) untuk mencegah ini, banyak website yang masih rentan, terutama di negara berkembang.",
             "Dampak dari Evil Twin attack sangat bervariasi dari yang ringan hingga yang menghancurkan. Di level ringan, penyerang bisa mengumpulkan data browsing untuk dijual ke advertiser. Di level menengah, mereka bisa mencuri session cookies untuk mengambil alih akun media sosial atau email. Di level paling parah, mereka bisa mencuri kredensial perbankan, melakukan transaksi fraud, atau menginjeksi malware ke perangkat korban."
           ]
@@ -135,7 +151,15 @@
         "title": "Demonstrasi Evil Twin di Konferensi Keamanan DefCon",
         "story": "Di konferensi keamanan DefCon - salah satu konferensi hacker terbesar di dunia yang diadakan setiap tahun di Las Vegas - peneliti keamanan dan pentester rutin mendemonstrasikan bahaya Evil Twin attack. Dalam salah satu demonstrasi terkenal, tim peneliti berhasil membuat beberapa Evil Twin access point di area konferensi dengan SSID yang meniru WiFi resmi DefCon. Dalam waktu beberapa jam, ratusan perangkat peserta (laptop, smartphone, tablet) secara otomatis terhubung ke AP palsu karena fitur auto-connect atau karena peserta mengira itu adalah WiFi resmi. Peneliti berhasil mengumpulkan data ekstensif: ribuan URL yang dikunjungi, ratusan kredensial login (karena peserta mengakses layanan tanpa HTTPS), puluhan session cookies yang bisa digunakan untuk mengambil alih akun, dan bahkan beberapa malware yang berhasil di-deliver melalui drive-by download. Demonstrasi ini secara grafis menunjukkan betapa mudahnya pengguna tertipu dan betapa berbahayanya WiFi publik yang tidak diverifikasi.",
         "lesson": "Demonstrasi DefCon ini adalah pengingat keras bahwa fitur kenyamanan seperti 'auto-connect to known networks' adalah pedang bermata dua - memudahkan pengguna namun juga memudahkan penyerang. Pengguna harus lebih kritis terhadap jaringan WiFi yang mereka gunakan, terutama di tempat publik. Untuk profesional keamanan dan enterprise, ini menunjukkan perlunya solusi deteksi wireless yang proaktif dan edukasi pengguna yang berkelanjutan. Di era di mana work from anywhere menjadi norma, keamanan WiFi bukan lagi hanya tanggung jawab IT department, tetapi tanggung jawab setiap individu yang terhubung ke jaringan."
-      }
+      },
+      "references": [
+        "https://attack.mitre.org/techniques/T1041/ - MITRE ATT&CK: Exfiltration Over C2 Channel (Evil Twin)",
+        "https://www.cisa.gov/news-events/alerts/2019/05/21/wireless-security-best-practices - CISA: Wireless Security Best Practices",
+        "https://www.kaspersky.com/blog/evil-twin-attack/ - Kaspersky: Evil Twin Attack Explained",
+        "https://www.wi-fi.org/discover-wi-fi/security - WiFi Alliance: Security Features",
+        "https://en.wikipedia.org/wiki/Evil_twin_(wireless_networks) - Wikipedia: Evil Twin Attack",
+        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan WiFi Publik"
+      ]
     },
     "3": {
       "subtitle": "Deauthentication Attack",
@@ -174,7 +198,15 @@
         "title": "Serangan Deauth Massal Terhadap Kafe di Jakarta",
         "story": "Pada 2023, sekelompok kafe di daerah Jakarta Selatan mengalami gangguan WiFi yang persisten selama beberapa minggu. Pemilik kafe awalnya mengira ini adalah masalah teknis - router yang overload, ISP yang bermasalah, atau interferensi sinyal. Namun setelah berganti router, ganti ISP, dan bahkan pindah channel berkali-kali, masalah tetap berlanjut. WiFi terus terputus-putus terutama pada jam sibuk, membuat pelanggan frustrasi dan banyak yang pindah ke kafe kompetitor. Setelah menyewa konsultan keamanan siber, ditemukan bahwa serangan deauth berkelanjutan dilancarkan dari perangkat yang parkir di jalan dekat kafe. Penyerang menggunakan laptop dengan USB WiFi adapter dan script deauth yang berjalan 24/7. Setelah diselidiki lebih lanjut, ternyata serangan ini adalah bagian dari skema extortion - penyerang menghubungi pemilik kafe via WhatsApp menawarkan 'jasa konsultasi IT' dengan暗示 bahwa mereka bisa 'memperbaiki' masalah tersebut dengan bayaran. Setelah dilaporkan ke kepolisian siber dan dilakukan sting operation, pelaku berhasil ditangkap. Ternyata mereka adalah sekelompok remaja yang belajar hacking dari YouTube dan melihat ini sebagai cara mudah mendapatkan uang.",
         "lesson": "Deauth attack bukan hanya masalah teknis, tetapi bisa menjadi alat untuk extortion dan gangguan bisnis yang serius. Pemilik bisnis yang mengandalkan WiFi harus memahami bahwa gangguan yang tidak bisa dijelaskan secara teknis mungkin adalah serangan yang disengaja. Solusi seperti 802.11w (PMF), router dengan WPA3, dan monitoring jaringan adalah investasi penting untuk bisnis modern. Yang mengkhawatirkan, mudahnya tools deauth (tersedia gratis di internet dengan tutorial berlimpah) membuat serangan ini bisa dilakukan oleh siapa saja dengan motif apa saja, dari iseng hingga kriminal terorganisir."
-      }
+      },
+      "references": [
+        "https://en.wikipedia.org/wiki/IEEE_802.11w-2009 - Wikipedia: IEEE 802.11w (Protected Management Frames)",
+        "https://www.cisa.gov/news-events/alerts/2020/02/27/wireless-denial-service-attacks - CISA: Wireless DoS Attacks",
+        "https://www.kaspersky.com/blog/wifi-deauth-attack/ - Kaspersky: WiFi Deauthentication Attack",
+        "https://www.wi-fi.org/discover-wi-fi/wpa3 - WiFi Alliance: WPA3 PMF Features",
+        "https://www.aircrack-ng.org/doku.php?id=aireplay-ng - Aircrack-ng: Aireplay-ng Documentation",
+        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan WiFi"
+      ]
     },
     "4": {
       "subtitle": "Rogue Access Point",
@@ -213,7 +245,15 @@
         "title": "Rogue AP di Perusahaan Finansial Membuka Jalan Kebocoran Data",
         "story": "Pada 2019, sebuah perusahaan finansial menengah di Jakarta mengalami insiden kebocoran data yang serius. Investigasi internal menemukan bahwa seorang karyawan di departemen marketing, yang frustrasi dengan WiFi kantor yang lambat di area kerjanya, membeli router WiFi murah dari toko elektronik dan menghubungkannya ke port LAN di mejanya untuk membuat 'personal hotspot' agar bisa bekerja lebih efisien. Router ini dikonfigurasi dengan password default dan WPS aktif. Seorang penyerang yang parkir di gedung sebelah berhasil mendeteksi SSID router ini (yang kebetulan masih menggunakan nama default seperti 'TP-Link_XXXX'), menebak password default, dan terhubung ke jaringan internal perusahaan. Dari sana, penyerang melakukan scanning, menemukan server file yang tidak diproteksi dengan baik, dan mencuri database berisi informasi nasabah termasuk NIK, nomor rekening, dan saldo. Data ini kemudian dijual di dark web dengan harga tinggi. Perusahaan baru menyadari kebocoran ketika beberapa nasabah melaporkan menerima penawaran pinjaman ilegal yang sangat personal - menunjukkan bahwa data mereka bocor. Investigasi forensik akhirnya menemukan Rogue AP tersebut, dan karyawan yang bertanggung jawab menghadapi sanksi berat termasuk pemecatan.",
         "lesson": "Kasus ini menunjukkan bahwa kelemahan keamanan seringkali datang dari dalam - bukan dari peretas sophisticated, tetapi dari karyawan yang tidak memahami risiko. Kebijakan Bring Your Own Device (BYOD) dan instalasi perangkat harus diatur dengan jelas. Solusi teknis seperti NAC dan WIDS penting, namun tidak efektif tanpa budaya keamanan yang kuat di organisasi. Setiap karyawan harus memahami bahwa keamanan jaringan adalah tanggung jawab bersama, dan tindakan 'kecil' seperti colok router pribadi bisa memiliki konsekuensi katastrofik."
-      }
+      },
+      "references": [
+        "https://attack.mitre.org/techniques/T1564/005/ - MITRE ATT&CK: Hidden File System (Rogue AP)",
+        "https://www.cisa.gov/news-events/alerts/2019/05/21/wireless-security-best-practices - CISA: Wireless Security Best Practices",
+        "https://www.cisco.com/c/en/us/products/wireless/wireless-intrusion-prevention-system/index.html - Cisco: Wireless IPS",
+        "https://www.kaspersky.com/blog/rogue-access-point/ - Kaspersky: Rogue Access Point Detection",
+        "https://en.wikipedia.org/wiki/Rogue_access_point - Wikipedia: Rogue Access Point",
+        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan Jaringan Enterprise"
+      ]
     },
     "5": {
       "subtitle": "WPS Cracking",
@@ -261,7 +301,15 @@
         "title": "Operasi Penetration Testing: Membobol 30 Jaringan Kantor dalam Sehari dengan WPS",
         "story": "Dalam sebuah engagement penetration testing untuk perusahaan konsultan keamanan di Jakarta pada 2023, tim pentester diberi tugas untuk menguji keamanan fisik dan nirkabel dari 30 kantor klien di berbagai lokasi di Jabodetabek. Yang mengejutkan tim pentester (yang sudah berpengalaman), dari 30 jaringan WiFi yang diuji, 22 di antaranya (73%) memiliki WPS aktif dengan PIN yang bisa di-crack. Tim menggunakan laptop dengan USB WiFi adapter dan script otomatis yang menjalankan Reaver secara paralel terhadap semua target. Dalam waktu kurang dari 8 jam (satu hari kerja), tim berhasil mendapatkan password WiFi untuk 19 jaringan - beberapa dalam waktu kurang dari 30 menit karena router yang sangat rentan. Dari akses WiFi ini, tim bisa mengakses printer jaringan, perangkat IoT, dan dalam beberapa kasus, server file yang tidak diproteksi dengan baik. Temuan ini disajikan kepada manajemen klien dengan rekomendasi wajib mematikan WPS di semua router. Banyak klien terkejut karena mereka percaya password WiFi mereka yang 'kuat' sudah cukup - tidak menyadari bahwa WPS membuat kekuatan password tidak relevan.",
         "lesson": "Kasus ini menunjukkan kesenjangan besar antara persepsi keamanan dan realita keamanan di banyak organisasi. Fitur yang dirancang untuk kemudahan (WPS) seringkali menjadi lubang keamanan terbesar jika tidak dikonfigurasi dengan benar. Penetration testing yang komprehensif harus mencakup pemeriksaan konfigurasi dasar seperti WPS, bukan hanya fokus pada aplikasi dan server. Untuk semua pengguna WiFi - dari rumahan hingga enterprise - aturan emasnya adalah: jika Anda tidak menggunakan WPS secara aktif, matikan. Tidak ada alasan untuk membiarkannya aktif dan membuka pintu bagi penyerang."
-      }
+      },
+      "references": [
+        "https://www.wi-fi.org/discover-wi-fi/wps - WiFi Alliance: WPS (WiFi Protected Setup)",
+        "https://www.cisa.gov/news-events/alerts/2017/05/03/wps-vulnerability - CISA: WPS Vulnerability",
+        "https://www.kaspersky.com/blog/wps-vulnerability/ - Kaspersky: WPS Vulnerability Explained",
+        "https://github.com/t6x/reaver-wps-fork-t6x - Reaver WPS Fork: WPS Cracking Tool",
+        "https://en.wikipedia.org/wiki/Wi-Fi_Protected_Setup - Wikipedia: WPS Security Issues",
+        "https://www.bssn.go.id/ - BSSN: Panduan Konfigurasi Router Aman"
+      ]
     }
   }
 }
