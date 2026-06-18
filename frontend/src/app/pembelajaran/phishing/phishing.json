@@ -1,6 +1,12 @@
 {
   "slug": "phishing",
   "title": "Phishing",
+  "categories": [
+    "Serangan Sosial",
+    "Serangan Identitas",
+    "Serangan Finansial"
+  ],
+  "level": "Dasar",
   "navigation": [
     {
       "id": 0,
@@ -24,7 +30,7 @@
     },
     {
       "id": 4,
-      "label": "QR PHISHING (QUISHING)",
+      "label": "QR PHISHING",
       "icon": "QrCode"
     },
     {
@@ -81,12 +87,9 @@
         "lesson": "Phishing adalah ancaman nyata yang mengintai setiap pengguna internet. Dengan memahami berbagai jenis phishing dan cara mendeteksinya, Anda bisa melindungi diri dan orang-orang di sekitar Anda. Selalu verifikasi setiap pesan yang meminta data sensitif, jangan pernah klik link dari sumber yang tidak terpercaya, dan aktifkan autentikasi dua faktor di semua akun penting Anda."
       },
       "references": [
-        "https://owasp.org/Top10/ - OWASP Top 10:2021",
-        "https://attack.mitre.org/techniques/T1566/ - MITRE ATT&CK: Phishing",
-        "https://www.wiley.com/en-us/Social+Engineering%3A+The+Science+of+Human+Hacking%2C+2nd+Edition-p-9781119433644 - Social Engineering Book",
-        "https://dl.acm.org/doi/10.1145/1753326.1753541 - Why Phishing Works Research",
-        "https://apwg.org/trendsreports/ - APWG Phishing Trends",
-        "https://www.bssn.go.id/ - BSSN Indonesia"
+        "https://ieeexplore.ieee.org/document/10630203 - IEEE (2024) — Phishing Attacks and Detection Techniques: A Systematic Review",
+        "https://ieeexplore.ieee.org/document/10580446 - IEEE (2024) — A Comprehensive Survey of Recent Phishing Attacks Detection Techniques",
+        "https://csrc.nist.gov/glossary/term/phishing - NIST Glossary — Official Definition of Phishing"
       ]
     },
     "1": {
@@ -148,12 +151,9 @@
         "lesson": "Selalu verifikasi email mencurigakan langsung ke bank melalui nomor resmi yang tertera di balik kartu atau website resmi. Jangan pernah klik link dari email yang tidak diminta. Bank tidak pernah meminta password atau PIN melalui email. Aktifkan notifikasi transaksi untuk deteksi dini aktivitas mencurigakan. Jika menerima email seperti ini, segera laporkan ke bank dan jangan dibalas."
       },
       "references": [
-        "https://www.rfc-editor.org/rfc/rfc7208 - SPF Email Authentication",
-        "https://www.rfc-editor.org/rfc/rfc6376 - DKIM Email Authentication",
-        "https://www.rfc-editor.org/rfc/rfc7489 - DMARC Email Security",
-        "https://www.wiley.com/en-us/The+Web+Application+Hacker%27s+Handbook%3A+Finding+and+Exploiting+Security+Flaws%2C+2nd+Edition-p-9781118026472 - Web Application Hacker's Handbook",
-        "https://www.sciencedirect.com/science/article/pii/S0957417409005451 - E-Banking Phishing Detection",
-        "https://www.microsoft.com/en-us/security/business/microsoft-security-microsoft-365-endpoint/digital-defense-report - Microsoft Security Report"
+        "https://ieeexplore.ieee.org/document/10779233 - IEEE Access (2024) — A State-of-the-Art Review on Phishing Website Detection Techniques",
+        "https://www.sciencedirect.com/science/article/pii/S1319157823000034 - ScienceDirect (2023) — A Systematic Literature Review on Phishing Website Detection Techniques",
+        "https://www.nature.com/articles/s41598-025-27984-w - Nature Scientific Reports (2025) — Explainable Phishing Website Detection for Secure and Sustainable Cyber Infrastructure"
       ]
     },
     "2": {
@@ -194,7 +194,7 @@
             "Verifikasi ke customer service resmi. Jika pesan mengaku dari perusahaan atau instansi, hubungi customer service melalui nomor resmi atau aplikasi resmi untuk konfirmasi. Jangan gunakan nomor atau link yang ada di pesan.",
             "Jangan pernah memberikan kode OTP kepada siapapun. OTP adalah rahasia pribadi Anda. Tidak ada pihak resmi yang berhak meminta OTP Anda, dalam kondisi apapun. Bahkan jika mengaku dari WhatsApp, bank, atau customer service.",
             "Jangan klik link dari pesan yang tidak diminta. Link dalam pesan WhatsApp bisa mengarah ke website phishing atau download malware. Jika ingin akses layanan, buka aplikasi resmi atau ketik URL langsung di browser.",
-            "Aktifkan verifikasi dua langkah di WhatsApp. Buka Settings > Account > Two-step verification > Enable. Ini akan menambah lapisan keamanan sehingga即使 penyerang mendapatkan OTP Anda, mereka tetap tidak bisa mengambil alih akun tanpa PIN yang Anda set.",
+            "Aktifkan verifikasi dua langkah di WhatsApp. Buka Settings > Account > Two-step verification > Enable. Ini akan menambah lapisan keamanan sehingga bahkan jika penyerang mendapatkan OTP Anda, mereka tetap tidak bisa mengambil alih akun tanpa PIN yang Anda set.",
             "Waspada pesan dari teman yang meminta uang atau OTP. Jika teman Anda mengirim pesan mencurigakan, konfirmasi melalui telepon atau chat lain. Mungkin akun mereka telah diretas dan digunakan untuk menipu."
           ]
         }
@@ -205,11 +205,8 @@
         "lesson": "Shopee dan platform resmi tidak pernah mengirim undian via WhatsApp. Semua promo dan giveaway resmi hanya diumumkan melalui aplikasi resmi, website resmi, atau media sosial terverifikasi. Jangan pernah memberikan data pribadi atau transfer uang untuk klaim hadiah. Jika ragu, cek langsung di aplikasi resmi atau hubungi customer service resmi."
       },
       "references": [
-        "https://owasp.org/www-project-mobile-top-10/ - OWASP Mobile Top 10",
-        "https://www.whatsapp.com/security/advisories/ - WhatsApp Security Whitepaper",
-        "https://nostarch.com/tangledweb - The Tangled Web Book",
-        "https://www.sciencedirect.com/journal/computers-and-security - Mobile Messaging Security Research",
-        "https://www.kaspersky.com/enterprise-security/mobile-security - Kaspersky Mobile Threats"
+        "https://ieeexplore.ieee.org/document/10959634 - IEEE (2024) — A Survey on Protecting Users Against Phishing Attacks",
+        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics and Attribution Analysis for Phishing Attacks"
       ]
     },
     "3": {
@@ -262,14 +259,13 @@
         "lesson": "Customer service resmi tidak pernah meminta OTP, password, atau PIN kepada pengguna. Jika ada yang menelepon mengaku CS dan minta OTP, langsung tutup telepon. Hubungi CS resmi melalui aplikasi atau nomor resmi untuk konfirmasi. Jangan pernah memberikan kode OTP kepada siapapun, dalam kondisi apapun. OTP adalah kunci keamanan akun Anda."
       },
       "references": [
-        "https://pages.nist.gov/800-63-3/ - NIST Digital Identity Guidelines",
-        "https://www.wiley.com/en-us/Social+Engineering%3A+The+Science+of+Human+Hacking%2C+2nd+Edition-p-9781119433644 - Social Engineering Book",
-        "https://www.ic3.gov/Media/PDF/AnnualReport/ - FBI IC3 Internet Crime Report",
-        "https://www.sciencedirect.com/science/article/pii/S0167404820300915 - Human Aspects of Security"
+        "https://ieeexplore.ieee.org/document/10060305 - IEEE (2024) — A Comprehensive Study of Classification of Phishing Attacks",
+        "https://csrc.nist.gov/pubs/sp/800/177/r1/final - NIST SP 800-177 Rev.1 — Trustworthy Email",
+        "https://ieeexplore.ieee.org/document/10630203 - IEEE (2024) — Phishing Attacks and Detection Techniques: A Systematic Review"
       ]
     },
     "4": {
-      "subtitle": "QR Phishing (Quishing)",
+      "subtitle": "QR Phishing",
       "quote": "QR code yang Anda scan bisa jadi jebakan phishing.",
       "definition": "QR phishing atau quishing adalah teknik phishing yang menggunakan QR code untuk mengarahkan korban ke website berbahaya. Karena QR code menyembunyikan URL aslinya, korban tidak bisa melihat tujuan link sebelum scan. Ini membuat quishing sangat efektif — korban scan QR code tanpa curiga dan langsung diarahkan ke website phishing. Quishing meningkat pesat sejak pandemi karena penggunaan QR code untuk pembayaran, menu restoran, dan berbagai layanan contactless.",
       "sections": [
@@ -320,11 +316,8 @@
         "lesson": "Selalu periksa apakah QR code terlihat resmi atau ada tanda-tanda tempelan. Gunakan aplikasi pembayaran resmi dari mall atau parkir. Jangan masukkan data kartu kredit untuk bayar parkir — sistem parkir resmi biasanya langsung terintegrasi dengan aplikasi pembayaran atau mesin EDC. Jika ragu, bayar langsung ke kasir parkir."
       },
       "references": [
-        "https://www.iso.org/standard/62021.html - ISO QR Code Standard",
-        "https://mobile-security.gitbook.io/mobile-security-testing-guide/ - OWASP Mobile Security Guide",
-        "https://www.bi.go.id/id/sistem-pembayaran/qris/Pages/default.aspx - Bank Indonesia QRIS",
-        "https://www.sciencedirect.com/journal/computers-and-security - QR Code Security Research",
-        "https://www.kaspersky.com/ - Kaspersky QR Threats Report"
+        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics and Attribution Analysis for Phishing Attacks",
+        "https://csrc.nist.gov/glossary/term/phishing - NIST Glossary — Phishing & Quishing Definition"
       ]
     },
     "5": {
@@ -379,12 +372,9 @@
         "lesson": "Selalu periksa URL sebelum login. Gmail/Google resmi adalah accounts.google.com atau gmail.com. Jangan pernah klik link dari email untuk login — buka browser dan ketik URL sendiri. Aktifkan 2FA untuk proteksi tambahan. Gunakan password manager yang hanya auto-fill di domain yang benar."
       },
       "references": [
-        "https://owasp.org/Top10/ - OWASP Top 10: Authentication",
-        "https://pages.nist.gov/800-63-3/ - NIST Digital Identity",
-        "https://www.w3.org/TR/webauthn-2/ - WebAuthn Standard",
-        "https://www.wiley.com/en-us/The+Web+Application+Hacker%27s+Handbook%3A+Finding+and+Exploiting+Security+Flaws%2C+2nd+Edition-p-9781118026472 - Web App Hacker's Handbook",
-        "https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=3495 - Anti-Phishing Research IEEE",
-        "https://transparencyreport.google.com/safe-browsing/overview - Google Safe Browsing"
+        "https://www.nature.com/articles/s41598-025-27984-w - Nature Scientific Reports (2025) — Explainable Phishing Website Detection",
+        "https://www.sciencedirect.com/science/article/pii/S1319157823000034 - ScienceDirect (2023) — Systematic Literature Review on Phishing Website Detection",
+        "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/09-Testing_for_Weak_Cryptography/04-Testing_for_Weak_SSL_TLS_Ciphers_Insufficient_Transport_Layer_Protection - OWASP — Phishing & Fake Login Page Defense Guide"
       ]
     },
     "6": {
@@ -438,12 +428,9 @@
         "lesson": "Spear phishing sangat berbahaya karena sangat personal dan sulit dideteksi. Selalu verifikasi permintaan sensitif melalui saluran lain (telepon, chat langsung, atau tatap muka). Jangan pernah klik link dari email yang meminta kredensial, meskipun email terlihat sangat resmi dan dari atasan. Perusahaan perlu training reguler untuk karyawan tentang spear phishing dan implement MFA di semua sistem."
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1566/001/ - MITRE ATT&CK Spear Phishing",
-        "https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final - NIST Security Controls",
-        "https://www.harpercollins.com/products/influence-new-and-expanded - Influence Psychology Book",
-        "https://dl.acm.org/journal/tochi - Why Phishing Works ACM",
-        "https://www.mandiant.com/resources/reports - Mandiant APT Reports",
-        "https://www.crowdstrike.com/resources/global-threat-report/ - CrowdStrike Threat Report"
+        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics and Attribution Analysis for Phishing Attacks",
+        "https://csrc.nist.gov/glossary/term/spear_phishing - NIST Glossary — Spear Phishing Official Definition",
+        "https://ieeexplore.ieee.org/document/10580446 - IEEE (2024) — A Comprehensive Survey of Recent Phishing Attacks Detection Techniques"
       ]
     },
     "7": {
@@ -499,11 +486,8 @@
         "lesson": "Clone phishing sangat berbahaya karena email terlihat familiar dan dari pengirim yang dikenal. Selalu verifikasi email yang meminta pembayaran atau attachment, meskipun dari pengirim yang dikenal. Jangan pernah buka attachment yang berbeda dari email asli tanpa verifikasi. Gunakan password-protected PDF untuk invoice sensitif. Perusahaan perlu backup data reguler dan offline untuk proteksi dari ransomware. Implement email security gateway dan training awareness untuk karyawan."
       },
       "references": [
-        "https://www.rfc-editor.org/rfc/rfc7208 - SPF Email Standard",
-        "https://www.rfc-editor.org/rfc/rfc7489 - DMARC Standard",
-        "https://www.oreilly.com/library/view/email-security/9781492046899/ - Email Security Book",
-        "https://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=6287639 - Clone Phishing Detection IEEE",
-        "https://www.proofpoint.com/us/resources/threat-reports/state-of-phish - Proofpoint Phish Report"
+        "https://ieeexplore.ieee.org/document/10630203 - IEEE (2024) — Phishing Attacks and Detection Techniques: A Systematic Review",
+        "https://ieeexplore.ieee.org/document/10959634 - IEEE (2024) — A Survey on Protecting Users Against Phishing Attacks"
       ]
     }
   }

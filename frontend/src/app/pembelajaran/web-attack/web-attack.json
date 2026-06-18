@@ -54,11 +54,9 @@
         "lesson": "Kasus ini adalah pengingat keras bahwa web attack dapat memiliki dampak yang sangat nyata pada kehidupan warga negara. Pelajaran kritis: 1) JANGAN PERNAH membangun query database dengan string concatenation — selalu gunakan prepared statements atau parameterized queries. 2) Untuk website pemerintahan, wajib menggunakan framework modern dengan security features built-in (seperti Laravel, Django, atau Spring Boot) alih-alih custom PHP tanpa framework. 3) Implementasi WAF (Web Application Firewall) seperti ModSecurity atau layanan cloud seperti Cloudflare untuk filter request malicious. 4) Lakukan penetration testing berkala oleh ethical hacker sebelum deployment dan secara rutin setelahnya. 5) Patch management yang disiplin — update CMS, plugin, dan dependencies segera setelah security patch dirilis. 6) Data pribadi warga harus dienkripsi di database dan access control harus sangat ketat — prinsip least privilege harus diterapkan."
       },
       "references": [
-        "https://owasp.org/www-project-top-ten/ - OWASP Top 10 Web Application Security Risks",
-        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon Data Breach Investigations Report 2024",
-        "https://www.bssn.go.id/berita/laporan-keamanan-siber - BSSN Laporan Keamanan Siber Indonesia",
-        "https://owasp.org/www-project-application-security-verification-standard/ - OWASP ASVS",
-        "https://cheatsheetseries.owasp.org/ - OWASP Cheat Sheet Series"
+        "https://owasp.org/Top10/ - OWASP Top 10 2021 — The Ten Most Critical Web Application Security Risks",
+        "https://csrc.nist.gov/pubs/sp/800/95/final - NIST SP 800-95 — Guide to Secure Web Services",
+        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon DBIR 2024 — Web Application Attack Statistics"
       ]
     },
     "1": {
@@ -97,10 +95,9 @@
         "lesson": "Kasus ini menunjukkan bahwa SQL Injection masih sangat relevan di tahun 2023, bahkan di platform yang digunakan oleh jutaan pengguna. Pelajaran kritis: 1) JANGAN PERNAH menggunakan MD5 atau SHA1 untuk password hashing — gunakan algoritma modern seperti bcrypt, Argon2, atau PBKDF2 dengan salt yang unik per user. 2) Selalu gunakan prepared statements atau ORM yang reputable untuk semua query database. 3) Implementasi least privilege — database user aplikasi hanya boleh memiliki SELECT, INSERT, UPDATE, DELETE pada tabel yang diperlukan, bukan DROP TABLE atau akses ke sistem tables. 4) WAF dapat memblokir banyak serangan SQL Injection otomatis, namun bukan pengganti secure coding. 5) Monitoring anomali — query yang mengembalikan jutaan row atau akses ke tabel sensitif harus memicu alert segera. 6) Incident response plan — ketika kebocoran terjadi, segera notify pengguna untuk mengganti password dan monitor aktivitas mencurigakan."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/SQL_Injection - OWASP SQL Injection",
-        "https://portswigger.net/web-security/sql-injection - PortSwigger SQL Injection",
-        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html - OWASP SQL Injection Prevention",
-        "https://www.bssn.go.id/berita/sql-injection-website-pemerintahan - BSSN SQL Injection Advisory"
+        "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html - OWASP — SQL Injection Prevention Cheat Sheet (Standar industri resmi)",
+        "https://www.sciencedirect.com/science/article/pii/S221421262400173X - ScienceDirect (2024) — SQL Injection Attack: Detection, Prioritization & Prevention",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10799887/ - PMC/Nature (2024) — Securing Web Applications against XSS and SQLi Attacks"
       ]
     },
     "2": {
@@ -139,10 +136,9 @@
         "lesson": "Kasus ini menunjukkan bahwa bahkan platform besar dengan tim security yang dedicated pun dapat terkena XSS jika sanitasi tidak dilakukan secara konsisten di semua titik. Pelajaran kritis: 1) Output encoding adalah NON-NEGOTIABLE untuk semua konten yang berasal dari user — tidak ada pengecualian. 2) Implementasi CSP header yang ketat untuk memblokir script yang tidak diizinkan, bahkan jika XSS berhasil disuntikkan. 3) HttpOnly flag pada session cookie adalah pertahanan penting — meskipun XSS terjadi, penyerang tidak dapat mencuri session cookie. 4) Bug bounty program adalah investasi yang sangat berharga — researcher yang bertanggung jawab akan melaporkan kerentanan sebelum dieksploitasi oleh penyerang black-hat. 5) Incident response plan harus mencakup kemampuan untuk memaksa logout semua sesi aktif jika terjadi kompromi massal. 6) Regular penetration testing oleh ethical hacker dapat menemukan kerentanan sebelum dieksploitasi."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/xss/ - OWASP Cross-Site Scripting (XSS)",
-        "https://portswigger.net/web-security/cross-site-scripting - PortSwigger XSS",
-        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html - OWASP XSS Prevention",
-        "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP - MDN Content Security Policy"
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html - OWASP — XSS Prevention Cheat Sheet (Standar resmi)",
+        "https://owasp.org/Top10/A03_2021-Injection/ - OWASP Top 10 2021 — A03: Injection (XSS Included)",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10799887/ - PMC/Nature (2024) — Securing Web Applications against XSS and SQLi Attacks"
       ]
     },
     "3": {
@@ -181,10 +177,8 @@
         "lesson": "Kasus ini menunjukkan bahwa clickjacking dapat sangat efektif ketika dikombinasikan dengan social engineering (janji hadiah) dan eksploitasi session yang sudah aktif. Pelajaran kritis: 1) Selalu implementasi X-Frame-Options atau CSP frame-ancestors di semua halaman dengan aksi sensitif (login, transfer, perubahan pengaturan). 2) Untuk pengguna: JANGAN PERNAH mengklik tautan yang menjanjikan hadiah yang terlalu bagus untuk menjadi kenyataan, terutama di media sosial atau forum. 3) Selalu periksa URL di address bar sebelum melakukan aksi sensitif — jika URL tidak sesuai dengan yang Anda harapkan, JANGAN lanjutkan. 4) Gunakan browser dengan proteksi clickjacking built-in (seperti Firefox dengan Clickjacking protection atau extension seperti NoScript). 5) Untuk exchange crypto dan platform finansial: implementasi konfirmasi multi-step untuk transfer (misalnya, wajibkan input PIN atau OTP bahkan jika session aktif) untuk memitigasi dampak clickjacking."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/Clickjacking - OWASP Clickjacking",
-        "https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html - OWASP Clickjacking Defense",
-        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options - MDN X-Frame-Options",
-        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors - MDN CSP frame-ancestors"
+        "https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html - OWASP — Clickjacking Defense Cheat Sheet",
+        "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/11-Client-Side_Testing/09-Testing_for_Clickjacking - OWASP WSTG — Testing for Clickjacking"
       ]
     },
     "4": {
@@ -223,10 +217,8 @@
         "lesson": "Kasus ini menunjukkan bahwa CSRF masih merupakan ancaman nyata di tahun 2023, bahkan untuk aplikasi finansial yang seharusnya memiliki standar keamanan tinggi. Pelajaran kritis: 1) Anti-CSRF token adalah NON-NEGOTIABLE untuk semua form dan request sensitif — tidak ada pengecualian. 2) SameSite cookie attribute (minimal Lax) harus di-set untuk semua cookie session. 3) Untuk aplikasi finansial, re-authentication (input password lagi atau OTP) untuk transfer di atas nominal tertentu adalah pertahanan penting yang memitigasi CSRF bahkan jika token berhasil di-bypass. 4) Regular security testing dengan tools seperti OWASP ZAP atau Burp Suite dapat mendeteksi kerentanan CSRF sebelum dieksploitasi. 5) Edukasi pengguna: JANGAN mengklik tautan yang menjanjikan hadiah yang terlalu bagus untuk menjadi kenyataan, terutama di WhatsApp atau media sosial."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/csrf - OWASP CSRF",
-        "https://portswigger.net/web-security/csrf - PortSwigger CSRF",
-        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html - OWASP CSRF Prevention",
-        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#samesitesamesite-value - MDN SameSite Cookies"
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html - OWASP — CSRF Prevention Cheat Sheet",
+        "https://owasp.org/Top10/A01_2021-Broken_Access_Control/ - OWASP Top 10 2021 — A01: Broken Access Control (CSRF context)"
       ]
     },
     "5": {
@@ -265,10 +257,8 @@
         "lesson": "Kasus ini menyoroti bahaya dari 'supply chain vulnerability' di mana satu library pihak ketiga yang rentan dapat mengkompromikan ribuan aplikasi yang menggunakannya. Pelajaran kritis: 1) File konfigurasi seperti .env, wp-config.php, atau credentials.json JANGAN PERNAH berada di direktori yang dapat diakses oleh web server (public webroot). 2) Selalu gunakan indirect references (ID database) alih-alih nama file langsung untuk fitur download. 3) Rutin audit dependencies menggunakan tools seperti Snyk, Dependabot, atau npm audit untuk mendeteksi kerentanan pada library pihak ketiga. 4) Simpan secret keys di layanan manajemen rahasia khusus seperti HashiCorp Vault, AWS Secrets Manager, atau Azure Key Vault, bukan di file teks biasa di server."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/Path_Traversal - OWASP Path Traversal",
-        "https://portswigger.net/web-security/file-path-traversal - PortSwigger Directory Traversal",
-        "https://cwe.mitre.org/data/definitions/22.html - CWE-22: Path Traversal",
-        "https://cheatsheetseries.owasp.org/cheatsheets/File_Inclusion.html - OWASP File Inclusion"
+        "https://owasp.org/www-community/attacks/Path_Traversal - OWASP — Path Traversal Attack Guide",
+        "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/05-Authorization_Testing/01-Testing_Directory_Traversal_File_Include - OWASP WSTG — Testing for Path Traversal"
       ]
     },
     "6": {
@@ -307,10 +297,8 @@
         "lesson": "Kasus ini adalah textbook example dari bagaimana LFI yang dikombinasikan dengan Log Poisoning dapat menghancurkan infrastruktur. Pelajaran kritis: 1) JANGAN PERNAH menggunakan input user secara langsung di dalam fungsi include(), require(), atau eval(). 2) Matikan allow_url_include dan gunakan open_basedir di php.ini untuk membatasi damage radius. 3) Pisahkan direktori log dari direktori yang dapat diakses atau di-include oleh aplikasi web. 4) Migrasi dari PHP native ke framework modern (Laravel/Symfony) yang memiliki arsitektur routing aman dan secara default mencegah praktik include dinamis yang berbahaya."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/File_Inclusion - OWASP File Inclusion",
-        "https://portswigger.net/web-security/file-inclusion - PortSwigger LFI/RFI",
-        "https://www.php.net/manual/en/security.includes.php - PHP Security: Remote File Inclusion",
-        "https://cwe.mitre.org/data/definitions/98.html - CWE-98: Improper Control of Filename for Include/Require Statement"
+        "https://owasp.org/www-community/attacks/Local_File_Inclusion - OWASP — Local File Inclusion Attack Guide",
+        "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/07-Input_Validation_Testing/11.1-Testing_for_Local_File_Inclusion - OWASP WSTG — Testing for Local File Inclusion"
       ]
     },
     "7": {
@@ -349,11 +337,8 @@
         "lesson": "Log4Shell adalah pengingat brutal tentang risiko 'Supply Chain Security' dan betapa bahayanya satu library open-source yang dianggap remeh dapat meruntuhkan infrastruktur global. Pelajaran kritis: 1) Inventarisasi semua dependencies (Software Bill of Materials / SBOM) adalah keharusan. Anda tidak bisa mempatch apa yang tidak Anda tahu Anda miliki. 2) Batasi outbound traffic dari server produksi. Server web seharusnya tidak perlu melakukan koneksi LDAP, RMI, atau HTTP ke internet publik sembarangan. 3) Matikan fitur yang tidak perlu (seperti JNDI lookup di Log4j atau allow_url_include di PHP). 4) Gunakan tools SCA (Software Composition Analysis) seperti Snyk atau Dependabot untuk memonitor kerentanan pada library pihak ketiga secara real-time."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/Command_Injection - OWASP Command Injection",
-        "https://portswigger.net/web-security/os-command-injection - PortSwigger Command Injection",
-        "https://www.cisa.gov/news-events/alerts/2021/12/10/cisa-releases-first-advisory-log4j-vulnerability - CISA Log4Shell Advisory",
-        "https://logging.apache.org/log4j/2.x/security.html - Apache Log4j Security Vulnerabilities",
-        "https://owasp.org/www-community/vulnerabilities/Deserialization_of_untrusted_data - OWASP Insecure Deserialization"
+        "https://owasp.org/Top10/A03_2021-Injection/ - OWASP Top 10 2021 — A03: Injection (RCE via Code Injection)",
+        "https://attack.mitre.org/techniques/T1059/ - MITRE ATT&CK — T1059: Command and Scripting Interpreter (RCE)"
       ]
     },
     "8": {
@@ -392,11 +377,8 @@
         "lesson": "Kasus ini menunjukkan bahwa di era cloud, SSRF bukan lagi sekadar kerentanan 'port scanning', melainkan pintu langsung menuju kompromi infrastruktur level cloud. Pelajaran kritis: 1) JANGAN PERNAH mempercayai URL yang diinput oleh pengguna. Selalu gunakan Allowlist domain. 2) Di AWS, WAJIBKAN penggunaan IMDSv2 untuk semua instance EC2 dan matikan IMDSv1. 3) Terapkan prinsip Least Privilege pada IAM Roles. Server web tidak boleh memiliki role 's3:*' atau 'AdministratorAccess'. Berikan hanya permission spesifik yang dibutuhkan (misalnya 's3:GetObject' pada satu bucket tertentu). 4) Isolasi fitur yang melakukan request outbound (seperti webhook atau PDF generator) di container atau microservice terpisah yang tidak memiliki akses ke metadata service atau jaringan internal."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/Server_Side_Request_Forgery - OWASP SSRF",
-        "https://portswigger.net/web-security/ssrf - PortSwigger SSRF",
-        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html - OWASP SSRF Prevention",
-        "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html - AWS Instance Metadata Service",
-        "https://cwe.mitre.org/data/definitions/918.html - CWE-918: Server-Side Request Forgery (SSRF)"
+        "https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/ - OWASP Top 10 2021 — A10: Server-Side Request Forgery (Entry resmi pertama kali masuk Top 10)",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html - OWASP — SSRF Prevention Cheat Sheet"
       ]
     }
   }

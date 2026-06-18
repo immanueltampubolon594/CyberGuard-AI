@@ -48,12 +48,9 @@
         "lesson": "Instansi publik dan perusahaan yang mengelola data dalam jumlah masif wajib melakukan audit keamanan API secara berkala dan menerapkan prinsip least privilege. Perlindungan data tidak bisa hanya mengandalkan firewall perimeter; setiap endpoint dan microservice harus memiliki autentikasi dan enkripsi tersendiri. Bagi masyarakat, insiden ini menjadi pengingat keras bahwa data pribadi kita yang dipegang oleh pihak ketiga selalu memiliki risiko bocor, sehingga kita harus selalu waspada terhadap komunikasi mencurigakan yang menggunakan data pribadi kita sebagai alat manipulasi."
       },
       "references": [
-        "https://www.ibm.com/reports/data-breach - IBM: Cost of a Data Breach Report 2024",
-        "https://www.cisa.gov/data-breach - CISA: Data Breach Response Resources",
-        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon: Data Breach Investigations Report",
-        "https://www.bssn.go.id/ - BSSN: Laporan Insiden Keamanan Siber Indonesia",
-        "https://ponemon.org/local-upload/files/2024+Cost+of+a+Data+Breach+Report.pdf - Ponemon Institute: Data Breach Research",
-        "https://www.enisa.europa.eu/topics/data-breaches - ENISA: Data Breach Analysis"
+        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon DBIR 2024 — Data Breach Investigations Report",
+        "https://www.ibm.com/reports/data-breach - IBM Cost of a Data Breach 2024 — Annual Report",
+        "https://csrc.nist.gov/pubs/sp/800/61/r2/final - NIST SP 800-61 Rev.2 — Computer Security Incident Handling Guide"
       ]
     },
     "1": {
@@ -92,12 +89,8 @@
         "lesson": "Asumsi dasar dalam keamanan siber modern adalah 'semua password pada akhirnya akan bocor'. Oleh karena itu, mengandalkan password sebagai satu-satunya metode autentikasi adalah strategi yang sudah usang dan sangat berbahaya. Migrasi menuju Passwordless Authentication (seperti Passkeys atau FIDO2) dan kewajiban MFA di semua platform adalah satu-satunya cara untuk menetralkan ancaman dari database masif seperti RockYou2024. Pengguna harus segera mengaudit akun-akun kritis mereka dan mengaktifkan autentikasi dua faktor berbasis aplikasi atau hardware."
       },
       "references": [
-        "https://haveibeenpwned.com/ - Have I Been Pwned: Check if Your Credentials Were Breached",
-        "https://pages.nist.gov/800-63-3/ - NIST: Digital Identity Guidelines (Password Guidelines)",
-        "https://www.cisa.gov/news-events/alerts/2024/06/20/rockyou2024-credential-dump - CISA: RockYou2024 Alert",
-        "https://fidoalliance.org/passkeys/ - FIDO Alliance: Passkeys & Passwordless Authentication",
-        "https://www.csoonline.com/article/rockyou2024/ - CSO: RockYou2024 Analysis",
-        "https://www.kaspersky.com/blog/credential-stuffing/ - Kaspersky: Credential Stuffing Attacks"
+        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon DBIR 2024 — Stolen Credentials as #1 Attack Vector",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html - OWASP — Credential Stuffing Prevention Cheat Sheet"
       ]
     },
     "2": {
@@ -136,12 +129,8 @@
         "lesson": "Data kependudukan adalah aset strategis negara yang harus dilindungi dengan standar keamanan militer. Ketergantungan pada vendor pihak ketiga tanpa audit keamanan yang ketat adalah titik lemah fatal. Bagi masyarakat, kasus ini menegaskan bahwa NIK dan data KTP kita pada dasarnya sudah 'tersebar' di berbagai database yang rentan. Oleh karena itu, kita tidak boleh lagi menganggap NIK sebagai rahasia yang mutlak. Selalu waspada jika ada pihak yang menelepon dan menyebutkan NIK atau nama ibu kandung Anda untuk memverifikasi identitas, karena informasi tersebut sangat mungkin sudah dimiliki oleh sindikat penipu."
       },
       "references": [
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Sistem-Layanan-Informasi-Keuangan-(SLIK).aspx - OJK: SLIK OJK",
-        "https://jdih.kominfo.go.id/detailProduk/Undang-Undang%20Nomor%2027%20Tahun%202022 - JDIH: UU PDP No. 27 Tahun 2022",
-        "https://www.bssn.go.id/berita/siaran-pers/data-kependudukan - BSSN: Perlindungan Data Kependudukan",
-        "https://www.dukcapil.kemendagri.go.id/ - Dukcapil: Data Kependudukan Indonesia",
-        "https://www.kominfo.go.id/content/detail/proteksi-data-pribadi - Kominfo: Proteksi Data Pribadi",
-        "https://www.cisa.gov/topics/cybersecurity-best-practices/identity-and-access-management - CISA: Identity & Access Management"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Identity Theft Statistics & Cases",
+        "https://csrc.nist.gov/pubs/sp/800/122/final - NIST SP 800-122 — Guide to Protecting the Confidentiality of PII"
       ]
     },
     "3": {
@@ -180,12 +169,8 @@
         "lesson": "Kasus ini menyoroti bahaya dari kombinasi antara kerentanan aplikasi web (SSRF) dan kesalahan konfigurasi cloud (izin IAM dan S3 yang terlalu longgar). Perusahaan tidak boleh berasumsi bahwa jaringan internal mereka aman dari ancaman. Segmentasi jaringan, pembatasan ketat pada peran IAM, dan pemantauan akses ke bucket penyimpanan cloud adalah hal yang mutlak diperlukan. Audit keamanan oleh pihak ketiga secara berkala juga krusial untuk menemukan celah yang mungkin terlewatkan oleh tim internal."
       },
       "references": [
-        "https://aws.amazon.com/security/security-resources/ - AWS: Cloud Security Resources",
-        "https://learn.microsoft.com/en-us/azure/security/ - Microsoft Azure: Security Documentation",
-        "https://www.cisa.gov/news-events/alerts/2019/07/31/capital-one-data-breach - CISA: Capital One Breach Alert",
-        "https://www.paloaltonetworks.com/cyberpedia/what-is-cloud-security-posture-management-cspm - Palo Alto: CSPM Guide",
-        "https://www.shodan.io/ - Shodan: Search Engine for IoT & Exposed Services",
-        "https://www.cisecurity.org/benchmark/cloud - CIS: Cloud Security Benchmarks"
+        "https://www.ibm.com/reports/data-breach - IBM Cost of Data Breach 2024 — Cloud Environment Breach Section",
+        "https://csrc.nist.gov/pubs/sp/800/144/final - NIST SP 800-144 — Guidelines on Security and Privacy in Public Cloud Computing"
       ]
     },
     "4": {
@@ -224,12 +209,8 @@
         "lesson": "Kegagalan dasar dalam manajemen patch dan hygiene IT dapat menghancurkan perusahaan senilai miliaran dolar dan merugikan jutaan konsumen. Dalam industri finansial, visibilitas jaringan dan inventaris aset yang akurat adalah hal yang mutlak; Anda tidak bisa melindungi apa yang tidak Anda ketahui. Kasus ini juga memicu perubahan regulasi global yang menuntut akuntabilitas lebih besar dari dewan direksi terkait risiko siber, serta membuktikan bahwa data biro kredit adalah target yang terlalu berharga untuk dibiarkan tanpa pertahanan berlapis tingkat militer."
       },
       "references": [
-        "https://www.pcisecuritystandards.org/ - PCI Security Standards Council",
-        "https://www.equifaxbreach.com/ - Equifax: Breach Information & Settlement",
-        "https://www.cisa.gov/news-events/alerts/2017/09/08/equifax-data-breach - CISA: Equifax Breach Alert",
-        "https://www.consumer.ftc.gov/articles/0188-equifax-data-breach-faq - FTC: Equifax Breach FAQ",
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Sistem-Layanan-Informasi-Keuangan-(SLIK).aspx - OJK: SLIK OJK",
-        "https://www.kaspersky.com/resource-center/definitions/tokenization - Kaspersky: Tokenization Explained"
+        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon DBIR 2024 — Financial Sector Breach Analysis",
+        "https://www.ibm.com/reports/data-breach - IBM Cost of Data Breach 2024 — Financial Industry Section"
       ]
     },
     "5": {
@@ -268,12 +249,9 @@
         "lesson": "Ancaman dari dalam (insider threat) seringkali lebih mematikan daripada peretas eksternal karena mereka memiliki akses dan kepercayaan. Perusahaan finansial dan lembaga yang mengelola data sensitif wajib menerapkan pembatasan akses berbasis peran (Role-Based Access Control), mewajibkan approval berjenjang untuk ekspor data massal, dan memantau log akses database secara ketat. Latar belakang pemeriksaan (background check) berkala dan kontrak kerahasiaan (NDA) dengan sanksi pidana yang jelas juga penting untuk memberikan efek jera. Bagi masyarakat, selalu lindungi data pribadi Anda dan laporkan ke polisi serta OJK jika menemukan indikasi data Anda disalahgunakan oleh pihak yang tidak berwenang."
       },
       "references": [
-        "https://www.cisa.gov/topics/cybersecurity-best-practices/insider-threat - CISA: Insider Threat Resources",
-        "https://haveibeenpwned.com/ - Have I Been Pwned: Enterprise Monitoring",
-        "https://www.recordedfuture.com/platform/dark-web-intelligence - Recorded Future: Dark Web Intelligence",
-        "https://www.spycloud.com/ - SpyCloud: Dark Web Monitoring",
-        "https://www.sans.org/white-papers/33343/ - SANS: Insider Threat Detection",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan Data & Insider Threat"
+        "https://www.cisa.gov/topics/physical-security/insider-threat-mitigation - CISA — Insider Threat Mitigation Resources",
+        "https://csrc.nist.gov/pubs/sp/800/53/r5/final - NIST SP 800-53 Rev.5 — Insider Threat Controls",
+        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon DBIR 2024 — Insider Threat & Dark Web Section"
       ]
     }
   }

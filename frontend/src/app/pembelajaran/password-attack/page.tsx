@@ -41,19 +41,15 @@ function ReferencesSection({ references }: { references: string[] }) {
   if (!references || references.length === 0) return null;
 
   // Parse format: "URL - Deskripsi"
-  const parseReference = (ref: string) => {
-    const parts = ref.split(" - ");
-    if (parts.length >= 2) {
-      return {
-        url: parts[0].trim(),
-        description: parts.slice(1).join(" - ").trim()
-      };
-    }
-    return {
-      url: ref,
-      description: "Baca sumber"
-    };
+const parseReference = (ref: any) => {
+  // Langsung kembalikan object reference
+  return {
+    label: ref.label || '',
+    url: ref.direct_url || ref.fallback_url || '',
+    type: ref.type || '',
+    year: ref.year || ''
   };
+};
 
   return (
     <div className="p-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50">
@@ -71,23 +67,28 @@ function ReferencesSection({ references }: { references: string[] }) {
 
       {/* References List */}
       <ol className="list-decimal list-inside space-y-3 ml-2">
-        {references.map((ref, idx) => {
-          const { url, description } = parseReference(ref);
-          
-          return (
-            <li key={idx} className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-              <a 
-                href={url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:underline hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1.5"
-              >
-                {description}
-                <ExternalLink size={12} className="inline" />
-              </a>
-            </li>
-          );
-        })}
+{references.map((ref, idx) => {
+  const { url, label, type, year } = parseReference(ref);  // ✅ BENAR
+  
+  return (
+    <li key={idx} className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+      <a 
+        href={url} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-blue-600 dark:text-blue-400 hover:underline hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1.5"
+      >
+        {label}  {/* ✅ Gunakan label */}
+        <ExternalLink size={12} className="inline" />
+      </a>
+      {type && year && (
+        <span className="text-xs text-slate-500 dark:text-slate-400 ml-2">
+          ({type}, {year})
+        </span>
+      )}
+    </li>
+  );
+})}
       </ol>
 
       {/* Footer Note */}

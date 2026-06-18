@@ -1,6 +1,7 @@
 {
   "slug": "qr-code-attack",
   "title": "QR Code Attack",
+  "categories": ["Serangan Finansial", "Serangan Sosial"],
   "navigation": [
     { "id": 0, "label": "APA ITU QR CODE ATTACK?", "icon": "ShieldAlert" },
     { "id": 1, "label": "QR PHISHING (QUISHING)", "icon": "Crosshair" },
@@ -12,6 +13,7 @@
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu QR Code Attack?",
+      "categories": ["Serangan Finansial", "Serangan Sosial"],
       "quote": "Kotak-kotak hitam putih yang tampak tidak berbahaya itu kini menjadi pintu gerbang paling efisien bagi penjahat siber — karena mata manusia tidak dapat membaca apa yang sebenarnya tersembunyi di baliknya.",
       "definition": "QR Code Attack (serangan kode QR) adalah kategori serangan siber yang mengeksploitasi Quick Response Code sebagai vektor distribusi malware, phishing, atau penipuan finansial. QR Code pada dasarnya adalah URL, teks, atau data biner yang dikodekan dalam bentuk pola dua dimensi yang hanya dapat dibaca oleh perangkat lunak khusus (scanner). Sifat opaqueness inilah yang menjadi kelemahan fundamental: pengguna tidak dapat memverifikasi ke mana sebuah QR Code akan mengarahkan mereka sebelum memindainya, berbeda dengan URL teks yang dapat dibaca dan dianalisis oleh mata manusia sebelum diklik.\n\nDi Indonesia, ancaman QR Code Attack menjadi sangat kritis karena adopsi QRIS (QR Code Indonesian Standard) yang masif sejak diluncurkan oleh Bank Indonesia pada tahun 2019. Data Bank Indonesia mencatat nilai transaksi QRIS mencapai lebih dari 350 triliun rupiah pada tahun 2024, dengan lebih dari 30 juta merchant terdaftar — dari pedagang kaki lima hingga mal mewah. Infrastruktur pembayaran digital yang luas ini, dikombinasikan dengan tingkat literasi keamanan siber yang belum merata, menciptakan ekosistem yang sangat rentan terhadap eksploitasi. Laporan dari firma keamanan siber Kaspersky menunjukkan bahwa insiden 'Quishing' (QR Code Phishing) meningkat lebih dari 400% secara global pada tahun 2023-2024, dengan Asia Tenggara — termasuk Indonesia — sebagai salah satu wilayah dengan tingkat serangan tertinggi.",
       "sections": [
@@ -48,16 +50,13 @@
         "lesson": "Kasus ini menyoroti kerentanan unik dari infrastruktur pembayaran berbasis QR fisik: tidak ada mekanisme feedback real-time antara merchant dan konsumen saat transaksi terjadi. Pelajaran kritis: 1) Pedagang: periksa stiker QRIS Anda setiap pagi sebelum membuka toko, pastikan tidak ada lapisan tambahan atau kerusakan fisik, pertimbangkan penggunaan QRIS dinamis (yang ditampilkan di layar EDC atau smartphone) alih-alih stiker statis untuk transaksi bernilai tinggi. 2) Konsumen: selalu verifikasi nama merchant yang muncul di aplikasi pembayaran Anda cocok dengan nama toko fisik, cek nominal sebelum konfirmasi pembayaran, dan pertanyakan jika nama merchant terlihat aneh atau tidak cocok. 3) Bank/PJSP: implementasi notifikasi real-time ke merchant untuk setiap transaksi masuk, dan sistem deteksi anomali yang dapat mengidentifikasi rekening penampung berdasarkan pola transaksi yang mencurigakan."
       },
       "references": [
-        "https://www.bi.go.id/id/sistem-pembayaran/qris/Pages/default.aspx - Bank Indonesia: QRIS Official Information",
-        "https://www.bssn.go.id/berita/siaran-pers/qr-code-security - BSSN: QR Code Security Advisory",
-        "https://www.kaspersky.com/blog/quishing-qr-phishing/ - Kaspersky: Quishing (QR Phishing) Explained",
-        "https://www.cisa.gov/news-events/alerts/2023/09/15/qr-code-phishing - CISA: QR Code Phishing Alert",
-        "https://en.wikipedia.org/wiki/QR_code#Security - Wikipedia: QR Code Security",
-        "https://www.owasp.org/www-project-mobile-top-10/ - OWASP: Mobile Top 10 Security Risks"
+        "https://ieeexplore.ieee.org/document/10630203 - IEEE (2024) — Phishing Attacks and Detection Techniques (QR Phishing section)",
+        "https://csrc.nist.gov/glossary/term/phishing - NIST Glossary — Phishing & Quishing Definition"
       ]
     },
     "1": {
       "subtitle": "QR Phishing (Quishing)",
+      "categories": ["Serangan Sosial", "Serangan Identitas"],
       "quote": "Filter email Anda dapat membaca setiap URL dalam teks — tetapi ia buta terhadap pesan yang disembunyikan dalam kotak-kotak pixel.",
       "definition": "QR Phishing, atau yang lebih dikenal sebagai 'Quishing' (QR + Phishing), adalah teknik phishing yang menggunakan QR Code sebagai vektor pengiriman tautan malicious, alih-alih URL teks tradisional. Teknik ini muncul sebagai respons adaptif para penyerang terhadap semakin canggihnya filter email modern yang dapat mendeteksi dan memblokir URL mencurigakan dalam teks email. Dengan menyisipkan QR Code (biasanya sebagai gambar) ke dalam email phishing, penyerang dapat bypass sebagian besar Secure Email Gateway (SEG) karena konten QR Code tidak dapat dianalisis secara otomatis tanpa proses OCR (Optical Character Recognition) dan decoding khusus. Ketika korban memindai QR Code dengan smartphone mereka — sering kali perangkat yang memiliki lapisan keamanan lebih lemah dibandingkan laptop korporat — mereka diarahkan ke halaman phishing yang dirancang untuk mencuri kredensial Microsoft 365, Google Workspace, atau akun perbankan.",
       "sections": [
@@ -92,16 +91,13 @@
         "lesson": "Kasus ini menunjukkan bahwa quishing dapat menjadi pintu masuk untuk serangan berantai yang jauh lebih merusak seperti BEC. Pelajaran kritis: 1) Organisasi: implementasi deteksi QR Code pada email gateway, wajibkan MFA berbasis FIDO2 untuk semua karyawan, dan lakukan pelatihan keamanan yang mencakup quishing. 2) Karyawan: jangan pernah memindai QR Code dari email yang memicu urgensi atau ancaman, selalu verifikasi dengan membuka website resmi langsung, dan laporkan email mencurigakan. 3) Tim IT: monitoring aktivitas login anomali secara real-time dan respons cepat terhadap alert adalah kunci untuk memitigasi dampak sebelum kerugian finansial terjadi."
       },
       "references": [
-        "https://www.microsoft.com/en-us/security/blog/2024/02/14/new-multi-stage-phishing-technique-bypasses-email-security/ - Microsoft: Quishing Bypass Email Security",
-        "https://www.cisa.gov/news-events/alerts/2023/09/15/qr-code-phishing - CISA: QR Code Phishing Alert",
-        "https://www.kaspersky.com/blog/quishing-qr-phishing/ - Kaspersky: Quishing Explained",
-        "https://www.proofpoint.com/us/threat-reference/qr-phishing - Proofpoint: QR Phishing Detection",
-        "https://www.bssn.go.id/berita/siaran-pers/quishing-banking - BSSN: Quishing Banking Advisory",
-        "https://en.wikipedia.org/wiki/QR_code#Security - Wikipedia: QR Code Security"
+        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics of Phishing Attacks (Quishing)",
+        "https://ieeexplore.ieee.org/document/10580446 - IEEE (2024) — A Comprehensive Survey of Recent Phishing Attacks Detection"
       ]
     },
     "2": {
       "subtitle": "QRIS Palsu",
+      "categories": ["Serangan Finansial"],
       "quote": "Di era di mana transaksi uang hanya memerlukan satu pindaian, stiker kecil di dinding bisa menjadi senjata paling menguntungkan bagi penjahat — selama tidak ada yang memeriksa.",
       "definition": "QRIS Palsu adalah varian serangan QR Code yang unik dan sangat kontekstual dengan Indonesia, di mana penyerang mengganti atau menempelkan stiker QRIS (QR Code Indonesian Standard) malicious di atas stiker QRIS resmi milik merchant, sehingga pembayaran yang seharusnya masuk ke rekening pedagang dialihkan ke rekening penampung (mule account) yang dikendalikan oleh komplotan penyerang. Serangan ini sangat efektif karena mengeksploitasi tiga faktor: kepercayaan masyarakat terhadap standar QRIS yang diatur oleh Bank Indonesia, kebiasaan pembayaran digital yang sudah mendarah daging di masyarakat Indonesia, dan rendahnya pengawasan fisik terhadap stiker QRIS oleh merchant kecil dan menengah. QRIS palsu tidak memerlukan keahlian teknis yang tinggi — cukup dengan printer berkualitas baik, stiker vinyl, dan akses fisik ke lokasi merchant, penyerang dapat melancarkan serangan ini.",
       "sections": [
@@ -136,16 +132,13 @@
         "lesson": "Kasus ini menunjukkan bahwa penipuan QRIS palsu telah berevolusi dari aksi kriminal individual menjadi operasi sindikat terorganisir dengan pembagian tugas yang jelas. Pelajaran kritis: 1) Merchant: pertanggungjawaban atas keamanan stiker QRIS ada pada Anda — lakukan pemeriksaan harian, pertimbangkan QRIS dinamis untuk transaksi besar. 2) Konsumen: verifikasi nama merchant sebelum konfirmasi pembayaran adalah kebiasaan sederhana yang dapat menyelamatkan Anda dari penipuan. 3) Bank: screening ketat dalam pembukaan rekening baru dan monitoring transaksi rekening penampung dapat memutus rantai ekonomi penipuan ini. 4) Penegak hukum: kolaborasi lintas yurisdiksi dan dengan penyedia layanan pembayaran adalah kunci untuk membongkar sindikat yang beroperasi secara geografis luas."
       },
       "references": [
-        "https://www.bi.go.id/id/sistem-pembayaran/qris/Pages/default.aspx - Bank Indonesia: QRIS Official Information",
-        "https://www.bi.go.id/id/publikasi/berita/Pages/QRIS-Security.aspx - Bank Indonesia: QRIS Security Guidelines",
-        "https://www.bssn.go.id/berita/siaran-pers/qris-palsu - BSSN: QRIS Palsu Advisory",
-        "https://www.asppindo.org/berita/qris-aman - ASPPINDO: QRIS Aman Campaign",
-        "https://www.kompas.com/ekonomi/read/2024/10/qris-palsu-jabodetabek - Kompas: QRIS Palsu Case Report",
-        "https://en.wikipedia.org/wiki/QRIS - Wikipedia: QRIS (QR Code Indonesian Standard)"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Payment System Fraud & Fake QR Statistics",
+        "https://ieeexplore.ieee.org/document/10630203 - IEEE (2024) — Phishing Attacks and Detection Techniques (Payment QR)"
       ]
     },
     "3": {
       "subtitle": "QR Redirect Attack",
+      "categories": ["Serangan Sosial", "Sistem & Infrastruktur"],
       "quote": "Sebuah QR Code yang sama dapat membawa Anda ke surga atau neraka digital — tergantung pada siapa Anda dan dari mana Anda berasal.",
       "definition": "QR Redirect Attack adalah teknik canggih di mana QR Code mengarahkan pengguna ke URL perantara (redirect server) yang kemudian secara dinamis mengarahkan mereka ke berbagai tujuan berbeda berdasarkan profil perangkat, lokasi geografis, waktu akses, atau parameter lainnya. Teknik ini memungkinkan penyerang untuk menggunakan satu QR Code fisik atau digital yang sama untuk melakukan serangan yang berbeda pada korban yang berbeda, membuat deteksi dan analisis menjadi sangat sulit. Ketika seorang peneliti keamanan atau sistem otomatis memindai QR Code tersebut dari lokasi atau perangkat tertentu, mereka mungkin diarahkan ke website yang tampak sah — sementara korban yang ditargetkan diarahkan ke halaman phishing atau malware. Teknik ini sering disebut sebagai 'cloaking' atau 'conditional redirection' dalam literatur keamanan.",
       "sections": [
@@ -180,16 +173,13 @@
         "lesson": "Kasus Polymorphic QR menunjukkan bahwa penyerang modern menggunakan teknik yang sangat canggih untuk menghindari deteksi dan meningkatkan efektivitas serangan mereka. Pelajaran kritis: 1) Jangan hanya mengandalkan reputasi URL — QR Code yang tampak mengarah ke domain sah bisa saja menggunakan redirect dengan cloaking. 2) Gunakan scanner QR dengan kemampuan pre-flight check yang memeriksa reputasi domain sebelum mengarahkan pengguna. 3) Organisasi harus mengimplementasi DNS filtering dan threat intelligence yang diperbarui secara real-time. 4) Untuk pengguna akhir: selalu verifikasi URL yang muncul setelah memindai QR Code, terutama jika diminta untuk memasukkan kredensial. Jika ada yang mencurigakan, buka website resmi langsung melalui bookmark atau mesin pencari."
       },
       "references": [
-        "https://www.group-ib.com/blog/polymorphic-qr-campaign - Group-IB: Polymorphic QR Campaign Report",
-        "https://www.kaspersky.com/blog/qr-code-security/ - Kaspersky: QR Code Security Best Practices",
-        "https://www.cisa.gov/news-events/alerts/2023/09/15/qr-code-phishing - CISA: QR Code Phishing Alert",
-        "https://urlscan.io/ - URLScan.io: QR Code & URL Analysis Tool",
-        "https://www.cisco.com/c/en/us/products/security/umbrella/index.html - Cisco Umbrella: DNS Filtering",
-        "https://en.wikipedia.org/wiki/URL_redirect - Wikipedia: URL Redirect"
+        "https://ieeexplore.ieee.org/document/10580446 - IEEE (2024) — Comprehensive Survey of Phishing Attacks (URL Redirect via QR)",
+        "https://attack.mitre.org/techniques/T1566/ - MITRE ATT&CK — T1566: Phishing (QR-based delivery)"
       ]
     },
     "4": {
       "subtitle": "Fake Payment QR",
+      "categories": ["Serangan Finansial", "Serangan Sosial"],
       "quote": "Dalam dunia di mana konfirmasi pembayaran dapat dipalsukan semudah mengedit gambar, kepercayaan tanpa verifikasi adalah undangan bagi penipuan.",
       "definition": "Fake Payment QR (atau QR Pembayaran Palsu) adalah teknik penipuan di mana penyerang mengirim QR Code kepada korban dengan klaim bahwa itu adalah 'konfirmasi pembayaran', 'invoice', atau 'bukti transfer', padahal QR Code tersebut sebenarnya adalah permintaan pembayaran dari korban ke penyerang. Varian lain termasuk QR Code yang dikirim penjual palsu di marketplace, di mana QR Code tampak berasal dari platform resmi (seperti Tokopedia, Shopee, atau Bukalapak) tetapi sebenarnya mengarah ke rekening penyerang. Serangan ini mengeksploitasi kepercayaan pengguna terhadap antarmuka pembayaran digital dan kebiasaan untuk mengkonfirmasi transaksi tanpa memverifikasi detail secara menyeluruh. Di Indonesia, varian serangan ini semakin umum seiring dengan pertumbuhan ekonomi digital dan penggunaan QR code dalam transaksi peer-to-peer.",
       "sections": [
@@ -224,16 +214,13 @@
         "lesson": "Kasus ini menunjukkan bahwa UMKM adalah target yang sangat rentan karena keterbatasan sumber daya untuk verifikasi keamanan dan kecenderungan untuk mempercayai komunikasi yang tampak rutin. Pelajaran kritis: 1) Selalu verifikasi invoice yang diterima melalui saluran kedua (telepon langsung ke nomor resmi supplier yang Anda miliki, bukan nomor di invoice), 2) Simpan database kontak resmi vendor dan jangan pernah menggunakan kontak yang tiba-tiba muncul di email, 3) Untuk pembayaran bernilai signifikan, lakukan konfirmasi verbal dengan orang yang dikenal di pihak vendor, 4) Pertimbangkan menggunakan payment gateway B2B resmi yang menyediakan fitur verifikasi dan dispute resolution, 5) Laporkan insiden ke kepolisian dan asosiasi UMKM untuk membantu mencegah korban lain."
       },
       "references": [
-        "https://www.bssn.go.id/berita/siaran-pers/fake-payment-qr - BSSN: Fake Payment QR Advisory",
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/QRIS-Fraud.aspx - OJK: QRIS Fraud Prevention",
-        "https://www.kaspersky.com/blog/payment-qr-fraud/ - Kaspersky: Payment QR Fraud",
-        "https://www.midtrans.com/blog/qr-payment-security - Midtrans: QR Payment Security",
-        "https://www.kompas.com/ekonomi/read/2024/07/fake-invoice-qr-umkm - Kompas: Fake Invoice QR Case",
-        "https://en.wikipedia.org/wiki/QR_code#Payment - Wikipedia: QR Code Payment Systems"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Payment Fraud via Fake QR Code",
+        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics of Phishing Attacks (Fake QR)"
       ]
     },
     "5": {
       "subtitle": "QR Malware Download",
+      "categories": ["Sistem & Infrastruktur", "Serangan Identitas"],
       "quote": "Satu pindaian dapat mengubah smartphone Anda dari alat produktivitas menjadi mata-mata yang bekerja untuk musuh — tanpa Anda sadari.",
       "definition": "QR Malware Download adalah teknik serangan di mana QR Code digunakan sebagai vektor untuk mendistribusikan dan menginstal perangkat lunak berbahaya (malware) pada perangkat korban. Ketika korban memindai QR Code, mereka diarahkan ke halaman web yang memicu unduhan otomatis file malicious — bisa berupa APK untuk Android, profil konfigurasi untuk iOS, atau executable untuk desktop. Malware yang didistribusikan melalui QR Code berkisar dari adware yang relatif tidak berbahaya hingga banking trojan, ransomware, spyware, atau botnet client yang sangat merusak. Teknik ini sangat efektif karena memanfaatkan kepercayaan pengguna terhadap QR Code dan kecenderungan untuk memindai kode yang ditemukan di lokasi fisik (poster, brosur, produk) atau dalam komunikasi digital (email, media sosial).",
       "sections": [
@@ -269,12 +256,8 @@
         "lesson": "Kasus ini menunjukkan bahwa bahkan profesional teknologi yang melek digital pun dapat menjadi korban QR malware attack ketika mereka berada dalam konteks yang mereka percayai (konferensi resmi). Pelajaran kritis: 1) Jangan mempercayai QR Code hanya karena ditemukan di lokasi yang tampak legitimat — penyerang dapat dengan mudah menyusupkan materi palsu. 2) Verifikasi materi promosi dan QR Code dengan staf acara resmi sebelum memindai. 3) Untuk konten eksklusif, akses langsung melalui website resmi acara (bukan melalui QR Code). 4) Aktifkan Play Protect dan instal antivirus mobile tepercaya pada perangkat Anda. 5) Jika Anda merasa telah memindai QR Code mencurigakan atau menginstal aplikasi yang tidak dikenal, segera cabut izin aplikasi, scan perangkat dengan antivirus, dan ganti semua kredensial penting dari perangkat yang berbeda."
       },
       "references": [
-        "https://www.kaspersky.com/blog/qr-code-malware/ - Kaspersky: QR Code Malware Distribution",
-        "https://www.threatfabric.com/blogs/octo-trojan - ThreatFabric: Octo Trojan Analysis",
-        "https://www.bssn.go.id/berita/siaran-pers/qr-malware - BSSN: QR Malware Advisory",
-        "https://www.kompas.com/tekno/read/2024/08/qr-malware-conference - Kompas: QR Malware Conference Case",
-        "https://www.sophos.com/en-us/threat-center/threat-analyses/viruses-and-spyware - Sophos: Mobile Malware Analysis",
-        "https://en.wikipedia.org/wiki/Mobile_malware - Wikipedia: Mobile Malware"
+        "https://attack.mitre.org/techniques/T1566/ - MITRE ATT&CK — T1566: Phishing (QR Code Malware Delivery)",
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Mobile Malware via QR Code"
       ]
     }
   }

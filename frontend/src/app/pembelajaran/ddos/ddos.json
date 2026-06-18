@@ -1,6 +1,7 @@
 {
   "slug": "ddos",
   "title": "DDoS / DoS Attack",
+  "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
   "navigation": [
     { "id": 0, "label": "APA ITU DDOS / DOS ATTACK?", "icon": "ShieldAlert" },
     { "id": 1, "label": "PING FLOOD & UDP FLOOD", "icon": "Zap" },
@@ -12,6 +13,7 @@
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu DDoS / DoS Attack?",
+      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Di dunia digital, traffic yang seharusnya menjadi tanda kesuksesan bisnis bisa dengan mudah diubah menjadi senjata pemusnah massal oleh mereka yang berniat jahat.",
       "definition": "Denial of Service (DoS) dan Distributed Denial of Service (DDoS) adalah serangan siber yang bertujuan untuk membuat layanan, server, atau jaringan tidak dapat diakses oleh pengguna yang sah. Serangan ini tidak dirancang untuk mencuri data atau membobol enkripsi, melainkan untuk melumpuhkan ketersediaan (availability) sistem. Dalam serangan DoS tradisional, satu komputer mengirimkan jutaan permintaan palsu ke server target hingga server tersebut kehabisan sumber daya dan crash. Namun, di era modern, serangan ini telah berevolusi menjadi DDoS, di mana penyerang menggunakan jaringan ribuan hingga jutaan komputer yang terinfeksi (botnet) untuk membanjiri target secara bersamaan dari berbagai penjuru dunia, membuat serangan ini hampir mustahil untuk dihentikan hanya dengan memblokir satu alamat IP.\n\nDampak dari serangan DDoS sangat merusak, terutama bagi bisnis yang bergantung pada ketersediaan online seperti e-commerce, perbankan, dan layanan kesehatan. Setiap menit downtime akibat DDoS dapat merugikan perusahaan puluhan hingga ratusan juta rupiah akibat hilangnya transaksi, rusaknya reputasi, dan biaya pemulihan infrastruktur. Lebih berbahaya lagi, DDoS sering digunakan sebagai 'tabir asap' (smokescreen) oleh peretas canggih; sementara tim IT sibuk menangani lonjakan traffic yang melumpuhkan server, peretas diam-diam menyusup ke celah keamanan lain untuk mencuri data sensitif atau menanamkan ransomware.",
       "sections": [
@@ -48,16 +50,14 @@
         "lesson": "Serangan DDoS tidak selalu menargetkan Anda secara langsung; menyerang penyedia layanan pihak ketiga (supply chain) yang Anda andalkan bisa sama fatalnya. Kasus ini juga menyoroti bahaya luar biasa dari perangkat IoT yang tidak aman. Produsen perangkat keras wajib menghapus password default dan memaksa pengguna membuat kredensial unik saat setup awal. Bagi perusahaan, mengandalkan satu penyedia DNS adalah single point of failure; menggunakan arsitektur DNS multi-provider dan layanan mitigasi DDoS berbasis Anycast adalah keharusan untuk memastikan ketahanan bisnis di era di mana serangan berukuran Terabit menjadi hal yang lumrah."
       },
       "references": [
-        "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/ - Cloudflare: What is a DDoS Attack?",
-        "https://www.cisa.gov/topics/cybersecurity-best-practices/ddos-attack-mitigation - CISA: DDoS Attack Mitigation",
-        "https://owasp.org/www-community/attacks/Denial_of_Service - OWASP: Denial of Service",
-        "https://attack.mitre.org/techniques/T1498/ - MITRE ATT&CK: Network Denial of Service",
-        "https://www.akamai.com/resources/research-reports/2024-state-of-the-internet-report - Akamai: State of the Internet Report",
-        "https://en.wikipedia.org/wiki/Denial-of-service_attack - Wikipedia: Denial-of-Service Attack"
+        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10422513/ - PMC/MDPI Sensors (2023) — High-Speed Network DDoS Attack Detection: A Survey [DOI: 10.3390/s23156850]",
+        "https://www.cisa.gov/topics/cyber-threats-and-advisories/distributed-denial-service - CISA — DDoS Quick Guide (Official Government Resource)",
+        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange: Mitigating DDoS"
       ]
     },
     "1": {
       "subtitle": "Ping Flood & UDP Flood",
+      "categories": ["Serangan Jaringan"],
       "quote": "Ketika bandwidth jaringan Anda dibanjiri oleh tsunami data sampah, tidak ada permintaan sah yang bisa melewati pintu masuk.",
       "definition": "Ping Flood (ICMP Flood) dan UDP Flood adalah bentuk serangan DDoS volumetrik yang bertujuan untuk menjenuhkan seluruh kapasitas bandwidth jaringan target. Dalam serangan ini, penyerang mengirimkan jutaan paket data ke server korban secepat mungkin, menciptakan kemacetan jaringan yang parah. Karena pipa internet yang menghubungkan server ke dunia luar sepenuhnya tersumbat oleh traffic serangan, pengguna asli tidak dapat mengirim atau menerima data, mengakibatkan downtime total. Meskipun terdengar sederhana, serangan ini sangat efektif dan sering diperkuat menggunakan teknik 'Amplification' yang memungkinkan penyerang dengan bandwidth kecil untuk menghasilkan serangan berukuran raksasa.",
       "sections": [
@@ -92,16 +92,13 @@
         "lesson": "Serangan amplification membuktikan bahwa Anda tidak perlu memiliki botnet raksasa untuk melumpuhkan perusahaan teknologi besar; Anda hanya perlu menemukan server-server yang salah konfigurasi di internet. Bagi administrator sistem, ini adalah pengingat keras untuk tidak pernah membiarkan layanan database atau caching seperti Memcached, Redis, atau Elasticsearch terekspos langsung ke internet publik tanpa autentikasi dan firewall yang ketat. Bagi perusahaan, insiden ini membuktikan bahwa berlangganan layanan mitigasi DDoS berbasis cloud dengan kapasitas multi-Terabit bukanlah kemewahan, melainkan asuransi bisnis yang mutlak diperlukan di era modern."
       },
       "references": [
-        "https://www.cloudflare.com/learning/ddos/ping-icmp-flood-ddos-attack/ - Cloudflare: Ping/ICMP Flood",
-        "https://www.cloudflare.com/learning/ddos/udp-flood-ddos-attack/ - Cloudflare: UDP Flood Attack",
-        "https://www.cloudflare.com/learning/ddos/dns-amplification-ddos-attack/ - Cloudflare: DNS Amplification",
-        "https://www.cloudflare.com/learning/ddos/memcached-ddos-attack/ - Cloudflare: Memcached DDoS Attack",
-        "https://datatracker.ietf.org/doc/html/rfc2827 - IETF RFC 2827: Network Ingress Filtering (BCP38)",
-        "https://en.wikipedia.org/wiki/Denial-of-service_attack#Amplification - Wikipedia: DDoS Amplification"
+        "https://attack.mitre.org/techniques/T1498/ - MITRE ATT&CK — T1498: Network Denial of Service (Flood Techniques)",
+        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10422513/ - PMC/MDPI Sensors (2023) — High-Speed Network DDoS Detection (UDP/ICMP Flood)"
       ]
     },
     "2": {
       "subtitle": "HTTP Flood",
+      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Serangan paling berbahaya bukanlah yang datang dengan suara keras, melainkan yang menyamar sebagai pelanggan setia Anda.",
       "definition": "HTTP Flood adalah serangan DDoS Lapisan 7 (Application Layer) yang menargetkan server web dengan membanjirinya dengan permintaan HTTP GET atau POST yang tampak sah. Berbeda dengan serangan volumetrik yang mencoba menyumbat pipa jaringan dengan data sampah, HTTP Flood dirancang untuk menguras sumber daya komputasi server, seperti CPU, RAM, dan koneksi database. Karena permintaan ini meniru perilaku penjelajahan web manusia yang normal, serangan ini sangat sulit dideteksi oleh firewall jaringan tradisional dan sering kali bypass sistem pertahanan perimeter, langsung menghantam aplikasi inti bisnis.",
       "sections": [
@@ -136,16 +133,13 @@
         "lesson": "Tidak semua serangan DDoS bertujuan untuk menghancurkan ketersediaan layanan secara total; beberapa dirancang untuk memanipulasi logika bisnis dan memonopoli sumber daya (Resource Exhaustion). Platform yang menangani acara berkapasitas tinggi atau barang langka tidak bisa hanya mengandalkan skalabilitas server (auto-scaling). Mereka harus mengimplementasikan sistem 'Virtual Waiting Room' (Ruang Tunggu Virtual) yang mengantri pengguna di lapisan tepi (edge) sebelum mereka diizinkan masuk ke aplikasi inti. Selain itu, integrasi CAPTCHA tingkat lanjut dan analisis perilaku bot pada titik-titik krusial seperti checkout sangat penting untuk memastikan bahwa sumber daya server hanya dikonsumsi oleh manusia asli, bukan oleh skrip otomatis yang mencari keuntungan ilegal."
       },
       "references": [
-        "https://www.cloudflare.com/learning/ddos/http-flood-ddos-attack/ - Cloudflare: HTTP Flood DDoS Attack",
-        "https://owasp.org/www-community/attacks/HTTP_Flood - OWASP: HTTP Flood",
-        "https://www.imperva.com/learn/application-security/http-flood/ - Imperva: HTTP Flood Attack",
-        "https://www.cloudflare.com/application-services/products/waf/ - Cloudflare: Web Application Firewall",
-        "https://www.imperva.com/learn/application-security/bot-management/ - Imperva: Bot Management",
-        "https://en.wikipedia.org/wiki/Denial-of-service_attack#HTTP_flood - Wikipedia: HTTP Flood"
+        "https://attack.mitre.org/techniques/T1499/ - MITRE ATT&CK — T1499: Endpoint Denial of Service (Application Layer)",
+        "https://www.mdpi.com/2079-9292/13/18/3583 - MDPI Electronics (2024) — Research on Multi-Layer Defense against DDoS Attacks [DOI: 10.3390/electronics13183583]"
       ]
     },
     "3": {
       "subtitle": "SYN Flood",
+      "categories": ["Serangan Jaringan"],
       "quote": "Menyerang fondasi kepercayaan internet: membiarkan server menunggu selamanya pada janji koneksi yang tidak pernah ditepati.",
       "definition": "SYN Flood adalah serangan DDoS tipe Protocol Exhaustion yang mengeksploitasi kelemahan dalam mekanisme jabat tangan tiga arah (3-way handshake) dari protokol TCP (Transmission Control Protocol). TCP adalah protokol yang mendasari sebagian besar komunikasi internet yang andal, termasuk web (HTTP), email, dan transfer file. Serangan ini tidak bertujuan menghabiskan bandwidth, melainkan menghabiskan 'state table' atau memori server yang dialokasikan untuk melacak koneksi jaringan yang sedang dibangun. Dengan membanjiri server dengan permintaan koneksi yang tidak pernah diselesaikan, penyerang membuat server menolak semua koneksi baru yang sah.",
       "sections": [
@@ -180,16 +174,13 @@
         "lesson": "Serangan Panix adalah momen 'Sputnik' bagi keamanan jaringan. Insiden ini memaksa para insinyur sistem operasi dan vendor perangkat keras jaringan untuk segera merancang ulang cara mereka menangani koneksi masuk. Dari krisis inilah konsep SYN Cookies lahir dan akhirnya diintegrasikan ke dalam kernel Linux, Windows, dan BSD sebagai fitur keamanan standar. Kasus ini mengajarkan kita bahwa protokol yang dibangun di atas asumsi 'lingkungan yang saling percaya' akan selalu dieksploitasi ketika internet berkembang menjadi ruang publik yang bermusuhan. Selalu pastikan bahwa fitur mitigasi SYN Cookies diaktifkan pada level sistem operasi server Anda dan pada perimeter firewall."
       },
       "references": [
-        "https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/ - Cloudflare: SYN Flood DDoS Attack",
-        "https://en.wikipedia.org/wiki/SYN_flood - Wikipedia: SYN Flood",
-        "https://datatracker.ietf.org/doc/html/rfc4987 - IETF RFC 4987: TCP SYN Flooding Attacks and Common Mitigations",
-        "https://www.imperva.com/learn/application-security/syn-flood/ - Imperva: SYN Flood Attack",
-        "https://cr.yp.to/syncookies.html - Daniel J. Bernstein: SYN Cookies",
-        "https://attack.mitre.org/techniques/T1498/001/ - MITRE ATT&CK: Direct Network Flood"
+        "https://attack.mitre.org/techniques/T1498/001/ - MITRE ATT&CK — T1498.001: Network DoS — Direct Network Flood (SYN Flood)",
+        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — SYN Cookie & TCP SYN Flood Mitigation"
       ]
     },
     "4": {
       "subtitle": "Slowloris Attack",
+      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Kekuatan sejati tidak selalu tentang seberapa keras Anda memukul, tetapi seberapa lama Anda bisa menahan napas lawan Anda.",
       "definition": "Slowloris adalah jenis serangan DDoS Lapisan 7 (Application Layer) yang sangat unik karena menggunakan pendekatan 'low-and-slow' (rendah dan lambat). Berbeda dengan serangan flood yang mencoba membanjiri server dengan jutaan permintaan per detik, Slowloris hanya menggunakan satu atau beberapa komputer dengan koneksi internet yang sangat lambat untuk melumpuhkan server web target. Serangan ini bekerja dengan membuka banyak koneksi ke server dan menahannya tetap terbuka selama mungkin dengan mengirimkan header HTTP parsial secara berkala, menguras pool koneksi konkuren server hingga tidak ada slot yang tersisa untuk pengguna asli.",
       "sections": [
@@ -224,16 +215,13 @@
         "lesson": "Slowloris mengajarkan industri keamanan siber bahwa ketersediaan (availability) tidak hanya bisa dirusak oleh banjir data, tetapi juga oleh kelumpuhan logika (logic exhaustion). Anda tidak bisa hanya mengandalkan bandwidth besar dan firewall canggih; Anda harus memahami bagaimana aplikasi Anda menangani sumber daya pada level kode dan konfigurasi. Migrasi dari server web thread-based ke event-driven server seperti Nginx, atau penggunaan CDN yang bertindak sebagai buffer, telah menjadi standar arsitektur web modern sebagian besar sebagai respons langsung terhadap popularitas serangan low-and-slow seperti Slowloris dan R-U-Dead-Yet (RUDY)."
       },
       "references": [
-        "https://www.imperva.com/learn/application-security/slowloris-attack/ - Imperva: Slowloris Attack",
-        "https://en.wikipedia.org/wiki/Slowloris_(computer_security) - Wikipedia: Slowloris",
-        "https://www.cloudflare.com/learning/ddos/slowloris-ddos-attack/ - Cloudflare: Slowloris DDoS Attack",
-        "https://ha.cker.info/slowloris/ - RSnake: Slowloris Original Paper",
-        "https://www.nginx.com/blog/mitigating-the-slowloris-attack-with-nginx/ - Nginx: Mitigating Slowloris",
-        "https://attack.mitre.org/techniques/T1499/004/ - MITRE ATT&CK: Application or System Exploitation"
+        "https://attack.mitre.org/techniques/T1499/001/ - MITRE ATT&CK — T1499.001: Endpoint DoS — OS Exhaustion Flood (Slowloris)",
+        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10422513/ - PMC/MDPI Sensors (2023) — High-Speed Network DDoS Detection (Slow Rate Attacks)"
       ]
     },
     "5": {
       "subtitle": "Botnet DDoS",
+      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Pasukan hantu digital yang terdiri dari jutaan perangkat tak berdosa, menunggu satu perintah untuk melumpuhkan infrastruktur negara.",
       "definition": "Botnet DDoS adalah infrastruktur inti yang memungkinkan terjadinya serangan DDoS berskala masif di era modern. Botnet (robot network) adalah kumpulan perangkat yang terhubung ke internet - mulai dari komputer pribadi, server, hingga perangkat Internet of Things (IoT) seperti kamera CCTV, router, dan smart TV - yang telah terinfeksi malware dan dikendalikan secara diam-diam oleh penyerang (botmaster) melalui server Command and Control (C2). Ketika botmaster memberikan perintah, jutaan perangkat 'zombie' ini secara serentak menembakkan traffic ke satu target, menghasilkan kekuatan komputasi dan bandwidth yang tidak dapat ditandingi oleh infrastruktur pertahanan perusahaan manapun.",
       "sections": [
@@ -268,12 +256,8 @@
         "lesson": "Kasus Mirai membuktikan bahwa perangkat IoT yang tidak aman adalah ancaman eksistensial bagi stabilitas internet global. Kode yang dilepaskan ke alam liar tidak bisa ditarik kembali dan akan terus berevolusi di tangan aktor yang lebih jahat. Ini memicu dorongan regulasi global, seperti undang-undang di California dan Inggris yang melarang penjualan perangkat IoT dengan password default yang universal. Bagi konsumen dan bisnis, ini adalah pengingat keras bahwa setiap perangkat yang terhubung ke internet adalah potensi senjata yang bisa digunakan melawan Anda atau orang lain. Keamanan jaringan harus mengasumsikan bahwa perangkat IoT akan dikompromikan, sehingga segmentasi jaringan dan pemantauan anomali traffic keluar (egress monitoring) adalah praktik higienis yang tidak bisa ditawar."
       },
       "references": [
-        "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/ - Cloudflare: What is a DDoS Botnet?",
-        "https://en.wikipedia.org/wiki/Mirai_(malware) - Wikipedia: Mirai (Malware)",
-        "https://www.imperva.com/learn/application-security/botnet-ddos-attack/ - Imperva: Botnet DDoS Attack",
-        "https://www.cisa.gov/news-events/alerts/2017/01/18/iot-vulnerabilities-best-practices - CISA: IoT Vulnerabilities Best Practices",
-        "https://www.akamai.com/blog/security/state-of-the-internet-report - Akamai: State of the Internet Report",
-        "https://attack.mitre.org/techniques/T1498/ - MITRE ATT&CK: Network Denial of Service"
+        "https://attack.mitre.org/techniques/T1583/005/ - MITRE ATT&CK — T1583.005: Acquire Infrastructure — Botnet",
+        "https://www.cisa.gov/topics/cyber-threats-and-advisories/distributed-denial-service - CISA — Botnet & DDoS Mitigation Advisory"
       ]
     }
   }

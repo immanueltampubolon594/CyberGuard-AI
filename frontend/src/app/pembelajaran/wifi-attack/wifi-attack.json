@@ -1,6 +1,7 @@
 {
   "slug": "wifi-attack",
   "title": "WiFi Attack",
+  "categories": ["Serangan Jaringan"],
   "navigation": [
     { "id": 0, "label": "APA ITU WIFI ATTACK?", "icon": "ShieldAlert" },
     { "id": 1, "label": "WIFI PASSWORD CRACKING", "icon": "Lock" },
@@ -12,6 +13,7 @@
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu WiFi Attack?",
+      "categories": ["Serangan Jaringan"],
       "quote": "Setiap paket data yang Anda kirim melalui udara bisa disadap, diintersepsi, dan dimanipulasi oleh siapa saja yang memiliki alat yang tepat dan niat yang jahat.",
       "definition": "WiFi Attack adalah serangkaian teknik penyerangan siber yang menargetkan jaringan nirkabel (wireless network) untuk mendapatkan akses tidak sah, mencuri data, mengintersepsi komunikasi, atau melumpuhkan layanan jaringan. Berbeda dengan serangan pada jaringan kabel yang memerlukan akses fisik ke kabel, serangan WiFi memanfaatkan sifat fundamental dari gelombang radio yang menyebar melalui udara - siapapun yang berada dalam jangkauan sinyal WiFi bisa berpotensi menjadi penyerang, tanpa perlu menyentuh router atau kabel jaringan sama sekali.\n\nSerangan terhadap jaringan WiFi telah menjadi ancaman yang semakin relevan seiring dengan meningkatnya ketergantungan masyarakat pada konektivitas nirkabel. Dari rumah tangga yang menggunakan WiFi untuk streaming dan work from home, hingga kafe dan bandara yang menyediakan WiFi publik gratis, hingga perusahaan yang mengandalkan jaringan nirkabel untuk operasional sehari-hari - semua berada dalam risiko. Yang membuat serangan WiFi sangat berbahaya adalah kedekatannya dengan korban - penyerang tidak perlu berada di negara lain, cukup duduk di meja sebelah di kafe atau parkir di depan rumah Anda untuk meluncurkan serangan.",
       "sections": [
@@ -50,16 +52,27 @@
         "lesson": "KRACK membuktikan bahwa bahkan standar keamanan yang dianggap aman (WPA2 digunakan selama lebih dari 10 tahun) bisa memiliki kerentanan fundamental. Patching dan update firmware adalah keharusan, bukan pilihan - terutama untuk perangkat IoT yang seringkali diabaikan. Transisi ke WPA3 harus dipercepat, namun bahkan WPA3 bukan silver bullet. Defense in depth - menggunakan VPN di atas WiFi, memastikan semua traffic dienkripsi dengan HTTPS, dan memonitor anomali jaringan - tetap diperlukan meskipun menggunakan standar keamanan terbaru."
       },
       "references": [
-        "https://www.krackattacks.com/ - KRACK Attacks: Key Reinstallation Attack Research",
-        "https://www.cisa.gov/news-events/alerts/2017/10/19/wpa2-krack-vulnerability - CISA: WPA2 KRACK Vulnerability",
-        "https://www.kaspersky.com/blog/krack-attack/ - Kaspersky: KRACK Attack Analysis",
-        "https://www.wi-fi.org/discover-wi-fi/security - WiFi Alliance: WPA3 Security",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan WiFi Indonesia",
-        "https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access - Wikipedia: WPA/WPA2/WPA3 Standards"
+        {
+          "label": "MDPI JCP (2025) — Advanced Persistent Threats and Wireless LAN Security: An In-Depth Exploration",
+          "direct_url": "https://www.mdpi.com/2624-800X/5/2/27",
+          "fallback_url": "https://www.mdpi.com/journal/JCP",
+          "doi": "10.3390/jcp5020027",
+          "type": "Research Paper",
+          "year": 2025
+        },
+        {
+          "label": "NIST SP 800-153 — Guidelines for Securing Wireless Local Area Networks",
+          "direct_url": "https://csrc.nist.gov/pubs/sp/800/153/final",
+          "fallback_url": "https://csrc.nist.gov/publications",
+          "doi": null,
+          "type": "Government Standard",
+          "year": 2023
+        }
       ]
     },
     "1": {
       "subtitle": "WiFi Password Cracking",
+      "categories": ["Serangan Jaringan", "Serangan Identitas"],
       "quote": "Password WiFi Anda yang lemah adalah undangan terbuka bagi siapa saja di sekitar rumah Anda untuk bergabung dengan jaringan pribadi Anda.",
       "definition": "WiFi Password Cracking adalah teknik mendapatkan password jaringan WiFi yang terproteksi WPA/WPA2 dengan cara menangkap proses autentikasi (4-way handshake) antara router dan klien yang terhubung, lalu memecahkan hash password tersebut menggunakan teknik brute force atau dictionary attack. Berbeda dengan membobol router secara langsung, teknik ini mengeksploitasi fakta bahwa saat perangkat terhubung ke WiFi, mereka melakukan 'jabat tangan' kriptografi yang menghasilkan hash yang bisa disimpan dan dipecahkan offline tanpa batas waktu. Kekuatan serangan ini terletak pada kemampuan untuk bekerja secara pasif - penyerang hanya perlu 'mendengarkan' proses handshake tanpa perlu mengganggu jaringan sama sekali.",
       "sections": [
@@ -106,16 +119,27 @@
         "lesson": "WiFi yang tidak diamankan dengan baik bukan hanya risiko privasi, tetapi bisa menjadi alat untuk kejahatan yang menimpa pemilik jaringan. Password WiFi harus kuat dan acak, bukan berdasarkan informasi personal yang mudah ditebak. WPA3 seharusnya menjadi standar minimal untuk router baru. Pemilik WiFi juga harus memonitor perangkat yang terhubung dan segera bertindak jika ada yang mencurigakan. Bagi penegak hukum, kasus seperti ini menunjukkan pentingnya investigasi yang mendalam untuk membedakan antara pemilik jaringan yang lalai dengan pelaku kejahatan yang memanfaatkan kelalaian tersebut."
       },
       "references": [
-        "https://hashcat.net/hashcat/ - Hashcat: Advanced Password Recovery Tool",
-        "https://www.aircrack-ng.org/ - Aircrack-ng: WiFi Security Testing Suite",
-        "https://www.kaspersky.com/blog/wifi-password-cracking/ - Kaspersky: WiFi Password Cracking",
-        "https://pages.nist.gov/800-63-3/ - NIST: Digital Identity Guidelines (Password Strength)",
-        "https://www.wi-fi.org/discover-wi-fi/wpa3 - WiFi Alliance: WPA3 Features",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan Password WiFi"
+        {
+          "label": "MDPI JCP (2025) — Advanced Persistent Threats and WLAN — Offline Password Attack Section",
+          "direct_url": "https://www.mdpi.com/2624-800X/5/2/27",
+          "fallback_url": "https://www.mdpi.com/journal/JCP",
+          "doi": "10.3390/jcp5020027",
+          "type": "Research Paper",
+          "year": 2025
+        },
+        {
+          "label": "MITRE ATT&CK — T1110: Brute Force (WiFi Password Context)",
+          "direct_url": "https://attack.mitre.org/techniques/T1110/",
+          "fallback_url": "https://attack.mitre.org/",
+          "doi": null,
+          "type": "Threat Framework",
+          "year": 2024
+        }
       ]
     },
     "2": {
       "subtitle": "Evil Twin Attack",
+      "categories": ["Serangan Jaringan", "Serangan Identitas"],
       "quote": "Di dunia WiFi, nama yang sama belum tentu jaringan yang sama - dan perbedaan itu bisa menghancurkan keamanan digital Anda.",
       "definition": "Evil Twin Attack adalah teknik serangan WiFi di mana penyerang membuat access point (AP) palsu yang meniru jaringan WiFi yang sah, menggunakan SSID (nama jaringan) yang identik atau sangat mirip dengan jaringan target. Tujuannya adalah menipu pengguna agar terhubung ke AP palsu ini, percaya bahwa mereka terhubung ke jaringan yang sah. Begitu pengguna terhubung, penyerang bisa menyadap semua traffic yang tidak terenkripsi, melakukan man-in-the-middle attacks, menyajikan halaman phishing untuk mencuri kredensial, atau bahkan menginjeksi malware ke perangkat korban melalui teknik drive-by download.",
       "sections": [
@@ -153,16 +177,27 @@
         "lesson": "Demonstrasi DefCon ini adalah pengingat keras bahwa fitur kenyamanan seperti 'auto-connect to known networks' adalah pedang bermata dua - memudahkan pengguna namun juga memudahkan penyerang. Pengguna harus lebih kritis terhadap jaringan WiFi yang mereka gunakan, terutama di tempat publik. Untuk profesional keamanan dan enterprise, ini menunjukkan perlunya solusi deteksi wireless yang proaktif dan edukasi pengguna yang berkelanjutan. Di era di mana work from anywhere menjadi norma, keamanan WiFi bukan lagi hanya tanggung jawab IT department, tetapi tanggung jawab setiap individu yang terhubung ke jaringan."
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1041/ - MITRE ATT&CK: Exfiltration Over C2 Channel (Evil Twin)",
-        "https://www.cisa.gov/news-events/alerts/2019/05/21/wireless-security-best-practices - CISA: Wireless Security Best Practices",
-        "https://www.kaspersky.com/blog/evil-twin-attack/ - Kaspersky: Evil Twin Attack Explained",
-        "https://www.wi-fi.org/discover-wi-fi/security - WiFi Alliance: Security Features",
-        "https://en.wikipedia.org/wiki/Evil_twin_(wireless_networks) - Wikipedia: Evil Twin Attack",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan WiFi Publik"
+        {
+          "label": "MDPI JCP (2025) — Advanced Persistent Threats and WLAN — Evil Twin Section",
+          "direct_url": "https://www.mdpi.com/2624-800X/5/2/27",
+          "fallback_url": "https://www.mdpi.com/journal/JCP",
+          "doi": "10.3390/jcp5020027",
+          "type": "Research Paper",
+          "year": 2025
+        },
+        {
+          "label": "NIST SP 800-153 — Rogue AP & Evil Twin Prevention Guide",
+          "direct_url": "https://csrc.nist.gov/pubs/sp/800/153/final",
+          "fallback_url": "https://csrc.nist.gov/publications",
+          "doi": null,
+          "type": "Government Standard",
+          "year": 2023
+        }
       ]
     },
     "3": {
       "subtitle": "Deauthentication Attack",
+      "categories": ["Serangan Jaringan"],
       "quote": "Satu frame kecil yang dikirim melalui udara bisa memutus koneksi Anda dari dunia digital - dan itu hanya membutuhkan sepersekian detik.",
       "definition": "Deauthentication Attack adalah serangan pada jaringan WiFi di mana penyerang mengirimkan frame deauthentication (deauth) atau disassociation palsu ke router atau klien untuk memutus koneksi WiFi secara paksa. Serangan ini mengeksploitasi fakta bahwa protokol 802.11 (standar WiFi) tidak memerlukan autentikasi untuk frame manajemen seperti deauth - router dan klien menerima frame ini tanpa verifikasi, percaya bahwa itu berasal dari pihak yang sah. Akibatnya, penyerang yang berada dalam jangkauan sinyal bisa memutus koneksi WiFi siapa saja, kapan saja, tanpa perlu mengetahui password WiFi sama sekali.",
       "sections": [
@@ -200,16 +235,27 @@
         "lesson": "Deauth attack bukan hanya masalah teknis, tetapi bisa menjadi alat untuk extortion dan gangguan bisnis yang serius. Pemilik bisnis yang mengandalkan WiFi harus memahami bahwa gangguan yang tidak bisa dijelaskan secara teknis mungkin adalah serangan yang disengaja. Solusi seperti 802.11w (PMF), router dengan WPA3, dan monitoring jaringan adalah investasi penting untuk bisnis modern. Yang mengkhawatirkan, mudahnya tools deauth (tersedia gratis di internet dengan tutorial berlimpah) membuat serangan ini bisa dilakukan oleh siapa saja dengan motif apa saja, dari iseng hingga kriminal terorganisir."
       },
       "references": [
-        "https://en.wikipedia.org/wiki/IEEE_802.11w-2009 - Wikipedia: IEEE 802.11w (Protected Management Frames)",
-        "https://www.cisa.gov/news-events/alerts/2020/02/27/wireless-denial-service-attacks - CISA: Wireless DoS Attacks",
-        "https://www.kaspersky.com/blog/wifi-deauth-attack/ - Kaspersky: WiFi Deauthentication Attack",
-        "https://www.wi-fi.org/discover-wi-fi/wpa3 - WiFi Alliance: WPA3 PMF Features",
-        "https://www.aircrack-ng.org/doku.php?id=aireplay-ng - Aircrack-ng: Aireplay-ng Documentation",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan WiFi"
+        {
+          "label": "MDPI JCP (2025) — Advanced Persistent Threats and WLAN — Deauth Attack Section",
+          "direct_url": "https://www.mdpi.com/2624-800X/5/2/27",
+          "fallback_url": "https://www.mdpi.com/journal/JCP",
+          "doi": "10.3390/jcp5020027",
+          "type": "Research Paper",
+          "year": 2025
+        },
+        {
+          "label": "NIST SP 800-153 — Wireless DoS & Deauthentication Attack Defense",
+          "direct_url": "https://csrc.nist.gov/pubs/sp/800/153/final",
+          "fallback_url": "https://csrc.nist.gov/publications",
+          "doi": null,
+          "type": "Government Standard",
+          "year": 2023
+        }
       ]
     },
     "4": {
       "subtitle": "Rogue Access Point",
+      "categories": ["Serangan Jaringan"],
       "quote": "Ketika ada pintu belakang yang tidak Anda ketahui keberadaannya, seluruh tembok keamanan yang Anda bangun menjadi tidak berarti.",
       "definition": "Rogue Access Point (Rogue AP) adalah access point WiFi yang diinstalasi pada jaringan tanpa otorisasi dari administrator jaringan. Berbeda dengan Evil Twin yang dibuat oleh penyerang eksternal untuk menipu pengguna, Rogue AP seringkali diinstalasi secara internal - oleh karyawan yang ingin memudahkan kerja, oleh kontraktor IT yang tidak mengikuti prosedur, atau oleh penyerang yang berhasil masuk fisik ke gedung. Rogue AP menciptakan 'jembatan' antara jaringan internal yang seharusnya aman dengan dunia luar, memberikan vektor serangan yang bisa membypass firewall, intrusion detection system, dan kontrol keamanan lainnya yang dipasang di perimeter jaringan.",
       "sections": [
@@ -247,16 +293,27 @@
         "lesson": "Kasus ini menunjukkan bahwa kelemahan keamanan seringkali datang dari dalam - bukan dari peretas sophisticated, tetapi dari karyawan yang tidak memahami risiko. Kebijakan Bring Your Own Device (BYOD) dan instalasi perangkat harus diatur dengan jelas. Solusi teknis seperti NAC dan WIDS penting, namun tidak efektif tanpa budaya keamanan yang kuat di organisasi. Setiap karyawan harus memahami bahwa keamanan jaringan adalah tanggung jawab bersama, dan tindakan 'kecil' seperti colok router pribadi bisa memiliki konsekuensi katastrofik."
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1564/005/ - MITRE ATT&CK: Hidden File System (Rogue AP)",
-        "https://www.cisa.gov/news-events/alerts/2019/05/21/wireless-security-best-practices - CISA: Wireless Security Best Practices",
-        "https://www.cisco.com/c/en/us/products/wireless/wireless-intrusion-prevention-system/index.html - Cisco: Wireless IPS",
-        "https://www.kaspersky.com/blog/rogue-access-point/ - Kaspersky: Rogue Access Point Detection",
-        "https://en.wikipedia.org/wiki/Rogue_access_point - Wikipedia: Rogue Access Point",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan Jaringan Enterprise"
+        {
+          "label": "MDPI JCP (2025) — Advanced Persistent Threats and WLAN — Rogue AP Section",
+          "direct_url": "https://www.mdpi.com/2624-800X/5/2/27",
+          "fallback_url": "https://www.mdpi.com/journal/JCP",
+          "doi": "10.3390/jcp5020027",
+          "type": "Research Paper",
+          "year": 2025
+        },
+        {
+          "label": "NIST SP 800-153 — Rogue Access Point Detection & Mitigation",
+          "direct_url": "https://csrc.nist.gov/pubs/sp/800/153/final",
+          "fallback_url": "https://csrc.nist.gov/publications",
+          "doi": null,
+          "type": "Government Standard",
+          "year": 2023
+        }
       ]
     },
     "5": {
       "subtitle": "WPS Cracking",
+      "categories": ["Serangan Jaringan", "Serangan Identitas"],
       "quote": "Fitur yang dirancang untuk kemudahan pengguna menjadi lubang keamanan terbesar di router WiFi modern - dan hanya butuh beberapa jam untuk membongkarnya.",
       "definition": "WPS (WiFi Protected Setup) Cracking adalah teknik menyerang jaringan WiFi yang mengeksploitasi kelemahan desain fundamental dalam fitur WPS - fitur yang dirancang untuk memudahkan pengguna menghubungkan perangkat ke WiFi tanpa harus mengetik password yang panjang. WPS menggunakan PIN (Personal Identification Number) 8 digit yang, karena cara validasinya yang cacat, bisa di-brute force dalam beberapa jam saja - terlepas dari seberapa kuat password WiFi yang sebenarnya. Yang paling berbahaya, bahkan jika Anda mengganti password WiFi dengan yang sangat kuat dan kompleks, WPS cracking tetap berhasil karena menyerang PIN, bukan password.",
       "sections": [
@@ -303,12 +360,22 @@
         "lesson": "Kasus ini menunjukkan kesenjangan besar antara persepsi keamanan dan realita keamanan di banyak organisasi. Fitur yang dirancang untuk kemudahan (WPS) seringkali menjadi lubang keamanan terbesar jika tidak dikonfigurasi dengan benar. Penetration testing yang komprehensif harus mencakup pemeriksaan konfigurasi dasar seperti WPS, bukan hanya fokus pada aplikasi dan server. Untuk semua pengguna WiFi - dari rumahan hingga enterprise - aturan emasnya adalah: jika Anda tidak menggunakan WPS secara aktif, matikan. Tidak ada alasan untuk membiarkannya aktif dan membuka pintu bagi penyerang."
       },
       "references": [
-        "https://www.wi-fi.org/discover-wi-fi/wps - WiFi Alliance: WPS (WiFi Protected Setup)",
-        "https://www.cisa.gov/news-events/alerts/2017/05/03/wps-vulnerability - CISA: WPS Vulnerability",
-        "https://www.kaspersky.com/blog/wps-vulnerability/ - Kaspersky: WPS Vulnerability Explained",
-        "https://github.com/t6x/reaver-wps-fork-t6x - Reaver WPS Fork: WPS Cracking Tool",
-        "https://en.wikipedia.org/wiki/Wi-Fi_Protected_Setup - Wikipedia: WPS Security Issues",
-        "https://www.bssn.go.id/ - BSSN: Panduan Konfigurasi Router Aman"
+        {
+          "label": "MDPI JCP (2025) — Advanced Persistent Threats and WLAN — WPS Vulnerability",
+          "direct_url": "https://www.mdpi.com/2624-800X/5/2/27",
+          "fallback_url": "https://www.mdpi.com/journal/JCP",
+          "doi": "10.3390/jcp5020027",
+          "type": "Research Paper",
+          "year": 2025
+        },
+        {
+          "label": "NIST SP 800-153 — WPS & Authentication Weaknesses",
+          "direct_url": "https://csrc.nist.gov/pubs/sp/800/153/final",
+          "fallback_url": "https://csrc.nist.gov/publications",
+          "doi": null,
+          "type": "Government Standard",
+          "year": 2023
+        }
       ]
     }
   }

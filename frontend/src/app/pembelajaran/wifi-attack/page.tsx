@@ -70,23 +70,24 @@ function ReferencesSection({ references }: { references: string[] }) {
 
       {/* References List */}
       <ol className="list-decimal list-inside space-y-3 ml-2">
-        {references.map((ref, idx) => {
-          const { url, description } = parseReference(ref);
-          
-          return (
-            <li key={idx} className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-              <a 
-                href={url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:underline hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1.5"
-              >
-                {description}
-                <ExternalLink size={12} className="inline" />
-              </a>
-            </li>
-          );
-        })}
+{references.map((ref: any, idx: number) => (
+  <li key={idx} className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+    <a 
+      href={ref.direct_url || ref.fallback_url} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="text-blue-600 dark:text-blue-400 hover:underline hover:text-blue-700 dark:hover:text-blue-300 transition-colors inline-flex items-center gap-1.5"
+    >
+      {ref.label}
+      <ExternalLink size={12} className="inline" />
+    </a>
+    {ref.type && ref.year && (
+      <span className="text-xs text-slate-500 dark:text-slate-400 ml-2">
+        ({ref.type}, {ref.year})
+      </span>
+    )}
+  </li>
+))}
       </ol>
 
       {/* Footer Note */}

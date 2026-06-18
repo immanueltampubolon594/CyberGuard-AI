@@ -51,18 +51,8 @@
         "lesson": "Selalu verifikasi keaslian toko online sebelum bertransaksi. Periksa domain website (harus official domain), cek review dan reputasi, waspadai harga yang terlalu murah, dan gunakan payment gateway yang aman. Jangan pernah transfer langsung ke rekening pribadi untuk transaksi e-commerce."
       },
       "references": [
-        "https://www.bssn.go.id/ - BSSN: Badan Siber dan Sandi Negara Indonesia",
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen - OJK: Edukasi dan Perlindungan Konsumen",
-        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online",
-        "https://www.ftc.gov/consumer-advice/scams/online-shopping-scams - FTC: Online Shopping Scams",
-        "https://www.ic3.gov/Home - FBI IC3: Internet Crime Complaint Center",
-        "https://www.consumer.ftc.gov/features/scam-alerts - FTC: Consumer Scam Alerts",
-        "https://www.nortonlifelock.com/cybersecurity/identity-protection/ecommerce-fraud - NortonLifeLock: E-Commerce Fraud Prevention",
-        "https://www.kaspersky.com/resource-center/prevention-tips/online-shopping-fraud - Kaspersky: Online Shopping Fraud",
-        "https://www.scamwatch.gov.au/types-of-scams/shopping-and-classifieds - ScamWatch: Shopping Scams",
-        "https://www.bbb.org/article/news-releases/23485-online-shopping-scams-rise-during-holiday-season - BBB: Online Shopping Scams",
-        "https://www.cisa.gov/cybersecurity-best-practices - CISA: Cybersecurity Best Practices",
-        "https://www.anti phishingworkinggroup.org/ - APWG: Anti-Phishing Working Group"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Non-Payment/Non-Delivery & E-Commerce Fraud",
+        "https://owasp.org/Top10/ - OWASP Top 10 2021 — Security Risks Affecting E-Commerce Platforms"
       ]
     },
     "1": {
@@ -110,18 +100,8 @@
         "lesson": "Jangan tergiur harga yang terlalu murah. Selalu verifikasi keaslian toko online melalui berbagai sumber. Gunakan metode pembayaran yang aman (payment gateway/escrow) dan jangan transfer langsung ke rekening pribadi. Periksa reputasi toko melalui review dan rating. Jika ragu, lebih baik berbelanja di marketplace besar yang memiliki buyer protection."
       },
       "references": [
-        "https://www.ftc.gov/consumer-advice/online-shopping - FTC: Online Shopping Tips",
-        "https://www.bbb.org/article/news-releases/22987-bbb-warning-fake-online-stores - BBB: Fake Online Stores Warning",
-        "https://www.scamwatch.gov.au/types-of-scams/online-shopping - ScamWatch: Online Shopping Scams",
-        "https://www.consumer.ftc.gov/articles/online-shopping-tips - FTC: Online Shopping Tips",
-        "https://www.kaspersky.com/resource-center/prevention-tips/how-to-spot-fake-online-stores - Kaspersky: Spotting Fake Stores",
-        "https://www.nortonlifelock.com/cybersecurity/online-scams/fake-websites - NortonLifeLock: Fake Websites",
-        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online",
-        "https://www.bssn.go.id/berita/waspada-toko-online-palsu - BSSN: Waspada Toko Online Palsu",
-        "https://www.scamadviser.com/ - ScamAdviser: Website Trust Checker",
-        "https://www.whois.com/whois/ - WHOIS: Domain Age Checker",
-        "https://www.mcafee.com/en-us/security-advice/home-family-security/fake-online-stores.html - McAfee: Fake Online Stores",
-        "https://www.fbi.gov/scams-and-safety/common-scams/online-shopping-fraud - FBI: Online Shopping Fraud"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Non-Delivery Fraud & Fake Stores",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC — Online Shopping Fraud Data"
       ]
     },
     "2": {
@@ -178,18 +158,8 @@
         "lesson": "Merchant harus mengimplementasi sistem deteksi fraud yang canggih (3D Secure, fraud scoring, velocity checking). Konsumen harus aktif monitor transaksi kartu kredit, gunakan virtual card untuk transaksi online, dan segera laporkan transaksi mencurigakan. Kolaborasi antara bank, merchant, dan penegak hukum sangat penting untuk memerangi carding."
       },
       "references": [
-        "https://www.pcisecuritystandards.org/ - PCI Security Standards Council",
-        "https://www.pcisecuritystandards.org/pci_security/pci_data_security_standard - PCI DSS Guidelines",
-        "https://www.visa.com.au/shop-with-visa/visa-secure.html - Visa Secure (3D Secure)",
-        "https://www.mastercard.us/en-us/personal/support/secure-code.html - Mastercard SecureCode",
-        "https://www.kaspersky.com/resource-center/prevention-tips/credit-card-fraud - Kaspersky: Credit Card Fraud",
-        "https://www.nortonlifelock.com/cybersecurity/identity-protection/credit-card-fraud - NortonLifeLock: Credit Card Fraud",
-        "https://www.ftc.gov/consumer-advice/identity-theft-and-scams/credit-card-fraud - FTC: Credit Card Fraud",
-        "https://www.consumer.ftc.gov/articles/credit-card-fraud - FTC: Credit Card Fraud Prevention",
-        "https://www.bankrate.com/banking/credit-cards/how-to-spot-credit-card-fraud/ - Bankrate: Credit Card Fraud",
-        "https://www.sift.com/resources/guides/ecommerce-fraud-detection - Sift: E-Commerce Fraud Detection",
-        "https://www.riskified.com/blog/ecommerce-fraud-detection/ - Riskified: Fraud Detection",
-        "https://www.kount.com/resources/guides/ecommerce-fraud-prevention - Kount: Fraud Prevention"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Credit Card & Payment Fraud Statistics",
+        "https://attack.mitre.org/techniques/T1539/ - MITRE ATT&CK — T1539: Steal Web Session Cookie (Carding context)"
       ]
     },
     "3": {
@@ -235,18 +205,8 @@
         "lesson": "Seller e-commerce harus mengaktifkan 2FA, waspada email phishing, dan monitor aktivitas akun secara berkala. Platform e-commerce perlu implementasi sistem deteksi ATO yang canggih dan prosedur verifikasi yang ketat untuk perubahan pengaturan sensitif (rekening bank, email, nomor telepon)."
       },
       "references": [
-        "https://www.kaspersky.com/resource-center/prevention-tips/account-takeover - Kaspersky: Account Takeover Prevention",
-        "https://www.nortonlifelock.com/cybersecurity/identity-protection/account-takeover - NortonLifeLock: Account Takeover",
-        "https://www.sift.com/resources/guides/account-takeover-fraud - Sift: Account Takeover Fraud",
-        "https://www.riskified.com/blog/account-takeover-prevention/ - Riskified: ATO Prevention",
-        "https://www.ftc.gov/consumer-advice/identity-theft-and-scams/account-takeover - FTC: Account Takeover",
-        "https://www.consumer.ftc.gov/articles/account-takeover - FTC: Account Takeover Prevention",
-        "https://www.kount.com/resources/guides/account-takeover-prevention - Kount: ATO Prevention",
-        "https://www.bssn.go.id/berita/waspada-account-takeover - BSSN: Waspada Account Takeover",
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Perlindungan-Akun-Online.aspx - OJK: Perlindungan Akun Online",
-        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online",
-        "https://haveibeenpwned.com/ - Have I Been Pwned: Check if Your Data Was Breached",
-        "https://www.lastpass.com/solutions/password-security - LastPass: Password Security"
+        "https://attack.mitre.org/techniques/T1110/ - MITRE ATT&CK — T1110: Brute Force (ATO Method)",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html - OWASP — Authentication Cheat Sheet (ATO Prevention)"
       ]
     },
     "4": {
@@ -269,7 +229,7 @@
           "title": "Mengapa Triangulation Fraud Sulit Dideteksi?",
           "content": [
             "Dari perspektif pembeli: Semuanya terlihat normal. Mereka order dari seller di platform e-commerce, membayar melalui payment gateway yang aman, dan menerima barang asli. Mereka tidak tahu bahwa seller mereka sebenarnya tidak memiliki stok dan barang dikirim dari seller lain.",
-            "Dari perspektif seller legitimate: Mereka menerima order yang看起来 normal dari 'pembeli' (yang sebenarnya fraudster). Mereka mengirim barang ke alamat yang diberikan. Yang mereka tahu, ini transaksi normal. Baru ketahuan ada masalah ketika terjadi chargeback beberapa minggu atau bulan kemudian.",
+            "Dari perspektif seller legitimate: Mereka menerima order yang terlihat normal dari 'pembeli' (yang sebenarnya fraudster). Mereka mengirim barang ke alamat yang diberikan. Yang mereka tahu, ini transaksi normal. Baru ketahuan ada masalah ketika terjadi chargeback beberapa minggu atau bulan kemudian.",
             "Dari perspektif platform e-commerce: Fraudster terlihat seperti seller normal yang menjual barang dan mengirim order. Platform tidak tahu bahwa fraudster sebenarnya tidak memiliki stok dan hanya menjadi perantara.",
             "Alamat pengiriman yang berbeda dari billing address adalah hal yang wajar di e-commerce (misalnya orang mengirim hadiah ke teman), sehingga tidak otomatis mencurigakan."
           ]
@@ -298,18 +258,8 @@
         "lesson": "Seller harus waspada terhadap order dengan alamat pengiriman yang berbeda jauh, terutama untuk produk bernilai tinggi. Platform perlu implementasi sistem deteksi triangulation fraud yang canggih. Pembeli harus berbelanja dari seller yang verified dan terpercaya. Kolaborasi antar platform e-commerce penting untuk mengidentifikasi fraudster yang beroperasi di multiple platform."
       },
       "references": [
-        "https://www.sift.com/resources/guides/triangulation-fraud - Sift: Triangulation Fraud",
-        "https://www.riskified.com/blog/triangulation-fraud-prevention/ - Riskified: Triangulation Fraud",
-        "https://www.kount.com/resources/guides/triangulation-fraud-prevention - Kount: Triangulation Fraud",
-        "https://www.signifyd.com/blog/triangulation-fraud/ - Signifyd: Triangulation Fraud",
-        "https://www.forter.com/blog/triangulation-fraud-explained/ - Forter: Triangulation Fraud",
-        "https://www.ekata.com/blog/triangulation-fraud-detection - Ekata: Triangulation Fraud Detection",
-        "https://www.bssn.go.id/berita/waspada-triangulation-fraud - BSSN: Waspada Triangulation Fraud",
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Waspada-Penipuan-E-Commerce.aspx - OJK: Waspada Penipuan E-Commerce",
-        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online",
-        "https://www.scamadviser.com/ - ScamAdviser: Website Trust Checker",
-        "https://www.ftc.gov/consumer-advice/online-shopping - FTC: Online Shopping Tips",
-        "https://www.consumer.ftc.gov/articles/online-shopping-tips - FTC: Online Shopping Tips"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — E-Commerce Fraud Statistics",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC — Chargeback & Return Fraud Consumer Data"
       ]
     },
     "5": {
@@ -366,18 +316,8 @@
         "lesson": "Seller harus waspada terhadap buyer yang sering return barang, terutama untuk produk yang mudah dipakai dan dikembalikan (fashion, kamera, alat pesta). Terapkan kebijakan return yang lebih ketat untuk produk tertentu (misalnya tidak terima return untuk gaun yang sudah dipakai, atau require deposit). Dokumentasikan kondisi barang sebelum kirim dan setelah return. Platform perlu sistem untuk mendeteksi buyer dengan pattern return yang mencurigakan."
       },
       "references": [
-        "https://www.sift.com/resources/guides/refund-fraud - Sift: Refund Fraud Prevention",
-        "https://www.riskified.com/blog/refund-fraud-prevention/ - Riskified: Refund Fraud",
-        "https://www.kount.com/resources/guides/refund-fraud-prevention - Kount: Refund Fraud",
-        "https://www.signifyd.com/blog/refund-fraud-explained/ - Signifyd: Refund Fraud",
-        "https://www.forter.com/blog/refund-fraud-detection/ - Forter: Refund Fraud Detection",
-        "https://www.ekata.com/blog/refund-fraud-detection - Ekata: Refund Fraud Detection",
-        "https://www.bssn.go.id/berita/waspada-refund-fraud - BSSN: Waspada Refund Fraud",
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Waspada-Penipuan-E-Commerce.aspx - OJK: Waspada Penipuan E-Commerce",
-        "https://www.ftc.gov/consumer-advice/online-shopping - FTC: Online Shopping Tips",
-        "https://www.consumer.ftc.gov/articles/refund-fraud - FTC: Refund Fraud",
-        "https://www.scamadviser.com/ - ScamAdviser: Website Trust Checker",
-        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — E-Commerce Fraud Statistics",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC — Chargeback & Return Fraud Consumer Data"
       ]
     },
     "6": {
@@ -433,18 +373,8 @@
         "lesson": "Friendly fraud bisa menghancurkan seller kecil yang tidak siap. Dokumentasi yang kuat (proof of delivery dengan signature, foto barang sebelum kirim, komunikasi tercatat) adalah kunci untuk fight chargeback. Jangan terima chargeback tanpa fight — statistik menunjukkan win rate 30-40% jika ada bukti kuat. Blacklist buyer yang melakukan friendly fraud dan share informasi ke komunitas seller."
       },
       "references": [
-        "https://www.sift.com/resources/guides/friendly-fraud - Sift: Friendly Fraud Prevention",
-        "https://www.riskified.com/blog/friendly-fraud-prevention/ - Riskified: Friendly Fraud",
-        "https://www.kount.com/resources/guides/friendly-fraud-prevention - Kount: Friendly Fraud",
-        "https://www.signifyd.com/blog/friendly-fraud-explained/ - Signifyd: Friendly Fraud",
-        "https://www.forter.com/blog/friendly-fraud-detection/ - Forter: Friendly Fraud Detection",
-        "https://www.ekata.com/blog/friendly-fraud-detection - Ekata: Friendly Fraud Detection",
-        "https://www.bssn.go.id/berita/waspada-friendly-fraud - BSSN: Waspada Friendly Fraud",
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Waspada-Penipuan-E-Commerce.aspx - OJK: Waspada Penipuan E-Commerce",
-        "https://www.ftc.gov/consumer-advice/online-shopping - FTC: Online Shopping Tips",
-        "https://www.consumer.ftc.gov/articles/chargeback-fraud - FTC: Chargeback Fraud",
-        "https://www.scamadviser.com/ - ScamAdviser: Website Trust Checker",
-        "https://www.kominfo.go.id/content/detail/4587/waspada-penipuan-online - Kominfo: Waspada Penipuan Online"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — E-Commerce Fraud Statistics",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC — Chargeback & Return Fraud Consumer Data"
       ]
     }
   }

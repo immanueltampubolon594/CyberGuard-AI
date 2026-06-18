@@ -1,6 +1,8 @@
 {
   "slug": "scam-online",
   "title": "Scam & Penipuan Online",
+  "categories": ["Serangan Finansial", "Serangan Sosial"],
+  "level": "Dasar",
   "navigation": [
     { "id": 0, "label": "APA ITU SCAM ONLINE?", "icon": "ShieldAlert" },
     { "id": 1, "label": "MARKETPLACE SCAM", "icon": "ShoppingCart" },
@@ -11,7 +13,7 @@
   ],
   "tiers_content": {
     "0": {
-      "subtitle": "Apa itu Scam & Penipuan Online?",
+      "subtitle": "Apa itu Scam Online?",
       "quote": "Penipuan online tidak membobol sistem keamanan Anda; ia membobol psikologi, emosi, dan kepercayaan Anda.",
       "definition": "Scam atau penipuan online adalah bentuk kejahatan siber yang mengandalkan manipulasi psikologis (social engineering) untuk menipu korban agar secara sukarela menyerahkan uang, data pribadi, atau akses ke akun mereka. Berbeda dengan peretasan teknis yang mengeksploitasi kerentanan perangkat lunak, penipuan online mengeksploitasi sifat dasar manusia seperti keserakahan, rasa takut, empati, atau keputusasaan. Di era digital, penipuan ini telah berevolusi dari sekadar email spam menjadi operasi kejahatan transnasional yang sangat terorganisir, menggunakan infrastruktur korporat, kecerdasan buatan (AI), dan jaringan pencucian uang yang canggih.\n\nIndustri penipuan online kini beroperasi seperti perusahaan multinasional. Sindikat kejahatan memiliki divisi khusus untuk perekrutan korban (marketing), divisi teknis untuk membuat situs web palsu, divisi psikolog untuk merancang skrip percakapan yang manipulatif, hingga divisi keuangan untuk mencuci uang hasil kejahatan melalui cryptocurrency. Mereka menargetkan jutaan orang secara bersamaan di seluruh dunia, mengetahui bahwa meskipun hanya 1% yang tertipu, keuntungan yang dihasilkan tetap bernilai miliaran dolar.",
       "sections": [
@@ -48,12 +50,8 @@
         "lesson": "Penipuan online bukan lagi sekadar aksi individu yang iseng, melainkan industri kejahatan transnasional yang melibatkan perbudakan modern dan pelanggaran HAM berat. Waspada terhadap tawaran pekerjaan luar negeri yang menjanjikan gaji tinggi dengan persyaratan yang mudah, terutama di wilayah yang minim regulasi. Selalu verifikasi legalitas perusahaan melalui kedutaan besar atau lembaga resmi sebelum menerima tawaran kerja di luar negeri."
       },
       "references": [
-        "https://www.ic3.gov/ - FBI Internet Crime Complaint Center (IC3)",
-        "https://www.interpol.int/en/Crimes/Cybercrime/Online-fraud - Interpol: Online Fraud Operations",
-        "https://www.unodc.org/unodc/en/frontpage/2023/September/scam-compounds-southeast-asia.html - UNODC: Scam Compounds in Southeast Asia",
-        "https://www.bssn.go.id/ - BSSN: Laporan Insiden Keamanan Siber Indonesia",
-        "https://www.ftc.gov/consumer-advice/scams - FTC: Consumer Scam Advice",
-        "https://www.cisa.gov/news-events/alerts/2023/07/11/online-scams-and-fraud - CISA: Online Scams & Fraud Awareness"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 Annual Report 2023 — Internet Crime Report",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC Consumer Sentinel Network 2023 — Data Book Penipuan Online Resmi"
       ]
     },
     "1": {
@@ -92,12 +90,8 @@
         "lesson": "Keputusasaan dan FOMO (Fear of Missing Out) adalah musuh terbesar logika. Jangan pernah membeli tiket dari perorangan di media sosial tanpa perlindungan pihak ketiga. Selalu gunakan platform resmi yang memiliki sistem verifikasi barcode dinamis (yang berubah setiap beberapa detik untuk mencegah screenshot). Jika tiket resmi sudah habis, lebih baik menunggu pengumuman resmi dari promotor daripada mengambil risiko kehilangan uang jutaan rupiah dari calo penipu."
       },
       "references": [
-        "https://www.tokopedia.com/help/article/kebijakan-transaksi - Tokopedia: Kebijakan Transaksi Aman",
-        "https://www.shopee.co.id/lego/article/7555 - Shopee: Tips Transaksi Aman",
-        "https://www.betterbusinessbureau.org/scams/marketplace-scams - BBB: Online Marketplace Scams",
-        "https://www.ftc.gov/consumer-advice/shopping/event-tickets - FTC: Buying Event Tickets Safely",
-        "https://www.polri.go.id/berita - Polri: Berita Penangkapan Sindikat Penipuan",
-        "https://www.bareskrim.polri.go.id/ - Bareskrim Polri: Laporan Penipuan Online"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Non-Delivery & Marketplace Fraud Statistics",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Online Shopping Fraud Report"
       ]
     },
     "2": {
@@ -136,12 +130,8 @@
         "lesson": "Keserakahan dan ketidaktahuan tentang prosedur resmi adalah celah utama yang dieksploitasi penipu. Selalu ingat bahwa hadiah resmi tidak pernah meminta uang muka dalam bentuk apapun. Verifikasi independen adalah kunci; jangan gunakan kontak yang disediakan oleh pemberi hadiah. Edukasi keluarga, terutama orang tua dan lansia yang mungkin kurang memahami teknologi, sangat penting untuk melindungi mereka dari jeratan penipuan undian berhadiah yang terus berevolusi."
       },
       "references": [
-        "https://www.kominfo.go.id/content/detail/47234/waspada-penipuan-undian - Kominfo: Waspada Penipuan Undian",
-        "https://www.ftc.gov/consumer-advice/scams/sweepstakes-and-lottery-scams - FTC: Sweepstakes & Lottery Scams",
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Waspada-Penipuan-Undian.aspx - OJK: Waspada Penipuan Undian",
-        "https://patrolisiber.id/ - Bareskrim Polri: Laporkan Penipuan Online",
-        "https://www.telkomsel.com/info/waspada-penipuan - Telkomsel: Waspada Penipuan Mengatasnamakan Telkomsel",
-        "https://www.truecaller.com/blog/ - Truecaller: Tips Menghindari Spam Call & SMS"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Advance Fee Fraud & Fake Prize Statistics",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Prize, Sweepstakes & Lottery Scams Data"
       ]
     },
     "3": {
@@ -180,12 +170,8 @@
         "lesson": "Tidak ada pekerjaan mudah yang membayar gaji tinggi hanya untuk mengklik tombol 'Like' atau 'Subscribe'. Jika sebuah pekerjaan mengharuskan Anda untuk mengeluarkan uang (deposit) terlebih dahulu sebelum Anda bisa mendapatkan gaji, itu 100% adalah penipuan skema Ponzi. Selalu verifikasi legalitas perusahaan di situs web Kementerian Ketenagakerjaan atau LinkedIn. Jangan pernah tergiur oleh screenshot bukti transfer dari anggota grup lain, karena itu semua adalah akun komplotan (shill) yang dirancang untuk memanipulasi psikologi Anda."
       },
       "references": [
-        "https://kemnaker.go.id/ - Kementerian Ketenagakerjaan RI: Cek Lowongan Resmi",
-        "https://www.ilo.org/global/topics/forced-labour/lang--en/index.htm - ILO: Forced Labour & Job Scams",
-        "https://www.fbi.gov/scams-and-safety/scams/job-scams - FBI: Job Scam Warning",
-        "https://www.betterbusinessbureau.org/scams/job-scams - BBB: Recognizing Job Scams",
-        "https://www.kominfo.go.id/content/detail/48234/waspada-job-scam - Kominfo: Waspada Lowongan Palsu",
-        "https://patrolisiber.id/ - Bareskrim Polri: Laporkan Task Scam"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Employment Fraud Section (Statistics & Cases)",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Job Scam Consumer Reports"
       ]
     },
     "4": {
@@ -224,12 +210,8 @@
         "lesson": "Binary option bukanlah instrumen investasi atau trading yang sah, melainkan perjudian berkedok finansial yang telah dinyatakan ilegal oleh Bappebti dan OJK di Indonesia. Jangan pernah mempercayai pamer kekayaan (flexing) dari influencer finansial di media sosial, karena kekayaan tersebut seringkali bersumber dari komisi afiliasi atas kerugian pengikut mereka sendiri (kickback). Selalu pelajari dasar-dasar literasi keuangan dan investasi dari sumber yang kredibel, dan hindari jalan pintas menuju kekayaan yang ditawarkan oleh platform yang tidak teregulasi."
       },
       "references": [
-        "https://www.ojk.go.id/id/kanal/edukasi-dan-perlindungan-konsumen/Pages/Waspada-Investasi-Bodong.aspx - OJK: Waspada Investasi Bodong",
-        "https://sikapiuangmu.ojk.go.id/ - OJK: Sikapi Uangmu (Edukasi Keuangan)",
-        "https://www.bappebti.go.id/ - Bappebti: Regulasi Perdagangan Berjangka & Kripto",
-        "https://www.investor.gov/protect-your-investments/fraud/types-fraud/ponzi-scheme - SEC: Ponzi Scheme Warning",
-        "https://www.ftc.gov/consumer-advice/scams/investment-scams - FTC: Investment Scams",
-        "https://www.bareskrim.polri.go.id/ - Bareskrim Polri: Kasus Investasi Bodong"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Cryptocurrency Investment Fraud ($3.96B losses)",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Cryptocurrency Scam Consumer Reports"
       ]
     },
     "5": {
@@ -268,12 +250,8 @@
         "lesson": "Romance scam memanipulasi kebutuhan dasar manusia akan cinta dan koneksi. Penipu sangat sabar dan bersedia menghabiskan waktu berbulan-bulan untuk 'menggemukkan' korban sebelum memeras mereka. Jangan pernah mencampuradukkan hubungan asmara online dengan transaksi finansial. Jika pasangan online Anda mulai membicarakan masalah uang, pinjaman, atau investasi, segera putuskan kontak dan laporkan profil mereka ke platform terkait. Lindungi hati dan dompet Anda dengan skeptisisme yang sehat di dunia digital."
       },
       "references": [
-        "https://www.fbi.gov/scams-and-safety/scams/romance-scams - FBI: Romance Scam Warning",
-        "https://www.aarp.org/money/scams-fraud/info-2020/romance-scams.html - AARP: Romance Scam Protection",
-        "https://www.ftc.gov/consumer-advice/scams/romance-scams - FTC: How to Avoid Romance Scams",
-        "https://www.interpol.int/en/Crimes/Cybercrime/Online-romance-scams - Interpol: Online Romance Scams",
-        "https://www.tineye.com/ - TinEye: Reverse Image Search Tool",
-        "https://www.bareskrim.polri.go.id/ - Bareskrim Polri: Laporkan Romance Scam"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Confidence & Romance Fraud (Top 5 highest losses)",
+        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Romance Scam Losses Report"
       ]
     }
   }

@@ -1,6 +1,8 @@
 {
   "slug": "account-takeover",
   "title": "Account Takeover",
+  "categories": ["Serangan Identitas"],
+  "level": "Menengah",
   "navigation": [
     { "id": 0, "label": "APA ITU ACCOUNT TAKEOVER?", "icon": "ShieldAlert" },
     { "id": 1, "label": "WHATSAPP HIJACKING", "icon": "MessageCircle" },
@@ -12,6 +14,7 @@
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu Account Takeover?",
+      "categories": ["Serangan Identitas"],
       "quote": "Account takeover adalah mimpi buruk digital — ketika orang lain mengendalikan akun Anda seolah-olah mereka adalah Anda.",
       "definition": "Account Takeover (ATO) adalah bentuk pencurian identitas digital di mana penyerang mendapatkan akses tidak sah ke akun online korban — seperti email, media sosial, perbankan, e-commerce, atau platform lainnya — dan mengambil alih kendali penuh atas akun tersebut. Penyerang dapat membaca pesan pribadi, melakukan transaksi finansial, menyamar sebagai korban untuk menipu kontak, atau menggunakan akun sebagai batu loncatan untuk serangan yang lebih besar.\n\nBerbeda dengan phishing yang hanya mencuri kredensial, account takeover adalah tahap lanjutan di mana penyerang sudah berhasil masuk ke dalam akun dan menggunakannya untuk berbagai tujuan jahat. Dampaknya sangat merusak karena korban kehilangan kendali atas identitas digital mereka dan sering kali sulit untuk memulihkan akun yang sudah diambil alih.",
       "sections": [
@@ -50,16 +53,13 @@
         "lesson": "Lindungi nomor telepon Anda sebagai kunci utama identitas digital. Aktifkan PIN atau passphrase di provider seluler untuk mencegah SIM swapping. Jangan pernah membagikan kode OTP kepada siapapun, bahkan jika mengaku dari customer service. Gunakan aplikasi authenticator untuk 2FA alih-alih SMS. Monitor akun Anda secara berkala dan segera bertindak jika melihat aktivitas mencurigakan."
       },
       "references": [
-        "https://www.cisa.gov/topics/cybersecurity-best-practices/identity-and-access-management - CISA: Identity & Access Management",
-        "https://pages.nist.gov/800-63-3/ - NIST: Digital Identity Guidelines",
-        "https://www.bssn.go.id/ - BSSN: Laporan Insiden Keamanan Siber Indonesia",
-        "https://haveibeenpwned.com/ - Have I Been Pwned: Check if Your Data Was Breached",
-        "https://www.kaspersky.com/resource-center/definitions/account-takeover - Kaspersky: Account Takeover Explained",
-        "https://en.wikipedia.org/wiki/Account_takeover - Wikipedia: Account Takeover"
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html - OWASP — Authentication Cheat Sheet (ATO Definition & Prevention)",
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Account Takeover & Business Email Compromise Statistics"
       ]
     },
     "1": {
       "subtitle": "WhatsApp Hijacking",
+      "categories": ["Serangan Identitas", "Serangan Sosial"],
       "quote": "WhatsApp adalah jendela ke kehidupan pribadi Anda — ketika diretas, penyerang bisa menipu semua orang yang Anda kenal.",
       "definition": "WhatsApp Hijacking adalah teknik account takeover yang menargetkan akun WhatsApp korban dengan mencuri kode verifikasi OTP (One-Time Password) yang digunakan untuk registrasi akun di perangkat baru. Penyerang memanfaatkan fitur WhatsApp yang memungkinkan pengguna untuk memverifikasi akun hanya dengan nomor telepon dan kode OTP, tanpa memerlukan password tradisional. Setelah berhasil mengambil alih akun, penyerang bisa membaca semua pesan pribadi, mengirim pesan penipuan ke kontak korban, dan mengakses informasi sensitif yang dibagikan melalui platform tersebut.\n\nWhatsApp menjadi target favorit penyerang karena beberapa alasan. Pertama, WhatsApp digunakan oleh hampir semua orang di Indonesia untuk komunikasi pribadi dan profesional. Kedua, banyak pengguna yang tidak mengaktifkan verifikasi dua langkah (two-step verification), membuat akun hanya dilindungi oleh kode OTP yang dikirim via SMS atau telepon. Ketiga, WhatsApp berisi informasi yang sangat berharga — dari percakapan pribadi, foto dan video, hingga informasi bisnis dan finansial.",
       "sections": [
@@ -108,16 +108,13 @@
         "lesson": "Jangan pernah membagikan kode OTP WhatsApp kepada siapapun, meskipun mengaku sebagai teman atau keluarga. Aktifkan verifikasi dua langkah di WhatsApp untuk lapisan keamanan tambahan. Jika menerima permintaan uang via WhatsApp, selalu verifikasi melalui telepon langsung sebelum mentransfer. Waspadai pesan yang mendesak dan meminta tindakan cepat — itu tanda manipulasi."
       },
       "references": [
-        "https://faq.whatsapp.com/general/security-and-privacy/about-two-step-verification - WhatsApp: Two-Step Verification Guide",
-        "https://www.cisa.gov/news-events/alerts/2021/03/15/sim-swapping-awareness - CISA: SIM Swapping Awareness",
-        "https://www.kaspersky.com/blog/whatsapp-hacking/ - Kaspersky: WhatsApp Hacking Prevention",
-        "https://www.whatsapp.com/security/ - WhatsApp: Security Features",
-        "https://www.bssn.go.id/berita/siaran-pers/whatsapp-security - BSSN: Panduan Keamanan WhatsApp",
-        "https://en.wikipedia.org/wiki/WhatsApp#Security_and_privacy - Wikipedia: WhatsApp Security"
+        "https://ieeexplore.ieee.org/document/9311938 - IEEE Access (2021) — Social Engineering in Cybersecurity (Messaging Hijacking) [DOI: 10.1109/ACCESS.2021.3051633]",
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Account Compromise via Social Engineering"
       ]
     },
     "2": {
       "subtitle": "Email Takeover",
+      "categories": ["Serangan Identitas"],
       "quote": "Email adalah pusat identitas digital Anda — siapa yang mengendalikan email Anda, mengendalikan seluruh kehidupan online Anda.",
       "definition": "Email Takeover adalah bentuk account takeover yang menargetkan akun email korban — seperti Gmail, Yahoo Mail, Outlook, atau email perusahaan. Email merupakan akun yang paling kritis karena berfungsi sebagai pusat identitas digital: hampir semua layanan online menggunakan email untuk registrasi, reset password, dan komunikasi penting. Ketika penyerang mengambil alih akun email, mereka bisa mereset password di semua layanan lain yang terhubung, membaca pesan pribadi dan bisnis, mencuri informasi sensitif, dan menggunakan akun untuk kampanye phishing yang lebih besar.\n\nSerangan email takeover sangat merusak karena dampaknya berantai. Dari satu akun email yang diretas, penyerang bisa mengakses akun media sosial, rekening bank, e-commerce, cloud storage, dan layanan penting lainnya. Korban tidak hanya kehilangan akses ke email, tapi juga ke seluruh ekosistem digital mereka. Proses pemulihan seringkali sangat sulit karena penyerang yang sudah menguasai email bisa mengintercept semua upaya pemulihan yang dilakukan korban.",
       "sections": [
@@ -166,16 +163,14 @@
         "lesson": "Email adalah akun paling kritis yang harus dilindungi dengan keamanan tertinggi. Gunakan password yang sangat kuat dan unik, aktifkan 2FA dengan aplikasi authenticator, dan selalu verifikasi instruksi transfer dana melalui saluran lain (telepon atau tatap muka). Implement kebijakan double-approval untuk transfer dana besar di perusahaan. Training karyawan tentang email phishing dan social engineering sangat penting."
       },
       "references": [
-        "https://support.google.com/mail/answer/1049956 - Google: Signs Your Account Was Compromised",
-        "https://www.cisa.gov/news-events/alerts/2020/07/02/business-email-compromise - CISA: Business Email Compromise",
-        "https://www.kaspersky.com/blog/email-security/ - Kaspersky: Email Security Best Practices",
-        "https://support.google.com/accounts/answer/185839 - Google: 2-Step Verification Setup",
-        "https://www.bssn.go.id/berita/siaran-pers/email-security - BSSN: Panduan Keamanan Email",
-        "https://en.wikipedia.org/wiki/Email_hijacking - Wikipedia: Email Hijacking"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Business Email Compromise ($2.9B losses)",
+        "https://csrc.nist.gov/pubs/sp/800/177/r1/final - NIST SP 800-177 Rev.1 — Trustworthy Email (Email Takeover Defense)",
+        "https://attack.mitre.org/techniques/T1534/ - MITRE ATT&CK — T1534: Internal Spearphishing (Post Email Takeover)"
       ]
     },
     "3": {
       "subtitle": "Session Theft (Cookie Stealing)",
+      "categories": ["Serangan Identitas", "Sistem & Infrastruktur"],
       "quote": "Anda tidak perlu password untuk diretas — session cookie yang dicuri bisa memberikan akses penuh ke akun Anda.",
       "definition": "Session Theft atau Cookie Stealing adalah teknik account takeover yang mencuri session cookie aktif dari browser korban untuk mendapatkan akses ke akun tanpa perlu password atau 2FA. Ketika Anda login ke website, server membuat session cookie yang disimpan di browser Anda. Cookie ini berisi token autentikasi yang membuktikan bahwa Anda sudah login. Selama cookie ini valid, Anda tidak perlu login ulang setiap kali mengakses website tersebut. Penyerang yang berhasil mencuri session cookie ini bisa 'menyamar' sebagai Anda di website tersebut — tanpa perlu password, tanpa perlu 2FA, seolah-olah mereka adalah Anda yang login dari browser mereka sendiri.\n\nTeknik ini sangat berbahaya karena melewati semua lapisan keamanan tradisional. Meskipun Anda menggunakan password yang kuat dan 2FA, session theft tetap bisa terjadi karena penyerang tidak perlu melewati proses login — mereka langsung menggunakan session yang sudah terautentikasi. Ini seperti seseorang yang mencuri kunci mobil Anda yang sudah menyala — mereka tidak perlu menghidupkan mesin, tinggal tancap gas dan pergi.",
       "sections": [
@@ -224,16 +219,14 @@
         "lesson": "Jangan pernah akses akun sensitif seperti banking melalui WiFi publik tanpa VPN. Pastikan website menggunakan HTTPS dengan sertifikat yang valid. Logout dari akun sensitif setelah selesai digunakan. Perusahaan harus mengimplementasi IP whitelisting untuk akses banking — hanya IP address tertentu yang boleh mengakses. Gunakan juga transaction signing atau hardware token untuk otorisasi transfer dana besar."
       },
       "references": [
-        "https://owasp.org/www-community/attacks/Session_hijacking_attack - OWASP: Session Hijacking",
-        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies - MDN: HTTP Cookies Documentation",
-        "https://www.kaspersky.com/blog/session-hijacking/ - Kaspersky: Session Hijacking Explained",
-        "https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy - MDN: Same-Origin Policy",
-        "https://www.cisa.gov/news-events/alerts/2020/02/27/mitigating-web-browser-vulnerabilities - CISA: Browser Security",
-        "https://en.wikipedia.org/wiki/Session_hijacking - Wikipedia: Session Hijacking"
+        "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html - OWASP — Session Management Cheat Sheet",
+        "https://attack.mitre.org/techniques/T1539/ - MITRE ATT&CK — T1539: Steal Web Session Cookie",
+        "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/06-Session_Management_Testing/09-Testing_for_Session_Hijacking - OWASP WSTG — Testing for Session Hijacking"
       ]
     },
     "4": {
       "subtitle": "SIM Swapping",
+      "categories": ["Serangan Identitas"],
       "quote": "Nomor telepon Anda adalah kunci master identitas digital - ketika diretas, semua lapisan keamanan bisa ditembus.",
       "definition": "SIM Swapping (atau SIM Hijacking) adalah teknik account takeover di mana penyerang mengambil alih nomor telepon korban dengan meyakinkan provider seluler untuk memindahkan nomor tersebut ke SIM card yang dikendalikan penyerang. Serangan ini menargetkan nomor telepon sebagai titik lemah dalam sistem keamanan digital modern, karena nomor telepon seringkali digunakan untuk verifikasi dua faktor (2FA) melalui SMS, reset password, dan pemulihan akun. Ketika penyerang berhasil mengambil alih nomor telepon, mereka bisa menerima semua SMS dan panggilan telepon yang ditujukan ke korban - termasuk kode OTP untuk login ke akun-akun penting.",
       "sections": [
@@ -282,16 +275,13 @@
         "lesson": "Nomor telepon adalah single point of failure yang sangat berbahaya untuk akun-akun sensitif. Gunakan aplikasi authenticator atau hardware security key untuk 2FA di akun-akun penting, terutama cryptocurrency exchange. Tambahkan PIN/passphrase di provider seluler. Batasi informasi pribadi di media sosial. Untuk crypto investor, gunakan cold wallet (hardware wallet) untuk menyimpan cryptocurrency dalam jumlah besar alih-alih di exchange."
       },
       "references": [
-        "https://www.cisa.gov/news-events/alerts/2021/03/15/sim-swapping-awareness - CISA: SIM Swapping Awareness",
-        "https://www.fcc.gov/consumers/guides/sim-swap-scams - FCC: SIM Swap Scams Guide",
-        "https://www.europol.europa.eu/activities-services/public-awareness-and-prevention-guides/sim-swapping - Europol: SIM Swapping Prevention",
-        "https://www.kaspersky.com/blog/sim-swapping/ - Kaspersky: SIM Swapping Attack Analysis",
-        "https://en.wikipedia.org/wiki/SIM_swap_scam - Wikipedia: SIM Swap Scam",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan SIM Card & Operator"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — SIM Swapping Alert (Statistics)",
+        "https://pages.nist.gov/800-63-3/sp800-63b.html - NIST SP 800-63B — Out-of-Band Authentication Risk (SIM Swap)"
       ]
     },
     "5": {
       "subtitle": "Credential Stuffing Massal",
+      "categories": ["Serangan Identitas", "Sistem & Infrastruktur"],
       "quote": "Ketika password Anda bocor dari satu website, semua akun lain dengan password yang sama ikut terancam.",
       "definition": "Credential Stuffing Massal adalah serangan account takeover skala besar yang menggunakan database kredensial (username dan password) dari berbagai data breach untuk mencoba login ke ribuan atau jutaan akun di website target secara otomatis. Serangan ini memanfaatkan fakta bahwa banyak pengguna menggunakan password yang sama di multiple website (password reuse). Ketika satu website mengalami breach dan database password bocor, penyerang menggunakan database tersebut untuk menyerang website-website lain, berharap korban menggunakan password yang sama di berbagai platform.\n\nBerbeda dengan targeted attack yang menargetkan individu tertentu, credential stuffing massal adalah serangan volume-based yang mengandalkan skala. Penyerang tidak peduli siapa korban mereka — mereka hanya butuh sebagian kecil dari jutaan percobaan yang berhasil untuk mendapatkan akses ke akun-akun berharga. Dengan software otomatis yang bisa mencoba ribuan kredensial per menit, serangan ini sangat efisien dan menguntungkan meskipun tingkat keberhasilannya hanya 0,1-2%.",
       "sections": [
@@ -340,12 +330,9 @@
         "lesson": "Password reuse adalah risiko keamanan paling besar yang dihadapi pengguna internet modern. Gunakan password manager untuk membuat password unik yang kuat untuk setiap website. Aktifkan 2FA di semua akun penting. Periksa secara berkala apakah email Anda sudah bocor di Have I Been Pwned. Website harus mengimplementasi sistem deteksi credential stuffing yang canggih dan memaksa pengguna untuk menggunakan password yang kuat dan unik."
       },
       "references": [
-        "https://haveibeenpwned.com/ - Have I Been Pwned: Check if Your Credentials Were Breached",
-        "https://pages.nist.gov/800-63-3/ - NIST: Digital Identity Guidelines (Password Guidelines)",
-        "https://www.cisa.gov/news-events/alerts/2024/06/20/credential-stuffing-attacks - CISA: Credential Stuffing Alert",
-        "https://www.kaspersky.com/blog/credential-stuffing/ - Kaspersky: Credential Stuffing Attacks",
-        "https://fidoalliance.org/passkeys/ - FIDO Alliance: Passkeys & Passwordless Authentication",
-        "https://en.wikipedia.org/wiki/Credential_stuffing - Wikipedia: Credential Stuffing"
+        "https://attack.mitre.org/techniques/T1110/004/ - MITRE ATT&CK — T1110.004: Credential Stuffing",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Credential_Stuffing_Prevention_Cheat_Sheet.html - OWASP — Credential Stuffing Prevention Cheat Sheet",
+        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon DBIR 2024 — Credential Stuffing Attack Volume"
       ]
     }
   }

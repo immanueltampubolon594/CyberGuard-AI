@@ -53,6 +53,28 @@ body {
   background: #3b82f6;
 }
 
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgb(51 65 85);
+  border-radius: 20px;
+}
+
+/* Tambahkan di file CSS Anda */
+.sidebar-sticky {
+  position: sticky;
+  top: 8rem; /* Sesuaikan dengan tinggi navbar (96px = 6rem) */
+  align-self: flex-start;
+  max-height: calc(100vh - 8rem);
+  overflow-y: auto;
+}
+
 /* 5. ANIMASI SEDERHANA */
 @keyframes pulse-soft {
   0%, 100% { opacity: 0.4; }

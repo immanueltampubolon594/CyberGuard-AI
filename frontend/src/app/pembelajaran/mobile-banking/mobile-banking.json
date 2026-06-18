@@ -1,6 +1,8 @@
 {
   "slug": "mobile-banking",
   "title": "Mobile Banking Attack",
+  "categories": ["Serangan Finansial", "Serangan Identitas"],
+  "level": "Menengah",
   "navigation": [
     { "id": 0, "label": "APA ITU MOBILE BANKING ATTACK?", "icon": "ShieldAlert" },
     { "id": 1, "label": "FAKE BANKING APP", "icon": "Smartphone" },
@@ -48,12 +50,8 @@
         "lesson": "Kasus ini membuktikan bahwa serangan mobile banking paling efektif bukanlah yang paling teknis, melainkan yang paling pandai memanipulasi psikologi korban. Rasa ingin tahu terhadap undangan pernikahan atau kepanikan terhadap surat tilang membuat orang mengabaikan warning sistem Android tentang instalasi dari sumber tidak dikenal. Pelajaran kritis lainnya: JANGAN PERNAH memberikan izin Accessibility Service kepada aplikasi yang tidak Anda instal dari Google Play Store resmi. Izin ini adalah 'kunci master' yang memberikan kendali penuh atas perangkat Anda. Selalu verifikasi file APK apa pun yang dikirim via chat dengan menghubungi pengirim melalui kanal lain (telepon langsung) sebelum menginstal."
       },
       "references": [
-        "https://www.bssn.go.id/ - BSSN: Laporan Insiden Keamanan Siber Indonesia",
-        "https://www.cisa.gov/topics/cybersecurity-best-practices/mobile-device-security - CISA: Mobile Device Security",
-        "https://www.kaspersky.com/blog/mobile-banking-malware/ - Kaspersky: Mobile Banking Malware Analysis",
-        "https://attack.mitre.org/matrices/enterprise/mobile/ - MITRE ATT&CK: Mobile Attack Matrix",
-        "https://en.wikipedia.org/wiki/Mobile_banking_security - Wikipedia: Mobile Banking Security",
-        "https://www.google.com/android/protect/ - Google Play Protect: Mobile Security"
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Guidelines for Managing Mobile Device Security",
+        "https://owasp.org/www-project-mobile-security-testing-guide/ - OWASP Mobile Security Testing Guide — Mobile Banking Threats"
       ]
     },
     "1": {
@@ -92,12 +90,8 @@
         "lesson": "Kasus ini menyoroti dua kelemahan fundamental pengguna Indonesia: kepercayaan berlebihan pada SMS dan kecenderungan untuk menginstal aplikasi untuk 'memudahkan' aktivitas sehari-hari. Penyerang tahu bahwa orang yang menunggu paket akan lebih mudah terpancing dengan pesan yang relevan dengan kebutuhan mereka saat itu. Pelajaran penting: JANGAN PERNAH klik tautan lacak paket dari SMS. Selalu lacak paket langsung melalui aplikasi resmi ekspedisi atau website resmi mereka. Untuk bisnis, migrasi dari SMS notifikasi ke notifikasi dalam aplikasi (in-app notification) atau WhatsApp Business API yang terverifikasi dapat secara signifikan mengurangi efektivitas kampanye smishing seperti ini."
       },
       "references": [
-        "https://www.kaspersky.com/blog/fake-banking-apps/ - Kaspersky: Fake Banking Apps Analysis",
-        "https://www.cisa.gov/news-events/alerts/2023/08/15/mobile-malware-awareness - CISA: Mobile Malware Awareness",
-        "https://www.google.com/android/protect/ - Google Play Protect Security",
-        "https://attack.mitre.org/techniques/T1444/ - MITRE ATT&CK: Mass Messaging",
-        "https://www.malwarebytes.com/blog/mobile/android-malware - Malwarebytes: Android Malware Threats",
-        "https://www.bssn.go.id/berita/siaran-pers/malware-android - BSSN: Laporan Malware Android Indonesia"
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Malicious Apps & Mobile Threat Defense",
+        "https://attack.mitre.org/techniques/T1476/ - MITRE ATT&CK — T1476: Deliver Malicious App via Authorized App Store"
       ]
     },
     "2": {
@@ -136,12 +130,8 @@
         "lesson": "Modus sniffing mengajarkan kita bahwa pertahanan teknis tercanggih pun tidak berguna jika pengguna sendiri yang menyerahkan kunci. Bank Indonesia, OJK, dan kepolisian telah berulang kali menegaskan bahwa TIDAK ADA institusi resmi yang akan meminta OTP, PIN, password, atau CVV melalui telepon atau chat. Jika Anda menerima panggilan seperti itu, MATIKAN telepon segera dan hubungi bank melalui nomor resmi yang tertera di belakang kartu ATM atau di website resmi bank. Untuk melindungi diri dari malware yang meminta izin SMS, tinjau secara berkala izin aplikasi di Settings > Apps > [App] > Permissions, dan cabut izin yang tidak perlu."
       },
       "references": [
-        "https://pages.nist.gov/800-63-3/ - NIST: Digital Identity Guidelines (OTP Security)",
-        "https://www.cisa.gov/news-events/alerts/2021/03/15/sim-swapping-awareness - CISA: OTP & Authentication Security",
-        "https://fidoalliance.org/fido2/ - FIDO Alliance: FIDO2/WebAuthn Standards",
-        "https://www.kaspersky.com/blog/otp-theft/ - Kaspersky: OTP Theft Methods",
-        "https://www.bssn.go.id/berita/siaran-pers/otp-security - BSSN: Panduan Keamanan OTP",
-        "https://en.wikipedia.org/wiki/One-time_password - Wikipedia: One-Time Password Security"
+        "https://pages.nist.gov/800-63-3/sp800-63b.html#sec52 - NIST SP 800-63B — Section 5: OTP Authenticator Security",
+        "https://attack.mitre.org/techniques/T1111/ - MITRE ATT&CK — T1111: Multi-Factor Authentication Interception"
       ]
     },
     "3": {
@@ -180,12 +170,9 @@
         "lesson": "Kasus ini menyoroti bahwa SIM swap bukan hanya ancaman bagi selebriti atau billionaire — siapa pun dengan aset digital signifikan adalah target potensial. Eksekutif ini memiliki 2FA aktif di banyak akun, tetapi semuanya berbasis SMS, yang ternyata tidak berguna ketika nomor telepon berpindah tangan. Pelajaran penting: 1) Aktifkan PIN keamanan di operator seluler hari ini, 2) Migrasi akun-akun penting ke authenticator app atau FIDO2, 3) Jangan pernah menggunakan nomor telepon sebagai satu-satunya recovery option, 4) Jika HP tiba-tiba kehilangan sinyal tanpa alasan jelas, segera hubungi operator dari telepon lain dan periksa semua akun penting dari perangkat tepercaya."
       },
       "references": [
-        "https://www.cisa.gov/news-events/alerts/2021/03/15/sim-swapping-awareness - CISA: SIM Swapping Awareness",
-        "https://www.fcc.gov/consumers/guides/sim-swap-scams - FCC: SIM Swap Scams Guide",
-        "https://www.europol.europa.eu/activities-services/public-awareness-and-prevention-guides/sim-swapping - Europol: SIM Swapping Prevention",
-        "https://www.kaspersky.com/blog/sim-swapping/ - Kaspersky: SIM Swapping Attack Analysis",
-        "https://en.wikipedia.org/wiki/SIM_swap_scam - Wikipedia: SIM Swap Scam",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan SIM Card & Operator"
+        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — SIM Swapping Alert & Statistics",
+        "https://pages.nist.gov/800-63-3/sp800-63b.html - NIST SP 800-63B — Out-of-Band Authentication & SIM Swap Risk",
+        "https://attack.mitre.org/techniques/T1111/ - MITRE ATT&CK — T1111: Multi-Factor Authentication Interception (SIM Swap)"
       ]
     },
     "4": {
@@ -224,12 +211,8 @@
         "lesson": "Kasus Godfather menunjukkan bahwa overlay attack telah berevolusi dari teknik yang relatif sederhana menjadi senjata siber tingkat militer yang digunakan oleh sindikat kejahatan terorganisir. Akurasi UI overlay yang hampir sempurna membuat deteksi visual oleh pengguna hampir mustahil. Yang paling penting untuk diingat: jika aplikasi banking Anda tiba-tiba meminta login ulang dengan tampilan yang sedikit berbeda atau pada waktu yang tidak biasa, berhati-hatilah. Verifikasi dengan menutup aplikasi sepenuhnya dan membukanya kembali melalui shortcut di home screen (bukan melalui notifikasi atau tautan). Aktifkan Google Play Protect, hindari sideloading APK, dan pertimbangkan untuk menginstal aplikasi antivirus mobile tepercaya seperti Bitdefender, Kaspersky, atau Malwarebytes yang dapat mendeteksi malware overlay sebelum mereka aktif."
       },
       "references": [
-        "https://www.group-ib.com/blog/godfather-malware/ - Group-IB: Godfather Malware Analysis",
-        "https://www.kaspersky.com/blog/android-overlay-malware/ - Kaspersky: Android Overlay Malware",
-        "https://developer.android.com/guide/topics/security/permissions - Android: Permissions & Security",
-        "https://attack.mitre.org/techniques/T1444/ - MITRE ATT&CK: Mobile Malware Techniques",
-        "https://www.cisa.gov/news-events/alerts/2023/08/15/mobile-malware-awareness - CISA: Mobile Malware Awareness",
-        "https://www.bssn.go.id/ - BSSN: Panduan Keamanan Aplikasi Android"
+        "https://owasp.org/www-project-mobile-security-testing-guide/ - OWASP MSTG — Android Overlay Attack Testing Guide",
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Mobile UI Redressing & Overlay Defense"
       ]
     },
     "5": {
@@ -268,12 +251,8 @@
         "lesson": "Kasus ini adalah contoh sempurna dari evolusi ancaman mobile banking: dari phishing sederhana menjadi serangan otomatis berbasis AI yang beroperasi 24/7 tanpa campur tangan manusia. Sindikat ini bahkan memiliki 'customer support' di Telegram untuk membantu pelanggan baru (penjahat kecil) yang membeli malware mereka. Pelajaran paling penting: Accessibility Service adalah izin paling berbahaya yang dapat Anda berikan ke aplikasi apa pun. Perlakukan izin ini seperti memberikan kunci brankas rumah Anda — hanya berikan kepada aplikasi yang benar-benar Anda percayai 100% dan yang Anda instal dari Google Play Store resmi. Jika Anda menemukan APK undangan pernikahan, surat resmi, atau notifikasi kurir di WhatsApp, verifikasi dengan menelepon pengirim langsung melalui nomor telepon resmi mereka sebelum mengklik apa pun."
       },
       "references": [
-        "https://www.threatfabric.com/blogs/ - ThreatFabric: Banking Trojan Analysis",
-        "https://www.kaspersky.com/blog/banking-trojan-android/ - Kaspersky: Banking Trojan Android",
-        "https://www.cisa.gov/news-events/alerts/2023/08/15/mobile-malware-awareness - CISA: Mobile Malware Awareness",
-        "https://www.google.com/android/protect/ - Google Play Protect: Security Features",
-        "https://www.bssn.go.id/berita/siaran-pers/malware-android - BSSN: Laporan Malware Banking Indonesia",
-        "https://www.malwarebytes.com/blog/mobile/android-malware - Malwarebytes: Android Banking Malware"
+        "https://attack.mitre.org/techniques/T1417/ - MITRE ATT&CK — T1417: Input Capture (Banking Trojan Method)",
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Mobile Banking Trojan Defense"
       ]
     }
   }

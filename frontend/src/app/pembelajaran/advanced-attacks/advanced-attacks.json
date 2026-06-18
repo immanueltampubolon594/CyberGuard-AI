@@ -1,6 +1,7 @@
 {
   "slug": "advanced-attacks",
   "title": "Advanced Attacks",
+  "categories": ["Sistem & Infrastruktur", "Serangan Jaringan"],
   "navigation": [
     { "id": 0, "label": "APA ITU ADVANCED ATTACKS?", "icon": "ShieldAlert" },
     { "id": 1, "label": "RANSOMWARE ENTERPRISE", "icon": "Lock" },
@@ -12,6 +13,7 @@
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu Advanced Attacks?",
+      "categories": ["Sistem & Infrastruktur", "Serangan Jaringan"],
       "quote": "Advanced attacks adalah puncak evolusi kejahatan siber - bukan lagi tentang mencuri data, tapi tentang melumpuhkan negara.",
       "definition": "Advanced attacks atau serangan tingkat lanjut adalah bentuk serangan siber yang sangat sophisticated, terorganisir, dan seringkali didanai oleh negara (state-sponsored) atau kelompok kriminal internasional dengan sumber daya besar. Berbeda dengan serangan konvensional seperti phishing atau malware biasa yang menargetkan individu secara acak, advanced attacks dirancang untuk menargetkan organisasi besar, infrastruktur kritis, lembaga pemerintah, atau bahkan seluruh negara. Serangan ini menggunakan teknik-teknik canggih yang seringkali tidak terdeteksi oleh sistem keamanan konvensional dan bisa berlangsung selama berbulan-bulan atau bahkan bertahun-tahun tanpa diketahui korban.",
       "sections": [
@@ -52,22 +54,13 @@
         "lesson": "Advanced attacks bisa melumpuhkan layanan publik vital dan membahayakan masyarakat. Organisasi harus mengimplementasi defense in depth - tidak hanya mengandalkan satu lapisan keamanan. Backup harus diisolasi dari jaringan utama (air-gapped atau offline backup). Implementasi 2FA dan MFA wajib untuk semua akun admin. Incident response plan harus diuji secara berkala melalui tabletop exercises. Kolaborasi antara pemerintah, sektor swasta, dan lembaga internasional sangat penting untuk menghadapi ancaman advanced attacks."
       },
       "references": [
-        "https://www.cisa.gov/topics/cybersecurity-best-practices - CISA: Cybersecurity Best Practices",
-        "https://www.bssn.go.id/ - BSSN: Badan Siber dan Sandi Negara Indonesia",
-        "https://www.mandiant.com/resources/reports - Mandiant: Threat Intelligence Reports",
-        "https://www.crowdstrike.com/resources/reports/global-threat-report/ - CrowdStrike: Global Threat Report",
-        "https://attack.mitre.org/ - MITRE ATT&CK Framework",
-        "https://www.ibm.com/reports/cost-of-a-data-breach - IBM: Cost of a Data Breach Report",
-        "https://www.nist.gov/cyberframework - NIST Cybersecurity Framework",
-        "https://www.recordedfuture.com/research - Recorded Future: Threat Intelligence",
-        "https://www.kaspersky.com/enterprise-security/threat-intelligence - Kaspersky: Threat Intelligence",
-        "https://www.verizon.com/business/resources/reports/dbir/ - Verizon: Data Breach Investigations Report",
-        "https://www.fireeye.com/current-threats/apt-groups.html - FireEye: APT Groups",
-        "https://www.darkreading.com/threat-intelligence - Dark Reading: Threat Intelligence"
+        "https://csrc.nist.gov/pubs/sp/800/39/final - NIST SP 800-39 — Managing Information Security Risk (APT Framework)",
+        "https://www.cisa.gov/topics/cyber-threats-and-advisories - CISA — Advanced Persistent Threats Advisory"
       ]
     },
     "1": {
       "subtitle": "Ransomware Enterprise",
+      "categories": ["Sistem & Infrastruktur", "Serangan Finansial"],
       "quote": "Ransomware enterprise bukan lagi kejahatan siber biasa - ini adalah bisnis kriminal miliaran dolar dengan struktur korporasi modern.",
       "definition": "Ransomware Enterprise adalah varian ransomware yang dirancang khusus untuk menargetkan organisasi besar seperti perusahaan multinasional, lembaga pemerintah, rumah sakit besar, dan infrastruktur kritis. Berbeda dengan ransomware tradisional yang menyerang individu atau bisnis kecil dengan tebusan ratusan dolar, ransomware enterprise menggunakan teknik-teknik canggih yang memungkinkan penyerang untuk melakukan reconnaissance mendalam, lateral movement dalam jaringan, dan mencuri data sensitif sebelum mengenkripsi sistem. Model bisnis ransomware enterprise telah berevolusi menjadi industri kriminal yang sangat terorganisir dengan struktur seperti perusahaan legitimate - ada tim R&D untuk develop malware, tim customer service untuk negosiasi, bahkan program affiliate untuk distributor.",
       "sections": [
@@ -117,22 +110,14 @@
         "lesson": "Ransomware enterprise bisa berdampak pada keamanan nasional dan stabilitas ekonomi suatu negara. Single point of failure seperti password lama tanpa 2FA bisa berakibat katastrofik. Critical infrastructure harus dilindungi dengan standar keamanan tertinggi. Network segmentation yang baik bisa mencegah ransomware menyebar ke sistem operasional. Pembayaran tebusan tidak menjamin data akan dikembalikan dan hanya mendanai kejahatan lebih lanjut. Kolaborasi antara sektor privat dan pemerintah sangat krusial dalam merespon serangan terhadap infrastruktur kritis."
       },
       "references": [
-        "https://www.cisa.gov/stopransomware - CISA: Stop Ransomware",
-        "https://www.ibm.com/reports/cost-of-a-data-breach - IBM: Cost of a Data Breach Report",
-        "https://www.crowdstrike.com/cybersecurity-101/ransomware/ - CrowdStrike: Ransomware Overview",
-        "https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a - CISA: DarkSide Ransomware Advisory",
-        "https://www.trellix.com/en-us/about/newsroom/stories/threat-labs/ransomware-trends.html - Trellix: Ransomware Trends",
-        "https://www.cisa.gov/sites/default/files/publications/CISA_Insights_Ransomware_Guide_S508C.pdf - CISA: Ransomware Guide",
-        "https://www.fbi.gov/how-we-can-help-you/safety-resources/scams-and-fraud/ransomware - FBI: Ransomware Prevention",
-        "https://www.mandiant.com/resources/blog/ransomware-trends-2024 - Mandiant: Ransomware Trends",
-        "https://www.sentinelone.com/cybersecurity-101/threat-intelligence/ransomware/ - SentinelOne: Ransomware Guide",
-        "https://www.microsoft.com/en-us/security/blog/2024/01/25/state-of-ransomware-attacks/ - Microsoft: State of Ransomware",
-        "https://www.cisa.gov/ransomware-response-checklist - CISA: Ransomware Response Checklist",
-        "https://www.proofpoint.com/us/threat-reference/ransomware - Proofpoint: Ransomware Threat Reference"
+        "https://www.mdpi.com/2071-1050/14/1/8 - MDPI Sustainability (2022) — Ransomware Detection, Avoidance, and Mitigation [DOI: 10.3390/su14010008]",
+        "https://www.mdpi.com/2504-2289/7/3/143 - MDPI Big Data (2023) — Ransomware Detection Using Machine Learning [DOI: 10.3390/bdcc7030143]",
+        "https://www.cisa.gov/stopransomware - CISA — StopRansomware.gov (#StopRansomware Guide)"
       ]
     },
     "2": {
       "subtitle": "Zero-Day Exploit",
+      "categories": ["Sistem & Infrastruktur"],
       "quote": "Zero-day exploit adalah senjata siber paling mematikan - ketika tidak ada pertahanan, yang ada hanya kerentanan.",
       "definition": "Zero-day exploit adalah kode serangan yang mengeksploitasi kerentanan keamanan dalam software atau hardware yang belum diketahui oleh vendor atau publik. Istilah 'zero-day' berasal dari fakta bahwa vendor memiliki nol hari untuk memperbaiki kerentanan tersebut sebelum dieksploitasi - karena kerentanan itu sudah aktif digunakan oleh penyerang sebelum ada patch yang tersedia. Zero-day exploits adalah salah satu aset paling berharga dalam dunia cybersecurity, dengan nilai jual yang bisa mencapai ratusan ribu hingga jutaan dolar di pasar gelap. Karena tidak ada patch atau signature yang bisa mendeteksinya, zero-day exploits memberikan keunggulan taktis yang sangat signifikan kepada penyerang.",
       "sections": [
@@ -184,22 +169,14 @@
         "lesson": "Zero-day exploits di tangan yang salah bisa mengancam demokrasi, kebebasan pers, dan HAM. Teknologi surveillance canggih memerlukan regulasi dan oversight yang ketat. Pengguna high-risk seperti jurnalis, aktivis, dan pejabat pemerintah harus menggunakan perangkat dengan keamanan tertinggi dan mengupdate sistem secara rutin. Apple dan Google terus berlomba untuk menemukan dan mempatch zero-day di sistem operasi mereka. Untuk individu, mengaktifkan Lockdown Mode di iOS atau menggunakan GrapheneOS di Android bisa memberikan perlindungan tambahan. Tidak ada sistem yang 100% aman dari zero-day, tapi multiple layers of defense bisa mengurangi risiko secara signifikan."
       },
       "references": [
-        "https://zerodium.com/program.html - Zerodium: Zero-Day Acquisition Program",
-        "https://www.google.com/about/appsecurity/ - Google: Application Security & Bug Bounty",
-        "https://bughunters.google.com/ - Google: Bug Hunters Platform",
-        "https://www.microsoft.com/en-us/msrc/bounty - Microsoft: Bug Bounty Program",
-        "https://security.apple.com/bounty/ - Apple: Security Bounty Program",
-        "https://www.forbiddenstories.org/pegasus-project/ - Forbidden Stories: Pegasus Project Investigation",
-        "https://www.amnesty.org/en/latest/research/2021/07/forensic-methodology-report-pegasus-nso/ - Amnesty: Pegasus Forensic Analysis",
-        "https://citizenlab.ca/2021/07/hide-and-seek-nso-group-pegasus-spyware/ - Citizen Lab: Pegasus Research",
-        "https://www.cisa.gov/news-events/cybersecurity-advisories/aa22-110a - CISA: Zero-Day Exploit Advisory",
-        "https://www.nsa.gov/cybersecurity/ - NSA: Cybersecurity Directorate",
-        "https://www.crowdstrike.com/cybersecurity-101/zero-day-exploits/ - CrowdStrike: Zero-Day Exploits",
-        "https://www.kaspersky.com/resource-center/definitions/zero-day-exploit - Kaspersky: Zero-Day Exploit Definition"
+        "https://www.cisa.gov/known-exploited-vulnerabilities-catalog - CISA KEV — Known Exploited Vulnerabilities Catalog (Database resmi zero-day yang dieksploitasi)",
+        "https://nvd.nist.gov/ - NIST NVD — National Vulnerability Database (Standar resmi CVE)",
+        "https://attack.mitre.org/techniques/T1203/ - MITRE ATT&CK — T1203: Exploitation for Client Execution (Zero-Day)"
       ]
     },
     "3": {
       "subtitle": "APT & Cyber Espionage",
+      "categories": ["Serangan Identitas", "Sistem & Infrastruktur"],
       "quote": "APT bukan serangan sekali pukul - ini adalah perang siber jangka panjang yang bisa berlangsung bertahun-tahun.",
       "definition": "Advanced Persistent Threat (APT) adalah serangan siber terorganisir yang dilakukan oleh kelompok dengan dukungan negara (state-sponsored) atau kelompok kriminal dengan sumber daya besar, yang bertujuan untuk mempertahankan kehadiran jangka panjang di jaringan target untuk tujuan spionase, pencurian intellectual property, atau sabotase. Berbeda dengan serangan kriminal biasa yang hit-and-run, APT beroperasi dengan patience dan persistence luar biasa - bisa bertahan di jaringan target selama bertahun-tahun tanpa terdeteksi, secara diam-diam mengumpulkan informasi sensitif dan menunggu momen strategis untuk bertindak. APT groups memiliki struktur organisasi seperti intelligence agencies - dengan tim reconnaissance, exploit developers, operators, analysts, dan management.",
       "sections": [
@@ -253,22 +230,14 @@
         "lesson": "Supply chain attacks terhadap trusted vendor bisa berdampak katastrofik pada ribuan organisasi. Software update mechanism adalah attack surface yang critical dan harus dilindungi dengan security measures tertinggi. Organizations tidak bisa hanya mengandalkan perimeter defense - Zero Trust dan defense in depth adalah keharusan. Threat hunting proaktif dan continuous monitoring sangat penting untuk mendeteksi APT yang sophisticated. Kolaborasi antara government, private sector, dan cybersecurity community sangat penting untuk merespon serangan APT skala besar. Software Bill of Materials (SBOM) dan third-party risk management harus menjadi prioritas di setiap organisasi."
       },
       "references": [
-        "https://attack.mitre.org/groups/G0016/ - MITRE ATT&CK: APT29 (Cozy Bear)",
-        "https://attack.mitre.org/groups/G0032/ - MITRE ATT&CK: Lazarus Group",
-        "https://attack.mitre.org/groups/G0096/ - MITRE ATT&CK: APT41 (Double Dragon)",
-        "https://attack.mitre.org/groups/G0007/ - MITRE ATT&CK: APT28 (Fancy Bear)",
-        "https://attack.mitre.org/groups/G0045/ - MITRE ATT&CK: menuPass (APT10)",
-        "https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises.html - FireEye: SolarWinds Attack",
-        "https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-008a - CISA: APT29 Advisory",
-        "https://www.microsoft.com/en-us/security/blog/2020/12/18/analyzing-solorigate-the-compromised-dll-file-that-started-a-sophisticated-cyberattack/ - Microsoft: Solorigate Analysis",
-        "https://www.crowdstrike.com/resources/reports/2024-global-threat-report/ - CrowdStrike: Global Threat Report",
-        "https://www.mandiant.com/resources/blog/apt29-continues-targeting - Mandiant: APT29 Research",
-        "https://www.recordedfuture.com/threat-intelligence/apt-groups - Recorded Future: APT Groups Intelligence",
-        "https://www.darkreading.com/threat-intelligence/apt-groups-tracking - Dark Reading: APT Tracking"
+        "https://attack.mitre.org/groups/ - MITRE ATT&CK — APT Groups Database (Daftar Lengkap Kelompok APT Dunia)",
+        "https://www.cisa.gov/topics/cyber-threats-and-advisories - CISA — Advanced Persistent Threat (APT) Advisory",
+        "https://csrc.nist.gov/pubs/sp/800/39/final - NIST SP 800-39 — APT Risk Management Framework"
       ]
     },
     "4": {
       "subtitle": "Supply Chain Attack",
+      "categories": ["Sistem & Infrastruktur", "Serangan Identitas"],
       "quote": "Ketika vendor terpercaya Anda dikompromikan, Anda tidak lagi punya pertahanan yang aman.",
       "definition": "Supply Chain Attack adalah teknik serangan di mana penyerang menargetkan vendor, supplier, atau third-party service provider dari organisasi target untuk mendapatkan akses tidak langsung ke jaringan target. Daripada menyerang target secara langsung (yang mungkin memiliki pertahanan kuat), penyerang menyerang titik lemah dalam supply chain - vendor dengan keamanan yang lebih lemah tapi memiliki trusted access ke jaringan banyak pelanggan. Satu kompromi terhadap vendor bisa memberikan akses ke ratusan atau ribuan pelanggan sekaligus, membuat serangan jenis ini sangat efisien dan berdampak luas. Supply chain attacks adalah salah satu bentuk serangan paling berbahaya karena memanfaatkan trust relationship yang sudah established antara vendor dan pelanggan.",
       "sections": [
@@ -320,22 +289,14 @@
         "lesson": "Supply chain attacks bisa berdampak catastrophic dan global meskipun target awal mungkin localized. Organizations harus carefully evaluate third-party software yang mereka gunakan, terutama yang mandatory untuk regulatory compliance. Network segmentation bisa limit spread malware dalam organisasi. Offline dan immutable backups adalah safety net terakhir ketika semua defenses gagal. Cyber insurance policies harus clearly cover state-sponsored attacks dan supply chain incidents. International cooperation dan information sharing sangat penting untuk respond terhadap sophisticated supply chain attacks. Defense in depth bukan hanya nice-to-have, tapi essential untuk survive modern supply chain attacks."
       },
       "references": [
-        "https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-008a - CISA: SolarWinds Supply Chain Attack Advisory",
-        "https://www.cisa.gov/news-events/cybersecurity-advisories/aa21-131a - CISA: Supply Chain Attack Advisory",
-        "https://www.fireeye.com/blog/threat-research/2020/12/evasive-attacker-leverages-solarwinds-supply-chain-compromises.html - FireEye: SolarWinds Analysis",
-        "https://www.microsoft.com/en-us/security/blog/2020/12/18/analyzing-solorigate-the-compromised-dll-file-that-started-a-sophisticated-cyberattack/ - Microsoft: SolarWinds Analysis",
-        "https://www.cisa.gov/software-bill-materials - CISA: Software Bill of Materials (SBOM)",
-        "https://www.nist.gov/itl/executive-order-14028-improving-nations-cybersecurity - NIST: Executive Order 14028",
-        "https://www.cisa.gov/supply-chain-risk-management - CISA: Supply Chain Risk Management",
-        "https://www.mandiant.com/resources/blog/supply-chain-attacks - Mandiant: Supply Chain Attacks",
-        "https://www.crowdstrike.com/cybersecurity-101/supply-chain-attacks/ - CrowdStrike: Supply Chain Attacks",
-        "https://www.recordedfuture.com/supply-chain-security - Recorded Future: Supply Chain Security",
-        "https://www.securityscorecard.com/ - SecurityScorecard: Third-Party Risk Management",
-        "https://www.bitsight.com/ - BitSight: Security Ratings Platform"
+        "https://csrc.nist.gov/pubs/sp/800/161/r1/final - NIST SP 800-161 Rev.1 — Cybersecurity Supply Chain Risk Management Practices",
+        "https://attack.mitre.org/techniques/T1195/ - MITRE ATT&CK — T1195: Supply Chain Compromise (Full Entry)",
+        "https://www.cisa.gov/topics/cyber-threats-and-advisories - CISA — Software Supply Chain Security Guide"
       ]
     },
     "5": {
       "subtitle": "DDoS Infrastruktur Kritis",
+      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "DDoS terhadap infrastruktur kritis bukan sekadar gangguan layanan - ini bisa menjadi ancaman bagi keselamatan nyawa.",
       "definition": "DDoS (Distributed Denial of Service) Infrastruktur Kritis adalah serangan yang menggunakan botnet untuk membanjiri layanan-layanan vital masyarakat dengan traffic yang sangat besar sehingga layanan tersebut tidak bisa diakses oleh pengguna legitimate. Berbeda dengan DDoS terhadap website komersial biasa yang dampaknya hanya kerugian finansial, DDoS terhadap infrastruktur kritis seperti rumah sakit, sistem kelistrikan, perbankan nasional, transportasi, atau layanan darurat bisa berdampak pada keselamatan nyawa dan stabilitas sosial. Serangan jenis ini semakin sering terjadi seiring dengan meningkatnya ketergantungan masyarakat pada infrastruktur digital dan ketersediaan botnet yang sangat besar dan mudah diakses melalui services-as-a-service di dark web.",
       "sections": [
@@ -387,18 +348,8 @@
         "lesson": "DDoS terhadap healthcare dan critical infrastructure lainnya adalah ancaman serius terhadap public safety, bukan hanya technical inconvenience. Healthcare organizations harus prioritize DDoS resilience dengan invest dalam mitigation services, network segmentation, dan incident response planning. International community perlu develop stronger norms dan consequences untuk attacks terhadap healthcare, mungkin melalui treaties atau conventions yang explicitly protect medical facilities dari cyber attacks (similar dengan Geneva Conventions untuk physical attacks). Public awareness dan support untuk healthcare cybersecurity sangat penting - ini adalah matter of life and death, bukan hanya IT issue. Organizations harus consider DDoS attacks sebagai part of broader risk management dan business continuity planning, terutama untuk services yang langsung berdampak pada human welfare."
       },
       "references": [
-        "https://www.cisa.gov/topics/cybersecurity-best-practices/ddos-attack-mitigation - CISA: DDoS Attack Mitigation",
-        "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/ - Cloudflare: What is a DDoS Attack?",
-        "https://www.akamai.com/solutions/ddos-protection - Akamai: DDoS Protection Solutions",
-        "https://aws.amazon.com/shield/ - AWS Shield: DDoS Protection",
-        "https://azure.microsoft.com/en-us/products/ddos-protection/ - Azure DDoS Protection",
-        "https://www.nist.gov/cyberframework - NIST Cybersecurity Framework",
-        "https://www.cisa.gov/critical-infrastructure-sectors - CISA: Critical Infrastructure Sectors",
-        "https://www.nerc.com/pa/Stand/Pages/CIP-standards.aspx - NERC: CIP Standards for Energy Sector",
-        "https://www.first.org/ - FIRST: Forum of Incident Response and Security Teams",
-        "https://www.cisa.gov/news-events/cybersecurity-advisories/aa22-110a - CISA: Healthcare DDoS Advisory",
-        "https://www.who.int/news/item/23-03-2020-cybersecurity-advisory-covid-19 - WHO: Cybersecurity Advisory COVID-19",
-        "https://www.hhs.gov/cybersecurity/index.html - HHS: Healthcare Cybersecurity"
+        "https://www.cisa.gov/topics/cyber-threats-and-advisories/distributed-denial-service - CISA — Critical Infrastructure DDoS Defense Guide",
+        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange"
       ]
     }
   }

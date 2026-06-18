@@ -1,6 +1,8 @@
 {
   "slug": "social-engineering",
   "title": "Social Engineering",
+  "categories": ["Serangan Sosial"],
+  "level": "Dasar",
   "navigation": [
     { "id": 0, "label": "APA ITU SOCIAL ENGINEERING?", "icon": "ShieldAlert" },
     { "id": 1, "label": "IMPERSONATION", "icon": "UserRound" },
@@ -50,12 +52,9 @@
         "lesson": "Kasus sniffing adalah studi kasus sempurna tentang mengapa social engineering tetap efektif meskipun modusnya sudah diketahui publik. Pelajaran kritis: 1) Pengetahuan tentang modus penipuan saja TIDAK CUKUP untuk melindungi diri — manipulasi psikologis yang dilakukan dengan suara meyakinkan dan skenario yang terencana dapat mengalahkan logika. 2) BSSN, OJK, dan kepolisian telah menegaskan berkali-kali: TIDAK ADA institusi resmi (bank, polisi, jaksa) yang akan meminta OTP, PIN, password, atau meminta instalasi APK melalui telepon. 3) Jika Anda menerima panggilan seperti itu, MATIKAN telepon segera dan hubungi bank melalui nomor resmi yang tertera di belakang kartu ATM atau di website resmi. 4) JANGAN PERNAH memberikan izin Accessibility Service kepada aplikasi apa pun yang tidak Anda instal dari Google Play Store resmi — izin ini adalah 'kunci master' yang memberikan kendali penuh atas perangkat Anda. 5) Edukasi keluarga, terutama orang tua dan lansia, adalah tanggung jawab kita bersama karena mereka adalah kelompok yang paling rentan terhadap penipuan ini."
       },
       "references": [
-        "https://www.wiley.com/en-us/Social+Engineering%3A+The+Science+of+Human+Hacking%2C+2nd+Edition-p-9781119433644 - Social Engineering: The Science of Human Hacking (Hadnagy, 2018)",
-        "https://www.harpercollins.com/products/influence-new-and-expanded - Influence: The Psychology of Persuasion (Cialdini, 2021)",
-        "https://www.bssn.go.id/ - BSSN Laporan Insiden Keamanan Siber Indonesia",
-        "https://www.sans.org/white-papers/33343/ - SANS Social Engineering Techniques",
-        "https://attack.mitre.org/techniques/T1598/ - MITRE ATT&CK: Social Engineering",
-        "https://www.ojk.go.id/ - OJK Laporan Perlindungan Konsumen"
+        "https://ieeexplore.ieee.org/document/9311938 - IEEE Access (2021) — Wang et al., Social Engineering in Cybersecurity: Effect Mechanisms, Human Vulnerabilities and Attack Methods",
+        "https://ieeexplore.ieee.org/document/9087851 - IEEE Access (2020) — Wang et al., Defining Social Engineering in Cybersecurity",
+        "https://cybersecurity.springeropen.com/articles/10.1186/s42400-021-00094-6 - Springer Cybersecurity (2021) — Wang et al., Social Engineering in Cybersecurity: A Domain Ontology and Knowledge Graph"
       ]
     },
     "1": {
@@ -94,12 +93,8 @@
         "lesson": "Kasus Arup adalah peringatan keras bahwa bahkan karyawan perusahaan multinasional yang terlatih pun dapat menjadi korban deepfake yang canggih. Pelajaran kritis: 1) JANGAN PERNAH mengandalkan video call atau telepon sebagai satu-satunya dasar untuk transaksi finansial besar, terlepas dari seberapa 'asli' tampilannya. 2) Implementasi Out-of-Band Verification untuk semua transaksi sensitif — verifikasi melalui saluran yang berbeda dari saluran yang digunakan untuk permintaan. 3) Organisasi harus memiliki protokol multi-otorisasi untuk transaksi di atas nominal tertentu. 4) Latih karyawan untuk mengenali tanda-tanda deepfake dan untuk berani 'berhenti sejenak' sebelum mengambil keputusan besar. 5) Pertimbangkan implementasi sistem 'code word' rahasia yang hanya diketahui oleh pihak-pihak yang berwenang dan harus disebutkan dalam setiap permintaan transaksi sensitif."
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1566/001/ - MITRE ATT&CK: Spear Phishing (Impersonation)",
-        "https://www.fbi.gov/news/stories/2024-deepfake-fraud - FBI: Deepfake Fraud Cases",
-        "https://www.microsoft.com/en-us/security/blog/2024/03/25/deepfake-detection/ - Microsoft Deepfake Detection",
-        "https://www.csoonline.com/article/deepfake-corporate-fraud/ - CSO: Deepfake in Corporate Fraud",
-        "https://www.sensity.ai/ - Sensity AI Deepfake Detection Platform",
-        "https://www.ic3.gov/Media/PDF/AnnualReport/ - FBI IC3 Annual Report (BEC Statistics)"
+        "https://ieeexplore.ieee.org/document/9311938 - IEEE Access (2021) — Social Engineering in Cybersecurity: Effect Mechanisms (Impersonation section)",
+        "https://ieeexplore.ieee.org/document/9745822 - IEEE Access (2022) — Social Engineering Attacks Prevention: A Systematic Literature Review"
       ]
     },
     "2": {
@@ -138,12 +133,8 @@
         "lesson": "Kasus ini menunjukkan betapa efektifnya USB drop attack bahkan terhadap karyawan perusahaan teknologi yang seharusnya memahami risiko keamanan. Pelajaran kritis: 1) JANGAN PERNAH mencolokkan USB drive yang tidak Anda kenal ke komputer Anda, terlepas dari seberapa menarik labelnya. 2) Jika Anda menemukan USB drive, serahkan ke security atau IT department — jangan mencoba 'melihat isinya'. 3) Untuk organisasi: implementasi USB sanitizer, network segmentation, dan NDR untuk deteksi dini. 4) Security Awareness Training yang mencakup simulasi USB drop test dapat secara signifikan meningkatkan kewaspadaan karyawan. 5) Kebijakan 'no USB policy' atau penggunaan USB yang dikelola secara terpusat (dengan enkripsi dan scanning) adalah praktik terbaik untuk lingkungan dengan data sensitif."
       },
       "references": [
-        "https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/krombholz - USB Drop Attack Research (University of Illinois)",
-        "https://www.sans.org/white-papers/36571/ - SANS: USB Security Best Practices",
-        "https://attack.mitre.org/techniques/T1091/ - MITRE ATT&CK: Replication Through Removable Media",
-        "https://www.cisa.gov/news-events/alerts/2020/09/01/usb-security-guidelines - CISA USB Security Guidelines",
-        "https://www.kaspersky.com/blog/usb-security/ - Kaspersky: USB Drive Security",
-        "https://owasp.org/www-community/attacks/Baiting - OWASP: Baiting Attack"
+        "https://ieeexplore.ieee.org/document/9311938 - IEEE Access (2021) — Social Engineering in Cybersecurity: Effect Mechanisms (Baiting section)",
+        "https://cybersecurity.springeropen.com/articles/10.1186/s42400-021-00094-6 - Springer Cybersecurity (2021) — Social Engineering in Cybersecurity: A Domain Ontology"
       ]
     },
     "3": {
@@ -182,12 +173,8 @@
         "lesson": "Kasus ini adalah contoh sempurna bagaimana scareware yang dikombinasikan dengan personalisasi data (dari kebocoran data) dapat sangat efektif. Pelajaran kritis: 1) JANGAN PERNAH mengambil keputusan berdasarkan rasa takut atau urgensi yang diciptakan oleh pesan yang tidak diminta. 2) Bank TIDAK PERNAH memblokir akun secara tiba-tiba tanpa pemberitahuan resmi melalui surat atau email terverifikasi, dan TIDAK PERNAH meminta verifikasi melalui APK. 3) Jika Anda menerima pesan seperti itu, JANGAN klik tautan. Buka aplikasi banking resmi atau website resmi bank (buka browser baru dan ketik URL-nya manual) untuk memeriksa status akun Anda. 4) Laporkan pesan penipuan ke bank dan ke Bareskrim Polri melalui situs patrolisiber.id. 5) Aktifkan notifikasi transaksi real-time dari bank Anda sehingga Anda dapat segera tahu jika ada aktivitas tidak sah."
       },
       "references": [
-        "https://www.fbi.gov/news/stories/tech-support-scams - FBI: Tech Support Scams",
-        "https://www.microsoft.com/en-us/wsi/avoid-tech-support-scams - Microsoft: Avoid Tech Support Scams",
-        "https://www.kaspersky.com/resource-center/definitions/scareware - Kaspersky: Scareware Definition",
-        "https://www.ftc.gov/consumer-advice/topics/tech-scams - FTC: Tech Scams",
-        "https://attack.mitre.org/techniques/T1566/002/ - MITRE ATT&CK: Spear Phishing via Malicious Links",
-        "https://www.cisa.gov/news-events/alerts/2023/05/15/mobile-malware-awareness - CISA: Mobile Malware Awareness"
+        "https://ieeexplore.ieee.org/document/9745822 - IEEE Access (2022) — Social Engineering Attacks Prevention: A Systematic Literature Review",
+        "https://ieeexplore.ieee.org/document/9311938 - IEEE Access (2021) — Social Engineering in Cybersecurity: Effect Mechanisms"
       ]
     },
     "4": {
@@ -226,12 +213,8 @@
         "lesson": "Kasus Binomo dan Net89 adalah pelajaran mahal tentang bahaya investasi bodong dan efektivitas pretexting melalui influencer. Pelajaran kritis: 1) Binary option adalah bentuk perjudian, BUKAN investasi, dan telah dinyatakan ilegal oleh Bappebti (Badan Pengawas Perdagangan Berjangka Komoditi) di Indonesia. 2) JANGAN PERNAH tergoda oleh gaya hidup mewah yang dipamerkan di media sosial — semua itu dapat dipalsukan atau dibiayai dengan uang korban. 3) Selalu verifikasi legalitas investasi melalui OJK (untuk sektor keuangan) atau Bappebti (untuk trading berjangka). 4) Jika suatu investasi menjanjikan return yang terlalu tinggi dengan risiko rendah, itu PASTI penipuan. 5) Edukasi finansial adalah pertahanan terbaik — pelajari dasar-dasar investasi legit sebelum mempertaruhkan uang Anda."
       },
       "references": [
-        "https://www.fbi.gov/news/stories/romance-scams-on-the-rise - FBI: Romance Scams",
-        "https://www.ic3.gov/Media/PDF/AnnualReport/ - FBI IC3: Romance Scam Statistics",
-        "https://www.ojk.go.id/ - OJK: Investasi Bodong & Perlindungan Konsumen",
-        "https://www.bappebti.go.id/ - Bappebti: Binary Option Ilegal",
-        "https://attack.mitre.org/techniques/T1566/003/ - MITRE ATT&CK: Spear Phishing via Service",
-        "https://www.ftc.gov/consumer-advice/topics/fraud-scams/romance-scams - FTC: Romance Scams Guide"
+        "https://ieeexplore.ieee.org/document/9311938 - IEEE Access (2021) — Social Engineering in Cybersecurity: Effect Mechanisms (Pretexting section)",
+        "https://ieeexplore.ieee.org/document/9745822 - IEEE Access (2022) — Social Engineering Attacks Prevention: A Systematic Literature Review"
       ]
     },
     "5": {
@@ -270,12 +253,8 @@
         "lesson": "Kasus ini menyoroti betapa rentannya dokumen fisik yang dibuang tanpa penghancuran yang benar, bahkan di institusi yang seharusnya memiliki standar keamanan tinggi. Pelajaran kritis: 1) Untuk organisasi: implementasikan Clean Desk Policy dan wajibkan penggunaan cross-cut shredder untuk semua dokumen sensitif. 2) Lakukan audit berkala terhadap disposal dokumen untuk memastikan kepatuhan. 3) Untuk disposal aset IT, gunakan layanan data destruction profesional atau tools wiping yang memenuhi standar militer. 4) Latih semua staf (termasuk cleaning service dan pihak ketiga) tentang pentingnya perlindungan data. 5) Untuk individu: hancurkan semua dokumen dengan informasi pribadi sebelum dibuang, jangan pernah menulis password di tempat yang mudah terlihat, dan pertimbangkan untuk menggunakan password manager alih-alih menulis password di kertas."
       },
       "references": [
-        "https://www.sans.org/white-papers/33343/ - SANS: Physical Security & Social Engineering",
-        "https://www.cisa.gov/news-events/alerts/2020/08/11/physical-security-best-practices - CISA: Physical Security",
-        "https://attack.mitre.org/techniques/T1593/ - MITRE ATT&CK: Gather Victim Host Information",
-        "https://www.nist.gov/publications/guide-developing-security-plans-federal-information-systems - NIST SP 800-18: Security Plans",
-        "https://www.kaspersky.com/resource-center/definitions/shoulder-surfing - Kaspersky: Shoulder Surfing",
-        "https://www.csoonline.com/article/dumpster-diving-security/ - CSO: Dumpster Diving & Security"
+        "https://ieeexplore.ieee.org/document/9311938 - IEEE Access (2021) — Social Engineering in Cybersecurity: Effect Mechanisms (Physical attacks)",
+        "https://cybersecurity.springeropen.com/articles/10.1186/s42400-021-00094-6 - Springer Cybersecurity (2021) — Social Engineering in Cybersecurity: A Domain Ontology"
       ]
     },
     "6": {
@@ -314,12 +293,8 @@
         "lesson": "Kasus ini menunjukkan betapa mudahnya penyerang yang terlatih dapat menyusup ke gedung perkantoran modern dengan kombinasi teknik tailgating/piggybacking dan impersonation, bahkan di kawasan premium seperti SCBD. Pelajaran kritis: 1) Keamanan fisik adalah bagian integral dari keamanan siber — akses fisik dapat memberikan akses digital. 2) Latih karyawan untuk memiliki 'izin sosial' untuk menantang orang yang tidak mereka kenal di area terlarang, terlepas dari penampilan atau kepercayaan diri orang tersebut. 3) Implementasikan mantrap atau turnstile dengan sensor anti-tailgating untuk pintu akses kritis. 4) Terapkan escort policy untuk semua pengunjung dan pihak ketiga — mereka harus selalu didampingi oleh karyawan resmi. 5) Lakukan physical penetration test berkala oleh ethical hacker untuk mengidentifikasi kelemahan sebelum dieksploitasi oleh penyerang sungguhan. 6) Jangan pernah meninggalkan workstation dalam keadaan tidak dikunci, bahkan untuk 'sebentar' — beberapa menit sudah cukup bagi penyerang untuk menginstal malware atau mencuri data."
       },
       "references": [
-        "https://www.sans.org/white-papers/33343/ - SANS: Physical Penetration Testing",
-        "https://www.cisa.gov/news-events/alerts/2020/08/11/physical-security-best-practices - CISA: Physical Security",
-        "https://attack.mitre.org/techniques/T1591/ - MITRE ATT&CK: Gather Victim Org Information",
-        "https://www.nist.gov/publications/physical-security-review - NIST: Physical Security Guide",
-        "https://www.csoonline.com/article/physical-penetration-testing/ - CSO: Physical Penetration Testing",
-        "https://www.securitymagazine.com/articles/physical-access-control - Security Magazine: Access Control"
+        "https://ieeexplore.ieee.org/document/9311938 - IEEE Access (2021) — Social Engineering in Cybersecurity: Effect Mechanisms (Tailgating section)",
+        "https://ieeexplore.ieee.org/document/9745822 - IEEE Access (2022) — Social Engineering Attacks Prevention: A Systematic Literature Review"
       ]
     }
   }
