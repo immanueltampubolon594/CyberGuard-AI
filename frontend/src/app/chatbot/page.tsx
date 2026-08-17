@@ -2,7 +2,7 @@
 
   import Navbar from "@/components/Navbar";
   import ReactMarkdown from "react-markdown";
-  import { useState, useEffect, useRef, useCallback } from "react";
+  import { useState, useEffect, useRef, useCallback, Suspense } from "react";
   import { useSearchParams, useRouter } from "next/navigation";
   import { 
     Plus, MessageSquare, Send, Bot, Menu, X, 
@@ -29,9 +29,17 @@
   const STORAGE_KEY = "cyberguard_history";
   const STATS_KEY   = "cyberguard_topic_stats";
 
-  export default function ChatbotPage() {
-    const router       = useRouter();
-    const searchParams = useSearchParams();
+export default function ChatbotPage() {
+  return (
+    <Suspense fallback={<div className="h-screen flex items-center justify-center bg-[#020617] text-white">Memuat...</div>}>
+      <ChatbotContent />
+    </Suspense>
+  );
+}
+
+function ChatbotContent() {
+  const router       = useRouter();
+  const searchParams = useSearchParams();
 
     const [sessions,         setSessions]         = useState<ChatSession[]>([]);
     const [activeSessionId,  setActiveSessionId]  = useState<string>("");
@@ -78,7 +86,7 @@
   const user = JSON.parse(saved);
 
   for (const session of data) {
-    await fetch("http://127.0.0.1:8000/chat/save", {
+  await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -238,7 +246,7 @@
         content: m.text,
       }));
 
-      const res  = await fetch("http://127.0.0.1:8000/chat", {
+   const res  = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat`, {
         method:  "POST",
         headers: { "Content-Type": "application/json" },
         body:    JSON.stringify({ message: messageText, chat_history: history }),
