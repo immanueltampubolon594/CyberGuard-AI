@@ -1,22 +1,17 @@
-# ══════════════════════════════════════════════════════════════════════
-#  Alur utama LAYER 0–7, semua logika detail ada di modul terpisah
-# ══════════════════════════════════════════════════════════════════════
-
 import os
+import logging
 
-# Import embedding model
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("hpack").setLevel(logging.WARNING)
+logging.getLogger("langfuse").setLevel(logging.WARNING)
+
 from langchain_cohere import CohereEmbeddings
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.messages import HumanMessage, AIMessage
+from langfuse import Langfuse
 
-# Import Qwen LLM
-from langchain_openai import ChatOpenAI
-
-# Import koneksi Supabase
 from database.supabase_client import get_supabase
-
-# Import threat analyzer
 from .threat_analyzer import ThreatAnalyzer
-
-# Import constants
 from .constants import (
     GREETING_TRIGGERS,
     FORBIDDEN_TOPICS,
@@ -24,8 +19,6 @@ from .constants import (
     OUT_OF_SCOPE_RESPONSE,
     NOT_FOUND_RESPONSE
 )
-
-# Import modular service
 from .query_rewriter import rewrite_query
 from .retriever import retrieve_chunks, log_chunks
 from .context_formatter import format_context
@@ -34,213 +27,163 @@ from .generator import generate_answer, generate_fallback
 
 
 class CyberGuardRAG:
-
-    # Setup seluruh service utama
     def __init__(self):
-
-        # Setup embedding model
-        self.embeddings = CohereEmbeddings(
-            model="embed-multilingual-v3.0"
-        )
-
-        # Setup Supabase
+        self.embeddings = CohereEmbeddings(model="embed-multilingual-v3.0")
         self.supabase = get_supabase()
-
-        # Setup threat analyzer
         self.analyzer = ThreatAnalyzer()
 
-        # Setup Qwen LLM
-        self.llm = ChatOpenAI(
-            model="Qwen/Qwen3-14B:nscale",
-            openai_api_base="https://router.huggingface.co/v1",
-            openai_api_key=os.getenv("HUGGINGFACE_API_KEY"),
-            temperature=0.3,
-            request_timeout=120,
+        self.llm = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash",
+            google_api_key=os.getenv("GOOGLE_API_KEY"),
+            temperature=0,
         )
 
-    # Cek apakah input adalah greeting
-    def _is_greeting(self, query: str) -> bool:
-
-        q = query.lower().strip()
-
-        return q in GREETING_TRIGGERS or any(
-            q.startswith(t)
-            for t in GREETING_TRIGGERS
+        self.langfuse = Langfuse(
+            public_key=os.getenv("LANGFUSE_PUBLIC_KEY"),
+            secret_key=os.getenv("LANGFUSE_SECRET_KEY"),
+            host=os.getenv("LANGFUSE_HOST"),
         )
 
-    # Cek forbidden topic
+        print("LANGFUSE HOST:", os.getenv("LANGFUSE_HOST"))
+        print("LANGFUSE KEY:", os.getenv("LANGFUSE_PUBLIC_KEY"))
+
+    def _is_greeting(self, text: str) -> bool:
+        text_lower = text.lower().strip()
+        return any(text_lower.startswith(trigger) for trigger in GREETING_TRIGGERS)
+
     def _is_forbidden(self, text: str) -> bool:
+        text_lower = text.lower()
+        return any(topic in text_lower for topic in FORBIDDEN_TOPICS)
 
-        words = set(text.lower().split())
-
-        return any(
-            forbidden in words
-            for forbidden in FORBIDDEN_TOPICS
-        )
-
-    # Format hasil threat analysis
     def _format_tech_flags(self, analysis: dict) -> str:
+        if not analysis:
+            return "Tidak ada indikator ancaman teknis."
+        reasons = analysis.get("reasons", [])
+        score = analysis.get("score", 0)
+        if not reasons:
+            return f"Skor risiko: {score}/100. Status: Aman."
+        flags = "\n".join(f"- {r}" for r in reasons)
+        return f"HASIL ANALISIS TEKNIS (SKOR: {score}/100):\n{flags}"
 
-        if analysis.get("reasons"):
-
-            flags = "\n".join(
-                f"- {r}"
-                for r in analysis["reasons"]
-            )
-
-            return (
-                f"TEMUAN TEKNIS TERDETEKSI:\n{flags}"
-            )
-
-        return (
-            "Tidak ada indikasi teknis "
-            "berbahaya pada input ini."
-        )
-
-    # Format chat history menjadi string
-    @staticmethod
-    def _format_history(chat_history: list) -> str:
-
+    def _format_history(self, chat_history: list) -> str:
         if not chat_history:
-            return "Tidak ada riwayat percakapan."
-
+            return ""
         lines = []
-
-        # Ambil 6 history terakhir
-        for msg in chat_history[-6:]:
-
-            role = (
-                "User"
-                if msg["role"] == "user"
-                else "CyberGuard"
-            )
-
-            lines.append(
-                f"{role}: {msg['content']}"
-            )
-
+        for message in chat_history[-5:]:
+            if isinstance(message, dict):
+                role = "User" if message.get("role") == "user" else "CyberGuard"
+                lines.append(f"{role}: {message.get('content', '')}")
         return "\n".join(lines)
 
-    # Main pipeline chatbot RAG
-    async def get_response(
-        self,
-        query: str,
-        chat_history: list = None
-    ) -> dict:
-
-        # Bersihkan query user
-        user_query = query.strip()
-
-        # Format history chat
-        history_text = self._format_history(
-            chat_history
-        )
-
-        # Validasi greeting
-        if self._is_greeting(user_query):
-
-            return {
-                "reply": GREETING_RESPONSE,
-                "risk": 0,
-                "findings": []
-            }
-
-        # Validasi forbidden topic
-        if self._is_forbidden(user_query):
-
-            return {
-                "reply": OUT_OF_SCOPE_RESPONSE,
-                "risk": 0,
-                "findings": []
-            }
-
-        # Threat analysis URL / ancaman
-        analysis = await self.analyzer.analyze(
-            user_query
-        )
-
-        # Format hasil threat analysis
-        tech_flags = self._format_tech_flags(
-            analysis
-        )
-
-        # Rewrite query untuk retrieval
-        rewritten = rewrite_query(
-            self.llm,
-            user_query
-        )
-
-        print(
-            f"[REWRITE] "
-            f"{user_query} → {rewritten}"
-        )
-
-        # Retrieval chunk dari vector database
-        docs = retrieve_chunks(
-            self.embeddings,
-            self.supabase,
-            rewritten
-        )
-
-        # Fallback jika chunk kosong
+    def _extract_contexts(self, docs) -> list:
         if not docs:
+            return []
+        contexts = []
+        for doc in docs:
+            if isinstance(doc, dict):
+                contexts.append(doc.get("content", str(doc)))
+            else:
+                contexts.append(str(doc))
+        return contexts
 
-            has_history = (
-                history_text !=
-                "Tidak ada riwayat percakapan."
+    async def get_response(self, query: str, chat_history: list = None) -> dict:
+        user_query = query.strip()
+        history_text = self._format_history(chat_history)
+        docs = []
+
+        try:
+            trace = self.langfuse.trace(
+                name="cyberguard-chat",
+                input=user_query,
+                metadata={"history_length": len(chat_history or [])}
             )
+            print("TRACE ID:", trace.id)
+        except Exception as e:
+            print("LANGFUSE TRACE ERROR:", repr(e))
+            trace = None
 
-            reply = (
-                generate_fallback(
-                    self.llm,
-                    user_query,
-                    history_text
-                )
-
-                if has_history
-
-                else NOT_FOUND_RESPONSE
-            )
-
+        # 1. GATE 1: Input Filtering
+        if self._is_greeting(user_query):
+            if trace:
+                trace.update(output=GREETING_RESPONSE, metadata={"gate": "greeting"})
+                self.langfuse.flush()
             return {
-                "reply": reply,
-                "risk": analysis.get("score", 15),
-                "findings": analysis.get("reasons", [])
+                "reply": GREETING_RESPONSE, "risk": 0, "findings": [],
+                "trace_id": trace.id if trace else None,
+                "contexts": []
             }
 
-        # Debug retrieved chunk
+        if self._is_forbidden(user_query):
+            if trace:
+                trace.update(output=OUT_OF_SCOPE_RESPONSE, metadata={"gate": "forbidden_input"})
+                self.langfuse.flush()
+            return {
+                "reply": OUT_OF_SCOPE_RESPONSE, "risk": 0, "findings": [],
+                "trace_id": trace.id if trace else None,
+                "contexts": []
+            }
+
+        # 2. GATE 2: Threat Analysis
+        threat_span = trace.span(name="threat_analysis", input=user_query) if trace else None
+        analysis = await self.analyzer.analyze(user_query)
+        tech_flags = self._format_tech_flags(analysis)
+        if threat_span:
+            threat_span.end(output=analysis)
+
+        # 3. GATE 3: Query Optimization
+        rewrite_span = trace.span(name="query_rewrite", input=user_query) if trace else None
+        rewritten = rewrite_query(self.llm, user_query)
+        if rewrite_span:
+            rewrite_span.end(output=rewritten)
+
+        # 4. GATE 4: Retrieval
+        retrieval_span = trace.span(name="retrieval", input=rewritten) if trace else None
+        docs = retrieve_chunks(self.embeddings, self.supabase, rewritten)
         log_chunks(docs)
+        if retrieval_span:
+            retrieval_span.end(output={"num_docs": len(docs) if docs else 0, "docs": docs})
 
-        # Format context retrieval
+        # 5. GATE 5: Relevance Validation
+        if not docs or not is_relevant(docs, user_query):
+            if history_text and len(user_query.split()) < 10:
+                fallback_gen = trace.generation(
+                    name="fallback_generation",
+                    model="gemini-2.5-flash",
+                    input=user_query
+                ) if trace else None
+                reply = generate_fallback(self.llm, user_query, history_text)
+                if fallback_gen:
+                    fallback_gen.end(output=reply)
+            else:
+                if trace:
+                    trace.update(output=NOT_FOUND_RESPONSE, metadata={"gate": "not_found"})
+                    self.langfuse.flush()
+                return {
+                    "reply": NOT_FOUND_RESPONSE,
+                    "risk": analysis.get("score", 15),
+                    "findings": analysis.get("reasons", []),
+                    "trace_id": trace.id if trace else None,
+                    "contexts": self._extract_contexts(docs)
+                }
+
+            if self._is_forbidden(reply):
+                if trace:
+                    trace.update(output=NOT_FOUND_RESPONSE, metadata={"gate": "forbidden_fallback"})
+                    self.langfuse.flush()
+                return {
+                    "reply": NOT_FOUND_RESPONSE, "risk": 15, "findings": [],
+                    "trace_id": trace.id if trace else None,
+                    "contexts": self._extract_contexts(docs)
+                }
+
+        # 6. GATE 6: Structured Generation
         context_text = format_context(docs)
-
-        # Validasi relevansi chunk
-        if not is_relevant(docs, user_query):
-
-            has_history = (
-                history_text !=
-                "Tidak ada riwayat percakapan."
-            )
-
-            reply = (
-                generate_fallback(
-                    self.llm,
-                    user_query,
-                    history_text
-                )
-
-                if has_history
-
-                else NOT_FOUND_RESPONSE
-            )
-
-            return {
-                "reply": reply,
-                "risk": analysis.get("score", 15),
-                "findings": analysis.get("reasons", [])
-            }
-
-        # Generate jawaban menggunakan Qwen
+        generation = trace.generation(
+            name="main_generation",
+            model="gemini-2.5-flash",
+            input=user_query,
+            metadata={"context": context_text, "tech_flags": tech_flags}
+        ) if trace else None
         reply_text = generate_answer(
             self.llm,
             context_text,
@@ -248,19 +191,34 @@ class CyberGuardRAG:
             tech_flags,
             history_text
         )
+        if generation:
+            generation.end(output=reply_text)
 
-        # Safety filter final
-        if self._is_forbidden(reply_text):
-
+        # 7. GATE 7: Output Guardrail
+        if self._is_forbidden(reply_text) or "nasi" in reply_text.lower():
+            if trace:
+                trace.update(output=OUT_OF_SCOPE_RESPONSE, metadata={"gate": "output_blocked"})
+                self.langfuse.flush()
             return {
-                "reply": OUT_OF_SCOPE_RESPONSE,
-                "risk": 0,
-                "findings": []
+                "reply": OUT_OF_SCOPE_RESPONSE, "risk": 0, "findings": [],
+                "trace_id": trace.id if trace else None,
+                "contexts": self._extract_contexts(docs)
             }
 
-        # Return final response
+        if trace:
+            trace.update(
+                output=reply_text,
+                metadata={"risk": analysis.get("score", 15), "findings": analysis.get("reasons", [])}
+            )
+            try:
+                self.langfuse.flush()
+            except Exception as e:
+                print("LANGFUSE FLUSH ERROR:", repr(e))
+
         return {
             "reply": reply_text,
             "risk": analysis.get("score", 15),
-            "findings": analysis.get("reasons", [])
+            "findings": analysis.get("reasons", []),
+            "trace_id": trace.id if trace else None,
+            "contexts": self._extract_contexts(docs)
         }

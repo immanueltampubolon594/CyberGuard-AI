@@ -1,0 +1,122 @@
+[
+  {
+    "question": "Apa itu social engineering dalam dunia maya?",
+    "ground_truth": "Social engineering adalah teknik manipulasi psikologis untuk mendapatkan informasi atau akses tanpa peretasan teknis."
+  },
+  {
+    "question": "Apa itu phishing dan contohnya?",
+    "ground_truth": "Phishing adalah penipuan untuk mencuri data dengan menyamar sebagai entitas terpercaya, contohnya email palsu dari bank yang meminta PIN."
+  },
+  {
+    "question": "Apa ciri-ciri email phishing?",
+    "ground_truth": "Biasanya mencurigakan, mengandung link palsu, meminta informasi pribadi, alamat pengirim typo, dan pesan mendesak atau menakut-nakuti."
+  },
+  {
+    "question": "Apa yang dimaksud dengan two-factor authentication (2FA)?",
+    "ground_truth": "2FA adalah metode keamanan dengan dua lapisan verifikasi agar akun lebih aman, seperti password ditambah kode OTP."
+  },
+  {
+    "question": "Apa itu ransomware?",
+    "ground_truth": "Ransomware mengunci file pengguna dan meminta uang tebusan agar file bisa dibuka kembali."
+  },
+  {
+    "question": "Apa fungsi firewall dalam keamanan jaringan?",
+    "ground_truth": "Firewall menyaring lalu lintas jaringan dan memblokir akses yang mencurigakan."
+  },
+  {
+    "question": "Bagaimana cara kerja VPN dalam melindungi data?",
+    "ground_truth": "VPN menyembunyikan IP dan mengenkripsi koneksi internet agar data aman dari penyadapan."
+  },
+  {
+    "question": "Apa perbedaan malware dan spyware?",
+    "ground_truth": "Malware merusak sistem, sedangkan spyware mencuri data dengan diam-diam tanpa sepengetahuan pengguna."
+  },
+  {
+    "question": "Mengapa enkripsi itu penting?",
+    "ground_truth": "Enkripsi membuat data hanya dapat dibaca oleh pihak yang memiliki kunci dekripsi, sehingga melindungi kerahasiaan informasi."
+  },
+  {
+    "question": "Apa itu sniffing dalam jaringan?",
+    "ground_truth": "Sniffing adalah penyadapan data dalam jaringan yang dapat digunakan untuk mencuri informasi sensitif."
+  },
+  {
+    "question": "Apa itu data breach?",
+    "ground_truth": "Data breach adalah kebocoran data penting yang bisa dimanfaatkan untuk kejahatan siber seperti pencurian identitas."
+  },
+  {
+    "question": "Mengapa perlu update software secara berkala?",
+    "ground_truth": "Update biasanya memperbaiki celah keamanan dan membuat sistem lebih tahan terhadap serangan."
+  },
+  {
+    "question": "Apa itu digital footprint?",
+    "ground_truth": "Digital footprint adalah semua aktivitas online yang bisa dilacak dan berpotensi disalahgunakan jika tidak berhati-hati."
+  },
+  {
+    "question": "Apa itu botnet?",
+    "ground_truth": "Botnet adalah jaringan komputer yang terinfeksi malware dan dikendalikan dari jarak jauh oleh penyerang."
+  },
+  {
+    "question": "Apa bahaya menggunakan software bajakan?",
+    "ground_truth": "Software bajakan rawan mengandung malware dan tidak mendapat update keamanan sehingga rentan terhadap serangan."
+  },
+  {
+    "question": "Apa itu Business Email Compromise (BEC)?",
+    "ground_truth": "BEC adalah penipuan di mana peretas menyamar sebagai CEO atau vendor resmi melalui email palsu untuk meminta transfer dana mendesak."
+  },
+  {
+    "question": "Apa bahaya menggunakan Wi-Fi publik saat bekerja?",
+    "ground_truth": "Wi-Fi publik tidak terenkripsi memungkinkan penyerang melakukan man-in-the-middle attack dan menyadap data login atau dokumen sensitif."
+  },
+  {
+    "question": "Apa itu spear phishing dan bedanya dengan phishing biasa?",
+    "ground_truth": "Spear phishing menggunakan informasi personal korban yang dikumpulkan dari media sosial untuk membuat email palsu terasa sangat meyakinkan, berbeda dengan phishing massal yang acak."
+  },
+  {
+    "question": "Apa itu whaling dalam konteks serangan siber?",
+    "ground_truth": "Whaling adalah serangan phishing yang menargetkan eksekutif tingkat tinggi seperti CEO atau CFO dengan serangan yang sangat sophisticated dan bernilai tinggi."
+  },
+  {
+    "question": "Bagaimana AI digunakan dalam serangan phishing modern?",
+    "ground_truth": "AI digunakan untuk membuat email phishing dengan bahasa sempurna tanpa typo, personalisasi mendalam, deepfake voice, dan bypass filter spam."
+  },
+  {
+    "question": "Apa yang harus dilakukan jika tidak sengaja klik link phishing?",
+    "ground_truth": "Segera ganti password dari perangkat aman, aktifkan 2FA, scan antivirus, monitor akun selama 30 hari, dan laporkan ke penyedia layanan."
+  },
+  {
+    "question": "Apa itu modus penipuan mama minta pulsa?",
+    "ground_truth": "Modus ini terjadi saat penipu menghubungi korban mengaku sebagai anggota keluarga yang sedang dalam masalah dan meminta kiriman pulsa atau uang. Selalu verifikasi langsung via video call ke nomor asli."
+  },
+  {
+    "question": "Mengapa berbahaya sembarangan memberikan foto selfie sambil memegang KTP?",
+    "ground_truth": "Foto selfie dengan KTP dapat disalahgunakan untuk mendaftar pinjaman online ilegal, membuka rekening palsu, atau melakukan kejahatan atas nama korban."
+  },
+  {
+    "question": "Apa bahaya link mencurigakan di grup WhatsApp?",
+    "ground_truth": "Link di grup WhatsApp dapat mengarahkan ke situs phishing, mengunduh malware ke ponsel, atau mencuri sesi WhatsApp sehingga akun digunakan untuk menipu kontak lain."
+  },
+  {
+    "question": "Apa itu sextortion dan bagaimana cara meresponsnya?",
+    "ground_truth": "Sextortion adalah ancaman menyebarkan foto atau video intim korban kecuali dibayar. Jangan pernah membayar, segera blokir pelaku, simpan bukti, dan laporkan ke polisi."
+  },
+  {
+    "question": "Apa itu tailgating dalam keamanan fisik kantor?",
+    "ground_truth": "Tailgating adalah akses fisik tidak sah ke area kantor dengan mengikuti karyawan yang sah tanpa menunjukkan identitas."
+  },
+  {
+    "question": "Apa risiko menggunakan perangkat pribadi untuk bekerja (BYOD)?",
+    "ground_truth": "Perangkat pribadi sering tidak memiliki enkripsi dan antivirus perusahaan, sehingga jika terinfeksi malware, data perusahaan bisa ikut bocor."
+  },
+  {
+    "question": "Apa itu invoice scam dalam email phishing?",
+    "ground_truth": "Invoice scam adalah pengiriman invoice palsu yang identik dengan aslinya untuk mengelabui perusahaan agar mentransfer uang ke rekening penipu."
+  },
+  {
+    "question": "Mengapa harus logout dari akun di komputer umum?",
+    "ground_truth": "Agar akun tidak diakses oleh orang lain setelah kita selesai menggunakannya, mencegah pencurian data atau penyalahgunaan akun."
+  },
+  {
+    "question": "Bagaimana cara melaporkan email phishing di Indonesia?",
+    "ground_truth": "Bisa dilaporkan ke BSSN melalui bssn.go.id, ke Kemenkominfo melalui aduankonten.id, atau ke Direktorat Siber Bareskrim Polri."
+  }
+]

@@ -2,14 +2,10 @@
 #  Generate jawaban via LLM: RAG answer + fallback dari chat history
 # ══════════════════════════════════════════════════════════════════════
 
-# Import prompt template
 from langchain_core.prompts import PromptTemplate
-
-# Import master prompt
 from .constants import MASTER_PROMPT
 
 
-# Generate jawaban utama berbasis RAG
 def generate_answer(
     llm,
     context: str,
@@ -18,57 +14,48 @@ def generate_answer(
     chat_history: str
 ) -> str:
 
-    # Buat prompt utama
-    prompt = PromptTemplate.from_template(
-        MASTER_PROMPT
-    )
+    print("\n" + "═"*60)
+    print("CONTEXT MASUK KE LLM:")
+    print(context[:500] if context else "⚠️ KOSONG!")
+    print("═"*60 + "\n")
 
-    # Gabungkan prompt dengan LLM
+    prompt = PromptTemplate.from_template(MASTER_PROMPT)
     chain = prompt | llm
 
-    # Generate jawaban
     response = chain.invoke({
-
-        # Context hasil retrieval
         "context": context,
-
-        # Pertanyaan user
         "question": question,
-
-        # Hasil threat analysis
         "tech_flags": tech_flags,
-
-        # Riwayat percakapan
         "chat_history": chat_history,
     })
 
-    # Return hasil jawaban
     return response.content.strip()
 
 
-# Fallback jika retrieval gagal
 def generate_fallback(
     llm,
     question: str,
     chat_history: str
 ) -> str:
 
-    # Prompt fallback berbasis history
-    fallback_prompt = f"""
-Anda adalah CyberGuard Expert AI, asisten keamanan siber.
+    fallback_prompt = f"""Kamu adalah CyberGuard AI, asisten edukatif keamanan siber.
 
-Riwayat percakapan sebelumnya:
+═══════════════════════════════════════════════
+ATURAN MUTLAK:
+═══════════════════════════════════════════════
+1. Jawab hanya seputar topik keamanan siber.
+2. Gunakan riwayat percakapan sebagai konteks tambahan jika relevan.
+3. Jika pertanyaan di luar keamanan siber, tolak dengan sopan.
+4. Jawaban maksimal 4 kalimat. Bahasa Indonesia yang profesional.
+5. DILARANG menambahkan informasi di luar riwayat percakapan.
+
+[RIWAYAT PERCAKAPAN]:
 {chat_history}
 
-Pertanyaan user: {question}
+[PERTANYAAN USER]:
+{question}
 
-Berdasarkan riwayat percakapan di atas, berikan jawaban yang relevan seputar keamanan siber.
-Jawab dalam Bahasa Indonesia yang profesional dan ringkas.
-Jangan keluar dari topik keamanan siber.
-"""
+[JAWABAN CYBERGUARD]:"""
 
-    # Generate fallback response
     response = llm.invoke(fallback_prompt)
-
-    # Return hasil fallback
     return response.content.strip()

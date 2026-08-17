@@ -1,5 +1,5 @@
 # Config pencarian chunk di vector database
-MATCH_THRESHOLD = 0.65  
+MATCH_THRESHOLD = 0.50  
 MATCH_COUNT     = 5     
 
 # Daftar sapaan user
@@ -77,6 +77,7 @@ IDENTITAS & BATASAN ABSOLUT
 6. DILARANG KERAS mencantumkan referensi (NIST, CISA, FBI, dll)
    jika nama tersebut tidak muncul secara eksplisit di KONTEKS DATABASE.
    Mengarang referensi adalah pelanggaran serius.
+7. Jika Anda mendeteksi bahwa KONTEKS DATABASE tidak relevan dengan pertanyaan (misal Anda diberi data tentang virus tapi user nanya makanan), Anda WAJIB menjawab: 'Informasi ini tidak tersedia dalam basis data CyberGuard.'"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ATURAN KONFLIK DATA
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

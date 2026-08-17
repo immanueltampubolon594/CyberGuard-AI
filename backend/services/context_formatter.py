@@ -2,52 +2,41 @@
 #  Bersihkan dan format chunk dari Supabase menjadi context string
 # ══════════════════════════════════════════════════════════════════════
 
-# Import regex
 import re
 
 
-# Bersihkan dan gabungkan retrieved chunk
 def format_context(docs: list[dict]) -> str:
+    """Bersihkan dan gabungkan retrieved chunk menjadi context string."""
 
-    # Simpan seluruh chunk
+    if not docs:
+        return "Tidak ada konteks yang tersedia."
+
     parts = []
 
-    # Loop semua retrieved chunk
-    for doc in docs:
-
-        # Ambil isi chunk
+    for i, doc in enumerate(docs, 1):
         content = doc.get("content", "").strip()
 
-        # Hapus label chunk
-        content = re.sub(
-            r'\(Chunk-\d+(?:,\s*Chunk-\d+)*\)',
-            '',
-            content
-        )
+        if not content:
+            continue
 
-        # Hapus sisa chunk label
-        content = re.sub(
-            r'Chunk-\d+',
-            '',
-            content
-        )
+        # Hapus label chunk
+        content = re.sub(r'\(Chunk-\d+(?:,\s*Chunk-\d+)*\)', '', content)
+        content = re.sub(r'Chunk-\d+', '', content)
 
         # Rapikan label penjelasan
-        content = re.sub(
-            r'Penanganan/Penjelasan\s*:',
-            'Penjelasan:',
-            content
-        )
+        content = re.sub(r'Penanganan/Penjelasan\s*:', 'Penjelasan:', content)
 
         # Bersihkan spasi berlebih
-        content = re.sub(
-            r'\s+',
-            ' ',
-            content
-        ).strip()
+        content = re.sub(r'\s+', ' ', content).strip()
 
-        # Tambahkan ke list
-        parts.append(content)
+        # Ambil metadata
+        source = doc.get("metadata", {}).get("source", "unknown")
+        similarity = doc.get("similarity", 0.0)
 
-    # Gabungkan semua chunk
-    return "\n\n---\n\n".join(parts)
+        # Format per chunk dengan header
+        parts.append(
+            f"[Dokumen {i} | Source: {source} | Similarity: {similarity:.2f}]\n"
+            f"{content}"
+        )
+
+    return "\n\n---\n\n".join(parts) if parts else "Tidak ada konteks yang tersedia."
