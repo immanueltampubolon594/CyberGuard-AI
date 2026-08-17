@@ -48,7 +48,10 @@ app.add_middleware(
     # Origin frontend yang diizinkan
     allow_origins=[
         "http://localhost:3000",
-        "http://127.0.0.1:3000"
+        "http://127.0.0.1:3000",
+        "https://cyber-guard-ai-delta.vercel.app",
+        "https://cyber-guard-ai-git-main-sontrom.vercel.app",
+        "https://cyber-guard-cdd3ont9c-sontrom.vercel.app"
     ],
 
     # Izinkan credentials
@@ -60,7 +63,6 @@ app.add_middleware(
     # Izinkan semua header
     allow_headers=["*"],
 )
-
 
 # Schema request verifikasi URL
 class URLRequest(BaseModel):
