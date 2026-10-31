@@ -30,6 +30,7 @@ import Link from "next/link";
 export default function VerifikasiHalaman() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
+    const [errorMsg, setErrorMsg] = useState("");
   const [analyzedUrl, setAnalyzedUrl] = useState("");
   const [screenshot, setScreenshot] = useState<string | null>(null);
   const [animatedScore, setAnimatedScore] = useState(0);
@@ -83,7 +84,7 @@ export default function VerifikasiHalaman() {
     setAnimatedScore(0);
     setAnalyzedUrl(formattedUrl);
     setScreenshot(null);
-
+    setErrorMsg("");
     try {
    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verify-link`, {
         method: "POST",
@@ -120,8 +121,14 @@ export default function VerifikasiHalaman() {
       }, 500);
 
     } catch (error: any) {
-      console.error("❌ Error:", error);
-      alert(error.message || "Sistem Offline: Pastikan server backend Anda aktif!");
+      // "Failed to fetch" = server tidak bisa dihubungi sama sekali
+      const offline = error instanceof TypeError;
+      setErrorMsg(
+        offline
+          ? "Server analisis sedang tidak aktif. Coba lagi beberapa saat lagi."
+          : error.message || "Analisis gagal. Silakan coba lagi."
+      );
+      console.warn("Verifikasi gagal:", error);
       setLoading(false);
     }
   };
@@ -180,34 +187,38 @@ export default function VerifikasiHalaman() {
   const scoreConfig = result ? getScoreConfig(result.score) : null;
 
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-white font-sans overflow-x-hidden selection:bg-blue-500/30 transition-colors duration-500">
+    <main className="h-screen flex flex-col overflow-hidden bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-white font-sans selection:bg-blue-500/30 transition-colors duration-500">
       <Navbar />
 
+      {/* Area isi: satu-satunya bagian yang bisa di-scroll (seperti chatbot) */}
+      <div className="flex-1 overflow-y-auto">
+      <div className="min-h-full flex flex-col">
+
       {/* HERO SECTION - Dari File 2 */}
-      <section className="relative pt-12 pb-16 px-12 overflow-hidden border-b border-white/5 text-center">
+      <section className="relative pt-8 pb-10 px-12 overflow-hidden border-b border-white/5 text-center">
         <div className="absolute inset-0 pointer-events-none">
            <div className="absolute top-[-10%] right-[-10%] w-[60%] h-[70%] bg-blue-600/10 rounded-full blur-[120px]"></div>
            <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[50%] bg-indigo-600/5 rounded-full blur-[100px]"></div>
         </div>
 
         <div className="max-w-5xl mx-auto relative z-10 animate-in fade-in slide-in-from-top-8 duration-1000">
-          <div className="inline-flex items-center gap-3 bg-slate-100 dark:bg-white/5 backdrop-blur-md px-6 py-2 rounded-xl border border-slate-200 dark:border-white/10 shadow-lg mb-8 transition-colors">
+          <div className="inline-flex items-center gap-3 bg-slate-100 dark:bg-white/5 backdrop-blur-md px-6 py-2 rounded-xl border border-slate-200 dark:border-white/10 shadow-lg mb-5 transition-colors">
             <Cpu size={16} className="text-blue-600 dark:text-blue-500" />
             <span className="text-[10px] font-[1000] uppercase tracking-[4px] text-slate-500 dark:text-gray-400">Neural Link Verification System</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-[1000] tracking-[2px] uppercase mb-8 leading-[0.9]">
+          <h1 className="text-4xl md:text-6xl font-[1000] tracking-[2px] uppercase mb-5 leading-[0.9]">
             <span className="text-slate-900 dark:text-white">Verifikasi </span><span className="text-blue-600">Ancaman</span><br />
             <span className="text-blue-600">URL </span><span className="text-slate-900 dark:text-white">Real-Time</span>
           </h1>
 
-          <p className="text-xl text-slate-600 dark:text-gray-200 max-w-3xl mx-auto leading-relaxed font-semibold">
+          <p className="text-lg text-slate-600 dark:text-gray-200 max-w-3xl mx-auto leading-relaxed font-semibold">
             Gunakan mesin deteksi berbasis AI untuk membedah anatomi link mencurigakan dan mendapatkan laporan risiko instan sebelum melakukan interaksi.
           </p>
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-12 -mt-4 relative z-20 pb-40">  
+      <div className="w-full max-w-6xl mx-auto px-12 -mt-4 relative z-20 pb-8">  
         
         {/* INPUT SECTION - Dari File 2 */}
         <div className="bg-white dark:bg-[#0f172a]/30 p-5 md:p-6 rounded-[30px] border border-slate-200 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_0_50px_rgba(0,0,0,0.3)] backdrop-blur-xl">
@@ -221,18 +232,35 @@ export default function VerifikasiHalaman() {
               onKeyDown={(e) => e.key === 'Enter' && handleVerify()}
               type="text" 
               placeholder="MASUKKAN URL UNTUK DIANALISIS..." 
-              className="w-full bg-white dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-[20px] pl-14 pr-36 py-4 focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 focus:bg-slate-50 dark:focus:bg-white/10 transition-all text-sm font-black text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-white/10 shadow-xl dark:shadow-inner tracking-tight"
+              className="w-full bg-white dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-[20px] pl-14 pr-36 py-4 focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 focus:bg-slate-50 dark:focus:bg-white/10 transition-all text-sm font-black text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-white/40 shadow-xl dark:shadow-inner tracking-tight"
             />
             <button 
               onClick={handleVerify}
               disabled={loading || !url}
-              className="absolute right-2 top-2 bottom-2 px-8 bg-blue-600 text-white rounded-[16px] font-[1000] uppercase tracking-widest text-xs hover:bg-blue-500 transition-all flex items-center gap-3 disabled:opacity-20 shadow-lg shadow-blue-500/20 active:scale-95"
+              className="absolute right-2 top-2 bottom-2 px-8 bg-blue-600 text-white rounded-[16px] font-[1000] uppercase tracking-widest text-xs hover:bg-blue-500 transition-all flex items-center gap-3 disabled:opacity-40 shadow-lg shadow-blue-500/20 active:scale-95"
             >
               {loading ? <Loader2 className="animate-spin" size={20} /> : <Search size={20} strokeWidth={3} />}
               Mulai Analisis
             </button>
           </div>
         </div>
+
+        {/* PESAN ERROR */}
+        {errorMsg && (
+          <div className="mt-6 flex items-start gap-3 p-4 rounded-2xl border border-red-200 dark:border-red-500/20 bg-red-50 dark:bg-red-500/10 animate-in fade-in duration-300">
+            <AlertCircle size={20} className="text-red-500 shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="text-sm font-bold text-red-700 dark:text-red-300">Analisis tidak dapat dilakukan</p>
+              <p className="text-sm text-red-600 dark:text-red-200/80 mt-1">{errorMsg}</p>
+            </div>
+            <button
+              onClick={() => setErrorMsg("")}
+              className="text-red-400 hover:text-red-600 dark:hover:text-red-200 text-xs font-bold"
+            >
+              Tutup
+            </button>
+          </div>
+        )}
 
         {/* RESULT SECTION - Dari File 1, disesuaikan dengan theme File 2 */}
         {result && scoreConfig && (
@@ -508,13 +536,13 @@ export default function VerifikasiHalaman() {
         )}
 
         {/* FEATURES - Dari File 2 */}
-        <div className="mt-32 grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="bg-white dark:glass-card p-12 rounded-[50px] border border-slate-200 dark:border-white/5 group hover:border-blue-500/50 transition-all shadow-xl dark:shadow-none">
-            <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-8 border border-blue-500/20 group-hover:scale-110 transition-transform">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white dark:bg-slate-900/60 dark:backdrop-blur-xl p-8 rounded-[40px] border border-slate-200 dark:border-white/10 group hover:border-blue-500/50 transition-all shadow-xl dark:shadow-none">
+            <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-5 border border-blue-500/20 group-hover:scale-110 transition-transform">
                <Lock size={32} />
             </div>
-            <h3 className="text-2xl font-black mb-8 text-slate-900 dark:text-white uppercase tracking-tight">Protokol Keamanan</h3>
-            <ul className="space-y-5">
+            <h3 className="text-2xl font-black mb-5 text-slate-900 dark:text-white uppercase tracking-tight">Protokol Keamanan</h3>
+            <ul className="space-y-3">
               {["Analisis Reputasi Domain", "Enkripsi SSL Validation", "Phishing Pattern Matching", "Global Threat Database"].map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-slate-600 dark:text-gray-200 text-[15px] font-bold tracking-wide">
                   <div className="flex-shrink-0 w-6 h-6 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
@@ -525,23 +553,25 @@ export default function VerifikasiHalaman() {
               ))}
             </ul> 
           </div>
-          <div className="bg-slate-900 dark:bg-[#0a0a0a] rounded-[50px] p-12 shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/5 relative overflow-hidden group">
+          <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950 dark:from-blue-950/70 dark:via-slate-900/60 dark:to-slate-900/60 dark:backdrop-blur-xl rounded-[40px] p-8 shadow-xl dark:shadow-none border border-slate-800 dark:border-white/10 hover:border-blue-500/50 transition-all relative overflow-hidden group">
             <div className="relative z-10">
-              <h3 className="text-3xl font-black mb-6 uppercase tracking-tight text-white">Konsultasi AI</h3>
-              <p className="text-gray-200 font-semibold text-lg md:text-xl mb-12 leading-relaxed max-w-md">Ingin diskusi lebih lanjut mengenai temuan <span className="text-blue-400">link mencurigakan</span> tersebut?</p>
-              <Link href="/chatbot" className="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-2xl font-black text-lg hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-white/10 uppercase tracking-tighter">
+              <h3 className="text-3xl font-black mb-4 uppercase tracking-tight text-white">Konsultasi AI</h3>
+              <p className="text-gray-200 font-semibold text-lg md:text-xl mb-8 leading-relaxed max-w-md">Ingin diskusi lebih lanjut mengenai temuan <span className="text-blue-400">link mencurigakan</span> tersebut?</p>
+              <Link href="/chatbot" className="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-white/10 uppercase tracking-tighter">
                 Buka Chatbot AI <ArrowRight size={20} strokeWidth={3} />
               </Link>
             </div>
-            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-600/10 rounded-full blur-[100px] group-hover:opacity-40 transition-opacity"></div>
+            <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-600/20 rounded-full blur-[100px] group-hover:opacity-60 transition-opacity"></div>
           </div>
         </div>
       </div>
 
       {/* FOOTER - Dari File 2 */}
-      <footer className="py-20 text-center text-slate-500 dark:text-gray-700 font-black text-[11px] uppercase tracking-[10px] border-t border-slate-200 dark:border-white/5">
+      <footer className="mt-auto py-5 text-center text-slate-500 dark:text-gray-500 font-black text-[11px] uppercase tracking-[10px] border-t border-slate-200 dark:border-white/5">
         © 2026 CYBERGUARD <span className="text-blue-600/40">INTELLIGENCE</span>
       </footer>
+      </div>
+      </div>
 
       <style jsx global>{`
         .glass-card {

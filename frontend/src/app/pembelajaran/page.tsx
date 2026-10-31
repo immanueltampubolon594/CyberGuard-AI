@@ -440,7 +440,7 @@ export default function PembelajaranPage() {
         </div>
 
         {/* Pencarian, kategori, status (sesuai mockup) */}
-        <div className="flex flex-col lg:flex-row gap-3 mb-3">
+        <div className="flex flex-col lg:flex-row gap-3 mb-3 lg:sticky lg:top-[104px] lg:z-40 lg:-mx-4 lg:px-4 lg:py-3 lg:rounded-2xl lg:bg-slate-50/90 lg:dark:bg-[#020617]/90 lg:backdrop-blur-xl">
           <div className="relative flex-1">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
               <Search size={16} className="text-slate-500" />

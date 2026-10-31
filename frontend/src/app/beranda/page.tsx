@@ -24,7 +24,7 @@
         desc: "Akses berbagai materi keamanan siber mulai dari Phishing hingga Malware dengan penjelasan yang mudah dipahami.", 
         icon: <BookOpen size={28} />, 
         link: "/pembelajaran",
-        color: "text-blue-400",
+        color: "text-blue-600 dark:text-blue-400",
         border: "hover:border-blue-500/50",
         glow: "hover:shadow-[0_0_40px_rgba(59,130,246,0.12)]",
         badge: "bg-blue-500/10 border-blue-500/20",
@@ -35,7 +35,7 @@
         desc: "Konsultasikan keraguan Anda mengenai ancaman digital kepada asisten cerdas berbasis AI kapan saja.", 
         icon: <MessageCircle size={28} />, 
         link: "/chatbot",
-        color: "text-violet-400",
+        color: "text-violet-600 dark:text-violet-400",
         border: "hover:border-violet-500/50",
         glow: "hover:shadow-[0_0_40px_rgba(139,92,246,0.12)]",
         badge: "bg-violet-500/10 border-violet-500/20",
@@ -46,7 +46,7 @@
         desc: "Mesin deteksi URL berbahaya yang memberikan skor risiko instan untuk melindungi privasi data Anda.", 
         icon: <ShieldAlert size={28} />, 
         link: "/verifikasi",
-        color: "text-cyan-400",
+        color: "text-cyan-600 dark:text-cyan-400",
         border: "hover:border-cyan-500/50",
         glow: "hover:shadow-[0_0_40px_rgba(34,211,238,0.12)]",
         badge: "bg-cyan-500/10 border-cyan-500/20",
@@ -59,7 +59,7 @@
         title: "Pelajari Ancaman",
         desc: "Mulai dengan memahami jenis-jenis ancaman siber seperti phishing, malware, dan social engineering melalui modul edukasi interaktif berbasis kasus nyata.",
         icon: <Brain size={24} />,
-        color: "text-blue-400",
+        color: "text-blue-600 dark:text-blue-400",
         bg: "bg-blue-500/10",
         border: "border-blue-500/20",
       },
@@ -68,7 +68,7 @@
         title: "Verifikasi Link & URL",
         desc: "Masukkan URL mencurigakan ke mesin deteksi kami. Sistem menganalisis menggunakan Google Safe Browsing API dan heuristik cerdas untuk menghasilkan skor risiko.",
         icon: <Search size={24} />,
-        color: "text-cyan-400",
+        color: "text-cyan-600 dark:text-cyan-400",
         bg: "bg-cyan-500/10",
         border: "border-cyan-500/20",
       },
@@ -77,7 +77,7 @@
         title: "Konsultasi dengan AI",
         desc: "Gunakan chatbot berbasis RAG (Retrieval-Augmented Generation) untuk bertanya langsung tentang ancaman yang Anda temui dan dapatkan jawaban yang akurat.",
         icon: <MessageCircle size={24} />,
-        color: "text-violet-400",
+        color: "text-violet-600 dark:text-violet-400",
         bg: "bg-violet-500/10",
         border: "border-violet-500/20",
       },
@@ -88,34 +88,34 @@
         icon: <Lock size={20} />,
         title: "Enkripsi Password",
         desc: "Password pengguna dienkripsi menggunakan algoritma Bcrypt sebelum disimpan ke database.",
-        color: "text-blue-400",
+        color: "text-blue-600 dark:text-blue-400",
         bg: "bg-blue-500/10",
       },
       {
         icon: <Brain size={20} />,
         title: "RAG-Based AI Chatbot",
         desc: "Chatbot menjawab berdasarkan dokumen referensi keamanan siber, bukan generasi teks sembarangan.",
-        color: "text-violet-400",
+        color: "text-violet-600 dark:text-violet-400",
         bg: "bg-violet-500/10",
       },
       {
         icon: <Search size={20} />,
         title: "Deteksi URL Hybrid",
         desc: "Mengombinasikan Google Safe Browsing API dan analisis heuristik untuk akurasi deteksi maksimal.",
-        color: "text-cyan-400",
+        color: "text-cyan-600 dark:text-cyan-400",
         bg: "bg-cyan-500/10",
       },
       {
         icon: <Globe size={20} />,
         title: "Autentikasi JWT",
         desc: "Setiap sesi pengguna diamankan menggunakan JSON Web Token (JWT) yang terverifikasi.",
-        color: "text-emerald-400",
+        color: "text-emerald-600 dark:text-emerald-400",
         bg: "bg-emerald-500/10",
       },
     ];
 
     return (
-    <main className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-white font-sans overflow-x-hidden selection:bg-blue-500/30 transition-colors duration-500">
+    <main className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-white font-sans overflow-x-clip selection:bg-blue-500/30 transition-colors duration-500">
         <Navbar />
 
   {/* ===== 1. HERO (ROBOT AI STYLE) ===== */}
@@ -150,7 +150,7 @@
       </h1>
 <p className="text-sm md:text-base text-slate-600 dark:text-gray-400 max-w-md leading-relaxed font-sans mb-6">
   Platform cerdas berbasis AI untuk membedah ancaman{" "}
-  <span className="text-blue-400 font-bold">Phishing</span> dan membangun sistem 
+  <span className="text-blue-600 dark:text-blue-400 font-bold">Phishing</span> dan membangun sistem 
   pertahanan <span className="text-slate-900 dark:text-white font-bold">Kesadaran Digital</span> masyarakat Indonesia.
 </p>
              <Link
@@ -199,11 +199,11 @@
 
   <div className="absolute -bottom-10 -left-10 z-30 hidden md:block animate-bounce [animation-duration:3s]">
   <div className="bg-white dark:bg-white/5 backdrop-blur-md border border-slate-200 dark:border-white/10 p-4 rounded-2xl flex items-center gap-4 shadow-xl dark:shadow-none transition-all">
-        <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+        <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
           <ShieldCheck size={18} />
         </div>
         <div>
-          <div className="text-[9px] font-black text-gray-400 uppercase">System Integrity</div>
+          <div className="text-[9px] font-black text-slate-500 dark:text-gray-400 uppercase">System Integrity</div>
           <div className="text-[11px] font-bold text-slate-900 dark:text-white uppercase">Encrypted 100%</div>
         </div>
       </div>
@@ -216,7 +216,7 @@
   <section className="py-32 px-6 md:px-12 max-w-7xl mx-auto">
   <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
   <div className="max-w-2xl">
-    <div className="flex items-center gap-2 mb-4 text-blue-400 font-black text-[10px] tracking-[4px] uppercase">
+    <div className="flex items-center gap-2 mb-4 text-blue-600 dark:text-blue-400 font-black text-[10px] tracking-[4px] uppercase">
       <Terminal size={12} /> Core Capabilities
     </div>
      <h2 className="text-5xl md:text-6xl font-[1000] text-slate-900 dark:text-white tracking-tight leading-none mb-5 uppercase">
@@ -226,7 +226,7 @@
   CyberGuard menyediakan tiga pilar utama untuk membantu pengguna memahami dan menghadapi ancaman siber secara mandiri.
 </p>
   </div>
-  <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent mb-3 hidden md:block" />
+  <div className="h-px flex-1 bg-gradient-to-r from-slate-300 dark:from-white/20 to-transparent mb-3 hidden md:block" />
   </div>
 
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -240,7 +240,7 @@
         {item.icon}
       </div>
       <span className={`text-[10px] font-black uppercase tracking-[3px] mb-2 ${item.color}`}>{item.cat}</span>
-      <h3 className="font-black text-xl mb-4 text-white tracking-tight uppercase leading-tight">{item.title}</h3>
+      <h3 className="font-black text-xl mb-4 text-slate-900 dark:text-white tracking-tight uppercase leading-tight">{item.title}</h3>
       <p className="text-slate-600 dark:text-gray-300 leading-relaxed text-sm flex-1 font-medium">{item.desc}</p>
     </Link>
   ))}
@@ -251,7 +251,7 @@
   <section className="py-32 px-6 md:px-12 border-t border-slate-200 dark:border-white/10 transition-colors">
   <div className="max-w-7xl mx-auto">
   <div className="text-center mb-20">
-    <div className="flex items-center justify-center gap-2 mb-4 text-cyan-400 font-black text-[10px] tracking-[4px] uppercase">
+    <div className="flex items-center justify-center gap-2 mb-4 text-cyan-600 dark:text-cyan-400 font-black text-[10px] tracking-[4px] uppercase">
       <Zap size={12} /> Alur Penggunaan
     </div>
      <h2 className="text-5xl md:text-6xl font-[1000] text-slate-900 dark:text-white tracking-tight leading-none mb-5 uppercase">
@@ -274,7 +274,7 @@
 </span>
         </div>
         <h3 className={`font-black text-lg mb-3 uppercase tracking-tight ${item.color}`}>{item.title}</h3>
-        <p className="text-gray-300 text-sm leading-relaxed">{item.desc}</p>
+        <p className="text-slate-600 dark:text-gray-300 text-sm leading-relaxed">{item.desc}</p>
       </div>
     ))}
   </div>

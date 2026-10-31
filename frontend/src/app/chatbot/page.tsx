@@ -86,8 +86,9 @@ function ChatbotContent() {
   if (!saved) return;
   const user = JSON.parse(saved);
 
+try {
   for (const session of data) {
-  await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/save`, {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -98,6 +99,11 @@ function ChatbotContent() {
       })
     });
   }
+} catch {
+  // Backend tidak bisa dihubungi: chat tetap aman di localStorage
+  console.warn("Gagal sinkron chat ke server, disimpan lokal saja.");
+}
+
 }, []);
 
     // ── Buat sesi baru ────────────────────────────────────
