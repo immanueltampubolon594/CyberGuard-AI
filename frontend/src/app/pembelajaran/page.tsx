@@ -2,15 +2,19 @@
 
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import {
   Bug, UserRound, Lock, Wifi,
-  ChevronRight, Shield, Brain, Smartphone, Eye,
+  ChevronRight, Brain, Smartphone,
   Crosshair, AlertTriangle,
   Search, Database, Key, Network, CreditCard, Mail,
-  ChevronDown, ChevronUp, BookOpen,
-  BarChart2, Siren, Globe, ShoppingCart, QrCode, MessageCircle, Copy, Target,
+  ChevronDown, ChevronUp, BookOpen, Check,
+  Siren, Globe, ShoppingCart,
 } from "lucide-react";
+import { moduleMeta } from "../lib/modules";
+import { getModuleState, getSteps, type ModuleState, type ModuleStatus } from "../lib/learningApi";
+import { useLearning } from "../lib/useLearning";
+import CyberLogoMarquee from "@/components/CyberLogoMarquee";
 
 interface Materi {
   id: string;
@@ -22,7 +26,6 @@ interface Materi {
   categories: string[];
 }
 
-// ─── Data Materi ──────────────────────────────────────────────────────────────
 const allMateri: Materi[] = [
   {
     id: "phishing",
@@ -170,26 +173,6 @@ const allMateri: Materi[] = [
   },
 ];
 
-const subTopicsData: Record<string, string[]> = {
-  "phishing":           ["Email Phishing", "WhatsApp Phishing", "Smishing & Vishing", "QR Phishing", "Fake Login Page", "Spear Phishing", "Clone Phishing"],
-  "social-engineering": ["Impersonation", "Baiting", "Scareware", "Pretexting", "Shoulder Surfing & Dumpster Diving", "Tailgating & Piggybacking"],
-  "password-attack":    ["Dictionary Attack", "Brute Force Attack", "Password Spraying", "Credential Stuffing", "Rainbow Table Attack", "Keylogging"],
-  "scam-online":        ["Marketplace Scam", "Giveaway & Hadiah Palsu", "Job Scam (Lowongan Palsu)", "Investment & Crypto Scam", "Romance Scam"],
-  "ecommerce-fraud":    ["Fake Marketplace & Toko Online Palsu", "Payment Fraud & Carding", "Account Takeover E-Commerce", "Triangulation Fraud", "Refund & Return Fraud", "Friendly Fraud"],
-  "malware":            ["Virus & Worm", "Trojan Horse", "Adware & Spyware", "Ransomware", "Keylogger", "Rootkit", "Botnet Malware", "Malware APK Android"],
-  "wifi-attack":        ["WiFi Password Cracking", "Evil Twin Attack", "Deauthentication Attack", "Rogue Access Point", "WPS Cracking"],
-  "mobile-banking":     ["Fake Banking App", "OTP Theft", "SIM Swapping", "Overlay Attack", "Banking Trojan & Accessibility Abuse"],
-  "data-breach":        ["Credential Leak", "Identity Leak (NIK, KTP)", "Cloud Data Leak", "Financial Data Leak", "Insider Threat & Dark Web Monitoring"],
-  "account-takeover":   ["WhatsApp Hijacking", "Email Takeover", "Session Theft (Cookie Stealing)", "SIM Swapping", "Credential Stuffing Massal"],
-  "web-attack":         ["SQL Injection", "Cross-Site Scripting (XSS)", "Clickjacking", "CSRF Attack", "Directory Traversal", "File Inclusion (LFI/RFI)", "Remote Code Execution (RCE)", "SSRF Attack"],
-  "network-attack":     ["Packet Sniffing", "IP Spoofing", "ARP Spoofing", "DNS Spoofing", "Man-in-the-Middle (MITM)", "Session Hijacking"],
-  "ddos":               ["Ping Flood & UDP Flood", "HTTP Flood", "SYN Flood", "Slowloris Attack", "Botnet DDoS"],
-  "ai-attack":          ["AI Phishing & AI Chat Scam", "Voice Cloning", "Deepfake Video", "AI-Powered APT"],
-  "advanced-attacks":   ["Ransomware Enterprise", "Zero-Day Exploit", "APT & Cyber Espionage", "Supply Chain Attack", "DDoS Infrastruktur Kritis"],
-  "qr-code-attack":     ["QR Phishing (Quishing)", "QRIS Palsu", "QR Redirect Attack", "Fake Payment QR", "QR Malware Download"],
-};
-
-// ─── Kategori Options ─────────────────────────────────────────────────────────
 const kategoriOptions = [
   "Serangan Sosial",
   "Serangan Identitas",
@@ -198,16 +181,62 @@ const kategoriOptions = [
   "Sistem & Infrastruktur",
 ];
 
-// ─── MateriCard ───────────────────────────────────────────────────────────────
-function MateriCard({ materi }: { materi: Materi }) {
+const STATUS_BUTTONS: { key: ModuleStatus; label: string }[] = [
+  { key: "belum_dimulai", label: "Belum Dimulai" },
+  { key: "sedang_dipelajari", label: "Sedang Dipelajari" },
+  { key: "selesai", label: "Selesai" },
+];
+
+interface Row {
+  materi: Materi;
+  labels: string[];
+  steps: string[];
+  state: ModuleState;
+}
+
+function StatusBadge({ state }: { state: ModuleState }) {
+  if (state.status === "selesai") {
+    return (
+      <div className="flex items-center gap-2">
+        <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-500 text-[10px] font-black uppercase tracking-wider">
+          <Check size={11} strokeWidth={3} /> Selesai
+        </span>
+        {state.passed && (
+          <span className="px-2.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-500 text-[10px] font-black uppercase tracking-wider">
+            Lulus Quiz
+          </span>
+        )}
+        {state.hasNewContent && (
+          <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-500 text-[10px] font-black uppercase tracking-wider">
+            Materi Baru
+          </span>
+        )}
+      </div>
+    );
+  }
+  if (state.status === "sedang_dipelajari") {
+    return (
+      <span className="inline-flex px-2.5 py-1 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-wider">
+        Sedang Dipelajari
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex px-2.5 py-1 rounded-full border border-slate-300 dark:border-white/15 text-slate-500 text-[10px] font-black uppercase tracking-wider">
+      Belum Dimulai
+    </span>
+  );
+}
+
+function MateriCard({ row }: { row: Row }) {
+  const { materi, labels, steps, state } = row;
   const [expanded, setExpanded] = useState(false);
-  const subs = subTopicsData[materi.id] ?? [];
+  const buttonLabel =
+    state.status === "selesai" ? "Pelajari Lagi" : state.status === "sedang_dipelajari" ? "Lanjutkan" : "Mulai Belajar";
 
   return (
-    <div className="group bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-white/[0.08] rounded-[2rem] overflow-hidden transition-all duration-500 hover:border-blue-500/50 hover:shadow-[0_30px_60px_-15px_rgba(59,130,246,0.2)] flex flex-col">
-      
-      {/* ── THUMBNAIL (Cyber Style) ── */}
-      <div className="relative h-56 overflow-hidden bg-slate-900">
+    <div className="group bg-white dark:bg-[#0c1322] border border-slate-200 dark:border-white/[0.08] rounded-[2rem] overflow-hidden transition-all duration-500 hover:border-blue-500/50 hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.2)] flex flex-col">
+      <div className="relative h-52 overflow-hidden bg-slate-900">
         <img
           src={materi.thumbnail}
           alt={materi.title}
@@ -215,67 +244,85 @@ function MateriCard({ materi }: { materi: Materi }) {
           onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0c1322] via-[#0c1322]/40 to-transparent" />
-        
-        {/* Icon di kanan atas */}
         <div className="absolute top-5 right-5">
           <div className="p-2 rounded-xl bg-blue-600/90 backdrop-blur-sm border border-blue-400/30 text-white shadow-lg">
             {materi.icon}
           </div>
         </div>
-
         <div className="absolute bottom-5 left-6">
-          <h3 className="text-white font-black text-2xl uppercase tracking-tighter mb-1">
-            {materi.title}
-          </h3>
+          <h3 className="text-white font-black text-2xl uppercase tracking-tighter mb-1">{materi.title}</h3>
           <div className="flex items-center gap-2 text-blue-400 text-[10px] font-bold uppercase tracking-widest">
-            <BookOpen size={12} /> {subs.length} Topik Terenkripsi
+            <BookOpen size={12} /> {labels.length} Topik Terenkripsi
           </div>
         </div>
       </div>
 
-      {/* ── CARD BODY ── */}
       <div className="p-7 flex-1 flex flex-col">
-        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-8 line-clamp-2">
-          {materi.desc}
-        </p>
+        <div className="mb-4"><StatusBadge state={state} /></div>
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6 line-clamp-2">{materi.desc}</p>
+
+        <div className="mb-6">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[11px] font-semibold text-slate-500">Progress</span>
+            <span className="text-[11px] font-black text-slate-700 dark:text-slate-300">{state.percent}%</span>
+          </div>
+          <div className="h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+            <div
+              className={`h-full rounded-full transition-all duration-500 ${state.status === "selesai" ? "bg-emerald-500" : "bg-blue-600"}`}
+              style={{ width: `${state.percent}%` }}
+            />
+          </div>
+        </div>
 
         <div className="mt-auto flex items-center justify-between">
           <button
             onClick={() => setExpanded(!expanded)}
             className="flex items-center gap-2 text-[10px] font-black text-slate-400 hover:text-blue-500 transition-colors uppercase tracking-[2px]"
           >
-            <div className={`p-1.5 rounded-lg transition-all ${expanded ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'bg-slate-100 dark:bg-white/5'}`}>
-               {expanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+            <div className={`p-1.5 rounded-lg transition-all ${expanded ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30" : "bg-slate-100 dark:bg-white/5"}`}>
+              {expanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
             </div>
             {expanded ? "Hide Topik" : "Show Topik"}
           </button>
-          
           <Link
             href={`/pembelajaran/${materi.id}`}
             className="px-7 py-3 rounded-2xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[11px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all shadow-xl active:scale-95 flex items-center gap-2"
           >
-            Pelajari <ChevronRight size={14} strokeWidth={3} />
+            {buttonLabel} <ChevronRight size={14} strokeWidth={3} />
           </Link>
         </div>
       </div>
 
-      {/* ── SUB-TOPICS (Gaya Terminal) ── */}
       {expanded && (
-        <div className="px-7 pb-7 animate-in fade-in slide-in-from-top-4 duration-500">
+        <div className="px-7 pb-7">
           <div className="space-y-1.5 p-3 rounded-2xl bg-slate-50 dark:bg-black/30 border border-slate-100 dark:border-white/5 font-mono">
-            {subs.map((sub, i) => (
-              <Link 
-                key={i} 
-                href={`/pembelajaran/${materi.id}/${sub.toLowerCase().replace(/\s+/g, '-')}`}
-                className="flex items-center justify-between p-3 rounded-xl hover:bg-white dark:hover:bg-white/5 group/sub transition-all border border-transparent hover:border-blue-500/20"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-[10px] text-blue-500/50 tracking-tighter">[{i < 9 ? `0${i+1}` : i+1}]</span>
-                  <span className="text-xs font-bold text-slate-500 dark:text-slate-400 group-hover/sub:text-blue-500">{sub}</span>
+            {labels.map((label, i) => {
+              const step = `topic-${i}`;
+              const done = state.done.includes(step) || state.completed;
+              const open = done || state.nextStep === step || state.completed;
+              const body = (
+                <div className="flex items-center justify-between p-3 rounded-xl border border-transparent">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[10px] text-blue-500/50 tracking-tighter">[{String(i).padStart(2, "0")}]</span>
+                    <span className={`text-xs font-bold ${open ? "text-slate-500 dark:text-slate-400" : "text-slate-300 dark:text-slate-700"}`}>
+                      {label}
+                    </span>
+                  </div>
+                  {done ? <Check size={12} className="text-emerald-500" /> : !open ? <Lock size={11} className="text-slate-400" /> : null}
                 </div>
-                <ChevronRight size={12} className="text-slate-300 opacity-0 group-hover/sub:opacity-100 -translate-x-2 group-hover/sub:translate-x-0 transition-all" />
-              </Link>
-            ))}
+              );
+              return open ? (
+                <Link
+                  key={i}
+                  href={`/pembelajaran/${materi.id}?step=${step}`}
+                  className="block rounded-xl hover:bg-white dark:hover:bg-white/5 hover:border-blue-500/20 transition-all"
+                >
+                  {body}
+                </Link>
+              ) : (
+                <div key={i} className="cursor-not-allowed">{body}</div>
+              );
+            })}
           </div>
         </div>
       )}
@@ -283,41 +330,47 @@ function MateriCard({ materi }: { materi: Materi }) {
   );
 }
 
-// ─── Page ────────────────────────────────────────────────────────────────────
 export default function PembelajaranPage() {
+  const { store } = useLearning();
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedKategori, setSelectedKategori] = useState<string[]>([]);
+  const [kategori, setKategori] = useState("Semua");
+  const [status, setStatus] = useState<ModuleStatus | null>(null);
 
-  // Filter logic dengan kategori
+  const rows: Row[] = useMemo(
+    () =>
+      allMateri.map((m) => {
+        const meta = moduleMeta[m.id];
+        const steps = getSteps(m.id, meta?.topicIds ?? []);
+        return { materi: m, labels: meta?.topicLabels ?? [], steps, state: getModuleState(store[m.id], steps) };
+      }),
+    [store]
+  );
+
   const filtered = useMemo(() => {
-    return allMateri.filter(m => {
-      const matchSearch = searchQuery === "" ||
-        m.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        m.desc.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchKategori = selectedKategori.length === 0 || 
-        selectedKategori.some(k => m.categories.includes(k));
-      return matchSearch && matchKategori;
+    const q = searchQuery.toLowerCase();
+    return rows.filter(({ materi: m, state }) => {
+      const matchSearch = !q || m.title.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q);
+      const matchKategori = kategori === "Semua" || m.categories.includes(kategori);
+      const matchStatus = !status || state.status === status;
+      return matchSearch && matchKategori && matchStatus;
     });
-  }, [searchQuery, selectedKategori]);
+  }, [rows, searchQuery, kategori, status]);
 
-  const col0 = filtered.filter((_, i) => i % 2 === 0);
-  const col1 = filtered.filter((_, i) => i % 2 === 1);
-
-  // Toggle kategori
-  const toggleKategori = (kategori: string) => {
-    setSelectedKategori(prev => 
-      prev.includes(kategori) 
-        ? prev.filter(k => k !== kategori)
-        : [...prev, kategori]
-    );
+  const counts = {
+    belum_dimulai: rows.filter((r) => r.state.status === "belum_dimulai").length,
+    sedang_dipelajari: rows.filter((r) => r.state.status === "sedang_dipelajari").length,
+    selesai: rows.filter((r) => r.state.status === "selesai").length,
   };
+  const overall = Math.round(rows.reduce((s, r) => s + r.state.percent, 0) / (rows.length || 1));
+  const passedCount = rows.filter((r) => r.state.passed).length;
+  const hasFilter = searchQuery !== "" || kategori !== "Semua" || status !== null;
 
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-white font-sans overflow-x-hidden transition-colors duration-500">
+    <main className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-white font-sans transition-colors duration-500">
       <Navbar />
 
-      {/* ── HERO ─ */}
-      <section className="relative min-h-[420px] flex items-center overflow-hidden border-b border-slate-200 dark:border-white/[0.06]">
+      {/* ── HERO — overflow-x-hidden dipindahkan ke sini saja ── */}
+      <section className="relative min-h-[420px] flex items-center border-b border-slate-200 dark:border-white/[0.06] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none opacity-[0.018]" style={{
           backgroundImage: "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
           backgroundSize: "52px 52px",
@@ -355,10 +408,7 @@ export default function PembelajaranPage() {
                 const element = document.getElementById("Topik");
                 if (element) {
                   const y = element.getBoundingClientRect().top + window.pageYOffset - 110;
-                  window.scrollTo({
-                    top: y,
-                    behavior: "smooth",
-                  });
+                  window.scrollTo({ top: y, behavior: "smooth" });
                 }
               }}
               className="flex items-center gap-3 bg-blue-600/80 backdrop-blur-sm border border-blue-400/30 text-white font-black text-sm uppercase tracking-[3px] px-6 py-3 rounded-2xl transition-all hover:bg-blue-600 shadow-xl active:scale-95 w-fit"
@@ -368,138 +418,113 @@ export default function PembelajaranPage() {
           </div>
         </div>
       </section>
-
-      {/* ── MAIN ─ */}
-      <div
-        id="Topik"
-        className="w-full max-w-[1600px] mx-auto px-8 md:px-16 xl:px-20 py-12 flex gap-7"
-      >
-
-        {/* ── SIDEBAR WRAPPER ─ */}
-<div className="w-72 shrink-0 sticky top-32 self-start h-fit">
-
-          {/* ── SIDEBAR STICKY ─ */}
-<aside className="max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
-
-            
-            {/* Search Box */}
-            <div className="relative mb-4">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Search size={16} className="text-slate-500" />
-              </div>
-
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Cari materi..."
-                className="w-full bg-slate-800/50 backdrop-blur-xl border border-slate-700/50 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-200 placeholder-slate-500 outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/10 transition-all"
-              />
+    <CyberLogoMarquee />
+      {/* ── DAFTAR MATERI ── */}
+      <div id="Topik" className="w-full max-w-[1600px] mx-auto px-8 md:px-16 xl:px-20 py-12">
+        {/* Ringkasan progress */}
+        <div className="mb-8 flex flex-wrap items-center gap-x-8 gap-y-3 p-5 rounded-2xl border border-slate-200 dark:border-white/[0.08] bg-white dark:bg-white/[0.02]">
+          <div className="flex-1 min-w-[220px]">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] font-black text-slate-500 uppercase tracking-[3px]">Progress Belajarmu</span>
+              <span className="text-sm font-black text-slate-900 dark:text-white">{overall}%</span>
             </div>
-
-            {/* Filter Kategori */}
-            <div className="bg-slate-800/80 backdrop-blur-xl border border-slate-700/50 rounded-2xl p-5 shadow-xl">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/20">
-                  <Shield size={16} className="text-blue-400" />
-                </div>
-                <h3 className="text-sm font-bold text-slate-200 uppercase tracking-wider">
-                  KATEGORI
-                </h3>
-              </div>
-              
-              <div className="space-y-2">
-                {kategoriOptions.map((kategori) => {
-                  const isChecked = selectedKategori.includes(kategori);
-                  
-                  return (
-                    <label
-                      key={kategori}
-                      className={`group flex items-center gap-3 px-3 py-3 rounded-lg cursor-pointer transition-all duration-200 border ${
-                        isChecked 
-                          ? 'bg-blue-500/10 border-blue-500/30' 
-                          : 'bg-slate-700/20 border-transparent hover:bg-slate-700/40'
-                      }`}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={isChecked}
-                        onChange={() => toggleKategori(kategori)}
-                        className="w-4 h-4 rounded border-slate-600 text-blue-500 focus:ring-blue-500/20 bg-slate-700 cursor-pointer"
-                      />
-                      <span className={`flex-1 text-sm font-semibold transition-colors ${
-                        isChecked ? 'text-blue-300' : 'text-slate-400 group-hover:text-slate-300'
-                      }`}>
-                        {kategori}
-                      </span>
-                    </label>
-                  );
-                })}
-              </div>
-
-              {/* Reset Filter Button */}
-              {selectedKategori.length > 0 && (
-                <button
-                  onClick={() => setSelectedKategori([])}
-                  className="mt-4 w-full py-2.5 px-3 rounded-lg bg-slate-700/30 hover:bg-red-500/10 border border-slate-600/30 hover:border-red-500/30 text-slate-400 hover:text-red-400 text-xs font-semibold transition-all flex items-center justify-center gap-2"
-                >
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                  </svg>
-                  Reset Filter
-                </button>
-              )}
+            <div className="h-2 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+              <div className="h-full rounded-full bg-blue-600 transition-all duration-500" style={{ width: `${overall}%` }} />
             </div>
-          </aside>
+          </div>
+          <p className="text-sm text-slate-600 dark:text-slate-400">
+            <span className="font-black text-slate-900 dark:text-white">{counts.selesai}</span> dari {rows.length} materi selesai
+            {" · "}
+            <span className="font-black text-slate-900 dark:text-white">{passedCount}</span> lulus quiz
+          </p>
         </div>
 
-        {/* ── CONTENT AREA ─ */}
-        <div className="flex-1 min-w-0">
-          <div className="mb-7">
-            <p className="text-[10px] font-black text-slate-600 uppercase tracking-[4px] mb-1">Topik Pembelajaran</p>
-            <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
-              {selectedKategori.length === 0 
-                ? "SEMUA MATERI" 
-                : `KATEGORI: ${selectedKategori.join(", ")}`}
-              <span className="ml-3 text-sm font-semibold text-slate-600 normal-case tracking-normal">
-                ({filtered.length} materi)
-              </span>
-            </h2>
+        {/* Pencarian, kategori, status (sesuai mockup) */}
+        <div className="flex flex-col lg:flex-row gap-3 mb-3">
+          <div className="relative flex-1">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Search size={16} className="text-slate-500" />
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Cari materi..."
+              className="w-full bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-800 dark:text-slate-200 placeholder-slate-500 outline-none focus:border-blue-500/60 transition-all"
+            />
           </div>
 
-          {filtered.length > 0 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start">
-              <div className="flex flex-col gap-4">
-                {col0.map(m => <MateriCard key={m.id} materi={m} />)}
-              </div>
-              <div className="flex flex-col gap-4">
-                {col1.map(m => <MateriCard key={m.id} materi={m} />)}
-              </div>
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center py-24 text-center">
-              <Search size={32} className="text-slate-700 mb-4" />
-              <p className="text-slate-400 font-bold text-lg mb-1">Materi tidak ditemukan</p>
-              <p className="text-slate-600 text-sm mb-4">Coba ubah filter atau kata kunci pencarian</p>
-              <button 
-                onClick={() => { 
-                  setSearchQuery(""); 
-                  setSelectedKategori([]);
-                }}
-                className="text-sm text-slate-300 hover:text-white font-semibold underline underline-offset-4"
+          <select
+            value={kategori}
+            onChange={(e) => setKategori(e.target.value)}
+            className="bg-white dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 dark:text-slate-200 outline-none focus:border-blue-500/60 cursor-pointer"
+          >
+            <option value="Semua">Semua Kategori</option>
+            {kategoriOptions.map((k) => (
+              <option key={k} value={k}>{k}</option>
+            ))}
+          </select>
+
+          <div className="flex flex-wrap gap-2">
+            {STATUS_BUTTONS.map((b) => {
+              const active = status === b.key;
+              return (
+                <button
+                  key={b.key}
+                  onClick={() => setStatus(active ? null : b.key)}
+                  className={`px-4 py-3 rounded-xl border text-sm font-semibold transition-all ${
+                    active
+                      ? "bg-blue-600 border-blue-600 text-white"
+                      : "bg-white dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 text-slate-700 dark:text-slate-300 hover:border-blue-500/50"
+                  }`}
+                >
+                  {b.label} <span className={active ? "text-blue-100" : "text-slate-400"}>({counts[b.key]})</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="my-6 border-t border-dashed border-slate-300 dark:border-white/10" />
+
+        <div className="mb-7">
+          <p className="text-[10px] font-black text-slate-600 uppercase tracking-[4px] mb-1">Topik Pembelajaran</p>
+          <h2 className="text-2xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+            {kategori === "Semua" ? "SEMUA MATERI" : `KATEGORI: ${kategori}`}
+            <span className="ml-3 text-sm font-semibold text-slate-600 normal-case tracking-normal">
+              ({filtered.length} materi)
+            </span>
+          </h2>
+        </div>
+
+        {filtered.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 items-start">
+            {filtered.map((row) => (
+              <MateriCard key={row.materi.id} row={row} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center py-24 text-center">
+            <Search size={32} className="text-slate-700 mb-4" />
+            <p className="text-slate-400 font-bold text-lg mb-1">Materi tidak ditemukan</p>
+            <p className="text-slate-600 text-sm mb-4">Coba ubah filter atau kata kunci pencarian</p>
+            {hasFilter && (
+              <button
+                onClick={() => { setSearchQuery(""); setKategori("Semua"); setStatus(null); }}
+                className="text-sm text-slate-500 dark:text-slate-300 hover:text-blue-500 font-semibold underline underline-offset-4"
               >
                 Reset semua filter
               </button>
-            </div>
-          )}
-
-          <div className="mt-8 flex items-start gap-3 p-6 rounded-2xl bg-slate-100 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] shadow-inner">
-            <AlertTriangle size={13} className="text-slate-500 mt-0.5 shrink-0" />
-            <p className="text-[12px] text-slate-500 leading-relaxed">
-              <span className="text-slate-300 font-bold">Catatan: </span>
-              Seluruh materi dirancang berdasarkan kasus nyata di Indonesia. Setiap sub-topik dilengkapi contoh konkret dan langkah perlindungan yang langsung bisa diterapkan.
-            </p>
+            )}
           </div>
+        )}
+
+        <div className="mt-8 flex items-start gap-3 p-6 rounded-2xl bg-slate-100 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.06] shadow-inner">
+          <AlertTriangle size={13} className="text-slate-500 mt-0.5 shrink-0" />
+          <p className="text-[12px] text-slate-500 leading-relaxed">
+            <span className="text-slate-700 dark:text-slate-300 font-bold">Catatan: </span>
+            Seluruh materi dirancang berdasarkan kasus nyata di Indonesia. Setiap sub-topik dilengkapi contoh konkret dan langkah perlindungan yang langsung bisa diterapkan.
+          </p>
         </div>
       </div>
     </main>
