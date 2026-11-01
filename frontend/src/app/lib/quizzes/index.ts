@@ -1,6 +1,8 @@
 import { phishingQuiz } from "./phishing";
 import { passwordQuiz } from "./password";
-  import { socialEngineeringQuiz } from "./social-engineering";
+import { socialEngineeringQuiz } from "./social-engineering";
+import { scamOnlineQuiz } from "./scam-online";
+import { malwareQuiz } from "./malware";
 import { STAGE_ORDER, type ModuleQuiz, type StageKey } from "./types";
 
 export * from "./types";
@@ -11,6 +13,8 @@ const quizzes: Record<string, ModuleQuiz> = {
   phishing: phishingQuiz,
   "password-attack": passwordQuiz,
   "social-engineering": socialEngineeringQuiz,
+  "scam-online": scamOnlineQuiz,
+  malware: malwareQuiz,
 };
 
 export function getQuiz(slug: string): ModuleQuiz {

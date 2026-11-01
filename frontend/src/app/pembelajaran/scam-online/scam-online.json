@@ -1,28 +1,63 @@
 {
   "slug": "scam-online",
   "title": "Scam & Penipuan Online",
-  "categories": ["Serangan Finansial", "Serangan Sosial"],
+  "categories": [
+    "Serangan Finansial",
+    "Serangan Sosial"
+  ],
   "level": "Dasar",
   "navigation": [
-    { "id": 0, "label": "APA ITU SCAM ONLINE?", "icon": "ShieldAlert" },
-    { "id": 1, "label": "MARKETPLACE SCAM", "icon": "ShoppingCart" },
-    { "id": 2, "label": "GIVEAWAY & HADIAH PALSU", "icon": "Gift" },
-    { "id": 3, "label": "JOB SCAM (LOWONGAN PALSU)", "icon": "Briefcase" },
-    { "id": 4, "label": "INVESTMENT & CRYPTO SCAM", "icon": "TrendingUp" },
-    { "id": 5, "label": "ROMANCE SCAM", "icon": "Heart" }
+    {
+      "id": 0,
+      "label": "APA ITU SCAM ONLINE?",
+      "icon": "ShieldAlert"
+    },
+    {
+      "id": 1,
+      "label": "MARKETPLACE SCAM",
+      "icon": "ShoppingCart"
+    },
+    {
+      "id": 2,
+      "label": "GIVEAWAY & HADIAH PALSU",
+      "icon": "Gift"
+    },
+    {
+      "id": 3,
+      "label": "JOB SCAM (LOWONGAN PALSU)",
+      "icon": "Briefcase"
+    },
+    {
+      "id": 4,
+      "label": "INVESTMENT & CRYPTO SCAM",
+      "icon": "TrendingUp"
+    },
+    {
+      "id": 5,
+      "label": "ROMANCE SCAM",
+      "icon": "Heart"
+    }
   ],
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu Scam Online?",
       "quote": "Penipuan online tidak membobol sistem keamanan Anda; ia membobol psikologi, emosi, dan kepercayaan Anda.",
-      "definition": "Scam atau penipuan online adalah bentuk kejahatan siber yang mengandalkan manipulasi psikologis (social engineering) untuk menipu korban agar secara sukarela menyerahkan uang, data pribadi, atau akses ke akun mereka. Berbeda dengan peretasan teknis yang mengeksploitasi kerentanan perangkat lunak, penipuan online mengeksploitasi sifat dasar manusia seperti keserakahan, rasa takut, empati, atau keputusasaan. Di era digital, penipuan ini telah berevolusi dari sekadar email spam menjadi operasi kejahatan transnasional yang sangat terorganisir, menggunakan infrastruktur korporat, kecerdasan buatan (AI), dan jaringan pencucian uang yang canggih.\n\nIndustri penipuan online kini beroperasi seperti perusahaan multinasional. Sindikat kejahatan memiliki divisi khusus untuk perekrutan korban (marketing), divisi teknis untuk membuat situs web palsu, divisi psikolog untuk merancang skrip percakapan yang manipulatif, hingga divisi keuangan untuk mencuci uang hasil kejahatan melalui cryptocurrency. Mereka menargetkan jutaan orang secara bersamaan di seluruh dunia, mengetahui bahwa meskipun hanya 1% yang tertipu, keuntungan yang dihasilkan tetap bernilai miliaran dolar.",
+      "definition": "Scam atau penipuan online adalah kejahatan yang mengandalkan manipulasi psikologis (social engineering) untuk membuat korban secara sukarela menyerahkan uang, data pribadi, atau akses ke akunnya. Berbeda dengan peretasan teknis yang mengeksploitasi celah perangkat lunak, penipuan online mengeksploitasi sifat dasar manusia: rasa takut, harapan, empati, keinginan cepat untung, atau keputusasaan.\n\nDi era digital, penipuan ini sudah berkembang dari sekadar email spam menjadi operasi kejahatan lintas negara yang terorganisir. Sindikat membagi tugas: ada yang menyebar pesan, membuat situs dan aplikasi palsu, menjalankan skrip percakapan, sampai menyiapkan rekening penampung untuk memindahkan uang hasil kejahatan. Mereka menargetkan banyak orang sekaligus, karena meskipun hanya sebagian kecil yang tertipu, hasilnya tetap sangat besar.",
       "sections": [
+        {
+          "title": "Seberapa Besar Masalahnya? Data Indonesia dan Dunia",
+          "content": [
+            "Di Indonesia, OJK bersama Satgas PASTI meluncurkan Indonesia Anti-Scam Centre (IASC) pada 22 November 2024 sebagai pusat pelaporan penipuan transaksi keuangan. Sampai 30 September 2026, IASC menerima 702.342 laporan penipuan. Dari laporan itu, dana korban sebesar Rp811,1 miliar berhasil diblokir dan Rp207,16 miliar sudah dikembalikan kepada korban.",
+            "Kerugian yang dilaporkan jauh lebih besar daripada dana yang bisa diselamatkan. Sejak IASC berdiri sampai 30 November 2025, total kerugian yang dilaporkan mencapai Rp8,2 triliun, sementara dana yang berhasil diblokir sekitar 4,76% dari jumlah itu. Artinya, sebagian besar uang korban sudah berpindah sebelum sempat dihentikan.",
+            "Di Amerika Serikat, FBI melalui Internet Crime Complaint Center (IC3) mencatat kerugian akibat kejahatan internet tahun 2024 sebesar US$16,6 miliar dari hampir 860.000 laporan, dengan penipuan investasi sebagai kategori kerugian terbesar (lebih dari US$6,5 miliar). FTC mencatat kerugian penipuan konsumen sebesar US$12,5 miliar pada 2024, dan kerugian lewat transfer bank serta kripto lebih besar daripada gabungan semua metode pembayaran lain."
+          ]
+        },
         {
           "title": "Mengapa Scam Online Sangat Menguntungkan bagi Pelaku?",
           "content": [
             "Skala dan jangkauan internet memungkinkan penipu untuk menargetkan jutaan calon korban secara bersamaan dengan biaya yang sangat rendah. Mengirim satu juta email phishing atau pesan WhatsApp penipuan hampir tidak memakan biaya, namun jika hanya 0,1% korban yang tertipu dan mentransfer uang, pelaku bisa meraup keuntungan besar. Ekonomi skala ini membuat penipuan online menjadi bisnis yang sangat menguntungkan dibandingkan kejahatan fisik tradisional.",
-            "Anonimitas dan yurisdiksi lintas negara memberikan perlindungan hukum bagi para pelaku. Sindikat penipuan sering beroperasi dari negara-negara dengan penegakan hukum siber yang lemah atau korup, seperti beberapa wilayah di Asia Tenggara atau Afrika Barat. Ketika korban di Indonesia atau Amerika Serikat melapor ke polisi setempat, penegak hukum tidak memiliki yurisdiksi untuk menangkap pelaku di luar negeri, dan proses ekstradisi untuk kasus penipuan seringkali terlalu rumit dan mahal untuk dikejar.",
-            "Kecepatan transaksi digital dan cryptocurrency memungkinkan pelaku untuk mencuci uang dalam hitungan menit. Begitu korban mentransfer uang, dana tersebut langsung dipecah ke puluhan rekening penampung (money mule), ditukar menjadi cryptocurrency, dan dikirim melalui mixer kripto ke dompet anonim. Jejak uang menjadi mustahil dilacak oleh bank atau pihak berwajib, menjadikan pemulihan dana yang hilang hampir mustahil dilakukan."
+            "Pelaku sering beroperasi lintas negara. Sindikat bisa menjalankan penipuan dari satu negara, memakai rekening penampung di negara lain, dan menargetkan korban di negara ketiga. Hal ini membuat penyelidikan lebih lambat dan rumit, karena polisi harus bekerja sama dengan aparat negara lain.",
+            "Uang hasil penipuan dipindahkan dengan sangat cepat. Begitu korban mentransfer, dana biasanya langsung dipecah ke banyak rekening penampung (money mule), ditarik tunai, atau ditukar ke aset kripto. Meski begitu, jejak transaksi tidak hilang sama sekali: bank dan IASC masih bisa memblokir dana yang belum sempat berpindah. Karena itu, kecepatan melapor sangat menentukan."
           ]
         },
         {
@@ -31,6 +66,16 @@
             "Penipu adalah ahli psikologi terapan yang memanipulasi emosi korban untuk membypass logika. Mereka menggunakan prinsip 'Urgency' (keterdesakan) dengan menciptakan tenggat waktu palsu, seperti 'Akun Anda akan diblokir dalam 1 jam' atau 'Hadiah ini hanya bisa diklaim hari ini'. Ketika otak manusia berada dalam mode panik atau terdesak, kemampuan berpikir kritis dan analitis menurun drastis, membuat korban bertindak impulsif tanpa memverifikasi kebenaran informasi.",
             "Prinsip 'Greed' (keserakahan) dan harapan adalah senjata utama dalam penipuan investasi dan hadiah. Penipu menawarkan keuntungan yang tidak masuk akal, seperti 'Profit pasti 10% per hari' atau 'Anda memenangkan mobil mewah'. Korban yang sedang dalam kesulitan finansial atau yang memiliki impian untuk cepat kaya akan mengabaikan red flags yang jelas karena dibutakan oleh potensi keuntungan yang dijanjikan.",
             "Prinsip 'Authority' (otoritas) dan 'Fear' (ketakutan) digunakan dalam penipuan yang mengatasnamakan institusi resmi. Penipu yang menyamar sebagai polisi, petugas pajak, atau customer service bank menggunakan bahasa formal, nomor telepon yang di-spoofing, dan ancaman hukum untuk membuat korban ketakutan. Dalam keadaan takut akan dipenjara atau didenda, korban akan mematuhi semua instruksi penipu, termasuk mentransfer uang ke 'rekening aman' yang sebenarnya adalah rekening pelaku."
+          ]
+        },
+        {
+          "title": "Kalau Sudah Terlanjur Jadi Korban: Lapor Secepatnya",
+          "content": [
+            "Waktu adalah faktor terpenting. Menurut OJK, rata-rata korban di Indonesia baru melapor sekitar 12 jam setelah kejadian, padahal pusat anti-penipuan di negara lain umumnya menerima laporan 15–20 menit setelah kejadian. Semakin cepat dilaporkan, semakin besar peluang dana korban diblokir sebelum dipindahkan pelaku.",
+            "Langkah 1: Segera hubungi bank atau penyedia pembayaran (e-wallet) yang Anda pakai untuk transfer, melalui nomor resmi yang tertera di kartu atau aplikasi. Minta pemblokiran rekening tujuan. Bank dan penyedia pembayaran terhubung dengan IASC.",
+            "Langkah 2: Laporkan ke IASC melalui situs resmi iasc.ojk.go.id dengan melampirkan bukti: tangkapan layar percakapan, bukti transfer, nomor rekening, dan nomor telepon pelaku. Kontak OJK juga bisa dihubungi di nomor 157.",
+            "Langkah 3: Laporkan nomor rekening pelaku ke cekrekening.id agar orang lain bisa waspada, lalu buat laporan polisi. Simpan semua bukti dan jangan menghapus percakapan.",
+            "Langkah 4: Waspadai penipuan kedua. Setelah menjadi korban, banyak orang dihubungi pihak yang mengaku 'bisa mengembalikan dana' asalkan membayar biaya di muka. Ini hampir selalu penipuan lanjutan. Pemulihan dana resmi hanya melalui bank, IASC, dan aparat penegak hukum."
           ]
         },
         {
@@ -45,53 +90,84 @@
         }
       ],
       "case_study": {
-        "title": "Sindikat Scam Compound di Asia Tenggara",
-        "story": "Dalam beberapa tahun terakhir, PBB dan Interpol mengungkap keberadaan 'Scam Compounds' atau kompleks penipuan raksasa di perbatasan Myanmar, Kamboja, dan Laos. Kompleks ini beroperasi seperti kota tertutup yang menampung puluhan ribu pekerja paksa dari berbagai negara, termasuk Indonesia, yang direkrut dengan janji pekerjaan IT bergaji tinggi. Begitu tiba, paspor mereka dirampas, dan mereka dipaksa bekerja 16 jam sehari untuk menjalankan berbagai penipuan online (crypto scam, romance scam, job scam) yang menargetkan korban di seluruh dunia. Jika mereka menolak atau gagal mencapai target, mereka akan disiksa, dijual ke sindikat lain, atau bahkan dibunuh. Sindikat ini menghasilkan puluhan miliaran dolar setiap tahunnya, menjadikannya salah satu operasi kejahatan terorganisir terbesar dan paling kejam di abad ke-21.",
-        "lesson": "Penipuan online bukan lagi sekadar aksi individu yang iseng, melainkan industri kejahatan transnasional yang melibatkan perbudakan modern dan pelanggaran HAM berat. Waspada terhadap tawaran pekerjaan luar negeri yang menjanjikan gaji tinggi dengan persyaratan yang mudah, terutama di wilayah yang minim regulasi. Selalu verifikasi legalitas perusahaan melalui kedutaan besar atau lembaga resmi sebelum menerima tawaran kerja di luar negeri."
+        "type": "nyata",
+        "title": "Scam Compound di Asia Tenggara: Ratusan Ribu Orang Dipaksa Menipu",
+        "story": "Pada 29 Agustus 2023, Kantor HAM PBB (OHCHR) menerbitkan laporan tentang operasi penipuan online di Asia Tenggara. Menurut laporan itu, sedikitnya 120.000 orang di Myanmar dan sekitar 100.000 orang di Kamboja diperkirakan ditahan dan dipaksa menjalankan penipuan online, dengan Laos, Filipina, dan Thailand juga menjadi negara tujuan atau transit. Banyak dari mereka direkrut dengan janji pekerjaan bergaji tinggi, lalu ditahan di kompleks tertutup dan mengalami kekerasan, penyiksaan, serta kerja paksa. PBB menyebut operasi ini menghasilkan miliaran dolar per tahun. Warga Indonesia termasuk yang terjerat: Menteri Luar Negeri menyampaikan kepada DPR pada Juni 2025 bahwa Kemlu mencatat sekitar 7.600 kasus WNI terkait online scam di luar negeri pada 2021–2025, terbanyak di Kamboja (sekitar 4.300 kasus) dan Myanmar (sekitar 1.100 kasus). Sebanyak 1.508 kasus di antaranya diusulkan sebagai tindak pidana perdagangan orang (TPPO).",
+        "lesson": "Di balik pesan penipuan yang Anda terima, bisa jadi ada orang yang juga menjadi korban perdagangan manusia. Penipuan online adalah industri kejahatan lintas negara, bukan ulah iseng perorangan. Pelajarannya: 1) waspadai lowongan kerja luar negeri dengan gaji tinggi dan syarat sangat mudah, terutama untuk posisi 'admin', 'customer service', atau 'operator' di Kamboja, Myanmar, atau Laos; 2) pastikan penempatan kerja ke luar negeri melalui jalur resmi pemerintah; 3) jika keluarga atau teman terjebak, segera hubungi Kementerian Luar Negeri atau KBRI terdekat.",
+        "sources": [
+          {
+            "label": "UN News (29 Agu 2023) — Hundreds of thousands trafficked into online criminality across SE Asia",
+            "url": "https://news.un.org/en/node/1140187"
+          },
+          {
+            "label": "Bisnis.com (30 Jun 2025) — 7.600 Kasus WNI Terjerat Sindikat Penipuan Daring di Luar Negeri, Paling Banyak di Kamboja",
+            "url": "https://kabar24.bisnis.com/read/20250630/15/1888976/7600-kasus-wni-terjerat-sindikat-penipuan-daring-di-luar-negeri-paling-banyak-di-kamboja"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 Annual Report 2023 — Internet Crime Report",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC Consumer Sentinel Network 2023 — Data Book Penipuan Online Resmi"
+        "https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Documents/Pages/Tingkatkan-Pelindungan-Konsumen-Satgas-Pasti-Lakukan-Soft-Launching-IASC/SP%20Satgas%20Pasti%20Soft%20Launching%20IASC.pdf - OJK (22 Nov 2024) — Satgas PASTI Soft Launching Indonesia Anti-Scam Centre (IASC)",
+        "https://keuangan.kontan.co.id/news/iasc-terima-702342-laporan-kasus-penipuan-hingga-september-2026 - Kontan (Okt 2026) — IASC terima 702.342 laporan kasus penipuan hingga September 2026",
+        "https://keuangan.kontan.co.id/news/ojk-rata-rata-masyarakat-melaporkan-kasus-penipuan-ke-iasc-12-jam-setelah-kejadian - Kontan (Des 2025) — OJK: rata-rata korban melapor ke IASC 12 jam setelah kejadian",
+        "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf - FBI IC3 — Internet Crime Report 2024",
+        "https://www.ftc.gov/news-events/news/press-releases/2025/03/new-ftc-data-show-big-jump-reported-losses-fraud-125-billion-2024 - FTC (Mar 2025) — New FTC Data Show a Big Jump in Reported Losses to Fraud to $12.5 Billion in 2024",
+        "https://news.un.org/en/node/1140187 - UN News / OHCHR (2023) — Online scam operations in Southeast Asia",
+        "https://cekrekening.id - CekRekening.id — situs resmi pemerintah untuk cek & lapor rekening terindikasi penipuan"
       ]
     },
     "1": {
       "subtitle": "Marketplace Scam",
       "quote": "Harga yang terlalu murah untuk sebuah barang berharga seringkali adalah umpan untuk perangkap yang mahal.",
-      "definition": "Marketplace scam adalah jenis penipuan yang terjadi dalam ekosistem jual beli online, baik di platform e-commerce resmi (seperti Tokopedia, Shopee) maupun di media sosial (Facebook Marketplace, Instagram, Twitter/X). Penipu mengeksploitasi kepercayaan pembeli terhadap sistem online dengan menawarkan barang yang tidak pernah ada, menjual barang palsu, atau memanipulasi proses pembayaran sehingga uang masuk ke rekening pelaku alih-alih ke rekening penjual yang sah. Penipuan ini sangat marak pada barang-barang bernilai tinggi dengan permintaan besar, seperti gadget, tiket konser, dan kendaraan bekas.",
+      "definition": "Marketplace scam adalah penipuan dalam transaksi jual beli online, baik di platform e-commerce resmi maupun di media sosial seperti Facebook Marketplace, Instagram, dan X. Penipu mengeksploitasi kepercayaan pembeli dengan menawarkan barang yang tidak pernah ada, menjual barang palsu, atau mengalihkan pembayaran agar uang masuk ke rekening pelaku, bukan ke penjual yang sah. Penipuan ini sangat marak untuk barang bernilai tinggi dengan permintaan besar, seperti gadget, tiket konser, dan kendaraan bekas.",
       "sections": [
         {
           "title": "Modus Operandi Penipuan Marketplace",
           "content": [
             "Salah satu modus paling umum adalah 'Transaksi di Luar Platform'. Penipu yang memajang barang di e-commerce akan membujuk korban untuk bertransaksi langsung via WhatsApp dengan alasan 'menghindari biaya admin platform' atau 'mengirim foto detail barang'. Mereka kemudian mengirimkan link pembayaran palsu (phishing) yang menyerupai halaman checkout e-commerce atau meminta transfer langsung ke rekening pribadi. Begitu uang ditransfer, penipu langsung memblokir korban dan barang tidak pernah dikirim.",
             "Modus 'Hijack Toko' terjadi ketika peretas membajak akun penjual resmi yang memiliki reputasi baik di marketplace. Menggunakan kredensial yang dicuri, peretas mengubah nomor rekening pencairan dana di sistem penjual atau membalas pesan pembeli yang sedang menanyakan produk. Pembeli yang melihat bahwa mereka sedang berbicara dengan 'Official Store' yang bercentang biru akan mentransfer uang tanpa curiga, padahal mereka sedang berinteraksi dengan peretas.",
-            "Penipuan 'Barang Fiktif dengan Harga Miring' sering menargetkan barang yang sedang langka di pasaran, seperti konsol game terbaru atau kartu grafis (VGA). Penipu membuat toko palsu dengan ulasan palsu (fake reviews) yang dibeli dari layanan black-hat SEO. Mereka menawarkan harga 30-50% lebih murah dari harga pasar dengan alasan 'cuci gudang' atau 'barang impor black market'. Korban yang tergiur harga murah akan langsung checkout, namun yang mereka terima hanyalah paket berisi batu atau sampah."
+            "Penipuan 'Barang Fiktif dengan Harga Miring' sering menargetkan barang yang sedang langka di pasaran, seperti konsol game terbaru atau kartu grafis (VGA). Penipu membuat toko palsu dengan ulasan palsu (fake reviews) yang dibeli atau dibuat sendiri dengan banyak akun palsu. Mereka menawarkan harga 30-50% lebih murah dari harga pasar dengan alasan 'cuci gudang' atau 'barang impor black market'. Korban yang tergiur harga murah akan langsung checkout, namun yang mereka terima hanyalah paket berisi batu atau sampah.",
+            "Modus 'Rekber Palsu' juga perlu diwaspadai. Penjual menyarankan memakai jasa rekening bersama (rekber) tertentu, padahal rekber itu milik komplotannya sendiri. Rekber yang aman adalah fitur bawaan platform e-commerce, bukan jasa pihak ketiga yang disodorkan oleh penjual."
           ]
         },
         {
           "title": "Fenomena Penipuan Tiket Konser dan Event",
           "content": [
-            "Pasar sekunder tiket konser (seperti Coldplay, Taylor Swift, atau festival musik besar) adalah ladang subur bagi penipu. Ketika tiket resmi habis terjual dalam hitungan detik (sold out), keputusasaan penggemar dimanfaatkan oleh sindikat penipuan. Mereka membanjiri media sosial seperti Twitter/X dan Instagram dengan postingan 'Jual Tiket Coldplay Ready, Trust Test', seringkali menggunakan akun yang diretas atau akun bot yang terlihat meyakinkan.",
+            "Pasar tiket kedua (resale) untuk konser besar adalah ladang subur bagi penipu. Ketika tiket resmi habis dalam hitungan menit, keputusasaan penggemar dimanfaatkan. Penipu membanjiri media sosial dengan tawaran tiket, mengaku sebagai penggemar yang batal datang, atau mengaku punya 'akses khusus' ke agen tiket.",
             "Penipu tiket sangat mahir dalam memalsukan bukti. Mereka menggunakan aplikasi editor untuk membuat e-ticket PDF palsu lengkap dengan barcode dan QR code yang terlihat asli. Beberapa bahkan mengirimkan video 'bukti' bahwa mereka sedang memegang tiket fisik atau sedang login di aplikasi tiket resmi, padahal video tersebut dicuri dari korban lain atau direkam dari layar orang lain. Korban yang tidak sabar akan langsung mentransfer jutaan rupiah tanpa memverifikasi keaslian tiket.",
-            "Di hari pelaksanaan konser, penipu seringkali beroperasi di sekitar venue. Mereka menjual tiket fisik palsu atau menawarkan 'jasa joki tiket' di mana mereka meminta korban mentransfer uang dengan janji akan membelikan tiket dari calo resmi, namun setelah uang diterima, mereka langsung menghilang di tengah kerumunan. Banyak penggemar yang akhirnya gagal masuk ke venue dan kehilangan uang tabungan mereka."
+            "Penipuan juga sering berlapis: korban membeli dari penipu, lalu menjual atau menitipkan tiket itu kepada teman-temannya (jasa titip). Ketika tiket tidak pernah ada, kerugian menyebar ke banyak orang sekaligus, dan si perantara ikut menanggung tuntutan dari teman-temannya. Banyak korban baru sadar ditipu menjelang hari konser, saat tiket tidak kunjung dikirim atau ditolak di pintu masuk."
           ]
         },
         {
           "title": "Cara Melindungi Diri dari Marketplace Scam",
           "content": [
-            "Selalu gunakan sistem Rekening Bersama (Rekber) atau fitur perlindungan pembeli yang disediakan oleh platform e-commerce resmi. Jangan pernah mau diajak bertransaksi di luar platform (seperti transfer langsung ke rekening penjual via WhatsApp), meskipun penjual menawarkan diskon tambahan. Fitur Rekber memastikan uang Anda ditahan oleh pihak ketiga dan baru diteruskan ke penjual setelah Anda mengonfirmasi bahwa barang telah diterima dengan kondisi baik.",
-            "Untuk pembelian tiket konser atau event, hanya beli dari penyelenggara resmi atau mitra tiket yang terverifikasi (seperti Tiket.com, BookMyShow, atau Loket). Hindari membeli dari calo di media sosial atau forum tidak resmi, meskipun mereka bersumpah bahwa tiket tersebut asli. Jika Anda harus membeli dari pasar sekunder, pastikan platform tersebut menyediakan garansi pengembalian uang 100% jika tiket terbukti palsu atau ditolak di pintu masuk.",
+            "Selalu bertransaksi dan membayar di dalam platform e-commerce resmi agar terlindungi fitur perlindungan pembeli. Uang Anda ditahan oleh platform dan baru diteruskan ke penjual setelah Anda mengonfirmasi barang diterima. Jangan mau diajak transaksi di luar platform, misalnya transfer langsung lewat WhatsApp, meskipun ditawari diskon tambahan.",
+            "Untuk tiket konser atau event, beli hanya dari penyelenggara resmi atau mitra penjualan tiket yang diumumkan resmi oleh promotor. Hindari calo di media sosial, meskipun mereka mengaku punya 'kenalan di agen tiket'. Jika promotor menyediakan jalur penjualan ulang resmi, gunakan jalur itu.",
+            "Sebelum transfer ke rekening perorangan, periksa nomor rekening dan nomor telepon penjual di cekrekening.id, situs resmi pemerintah untuk mengecek rekening yang pernah dilaporkan terkait penipuan. Jika muncul laporan, batalkan transaksi.",
             "Lakukan riset mendalam terhadap penjual sebelum bertransaksi. Periksa tanggal akun dibuat, ulasan dari pembeli lain (waspadai ulasan yang terlalu seragam atau menggunakan bahasa bot), dan jejak digital mereka di internet. Untuk barang bekas bernilai tinggi seperti mobil atau motor, selalu lakukan pertemuan tatap muka di tempat umum yang aman, bawa teman, dan verifikasi keaslian dokumen (BPKB/STNK) langsung ke kantor Samsat atau kepolisian sebelum menyerahkan uang."
           ]
         }
       ],
       "case_study": {
-        "title": "Sindikat Penipuan Tiket Konser di Twitter/X",
-        "story": "Menjelang konser artis internasional besar di Jakarta, kepolisian Indonesia berulang kali membongkar sindikat penipuan tiket yang beroperasi via Twitter/X. Sindikat ini menggunakan puluhan akun bot dan akun hasil retasan (hacked accounts) yang memiliki riwayat tweet normal agar terlihat seperti penggemar asli yang 'tiba-tiba berhalangan hadir'. Mereka memalsukan e-ticket menggunakan software editor dan bahkan menyediakan 'testimoni palsu' dari akun-akun komplotan mereka. Dalam satu operasi, polisi menemukan bahwa sindikat ini telah menipu ratusan penggemar dari berbagai kota, dengan total kerugian mencapai miliaran rupiah. Para korban baru menyadari mereka ditipu ketika mereka menunjukkan barcode tiket di gate konser dan sistem menolaknya karena tiket tersebut sudah digunakan oleh orang lain atau barcode tersebut adalah hasil editan.",
-        "lesson": "Keputusasaan dan FOMO (Fear of Missing Out) adalah musuh terbesar logika. Jangan pernah membeli tiket dari perorangan di media sosial tanpa perlindungan pihak ketiga. Selalu gunakan platform resmi yang memiliki sistem verifikasi barcode dinamis (yang berubah setiap beberapa detik untuk mencegah screenshot). Jika tiket resmi sudah habis, lebih baik menunggu pengumuman resmi dari promotor daripada mengambil risiko kehilangan uang jutaan rupiah dari calo penipu."
+        "type": "nyata",
+        "title": "Penipuan Tiket Konser Coldplay Jakarta: 2.268 Tiket Fiktif, Rp5,1 Miliar (2023)",
+        "story": "Konser Coldplay di Stadion Utama Gelora Bung Karno, Jakarta, pada November 2023 diwarnai banyak laporan penipuan tiket. Salah satu kasus terbesar ditangani Polres Metro Jakarta Pusat. Pelakunya seorang mahasiswi berusia 19 tahun asal Tangerang. Sejak masa pemesanan tiket pada Mei 2023, ia meyakinkan pembeli bahwa orang tuanya memiliki agen tiket dengan kuota ratusan tiket. Para pembeli kemudian menawarkan tiket itu lagi kepada teman-temannya. Menjelang hari konser, tiket tidak pernah diberikan dan pelaku tidak bisa dihubungi. Menurut polisi, pelaku menargetkan keuntungan Rp250 ribu per tiket. Dari enam laporan polisi, tercatat sekitar 2.268 tiket dengan total kerugian sekitar Rp5,1 miliar. Pelaku ditetapkan sebagai tersangka dan ditahan pada November 2023 dengan sangkaan penipuan dan penggelapan.",
+        "lesson": "Kasus ini menunjukkan tiga pola klasik marketplace scam: barang langka (tiket sold out), klaim 'akses orang dalam' (orang tua punya agen tiket), dan transaksi di luar sistem resmi. Kerugiannya juga merambat ke banyak orang karena pembeli pertama menjual lagi ke teman-temannya. Pelajarannya: 1) beli tiket hanya dari kanal resmi promotor; 2) klaim 'kenal orang dalam' adalah tanda bahaya, bukan jaminan; 3) jangan menjadi perantara (jastip) untuk barang yang keasliannya belum bisa Anda pastikan.",
+        "sources": [
+          {
+            "label": "Bisnis.com (20 Nov 2023) — Ghisca Debora Rugikan Korban Tiket Palsu Coldplay Rp5,1 Miliar",
+            "url": "https://kabar24.bisnis.com/read/20231120/16/1716085/ghisca-debora-rugikan-korban-tiket-palsu-coldplay-rp51-miliar"
+          },
+          {
+            "label": "IDX Channel (22 Nov 2023) — Tersangka Penipuan Konser Coldplay Sebut Orang Tuanya Punya Agen Tiket",
+            "url": "https://www.idxchannel.com/news/tersangka-penipuan-konser-coldplay-sebut-orang-tuanya-punya-agen-tiket/all"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Non-Delivery & Marketplace Fraud Statistics",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Online Shopping Fraud Report"
+        "https://www.ftc.gov/news-events/news/press-releases/2025/03/new-ftc-data-show-big-jump-reported-losses-fraud-125-billion-2024 - FTC (Mar 2025) — New FTC Data Show a Big Jump in Reported Losses to Fraud to $12.5 Billion in 2024",
+        "https://cekrekening.id - CekRekening.id — situs resmi pemerintah untuk cek & lapor rekening terindikasi penipuan",
+        "https://consumer.ftc.gov/articles/online-shopping - FTC Consumer Advice — Online Shopping (tips belanja online aman)",
+        "https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Documents/Pages/Tingkatkan-Pelindungan-Konsumen-Satgas-Pasti-Lakukan-Soft-Launching-IASC/SP%20Satgas%20Pasti%20Soft%20Launching%20IASC.pdf - OJK (22 Nov 2024) — Satgas PASTI Soft Launching Indonesia Anti-Scam Centre (IASC)"
       ]
     },
     "2": {
@@ -116,22 +192,43 @@
           ]
         },
         {
+          "title": "Modus Baru: Video Deepfake Pejabat yang 'Membagikan Bantuan'",
+          "content": [
+            "Penipu kini memakai kecerdasan buatan (AI) untuk membuat video palsu (deepfake) yang menampilkan wajah dan suara tokoh terkenal, termasuk pejabat negara. Dalam video itu, sang tokoh seolah-olah mengumumkan bantuan uang tunai atau hadiah, lalu penonton diminta menghubungi nomor tertentu untuk 'mendaftar'.",
+            "Polanya tetap sama dengan undian palsu: korban diminta membayar 'biaya administrasi' atau 'biaya pencairan' terlebih dahulu. Teknologinya baru, tetapi intinya tetap permintaan uang di muka.",
+            "Cara mengenali: bantuan resmi pemerintah diumumkan melalui situs dan akun resmi instansi, tidak pernah meminta biaya pendaftaran, dan tidak diurus lewat nomor pribadi. Perhatikan juga tanda video palsu seperti gerak bibir yang tidak sinkron, suara yang datar, atau video yang hanya beredar di akun tidak resmi."
+          ]
+        },
+        {
           "title": "Cara Melindungi Diri dari Hadiah Palsu",
           "content": [
-            "Pahami prinsip dasar perpajakan dan hukum di Indonesia: Tidak ada perusahaan atau instansi resmi yang meminta pemenang undian untuk mentransfer 'pajak' atau 'biaya administrasi' di muka. Dalam undian resmi, pajak hadiah (PPh 21 sebesar 25%) akan langsung dipotong dari nilai hadiah sebelum ditransfer ke rekening pemenang. Jika Anda memenangkan 100 juta, yang masuk ke rekening Anda adalah 75 juta, dan Anda tidak perlu mentransfer 25 juta terlebih dahulu.",
+            "Pahami aturan pajak hadiah di Indonesia. Menurut PP Nomor 132 Tahun 2000, hadiah undian dikenai Pajak Penghasilan (PPh) final sebesar 25% dari nilai bruto hadiah, dan pajak itu wajib dipotong oleh penyelenggara undian. Jadi pemenang tidak pernah diminta mentransfer pajak terlebih dahulu. Jika Anda menang hadiah uang Rp100 juta, yang Anda terima adalah Rp75 juta setelah dipotong pajak oleh penyelenggara.",
             "Jangan pernah mempercayai pesan undian yang datang dari saluran yang tidak terduga. Perusahaan besar tidak akan mengumumkan pemenang undian melalui SMS dari nomor HP pribadi, WhatsApp dari nomor asing, atau telepon yang tidak Anda minta. Selalu verifikasi informasi tersebut dengan menelepon call center resmi perusahaan yang nomornya Anda cari sendiri dari situs web resmi mereka, bukan dari nomor yang tertera di pesan undian.",
-            "Abaikan dan blokir semua pesan yang menawarkan hadiah tidak masuk akal. Jangan membalas pesan tersebut, meskipun hanya untuk bertanya atau memarahi pelaku, karena membalas akan menandai nomor Anda sebagai 'nomor aktif' di database mereka, yang akan membuat Anda semakin sering dikirimi spam penipuan di masa depan. Laporkan nomor tersebut ke operator seluler atau ke aplikasi pelaporan spam seperti Truecaller."
+            "Abaikan dan blokir pesan yang menawarkan hadiah tidak masuk akal. Jangan membalas, meskipun hanya untuk memarahi pelaku, karena balasan menandakan nomor Anda aktif. Laporkan nomor dan rekening pelaku ke cekrekening.id, dan jika sudah terlanjur transfer, segera ikuti langkah pelaporan di Topik 00."
           ]
         }
       ],
       "case_study": {
-        "title": "Penipuan Undian Palsu Mengatasnamakan Shopee dan Bank BCA",
-        "story": "Seorang ibu rumah tangga di Jawa Tengah menerima pesan WhatsApp dari nomor yang menggunakan foto profil logo Shopee, yang menyatakan bahwa nomor teleponnya terpilih sebagai pemenang undian 'Shopee Anniversary' berupa mobil SUV dan uang tunai Rp 250 juta. Pesan tersebut menyertakan link ke situs web yang sangat mirip dengan situs resmi Shopee dan meminta korban menghubungi 'CS Shopee' via WhatsApp. Setelah korban menghubungi, 'CS' tersebut meminta korban mentransfer biaya pajak dan notaris sebesar Rp 15 juta ke rekening atas nama 'PT Shopee Indonesia' (yang sebenarnya adalah rekening pribadi komplotan). Karena diiming-imingi hadiah besar dan melihat situs web yang meyakinkan, korban meminjam uang dari tetangga dan mentransfernya. Setelah transfer berhasil, korban diblokir dan hadiah tidak pernah ada. Korban mengalami trauma psikologis dan terlilit utang karena tertipu.",
-        "lesson": "Keserakahan dan ketidaktahuan tentang prosedur resmi adalah celah utama yang dieksploitasi penipu. Selalu ingat bahwa hadiah resmi tidak pernah meminta uang muka dalam bentuk apapun. Verifikasi independen adalah kunci; jangan gunakan kontak yang disediakan oleh pemberi hadiah. Edukasi keluarga, terutama orang tua dan lansia yang mungkin kurang memahami teknologi, sangat penting untuk melindungi mereka dari jeratan penipuan undian berhadiah yang terus berevolusi."
+        "type": "nyata",
+        "title": "Video Deepfake Presiden Prabowo Menawarkan Bantuan Uang (Bareskrim, Januari 2025)",
+        "story": "Pada 23 Januari 2025, Bareskrim Polri mengumumkan penangkapan seorang pria berinisial AMA (29) asal Lampung. Ia menyebarkan video deepfake di media sosial yang memakai wajah dan suara Presiden Prabowo Subianto, Wakil Presiden Gibran Rakabuming Raka, Menteri Keuangan Sri Mulyani, dan pejabat lain, seolah-olah mereka menawarkan bantuan uang tunai kepada masyarakat. Warga yang tertarik diarahkan menghubungi nomor yang tercantum untuk 'mendaftar', lalu diminta membayar biaya administrasi pencairan bantuan. Bantuan itu tidak pernah ada. Menurut polisi, dalam empat bulan terakhir sebelum ditangkap, ada 11 korban dengan keuntungan pelaku sekitar Rp30 juta. Pelaku dijerat UU ITE (UU Nomor 1 Tahun 2024) dan pasal penipuan, sementara satu rekannya masih diburu. Pada Februari 2025, Bareskrim kembali menangkap pelaku lain dengan modus video AI serupa.",
+        "lesson": "Teknologi deepfake membuat video palsu terlihat meyakinkan, tetapi pola penipuannya tetap sama: hadiah atau bantuan yang mengharuskan Anda membayar dulu. Pelajarannya: 1) bantuan resmi tidak pernah meminta biaya pendaftaran atau administrasi; 2) cek kebenaran informasi di situs dan akun resmi instansi pemerintah; 3) jangan menghubungi nomor yang tercantum di video atau pesan; 4) bagikan informasi ini kepada orang tua dan kerabat, karena mereka sering menjadi sasaran.",
+        "sources": [
+          {
+            "label": "CNN Indonesia (24 Jan 2025) — Modus Penipuan Deepfake AI Prabowo-Gibran: Tawarkan Bantuan Uang",
+            "url": "https://www.cnnindonesia.com/nasional/20250124072755-12-1190915/modus-penipuan-deepfake-ai-prabowo-gibran-tawarkan-bantuan-uang"
+          },
+          {
+            "label": "Bisnis.com (7 Feb 2025) — Bareskrim Kembali Tangkap Pelaku Penipuan Pakai Video AI Prabowo",
+            "url": "https://kabar24.bisnis.com/read/20250207/16/1837662/bareskrim-kembali-tangkap-pelaku-penipuan-pakai-video-ai-prabowo"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Advance Fee Fraud & Fake Prize Statistics",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Prize, Sweepstakes & Lottery Scams Data"
+        "https://www.pajak.go.id/id/pajak-penghasilan-atas-hadiah-undian - Direktorat Jenderal Pajak — Pajak Penghasilan atas Hadiah Undian (PP 132/2000)",
+        "https://consumer.ftc.gov/articles/fake-prize-sweepstakes-and-lottery-scams - FTC Consumer Advice — Fake Prize, Sweepstakes, and Lottery Scams",
+        "https://cekrekening.id - CekRekening.id — situs resmi pemerintah untuk cek & lapor rekening terindikasi penipuan",
+        "https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Documents/Pages/Tingkatkan-Pelindungan-Konsumen-Satgas-Pasti-Lakukan-Soft-Launching-IASC/SP%20Satgas%20Pasti%20Soft%20Launching%20IASC.pdf - OJK (22 Nov 2024) — Satgas PASTI Soft Launching Indonesia Anti-Scam Centre (IASC)"
       ]
     },
     "3": {
@@ -143,41 +240,56 @@
           "title": "Evolusi Job Scam: Dari Biaya Travel ke Task Scam",
           "content": [
             "Secara tradisional, job scam berfokus pada perusahaan fiktif yang mengundang calon karyawan untuk wawancara di luar kota. Setelah korban tiba, mereka diminta membayar 'biaya akomodasi', 'biaya medical check-up', atau 'biaya pengurusan visa' ke agen travel atau klinik palsu yang bekerja sama dengan sindikat penipu. Modus ini masih ada, namun kini telah berevolusi menjadi bentuk yang jauh lebih canggih dan merusak secara finansial.",
-            "Evolusi paling berbahaya saat ini adalah 'Task Scam' atau penipuan tugas paruh waktu. Korban direkrut melalui WhatsApp atau Telegram dengan tawaran pekerjaan mudah seperti 'Like video YouTube', 'Subscribe channel', 'Review produk di Shopee', atau 'Follow akun TikTok'. Awalnya, korban benar-benar dibayar komisi kecil (misalnya Rp 20.000 per tugas) untuk membangun kepercayaan. Ini adalah fase 'fattening' atau penggemukan.",
-            "Setelah korban percaya, mereka diundang ke 'Grup VIP' atau 'Tim Premium' di Telegram, di mana mereka diminta untuk 'mendepositkan' uang mereka sendiri untuk membuka 'tugas bernilai tinggi' dengan janji komisi 20-50% dalam hitungan menit. Sistem ini dirancang seperti aplikasi trading palsu. Korban yang sudah melihat saldo akun mereka bertambah di layar (saldo fiktif) akan terus mendepositkan uang tabungan mereka, bahkan meminjam dari pinjol, dengan harapan bisa mencairkan semua saldo sekaligus di akhir sesi. Namun ketika mereka mencoba withdraw, sistem akan meminta 'biaya pajak', 'biaya upgrade level', atau menuduh mereka melakukan 'kesalahan operasi' yang mengharuskan mereka mendeposit lebih banyak lagi untuk memperbaiki kesalahan tersebut."
+            "Evolusi paling berbahaya saat ini adalah 'Task Scam' atau penipuan tugas paruh waktu. Korban dihubungi lewat WhatsApp atau Telegram dengan tawaran pekerjaan mudah seperti memberi 'like' pada video YouTube, mengikuti akun media sosial, atau menulis ulasan produk. Di beberapa kasus, korban sempat dibayar komisi kecil untuk membangun kepercayaan; di kasus lain, korban langsung diminta deposit sebelum menerima 'misi'.",
+            "Setelah korban percaya, mereka diundang ke 'Grup VIP' atau 'Tim Premium' di Telegram, di mana mereka diminta untuk 'mendepositkan' uang mereka sendiri untuk membuka 'tugas bernilai tinggi' dengan janji komisi 20-50% dalam hitungan menit. Sistem ini dirancang seperti aplikasi trading palsu. Korban yang sudah melihat saldo akun mereka bertambah di layar (saldo fiktif) akan terus mendepositkan uang tabungan mereka, bahkan meminjam dari pinjol, dengan harapan bisa mencairkan semua saldo sekaligus di akhir sesi. Namun ketika mereka mencoba withdraw, sistem akan meminta 'biaya pajak', 'biaya upgrade level', atau menuduh mereka melakukan 'kesalahan operasi' yang mengharuskan mereka mendeposit lebih banyak lagi untuk memperbaiki kesalahan tersebut.",
+            "Varian lain yang sangat berbahaya adalah lowongan kerja ke luar negeri, misalnya sebagai 'admin', 'customer service', atau 'operator' dengan gaji tinggi. Sebagian korban justru dibawa ke kompleks penipuan dan dipaksa menipu orang lain (lihat Topik 00). Ini sudah termasuk tindak pidana perdagangan orang (TPPO)."
           ]
         },
         {
           "title": "Tanda-Tanda Lowongan Kerja Palsu",
           "content": [
             "Proses rekrutmen yang terlalu mudah dan cepat adalah red flag utama. Perusahaan asli melakukan proses seleksi yang ketat, termasuk wawancara bertahap, tes kemampuan, dan pengecekan latar belakang. Jika Anda ditawari pekerjaan bergaji tinggi hanya setelah percakapan singkat via chat WhatsApp tanpa wawancara tatap muka atau video call yang profesional, hampir pasti itu adalah penipuan.",
-            "Penggunaan domain email gratis untuk komunikasi resmi. Perusahaan profesional akan menggunakan email dengan domain perusahaan mereka (misalnya hrd@tokopedia.com). Jika HRD menghubungi Anda menggunakan alamat email seperti @gmail.com, @yahoo.com, atau @hotmail.com, dan mengklaim berasal dari perusahaan besar, itu adalah tanda pasti penipuan.",
-            "Permintaan uang di muka dengan alasan apapun. Perusahaan asli tidak akan pernah meminta calon karyawan untuk membayar biaya pelatihan, biaya seragam, biaya pengurusan dokumen, atau membeli produk perusahaan sebagai syarat diterima bekerja. Jika ada permintaan transfer uang sebelum Anda mulai bekerja dan menerima gaji, segera tinggalkan proses rekrutmen tersebut."
+            "Penggunaan email gratis untuk komunikasi resmi. Perusahaan profesional biasanya memakai email dengan domain perusahaan. Jika 'HRD' perusahaan besar menghubungi Anda dari alamat @gmail.com atau @yahoo.com, anggap itu tanda bahaya dan verifikasi lewat situs atau kontak resmi perusahaan.",
+            "Permintaan uang di muka dengan alasan apapun. Perusahaan asli tidak akan pernah meminta calon karyawan untuk membayar biaya pelatihan, biaya seragam, biaya pengurusan dokumen, atau membeli produk perusahaan sebagai syarat diterima bekerja. Jika ada permintaan transfer uang sebelum Anda mulai bekerja dan menerima gaji, segera tinggalkan proses rekrutmen tersebut.",
+            "Diminta menyerahkan rekening atau membuat rekening baru. Sebagian 'lowongan' sebenarnya merekrut orang untuk meminjamkan atau menjual rekening bank. Rekening itu dipakai sebagai penampung uang hasil penipuan (money mule). Pemilik rekening bisa ikut terseret kasus hukum, meskipun mengaku tidak tahu."
           ]
         },
         {
-          "title": "Dampak Psikologis dan Finansial Task Scam",
+          "title": "Dampak Finansial dan Psikologis Task Scam",
           "content": [
-            "Korban task scam seringkali mengalami kerugian finansial yang menghancurkan, mencapai ratusan juta hingga miliaran rupiah. Karena sistem ini dirancang seperti judi online, korban yang sudah kehilangan uang besar akan mengalami 'sunk cost fallacy' - mereka terus mendepositkan uang dengan harapan bisa menarik kembali modal mereka yang sudah tertahan, persis seperti penjudi yang mengejar kekalahan. Banyak korban yang akhirnya terjerat utang di puluhan aplikasi pinjaman online ilegal demi memenuhi permintaan deposit dari 'mentor' di grup Telegram.",
-            "Dampak psikologisnya sangat berat. Korban merasa malu, bodoh, dan hancur secara emosional karena telah ditipu oleh orang yang awalnya mereka anggap sebagai pemberi harapan. Banyak korban yang menyembunyikan kerugian mereka dari pasangan atau keluarga, yang memicu stres berat, depresi, dan dalam beberapa kasus tragis, berujung pada tindakan bunuh diri karena tidak sanggup menanggung tekanan dari debt collector pinjol.",
-            "Pemulihan dana dari task scam hampir mustahil dilakukan. Uang yang didepositkan langsung dikonversi menjadi cryptocurrency (biasanya USDT) dan ditransfer ke dompet anonim di luar negeri dalam hitungan detik. Polisi seringkali hanya bisa memblokir rekening penampung tingkat pertama, namun dana utama sudah lama berpindah ke yurisdiksi yang tidak bisa dijangkau oleh hukum Indonesia."
+            "Korban task scam bisa mengalami kerugian yang sangat besar. Karena sistemnya dirancang seperti permainan, korban yang sudah kehilangan uang terjebak dalam 'sunk cost fallacy': terus menyetor dengan harapan bisa menarik kembali modal yang 'tertahan'. Banyak korban akhirnya berutang, termasuk ke pinjaman online, demi memenuhi permintaan deposit.",
+            "Dampak psikologisnya juga berat. Korban sering merasa malu dan menyembunyikan kerugian dari keluarga, sehingga menanggung tekanan sendirian. Jika Anda atau orang terdekat mengalaminya, ceritakan kepada orang yang dipercaya dan cari bantuan. Menjadi korban penipuan bukan karena bodoh; sindikat ini dirancang oleh orang-orang yang memang ahli memanipulasi.",
+            "Pemulihan dana sulit, tetapi bukan mustahil jika dilaporkan cepat. Uang korban biasanya segera dipindahkan dari rekening penampung tingkat pertama. Karena itu, laporkan secepatnya ke bank dan IASC (lihat Topik 00) agar dana yang belum berpindah masih bisa diblokir."
           ]
         }
       ],
       "case_study": {
-        "title": "Sindikat Task Scam 'Like YouTube' yang Menelan Triliunan Rupiah",
-        "story": "Pada tahun 2023 dan 2024, Direktorat Tindak Pidana Siber Bareskrim Polri mengungkap jaringan sindikat Task Scam berskala internasional yang menargetkan warga Indonesia. Sindikat ini merekrut korban melalui SMS spam yang menawarkan 'Pekerjaan Paruh Waktu Like & Subscribe YouTube, Gaji Harian'. Korban yang tertarik akan diarahkan ke grup Telegram yang dikelola oleh 'Customer Service' dan 'Mentor' yang sangat ramah. Awalnya, korban diberi tugas sederhana dan dibayar Rp 50.000 ke rekening mereka untuk membangun trust. Setelah itu, korban dibujuk untuk 'Pre-order Task' dengan mendepositkan uang. Seorang guru honorer di Jawa Timur dilaporkan kehilangan Rp 800 juta (hasil penjualan rumah dan pinjaman dari kerabat) karena terus-menerus didesak oleh mentor bahwa dananya 'terkunci di sistem' dan harus deposit lagi untuk mencairkannya. Sindikat ini diperkirakan telah meraup triliunan rupiah dari puluhan ribu korban di Indonesia sebelum server Telegram mereka berhasil diidentifikasi.",
-        "lesson": "Tidak ada pekerjaan mudah yang membayar gaji tinggi hanya untuk mengklik tombol 'Like' atau 'Subscribe'. Jika sebuah pekerjaan mengharuskan Anda untuk mengeluarkan uang (deposit) terlebih dahulu sebelum Anda bisa mendapatkan gaji, itu 100% adalah penipuan skema Ponzi. Selalu verifikasi legalitas perusahaan di situs web Kementerian Ketenagakerjaan atau LinkedIn. Jangan pernah tergiur oleh screenshot bukti transfer dari anggota grup lain, karena itu semua adalah akun komplotan (shill) yang dirancang untuk memanipulasi psikologi Anda."
+        "type": "nyata",
+        "title": "Sindikat Lowongan Paruh Waktu Palsu: 823 Korban WNI, Kerugian Lintas Negara ±Rp1,5 Triliun (2024)",
+        "story": "Pada Juli 2024, Direktorat Tindak Pidana Siber Bareskrim Polri mengungkap sindikat penipuan internasional berkedok lowongan kerja paruh waktu. Korban dihubungi lewat WhatsApp dan Telegram dengan tawaran kerja dan 'hasil' yang direkayasa. Dari 189 laporan polisi, tercatat 823 korban di Indonesia sepanjang 2022–2024 dengan kerugian sekitar Rp59 miliar. Sindikat yang sama juga menipu korban di India, Thailand, dan China, sehingga total kerugian diperkirakan sekitar Rp1,5 triliun. Polisi menangkap seorang warga negara China berinisial ZS yang diduga sebagai pemimpin sindikat, yang mempekerjakan operator dari Indonesia, Thailand, China, dan India. Para tersangka dijerat UU ITE, pasal penipuan, UU TPPO, dan UU Pelindungan Pekerja Migran Indonesia. Kasus serupa juga terjadi di tingkat daerah: pada Juni 2024, Polda Metro Jaya menangkap dua orang yang membuka sekitar 15 rekening bank lalu mengirimkannya ke Kamboja untuk sindikat penipuan modus 'like YouTube'. Satu korban dalam kasus itu kehilangan lebih dari Rp800 juta.",
+        "lesson": "Task scam adalah bisnis sindikat lintas negara, bukan ulah perorangan. Ada dua pelajaran besar: 1) pekerjaan yang mengharuskan Anda menyetor uang lebih dulu pasti penipuan; 2) jangan pernah menjual, meminjamkan, atau membuatkan rekening untuk orang lain, karena rekening itu menjadi alat penipuan dan Anda bisa ikut dipidana. Jika tergiur 'kerja mudah gaji besar', berhenti dan verifikasi dulu.",
+        "sources": [
+          {
+            "label": "Bisnis.com (16 Jul 2024) — Bareskrim Ungkap Kasus Scam hingga TPPO Sindikat Internasional, Kerugian Ditaksir Rp1,5 Triliun",
+            "url": "https://kabar24.bisnis.com/read/20240716/16/1782771/bareskrim-ungkap-kasus-scam-hingga-tppo-sindikat-internasional-kerugian-ditaksir-rp15-triliun"
+          },
+          {
+            "label": "detikNews (27 Jun 2024) — Polisi: Penipuan Modus Pencet 'Like' YouTube Didalangi WNI di Kamboja",
+            "url": "https://news.detik.com/berita/d-7412173/polisi-penipuan-modus-pencet-like-youtube-didalangi-wni-di-kamboja"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Employment Fraud Section (Statistics & Cases)",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Job Scam Consumer Reports"
+        "https://www.ftc.gov/news-events/news/press-releases/2025/03/new-ftc-data-show-big-jump-reported-losses-fraud-125-billion-2024 - FTC (Mar 2025) — New FTC Data Show a Big Jump in Reported Losses to Fraud to $12.5 Billion in 2024",
+        "https://consumer.ftc.gov/articles/job-scams - FTC Consumer Advice — Job Scams",
+        "https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Documents/Pages/Tingkatkan-Pelindungan-Konsumen-Satgas-Pasti-Lakukan-Soft-Launching-IASC/SP%20Satgas%20Pasti%20Soft%20Launching%20IASC.pdf - OJK (22 Nov 2024) — Satgas PASTI Soft Launching Indonesia Anti-Scam Centre (IASC)",
+        "https://kabar24.bisnis.com/read/20250630/15/1888976/7600-kasus-wni-terjerat-sindikat-penipuan-daring-di-luar-negeri-paling-banyak-di-kamboja - Bisnis.com (2025) — Data Kemlu: 7.600 kasus WNI terjerat sindikat penipuan daring di luar negeri"
       ]
     },
     "4": {
       "subtitle": "Investment & Crypto Scam",
       "quote": "Keserakahan adalah celah keamanan terbesar yang tidak bisa ditambal oleh perangkat lunak apapun.",
-      "definition": "Investment dan crypto scam adalah penipuan yang menawarkan peluang investasi dengan keuntungan (return) yang tidak masuk akal, dijamin pasti untung, dan tanpa risiko. Penipuan ini mengeksploitasi keinginan manusia untuk cepat kaya dan kurangnya literasi finansial masyarakat terhadap instrumen investasi yang sah. Mulai dari skema Ponzi berkedok trading forex, platform pertukaran kripto (crypto exchange) palsu, hingga manipulasi pasar melalui 'Pump and Dump', industri ini menelan kerugian triliunan rupiah setiap tahunnya dan seringkali didukung oleh influencer atau tokoh publik untuk membangun kepercayaan palsu.",
+      "definition": "Investment dan crypto scam adalah penipuan yang menawarkan peluang investasi dengan keuntungan tidak masuk akal, 'dijamin pasti untung', dan 'tanpa risiko'. Penipuan ini mengeksploitasi keinginan cepat kaya dan kurangnya literasi keuangan. Bentuknya beragam: skema Ponzi berkedok trading, robot trading ilegal, platform pertukaran kripto palsu, hingga token kripto yang ditinggal kabur pembuatnya. Penipuan investasi adalah kategori dengan kerugian terbesar dalam laporan FBI IC3 2024 (lebih dari US$6,5 miliar) dan FTC 2024 (US$5,7 miliar).",
       "sections": [
         {
           "title": "Skema Ponzi dan Investasi Bodong Berkedok Trading",
@@ -198,20 +310,35 @@
         {
           "title": "Cara Melindungi Diri dari Investasi Bodong",
           "content": [
-            "Selalu cek legalitas entitas investasi di Otoritas Jasa Keuangan (OJK). Di Indonesia, setiap platform yang menghimpun dana masyarakat atau menawarkan instrumen investasi wajib memiliki izin dari OJK. Anda bisa mengecek daftar entitas ilegal yang telah diblokir oleh Satgas Waspada Investasi (SWI) melalui situs web atau WhatsApp resmi OJK. Jika sebuah platform tidak ada dalam daftar berizin, hindari sepenuhnya, terlepas dari seberapa meyakinkan testimoni yang diberikan.",
+            "Selalu cek legalitas sebelum berinvestasi. Di Indonesia, platform yang menghimpun dana masyarakat atau menawarkan produk investasi wajib berizin dari Otoritas Jasa Keuangan (OJK). Sejak Januari 2025, pengawasan perdagangan aset kripto juga sudah beralih dari Bappebti ke OJK. Cek daftar entitas berizin dan daftar entitas ilegal yang diblokir oleh Satgas PASTI (Satuan Tugas Pemberantasan Aktivitas Keuangan Ilegal, sebelumnya dikenal sebagai Satgas Waspada Investasi) melalui situs atau Kontak OJK 157.",
             "Pahami hukum dasar ekonomi: High Return selalu berbanding lurus dengan High Risk. Tidak ada instrumen investasi di dunia ini yang bisa menjamin keuntungan pasti (fixed return) dalam persentase tinggi tanpa risiko. Jika ada yang menjanjikan 'Profit Pasti 10% per bulan tanpa risiko loss', itu adalah kebohongan mutlak dan pasti merupakan skema Ponzi atau penipuan.",
-            "Waspadai penggunaan tokoh publik atau deepfake. Penipu sering menggunakan foto, video, atau bahkan suara AI (deepfake) dari tokoh sukses seperti Elon Musk, Sandiaga Uno, atau Deddy Corbuzier untuk mempromosikan platform kripto palsu. Mereka memanipulasi video wawancara asli dan mengubah audio atau teks subtitle untuk seolah-olah tokoh tersebut merekomendasikan platform penipuan. Selalu verifikasi informasi dari saluran media sosial resmi tokoh tersebut yang terverifikasi (centang biru)."
+            "Waspadai pemakaian tokoh publik dan video deepfake. Penipu memakai foto, video, atau suara AI dari tokoh terkenal agar promosi terlihat meyakinkan. Di Indonesia, polisi sudah menangani video deepfake yang memakai wajah Presiden Prabowo, Wakil Presiden Gibran, dan Menteri Keuangan Sri Mulyani (lihat Topik 02). Selalu verifikasi dari akun resmi tokoh atau instansi tersebut, dan ingat bahwa tokoh asli tidak akan mengajak Anda menyetor dana ke platform tertentu lewat pesan pribadi.",
+            "Jangan mudah percaya pamer kekayaan (flexing). Saldo besar di layar atau gaya hidup mewah tidak membuktikan apa pun. Dalam banyak kasus, kekayaan itu justru berasal dari uang member atau komisi atas kerugian pengikutnya sendiri."
           ]
         }
       ],
       "case_study": {
-        "title": "Kasus Binomo dan DNA Pro Academy: Ilusi Binary Option",
-        "story": "Kasus Indra Kenz (Binomo) dan Doni Salmanan (DNA Pro) adalah contoh paling gamblang dari masifnya penipuan investasi berkedok 'Binary Option' di Indonesia. Mereka mempromosikan platform trading (yang sebenarnya adalah judi tebak-tebakan grafik) melalui YouTube dan Instagram dengan memamerkan saldo aplikasi triliunan rupiah dan gaya hidup mewah. Ribuan pengikut mereka, mulai dari mahasiswa hingga pensiunan, menginvestasikan uang mereka dengan harapan bisa mengikuti kesuksesan sang influencer. Pada kenyataannya, platform binary option tersebut diatur sedemikian rupa oleh bandar agar pemain selalu kalah dalam jangka panjang (house edge). Saldo yang diperlihatkan oleh para influencer adalah akun demo atau akun afiliasi yang tidak menggunakan uang asli. Ketika polisi membongkar kasus ini, terungkap bahwa total kerugian masyarakat mencapai triliunan rupiah, menghancurkan ribuan keluarga secara finansial.",
-        "lesson": "Binary option bukanlah instrumen investasi atau trading yang sah, melainkan perjudian berkedok finansial yang telah dinyatakan ilegal oleh Bappebti dan OJK di Indonesia. Jangan pernah mempercayai pamer kekayaan (flexing) dari influencer finansial di media sosial, karena kekayaan tersebut seringkali bersumber dari komisi afiliasi atas kerugian pengikut mereka sendiri (kickback). Selalu pelajari dasar-dasar literasi keuangan dan investasi dari sumber yang kredibel, dan hindari jalan pintas menuju kekayaan yang ditawarkan oleh platform yang tidak teregulasi."
+        "type": "nyata",
+        "title": "Robot Trading DNA Pro: 3.621 Korban, Kerugian Rp551,7 Miliar (2022)",
+        "story": "Pada Mei 2022, Bareskrim Polri mengumumkan bahwa korban robot trading DNA Pro bertambah menjadi 3.621 orang dengan total kerugian Rp551.725.456.000 (sekitar Rp551,7 miliar), dan jumlah ini masih bisa bertambah. DNA Pro memasarkan 'robot trading' yang diklaim bisa menghasilkan keuntungan otomatis. Polisi menduga DNA Pro menjalankan robot trading dengan skema Ponzi, yaitu membayar 'keuntungan' anggota lama dari uang anggota baru. PT DNA Pro Akademi juga tidak terdaftar di Bappebti, lembaga pengawas perdagangan berjangka saat itu. Polisi menetapkan 12 tersangka dan bekerja sama dengan PPATK untuk menelusuri aset di dalam dan luar negeri. DNA Pro bukan satu-satunya: pada periode yang sama, aparat juga menangani kasus robot trading lain seperti Fahrenheit dan Net89 dengan kerugian ratusan miliar hingga triliunan rupiah.",
+        "lesson": "Robot trading yang menjanjikan profit tinggi dan konsisten adalah tanda klasik skema Ponzi. Keuntungan 'pasti' tanpa risiko tidak ada di dunia investasi yang sah. Pelajarannya: 1) cek izin di OJK sebelum menyetor uang sepeser pun; 2) curigai investasi yang menekankan rekrutmen anggota baru; 3) jangan tertipu promosi, testimoni, atau acara mewah, karena semua itu bisa dibiayai dari uang korban; 4) jika sudah terlanjur, segera laporkan dan simpan semua bukti transaksi.",
+        "sources": [
+          {
+            "label": "Tempo English (27 Mei 2022) — Victims of Illegal Trading Robot DNA Pro Rise to 3,621 with Rp551 Bn Losses",
+            "url": "https://en.tempo.co/amp/1595763/victims-of-illegal-trading-robot-dna-pro-rise-to-3621-with-rp551-bn-losses"
+          },
+          {
+            "label": "Databoks Katadata (2023) — Deretan kerugian korban robot trading (DNA Pro, Fahrenheit, Net89, ATG)",
+            "url": "https://databoks.katadata.co.id/en/demographics/statistics/ac431bf9272707f/a-series-of-losses-suffered-by-victims-of-robot-trading-scams-agt-shows-the-largest-losses"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Cryptocurrency Investment Fraud ($3.96B losses)",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Cryptocurrency Scam Consumer Reports"
+        "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf - FBI IC3 — Internet Crime Report 2024",
+        "https://www.ftc.gov/news-events/news/press-releases/2025/03/new-ftc-data-show-big-jump-reported-losses-fraud-125-billion-2024 - FTC (Mar 2025) — New FTC Data Show a Big Jump in Reported Losses to Fraud to $12.5 Billion in 2024",
+        "https://market.bisnis.com/read/20250109/94/1830379/pengawasan-kripto-beralih-ke-ojk-ini-suara-pelaku-pasar - Bisnis.com (Jan 2025) — Pengawasan Kripto Beralih dari Bappebti ke OJK",
+        "https://consumer.ftc.gov/articles/what-know-about-cryptocurrency-and-scams - FTC Consumer Advice — What To Know About Cryptocurrency and Scams",
+        "https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Documents/Pages/Tingkatkan-Pelindungan-Konsumen-Satgas-Pasti-Lakukan-Soft-Launching-IASC/SP%20Satgas%20Pasti%20Soft%20Launching%20IASC.pdf - OJK (22 Nov 2024) — Satgas PASTI Soft Launching Indonesia Anti-Scam Centre (IASC)"
       ]
     },
     "5": {
@@ -232,26 +359,36 @@
           "content": [
             "Setelah ikatan emosional terbentuk, pelaku akan mulai memperkenalkan krisis darurat. Alasan yang paling umum adalah 'Sakit Keras atau Kecelakaan'. Pelaku akan mengklaim bahwa mereka atau anggota keluarga terdekatnya mengalami kecelakaan di luar negeri dan membutuhkan uang tunai segera untuk biaya rumah sakit karena asuransi mereka tidak menanggung. Korban yang mencintai 'pasangan' mereka akan panik dan segera mentransfer uang tanpa berpikir panjang.",
             "Modus 'Paket Tertahan di Bea Cukai' juga sangat populer. Pelaku mengklaim telah mengirimkan hadiah mahal (seperti perhiasan, tas branded, atau kotak berisi uang tunai) untuk korban, namun paket tersebut ditahan oleh pihak bea cukai atau imigrasi. Korban kemudian dihubungi oleh 'petugas bea cukai palsu' (komplotan pelaku) yang meminta pembayaran denda atau pajak dalam jumlah besar agar paket bisa dilepaskan. Korban yang sudah menantikan hadiah tersebut akan terus membayar 'denda' yang terus bertambah.",
-            "Alasan 'Visa dan Tiket Pesawat' digunakan ketika pelaku berjanji akan mengunjungi korban di Indonesia untuk menikah atau bertemu keluarga. Pelaku akan meminta korban mentransfer uang untuk biaya pengurusan visa, tiket pesawat kelas bisnis, atau 'biaya jaminan imigrasi'. Setelah uang ditransfer, pelaku akan mengklaim bahwa mereka ditahan di bandara atau dideportasi, dan membutuhkan lebih banyak uang untuk 'menyuap pejabat' agar bisa dibebaskan."
+            "Alasan 'Visa dan Tiket Pesawat' digunakan ketika pelaku berjanji akan mengunjungi korban di Indonesia untuk menikah atau bertemu keluarga. Pelaku akan meminta korban mentransfer uang untuk biaya pengurusan visa, tiket pesawat kelas bisnis, atau 'biaya jaminan imigrasi'. Setelah uang ditransfer, pelaku akan mengklaim bahwa mereka ditahan di bandara atau dideportasi, dan membutuhkan lebih banyak uang untuk 'menyuap pejabat' agar bisa dibebaskan.",
+            "Pelaku juga sering bekerja dengan komplotan di dalam negeri. Ada yang berperan sebagai 'petugas bank', 'petugas bea cukai', atau 'kurir', dan ada yang hanya meminjamkan rekening untuk menampung uang korban. Karena rekeningnya atas nama orang Indonesia, korban merasa lebih yakin, padahal itu bagian dari skenario."
           ]
         },
         {
           "title": "Dampak Psikologis dan Cara Melindungi Diri",
           "content": [
             "Dampak psikologis dari romance scam seringkali lebih menghancurkan daripada kerugian finansial. Korban mengalami rasa malu yang luar biasa, depresi berat, dan kehilangan kepercayaan pada orang lain. Banyak korban yang menolak untuk melapor ke polisi atau bahkan mengakui kepada keluarga mereka bahwa mereka telah ditipu, karena merasa bodoh telah mempercayai seseorang yang tidak pernah mereka temui. Isolasi sosial ini memperparah trauma yang mereka alami.",
-            "Untuk melindungi diri, terapkan aturan ketat: Jangan pernah mengirimkan uang atau informasi finansial kepada seseorang yang hanya Anda kenal secara online, terlepas dari seberapa dalam hubungan asmara yang terasa atau seberapa mendesak situasi darurat yang mereka klaim. Cinta sejati tidak akan pernah meminta Anda untuk menanggung beban finansial mereka atau mentransfer uang melalui Western Union atau cryptocurrency.",
+            "Untuk melindungi diri, terapkan aturan ketat: jangan pernah mengirim uang, voucher, aset kripto, atau informasi keuangan kepada seseorang yang hanya Anda kenal secara online, seberapa pun dalam hubungan yang terasa atau seberapa mendesak alasannya. FTC mencatat kerugian akibat romance scam di Amerika Serikat mencapai US$1,14 miliar pada 2023.",
             "Selalu lakukan verifikasi identitas secara independen. Gunakan fitur 'Reverse Image Search' (seperti Google Images atau TinEye) untuk memeriksa apakah foto profil pasangan online Anda dicuri dari orang lain. Mintalah untuk melakukan video call secara spontan; jika mereka terus-menerus menghindar dengan alasan teknis atau sinyal buruk, itu adalah red flag yang sangat besar. Ceritakan hubungan online Anda kepada teman atau keluarga yang objektif; mereka seringkali bisa melihat tanda-tanda penipuan yang tidak terlihat oleh Anda yang sedang dibutakan oleh emosi."
           ]
         }
       ],
       "case_study": {
-        "title": "Korban Romance Scam Kehilangan Rp 3 Miliar untuk 'Kekasih Bule'",
-        "story": "Seorang wanita profesional di Jakarta menjadi korban romance scam yang berlangsung selama 8 bulan. Ia berkenalan dengan seorang pria yang mengaku sebagai insinyur sipil asal Eropa yang sedang mengerjakan proyek infrastruktur di Timur Tengah melalui aplikasi kencan. Selama berbulan-bulan, pria tersebut membangun hubungan yang sangat intim, mengirimkan bunga ke kantor korban, dan merencanakan pernikahan. Suatu hari, pria tersebut mengklaim bahwa rekening banknya dibekukan oleh pemerintah setempat karena masalah kontrak, dan ia membutuhkan uang tunai untuk membayar gaji pekerjanya agar tidak dipenjara. Korban, yang percaya bahwa ia sedang menyelamatkan calon suaminya, mulai mentransfer tabungannya. Ketika tabungannya habis, ia menggadaikan sertifikat rumah dan meminjam dari kerabat. Total kerugian mencapai Rp 3 miliar. Pelaku baru teridentifikasi sebagai bagian dari sindikat penipuan asal Afrika Barat ketika korban akhirnya melapor ke polisi setelah keluarga menemukan kejanggalan.",
-        "lesson": "Romance scam memanipulasi kebutuhan dasar manusia akan cinta dan koneksi. Penipu sangat sabar dan bersedia menghabiskan waktu berbulan-bulan untuk 'menggemukkan' korban sebelum memeras mereka. Jangan pernah mencampuradukkan hubungan asmara online dengan transaksi finansial. Jika pasangan online Anda mulai membicarakan masalah uang, pinjaman, atau investasi, segera putuskan kontak dan laporkan profil mereka ke platform terkait. Lindungi hati dan dompet Anda dengan skeptisisme yang sehat di dunia digital."
+        "type": "nyata",
+        "title": "Love Scam WN Nigeria Menjerat Wanita di Pekanbaru, Rugi Rp365 Juta (2025)",
+        "story": "Seorang wanita berinisial DF (44) di Pekanbaru berkenalan dengan seorang pria di Facebook yang mengaku berasal dari Amerika Serikat. Setelah hubungan terjalin, pelaku menjanjikan hadiah sebesar 30.000 dolar AS. Korban kemudian diminta membayar 'denda' agar blokir ATM untuk menerima hadiah itu dibuka oleh pihak bank. Seorang perempuan WNI berperan sebagai 'pegawai bank' sekaligus penampung uang, dan perempuan WNI lain juga menjadi penampung. Korban mentransfer uang secara bertahap hingga total Rp365 juta, tetapi hadiah tidak pernah diterima. Korban melapor pada 15 Januari 2025. Polresta Pekanbaru, berkoordinasi dengan Polres Gianyar, menangkap seorang WN Nigeria di Gianyar, Bali, pada 12 Februari 2025, bersama dua WNI penampung dana. Polisi masih mengejar seorang WN Nigeria lain yang diduga sebagai dalang utama.",
+        "lesson": "Kasus ini menggabungkan pola romance scam dan hadiah palsu: hubungan dibangun di media sosial, lalu muncul 'hadiah' yang harus ditebus dengan biaya. Peran 'pegawai bank' dan rekening atas nama WNI dipakai agar korban percaya. Pelajarannya: 1) kenalan online yang menjanjikan hadiah tetapi meminta biaya adalah tanda bahaya besar; 2) verifikasi langsung ke bank melalui nomor resmi, bukan lewat 'petugas' yang dikenalkan pelaku; 3) ceritakan kepada keluarga sebelum mengirim uang; 4) jika sudah terlanjur, segera lapor ke bank, IASC, dan polisi.",
+        "sources": [
+          {
+            "label": "detikSumut (21 Feb 2025) — Aksi Tipu-tipu Modus Love Scam WN Nigeria yang Jerat Wanita di Pekanbaru",
+            "url": "https://www.detik.com/sumut/hukum-dan-kriminal/d-7788357/aksi-tipu-tipu-modus-love-scam-wn-nigeria-yang-jerat-wanita-di-pekanbaru"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Confidence & Romance Fraud (Top 5 highest losses)",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC 2023 — Romance Scam Losses Report"
+        "https://consumer.ftc.gov/articles/what-know-about-romance-scams - FTC Consumer Advice — What To Know About Romance Scams",
+        "https://www.ftc.gov/business-guidance/blog/2024/02/love-stinks-when-scammer-involved - FTC (Feb 2024) — Love stinks when a scammer is involved (kerugian romance scam 2023 US$1,14 miliar)",
+        "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf - FBI IC3 — Internet Crime Report 2024",
+        "https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Documents/Pages/Tingkatkan-Pelindungan-Konsumen-Satgas-Pasti-Lakukan-Soft-Launching-IASC/SP%20Satgas%20Pasti%20Soft%20Launching%20IASC.pdf - OJK (22 Nov 2024) — Satgas PASTI Soft Launching Indonesia Anti-Scam Centre (IASC)"
       ]
     }
   }
