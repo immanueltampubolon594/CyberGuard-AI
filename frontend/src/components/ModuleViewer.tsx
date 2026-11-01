@@ -11,7 +11,8 @@ import {
 import { getModuleState, getSteps, isUnlocked } from "../app/lib/learningApi";
 import { useLearning } from "../app/lib/useLearning";
 import { getQuiz, type StageKey } from "../app/lib/quizzes";
-import { PracticeStage, QuizStage } from "./learning/Stages";
+import { PracticeStage } from "./learning/Stages";
+import { ExamQuiz } from "./learning/ExamQuiz";
 
 // ── Ikon: dicari dari nama di JSON, jadi tidak perlu daftar ikon manual ──
 type IconCmp = React.ComponentType<{ size?: number; className?: string }>;
@@ -29,11 +30,22 @@ const STAGE_META: Record<StageKey, { label: string; icon: string }> = {
 
 // ── Bagian isi topik (sama seperti templat sebelumnya) ──
 function CaseBox({ c }: { c: any }) {
+  const nyata = c.type !== "ilustrasi"; // tanpa "type" dianggap kasus nyata (materi lama)
   return (
-    <div className="p-6 rounded-2xl border border-amber-200 dark:border-amber-500/15 bg-amber-50 dark:bg-amber-500/[0.04]">
+    <div className={`p-6 rounded-2xl border ${
+      nyata
+        ? "border-amber-200 dark:border-amber-500/15 bg-amber-50 dark:bg-amber-500/[0.04]"
+        : "border-sky-200 dark:border-sky-500/15 bg-sky-50 dark:bg-sky-500/[0.04]"
+    }`}>
       <div className="flex items-center gap-2 mb-3">
-        <AlertTriangle size={13} className="text-amber-500 shrink-0" />
-        <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest">Kasus Nyata</p>
+        {nyata ? (
+          <AlertTriangle size={13} className="text-amber-500 shrink-0" />
+        ) : (
+          <BookOpen size={13} className="text-sky-500 shrink-0" />
+        )}
+        <p className={`text-[10px] font-black uppercase tracking-widest ${nyata ? "text-amber-500" : "text-sky-500"}`}>
+          {nyata ? "Kasus Nyata" : "Contoh Skenario"}
+        </p>
       </div>
       <p className="text-sm font-bold text-slate-800 dark:text-slate-200 mb-2">{c.title}</p>
       <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">{c.story}</p>
@@ -41,6 +53,24 @@ function CaseBox({ c }: { c: any }) {
         <CheckCircle size={12} className="text-emerald-500 mt-0.5 shrink-0" />
         <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">{c.lesson}</p>
       </div>
+      {!nyata && (
+        <p className="mt-3 text-[11px] text-slate-500 italic">Skenario ilustrasi untuk belajar, bukan kejadian nyata.</p>
+      )}
+      {c.sources?.length > 0 && (
+        <div className="mt-4 pt-3 border-t border-amber-200/70 dark:border-white/[0.06]">
+          <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Sumber kasus</p>
+          <ul className="space-y-1.5">
+            {c.sources.map((s: any, i: number) => (
+              <li key={i}>
+                <a href={s.url} target="_blank" rel="noopener noreferrer"
+                   className="inline-flex items-center gap-1.5 text-xs text-blue-600 dark:text-blue-400 hover:underline">
+                  {s.label} <ExternalLink size={11} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
@@ -113,7 +143,7 @@ function TopicContent({ t, title }: { t: any; title: string }) {
         <div className="mt-4 h-px bg-gradient-to-r from-blue-600/40 via-blue-500/20 to-transparent" />
       </div>
 
-      <div className="space-y-12 max-w-8xl">
+      <div className="space-y-12">
         {t?.quote && (
           <blockquote className="border-l-4 border-blue-600 dark:border-blue-500 pl-8 bg-blue-50/50 dark:bg-transparent py-4 rounded-r-xl">
             <p className="text-xl italic text-slate-700 dark:text-slate-200 leading-relaxed font-medium">"{t.quote}"</p>
@@ -384,12 +414,12 @@ export default function ModuleViewer({ slug, data }: { slug: string; data: any }
 
           {stageKey === "quiz" && (
             <div className="px-6 lg:px-12 py-12">
-              <QuizStage
+              <ExamQuiz
                 key="quiz"
                 title={title}
                 questions={quiz.quiz ?? []}
                 attempts={record?.attempts ?? []}
-                onSubmit={(answers) => submitQuiz(slug, steps, quiz.quiz ?? [], answers)}
+                onSubmit={(answers, startedAt) => submitQuiz(slug, steps, quiz.quiz ?? [], answers, startedAt)}
                 onPrev={prevStep ? () => goTo(prevStep) : undefined}
               />
             </div>

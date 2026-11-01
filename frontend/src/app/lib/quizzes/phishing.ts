@@ -299,5 +299,106 @@ export const phishingQuiz: ModuleQuiz = {
       conceptNote:
         "Halaman login palsu sangat mirip aslinya. Akses lewat URL ketikan sendiri atau bookmark, periksa domain, dan aktifkan 2FA.",
     },
+    // ── Soal tambahan (studi kasus & dua pilihan) ──
+    {
+      id: "q-9",
+      type: "scenario",
+      prompt: "Studi kasus: Kamu menerima telepon berikut. Apa tindakan yang paling tepat?",
+      message: {
+        sender: "Panggilan masuk · 021-5xxx-xxxx (mengaku CS Bank Sentosa)",
+        time: "Hari ini, 19.05",
+        lines: [
+          "\"Selamat malam, kami dari Bank Sentosa. Ada transaksi Rp 4.800.000 dari rekening Bapak/Ibu yang mencurigakan.\"",
+          "\"Untuk membatalkannya, kami sudah kirim kode 6 digit lewat SMS. Mohon sebutkan kodenya sekarang, sebelum dana terpotong.\"",
+        ],
+      },
+      options: [
+        "Menyebutkan kode agar transaksi segera dibatalkan",
+        "Meminta penelepon menyebutkan nama dan nomor pegawai, lalu menyebutkan kodenya",
+        "Menutup telepon, lalu menghubungi call center resmi di balik kartu ATM untuk mengecek",
+        "Menyebutkan setengah kode saja supaya lebih aman",
+      ],
+      correct: 2,
+      explanation:
+        "Ini vishing (voice phishing). Kode 6 digit itu adalah OTP untuk menyetujui transaksi, bukan membatalkannya. Bank tidak pernah meminta OTP. Nama dan nomor pegawai mudah dikarang, jadi verifikasi selalu lewat nomor resmi yang kamu cari sendiri.",
+      concept: "Vishing",
+      conceptNote:
+        "Penipu lewat telepon memakai kepanikan dan tekanan waktu. Tutup telepon dan hubungi nomor resmi (lihat Topik 03 · Smishing & Vishing).",
+    },
+    {
+      id: "q-10",
+      type: "scenario",
+      prompt: "Studi kasus: Kamu menerima pesan WhatsApp berikut. Langkah pertama yang paling aman adalah...",
+      message: {
+        sender: "+62 812-xxxx-7781",
+        time: "10.12",
+        lines: [
+          "Nak, ini Mama. HP Mama rusak, ini nomor baru ya.",
+          "Tolong transfer Rp 2.000.000 ke rekening teman Mama dulu, buat bayar rumah sakit. Darurat, jangan telepon dulu, Mama lagi di ruang periksa.",
+        ],
+      },
+      options: [
+        "Langsung transfer karena keadaannya darurat",
+        "Menelepon Mama ke nomor lama yang sudah tersimpan, atau menghubungi anggota keluarga lain",
+        "Membalas chat dan meminta foto KTP Mama sebagai bukti",
+        "Transfer setengahnya dulu, sisanya setelah Mama membalas",
+      ],
+      correct: 1,
+      explanation:
+        "Ciri penipuan mengaku keluarga: nomor baru, minta transfer ke rekening orang lain, dan melarang menelepon. Verifikasi lewat suara ke nomor lama. Foto KTP bisa dicuri dari internet, jadi bukan bukti.",
+      concept: "Penipuan Mengaku Keluarga",
+      conceptNote:
+        "Verifikasi setiap permintaan uang lewat telepon ke nomor lama yang kamu simpan (lihat Topik 02 · WhatsApp Phishing).",
+    },
+    {
+      id: "q-11",
+      type: "single",
+      prompt: "Benar atau salah: Website yang memiliki ikon gembok (HTTPS) di browser pasti aman dan bukan website phishing.",
+      options: ["Benar", "Salah"],
+      correct: 1,
+      explanation:
+        "Salah. Gembok hanya berarti koneksi terenkripsi. Pelaku phishing juga bisa memasang HTTPS secara gratis, jadi yang harus diperiksa tetap nama domainnya.",
+      concept: "HTTPS dan Gembok",
+      conceptNote:
+        "HTTPS bukan tanda website tepercaya. Selalu periksa domain sebenarnya (lihat Topik 05 · Fake Login Page).",
+    },
+    {
+      id: "q-12",
+      type: "single",
+      prompt: "Benar atau salah: Kode verifikasi 6 digit dari WhatsApp boleh dibagikan kepada teman dekat yang memintanya.",
+      options: ["Benar", "Salah"],
+      correct: 1,
+      explanation:
+        "Salah. Kode itu dipakai untuk mendaftarkan nomormu di HP lain. Siapa pun yang memintanya, termasuk akun teman yang mungkin sudah dibajak, bisa mengambil alih akun WhatsApp-mu.",
+      concept: "Kode Verifikasi WhatsApp",
+      conceptNote:
+        "Jangan bagikan kode verifikasi kepada siapa pun dan aktifkan Verifikasi Dua Langkah (lihat Topik 02 · WhatsApp Phishing).",
+    },
+    {
+      id: "q-13",
+      type: "scenario",
+      prompt: "Studi kasus: Kamu sedang menunggu paket dan menerima SMS berikut. Bagian mana yang paling kuat menunjukkan ini smishing?",
+      message: {
+        sender: "+62 838-xxxx-2290",
+        time: "Kemarin, 13.47",
+        lines: [
+          "[INFO KURIR] Paket Anda tertahan karena alamat kurang lengkap.",
+          "Lengkapi data & bayar biaya kirim ulang Rp 15.000 di: kurir-ekspres-id.top/bayar",
+          "Paket dikembalikan ke pengirim jika tidak dibayar hari ini.",
+        ],
+      },
+      options: [
+        "SMS dikirim pada siang hari",
+        "Nominal yang diminta kecil, hanya Rp 15.000",
+        "Kata \"[INFO KURIR]\" di awal pesan",
+        "Dikirim dari nomor pribadi dan meminta pembayaran lewat link domain tidak resmi (.top)",
+      ],
+      correct: 3,
+      explanation:
+        "Jasa kirim resmi memakai nama pengirim atau aplikasi resmi, bukan nomor pribadi, dan tidak menagih lewat link aneh. Nominal kecil justru dipakai agar korban tidak curiga, lalu data kartunya dicuri.",
+      concept: "Smishing",
+      conceptNote:
+        "Cek status paket hanya lewat aplikasi atau situs resmi kurir, bukan dari link SMS (lihat Topik 03 · Smishing & Vishing).",
+    },
   ],
 };

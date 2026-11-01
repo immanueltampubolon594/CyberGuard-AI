@@ -73,23 +73,34 @@
           ]
         },
         {
-          "title": "Statistik Phishing di Indonesia dan Dunia",
+          "title": "Seberapa Sering Phishing Terjadi?",
           "content": [
-            "Menurut data Badan Siber dan Sandi Negara (BSSN), Indonesia mengalami lebih dari 300 juta serangan phishing pada tahun 2024. Angka ini meningkat 45% dibandingkan tahun sebelumnya. Email phishing menyumbang 65% dari semua serangan, diikuti WhatsApp phishing (20%), SMS phishing (10%), dan lainnya (5%).",
-            "Kerugian finansial akibat phishing di Indonesia mencapai triliunan rupiah setiap tahunnya. Rata-rata kerugian per korban berkisar antara Rp 5-50 juta, tergantung jenis phishing dan data yang berhasil dicuri. Korban yang mengalami account takeover bisa kehilangan hingga ratusan juta rupiah.",
-            "Secara global, Anti-Phishing Working Group (APWG) mencatat lebih dari 3,4 miliar email phishing dikirim setiap hari. Serangan phishing meningkat 220% selama pandemi COVID-19, dan terus meningkat seiring dengan digitalisasi layanan keuangan dan pemerintahan. Indonesia berada di peringkat 5 besar negara dengan korban phishing terbanyak di Asia Tenggara."
+            "Anti-Phishing Working Group (APWG), organisasi internasional yang memantau phishing, mencatat sekitar 3,8 juta serangan phishing di seluruh dunia sepanjang tahun 2025, sedikit naik dari 3,76 juta pada 2024. Angka per kuartal tertinggi terjadi pada kuartal II 2025, yaitu 1.130.393 serangan.",
+            "Phishing juga tidak lagi hanya datang lewat email. Laporan APWG mencatat pelaku semakin banyak memakai SMS, media sosial, dan QR code untuk menyebarkan tautan palsu, sehingga pengguna HP menjadi sasaran utama.",
+            "Di Indonesia, salah satu modus yang paling ramai pada 2023 adalah file APK berkedok undangan pernikahan atau resi paket yang dikirim lewat WhatsApp. Modus ini sampai membuat bank dan Kementerian Kominfo mengeluarkan peringatan resmi kepada masyarakat. Kasusnya dibahas di Topik 02."
           ]
         }
       ],
       "case_study": {
-        "title": "Kasus Phishing Terbesar di Indonesia 2024",
-        "story": "Pada Maret 2024, sebuah sindikat phishing internasional menargetkan nasabah 15 bank besar di Indonesia. Mereka mengirim lebih dari 5 juta email phishing yang mengaku dari bank-bank tersebut. Sekitar 50.000 korban terjebak dan memberikan data perbankan mereka. Total kerugian mencapai Rp 250 miliar. Sindikat ini berhasil ditangkap setelah operasi gabungan antara BSSN, Polri, dan FBI. Mereka beroperasi dari negara tetangga dan telah menargetkan Indonesia sejak 2022.",
-        "lesson": "Phishing adalah ancaman nyata yang mengintai setiap pengguna internet. Dengan memahami berbagai jenis phishing dan cara mendeteksinya, Anda bisa melindungi diri dan orang-orang di sekitar Anda. Selalu verifikasi setiap pesan yang meminta data sensitif, jangan pernah klik link dari sumber yang tidak terpercaya, dan aktifkan autentikasi dua faktor di semua akun penting Anda."
+        "type": "nyata",
+        "title": "Google dan Facebook Tertipu Tagihan Palsu (2013–2015)",
+        "story": "Antara 2013 dan 2015, Evaldas Rimasauskas asal Lituania mendirikan perusahaan di Latvia dengan nama yang mirip Quanta Computer, pemasok perangkat keras asal Taiwan yang memang bekerja sama dengan Google dan Facebook. Ia dan komplotannya mengirim email phishing berisi tagihan kepada karyawan kedua perusahaan, dan meminta pembayaran ditransfer ke rekening di Latvia dan Siprus. Facebook mentransfer hampir 100 juta dolar AS dan Google lebih dari 23 juta dolar AS, meskipun sebagian besar dana kemudian berhasil ditarik kembali. Rimasauskas mengaku bersalah pada 2019 dan dijatuhi hukuman 5 tahun penjara oleh pengadilan Amerika Serikat.",
+        "lesson": "Phishing tidak hanya menipu orang awam. Karyawan perusahaan teknologi terbesar di dunia pun bisa tertipu bila email terlihat berasal dari mitra yang sudah dikenal. Setiap permintaan pembayaran atau perubahan rekening harus diverifikasi lewat saluran lain, misalnya telepon ke kontak yang sudah tersimpan.",
+        "sources": [
+          {
+            "label": "SecurityWeek — Lithuanian Man Sentenced to Prison Over BEC Scheme Targeting Facebook, Google",
+            "url": "https://www.securityweek.com/lithuanian-man-sentenced-prison-over-bec-scheme-targeting-facebook-google"
+          },
+          {
+            "label": "CNBC (2017) — Facebook and Google were victims of a $100 million phishing scam",
+            "url": "https://www.cnbc.com/2017/04/27/facebook-and-google-were-victims-of-a-100-million-dollar-phishing-scam-fortune.html"
+          }
+        ]
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10630203 - IEEE (2024) — Phishing Attacks and Detection Techniques: A Systematic Review",
-        "https://ieeexplore.ieee.org/document/10580446 - IEEE (2024) — A Comprehensive Survey of Recent Phishing Attacks Detection Techniques",
-        "https://csrc.nist.gov/glossary/term/phishing - NIST Glossary — Official Definition of Phishing"
+        "https://csrc.nist.gov/glossary/term/phishing - NIST Glossary — Definisi resmi phishing",
+        "https://www.cisa.gov/secure-our-world/recognize-and-report-phishing - CISA (Badan Keamanan Siber AS) — Recognize and Report Phishing",
+        "https://apwg.org/trendreports - APWG — Phishing Activity Trends Reports"
       ]
     },
     "1": {
@@ -100,7 +111,7 @@
         {
           "title": "Sejarah dan Evolusi Email Phishing",
           "content": [
-            "Email phishing pertama kali tercatat pada tahun 1995, ketika penyerang mengirim email yang mengaku dari AOL (America Online) meminta pengguna untuk memverifikasi akun mereka. Sejak itu, email phishing terus berevolusi mengikuti perkembangan teknologi dan tren digital.",
+            "Istilah dan praktik phishing mulai dikenal pada pertengahan 1990-an, ketika pelaku mengirim pesan yang mengaku dari AOL (America Online), layanan internet populer saat itu, untuk mencuri password akun pengguna. Sejak itu, email phishing terus berevolusi mengikuti perkembangan teknologi dan tren digital.",
             "Di awal 2000-an, email phishing masih mudah dikenali — penuh dengan typo, tata bahasa buruk, dan desain yang amatir. Namun seiring waktu, penyerang belajar dan meningkatkan kualitas email mereka. Kini, email phishing bisa sangat meyakinkan dengan desain profesional, bahasa yang sempurna, dan personalisasi yang tepat.",
             "Teknologi AI dan machine learning sekarang digunakan oleh penyerang untuk membuat email phishing yang lebih canggih. Mereka bisa menganalisis pola komunikasi target, meniru gaya penulisan, dan membuat email yang sangat personal. Ini membuat email phishing semakin sulit dibedakan dari email asli."
           ]
@@ -109,7 +120,7 @@
           "title": "Cara Kerja Email Phishing Secara Teknis",
           "content": [
             "Penyerang memulai dengan membuat email palsu yang meniru organisasi terpercaya. Mereka menggunakan tools seperti email spoofing untuk membuat email seolah-olah dikirim dari domain resmi. Meskipun teknologi SPF, DKIM, dan DMARC sudah banyak diadopsi, masih banyak celah yang bisa dimanfaatkan penyerang.",
-            "Email dikirim secara massal menggunakan botnet atau email blasting service. Penyerang bisa mengirim ribuan hingga jutaan email dalam sekali kampanye. Mereka tidak peduli siapa yang menerima — yang penting ada beberapa persen yang terjebak. Dengan volume besar, bahkan tingkat keberhasilan 0,1% pun sudah menguntungkan.",
+            "Email dikirim secara massal menggunakan botnet atau layanan pengiriman email massal. Penyerang bisa mengirim ribuan hingga jutaan email dalam sekali kampanye. Mereka tidak peduli siapa yang menerima. Dengan volume sebesar itu, meskipun hanya sebagian sangat kecil penerima yang tertipu, pelaku tetap bisa meraup keuntungan besar.",
             "Email berisi link yang mengarah ke website phishing. Link ini sering disamarkan menggunakan URL shortener seperti bit.ly atau tinyurl untuk menyembunyikan tujuan sebenarnya. Website phishing dibuat sangat mirip dengan website asli, bahkan menggunakan SSL certificate untuk terlihat lebih meyakinkan.",
             "Ketika korban memasukkan data di website phishing, data tersebut dikirim ke server penyerang. Penyerang kemudian bisa menggunakan data tersebut untuk mengakses akun korban, melakukan transaksi, atau menjualnya di dark web. Proses ini sering otomatis — data langsung digunakan dalam hitungan menit."
           ]
@@ -117,7 +128,7 @@
         {
           "title": "Jenis-jenis Email Phishing",
           "content": [
-            "Fake Banking Email adalah jenis phishing yang paling umum di Indonesia. Email mengaku dari bank seperti BCA, Mandiri, BRI, atau BNI, meminta nasabah untuk memverifikasi akun karena ada aktivitas mencurigakan atau pembaruan sistem. Email ini sangat efektif karena menargetkan rasa takut korban akan kehilangan uang.",
+            "Fake Banking Email adalah salah satu jenis phishing yang sering menyasar pengguna di Indonesia. Email mengaku dari bank dan meminta nasabah memverifikasi akun karena ada aktivitas mencurigakan atau pembaruan sistem. Email ini efektif karena memanfaatkan rasa takut korban akan kehilangan uang.",
             "Invoice Scam menargetkan bisnis dan profesional. Email mengaku dari vendor atau supplier yang mengirim invoice untuk pembayaran. Attachment PDF berisi malware atau link ke website phishing. Jenis ini sangat berbahaya karena terlihat seperti komunikasi bisnis normal.",
             "Attachment Malware menggunakan lampiran file (PDF, Word, Excel, ZIP) yang berisi malware. Ketika file dibuka, malware terinstall di komputer korban. Malware ini bisa berupa keylogger yang merekam semua ketikan, remote access trojan yang memberikan kontrol penuh ke penyerang, atau ransomware yang mengenkripsi semua file."
           ]
@@ -128,7 +139,7 @@
             "Pengirim mencurigakan adalah tanda pertama. Alamat email tidak resmi atau ada typo dari domain resmi. Contoh: support@paypa1.com (huruf 'l' diganti angka '1'), cs-bca@gmail.com (bank tidak menggunakan Gmail), atau info@bank-secure.fake.com (subdomain palsu).",
             "Pesan mendesak dan menciptakan rasa takut. Email menggunakan kalimat seperti 'Akun Anda akan diblokir dalam 24 jam', 'Segera verifikasi atau akun dihapus', 'Ada aktivitas mencurigakan di rekening Anda'. Tujuannya adalah membuat korban panik dan bertindak tanpa berpikir panjang.",
             "Salam umum dan tidak personal. Email menggunakan 'Dear Customer', 'Dear User', atau 'Kepada Pelanggan Yang Terhormat' alih-alih menyebut nama Anda. Ini karena email phishing dikirim massal ke ribuan korban.",
-            "Link mencurigakan yang URL-nya tidak sesuai dengan domain resmi. Hover mouse di atas link untuk melihat URL sebenarnya. Jika email mengaku dari bank tapi link mengarah ke domain yang tidak dikenal, itu pasti phishing.",
+            "Link mencurigakan yang URL-nya tidak sesuai dengan domain resmi. Arahkan kursor ke link untuk melihat URL sebenarnya. Jika email mengaku dari bank tetapi link mengarah ke domain lain, anggap email itu berbahaya: jangan diklik, dan buka situs atau aplikasi resmi bank secara langsung.",
             "Tata bahasa buruk dan banyak typo. Meskipun email phishing modern sudah lebih baik, masih banyak yang memiliki kesalahan ejaan, kalimat yang kaku, atau format yang tidak profesional.",
             "Meminta data pribadi yang sensitif. Bank dan organisasi resmi tidak pernah meminta password, PIN, nomor kartu kredit, atau OTP melalui email. Jika ada yang meminta, itu pasti phishing."
           ]
@@ -139,21 +150,32 @@
             "Periksa alamat email pengirim dengan teliti. Klik nama pengirim untuk melihat alamat email lengkap. Bandingkan dengan domain resmi organisasi. Jika ada perbedaan sekecil apapun, jangan percaya.",
             "Hover link sebelum klik. Arahkan mouse di atas link untuk melihat URL sebenarnya di status bar browser. Jangan klik jika URL tidak sesuai atau mencurigakan. Lebih baik ketik URL langsung di browser.",
             "Jangan pernah bagikan password atau OTP via email. Bank dan layanan resmi tidak akan pernah meminta informasi ini. Jika ada yang meminta, abaikan dan laporkan.",
-            "Aktifkan Two-Factor Authentication (2FA) di semua akun penting. Meskipun password Anda dicuri, penyerang tetap tidak bisa login tanpa kode 2FA dari perangkat Anda.",
+            "Aktifkan autentikasi dua faktor (2FA) di semua akun penting. Jika password kamu dicuri, pelaku masih membutuhkan faktor kedua, sehingga pengambilalihan akun menjadi jauh lebih sulit. Namun 2FA berbasis kode (SMS atau aplikasi authenticator) bukan jaminan mutlak: halaman login palsu modern bisa ikut meminta kode OTP lalu langsung memakainya. Karena itu, jangan pernah memasukkan kode OTP di halaman yang dibuka dari tautan pesan. Bila layanan menyediakannya, pilih passkey atau kunci keamanan fisik (standar FIDO), yang tidak bisa dipakai di situs palsu.",
             "Gunakan email filter dan antivirus. Aktifkan spam filter bawaan email provider. Install antivirus dengan proteksi anti-phishing untuk scanning otomatis.",
             "Verifikasi melalui saluran resmi. Jika ragu dengan email yang diterima, hubungi customer service melalui nomor di balik kartu atau situs resmi — bukan dari link di email."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan Phishing Bank BCA Januari 2025",
-        "story": "Pada Januari 2025, ribuan nasabah Bank BCA menerima email phishing yang mengaku dari pihak bank dengan alasan pembaruan sistem keamanan. Email ini sangat meyakinkan karena menggunakan logo resmi BCA, bahasa Indonesia yang formal dan sempurna, serta desain yang identik dengan email resmi BCA. Email meminta nasabah untuk memverifikasi akun dalam 24 jam atau akun akan diblokir. Link dalam email mengarah ke website palsu yang sangat mirip dengan internet banking BCA. Total korban mencapai 5.000 nasabah dengan kerugian Rp 15 miliar. Banyak korban yang kehilangan uang karena penyerang langsung melakukan transfer setelah mendapatkan username dan password. BCA kemudian mengeluarkan peringatan resmi melalui website dan media sosial, serta bekerjasama dengan BSSN dan Polri untuk menyelidiki kasus ini.",
-        "lesson": "Selalu verifikasi email mencurigakan langsung ke bank melalui nomor resmi yang tertera di balik kartu atau website resmi. Jangan pernah klik link dari email yang tidak diminta. Bank tidak pernah meminta password atau PIN melalui email. Aktifkan notifikasi transaksi untuk deteksi dini aktivitas mencurigakan. Jika menerima email seperti ini, segera laporkan ke bank dan jangan dibalas."
+        "type": "nyata",
+        "title": "Email “Someone has your password” (2016)",
+        "story": "Pada Maret 2016, John Podesta, ketua tim kampanye calon presiden Amerika Serikat Hillary Clinton, menerima email berjudul “Someone has your password”. Email itu menyapa “Hi John”, mengaku Google mendeteksi upaya masuk ke akunnya dari Ukraina, lalu memintanya segera mengganti password lewat sebuah tautan pendek. Tautan itu mengarah ke halaman login Google palsu, dan alamat pengirimnya pun bukan alamat resmi Google. Staf help desk yang diminta mengecek membalas bahwa email itu “legitimate” (belakangan ia menyebut maksudnya “illegitimate”), sehingga password akhirnya dimasukkan lewat tautan palsu tersebut. Akun Gmail-nya diambil alih, dan ribuan emailnya kemudian dipublikasikan WikiLeaks mulai Oktober 2016.",
+        "lesson": "Jangan mengganti password lewat tautan di email, sekalipun email itu terlihat resmi. Buka sendiri situs atau aplikasi resminya, periksa alamat pengirim dengan teliti, dan aktifkan verifikasi dua langkah. Satu salah klik bisa berdampak sangat besar.",
+        "sources": [
+          {
+            "label": "CBS News — The phishing email that hacked the account of John Podesta",
+            "url": "https://www.cbsnews.com/news/the-phishing-email-that-hacked-the-account-of-john-podesta/"
+          },
+          {
+            "label": "Sophos — Podesta led to phishing link thanks to a typo",
+            "url": "https://news.sophos.com/en-us/2016/12/16/dnc-chief-podesta-led-to-phishing-link-thanks-to-a-typo/"
+          }
+        ]
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10779233 - IEEE Access (2024) — A State-of-the-Art Review on Phishing Website Detection Techniques",
-        "https://www.sciencedirect.com/science/article/pii/S1319157823000034 - ScienceDirect (2023) — A Systematic Literature Review on Phishing Website Detection Techniques",
-        "https://www.nature.com/articles/s41598-025-27984-w - Nature Scientific Reports (2025) — Explainable Phishing Website Detection for Secure and Sustainable Cyber Infrastructure"
+        "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams - FTC (Komisi Perdagangan Federal AS) — How To Recognize and Avoid Phishing Scams",
+        "https://www.cisa.gov/secure-our-world/recognize-and-report-phishing - CISA (Badan Keamanan Siber AS) — Recognize and Report Phishing",
+        "https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf - CISA (2022) — Implementing Phishing-Resistant MFA"
       ]
     },
     "2": {
@@ -164,7 +186,7 @@
         {
           "title": "Mengapa WhatsApp Phishing Sangat Efektif?",
           "content": [
-            "WhatsApp memiliki tingkat kepercayaan yang sangat tinggi di Indonesia. Dengan lebih dari 80 juta pengguna aktif di Indonesia, WhatsApp menjadi platform komunikasi utama untuk pribadi dan bisnis. Orang cenderung lebih percaya pesan WhatsApp dibandingkan email karena dianggap lebih personal.",
+            "WhatsApp memiliki tingkat kepercayaan yang sangat tinggi di Indonesia. WhatsApp adalah salah satu aplikasi pesan yang paling banyak dipakai, baik untuk urusan pribadi maupun bisnis. Orang cenderung lebih percaya pesan WhatsApp dibandingkan email karena terasa lebih personal.",
             "Pesan WhatsApp sering dibaca dalam hitungan menit setelah diterima. Berbeda dengan email yang bisa tercampur dengan spam, pesan WhatsApp langsung muncul di notifikasi dan biasanya segera dibaca. Ini memberikan penyerang kesempatan untuk segera memanipulasi korban.",
             "WhatsApp memiliki fitur yang bisa disalahgunakan. Penyerang bisa menggunakan fitur broadcast untuk mengirim pesan massal, membuat grup palsu, atau mengambil alih akun WhatsApp korban sebelumnya dan menggunakannya untuk mengirim pesan ke semua kontak.",
             "Banyak pengguna WhatsApp tidak teredukasi tentang keamanan. Mereka tidak tahu cara memverifikasi keaslian pesan, tidak aktifkan verifikasi dua langkah, dan mudah percaya dengan pesan yang mengatasnamakan teman atau keluarga."
@@ -176,7 +198,10 @@
             "Undian Berhadiah Palsu adalah modus yang paling banyak beredar di Indonesia. Pesan mengklaim Anda memenangkan hadiah dari Shopee, Tokopedia, Lazada, atau bank. Hadiah yang ditawarkan sangat menggiurkan seperti iPhone 15, motor, mobil, atau uang tunai jutaan rupiah. Korban diarahkan ke link klaim yang mencuri data pribadi dan perbankan. Modus ini memanfaatkan keserakahan dan harapan korban.",
             "Akun Akan Diblokir menciptakan rasa takut dan urgensi. Pesan mengancam akun WhatsApp Anda akan diblokir jika tidak segera verifikasi. Link verifikasi adalah website phishing yang mencuri nomor telepon dan kode OTP. Setelah penyerang mendapatkan OTP, mereka bisa mengambil alih akun WhatsApp Anda dan menggunakannya untuk menipu kontak-kontak Anda.",
             "Minta Bantuan Pura-pura adalah modus yang sangat personal dan sulit dicurigai. Penyerang mengaku sebagai teman, keluarga, atau kenalan yang sedang dalam keadaan darurat. Mereka meminta dikirim kode OTP dengan alasan 'salah kirim' atau 'butuh untuk verifikasi'. Karena merasa membantu teman, korban tanpa sadar memberikan OTP yang kemudian digunakan untuk mengambil alih akun mereka.",
-            "Tawaran Kerja Palsu menargetkan pencari kerja. Pesan menawarkan pekerjaan dengan gaji fantastis, kerja dari rumah, dan proses mudah. Korban diminta mengisi formulir yang meminta data pribadi lengkap seperti KTP, nomor rekening, dan foto selfie. Data ini cukup untuk membuka rekening pinjaman online atau melakukan kejahatan lainnya. Modus ini sangat kejam karena menargetkan orang yang sedang butuh pekerjaan."
+            "Tawaran Kerja Palsu menargetkan pencari kerja. Pesan menawarkan pekerjaan dengan gaji fantastis, kerja dari rumah, dan proses mudah. Korban diminta mengisi formulir yang meminta data pribadi lengkap seperti KTP, nomor rekening, dan foto selfie. Data ini cukup untuk membuka rekening pinjaman online atau melakukan kejahatan lainnya. Modus ini sangat kejam karena menargetkan orang yang sedang butuh pekerjaan.",
+            "Mengaku Keluarga dengan Nomor Baru. Pelaku mengirim pesan seperti 'Ini Mama, HP Mama rusak, ini nomor baru' lalu meminta transfer darurat ke rekening orang lain, sering sambil melarang korban menelepon. Cara menghindarinya: telepon orang tersebut ke nomor lama yang sudah kamu simpan, atau tanyakan ke anggota keluarga lain, sebelum mengirim uang apa pun.",
+            "File APK Berkedok Undangan atau Resi Paket. Pelaku mengirim file berakhiran .apk dengan nama seperti 'Undangan Pernikahan' atau 'Foto Resi Paket'. File .apk adalah pemasang aplikasi Android, bukan dokumen atau foto. Jika dipasang, aplikasi palsu itu bisa membaca SMS, termasuk kode OTP mobile banking. Undangan dan resi asli tidak pernah berbentuk .apk.",
+            "Meminta Kode Verifikasi WhatsApp. Pelaku, sering memakai akun teman yang sudah dibajak, menulis 'Ada kode 6 digit yang salah terkirim ke nomormu, tolong kirim balik ya'. Kode itu sebenarnya untuk mendaftarkan nomormu di HP pelaku. Jika dibagikan, akun WhatsApp-mu bisa diambil alih. Jangan pernah membagikan kode verifikasi kepada siapa pun."
           ]
         },
         {
@@ -194,19 +219,31 @@
             "Verifikasi ke customer service resmi. Jika pesan mengaku dari perusahaan atau instansi, hubungi customer service melalui nomor resmi atau aplikasi resmi untuk konfirmasi. Jangan gunakan nomor atau link yang ada di pesan.",
             "Jangan pernah memberikan kode OTP kepada siapapun. OTP adalah rahasia pribadi Anda. Tidak ada pihak resmi yang berhak meminta OTP Anda, dalam kondisi apapun. Bahkan jika mengaku dari WhatsApp, bank, atau customer service.",
             "Jangan klik link dari pesan yang tidak diminta. Link dalam pesan WhatsApp bisa mengarah ke website phishing atau download malware. Jika ingin akses layanan, buka aplikasi resmi atau ketik URL langsung di browser.",
-            "Aktifkan verifikasi dua langkah di WhatsApp. Buka Settings > Account > Two-step verification > Enable. Ini akan menambah lapisan keamanan sehingga bahkan jika penyerang mendapatkan OTP Anda, mereka tetap tidak bisa mengambil alih akun tanpa PIN yang Anda set.",
+            "Aktifkan verifikasi dua langkah di WhatsApp: buka Setelan > Akun > Verifikasi dua langkah, lalu buat PIN 6 digit. Dengan PIN ini, pelaku yang berhasil mendapatkan kode verifikasi SMS tetap tidak bisa langsung mendaftarkan nomormu di HP lain. Jangan bagikan PIN ini kepada siapa pun, dan tambahkan alamat email agar PIN bisa diatur ulang bila lupa.",
             "Waspada pesan dari teman yang meminta uang atau OTP. Jika teman Anda mengirim pesan mencurigakan, konfirmasi melalui telepon atau chat lain. Mungkin akun mereka telah diretas dan digunakan untuk menipu."
           ]
         }
       ],
       "case_study": {
-        "title": "WhatsApp Phishing Undian Shopee Palsu 2024",
-        "story": "Pada pertengahan 2024, ribuan pengguna WhatsApp di Indonesia menerima pesan yang mengaku dari Shopee menyatakan mereka memenangkan iPhone 15 Pro Max dalam program 'Shopee Anniversary Giveaway'. Pesan menggunakan logo Shopee resmi, bahasa yang formal, dan terlihat sangat meyakinkan. Korban diarahkan ke website palsu yang sangat mirip dengan website Shopee untuk 'klaim hadiah'. Website tersebut meminta data pribadi lengkap (nama, alamat, nomor KTP, nomor rekening) dan 'biaya pengiriman' sebesar Rp 500.000. Lebih dari 10.000 korban terjebak dan mentransfer uang. Total kerugian mencapai Rp 5 miliar. Shopee kemudian mengeluarkan pernyataan resmi bahwa mereka tidak pernah mengadakan undian via WhatsApp dan semua promo resmi hanya melalui aplikasi Shopee.",
-        "lesson": "Shopee dan platform resmi tidak pernah mengirim undian via WhatsApp. Semua promo dan giveaway resmi hanya diumumkan melalui aplikasi resmi, website resmi, atau media sosial terverifikasi. Jangan pernah memberikan data pribadi atau transfer uang untuk klaim hadiah. Jika ragu, cek langsung di aplikasi resmi atau hubungi customer service resmi."
+        "type": "nyata",
+        "title": "File APK “Undangan Pernikahan” di WhatsApp (2023)",
+        "story": "Pada awal 2023, banyak pengguna WhatsApp di Indonesia menerima file berkedok undangan pernikahan atau resi paket yang ternyata berformat .APK, yaitu file pemasang aplikasi Android. Setelah dipasang, aplikasi palsu itu meminta izin membaca SMS, sehingga pelaku bisa ikut membaca kode OTP mobile banking korban. Salah satu kasus yang diberitakan menimpa seorang nasabah BRI di Kota Malang yang kehilangan saldo sekitar Rp 1,4 miliar. BRI menyatakan transaksi terjadi karena kode OTP korban jatuh ke pihak yang tidak berwenang, dan mengimbau nasabah tidak memasang aplikasi dari sumber tidak resmi.",
+        "lesson": "Jangan pernah memasang file .APK yang dikirim lewat chat, siapa pun pengirimnya. Undangan, foto, atau resi asli tidak pernah berformat .APK. Pasang aplikasi hanya dari toko aplikasi resmi, dan periksa izin yang diminta aplikasi.",
+        "sources": [
+          {
+            "label": "Bisnis.com (2023) — Download Undangan Nikah, Saldo Tabungan Hilang Rp1,4 Miliar",
+            "url": "https://finansial.bisnis.com/read/20230707/90/1672751/download-undangan-nikah-saldo-tabungan-hilang-rp14-miliar"
+          },
+          {
+            "label": "Bisnis.com (2023) — Ini Sikap Kemenkominfo Soal Undangan Nikah Format APK di WhatsApp",
+            "url": "https://teknologi.bisnis.com/read/20230130/84/1622798/ini-sikap-kemenkominfo-soal-undangan-nikah-format-apk-di-whatsapp"
+          }
+        ]
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10959634 - IEEE (2024) — A Survey on Protecting Users Against Phishing Attacks",
-        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics and Attribution Analysis for Phishing Attacks"
+        "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams - FTC (Komisi Perdagangan Federal AS) — How To Recognize and Avoid Phishing Scams",
+        "https://djpb.kemenkeu.go.id/kppn/wates/id/data-publikasi/berita-terbaru/3069-phising-penipuan-undangan-apk-paket.html - Kemenkeu (DJPb) — Phising Penipuan Undangan APK dan Paket",
+        "https://faq.whatsapp.com/1920866721452534 - WhatsApp Help Center — How to manage two-step verification settings"
       ]
     },
     "3": {
@@ -218,7 +255,7 @@
           "title": "Smishing (SMS Phishing) - Ancaman dalam Genggaman",
           "content": [
             "Smishing adalah teknik phishing yang menggunakan pesan SMS untuk menipu korban. Penyerang mengirim SMS palsu yang mengaku dari bank, marketplace, layanan pengiriman (JNE, J&T, POS Indonesia), atau instansi pemerintah. SMS biasanya berisi link pendek (bit.ly, s.id, goo.gl) yang mengarah ke website phishing.",
-            "Pesan smishing dirancang untuk menciptakan urgensi dan rasa takut. Contoh pesan: 'Paket JNE Anda tertahan. Klik http://bit.ly/jne-verify untuk informasi', 'Akun BCA Anda akan diblokir. Verifikasi di http://bca-verify.com', atau 'Selamat! Anda memenangkan undian BRI. Klaim di http://bri-hadiah.com'. Pesan-pesan ini memanfaatkan rasa ingin tahu atau kekhawatiran korban.",
+            "Pesan smishing dirancang untuk menciptakan urgensi dan rasa takut. Contoh pesan: 'Paket Anda tertahan. Klik http://bit.ly/xxxxx untuk informasi', 'Akun bank Anda akan diblokir. Verifikasi di http://verifikasi-akun-bank.example', atau 'Selamat! Anda memenangkan undian. Klaim di http://klaim-hadiah.example'. Pesan-pesan ini memanfaatkan rasa ingin tahu atau kekhawatiran korban. (Alamat berakhiran .example hanya contoh.)",
             "SMS phishing memiliki tingkat keberhasilan yang lebih tinggi dibandingkan email. Orang cenderung lebih percaya SMS karena dianggap lebih personal dan langsung. Selain itu, SMS sering dibaca dalam hitungan menit setelah diterima, memberikan penyerang kesempatan untuk segera memanipulasi korban.",
             "Link dalam SMS sering menggunakan URL shortener untuk menyembunyikan tujuan sebenarnya. Ketika korban mengklik link, mereka diarahkan ke website phishing yang meminta data pribadi, nomor kartu kredit, atau login credentials. Data ini kemudian digunakan untuk pencurian identitas atau transaksi fraud."
           ]
@@ -254,14 +291,14 @@
         }
       ],
       "case_study": {
-        "title": "Vishing Pura-pura CS Gojek - Ribuan Korban Kehilangan Jutaan Rupiah",
-        "story": "Pada 2024, ratusan pengguna Gojek di Indonesia menjadi korban vishing. Penyerang menelepon mengaku sebagai customer service Gojek dan mengatakan ada transaksi mencurigakan atau akun akan diblokir. Mereka meminta korban untuk memberikan kode OTP yang dikirim ke HP dengan alasan 'verifikasi keamanan' atau 'membatalkan transaksi'. Korban yang panik atau ingin membantu memberikan OTP. Setelah mendapatkan OTP, penyerang langsung mengambil alih akun Gojek/GoPay korban dan melakukan transfer ke rekening mereka. Total kerugian mencapai ratusan juta rupiah dengan rata-rata kerugian per korban Rp 2-5 juta. Gojek telah mengeluarkan peringatan resmi bahwa CS mereka tidak pernah meminta OTP atau password kepada pengguna.",
+        "type": "ilustrasi",
+        "title": "Contoh: Telepon dari “CS” Aplikasi Ojek Online",
+        "story": "Rina menerima telepon dari seseorang yang mengaku customer service aplikasi ojek online. Penelepon menyebut ada transaksi mencurigakan di akunnya dan meminta kode OTP yang baru saja masuk lewat SMS untuk “membatalkan transaksi”. Karena panik, Rina menyebutkan kodenya. Beberapa menit kemudian ia keluar otomatis dari aplikasi, dan saldo dompet digitalnya sudah berpindah ke rekening pelaku. Kode yang ia sebutkan ternyata dipakai pelaku untuk masuk ke akunnya dari HP lain.",
         "lesson": "Customer service resmi tidak pernah meminta OTP, password, atau PIN kepada pengguna. Jika ada yang menelepon mengaku CS dan minta OTP, langsung tutup telepon. Hubungi CS resmi melalui aplikasi atau nomor resmi untuk konfirmasi. Jangan pernah memberikan kode OTP kepada siapapun, dalam kondisi apapun. OTP adalah kunci keamanan akun Anda."
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10060305 - IEEE (2024) — A Comprehensive Study of Classification of Phishing Attacks",
-        "https://csrc.nist.gov/pubs/sp/800/177/r1/final - NIST SP 800-177 Rev.1 — Trustworthy Email",
-        "https://ieeexplore.ieee.org/document/10630203 - IEEE (2024) — Phishing Attacks and Detection Techniques: A Systematic Review"
+        "https://consumer.ftc.gov/articles/phone-scams - FTC — Phone Scams",
+        "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams - FTC (Komisi Perdagangan Federal AS) — How To Recognize and Avoid Phishing Scams"
       ]
     },
     "4": {
@@ -302,7 +339,7 @@
           "title": "Cara Melindungi Diri dari QR Phishing",
           "content": [
             "Gunakan QR scanner yang menampilkan preview URL sebelum membuka. Aplikasi seperti Google Lens, QR & Barcode Scanner, atau fitur scan bawaan smartphone biasanya menampilkan URL sebelum membuka. Periksa URL dengan teliti — apakah domain resmi atau mencurigakan?",
-            "Periksa URL setelah scan. Sebelum memasukkan data apapun, periksa URL di address bar browser. Pastikan domain sesuai dengan layanan yang Anda akses. Jika QR code mengaku dari bank tapi URL-nya aneh, itu pasti phishing.",
+            "Periksa URL setelah scan. Sebelum memasukkan data apa pun, periksa alamat di address bar browser dan pastikan domainnya sesuai dengan layanan yang kamu akses. Jika QR code mengaku dari bank atau pengelola parkir tetapi alamatnya berbeda dari domain resminya, tutup halamannya dan jangan masukkan data apa pun.",
             "Waspada QR code yang ditempel sembarangan di tempat umum. Periksa apakah QR code terlihat resmi atau ada tanda-tanda tempelan di atas QR code asli. Jika QR code terlihat mencurigakan (tempelan baru, posisi aneh, tidak ada branding resmi), jangan scan.",
             "Jangan scan QR code dari sumber yang tidak terpercaya. Hindari scan QR code dari email, WhatsApp, atau media sosial dari pengirim yang tidak dikenal. QR code bisa mengarah ke website phishing atau download malware.",
             "Jika ragu, tanya ke pihak terkait. Jika menemukan QR code di restoran, mall, atau tempat umum, tanya ke staff apakah QR code tersebut resmi. Jangan asal scan.",
@@ -311,13 +348,24 @@
         }
       ],
       "case_study": {
-        "title": "QR Code Parkir Palsu di Mall Jakarta - Korban Kehilangan Jutaan Rupiah",
-        "story": "Pada awal 2025, penyerang menempelkan QR code palsu di atas mesin parkir sebuah mall besar di Jakarta. QR code tersebut dilengkapi tulisan 'Bayar parkir lebih cepat scan di sini — Diskon 20%' yang terlihat meyakinkan. Korban yang scan diarahkan ke website palsu yang sangat mirip dengan aplikasi pembayaran digital. Website meminta korban untuk memasukkan data kartu kredit untuk 'pembayaran parkir'. Lebih dari 200 korban terjebak dan data kartu kredit mereka dicuri. Penyerang menggunakan data tersebut untuk transaksi online yang merugikan korban hingga jutaan rupiah. Mall kemudian menyadari adanya QR code palsu dan segera melepaskannya, serta memberikan peringatan kepada pengunjung.",
-        "lesson": "Selalu periksa apakah QR code terlihat resmi atau ada tanda-tanda tempelan. Gunakan aplikasi pembayaran resmi dari mall atau parkir. Jangan masukkan data kartu kredit untuk bayar parkir — sistem parkir resmi biasanya langsung terintegrasi dengan aplikasi pembayaran atau mesin EDC. Jika ragu, bayar langsung ke kasir parkir."
+        "type": "nyata",
+        "title": "Stiker QR Palsu di Mesin Parkir Austin, AS (2022)",
+        "story": "Pada awal Januari 2022, Dinas Transportasi Kota Austin, Texas, menemukan stiker QR code palsu yang ditempel di mesin pembayaran parkir. QR itu mengarah ke situs yang tidak ada hubungannya dengan pemerintah kota dan diduga dibuat untuk mencuri data pembayaran pengendara. Polisi Austin menyelidiki kasus ini, sementara pemerintah kota menegaskan bahwa parkir hanya bisa dibayar tunai atau kartu di mesin, atau lewat aplikasi resmi Park ATX, bukan lewat situs web. Warga yang sempat membayar lewat QR diminta melapor ke polisi dan ke penerbit kartunya. Laporan serupa juga muncul di beberapa kota lain di Texas pada waktu yang sama.",
+        "lesson": "QR code di tempat umum bisa ditimpa stiker palsu. Perhatikan apakah ada stiker yang menempel di atas QR asli, periksa alamat situs setelah memindai, dan utamakan aplikasi pembayaran resmi. Jangan memasukkan data kartu di situs yang dibuka dari QR yang tidak jelas asalnya.",
+        "sources": [
+          {
+            "label": "Austin Monitor (2022) — Fake QR codes found on city parking stations",
+            "url": "https://austinmonitor.com/stories/2022/01/fake-qr-codes-found-on-city-parking-stations"
+          },
+          {
+            "label": "Route Fifty (2022) — Cities in Texas hit by QR-code phishing scam",
+            "url": "https://route-fifty.com/cybersecurity/2022/01/cities-texas-hit-qr-code-phishing-scam/360554"
+          }
+        ]
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics and Attribution Analysis for Phishing Attacks",
-        "https://csrc.nist.gov/glossary/term/phishing - NIST Glossary — Phishing & Quishing Definition"
+        "https://consumer.ftc.gov/consumer-alerts/2023/12/scammers-hide-harmful-links-qr-codes-steal-your-information - FTC — Scammers hide harmful links in QR codes to steal your information",
+        "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams - FTC (Komisi Perdagangan Federal AS) — How To Recognize and Avoid Phishing Scams"
       ]
     },
     "5": {
@@ -338,7 +386,7 @@
           "title": "Ciri-ciri Fake Login Page yang Harus Diwaspadai",
           "content": [
             "URL tidak sesuai dengan domain resmi adalah tanda paling jelas. Contoh: gmail-login.fake.com alih-alih accounts.google.com, facebook-verify.net alih-alih facebook.com, atau bca-online-login.com alih-alih klikbca.com. Periksa URL dengan teliti sebelum login.",
-            "HTTPS palsu atau sertifikat SSL tidak valid. Meskipun banyak fake login page sekarang menggunakan HTTPS (ada icon gembok), sertifikat SSL-nya seringkali tidak valid atau issued untuk domain yang berbeda. Klik icon gembok di address bar untuk melihat detail sertifikat.",
+            "Ikon gembok (HTTPS) bukan tanda situs asli. Gembok hanya berarti koneksi antara browser dan situs terenkripsi. Pelaku phishing bisa mendapatkan sertifikat HTTPS secara gratis untuk domain palsunya, sehingga sebagian besar halaman login palsu sekarang juga menampilkan gembok. Yang menentukan asli atau palsu adalah nama domainnya.",
             "Tampilan sedikit berbeda dari yang asli. Meskipun penyerang berusaha meniru, seringkali ada perbedaan kecil seperti font yang sedikit berbeda, logo yang pecah, layout yang tidak rapi, atau tombol yang tidak sejajar. Perbedaan ini bisa jadi petunjuk bahwa itu fake login page.",
             "Dibuat terburu-buru sehingga ada typo atau elemen yang tidak rapi. Penyerang seringkali membuat fake login page dengan cepat, sehingga ada kesalahan ejaan, kalimat yang kaku, atau elemen yang tidak berfungsi dengan baik.",
             "Form meminta data berlebihan. Login page resmi biasanya hanya meminta username/email dan password. Jika form meminta data tambahan seperti nomor KTP, nomor kartu kredit, atau tanggal lahir, itu pasti fake login page.",
@@ -346,12 +394,22 @@
           ]
         },
         {
+          "title": "Cara Membaca Alamat Website dengan Benar",
+          "content": [
+            "Alamat website (URL) terdiri dari beberapa bagian, misalnya https://www.bank-sentosa.co.id/masuk. Bagian https:// adalah protokol, www.bank-sentosa.co.id adalah nama domain, dan /masuk adalah halaman di dalam situs. Yang paling penting untuk diperiksa adalah nama domainnya.",
+            "Domain sebenarnya dibaca dari bagian paling kanan sebelum garis miring (/) pertama. Contoh: pada https://bank-sentosa.co.id.login-aman.net/masuk, domain sebenarnya adalah login-aman.net, bukan bank-sentosa.co.id. Bagian depan yang terlihat resmi hanyalah hiasan untuk menipu.",
+            "Waspadai trik yang sering dipakai pelaku: menambahkan kata seperti 'verifikasi', 'secure', 'login', atau 'support' (bank-sentosa-verifikasi.com); mengganti huruf dengan karakter mirip (huruf l dengan angka 1, huruf o dengan angka 0, atau rn yang terlihat seperti m); serta memakai akhiran domain lain seperti .net, .top, atau .xyz.",
+            "Tautan pendek seperti bit.ly menyembunyikan alamat tujuan sebenarnya. Jangan membuka tautan pendek dari pesan yang tidak kamu harapkan, terutama jika pesan itu meminta login atau pembayaran.",
+            "Ingat, ikon gembok (HTTPS) tidak menjamin situs itu asli. Gembok hanya menandakan koneksi terenkripsi, dan situs palsu pun bisa memilikinya. Tetap periksa nama domainnya."
+          ]
+        },
+        {
           "title": "Cara Mengecek Login Page Asli atau Palsu",
           "content": [
             "Periksa URL dengan teliti sebelum login. Pastikan domain benar. Contoh: Gmail resmi adalah accounts.google.com atau gmail.com (bukan gmail-login.com), Facebook adalah facebook.com (bukan facebook-verify.net), BCA adalah klikbca.com (bukan bca-online.com). Bookmark halaman login resmi dan selalu akses dari bookmark.",
-            "Klik icon gembok di address bar untuk melihat detail sertifikat SSL. Periksa apakah sertifikat issued untuk domain yang benar dan issued oleh Certificate Authority (CA) yang terpercaya. Jika sertifikat self-signed atau issued untuk domain yang berbeda, itu fake login page.",
-            "Gunakan password manager seperti LastPass, 1Password, atau Bitwarden. Password manager hanya akan auto-fill password di domain yang benar. Jika Anda save password untuk gmail.com, password manager tidak akan auto-fill di gmail-login.fake.com. Ini adalah proteksi tambahan yang sangat efektif.",
-            "Aktifkan Two-Factor Authentication (2FA) di semua akun penting. Meskipun password Anda dicuri melalui fake login page, penyerang tetap tidak bisa login tanpa kode 2FA dari perangkat Anda. 2FA adalah lapisan keamanan terpenting.",
+            "Periksa nama domain, bukan hanya gembok. Jika ingin lebih yakin, klik ikon di address bar untuk melihat untuk domain apa sertifikat itu dikeluarkan. Sertifikat yang sah untuk domain palsu tetap berarti situs palsu. Sebaliknya, jika browser menampilkan peringatan sertifikat atau situs berbahaya, jangan lanjutkan.",
+            "Gunakan password manager tepercaya seperti Bitwarden atau 1Password. Password manager hanya mengisi password otomatis di domain yang benar. Jika kamu menyimpan password untuk accounts.google.com, password manager tidak akan mengisinya di gmail-login.fake.com. Jika password tidak terisi otomatis seperti biasanya, itu tanda kamu mungkin sedang berada di situs palsu.",
+            "Aktifkan autentikasi dua faktor (2FA) di semua akun penting. Jika password kamu dicuri, pelaku masih membutuhkan faktor kedua, sehingga pengambilalihan akun menjadi jauh lebih sulit. Namun 2FA berbasis kode (SMS atau aplikasi authenticator) bukan jaminan mutlak: halaman login palsu modern bisa ikut meminta kode OTP lalu langsung memakainya. Karena itu, jangan pernah memasukkan kode OTP di halaman yang dibuka dari tautan pesan. Bila layanan menyediakannya, pilih passkey atau kunci keamanan fisik (standar FIDO), yang tidak bisa dipakai di situs palsu.",
             "Gunakan browser dengan proteksi anti-phishing. Google Chrome, Mozilla Firefox, dan Microsoft Edge memiliki fitur anti-phishing yang bisa mendeteksi dan memblokir fake login page. Pastikan fitur ini aktif.",
             "Jangan klik link dari email atau SMS untuk login. Jika menerima email atau SMS dengan link login, jangan langsung klik. Buka browser dan ketik URL resmi sendiri. Ini menghindari Anda dari fake login page."
           ]
@@ -367,14 +425,15 @@
         }
       ],
       "case_study": {
-        "title": "Fake Gmail Login Page - Ribuan Akun Google Dicuri",
-        "story": "Pada 2024, sebuah sindikat cybercrime membuat fake Gmail login page yang sangat mirip dengan halaman login Google asli. Mereka mengirim email phishing dengan subject 'Aktivitas mencurigakan terdeteksi di akun Anda' yang meminta korban untuk segera login untuk verifikasi. Email berisi link ke fake login page di domain 'accounts-google-verify.com' yang terlihat meyakinkan. Lebih dari 10.000 korban terjebak dan username serta password Google mereka dicuri. Penyerang kemudian menggunakan akun-akun tersebut untuk mengirim spam, phishing ke kontak-kontak korban, atau menjual akun di dark web dengan harga $5-50 per akun. Google kemudian menambahkan domain-domain fake tersebut ke blacklist dan memperingatkan pengguna untuk selalu periksa URL sebelum login.",
+        "type": "ilustrasi",
+        "title": "Contoh: Halaman Login Palsu dari Email “Aktivitas Mencurigakan”",
+        "story": "Dimas menerima email berjudul “Aktivitas mencurigakan terdeteksi di akun Anda” dengan tombol “Amankan Akun Sekarang”. Tombol itu membuka halaman yang tampilannya persis seperti halaman login Google, lengkap dengan logo dan warnanya. Dimas tidak memperhatikan bahwa alamat di browser bukan accounts.google.com, melainkan domain lain yang namanya mirip. Ia mengetik email dan password-nya. Dalam hitungan menit, akunnya dipakai pelaku untuk mengirim pesan phishing yang sama ke semua kontaknya.",
         "lesson": "Selalu periksa URL sebelum login. Gmail/Google resmi adalah accounts.google.com atau gmail.com. Jangan pernah klik link dari email untuk login — buka browser dan ketik URL sendiri. Aktifkan 2FA untuk proteksi tambahan. Gunakan password manager yang hanya auto-fill di domain yang benar."
       },
       "references": [
-        "https://www.nature.com/articles/s41598-025-27984-w - Nature Scientific Reports (2025) — Explainable Phishing Website Detection",
-        "https://www.sciencedirect.com/science/article/pii/S1319157823000034 - ScienceDirect (2023) — Systematic Literature Review on Phishing Website Detection",
-        "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/09-Testing_for_Weak_Cryptography/04-Testing_for_Weak_SSL_TLS_Ciphers_Insufficient_Transport_Layer_Protection - OWASP — Phishing & Fake Login Page Defense Guide"
+        "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams - FTC (Komisi Perdagangan Federal AS) — How To Recognize and Avoid Phishing Scams",
+        "https://www.cisa.gov/secure-our-world/recognize-and-report-phishing - CISA (Badan Keamanan Siber AS) — Recognize and Report Phishing",
+        "https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf - CISA (2022) — Implementing Phishing-Resistant MFA"
       ]
     },
     "6": {
@@ -388,7 +447,7 @@
             "Spear phishing sangat personal dan targeted. Penyerang tidak mengirim pesan massal, tapi memilih target tertentu — biasanya eksekutif, manajer, atau orang dengan akses ke data sensitif atau sistem penting. Mereka menghabiskan waktu untuk riset tentang target sebelum menyerang.",
             "Pesan spear phishing sangat meyakinkan karena menggunakan informasi spesifik tentang korban. Penyerang bisa menyebut nama lengkap, jabatan, nama perusahaan, rekan kerja, proyek yang sedang dikerjakan, atau informasi pribadi lainnya. Ini membuat pesan terlihat sangat legitimate dan sulit dicurigai.",
             "Spear phishing seringkali merupakan bagian dari serangan yang lebih besar seperti Advanced Persistent Threat (APT) atau cyber espionage. Penyerang bukan sekadar ingin mencuri kredensial, tapi ingin akses jangka panjang ke sistem perusahaan untuk mencuri data rahasia, intelijen bisnis, atau informasi sensitif lainnya.",
-            "Tingkat keberhasilan spear phishing jauh lebih tinggi dibandingkan phishing massal. Karena pesan sangat personal dan relevan, korban cenderung percaya dan tidak curiga. Tingkat keberhasilan spear phishing bisa mencapai 20-30%, dibandingkan phishing massal yang hanya 0,1-1%."
+            "Tingkat keberhasilan spear phishing jauh lebih tinggi dibandingkan phishing massal. Karena pesannya personal dan relevan dengan pekerjaan atau kehidupan korban, korban jauh lebih mungkin percaya dibandingkan pesan massal yang dikirim secara acak."
           ]
         },
         {
@@ -418,19 +477,34 @@
             "Batasi informasi yang dipublikasikan di media sosial. Jangan share terlalu banyak informasi tentang pekerjaan, proyek, struktur organisasi, atau informasi sensitif lainnya di LinkedIn, Facebook, atau media sosial lainnya. Gunakan privacy settings untuk membatasi siapa yang bisa melihat profil Anda.",
             "Training awareness untuk karyawan. Perusahaan perlu memberikan training reguler kepada karyawan tentang spear phishing dan social engineering. Karyawan harus tahu cara mendeteksi spear phishing dan prosedur verifikasi yang benar.",
             "Email filtering dan security gateway. Perusahaan perlu menggunakan advanced email security gateway yang bisa mendeteksi dan memblokir email phishing, spoofing, dan malware. Tools seperti Proofpoint, Mimecast, atau Microsoft Defender for Office 365 bisa membantu.",
-            "Multi-Factor Authentication (MFA). Aktifkan MFA di semua akun penting. Meskipun kredensial dicuri melalui spear phishing, penyerang tetap tidak bisa login tanpa faktor autentikasi kedua."
+            "Multi-Factor Authentication (MFA). Aktifkan MFA di semua akun penting. Jika kredensial dicuri melalui spear phishing, pelaku masih membutuhkan faktor kedua, sehingga serangan menjadi jauh lebih sulit. Untuk akun kerja yang sensitif, pilih MFA tahan phishing seperti passkey atau kunci keamanan fisik (FIDO), karena kode OTP biasa masih bisa ikut dicuri lewat halaman login palsu."
           ]
         }
       ],
       "case_study": {
-        "title": "Spear Phishing Karyawan Twitter 2020 - Akun Selebriti Diretas",
-        "story": "Pada Juli 2020, penyerang melakukan spear phishing yang sangat sophisticated ke karyawan Twitter. Mereka menargetkan karyawan yang memiliki akses ke sistem internal Twitter. Penyerang melakukan riset mendalam tentang karyawan Twitter melalui LinkedIn dan media sosial. Mereka kemudian mengirim email yang sangat meyakinkan yang mengaku dari tim IT internal Twitter. Email meminta karyawan untuk login ke VPN perusahaan dengan link yang disediakan. Link mengarah ke fake login page yang sangat mirip dengan halaman login Twitter. Beberapa karyawan terjebak dan memberikan kredensial VPN mereka. Penyerang kemudian menggunakan akses VPN untuk masuk ke sistem internal Twitter dan mengakses tool admin yang bisa mengontrol akun manapun. Mereka mengambil alih akun selebriti top seperti Elon Musk, Bill Gates, Barack Obama, Jeff Bezos, dan Apple. Dari akun-akun tersebut, mereka memposting tweet yang meminta pengikut untuk mengirim bitcoin ke alamat tertentu dengan janji akan dikembalikan dua kali lipat. Dalam beberapa jam, mereka berhasil mengumpulkan lebih dari $120,000 dalam bitcoin. Twitter kemudian menyadari serangan ini dan mengambil alih kembali akun-akun tersebut. Investigasi menunjukkan bahwa penyerang adalah remaja 17 tahun dari Florida yang berhasil membobol sistem Twitter melalui spear phishing ini.",
-        "lesson": "Spear phishing sangat berbahaya karena sangat personal dan sulit dideteksi. Selalu verifikasi permintaan sensitif melalui saluran lain (telepon, chat langsung, atau tatap muka). Jangan pernah klik link dari email yang meminta kredensial, meskipun email terlihat sangat resmi dan dari atasan. Perusahaan perlu training reguler untuk karyawan tentang spear phishing dan implement MFA di semua sistem."
+        "type": "nyata",
+        "title": "Spear Phishing lewat Telepon ke Karyawan Twitter (2020)",
+        "story": "Pada 15 Juli 2020, akun Twitter milik tokoh terkenal seperti Barack Obama, Bill Gates, Elon Musk, dan akun resmi Apple tiba-tiba memposting penipuan bitcoin: kirim bitcoin, nanti dikembalikan dua kali lipat. Menurut penjelasan Twitter, pelaku melakukan “phone spear phishing”: mereka menelepon sejumlah karyawan Twitter sambil menyamar sebagai tim IT internal, lalu mengarahkan karyawan ke halaman login palsu untuk mencuri kredensial mereka. Dengan akses itu, pelaku masuk ke alat admin internal yang bisa mengendalikan akun pengguna. Dalam beberapa jam, pelaku mengumpulkan lebih dari 100 ribu dolar AS dalam bentuk bitcoin. Pelaku utama, seorang remaja 17 tahun dari Florida, kemudian ditangkap dan didakwa bersama dua orang lainnya.",
+        "lesson": "Spear phishing tidak selalu datang lewat email. Pelaku bisa menelepon sambil menyamar sebagai rekan kerja atau tim IT. Verifikasi setiap permintaan login atau akses yang tidak terduga lewat saluran resmi, dan jangan memasukkan kredensial di halaman yang dikirim oleh penelepon.",
+        "sources": [
+          {
+            "label": "NBC News (2020) — Twitter says hackers used a telephone to fool staff and gain access",
+            "url": "https://www.nbcnews.com/business/business-news/twitter-says-hackers-used-telephone-fool-staff-gain-access-n1235466"
+          },
+          {
+            "label": "Help Net Security (2020) — Twitter employees were spear-phished over the phone",
+            "url": "https://www.helpnetsecurity.com/2020/07/31/twitter-employees-spear-phished/"
+          },
+          {
+            "label": "Al Jazeera (2020) — Three men charged in connection with celebrity Twitter hack",
+            "url": "https://www.aljazeera.com/news/2020/7/31/three-men-charged-in-connection-with-celebrity-twitter-hack"
+          }
+        ]
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics and Attribution Analysis for Phishing Attacks",
-        "https://csrc.nist.gov/glossary/term/spear_phishing - NIST Glossary — Spear Phishing Official Definition",
-        "https://ieeexplore.ieee.org/document/10580446 - IEEE (2024) — A Comprehensive Survey of Recent Phishing Attacks Detection Techniques"
+        "https://csrc.nist.gov/glossary/term/spear_phishing - NIST Glossary — Definisi resmi spear phishing",
+        "https://www.cisa.gov/secure-our-world/recognize-and-report-phishing - CISA (Badan Keamanan Siber AS) — Recognize and Report Phishing",
+        "https://www.cisa.gov/sites/default/files/publications/fact-sheet-implementing-phishing-resistant-mfa-508c.pdf - CISA (2022) — Implementing Phishing-Resistant MFA"
       ]
     },
     "7": {
@@ -473,6 +547,7 @@
             "Periksa alamat email pengirim dengan teliti. Bandingkan dengan email asli yang pernah Anda terima. Apakah alamat email benar-benar sama? Periksa domain, subdomain, dan typo. Jika ada perbedaan sekecil apapun, itu clone phishing.",
             "Hover link untuk melihat URL sebenarnya. Bandingkan dengan link di email asli. Apakah URL sama? Jika berbeda, jangan klik. Lebih baik ketik URL sendiri di browser atau akses dari bookmark.",
             "Jangan buka attachment yang mencurigakan. Jika menerima attachment yang berbeda dari email asli, atau attachment dari email yang Anda tidak ingat meminta, jangan buka. Verifikasi dulu ke pengirim asli melalui telepon atau chat.",
+            "Jangan menekan 'Enable Content' atau 'Enable Macros' pada dokumen dari email. Dokumen Word atau Excel palsu sering meminta ini dengan alasan 'agar dokumen tampil benar'. Padahal tombol itu menjalankan kode tersembunyi (macro) yang bisa memasang malware di komputer.",
             "Verifikasi ke pengirim asli jika ragu. Jika menerima email yang hampir identik dengan email sebelumnya, hubungi pengirim asli melalui telepon, chat, atau email baru (bukan reply email yang mencurigakan) untuk konfirmasi apakah mereka benar mengirim email tersebut.",
             "Periksa waktu pengiriman. Email clone biasanya dikirim beberapa jam atau hari setelah email asli. Jika waktu pengiriman mencurigakan, waspadai.",
             "Gunakan email security gateway. Perusahaan perlu menggunakan email security gateway yang bisa mendeteksi dan memblokir email spoofing, clone phishing, dan attachment malware. Tools seperti Proofpoint, Mimecast, atau Microsoft Defender for Office 365 bisa membantu.",
@@ -481,13 +556,14 @@
         }
       ],
       "case_study": {
-        "title": "Clone Phishing Invoice - Perusahaan Terkena Ransomware, Bayar Tebusan $50,000",
-        "story": "Sebuah perusahaan menengah di Indonesia menerima invoice legitimate dari vendor IT langganan mereka pada awal bulan. Invoice tersebut untuk layanan maintenance bulanan sebesar Rp 50 juta. Staff keuangan memproses pembayaran seperti biasa. Dua minggu kemudian, mereka menerima email yang hampir identik dengan subject yang sama 'Invoice #12345 - IT Maintenance'. Email mengaku dari vendor yang sama dengan isi yang hampir identik, tapi attachment PDF-nya berbeda. Email mengatakan 'Mohon maaf, invoice sebelumnya ada kesalahan nominal. Berikut invoice yang sudah direvisi. Mohon abaikan invoice sebelumnya.' Staff keuangan yang tidak curiga membuka attachment PDF yang baru. PDF tersebut berisi macro malware yang langsung terinstall di komputer ketika dibuka. Malware tersebut adalah ransomware yang mengenkripsi semua file di komputer dan network perusahaan. Ransomware meminta tebusan $50,000 dalam bitcoin untuk decrypt file. Perusahaan panik karena semua data penting terenkripsi — data akuntansi, data pelanggan, dokumen kontrak, dan sistem operasional. Setelah negosiasi, perusahaan akhirnya membayar tebusan $50,000 (sekitar Rp 750 juta). Namun, setelah bayar, penyerang tidak memberikan decryption key yang berfungsi. Perusahaan kehilangan data permanen dan mengalami downtime selama 2 minggu dengan kerugian total mencapai miliaran rupiah. Investigasi menunjukkan bahwa vendor asli tidak pernah mengirim email kedua — itu adalah clone phishing yang sangat sophisticated.",
-        "lesson": "Clone phishing sangat berbahaya karena email terlihat familiar dan dari pengirim yang dikenal. Selalu verifikasi email yang meminta pembayaran atau attachment, meskipun dari pengirim yang dikenal. Jangan pernah buka attachment yang berbeda dari email asli tanpa verifikasi. Gunakan password-protected PDF untuk invoice sensitif. Perusahaan perlu backup data reguler dan offline untuk proteksi dari ransomware. Implement email security gateway dan training awareness untuk karyawan."
+        "type": "ilustrasi",
+        "title": "Contoh: Email “Invoice Revisi” dari Vendor",
+        "story": "Bagian keuangan sebuah perusahaan menerima invoice asli dari vendor IT langganan mereka, lalu membayarnya seperti biasa. Dua minggu kemudian datang email yang hampir identik, dengan subjek yang sama “Invoice #12345 - IT Maintenance”, nama pengirim yang sama, dan isi: “Mohon maaf, invoice sebelumnya ada kesalahan nominal. Berikut invoice yang sudah direvisi.” Bedanya hanya lampiran: kali ini file Word yang meminta penerimanya menekan “Enable Content”. Staf yang tidak curiga menurutinya, dan malware langsung terpasang di komputernya. Belakangan diketahui vendor asli tidak pernah mengirim email kedua itu.",
+        "lesson": "Clone phishing berbahaya karena meniru email yang memang pernah kamu terima. Curigai email “revisi” atau “kirim ulang” yang membawa lampiran atau tautan baru, verifikasi ke pengirim lewat telepon, dan jangan menekan “Enable Content” atau “Enable Macros” pada dokumen dari email."
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10630203 - IEEE (2024) — Phishing Attacks and Detection Techniques: A Systematic Review",
-        "https://ieeexplore.ieee.org/document/10959634 - IEEE (2024) — A Survey on Protecting Users Against Phishing Attacks"
+        "https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams - FTC (Komisi Perdagangan Federal AS) — How To Recognize and Avoid Phishing Scams",
+        "https://www.cisa.gov/secure-our-world/recognize-and-report-phishing - CISA (Badan Keamanan Siber AS) — Recognize and Report Phishing"
       ]
     }
   }

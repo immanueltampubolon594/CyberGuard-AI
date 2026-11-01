@@ -2,7 +2,8 @@
 // lalu ditangani di QuestionCard (components/learning/Stages.tsx) dan isCorrect() pada learningApi.ts.
 
 export type StageKey = "latihan" | "simulasi" | "quiz";
-export const STAGE_ORDER: StageKey[] = ["latihan", "simulasi", "quiz"];
+// Tahap latihan & simulasi tidak dipakai lagi. Soalnya digabung ke quiz (lihat index.ts).
+export const STAGE_ORDER: StageKey[] = ["quiz"];
 
 export type QuestionType = "multi_select" | "scenario" | "single";
 

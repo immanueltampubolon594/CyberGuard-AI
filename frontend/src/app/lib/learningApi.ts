@@ -18,7 +18,8 @@ export interface Attempt {
   total: number;
   percent: number;
   passed: boolean;
-  at: number;
+  at: number;          // waktu selesai (dikirim)
+  startedAt?: number;  // waktu mulai mengerjakan
   answers: Record<string, number[]>;
 }
 
@@ -185,7 +186,8 @@ export function submitQuiz(
   slug: string,
   steps: string[],
   questions: Question[],
-  answers: Record<string, number[]>
+  answers: Record<string, number[]>,
+  startedAt?: number
 ): SubmitOutcome | { error: string } {
   const store = readStore();
   const rec: ModuleRecord = store[slug] ?? { steps: [], attempts: [] };
@@ -200,6 +202,7 @@ export function submitQuiz(
     percent: total ? Math.round((score / total) * 100) : 0,
     passed: total > 0 && score / total >= PASS_THRESHOLD,
     at: Date.now(),
+    startedAt,
     answers,
   };
   rec.attempts.push(attempt);

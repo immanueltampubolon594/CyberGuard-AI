@@ -38,7 +38,8 @@ export default function Navbar() {
   }, []);
 
   const toggleTheme = () => {
-    if (isDark) {
+    // Baca tema yang sedang aktif (bisa diubah dari tempat lain, mis. mode ujian)
+    if (document.documentElement.classList.contains("dark")) {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
       setIsDark(false);

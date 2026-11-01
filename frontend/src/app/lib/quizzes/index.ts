@@ -12,7 +12,9 @@ const quizzes: Record<string, ModuleQuiz> = {
 };
 
 export function getQuiz(slug: string): ModuleQuiz {
-  return quizzes[slug] ?? {};
+  const q = quizzes[slug] ?? {};
+  // Soal latihan & simulasi lama ikut masuk ke quiz, setelah soal quiz.
+  return { quiz: [...(q.quiz ?? []), ...(q.latihan ?? []), ...(q.simulasi ?? [])] };
 }
 
 export function availableStages(slug: string): StageKey[] {
