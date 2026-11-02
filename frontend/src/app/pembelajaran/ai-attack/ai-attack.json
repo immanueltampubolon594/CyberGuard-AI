@@ -2,172 +2,278 @@
   "slug": "ai-attack",
   "title": "AI Cyber Attack",
   "navigation": [
-    {"id": 0, "label": "APA ITU AI CYBER ATTACK?", "icon": "ShieldAlert"},
-    {"id": 1, "label": "AI PHISHING & AI CHAT SCAM", "icon": "Brain"},
-    {"id": 2, "label": "VOICE CLONING", "icon": "Mic"},
-    {"id": 3, "label": "DEEPFAKE VIDEO", "icon": "Video"},
-    {"id": 4, "label": "AI-POWERED APT", "icon": "Target"}
+    {
+      "id": 0,
+      "label": "APA ITU AI CYBER ATTACK?",
+      "icon": "ShieldAlert"
+    },
+    {
+      "id": 1,
+      "label": "AI PHISHING & AI CHAT SCAM",
+      "icon": "Brain"
+    },
+    {
+      "id": 2,
+      "label": "VOICE CLONING",
+      "icon": "Mic"
+    },
+    {
+      "id": 3,
+      "label": "DEEPFAKE VIDEO",
+      "icon": "Video"
+    },
+    {
+      "id": 4,
+      "label": "AI-POWERED APT",
+      "icon": "Target"
+    }
   ],
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu AI Cyber Attack?",
       "quote": "Di era kecerdasan buatan, ancaman siber tidak lagi datang dari hacker yang mengetik kode - mereka datang dari algoritma yang belajar, beradaptasi, dan menyerang secara otonom.",
-      "definition": "AI Cyber Attack merujuk pada penggunaan teknologi kecerdasan buatan dan machine learning oleh penyerang siber untuk meningkatkan efektivitas, skala, dan kecanggihan serangan mereka. Deepfake audio, video, dan teks yang dihasilkan AI memungkinkan kampanye phishing dan social engineering yang sangat meyakinkan. Barrier to entry untuk bad actors kini lebih rendah dari sebelumnya, memberi bahkan pengguna tanpa keahlian teknis kesempatan untuk merancang kampanye fraud yang canggih. Deteksi real-time yang memanfaatkan AI untuk menangkap AI akan menjadi esensial dalam melindungi kepentingan finansial dan reputasi bisnis.",
+      "definition": "AI Cyber Attack adalah serangan siber yang memanfaatkan kecerdasan buatan (AI), terutama AI generatif, untuk membuat penipuan dan peretasan menjadi lebih meyakinkan, lebih cepat, dan lebih murah. AI dipakai untuk menulis pesan phishing yang rapi, meniru suara seseorang (voice cloning), membuat video wajah palsu (deepfake), sampai membantu menulis kode dan meriset target.\n\nDalam peringatan publik Desember 2024, FBI menyebut penjahat memakai AI generatif dalam empat bentuk: teks, gambar, audio, dan video. Akibatnya, orang tanpa keahlian teknis pun bisa membuat penipuan yang dulu hanya bisa dibuat oleh pelaku berpengalaman. Kabar baiknya, pertahanan paling ampuh tetap sederhana: jangan percaya hanya karena suara, wajah, atau tulisannya terlihat asli, dan selalu verifikasi lewat jalur lain.",
       "sections": [
         {
           "title": "Evolusi Ancaman: Dari Skrip Statis ke Generative AI",
           "content": [
             "Serangan siber tradisional mengandalkan skrip statis dan template yang kaku. Namun, dengan munculnya Large Language Models (LLM) seperti ChatGPT dan model generatif lainnya, penyerang kini dapat menghasilkan teks, audio, dan video yang sangat realistis dalam hitungan detik. Ini memungkinkan kampanye phishing yang dipersonalisasi secara massal, di mana setiap pesan tampak unik dan ditulis secara natural, menghindari filter spam tradisional yang mencari pola bahasa yang kaku.",
-            "Deepfake audio dan video telah mengubah lanskap ancaman secara fundamental. Voice cloning kini dapat dilakukan dengan sampel suara kurang dari satu menit, memungkinkan penyerang untuk meniru suara CEO atau eksekutif dan memerintahkan transfer dana. Deepfake video digunakan untuk memalsukan identitas dalam rapat virtual, mem-bypass verifikasi biometrik, dan menciptakan iklan palsu. Biaya untuk membuat deepfake kini sangat murah, namun biaya global akibat fraud deepfake diperkirakan mencapai triliunan rupiah.",
-            "AI juga digunakan untuk mengotomatisasi proses peretasan. AI dapat memindai kerentanan, menghasilkan payload eksploitasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target. Ini menciptakan perlombaan senjata di mana defender harus menggunakan AI untuk mendeteksi dan memitigasi ancaman yang dihasilkan oleh AI."
+            "Deepfake audio dan video telah mengubah lanskap ancaman secara fundamental. Voice cloning kini cukup memakai cuplikan suara singkat untuk meniru suara atasan, rekan kerja, atau anggota keluarga dan meminta transfer dana. Deepfake video dipakai untuk memalsukan identitas dalam panggilan video, meyakinkan korban penipuan asmara, dan membuat iklan investasi palsu.",
+            "FBI (Desember 2024) merinci contohnya: teks AI dipakai untuk membuat banyak profil media sosial palsu dan menerjemahkan pesan agar bebas salah ketik; gambar AI dipakai untuk foto profil dan dokumen identitas palsu; audio AI dipakai untuk meniru suara kerabat dalam 'keadaan darurat'; dan video AI dipakai dalam panggilan video yang menyamar sebagai eksekutif atau aparat."
           ]
         },
         {
-          "title": "Dampak pada Bisnis dan Masyarakat",
+          "title": "Empat Wajah Serangan Berbasis AI",
           "content": [
-            "Institusi keuangan adalah target utama. Call center bank kini kewalahan oleh panggilan deepfake yang mencoba mem-bypass autentikasi suara. Fraudster menggunakan dokumen yang diubah AI untuk membuka akun palsu, mem-bypass upaya tim KYC dan AML. Pekerja finansial dimanipulasi untuk memindahkan dana dengan rapat deepfake yang meniru suara dan rupa CEO.",
-            "Perusahaan media dan media sosial juga rentan. Reputasi media dapat hancur jika bukti audiovisual yang menjadi dasar laporan berita ternyata adalah deepfake yang tidak terverifikasi. Di media sosial, deepfake dapat menyebar dengan cepat, memanipulasi opini publik, dan merusak kepercayaan audiens. Biaya untuk menjangkau 100.000 pengguna media sosial dengan deepfake yang dipersenjatai kini sangat murah.",
-            "Deepfake juga mengancam integritas pemilu dan institusi pemerintah. Kampanye disinformasi yang didukung AI dapat menyebabkan kerusuhan sipil, melemahkan ekonomi, dan mengikis kepercayaan antara pemilih dan sistem elektoral. Aktor yang disponsori negara dapat dengan mudah menyamar sebagai kepala negara untuk merusak hubungan diplomatik dan memanipulasi pasar saham."
+            "Teks: AI phishing dan AI chat scam. Model bahasa menulis email atau chat yang personal, sopan, dan tanpa salah ketik, bahkan dalam bahasa yang tidak dikuasai pelaku. Chatbot juga dipasang di situs investasi palsu untuk 'melayani' korban (dibahas di Topik 01).",
+            "Suara: voice cloning. Cuplikan suara dari video media sosial atau telepon singkat cukup untuk membuat suara tiruan yang meminta uang atau data (Topik 02).",
+            "Video: deepfake. Wajah seseorang ditempelkan ke video atau panggilan video, sehingga korban merasa sedang berbicara dengan orang yang ia kenal atau sukai (Topik 03).",
+            "Otomasi: AI sebagai asisten peretas. Microsoft dan OpenAI (Februari 2024) melaporkan kelompok peretas yang terkait negara memakai model bahasa untuk riset target, menulis skrip, dan menyusun email spear phishing. Saat itu mereka belum melihat teknik serangan yang benar-benar baru; AI dipakai sebagai alat produktivitas (Topik 04)."
+          ]
+        },
+        {
+          "title": "Prinsip Pertahanan: Verifikasi Lewat Jalur Lain",
+          "content": [
+            "Karena tulisan, suara, dan wajah bisa dipalsukan, jangan jadikan semua itu sebagai bukti. Jika ada permintaan uang, OTP, atau data, tutup percakapannya dan hubungi orang atau lembaga tersebut lewat nomor yang Anda cari sendiri. FBI menyebut cara ini sebagai salah satu langkah utama.",
+            "Sepakati kata atau frasa rahasia dengan keluarga untuk memastikan identitas saat ada telepon darurat. Batasi juga foto dan rekaman suara yang dibagikan secara publik, dan atur akun media sosial menjadi privat.",
+            "Jangan pernah mengirim uang, voucher, atau kripto kepada orang yang hanya Anda kenal lewat internet atau telepon. Di Indonesia, penipuan bisa dilaporkan ke Indonesia Anti-Scam Centre (IASC) milik OJK. Satgas PASTI mencatat IASC menerima 343.402 laporan penipuan dengan kerugian Rp7,8 triliun dalam kurun 22 November 2024 sampai 11 November 2025."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan Deepfake pada Perusahaan Multinasional di Hong Kong",
-        "story": "Pada awal 2024, seorang pekerja finansial di perusahaan multinasional di Hong Kong ditipu untuk mentransfer dana senilai puluhan juta dolar setelah mengikuti rapat video di mana CEO dan rekan-rekannya dipalsukan menggunakan deepfake. Penyerang menggunakan deepfake audio dan video yang sangat realistis untuk memerintahkan transfer dana ke akun fraudster. Pekerja tersebut tidak menyadari bahwa ia sedang berinteraksi dengan AI hingga dana tersebut hilang. Insiden ini menyoroti betapa canggihnya deepfake kini dan betapa mudahnya pekerja finansial dimanipulasi.",
-        "lesson": "Deteksi deepfake secara real-time adalah esensial. Perusahaan harus mengimplementasikan solusi yang dapat mendeteksi suara, video, dan teks yang dihasilkan AI secara akurat dan cepat. Verifikasi multi-faktor dan prosedur konfirmasi out-of-band harus diwajibkan untuk semua transaksi finansial besar."
+        "type": "nyata",
+        "title": "WormGPT: 'ChatGPT Versi Gelap' untuk Penipuan Email Bisnis (2023)",
+        "story": "Pada Juli 2023, perusahaan keamanan email SlashNext melaporkan sebuah alat bernama WormGPT yang dijual di forum peretas. Alat ini dibangun di atas model bahasa open-source GPT-J dan dipromosikan sebagai 'alternatif blackhat' untuk model GPT, tanpa batasan etika. Menurut laporan yang ditulis peneliti Daniel Kelley, WormGPT diiklankan untuk serangan phishing dan Business Email Compromise (BEC) karena bisa membuat email palsu yang rapi dan personal dalam jumlah besar, sehingga pelaku pemula pun bisa melancarkan serangan dengan cepat. Laporan ini menunjukkan bahwa pelaku tanpa keahlian menulis pun kini bisa membuat email penipuan yang meyakinkan dalam jumlah besar.",
+        "lesson": "Email yang ditulis dengan sangat rapi belum tentu asli. Untuk permintaan pembayaran atau perubahan rekening, gunakan prosedur verifikasi lewat jalur lain (misalnya menelepon nomor resmi pengirim) dan wajibkan persetujuan lebih dari satu orang.",
+        "sources": [
+          {
+            "label": "The Hacker News: WormGPT, alat AI baru untuk serangan siber (Juli 2023)",
+            "url": "https://thehackernews.com/2023/07/wormgpt-new-ai-tool-allows.html"
+          }
+        ]
       },
       "references": [
-        "https://airc.nist.gov/RMF - NIST AI RMF 1.0 (2023) — Artificial Intelligence Risk Management Framework",
-        "https://ieeexplore.ieee.org/document/10198233 - IEEE Access (2023) — From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity"
+        "https://www.ic3.gov/PSA/2024/PSA241203 - FBI IC3 PSA I-120324 (2024): Criminals Use Generative AI to Facilitate Financial Fraud",
+        "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/ - Microsoft Security (2024): Staying Ahead of Threat Actors in the Age of AI",
+        "https://www.nist.gov/itl/ai-risk-management-framework - NIST: AI Risk Management Framework (AI RMF 1.0 dan Generative AI Profile NIST AI 600-1)",
+        "https://teknologi.bisnis.com/read/20251115/84/1929039/ojk-ingatkan-penipuan-keuangan-pakai-ai-makin-marak-deepfake-hingga-suara-tiruan - Bisnis.com (2025): OJK Ingatkan Penipuan Keuangan Pakai AI Makin Marak"
       ]
     },
     "1": {
       "subtitle": "AI Phishing & AI Chat Scam",
       "quote": "Phishing yang didukung AI tidak lagi mengirim email massal yang kaku - ia menulis surat cinta yang dipersonalisasi untuk setiap korban.",
-      "definition": "AI Phishing dan AI Chat Scam adalah penggunaan Large Language Models (LLM) dan Generative AI untuk menghasilkan pesan phishing yang sangat meyakinkan, dipersonalisasi, dan bebas dari kesalahan tata bahasa. Berbeda dengan phishing tradisional yang mengandalkan template massal, AI phishing dapat menganalisis data publik target (seperti profil LinkedIn atau postingan media sosial) untuk menghasilkan pesan yang tampak ditulis oleh rekan kerja, atasan, atau institusi terpercaya. Ini memungkinkan kampanye phishing yang dipersonalisasi secara massal, di mana setiap pesan tampak unik dan natural, menghindari filter spam tradisional.",
+      "definition": "AI Phishing dan AI Chat Scam adalah penggunaan model bahasa besar (Large Language Model/LLM) dan AI generatif untuk membuat pesan penipuan yang meyakinkan, personal, dan bebas dari kesalahan tata bahasa. Berbeda dengan phishing lama yang memakai template massal, AI dapat menyesuaikan pesan dengan data publik target, misalnya jabatan di LinkedIn atau unggahan media sosial, sehingga pesan tampak ditulis oleh rekan kerja, atasan, atau lembaga resmi.\n\nSelain email, AI juga dipakai untuk menjalankan percakapan panjang. FBI mencatat penjahat memasang chatbot di situs investasi kripto palsu dan memakai AI untuk mengelola banyak profil palsu sekaligus dalam penipuan asmara dan investasi.",
       "sections": [
         {
           "title": "Evolusi Phishing: Dari Template ke Generative AI",
           "content": [
             "Phishing tradisional mengandalkan template statis yang sering kali mengandung kesalahan tata bahasa dan bahasa yang kaku, membuatnya mudah dideteksi oleh filter spam dan pengguna yang waspada. Namun, dengan munculnya LLM seperti ChatGPT, penyerang kini dapat menghasilkan teks yang sangat natural dan dipersonalisasi dalam hitungan detik.",
             "AI phishing dapat menganalisis data publik target untuk menghasilkan pesan yang tampak ditulis oleh rekan kerja, atasan, atau institusi terpercaya. Ini memungkinkan kampanye phishing yang dipersonalisasi secara massal, di mana setiap pesan tampak unik dan natural, menghindari filter spam tradisional yang mencari pola bahasa yang kaku.",
-            "AI juga digunakan untuk mengotomatisasi proses phishing. AI dapat memindai kerentanan, menghasilkan payload eksploitasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target. Ini menciptakan perlombaan senjata di mana defender harus menggunakan AI untuk mendeteksi dan memitigasi ancaman yang dihasilkan oleh AI."
+            "Seberapa efektif? Studi Heiding, Lermen, Koo, Verdun, Schneier, dan Vishwanath (diterbitkan di Expert Systems with Applications) menguji email spear phishing pada 101 peserta. Email yang sepenuhnya dibuat AI diklik oleh 54% peserta, sama dengan email buatan pakar manusia (54%), dan jauh di atas email phishing biasa (12%)."
           ]
         },
         {
-          "title": "Dampak pada Bisnis dan Masyarakat",
+          "title": "Tanda Bahaya Baru: Tata Bahasa Rapi Bukan Lagi Jaminan",
           "content": [
-            "Institusi keuangan adalah target utama. Call center bank kini kewalahan oleh panggilan deepfake yang mencoba mem-bypass autentikasi suara. Fraudster menggunakan dokumen yang diubah AI untuk membuka akun palsu, mem-bypass upaya tim KYC dan AML. Pekerja finansial dimanipulasi untuk memindahkan dana dengan rapat deepfake yang meniru suara dan rupa CEO.",
-            "Perusahaan media dan media sosial juga rentan. Reputasi media dapat hancur jika bukti audiovisual yang menjadi dasar laporan berita ternyata adalah deepfake yang tidak terverifikasi. Di media sosial, deepfake dapat menyebar dengan cepat, memanipulasi opini publik, dan merusak kepercayaan audiens. Biaya untuk menjangkau 100.000 pengguna media sosial dengan deepfake yang dipersenjatai kini sangat murah.",
-            "Deepfake juga mengancam integritas pemilu dan institusi pemerintah. Kampanye disinformasi yang didukung AI dapat menyebabkan kerusuhan sipil, melemahkan ekonomi, dan mengikis kepercayaan antara pemilih dan sistem elektoral. Aktor yang disponsori negara dapat dengan mudah menyamar sebagai kepala negara untuk merusak hubungan diplomatik dan memanipulasi pasar saham."
+            "Dulu, salah ketik dan bahasa kaku adalah tanda phishing yang mudah dikenali. FBI menyebut penjahat kini memakai alat terjemahan dan AI untuk menghilangkan kesalahan tersebut. Jadi, pesan yang rapi tidak boleh membuat Anda lengah.",
+            "Fokuslah pada isi permintaan, bukan gaya bahasanya. Waspadai pesan yang mendesak, meminta Anda mengklik tautan login, meminta OTP atau kata sandi, meminta transfer ke rekening baru, atau mengajak pindah ke aplikasi chat lain.",
+            "Periksa alamat pengirim dan domain tautan dengan teliti. Jika pesan mengatasnamakan atasan atau lembaga, konfirmasikan lewat saluran yang sudah Anda kenal, misalnya nomor kantor resmi, bukan dengan membalas pesan tersebut."
+          ]
+        },
+        {
+          "title": "AI Chat Scam: Chatbot di Balik Penipuan Asmara dan Investasi",
+          "content": [
+            "Penipuan asmara dan investasi membutuhkan percakapan berminggu-minggu untuk membangun kepercayaan. AI membuat pelaku bisa melayani banyak korban sekaligus dengan balasan cepat dan ramah, serta menerjemahkan pesan ke bahasa korban.",
+            "FBI juga mencatat foto profil dan foto 'pribadi' buatan AI dikirim untuk meyakinkan korban bahwa mereka berbicara dengan orang sungguhan. Situs investasi palsu dilengkapi chatbot yang mengarahkan korban ke tautan berbahaya atau 'deposit' berikutnya.",
+            "Tanda bahayanya tetap sama: kenalan online yang cepat akrab, menolak bertemu atau bertemu dengan alasan berubah-ubah, lalu mengajak berinvestasi atau meminta uang. Jangan kirim uang atau data sensitif kepada orang yang hanya Anda kenal secara online."
           ]
         }
       ],
       "case_study": {
-        "title": "Kampanye Phishing AI yang Menargetkan Eksekutif Perusahaan",
-        "story": "Sebuah kampanye phishing yang didukung AI menargetkan eksekutif perusahaan di berbagai industri. Penyerang menggunakan LLM untuk menghasilkan email yang sangat dipersonalisasi, meniru gaya penulisan CEO atau rekan kerja. Email tersebut berisi tautan ke halaman login palsu yang sangat mirip dengan halaman login perusahaan. Banyak eksekutif yang terjebak dan memberikan kredensial mereka, menyebabkan kerugian finansial yang signifikan.",
-        "lesson": "Deteksi phishing yang didukung AI adalah esensial. Perusahaan harus mengimplementasikan solusi yang dapat mendeteksi teks yang dihasilkan AI secara akurat dan cepat. Verifikasi multi-faktor dan prosedur konfirmasi out-of-band harus diwajibkan untuk semua transaksi finansial besar."
+        "type": "nyata",
+        "title": "Eksperimen: Email Phishing Buatan AI Sama Efektifnya dengan Buatan Pakar",
+        "story": "Tim peneliti F. Heiding, S. Lermen, A. Koo, C. M. Verdun, B. Schneier, dan A. Vishwanath menguji kemampuan model bahasa untuk mengotomatiskan spear phishing. Sebanyak 101 peserta dibagi ke empat kelompok. Kelompok kontrol menerima email phishing biasa, kelompok kedua menerima email buatan pakar manusia, kelompok ketiga menerima email yang sepenuhnya dibuat AI, dan kelompok keempat menerima email buatan AI yang diperiksa manusia. Hasilnya, email kontrol diklik 12% peserta, email buatan pakar 54%, email AI penuh 54%, dan email AI dengan pemeriksaan manusia 56%. Artinya, AI kini mampu membuat email phishing yang terpersonalisasi dengan kualitas setara pakar, tetapi dengan biaya dan waktu yang jauh lebih kecil.",
+        "lesson": "Jangan mengandalkan 'feeling' atau gaya bahasa untuk mengenali phishing. Biasakan memeriksa domain tautan, tidak pernah memasukkan kata sandi dari tautan di email, dan memverifikasi permintaan penting lewat jalur lain. Organisasi perlu melatih karyawan dengan contoh phishing yang realistis.",
+        "sources": [
+          {
+            "label": "Schneier on Security: Evaluating Large Language Models' Ability to Automate Spear Phishing",
+            "url": "https://www.schneier.com/academic/archives/2026/02/evaluating-large-language-models-ability-to-automate-spear-phishing.html"
+          }
+        ]
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10198233 - IEEE Access (2023) — From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity",
-        "https://ieeexplore.ieee.org/document/10590546 - IEEE (2024) — Defending Characteristics and Attribution Analysis for Phishing Attacks"
+        "https://www.schneier.com/academic/archives/2026/02/evaluating-large-language-models-ability-to-automate-spear-phishing.html - Heiding dkk., Expert Systems with Applications: Evaluating LLMs' Ability to Automate Spear Phishing",
+        "https://www.ic3.gov/PSA/2024/PSA241203 - FBI IC3 PSA I-120324 (2024): Criminals Use Generative AI to Facilitate Financial Fraud",
+        "https://thehackernews.com/2023/07/wormgpt-new-ai-tool-allows.html - The Hacker News (2023): WormGPT, alat AI untuk serangan phishing dan BEC"
       ]
     },
     "2": {
       "subtitle": "Voice Cloning",
       "quote": "Suara Anda kini dapat dicuri dengan sampel kurang dari satu menit - dan digunakan untuk memerintahkan transfer dana atas nama Anda.",
-      "definition": "Voice Cloning adalah penggunaan deep learning untuk menghasilkan suara sintetis yang meniru suara individu tertentu dengan akurasi yang sangat tinggi. Metode umum di balik deepfake audio adalah voice cloning, yang melibatkan pembuatan ucapan palsu dengan sampel suara nyata kurang dari satu menit. Voice cloning menjadi perhatian khusus di industri yang menggunakan verifikasi biometrik suara untuk mengakses akun pelanggan. Perusahaan yang menerima volume panggilan tinggi melaporkan serangan deepfake konstan pada infrastruktur mereka melalui upaya voice cloning.",
+      "definition": "Voice Cloning adalah penggunaan deep learning untuk membuat suara sintetis yang meniru suara orang tertentu, lengkap dengan nada, logat, dan cara bicaranya. Satgas PASTI OJK menjelaskan bahwa pelaku mempelajari karakter suara seseorang dari cuplikan singkat, lalu berbicara seolah-olah sebagai teman, rekan kerja, atau anggota keluarga korban.\n\nSuara tiruan ini dipakai untuk menelepon dalam 'keadaan darurat', meminta transfer atas nama atasan, atau mencoba menembus layanan yang memakai verifikasi suara. Karena itu, suara yang terdengar akrab tidak lagi cukup sebagai bukti identitas.",
       "sections": [
         {
           "title": "Evolusi Voice Cloning: Dari Sampel Panjang ke Zero-Shot",
           "content": [
-            "Voice cloning tradisional memerlukan sampel suara yang panjang dan pelatihan model yang intensif. Namun, dengan munculnya model zero-shot TTS (Text-to-Speech) dan VC (Voice Conversion), penyerang kini dapat meniru suara dengan sampel kurang dari satu menit tanpa perlu pelatihan ulang.",
+            "Voice cloning tradisional memerlukan sampel suara yang panjang dan pelatihan model yang intensif. Namun, dengan munculnya model zero-shot TTS (Text-to-Speech) dan VC (Voice Conversion), penyerang kini dapat meniru suara hanya dari cuplikan singkat tanpa perlu melatih ulang model.",
             "AI voice cloning dapat menganalisis karakteristik suara target, seperti nada, ritme, dan spektrum, untuk menghasilkan suara sintetis yang sangat realistis. Ini memungkinkan penyerang untuk meniru suara CEO atau eksekutif dan memerintahkan transfer dana dalam rapat virtual atau panggilan telepon.",
-            "AI juga digunakan untuk mengotomatisasi proses voice cloning. AI dapat memindai kerentanan, menghasilkan payload eksploitasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target. Ini menciptakan perlombaan senjata di mana defender harus menggunakan AI untuk mendeteksi dan memitigasi ancaman yang dihasilkan oleh AI."
+            "Modus ini sudah lama muncul. Pada 2019, perusahaan asuransi Euler Hermes melaporkan kasus seorang CEO perusahaan energi di Inggris yang mentransfer €220.000 ke 'pemasok' di Hungaria. Ia mengira sedang ditelepon CEO perusahaan induknya di Jerman karena suaranya, termasuk logat Jermannya, terdengar sama. Penipuan terbongkar ketika pelaku menelepon untuk ketiga kalinya dari nomor Austria."
           ]
         },
         {
-          "title": "Dampak pada Bisnis dan Masyarakat",
+          "title": "Modus di Indonesia: Panggilan Sunyi dan Suara 'Keluarga'",
           "content": [
-            "Institusi keuangan adalah target utama. Call center bank kini kewalahan oleh panggilan deepfake yang mencoba mem-bypass autentikasi suara. Fraudster menggunakan dokumen yang diubah AI untuk membuka akun palsu, mem-bypass upaya tim KYC dan AML. Pekerja finansial dimanipulasi untuk memindahkan dana dengan rapat deepfake yang meniru suara dan rupa CEO.",
-            "Perusahaan media dan media sosial juga rentan. Reputasi media dapat hancur jika bukti audiovisual yang menjadi dasar laporan berita ternyata adalah deepfake yang tidak terverifikasi. Di media sosial, deepfake dapat menyebar dengan cepat, memanipulasi opini publik, dan merusak kepercayaan audiens. Biaya untuk menjangkau 100.000 pengguna media sosial dengan deepfake yang dipersenjatai kini sangat murah.",
-            "Deepfake juga mengancam integritas pemilu dan institusi pemerintah. Kampanye disinformasi yang didukung AI dapat menyebabkan kerusuhan sipil, melemahkan ekonomi, dan mengikis kepercayaan antara pemilih dan sistem elektoral. Aktor yang disponsori negara dapat dengan mudah menyamar sebagai kepala negara untuk merusak hubungan diplomatik dan memanipulasi pasar saham."
+            "Bisnis.com (Januari 2026) menjelaskan modus panggilan sunyi: pelaku menelepon dari nomor asing, sering berulang kali. Ketika korban mengangkat dan berkata 'halo', penelepon diam saja sambil merekam suara korban. Rekaman itu bisa dipakai untuk melatih AI agar meniru suara korban.",
+            "Suara tiruan tersebut lalu bisa dipakai untuk menipu keluarga atau rekan korban, memeras, atau menyebarkan informasi bohong. Satgas PASTI OJK (November 2025) juga mengingatkan modus tiruan suara dan rekayasa wajah yang makin marak.",
+            "Satgas PASTI mengimbau masyarakat memeriksa keaslian komunikasi digital, terutama jika ada permintaan transfer atau data sensitif, melakukan verifikasi silang melalui saluran yang berbeda, dan waspada terhadap audio atau video yang janggal meskipun berasal dari orang yang dikenal."
+          ]
+        },
+        {
+          "title": "Pertahanan: Kata Sandi Keluarga dan Telepon Balik",
+          "content": [
+            "Sepakati kata atau frasa rahasia dengan keluarga. Jika ada telepon darurat yang meminta uang, tanyakan kata rahasia itu. FBI dan Bisnis.com sama-sama menyarankan cara ini.",
+            "Tutup telepon dan hubungi balik orang tersebut lewat nomor yang sudah tersimpan atau nomor resmi yang Anda cari sendiri. FBI (Mei 2025) juga menyarankan memperhatikan nada dan pilihan kata yang tidak biasa, serta jeda atau lag yang aneh dalam panggilan.",
+            "Kurangi mengunggah rekaman suara atau pesan suara ke publik, dan berhati-hatilah mengangkat panggilan dari nomor tak dikenal. Jika sudah menjadi korban, kumpulkan bukti (rekaman, tangkapan layar, riwayat panggilan), laporkan ke polisi, dan beri tahu keluarga serta rekan kerja agar tidak ikut tertipu."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan Voice Cloning pada Call Center Bank",
-        "story": "Sebuah bank besar melaporkan serangan voice cloning yang menargetkan call center mereka. Penyerang menggunakan deepfake audio untuk meniru suara pelanggan dan mem-bypass autentikasi suara. Fraudster menggunakan dokumen yang diubah AI untuk membuka akun palsu, mem-bypass upaya tim KYC dan AML. Pekerja finansial dimanipulasi untuk memindahkan dana dengan rapat deepfake yang meniru suara dan rupa CEO.",
-        "lesson": "Deteksi deepfake audio secara real-time adalah esensial. Perusahaan harus mengimplementasikan solusi yang dapat mendeteksi suara yang dihasilkan AI secara akurat dan cepat. Verifikasi multi-faktor dan prosedur konfirmasi out-of-band harus diwajibkan untuk semua transaksi finansial besar."
+        "type": "nyata",
+        "title": "Ferrari Menggagalkan Telepon Deepfake 'CEO' dengan Satu Pertanyaan (2024)",
+        "story": "Pada Juli 2024, seorang eksekutif Ferrari menerima pesan WhatsApp dari nomor yang bukan nomor biasa CEO Benedetto Vigna. Foto profilnya menampilkan Vigna di depan logo Ferrari. Pesan itu membahas rencana akuisisi besar yang rahasia dan meminta eksekutif bersiap menandatangani perjanjian kerahasiaan. Pelaku lalu menelepon dengan suara deepfake yang sangat mirip suara Vigna, termasuk logat Italia selatannya, dan meminta bantuan untuk transaksi lindung nilai mata uang. Eksekutif tersebut menangkap intonasi yang terdengar 'mekanis' dan mulai curiga. Ia lalu bertanya judul buku yang baru saja direkomendasikan Vigna kepadanya beberapa hari sebelumnya. Penelepon langsung menutup telepon. Ferrari tidak mengalami kerugian dan membuka investigasi internal.",
+        "lesson": "Pertanyaan verifikasi yang jawabannya hanya diketahui orang asli adalah pertahanan yang sederhana tetapi ampuh. Jangan tergesa-gesa karena alasan 'rahasia' atau 'mendesak', dan konfirmasikan permintaan transaksi lewat nomor yang sudah dikenal.",
+        "sources": [
+          {
+            "label": "Fortune (27 Juli 2024): Ferrari deepfake attempt and the security question",
+            "url": "https://fortune.com/2024/07/27/ferrari-deepfake-attempt-scammer-security-question-ceo-benedetto-vigna-cybersecurity-ai"
+          }
+        ]
       },
       "references": [
-        "https://www.mdpi.com/2624-800X/5/1/6 - MDPI JCP (2025) — Partial Fake Speech Attacks in the Real World Using Deepfake Audio",
-        "https://www.ibm.com/think/insights/new-wave-deepfake-cybercrime - IBM Think (2024) — A New Wave of Deepfake-Driven Cyber Crime Targets Businesses"
+        "https://fortune.com/2024/07/27/ferrari-deepfake-attempt-scammer-security-question-ceo-benedetto-vigna-cybersecurity-ai - Fortune (2024): Ferrari Exec Foils Deepfake Call with a Security Question",
+        "https://www.sophos.com/en-gb/blog/scammers-deepfake-ceos-voice-to-talk-underling-into-243000-transfer - Sophos News (2019): Scammers Deepfake CEO's Voice to Talk Underling into $243,000 Transfer",
+        "https://teknologi.bisnis.com/read/20260129/84/1948363/waspada-di-balik-panggilan-sunyi-telepon-penjahat-kloning-suara-pakai-ai - Bisnis.com (2026): Waspada! Di Balik Panggilan Sunyi, Penjahat Kloning Suara Pakai AI",
+        "https://teknologi.bisnis.com/read/20251115/84/1929039/ojk-ingatkan-penipuan-keuangan-pakai-ai-makin-marak-deepfake-hingga-suara-tiruan - Bisnis.com (2025): OJK Ingatkan Penipuan Keuangan Pakai AI Makin Marak",
+        "https://www.malwarebytes.com/blog/news/2025/05/scammers-are-using-ai-to-impersonate-senior-officials-warns-fbi - Malwarebytes (2025): FBI Warns Scammers Use AI Voices to Impersonate Senior Officials",
+        "https://www.ic3.gov/PSA/2024/PSA241203 - FBI IC3 PSA I-120324 (2024): Criminals Use Generative AI to Facilitate Financial Fraud"
       ]
     },
     "3": {
       "subtitle": "Deepfake Video",
       "quote": "Video tidak lagi menjadi bukti kebenaran - ia dapat dihasilkan oleh AI untuk menipu mata dan telinga Anda.",
-      "definition": "Deepfake Video adalah penggunaan deep neural networks untuk menghasilkan video sintetis yang meniru wajah, ekspresi, dan mannerisme individu tertentu dengan akurasi yang sangat tinggi. Pembuatan deepfake video biasanya melibatkan pelatihan deep neural network pada dataset video dan gambar yang besar yang menampilkan individu target. Model mempelajari fitur wajah, ekspresi, dan mannerisme mereka, memungkinkannya menghasilkan konten video baru yang tampak autentik. Penjahat siber memanfaatkan deepfake video untuk menyamar sebagai eksekutif, mem-bypass verifikasi biometrik, dan menciptakan iklan palsu.",
+      "definition": "Deepfake Video adalah video sintetis buatan jaringan saraf tiruan (deep neural network) yang meniru wajah, ekspresi, dan gerak-gerik orang tertentu. Model mempelajari ciri wajah target dari foto dan video, lalu menghasilkan video baru atau menempelkan wajah tersebut ke wajah orang lain, bahkan secara real-time saat panggilan video.\n\nMenurut FBI, penjahat memakai video AI untuk panggilan video yang menyamar sebagai eksekutif atau aparat, untuk 'membuktikan' bahwa kenalan online adalah orang sungguhan, dan untuk video promosi investasi palsu.",
       "sections": [
         {
           "title": "Evolusi Deepfake Video: Dari Pelatihan Intensif ke Real-Time",
           "content": [
             "Deepfake video tradisional memerlukan dataset video yang besar dan pelatihan model yang intensif. Namun, dengan munculnya model generatif yang lebih canggih, penyerang kini dapat menghasilkan deepfake video secara real-time dengan sampel yang lebih sedikit.",
             "AI deepfake video dapat menganalisis fitur wajah target, ekspresi, dan mannerisme untuk menghasilkan video sintetis yang sangat realistis. Ini memungkinkan penyerang untuk meniru wajah CEO atau eksekutif dalam rapat virtual, mem-bypass verifikasi biometrik, dan menciptakan iklan palsu.",
-            "AI juga digunakan untuk mengotomatisasi proses deepfake video. AI dapat memindai kerentanan, menghasilkan payload eksploitasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target. Ini menciptakan perlombaan senjata di mana defender harus menggunakan AI untuk mendeteksi dan memitigasi ancaman yang dihasilkan oleh AI."
+            "Penipuan asmara adalah contoh yang paling dekat dengan masyarakat. Pelaku memakai wajah orang lain (sering wajah perempuan yang menarik) saat panggilan video, sehingga korban yakin kenalannya nyata. Setelah percaya, korban diajak berinvestasi kripto di platform palsu."
+          ]
+        },
+        {
+          "title": "Cara Mengenali Video Palsu",
+          "content": [
+            "FBI menyarankan memperhatikan kejanggalan visual: tangan atau kaki yang aneh, gigi atau mata yang tidak wajar, bayangan yang tidak konsisten, tanda air (watermark), gambar yang tertinggal (lag), dan gerakan yang tidak alami.",
+            "Dalam panggilan video, minta lawan bicara melakukan hal spontan, misalnya menoleh ke samping atau melambaikan tangan di depan wajah. Namun, ingat bahwa deepfake terus membaik, sehingga tidak menemukan kejanggalan bukan berarti video itu asli.",
+            "Pertahanan terbaik tetap verifikasi lewat jalur lain. Kenalan yang selalu punya alasan untuk tidak bertemu, lalu mengajak investasi atau meminta uang, harus dianggap mencurigakan walaupun Anda sudah 'melihat wajahnya' di video."
           ]
         },
         {
           "title": "Dampak pada Bisnis dan Masyarakat",
           "content": [
-            "Institusi keuangan adalah target utama. Call center bank kini kewalahan oleh panggilan deepfake yang mencoba mem-bypass autentikasi suara. Fraudster menggunakan dokumen yang diubah AI untuk membuka akun palsu, mem-bypass upaya tim KYC dan AML. Pekerja finansial dimanipulasi untuk memindahkan dana dengan rapat deepfake yang meniru suara dan rupa CEO.",
-            "Perusahaan media dan media sosial juga rentan. Reputasi media dapat hancur jika bukti audiovisual yang menjadi dasar laporan berita ternyata adalah deepfake yang tidak terverifikasi. Di media sosial, deepfake dapat menyebar dengan cepat, memanipulasi opini publik, dan merusak kepercayaan audiens. Biaya untuk menjangkau 100.000 pengguna media sosial dengan deepfake yang dipersenjatai kini sangat murah.",
-            "Deepfake juga mengancam integritas pemilu dan institusi pemerintah. Kampanye disinformasi yang didukung AI dapat menyebabkan kerusuhan sipil, melemahkan ekonomi, dan mengikis kepercayaan antara pemilih dan sistem elektoral. Aktor yang disponsori negara dapat dengan mudah menyamar sebagai kepala negara untuk merusak hubungan diplomatik dan memanipulasi pasar saham."
+            "Lembaga keuangan menjadi sasaran karena deepfake bisa dipakai untuk menipu karyawan agar mentransfer dana atau untuk mencoba menembus verifikasi wajah saat membuka akun. Karena itu, banyak layanan menambahkan pemeriksaan keaslian (liveness check) dan verifikasi tambahan.",
+            "Perusahaan media dan media sosial juga rentan. Reputasi media dapat hancur jika bukti audiovisual yang menjadi dasar laporan berita ternyata adalah deepfake yang tidak terverifikasi. Di media sosial, deepfake dapat menyebar dengan cepat, memanipulasi opini publik, dan merusak kepercayaan audiens.",
+            "Deepfake juga dapat dipakai untuk disinformasi politik yang merusak kepercayaan publik. Kerangka kerja seperti NIST AI RMF dan profil AI generatif NIST AI 600-1 membantu organisasi mengelola risiko konten sintetis, misalnya dengan penanda asal-usul konten dan prosedur verifikasi."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan Deepfake Video pada Rapat Virtual Perusahaan",
-        "story": "Sebuah perusahaan multinasional melaporkan serangan deepfake video yang menargetkan rapat virtual mereka. Penyerang menggunakan deepfake video untuk meniru wajah CEO dan rekan-rekannya dalam rapat virtual. Fraudster menggunakan dokumen yang diubah AI untuk membuka akun palsu, mem-bypass upaya tim KYC dan AML. Pekerja finansial dimanipulasi untuk memindahkan dana dengan rapat deepfake yang meniru suara dan rupa CEO.",
-        "lesson": "Deteksi deepfake video secara real-time adalah esensial. Perusahaan harus mengimplementasikan solusi yang dapat mendeteksi video yang dihasilkan AI secara akurat dan cepat. Verifikasi multi-faktor dan prosedur konfirmasi out-of-band harus diwajibkan untuk semua transaksi finansial besar."
+        "type": "nyata",
+        "title": "Sindikat Penipuan Asmara Deepfake di Hong Kong: Rugi HK$360 Juta (2024)",
+        "story": "Pada Oktober 2024, Kepolisian Hong Kong menangkap 27 orang yang diduga menjalankan penipuan asmara dan investasi memakai teknologi deepfake. Polisi menyita barang bukti pada 9 Oktober 2024, termasuk dokumen pelatihan penipuan. Para pelaku memakai gambar buatan AI untuk menciptakan persona yang menarik, sering kali menyamar sebagai perempuan. Korbannya kebanyakan laki-laki dari India, Singapura, dan Malaysia. Setelah kepercayaan terbangun, korban ditawari investasi kripto dengan bukti transaksi palsu. Banyak korban baru sadar tertipu ketika tidak bisa menarik dananya. Total investasi palsu yang terkumpul diperkirakan sekitar HK$360 juta.",
+        "lesson": "Wajah di layar tidak membuktikan identitas. Jangan berinvestasi atas ajakan kenalan online, periksa legalitas platform investasi (di Indonesia lewat OJK), dan anggap 'keuntungan yang tidak bisa ditarik' sebagai tanda penipuan.",
+        "sources": [
+          {
+            "label": "The Standard (14 Oktober 2024): Police arrest 27 for deepfake love scams totaling HK$360m",
+            "url": "https://www.thestandard.com.hk/news/article/221507/Police-arrest-27-for-deepfake-love-scams-totaling-360m-seizes-scam-training-documents"
+          }
+        ]
       },
       "references": [
-        "https://www.mdpi.com/2624-800X/5/1/6 - MDPI JCP (2025) — Partial Fake Speech Attacks Using Deepfake Audio",
-        "https://airc.nist.gov/RMF - NIST AI RMF 1.0 — Deepfake & Synthetic Media Risk Framework",
-        "https://ieeexplore.ieee.org/document/10198233 - IEEE Access (2023) — From ChatGPT to ThreatGPT (Deepfake context)"
+        "https://www.thestandard.com.hk/news/article/221507/Police-arrest-27-for-deepfake-love-scams-totaling-360m-seizes-scam-training-documents - The Standard (2024): Police Arrest 27 for Deepfake Love Scams Totaling HK$360m",
+        "https://www.ic3.gov/PSA/2024/PSA241203 - FBI IC3 PSA I-120324 (2024): Criminals Use Generative AI to Facilitate Financial Fraud",
+        "https://www.nist.gov/itl/ai-risk-management-framework - NIST: AI Risk Management Framework dan Generative AI Profile (NIST AI 600-1)",
+        "https://teknologi.bisnis.com/read/20251115/84/1929039/ojk-ingatkan-penipuan-keuangan-pakai-ai-makin-marak-deepfake-hingga-suara-tiruan - Bisnis.com (2025): OJK Ingatkan Penipuan Keuangan Pakai AI Makin Marak"
       ]
     },
     "4": {
       "subtitle": "AI-Powered APT",
       "quote": "Advanced Persistent Threats kini didukung oleh AI - mereka tidak lagi tidur, mereka belajar, beradaptasi, dan menyerang secara otonom.",
-      "definition": "AI-Powered APT (Advanced Persistent Threats) adalah penggunaan kecerdasan buatan dan machine learning oleh aktor ancaman tingkat lanjut (seperti aktor yang disponsori negara) untuk meningkatkan efektivitas, skala, dan kecanggihan serangan mereka. AI digunakan untuk mengotomatisasi proses peretasan, menghasilkan payload eksploitasi yang dapat beradaptasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target. Ini menciptakan perlombaan senjata di mana defender harus menggunakan AI untuk mendeteksi dan memitigasi ancaman yang dihasilkan oleh AI.",
+      "definition": "AI-Powered APT adalah penggunaan AI oleh kelompok peretas tingkat lanjut (Advanced Persistent Threat), misalnya kelompok yang didukung negara, untuk mempercepat tahap-tahap serangan: riset target, pencarian kerentanan, penulisan skrip, pembuatan email spear phishing, sampai menjalankan sebagian serangan secara otomatis.\n\nLaporan Microsoft dan OpenAI (Februari 2024) menunjukkan bahwa awalnya AI dipakai sebagai asisten produktivitas. Namun, pada 2025 Anthropic melaporkan kampanye spionase yang sebagian besar langkah teknisnya dijalankan oleh agen AI. Pertahanannya tetap bertumpu pada dasar keamanan yang kuat, ditambah pemantauan dan pemanfaatan AI untuk bertahan.",
       "sections": [
         {
           "title": "Evolusi APT: Dari Skrip Statis ke AI Otonom",
           "content": [
-            "APT tradisional mengandalkan skrip statis dan eksploitasi manual. Namun, dengan munculnya AI, penyerang kini dapat mengotomatisasi proses peretasan, menghasilkan payload eksploitasi yang dapat beradaptasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target.",
-            "AI APT dapat menganalisis kerentanan target, menghasilkan payload eksploitasi yang dapat beradaptasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target. Ini memungkinkan kampanye APT yang dipersonalisasi secara massal, di mana setiap serangan tampak unik dan natural, menghindari deteksi tradisional.",
-            "AI juga digunakan untuk mengotomatisasi proses APT. AI dapat memindai kerentanan, menghasilkan payload eksploitasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target. Ini menciptakan perlombaan senjata di mana defender harus menggunakan AI untuk mendeteksi dan memitigasi ancaman yang dihasilkan oleh AI."
+            "APT tradisional mengandalkan skrip statis dan eksploitasi manual oleh tim manusia. Dengan munculnya AI, penyerang dapat mengotomatiskan sebagian proses peretasan, seperti pemindaian, penulisan kode, dan analisis data curian.",
+            "Tahap pertama adalah AI sebagai asisten. Pada Februari 2024, Microsoft dan OpenAI menutup akun milik lima kelompok yang terkait negara: Forest Blizzard (Rusia), Emerald Sleet (Korea Utara), Crimson Sandstorm (Iran), serta Charcoal Typhoon dan Salmon Typhoon (Tiongkok).",
+            "Tahap berikutnya adalah AI sebagai agen yang menjalankan tugas sendiri. Kampanye GTG-1002 (2025) menunjukkan agen AI bisa menjalankan sebagian besar langkah teknis serangan, sementara manusia hanya memberi persetujuan di titik-titik penting."
           ]
         },
         {
-          "title": "Dampak pada Bisnis dan Masyarakat",
+          "title": "Apa yang Sebenarnya Dilakukan Peretas Negara dengan AI?",
           "content": [
-            "Institusi keuangan adalah target utama. Call center bank kini kewalahan oleh panggilan deepfake yang mencoba mem-bypass autentikasi suara. Fraudster menggunakan dokumen yang diubah AI untuk membuka akun palsu, mem-bypass upaya tim KYC dan AML. Pekerja finansial dimanipulasi untuk memindahkan dana dengan rapat deepfake yang meniru suara dan rupa CEO.",
-            "Perusahaan media dan media sosial juga rentan. Reputasi media dapat hancur jika bukti audiovisual yang menjadi dasar laporan berita ternyata adalah deepfake yang tidak terverifikasi. Di media sosial, deepfake dapat menyebar dengan cepat, memanipulasi opini publik, dan merusak kepercayaan audiens. Biaya untuk menjangkau 100.000 pengguna media sosial dengan deepfake yang dipersenjatai kini sangat murah.",
-            "Deepfake juga mengancam integritas pemilu dan institusi pemerintah. Kampanye disinformasi yang didukung AI dapat menyebabkan kerusuhan sipil, melemahkan ekonomi, dan mengikis kepercayaan antara pemilih dan sistem elektoral. Aktor yang disponsori negara dapat dengan mudah menyamar sebagai kepala negara untuk merusak hubungan diplomatik dan memanipulasi pasar saham."
+            "Menurut Microsoft, Forest Blizzard memakai model bahasa untuk meriset teknologi satelit dan radar serta tugas skrip dasar. Emerald Sleet meriset lembaga pemikir dan pakar, serta menyusun konten yang kemungkinan dipakai untuk spear phishing.",
+            "Crimson Sandstorm membuat email phishing dan mencari cara menghindari deteksi antivirus. Charcoal Typhoon memakai AI untuk pengembangan alat, menerjemahkan dan menulis pesan rekayasa sosial, serta mencari perintah setelah berhasil masuk ke sistem. Salmon Typhoon menerjemahkan istilah teknis dan memperbaiki kode, dan modelnya menolak permintaan membuat kode berbahaya.",
+            "Pelajaran pentingnya: AI mempercepat pekerjaan yang sudah dikenal, seperti riset, phishing, dan skrip. Karena itu, kontrol dasar seperti MFA, patch rutin, dan pelatihan anti-phishing tetap efektif melawan sebagian besar serangan berbantuan AI."
+          ]
+        },
+        {
+          "title": "Pertahanan di Era Serangan Berbantuan AI",
+          "content": [
+            "Perkuat fondasi: perbarui sistem secepatnya, aktifkan MFA tahan phishing untuk akun penting, batasi hak akses (least privilege), dan pisahkan jaringan agar penyerang sulit berpindah dari satu sistem ke sistem lain.",
+            "Pantau perilaku, bukan hanya tanda tangan (signature) malware. Serangan berbantuan AI bisa bergerak sangat cepat, sehingga log terpusat, deteksi anomali, dan tim yang siap merespons menjadi sangat penting. Defender juga dapat memakai AI untuk menganalisis log dan peringatan dalam jumlah besar.",
+            "Organisasi yang membangun atau memakai AI perlu mengelola risikonya secara sistematis. NIST AI Risk Management Framework (2023) dan profil AI generatif NIST AI 600-1 (2024) memberi panduan untuk memetakan, mengukur, dan mengelola risiko tersebut."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan APT yang Didukung AI pada Infrastruktur Kritis",
-        "story": "Sebuah infrastruktur kritis melaporkan serangan APT yang didukung AI. Penyerang menggunakan AI untuk mengotomatisasi proses peretasan, menghasilkan payload eksploitasi yang dapat beradaptasi, dan bahkan menulis kode malware yang dapat beradaptasi dengan lingkungan target. Fraudster menggunakan dokumen yang diubah AI untuk membuka akun palsu, mem-bypass upaya tim KYC dan AML. Pekerja finansial dimanipulasi untuk memindahkan dana dengan rapat deepfake yang meniru suara dan rupa CEO.",
-        "lesson": "Deteksi APT yang didukung AI secara real-time adalah esensial. Perusahaan harus mengimplementasikan solusi yang dapat mendeteksi ancaman yang dihasilkan AI secara akurat dan cepat. Verifikasi multi-faktor dan prosedur konfirmasi out-of-band harus diwajibkan untuk semua transaksi finansial besar."
+        "type": "nyata",
+        "title": "GTG-1002: Kampanye Spionase yang Sebagian Besar Dijalankan Agen AI (2025)",
+        "story": "Pada November 2025, Anthropic mengungkap kampanye spionase siber yang terjadi pada pertengahan September 2025. Pelakunya, yang diberi kode GTG-1002, dinilai sebagai kelompok yang didukung negara Tiongkok. Kelompok ini memakai alat AI Claude Code sebagai agen untuk menyerang sekitar 30 target global, termasuk perusahaan teknologi besar, lembaga keuangan, produsen bahan kimia, dan lembaga pemerintah. Sebagian kecil penyusupan berhasil. Anthropic menilai AI menjalankan sekitar 80 sampai 90 persen operasi taktis secara mandiri, sedangkan manusia hanya memulai kampanye dan memberi persetujuan pada titik-titik penting. Namun, AI juga sering 'berhalusinasi', misalnya mengarang kredensial palsu atau menganggap informasi publik sebagai temuan penting, sehingga efektivitas serangan berkurang. Anthropic memblokir akun terkait dan memperkuat mekanisme deteksinya.",
+        "lesson": "Serangan berbantuan AI bisa berjalan jauh lebih cepat dan dalam skala lebih besar daripada tim manusia. Organisasi perlu mempercepat deteksi dan respons, menjaga kebersihan dasar keamanan, dan memakai AI juga untuk bertahan.",
+        "sources": [
+          {
+            "label": "The Hacker News (14 November 2025): Chinese hackers use Anthropic's AI to automate cyber espionage campaign",
+            "url": "https://thehackernews.com/2025/11/chinese-hackers-use-anthropics-ai-to.html"
+          }
+        ]
       },
       "references": [
-        "https://ieeexplore.ieee.org/document/10198233 - IEEE Access (2023) — From ChatGPT to ThreatGPT: Impact of Generative AI in Cybersecurity",
-        "https://attack.mitre.org/groups/ - MITRE ATT&CK — APT Groups & Techniques (AI-Assisted)"
+        "https://www.microsoft.com/en-us/security/blog/2024/02/14/staying-ahead-of-threat-actors-in-the-age-of-ai/ - Microsoft Security (2024): Staying Ahead of Threat Actors in the Age of AI",
+        "https://thehackernews.com/2025/11/chinese-hackers-use-anthropics-ai-to.html - The Hacker News (2025): Chinese Hackers Use Anthropic's AI to Launch Automated Cyber Espionage Campaign",
+        "https://www.nist.gov/itl/ai-risk-management-framework - NIST: AI Risk Management Framework (AI RMF 1.0 dan NIST AI 600-1)",
+        "https://www.ic3.gov/PSA/2024/PSA241203 - FBI IC3 PSA I-120324 (2024): Criminals Use Generative AI to Facilitate Financial Fraud"
       ]
     }
   }

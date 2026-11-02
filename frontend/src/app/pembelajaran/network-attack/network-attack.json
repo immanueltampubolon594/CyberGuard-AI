@@ -1,22 +1,51 @@
 {
   "slug": "network-attack",
   "title": "Network Attack",
-  "categories": ["Serangan Jaringan"],
+  "categories": [
+    "Serangan Jaringan"
+  ],
   "navigation": [
-    { "id": 0, "label": "APA ITU NETWORK ATTACK?", "icon": "ShieldAlert" },
-    { "id": 1, "label": "PACKET SNIFFING", "icon": "Network" },
-    { "id": 2, "label": "IP SPOOFING", "icon": "Eye" },
-    { "id": 3, "label": "ARP SPOOFING", "icon": "Wifi" },
-    { "id": 4, "label": "DNS SPOOFING", "icon": "Globe" },
-    { "id": 5, "label": "MAN-IN-THE-MIDDLE (MITM)", "icon": "Key" },
-    { "id": 6, "label": "SESSION HIJACKING", "icon": "Lock" }
+    {
+      "id": 0,
+      "label": "APA ITU NETWORK ATTACK?",
+      "icon": "ShieldAlert"
+    },
+    {
+      "id": 1,
+      "label": "PACKET SNIFFING",
+      "icon": "Network"
+    },
+    {
+      "id": 2,
+      "label": "IP SPOOFING",
+      "icon": "Eye"
+    },
+    {
+      "id": 3,
+      "label": "ARP SPOOFING",
+      "icon": "Wifi"
+    },
+    {
+      "id": 4,
+      "label": "DNS SPOOFING",
+      "icon": "Globe"
+    },
+    {
+      "id": 5,
+      "label": "MAN-IN-THE-MIDDLE (MITM)",
+      "icon": "Key"
+    },
+    {
+      "id": 6,
+      "label": "SESSION HIJACKING",
+      "icon": "Lock"
+    }
   ],
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu Network Attack?",
-      "categories": ["Serangan Jaringan"],
       "quote": "Jaringan komputer adalah sistem peredaran darah dunia digital — ketika ia diserang, seluruh tubuh organisasi bisa lumpuh dalam hitungan detik.",
-      "definition": "Network Attack adalah kategori serangan siber yang menargetkan infrastruktur jaringan komputer — baik jaringan lokal (LAN), jaringan area luas (WAN), maupun internet publik — dengan tujuan menyadap, memanipulasi, mengalihkan, atau memutus komunikasi data antara dua atau lebih pihak. Serangan ini tidak selalu bertujuan mencuri data secara langsung, tetapi lebih sering mengeksploitasi kelemahan fundamental dalam protokol jaringan yang dirancang pada era ketika 'kepercayaan' masih menjadi asumsi dasar arsitektur internet.\n\nDalam konteks Indonesia, serangan jaringan semakin mengkhawatirkan seiring dengan percepatan transformasi digital di sektor pemerintahan, perbankan, dan UMKM. Data dari Badan Siber dan Sandi Negara (BSSN) mencatat bahwa lebih dari 60% insiden keamanan siber di Indonesia pada tahun 2024 melibatkan eksploitasi pada lapisan jaringan, dengan rata-rata waktu deteksi (Mean Time to Detect/MTTD) mencapai 207 hari — jauh di atas standar global 150 hari. Hal ini menunjukkan bahwa banyak organisasi masih belum memiliki visibilitas yang memadai terhadap traffic jaringan mereka, membiarkan penyerang bergerak bebas dalam sistem selama berbulan-bulan sebelum terdeteksi.",
+      "definition": "Network Attack adalah kategori serangan siber yang menargetkan infrastruktur jaringan komputer — baik jaringan lokal (LAN), jaringan area luas (WAN), maupun internet publik — dengan tujuan menyadap, memanipulasi, mengalihkan, atau memutus komunikasi data antara dua atau lebih pihak. Serangan ini tidak selalu bertujuan mencuri data secara langsung, tetapi lebih sering mengeksploitasi kelemahan fundamental dalam protokol jaringan yang dirancang pada era ketika 'kepercayaan' masih menjadi asumsi dasar arsitektur internet.\n\nDalam konteks Indonesia, serangan jaringan makin relevan seiring percepatan transformasi digital di pemerintahan, perbankan, dan UMKM. Kelemahan jaringan juga bisa berdampak lintas negara: pada April 2014, kesalahan konfigurasi routing di Indosat sempat membuat ratusan ribu blok alamat internet milik pihak lain seolah-olah berada di jaringan Indonesia. Kejadian ini menunjukkan bahwa protokol inti internet masih banyak bekerja atas dasar 'percaya', sehingga organisasi perlu memantau jaringannya sendiri dengan serius, bukan hanya mengandalkan firewall di perimeter.",
       "sections": [
         {
           "title": "Mengapa Protokol Jaringan Menjadi Target Empuk?",
@@ -40,25 +69,38 @@
         {
           "title": "Dampak Bisnis dan Regulasi di Indonesia",
           "content": [
-            "Serangan jaringan tidak hanya menyebabkan downtime teknis, tetapi juga kerugian finansial langsung, denda regulasi, dan kerusakan reputasi jangka panjang. Di Indonesia, Undang-Undang ITE (Informasi dan Transaksi Elektronik) Pasal 30-35 mengatur sanksi pidana bagi pelaku serangan siber, dengan hukuman maksimal 12 tahun penjara dan denda hingga 12 miliar rupiah. Namun, penegakan hukum masih menghadapi tantangan dalam hal pembuktian teknis dan yurisdiksi lintas negara.",
-            "Sektor perbankan di Indonesia diwajibkan oleh OJK untuk menerapkan standar keamanan jaringan seperti PCI-DSS untuk transaksi kartu, dan POJK No. 12/2021 tentang Penyelenggaraan Teknologi Finansial yang mensyaratkan enkripsi end-to-end dan monitoring jaringan real-time. Namun, audit independen menunjukkan bahwa banyak fintech dan bank digital masih memiliki celah konfigurasi jaringan kritis, seperti TLS versi lama, sertifikat kadaluarsa, atau logging yang tidak memadai untuk forensik pasca-insiden.",
-            "Bagi organisasi, investasi dalam Network Detection and Response (NDR) dan Zero Trust Architecture bukan lagi pilihan, melainkan keharusan. NDR menggunakan machine learning untuk membangun baseline perilaku jaringan normal dan mendeteksi anomali secara real-time, sementara Zero Trust mengasumsikan bahwa tidak ada perangkat atau pengguna yang dapat dipercaya secara default — setiap akses harus diverifikasi secara terus-menerus, terlepas dari lokasinya di dalam atau luar jaringan korporat."
+            "Serangan jaringan tidak hanya menyebabkan gangguan teknis, tetapi juga kerugian finansial, sanksi hukum, dan rusaknya reputasi. Di Indonesia, UU ITE melarang akses ilegal ke sistem elektronik (Pasal 30) dan intersepsi atau penyadapan tanpa hak (Pasal 31). Untuk akses ilegal, ancaman pidananya hingga 8 tahun penjara dan denda hingga Rp800 juta (Pasal 46), dan hukuman dapat diperberat bila yang diserang adalah sistem milik pemerintah atau layanan publik (Pasal 52). Namun, penegakan hukum masih menghadapi tantangan pembuktian teknis dan yurisdiksi lintas negara.",
+            "Sektor keuangan diatur lebih ketat. Bank umum wajib mengikuti POJK Nomor 11/POJK.03/2022 tentang Penyelenggaraan Teknologi Informasi oleh Bank Umum, yang mengatur manajemen risiko TI, pengamanan informasi, dan ketahanan siber. Pemrosesan data kartu pembayaran juga mengacu pada standar industri PCI DSS. Kelemahan konfigurasi yang sering ditemukan dalam praktik antara lain versi TLS lama, sertifikat kedaluwarsa, dan pencatatan log yang tidak memadai untuk investigasi setelah insiden.",
+            "Bagi organisasi, pemantauan jaringan dan Zero Trust Architecture semakin penting. Sistem Network Detection and Response (NDR) mempelajari pola traffic normal lalu memberi peringatan bila ada anomali, sedangkan Zero Trust (NIST SP 800-207) berprinsip bahwa tidak ada perangkat atau pengguna yang otomatis dipercaya. Setiap akses harus diverifikasi, baik dari dalam maupun luar jaringan kantor."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan MITM pada Jaringan WiFi Publik Bandara Soekarno-Hatta 2023",
-        "story": "Pada awal 2023, tim keamanan siber dari sebuah bank swasta besar di Indonesia mengidentifikasi aktivitas mencurigakan pada sesi login mobile banking nasabah yang terhubung melalui WiFi publik di Bandara Soekarno-Hatta. Investigasi forensik mengungkap bahwa penyerang telah memasang rogue access point dengan nama SSID yang mirip dengan WiFi resmi bandara ('FreeAirport-WiFi' vs 'FreeAirport_WiFi'). Perangkat korban yang terhubung secara otomatis ke rogue AP ini kemudian menjadi target serangan Man-in-the-Middle: traffic HTTPS korban di-decrypt menggunakan teknik SSL stripping, kredensial banking dicuri, dan sesi login diambil alih untuk melakukan transfer dana. Dalam waktu 48 jam, lebih dari 200 nasabah menjadi korban dengan total kerugian mencapai 8,7 miliar rupiah. Insiden ini memicu kolaborasi antara BSSN, Polri, dan operator bandara untuk memperkuat keamanan jaringan publik di titik-titik kritis.",
-        "lesson": "Kasus ini mengajarkan bahwa jaringan WiFi publik adalah lingkungan yang sangat bermusuhan (hostile environment) untuk transaksi sensitif. Pengguna harus selalu memverifikasi nama SSID resmi dengan staf bandara, menghindari login ke aplikasi banking atau email saat menggunakan WiFi publik, dan selalu memastikan koneksi menggunakan HTTPS dengan sertifikat yang valid (gembok hijau di browser). Bagi penyedia layanan publik, implementasi captive portal dengan autentikasi dua faktor, isolasi klien (client isolation) untuk mencegah komunikasi antar perangkat, dan monitoring traffic untuk mendeteksi rogue AP adalah langkah defensif minimum yang harus diterapkan."
+        "type": "nyata",
+        "title": "Kebocoran Rute BGP Indosat: Internet Dunia 'Tersesat' ke Indonesia (2 April 2014)",
+        "story": "Pada malam 2 April 2014 (waktu UTC), Indosat (AS4761), salah satu penyedia internet terbesar di Indonesia, mengumumkan rute BGP untuk blok-blok alamat IP yang bukan miliknya akibat kesalahan konfigurasi. BGP adalah protokol yang dipakai jaringan-jaringan di internet untuk saling memberi tahu jalur menuju suatu alamat. Menurut Renesys yang dikutip PCWorld, sekitar 320.000 dari 500.000 blok jaringan di internet sempat tampak berada di bawah kendali Indosat, sementara BGPmon mencatat lebih dari 400.000 prefiks. Untungnya, sebagian besar pengumuman palsu itu tidak menyebar luas; Renesys memperkirakan kurang dari 5% jaringan yang dipantaunya mengikuti rute tersebut. Meski begitu, beberapa jaringan, termasuk sebagian jaringan Akamai, sempat mengarahkan traffic ke Indonesia. Masalah diperbaiki dalam sekitar dua jam.",
+        "lesson": "Insiden ini bukan serangan, melainkan kesalahan, tetapi memperlihatkan kelemahan yang sama dengan yang dimanfaatkan penyerang: BGP menerima pengumuman rute tanpa verifikasi bawaan. Pelajarannya: 1) protokol inti internet dibangun di atas 'kepercayaan', sehingga satu kesalahan bisa berdampak global; 2) operator jaringan perlu memfilter rute dan menerapkan validasi asal rute (RPKI) sesuai panduan seperti NIST SP 800-189; 3) organisasi perlu memantau ke mana traffic mereka benar-benar mengalir.",
+        "sources": [
+          {
+            "label": "RIPE Labs (2014) — BGP Leaks in Indonesia",
+            "url": "https://labs.ripe.net/author/wilhelm/bgp-leaks-in-indonesia"
+          },
+          {
+            "label": "PCWorld (3 Apr 2014) — Indosat routing error impacts few but hits Akamai, Chevron",
+            "url": "https://www.pcworld.com/article/444724/indosat-routing-error-impacts-few-but-hits-akamai-chevron.html"
+          }
+        ]
       },
       "references": [
-        "https://csrc.nist.gov/pubs/sp/800/94/final - NIST SP 800-94 Rev.1 — Guide to Intrusion Detection and Prevention Systems (IDPS)",
-        "https://www.cisa.gov/topics/cyber-threats-and-advisories/network-security - CISA — Network Security Best Practices Guide"
+        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange: BGP Security and DDoS Mitigation",
+        "https://csrc.nist.gov/pubs/sp/800/94/final - NIST SP 800-94 — Guide to Intrusion Detection and Prevention Systems (IDPS)",
+        "https://labs.ripe.net/author/wilhelm/bgp-leaks-in-indonesia - RIPE Labs (2014) — BGP Leaks in Indonesia (insiden Indosat AS4761)",
+        "https://www.hukumonline.com/berita/a/jerat-hukum-peretasan-oleh-hacker-lt631ec0ed9e52c/?page=2 - Hukumonline — Jerat Hukum Peretasan oleh Hacker (UU ITE Pasal 30 & 46)",
+        "https://peraturan.bpk.go.id/Details/227376 - JDIH BPK — POJK Nomor 11/POJK.03/2022 tentang Penyelenggaraan Teknologi Informasi oleh Bank Umum"
       ]
     },
     "1": {
       "subtitle": "Packet Sniffing",
-      "categories": ["Serangan Jaringan"],
       "quote": "Di dunia digital, setiap paket data yang Anda kirim adalah surat terbuka — kecuali Anda membungkusnya dengan enkripsi yang tidak dapat dibuka oleh siapa pun selain penerima yang dituju.",
       "definition": "Packet Sniffing (atau network sniffing) adalah teknik penyadapan pasif di mana penyerang menggunakan perangkat lunak atau perangkat keras khusus untuk 'mendengarkan' dan merekam traffic data yang melewati segmen jaringan tertentu. Teknik ini memanfaatkan fakta bahwa banyak protokol jaringan — terutama yang lebih tua atau yang dikonfigurasi tanpa enkripsi — mengirimkan data dalam bentuk plaintext yang dapat dibaca oleh siapa saja yang memiliki akses ke jalur jaringan. Packet sniffing sendiri tidak selalu jahat; administrator jaringan yang sah menggunakan tools seperti Wireshark atau tcpdump untuk troubleshooting, monitoring performa, dan analisis keamanan. Namun, di tangan penyerang, teknik ini menjadi senjata ampuh untuk mencuri kredensial login, data pribadi, cookie sesi, atau informasi bisnis sensitif.",
       "sections": [
@@ -82,24 +124,35 @@
           "title": "Strategi Pertahanan: Enkripsi, Segmentasi, dan Monitoring",
           "content": [
             "Enkripsi end-to-end adalah pertahanan paling fundamental. Protokol modern seperti HTTPS (TLS 1.2/1.3), SSH, SFTP, dan SMTP dengan STARTTLS memastikan bahwa payload data dienkripsi sehingga meskipun paket disadap, isinya tidak dapat dibaca tanpa kunci dekripsi. Implementasi yang benar juga memerlukan validasi sertifikat server (untuk mencegah MITM) dan penggunaan cipher suite yang kuat (menghindari algoritma usang seperti RC4 atau SHA-1).",
-            "Segmentasi jaringan membatasi 'blast radius' jika sniffing terjadi. Dengan memisahkan jaringan ke VLAN berdasarkan fungsi (karyawan, guest, IoT, server) dan menerapkan firewall rules yang ketat antar segmen, penyerang yang berhasil menyadap satu segmen tidak dapat dengan mudah mengakses segmen lain yang lebih kritis. Teknik micro-segmentation di lingkungan cloud atau containerized further membatasi komunikasi lateral antar workload.",
+            "Segmentasi jaringan membatasi 'radius ledakan' jika sniffing terjadi. Dengan memisahkan jaringan ke VLAN berdasarkan fungsi (karyawan, tamu, IoT, server) dan menerapkan aturan firewall yang ketat antarsegmen, penyerang yang berhasil menyadap satu segmen tidak mudah menjangkau segmen yang lebih penting. Di lingkungan cloud dan container, micro-segmentation membatasi komunikasi antar-workload lebih jauh lagi. Data sensitif yang mengalir di jaringan internal pun sebaiknya tetap dienkripsi, karena 'jaringan dalam' tidak otomatis aman.",
             "Monitoring dan deteksi anomali adalah lapisan pertahanan proaktif. Tools seperti Zeek (sebelumnya Bro), Suricata, atau Elastic Security dapat menganalisis traffic jaringan secara real-time untuk mendeteksi pola mencurigakan: volume traffic yang tidak biasa, protokol yang tidak lazim, atau upaya eksfiltrasi data. Integrasi dengan SIEM (Security Information and Event Management) memungkinkan korelasi alert jaringan dengan log sistem dan aplikasi untuk deteksi ancaman yang lebih akurat. Di Indonesia, BSSN merekomendasikan organisasi kritis untuk mengadopsi framework NIST CSF atau ISO 27001 yang mencakup monitoring jaringan sebagai kontrol keamanan wajib."
           ]
         }
       ],
       "case_study": {
-        "title": "Kebocoran Data Pegawai Kementerian via WiFi Kantor 2022",
-        "story": "Pada pertengahan 2022, sebuah kementerian di Indonesia mengalami insiden kebocoran data internal setelah investigasi mengidentifikasi aktivitas packet sniffing pada jaringan WiFi kantor. Penyerang, yang diduga oknum internal atau pihak eksternal yang berhasil mengakses fisik gedung, mengkonfigurasi laptop dengan adapter WiFi dalam mode monitor dan tools Wireshark untuk menyadap traffic tidak terenkripsi. Karena kebijakan keamanan yang lemah, beberapa aplikasi internal masih menggunakan HTTP (bukan HTTPS) untuk komunikasi, dan kredensial login pegawai dikirim dalam plaintext. Dalam waktu dua minggu, penyerang berhasil mengumpulkan ribuan set kredensial, email internal, dan dokumen sensitif. Data tersebut kemudian dijual di forum dark web atau digunakan untuk akses tidak sah ke sistem lain. Insiden ini memicu audit keamanan menyeluruh dan migrasi paksa semua aplikasi internal ke HTTPS dengan sertifikat yang dikelola secara terpusat.",
-        "lesson": "Kasus ini menyoroti bahwa ancaman insider dan akses fisik adalah vektor nyata yang sering diabaikan. Pertahanan teknis seperti enkripsi tidak berguna jika kebijakan dan kesadaran pengguna lemah. Pelajaran kritis: 1) Terapkan kebijakan 'HTTPS everywhere' — blokir akses HTTP di firewall dan redirect otomatis ke HTTPS, 2) Gunakan sertifikat internal yang dikelola via PKI (Public Key Infrastructure) untuk aplikasi internal, 3) Implementasi network access control (NAC) untuk memastikan hanya perangkat terotorisasi yang dapat terhubung ke jaringan korporat, 4) Lakukan security awareness training rutin tentang risiko WiFi dan pentingnya memverifikasi koneksi aman."
+        "type": "nyata",
+        "title": "Albert Gonzalez dan 'Sniffer' yang Mencuri Data 130 Juta Kartu (Dakwaan Agustus 2009)",
+        "story": "Pada 17 Agustus 2009, Departemen Kehakiman Amerika Serikat mengumumkan dakwaan terhadap Albert Gonzalez (28) dan dua rekannya atas pencurian data lebih dari 130 juta kartu kredit dan debit. Korbannya antara lain Heartland Payment Systems (pemroses pembayaran kartu), jaringan minimarket 7-Eleven, dan jaringan supermarket Hannaford. Menurut dakwaan, kelompok ini masuk ke jaringan perusahaan melalui serangan SQL injection, lalu menanam malware. Kejaksaan New Jersey menjelaskan bahwa mereka memasang program 'sniffer' yang menyadap data kartu secara real-time saat data itu diproses di jaringan internal perusahaan korban, lalu mengirim data curian ke server milik pelaku. Gonzalez terancam hukuman hingga 30 tahun penjara untuk dakwaan konspirasi penipuan.",
+        "lesson": "Kasus ini menunjukkan bahwa sniffing paling berbahaya ketika terjadi di dalam jaringan yang dianggap 'aman'. Data kartu disadap saat bergerak di jaringan internal yang belum terenkripsi. Pelajarannya: 1) enkripsi data sensitif juga di jaringan internal, bukan hanya di internet; 2) segmentasi jaringan agar sistem pembayaran terpisah dari sistem lain; 3) pantau traffic dan proses yang tidak biasa, karena sniffer bisa bekerja diam-diam selama berbulan-bulan.",
+        "sources": [
+          {
+            "label": "U.S. Department of Justice (17 Agu 2009) — Alleged International Hacker Indicted for Massive Attack on U.S. Retail and Banking Networks",
+            "url": "https://www.justice.gov/opa/pr/alleged-international-hacker-indicted-massive-attack-us-retail-and-banking-networks"
+          },
+          {
+            "label": "U.S. Attorney's Office District of New Jersey (17 Agu 2009) — Siaran pers dakwaan Gonzalez (PDF)",
+            "url": "https://www.justice.gov/archive/usao/nj/Press/files/pdffiles/2009/gonz0817%20rel.pdf"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1040/ - MITRE ATT&CK — T1040: Network Sniffing (Full Technique Entry)",
-        "https://csrc.nist.gov/pubs/sp/800/115/final - NIST SP 800-115 — Technical Guide to Information Security Testing (Sniffing section)"
+        "https://attack.mitre.org/techniques/T1040/ - MITRE ATT&CK — T1040: Network Sniffing",
+        "https://csrc.nist.gov/pubs/sp/800/115/final - NIST SP 800-115 — Technical Guide to Information Security Testing and Assessment",
+        "https://csrc.nist.gov/pubs/sp/800/94/final - NIST SP 800-94 — Guide to Intrusion Detection and Prevention Systems (IDPS)"
       ]
     },
     "2": {
       "subtitle": "IP Spoofing",
-      "categories": ["Serangan Jaringan"],
       "quote": "Di dunia jaringan, identitas dapat dipalsukan semudah mengganti stempel pada amplop — dan seringkali, tidak ada yang memeriksa apakah stempel itu asli.",
       "definition": "IP Spoofing adalah teknik manipulasi di mana penyerang memalsukan (spoof) alamat IP sumber dalam header paket jaringan agar terlihat seolah-olah paket tersebut berasal dari sumber yang terpercaya atau sah. Teknik ini mengeksploitasi fakta bahwa protokol IP (Internet Protocol) pada lapisan jaringan (Layer 3 OSI model) tidak memiliki mekanisme bawaan untuk memverifikasi keaslian alamat sumber. IP spoofing jarang digunakan sebagai serangan mandiri, melainkan sebagai komponen kunci dalam serangan yang lebih kompleks: untuk menghindari filter berbasis IP, meluncurkan serangan refleksi/amplifikasi DDoS, atau memfasilitasi serangan Man-in-the-Middle dengan memanipulasi routing.",
       "sections": [
@@ -115,7 +168,7 @@
           "title": "Peran IP Spoofing dalam Serangan Refleksi dan Amplifikasi",
           "content": [
             "IP spoofing adalah komponen kritis dalam serangan DDoS refleksi/amplifikasi. Dalam skenario ini, penyerang memalsukan alamat IP sumber menjadi IP korban, lalu mengirimkan permintaan kecil ke server publik yang rentan (seperti DNS resolver terbuka, NTP server, atau Memcached instance). Server publik tersebut memproses permintaan dan mengirimkan respons yang jauh lebih besar langsung ke IP korban — yang tidak pernah meminta permintaan tersebut. Karena respons dikirim oleh server sah, korban kesulitan memblokir traffic tanpa juga memblokir layanan legitimat.",
-            "Faktor amplifikasi mengukur seberapa besar respons dibandingkan permintaan. DNS amplification dapat mencapai faktor 50x-70x (permintaan 60 byte → respons 4000 byte), sementara Memcached amplification yang terkenal dapat mencapai 50.000x (permintaan 15 byte → respons 750KB). Dengan botnet kecil dan teknik amplifikasi, penyerang dapat meluncurkan serangan berukuran Terabit per detik yang mampu melumpuhkan bahkan infrastruktur jaringan enterprise terbesar sekalipun.",
+            "Faktor amplifikasi mengukur seberapa besar respons dibandingkan permintaan. Menurut CISA (Alert TA14-017A), DNS dapat memberikan amplifikasi 28 hingga 54 kali, NTP sekitar 556,9 kali, dan Memcached 10.000 hingga 51.000 kali. Dengan teknik ini, penyerang dengan sumber daya kecil dapat menghasilkan serangan berukuran Terabit per detik. Contohnya, serangan Memcached ke GitHub pada Februari 2018 mencapai 1,35 Tbps.",
             "Serangan refleksi juga memiliki keuntungan bagi penyerang: karena traffic serangan berasal dari server sah yang tersebar di seluruh internet, pelacakan asal-usul serangan menjadi sangat sulit. Korban hanya melihat traffic masuk dari ribuan IP legitimat, bukan dari botnet penyerang. Ini membuat mitigasi berbasis reputasi IP atau geo-blocking menjadi tidak efektif, dan memerlukan solusi canggih seperti Anycast scrubbing atau behavioral analysis di tingkat edge."
           ]
         },
@@ -124,23 +177,34 @@
           "content": [
             "Solusi paling fundamental untuk mencegah IP spoofing adalah implementasi BCP38 (Best Current Practice 38), juga dikenal sebagai 'Network Ingress Filtering'. Standar yang diterbitkan oleh IETF ini merekomendasikan bahwa ISP dan administrator jaringan harus memfilter paket masuk (ingress) yang alamat sumbernya tidak masuk akal — misalnya, paket yang mengklaim berasal dari jaringan internal tetapi masuk dari interface eksternal. Dengan menerapkan filtering di edge jaringan, spoofed packet dapat dibuang sebelum masuk ke infrastruktur inti.",
             "Egress filtering adalah sisi lain dari koin: memfilter paket keluar (egress) yang alamat sumbernya bukan dari jaringan yang sah. Ini mencegah perangkat di dalam jaringan Anda digunakan sebagai sumber serangan spoofing ke luar. Kombinasi ingress dan egress filtering menciptakan 'spoofing-proof perimeter' yang secara signifikan mengurangi efektivitas serangan berbasis spoofing. Sayangnya, adopsi BCP38 secara global masih rendah karena memerlukan koordinasi antar ISP dan investasi dalam konfigurasi router.",
-            "Teknik lanjutan seperti uRPF (Unicast Reverse Path Forwarding) pada router dapat secara otomatis memverifikasi bahwa alamat sumber paket masuk sesuai dengan routing table — jika tidak, paket dibuang. uRPF memiliki dua mode: strict (hanya terima jika interface masuk sesuai dengan rute terbaik ke sumber) dan loose (terima jika ada rute ke sumber, terlepas dari interface). Implementasi uRPF memerlukan perencanaan routing yang hati-hati untuk menghindari false positive yang dapat memutus traffic legitimat. Di Indonesia, APJII (Asosiasi Penyelenggara Jasa Internet Indonesia) telah mendorong anggotanya untuk mengadopsi BCP38 dan uRPF sebagai bagian dari inisiatif keamanan infrastruktur nasional."
+            "Teknik lanjutan seperti uRPF (Unicast Reverse Path Forwarding) pada router dapat otomatis memeriksa apakah alamat sumber paket masuk sesuai dengan tabel routing; jika tidak, paket dibuang. uRPF punya dua mode: strict (paket hanya diterima jika masuk dari interface yang menjadi rute terbaik ke alamat sumber) dan loose (paket diterima selama ada rute ke alamat sumber). NIST SP 800-189 merekomendasikan validasi alamat sumber seperti ini untuk operator jaringan. Penerapannya perlu perencanaan routing yang cermat agar traffic sah tidak ikut terbuang."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan DNS Amplification ke Provider Cloud Indonesia 2023",
-        "story": "Pada Maret 2023, salah satu provider cloud terbesar di Indonesia menjadi target serangan DDoS berbasis DNS amplification yang mencapai puncak 800 Gbps. Investigasi forensik mengungkap bahwa penyerang menggunakan botnet kecil (sekitar 5.000 perangkat IoT) untuk mengirimkan permintaan DNS ANY yang dipalsukan (spoofed source IP = victim) ke ribuan open DNS resolver di seluruh dunia. Resolver-resolver ini membalas dengan respons berukuran besar (mencatatkan faktor amplifikasi ~65x) langsung ke infrastruktur provider korban. Serangan ini berlangsung selama 6 jam dan menyebabkan downtime parsial bagi ratusan klien cloud, termasuk startup fintech dan e-commerce. Provider berhasil memitigasi serangan dengan mengaktifkan layanan scrubbing dari partner global dan mengimplementasikan BCP38 filtering di edge network mereka pasca-insiden.",
-        "lesson": "Kasus ini membuktikan bahwa serangan amplifikasi tidak memerlukan botnet raksasa — cukup dengan menemukan server publik yang salah konfigurasi. Bagi administrator jaringan: 1) Nonaktifkan atau batasi query DNS ANY pada resolver internal, 2) Implementasi response rate limiting (RRL) pada DNS server untuk mencegah abuse, 3) Pastikan semua server internal tidak terekspos ke internet publik tanpa autentikasi. Bagi pengguna layanan cloud: pilih provider yang memiliki kapasitas mitigasi DDoS multi-Terabit dan arsitektur Anycast untuk menyerap serangan di edge, sebelum traffic mencapai infrastruktur inti Anda."
+        "type": "nyata",
+        "title": "CERT Advisory CA-95:01: Serangan IP Spoofing dan Pembajakan Sesi Terminal (Januari 1995)",
+        "story": "Pada 23 Januari 1995, CERT Coordination Center menerbitkan advisori CA-95:01 berjudul 'IP Spoofing Attacks and Hijacked Terminal Connections' setelah menerima laporan serangan nyata di internet. Penyerang mengirim paket dengan alamat IP sumber palsu untuk menipu layanan yang memberikan akses hanya berdasarkan alamat IP, seperti perintah 'r' BSD (rlogin, rsh), NFS/SunRPC, dan X Windows. Serangan ini tetap berhasil meskipun penyerang tidak pernah menerima paket balasan, dan bisa memberikan akses hingga level root. Setelah menguasai sistem, pelaku memakai alat yang memodifikasi kernel UNIX untuk mengambil alih sesi terminal yang sedang aktif, sehingga autentikasi kuat seperti one-time password pun bisa dilewati. CERT merekomendasikan router penyaring yang membuang paket dari luar yang mengaku berasal dari jaringan internal, serta memfilter paket keluar yang alamat sumbernya bukan milik jaringan sendiri.",
+        "lesson": "Advisori ini membuktikan bahwa alamat IP bukan bukti identitas. Pelajarannya: 1) jangan memberikan akses hanya berdasarkan alamat IP; gunakan autentikasi kriptografis seperti SSH dengan kunci; 2) terapkan ingress dan egress filtering, prinsip yang kemudian dibakukan dalam BCP38 (RFC 2827, tahun 2000); 3) pantau paket dari luar yang memakai alamat internal, karena itu tanda spoofing.",
+        "sources": [
+          {
+            "label": "CERT Advisory CA-95:01 — IP Spoofing Attacks and Hijacked Terminal Connections (arsip Bugtraq)",
+            "url": "https://seclists.org/bugtraq/1995/Jan/123"
+          },
+          {
+            "label": "IETF RFC 2827 / BCP 38 (Mei 2000) — Network Ingress Filtering",
+            "url": "https://www.rfc-editor.org/rfc/rfc2827"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1562/ - MITRE ATT&CK — T1562.006: Impair Defenses — IP Spoofing",
-        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange (IP Spoofing Mitigation)"
+        "https://www.rfc-editor.org/rfc/rfc2827 - IETF RFC 2827 / BCP 38 — Network Ingress Filtering",
+        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange: BGP Security and DDoS Mitigation",
+        "https://attack.mitre.org/techniques/T1498/002/ - MITRE ATT&CK — T1498.002: Reflection Amplification (memanfaatkan IP spoofing)"
       ]
     },
     "3": {
       "subtitle": "ARP Spoofing",
-      "categories": ["Serangan Jaringan"],
       "quote": "Di jaringan lokal, kepercayaan buta adalah kelemahan terbesar — dan ARP Spoofing adalah seni memanipulasi kepercayaan itu untuk mengalihkan lalu lintas ke tangan yang salah.",
       "definition": "ARP Spoofing (juga dikenal sebagai ARP Poisoning) adalah serangan aktif pada jaringan lokal (LAN) di mana penyerang mengirimkan paket ARP (Address Resolution Protocol) palsu untuk mengasosiasikan alamat MAC mereka dengan alamat IP perangkat lain (biasanya gateway default atau target spesifik). Teknik ini mengeksploitasi kelemahan fundamental protokol ARP: tidak ada mekanisme autentikasi atau verifikasi — perangkat akan menerima dan memperbarui tabel ARP mereka berdasarkan paket ARP Reply mana pun yang diterima, bahkan jika tidak diminta. Hasilnya, traffic yang seharusnya dikirim ke gateway atau target sah dialihkan ke perangkat penyerang, memungkinkan penyadapan (sniffing), modifikasi data, atau denial of service.",
       "sections": [
@@ -165,23 +229,24 @@
           "content": [
             "Solusi paling sederhana: static ARP entries. Administrator dapat mengkonfigurasi entri ARP statis pada perangkat kritis (server, gateway) yang memetakan IP ke MAC secara permanen, sehingga tidak dapat di-overwrite oleh ARP Reply palsu. Namun, pendekatan ini tidak scalable untuk jaringan besar dan memerlukan maintenance manual setiap kali ada perubahan perangkat.",
             "Fitur keamanan switch modern seperti DHCP Snooping dan Dynamic ARP Inspection (DAI) adalah pertahanan yang lebih robust. DHCP Snooping membangun database binding yang memetakan IP yang diberikan via DHCP ke MAC address dan port switch yang sah. DAI kemudian menggunakan database ini untuk memvalidasi paket ARP: jika ARP Reply mengklaim pemetaan IP-MAC yang tidak sesuai dengan binding database, paket dibuang. Implementasi DAI memerlukan konfigurasi yang hati-hati dan switch yang mendukung fitur ini (biasanya enterprise-grade).",
-            "Di level endpoint, tools seperti ARPwatch (Linux) atau XArp (Windows) dapat memantau perubahan ARP cache dan memberikan alert ketika pemetaan IP-MAC berubah secara mencurigakan. Solusi komersial seperti Cisco Identity Services Engine (ISE) atau Aruba ClearPass dapat mengintegrasikan deteksi ARP anomaly dengan policy enforcement, secara otomatis mengisolasi perangkat yang terdeteksi melakukan spoofing. Untuk jaringan kecil atau rumah, pastikan WiFi menggunakan enkripsi WPA2/WPA3 dan hindari menggunakan jaringan kabel yang tidak dikelola (unmanaged switch) untuk perangkat sensitif."
+            "Di level perangkat, alat seperti arpwatch (Linux) dapat memantau perubahan pemetaan IP–MAC dan memberi peringatan ketika ada perubahan mencurigakan, misalnya satu MAC tiba-tiba mengaku sebagai gateway. Solusi Network Access Control (NAC) dapat secara otomatis mengisolasi perangkat yang terdeteksi melakukan spoofing. Di jaringan kecil atau rumah, pastikan Wi-Fi memakai WPA2/WPA3, tutup port LAN yang tidak dipakai, dan gunakan HTTPS atau VPN agar data tetap terenkripsi meskipun traffic sempat dialihkan."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan ARP Poisoning pada Jaringan Kantor Startup Fintech Jakarta 2024",
-        "story": "Pada Januari 2024, tim keamanan sebuah startup fintech di Jakarta mendeteksi anomali pada traffic internal setelah beberapa pegawai melaporkan akses lambat ke aplikasi internal. Investigasi mengungkap bahwa seorang mantan karyawan yang masih memiliki akses fisik ke gedung telah menginstal Raspberry Pi dengan BetterCAP di colokan jaringan ruang meeting. Perangkat ini secara otomatis melakukan ARP spoofing terhadap gateway dan server internal, mengalihkan traffic ke Raspberry Pi untuk disadap. Penyerang berhasil mencuri session cookie dari aplikasi internal yang tidak menggunakan HTTPS secara konsisten, dan menggunakan cookie tersebut untuk mengakses dashboard admin dan mengekstrak data nasabah. Insiden terungkap ketika sistem NDR (Network Detection and Response) mendeteksi pola traffic yang tidak biasa: satu MAC address mengklaim memiliki banyak IP berbeda dalam waktu singkat. Total kerugian diperkirakan mencapai 2,3 miliar rupiah akibat potensi kebocoran data dan biaya remediasi.",
-        "lesson": "Kasus ini menyoroti risiko insider threat dan akses fisik yang sering diabaikan. Pertahanan teknis canggih tidak berguna jika penyerang dapat dengan mudah menyambungkan perangkat ke jaringan kabel. Pelajaran penting: 1) Terapkan port security pada switch: batasi jumlah MAC address per port, aktifkan 802.1X untuk autentikasi perangkat, 2) Gunakan DHCP snooping + Dynamic ARP Inspection pada semua switch managed, 3) Pastikan semua aplikasi internal menggunakan HTTPS dengan sertifikat yang valid, 4) Implementasi network segmentation: pisahkan jaringan karyawan, guest, dan server dengan firewall rules yang ketat, 5) Lakukan exit interview keamanan: cabut akses fisik dan logis segera setelah karyawan resign."
+        "type": "ilustrasi",
+        "title": "Skenario: Perangkat Asing di Colokan LAN Ruang Rapat",
+        "story": "Skenario ini adalah ilustrasi untuk pembelajaran. Di sebuah kantor, beberapa karyawan mengeluh aplikasi internal terasa lambat. Tim IT menjalankan arpwatch dan menemukan keanehan: satu alamat MAC tiba-tiba mengaku sebagai gateway 192.168.1.1, padahal sebelumnya gateway memakai MAC yang berbeda. Pelacakan port switch membawa mereka ke ruang rapat, tempat sebuah komputer mini tersambung ke colokan LAN di bawah meja. Perangkat itu menjalankan alat ARP spoofing yang terus mengirim ARP Reply palsu ke komputer karyawan dan ke gateway, sehingga semua traffic melewatinya. Karena salah satu aplikasi internal masih memakai HTTP biasa, cookie sesi login karyawan dapat terbaca. Tim IT mencabut perangkat, mengganti kata sandi dan sesi yang mungkin bocor, lalu mengaktifkan DHCP Snooping dan Dynamic ARP Inspection di switch.",
+        "lesson": "ARP spoofing hanya butuh akses ke jaringan lokal yang sama, misalnya colokan LAN yang dibiarkan aktif. Pelajarannya: 1) nonaktifkan port LAN yang tidak dipakai dan terapkan kontrol akses jaringan; 2) aktifkan DHCP Snooping dan Dynamic ARP Inspection pada switch yang mendukung; 3) wajibkan HTTPS untuk semua aplikasi internal, agar traffic yang sempat dialihkan tetap tidak bisa dibaca; 4) pantau perubahan pemetaan IP–MAC, terutama untuk alamat gateway."
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1557/002/ - MITRE ATT&CK — T1557.002: Adversary-in-the-Middle — ARP Cache Poisoning",
-        "https://csrc.nist.gov/pubs/sp/800/94/final - NIST SP 800-94 — ARP Poisoning Detection via IDPS"
+        "https://attack.mitre.org/techniques/T1557/002/ - MITRE ATT&CK — T1557.002: ARP Cache Poisoning",
+        "https://csrc.nist.gov/pubs/sp/800/94/final - NIST SP 800-94 — Guide to Intrusion Detection and Prevention Systems (IDPS)",
+        "https://csrc.nist.gov/pubs/sp/800/115/final - NIST SP 800-115 — Technical Guide to Information Security Testing and Assessment"
       ]
     },
     "4": {
       "subtitle": "DNS Spoofing",
-      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Ketika peta digital Anda dipalsukan, Anda dapat dengan yakin berjalan ke arah yang salah — dan DNS Spoofing adalah seni memalsukan peta tersebut tanpa Anda sadari.",
       "definition": "DNS Spoofing (juga dikenal sebagai DNS Cache Poisoning) adalah serangan di mana penyerang menyisipkan record DNS palsu ke dalam cache resolver DNS, sehingga ketika pengguna mencoba mengakses domain sah (misalnya 'bank.com'), mereka diarahkan ke alamat IP yang dikendalikan penyerang (misalnya server phishing). Teknik ini mengeksploitasi kelemahan dalam protokol DNS yang tidak memiliki autentikasi bawaan: resolver DNS menerima dan menyimpan respons dari server mana pun yang merespons lebih dulu, tanpa memverifikasi keaslian sumber. Hasilnya, pengguna yang tidak curiga dapat dengan yakin mengetik URL yang benar di browser, namun tetap diarahkan ke website tiruan yang dirancang untuk mencuri kredensial atau menyebarkan malware.",
       "sections": [
@@ -206,23 +271,34 @@
           "content": [
             "DNSSEC (DNS Security Extensions) adalah solusi standar industri untuk autentikasi DNS. DNSSEC menambahkan tanda tangan digital (RRSIG records) pada respons DNS, memungkinkan resolver untuk memverifikasi bahwa respons benar-benar berasal dari authoritative server dan tidak dimodifikasi dalam transit. Implementasi DNSSEC memerlukan konfigurasi pada sisi authoritative nameserver (untuk menandatangani zone) dan resolver (untuk memvalidasi tanda tangan). Meski adopsi global masih bertahap, banyak registrar dan ISP besar sudah mendukung DNSSEC.",
             "DoH (DNS over HTTPS) dan DoT (DNS over TLS) mengenkripsi traffic DNS antara klien dan resolver, mencegah sniffing dan manipulasi oleh pihak ketiga di jaringan. DoH membungkus query DNS dalam request HTTPS, sehingga traffic DNS terlihat seperti traffic web biasa dan sulit diblokir atau dimodifikasi. DoT menggunakan TLS dedicated port (853) untuk enkripsi DNS. Keduanya melindungi dari spoofing pada 'last mile' (jaringan lokal atau ISP), tetapi tetap bergantung pada kepercayaan terhadap resolver yang dipilih (misalnya Cloudflare, Google, atau quad9).",
-            "Hardening lokal juga penting: pastikan router rumah menggunakan firmware terbaru dan password yang kuat, nonaktifkan DNS rebinding protection jika tidak diperlukan, dan pertimbangkan menggunakan public DNS yang mendukung DNSSEC dan filtering malware (seperti Cloudflare 1.1.1.2 atau Quad9 9.9.9.9). Di level enterprise, implementasi DNS firewall atau threat intelligence feed dapat memblokir resolusi ke domain yang diketahui malicious sebelum mencapai endpoint pengguna."
+            "Hardening lokal juga penting: pastikan router rumah memakai firmware terbaru dan password admin yang kuat, nonaktifkan pengelolaan router dari internet, dan aktifkan perlindungan DNS rebinding bila tersedia. Periksa juga secara berkala apakah pengaturan DNS di router dan komputer masih sesuai dengan yang Anda pilih. Pertimbangkan memakai DNS publik yang mendukung validasi DNSSEC dan penyaringan domain berbahaya (seperti Cloudflare 1.1.1.2 atau Quad9 9.9.9.9). Di level perusahaan, DNS firewall atau threat intelligence feed dapat memblokir domain berbahaya sebelum mencapai pengguna, sesuai panduan NIST SP 800-81 Rev.3."
           ]
         }
       ],
       "case_study": {
-        "title": "Kampanye DNS Spoofing Targeting Nasabah Bank Digital Indonesia 2023",
-        "story": "Pada akhir 2023, OJK dan BSSN mengidentifikasi kampanye DNS spoofing yang menargetkan nasabah beberapa bank digital di Indonesia. Penyerang mengkompromi router rumah korban melalui eksploitasi CVE pada firmware lama (seperti CVE-2021-44142 pada beberapa model TP-Link), lalu mengubah pengaturan DNS resolver lokal ke server DNS jahat yang mereka kendalikan. Server ini dikonfigurasi untuk mengembalikan IP server phishing untuk domain bank target. Nasabah yang mengakses aplikasi web banking diarahkan ke halaman login palsu yang identik dengan aslinya. Kampanye ini sangat efektif karena tidak memerlukan interaksi korban selain mengakses banking seperti biasa — tidak ada email phishing atau tautan mencurigakan yang perlu diklik. Diperkirakan lebih dari 5.000 nasabah terpapar, dengan ratusan kasus kehilangan dana yang dilaporkan. Insiden ini memicu rekomendasi dari OJK agar bank mengimplementasi certificate pinning dan multi-factor authentication yang tidak bergantung pada SMS.",
-        "lesson": "Kasus ini menunjukkan bahwa pertahanan terkuat pun dapat dikalahkan jika rantai kepercayaan terputus di titik yang tidak terduga (router rumah). Pelajaran kritis: 1) Selalu update firmware router dan ganti password default, 2) Gunakan DNS resolver yang mendukung DNSSEC dan filtering (seperti 1.1.1.2 atau 9.9.9.9), 3) Pastikan aplikasi banking menggunakan certificate pinning untuk memverifikasi keaslian server, 4) Aktifkan MFA yang tidak bergantung pada SMS (seperti authenticator app atau biometric), 5) Waspadai perubahan perilaku browser: jika situs banking meminta login ulang tiba-tiba atau tampilan SSL warning muncul, segera tutup dan verifikasi melalui kanal resmi."
+        "type": "nyata",
+        "title": "Operation Ghost Click: Malware DNSChanger Membelokkan Jutaan Komputer (FBI, 2011)",
+        "story": "Pada November 2011, FBI mengumumkan Operation Ghost Click, yang membongkar jaringan kejahatan siber di balik malware DNSChanger. Enam warga negara Estonia ditangkap di Estonia dan didakwa di Amerika Serikat. Menurut FBI, malware ini menginfeksi sekitar 4 juta komputer di lebih dari 100 negara, termasuk sekitar 500.000 di AS. DNSChanger mengubah pengaturan DNS di komputer korban agar memakai server DNS jahat milik pelaku. Akibatnya, ketika korban mengetik alamat situs yang benar, server DNS palsu itu bisa mengarahkan mereka ke situs lain atau mengganti iklan yang tampil, sehingga pelaku meraup setidaknya 14 juta dolar AS dari penipuan iklan. Karena jutaan komputer bergantung pada server DNS jahat tersebut, pengadilan memerintahkan Internet Systems Consortium mengoperasikan server DNS pengganti yang bersih sementara waktu, agar korban tidak langsung kehilangan akses internet. Server sementara itu dimatikan pada 9 Juli 2012, dan pengguna diminta memeriksa serta membersihkan komputernya.",
+        "lesson": "DNS spoofing tidak selalu memerlukan teknik canggih seperti menebak transaction ID; cukup mengubah pengaturan DNS di perangkat korban. Pelajarannya: 1) periksa secara berkala pengaturan DNS di komputer dan router; 2) jaga perangkat tetap diperbarui dan gunakan antivirus untuk mencegah malware; 3) DNSSEC serta DoH/DoT ke resolver terpercaya membantu memastikan jawaban DNS yang diterima benar-benar asli.",
+        "sources": [
+          {
+            "label": "FBI — Operation Ghost Click: International Cyber Ring That Infected Millions of Computers Dismantled",
+            "url": "https://www.fbi.gov/resolveuid/b66842144e004375aa7c1cdf43d0b28c"
+          },
+          {
+            "label": "SANS Internet Storm Center (9 Nov 2011) — Operation Ghost Click",
+            "url": "https://isc.sans.edu/diary.html?date=2011-11-09"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1557/ - MITRE ATT&CK — T1557.003: Adversary-in-the-Middle — DHCP Spoofing / DNS",
-        "https://csrc.nist.gov/pubs/sp/800/81/2/final - NIST SP 800-81 Rev.2 — Secure Domain Name System (DNS) Deployment Guide"
+        "https://csrc.nist.gov/pubs/sp/800/81/r3/final - NIST SP 800-81 Rev.3 (2026) — Secure Domain Name System (DNS) Deployment Guide",
+        "https://attack.mitre.org/techniques/T1584/002/ - MITRE ATT&CK — T1584.002: Compromise Infrastructure — DNS Server",
+        "https://attack.mitre.org/techniques/T1557/ - MITRE ATT&CK — T1557: Adversary-in-the-Middle"
       ]
     },
     "5": {
       "subtitle": "Man-in-the-Middle (MITM)",
-      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Dalam komunikasi digital, kepercayaan adalah mata uang paling berharga — dan Man-in-the-Middle adalah seni mencuri kepercayaan itu tanpa meninggalkan jejak.",
       "definition": "Man-in-the-Middle (MITM) adalah kategori serangan di mana penyerang secara diam-diam menyisipkan diri di antara dua pihak yang berkomunikasi, mampu menyadap, memodifikasi, atau menyuntikkan data ke dalam sesi komunikasi tanpa sepengetahuan kedua belah pihak. Berbeda dengan serangan pasif seperti packet sniffing, MITM adalah serangan aktif yang memerlukan posisi strategis dalam jalur komunikasi — baik melalui eksploitasi protokol jaringan (ARP spoofing, DNS spoofing), kompromi infrastruktur (rogue access point, compromised router), atau rekayasa sosial (fake certificate, SSL stripping). MITM bukan sekadar 'mendengarkan', tetapi 'mengendalikan' komunikasi, menjadikannya salah satu teknik paling berbahaya dalam arsenal penyerang siber.",
       "sections": [
@@ -239,32 +315,39 @@
           "content": [
             "MITM tidak terbatas pada jaringan tradisional. Browser-based MITM mengeksploitasi ekstensi browser yang malicious atau kompromi untuk menyuntikkan script ke halaman web yang dikunjungi pengguna — bahkan jika koneksi HTTPS valid. Teknik ini dikenal sebagai 'browser-in-the-middle' dan menjadi ancaman signifikan bagi aplikasi web banking yang bergantung pada keamanan klien.",
             "Cloud-based MITM muncul dengan adopsi arsitektur hybrid dan multi-cloud. Jika penyerang mengkompromi service mesh, API gateway, atau load balancer di lingkungan cloud, mereka dapat menyadap atau memodifikasi traffic antar microservices — bahkan jika traffic dienkripsi dalam transit. Serangan seperti 'sidecar compromise' pada Kubernetes atau 'metadata service abuse' pada AWS/GCP/Azure dapat memberikan posisi MITM tanpa perlu akses ke jaringan fisik.",
-            "Varian paling canggih adalah 'quantum MITM' yang memanfaatkan kelemahan dalam implementasi kriptografi post-quantum atau eksploitasi side-channel attacks untuk mengekstrak kunci enkripsi. Meski masih dalam tahap penelitian, teknik ini menunjukkan bahwa bahkan enkripsi terkuat pun dapat dikalahkan jika implementasinya lemah atau jika penyerang memiliki akses fisik ke perangkat."
+            "Varian yang kini paling sering dipakai penjahat adalah Adversary-in-the-Middle (AiTM) phishing. Penyerang memasang situs proxy di antara korban dan situs login asli. Korban melihat halaman login yang benar-benar berfungsi dan memasukkan password serta kode MFA, sementara proxy meneruskan semuanya ke situs asli dan mencuri cookie sesi yang dihasilkan. Dengan cookie itu, penyerang bisa masuk tanpa perlu password atau MFA lagi. Karena itu, metode MFA yang tahan phishing seperti passkey atau kunci keamanan FIDO2 jauh lebih aman daripada OTP biasa."
           ]
         },
         {
           "title": "Pertahanan Komprehensif: Certificate Pinning, HSTS, dan Zero Trust",
           "content": [
-            "Certificate pinning adalah teknik di mana aplikasi atau browser 'mengunci' sertifikat yang diharapkan untuk domain tertentu, dan menolak koneksi jika sertifikat yang diterima tidak cocok. Ini mencegah MITM menggunakan sertifikat palsu yang ditandatangani oleh CA sah. Implementasi dapat dilakukan via HPKP (HTTP Public Key Pinning — kini deprecated), Expect-CT header, atau pinning di level aplikasi mobile (seperti di aplikasi banking).",
-            "HSTS (HTTP Strict Transport Security) memaksa browser untuk selalu menggunakan HTTPS untuk domain tertentu, mencegah SSL stripping attack. Header 'Strict-Transport-Security' dengan directive 'includeSubDomains' dan 'preload' memastikan bahwa bahkan permintaan HTTP pertama kali pun di-upgrade ke HTTPS sebelum dikirim. Implementasi HSTS harus disertai dengan monitoring untuk menghindari lockout akibat misconfigurasi.",
+            "Certificate pinning adalah teknik di mana aplikasi 'mengunci' sertifikat atau kunci publik yang diharapkan untuk domain tertentu, dan menolak koneksi jika sertifikat yang diterima tidak cocok. Ini mencegah MITM yang memakai sertifikat palsu, termasuk sertifikat dari root CA palsu yang diam-diam dipasang di perangkat. Saat ini pinning terutama dilakukan di level aplikasi mobile, misalnya aplikasi perbankan. Mekanisme lama di browser seperti HPKP dan header Expect-CT sudah ditinggalkan (deprecated), dan browser kini mengandalkan Certificate Transparency.",
+            "HSTS (HTTP Strict Transport Security, RFC 6797) memaksa browser untuk selalu memakai HTTPS untuk domain tertentu, sehingga mencegah serangan SSL stripping. Header 'Strict-Transport-Security' dengan directive 'includeSubDomains', ditambah pendaftaran ke daftar HSTS preload, memastikan bahwa bahkan kunjungan pertama pun langsung memakai HTTPS. Penerapannya perlu diuji dengan hati-hati agar subdomain yang belum mendukung HTTPS tidak ikut terkunci.",
             "Zero Trust Architecture mengasumsikan bahwa jaringan sudah dikompromi dan tidak mempercayai traffic berdasarkan lokasi (inside/outside perimeter). Setiap permintaan harus diautentikasi, diotorisasi, dan dienkripsi — terlepas dari apakah berasal dari dalam atau luar jaringan korporat. Implementasi Zero Trust memerlukan identitas yang kuat (MFA, certificate-based auth), enkripsi end-to-end, dan continuous monitoring untuk mendeteksi anomali perilaku. Framework seperti NIST SP 800-207 atau Google BeyondCorp menyediakan panduan praktis untuk adopsi Zero Trust."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan MITM pada Aplikasi Mobile Banking via Rogue AP di Mall Jakarta 2024",
-        "story": "Pada Februari 2024, tim keamanan sebuah bank besar di Indonesia mendeteksi sesi login mencurigakan yang berasal dari lokasi geografis yang tidak konsisten. Investigasi mengungkap bahwa penyerang telah memasang rogue access point dengan nama 'FreeMall-WiFi' di area food court sebuah mall besar di Jakarta. AP ini dikonfigurasi dengan SSL stripping dan certificate injection: ketika korban terhubung dan mencoba mengakses aplikasi banking, traffic HTTPS di-downgrade ke HTTP, dan sertifikat palsu yang ditandatangani oleh root CA palsu (yang diinstal via malware sebelumnya) digunakan untuk mempertahankan ilusi koneksi aman. Penyerang berhasil mencuri kredensial dan OTP dari 47 korban dalam 3 hari sebelum terdeteksi. Total kerugian mencapai 4,2 miliar rupiah. Insiden ini memicu kolaborasi antara bank, pengelola mall, dan BSSN untuk melakukan audit keamanan WiFi publik dan kampanye kesadaran pengguna.",
-        "lesson": "Kasus ini mengajarkan bahwa serangan MITM modern sering menggabungkan multiple vektor: rogue AP untuk posisi strategis, SSL stripping untuk bypass enkripsi, dan malware untuk instalasi root certificate palsu. Pertahanan berlapis adalah kunci: 1) Pengguna: hindari transaksi sensitif di WiFi publik, selalu verifikasi indikator HTTPS (gembok hijau), dan jangan instal certificate dari sumber tidak dikenal. 2) Developer aplikasi: implementasi certificate pinning, deteksi root/jailbreak, dan MFA yang tidak bergantung pada SMS. 3) Pengelola venue: implementasi captive portal dengan autentikasi dua faktor, client isolation, dan monitoring untuk rogue AP. 4) Bank: terapkan behavioral analytics untuk mendeteksi login dari lokasi/device yang tidak biasa secara real-time."
+        "type": "nyata",
+        "title": "Superfish di Laptop Lenovo: MITM yang Sudah Terpasang dari Pabrik (FTC, 2017)",
+        "story": "Mulai Agustus 2014, Lenovo menjual laptop yang sudah dipasangi perangkat lunak iklan VisualDiscovery buatan Superfish, Inc. Menurut Komisi Perdagangan Federal AS (FTC), perangkat lunak ini bekerja sebagai 'man-in-the-middle' di antara browser pengguna dan situs web yang dikunjungi, termasuk situs yang terenkripsi HTTPS, untuk menyisipkan iklan. Agar bisa membaca traffic terenkripsi, VisualDiscovery mengganti sertifikat digital asli milik situs dengan sertifikat yang ditandatanganinya sendiri, tanpa memeriksa dengan benar apakah sertifikat asli situs tersebut valid. FTC juga menyebut perangkat lunak itu memakai kata sandi yang sama dan mudah dibobol di semua laptop yang terdampak, sehingga penyerang lain dapat memanfaatkannya untuk menyadap koneksi pengguna. Perangkat lunak ini terpasang di ratusan ribu laptop. Pada September 2017, Lenovo menyelesaikan tuntutan FTC dan 32 jaksa agung negara bagian; salah satu kewajibannya adalah menjalankan program keamanan perangkat lunak yang diaudit pihak ketiga selama 20 tahun.",
+        "lesson": "Kasus ini membuktikan bahwa MITM tidak selalu datang dari hacker di Wi-Fi publik; bisa juga dari perangkat lunak yang terpasang di perangkat itu sendiri. Pelajarannya: 1) waspadai perangkat lunak yang meminta memasang sertifikat root atau 'memeriksa' traffic HTTPS; 2) periksa daftar sertifikat tepercaya di perangkat bila ada peringatan atau perilaku aneh; 3) aplikasi penting seperti mobile banking sebaiknya memakai certificate pinning agar tidak tertipu sertifikat palsu.",
+        "sources": [
+          {
+            "label": "FTC (5 Sep 2017) — Lenovo Settles FTC Charges It Harmed Consumers With Preinstalled Software",
+            "url": "https://www.ftc.gov/news-events/press-releases/2017/09/lenovo-settles-ftc-charges-it-harmed-consumers-preinstalled"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1557/ - MITRE ATT&CK — T1557: Adversary-in-the-Middle (Full Technique)",
-        "https://csrc.nist.gov/pubs/sp/800/115/final - NIST SP 800-115 — MITM Testing & Detection",
-        "https://www.mdpi.com/2624-800X/5/2/27 - MDPI JCP (2025) — Advanced Persistent Threats and WLAN (MITM Section)"
+        "https://attack.mitre.org/techniques/T1557/ - MITRE ATT&CK — T1557: Adversary-in-the-Middle",
+        "https://www.rfc-editor.org/rfc/rfc6797 - IETF RFC 6797 — HTTP Strict Transport Security (HSTS)",
+        "https://csrc.nist.gov/pubs/sp/800/207/final - NIST SP 800-207 — Zero Trust Architecture",
+        "https://www.mdpi.com/2624-800X/5/2/27 - Alamleh dkk. (2025), Journal of Cybersecurity and Privacy 5(2):27 — APT and WLAN Security [DOI: 10.3390/jcp5020027]"
       ]
     },
     "6": {
       "subtitle": "Session Hijacking",
-      "categories": ["Serangan Jaringan", "Serangan Identitas"],
       "quote": "Ketika kunci sesi Anda dicuri, pintu digital Anda terbuka lebar — dan Session Hijacking adalah seni mencuri kunci itu tanpa perlu mengetahui password aslinya.",
       "definition": "Session Hijacking (juga dikenal sebagai cookie stealing atau sidejacking) adalah teknik serangan di mana penyerang mengambil alih sesi autentikasi yang sudah valid dari pengguna sah, memungkinkan akses ke akun atau aplikasi tanpa perlu mengetahui kredensial login (username/password). Teknik ini mengeksploitasi fakta bahwa banyak aplikasi web mempertahankan status login menggunakan token sesi (biasanya dalam bentuk cookie HTTP) yang dikirim dengan setiap permintaan setelah login awal. Jika token ini dapat dicuri — melalui packet sniffing, XSS, MITM, atau malware — penyerang dapat 'menyamar' sebagai pengguna sah dengan menyertakan token yang dicuri dalam permintaan mereka, melewati seluruh proses autentikasi.",
       "sections": [
@@ -289,18 +372,37 @@
           "content": [
             "Secure cookie flags adalah pertahanan pertama yang harus diimplementasikan developer: 1) 'Secure' flag memastikan cookie hanya dikirim via HTTPS, mencegah sniffing pada koneksi tidak aman. 2) 'HttpOnly' flag mencegah akses JavaScript ke cookie, memitigasi XSS-based theft. 3) 'SameSite' flag (Strict/Lax) membatasi pengiriman cookie ke situs asal, mencegah CSRF dan beberapa varian hijacking. Implementasi yang benar memerlukan konfigurasi di level server (Express.js, Django, Spring, dll).",
             "Session management best practices meliputi: 1) Regenerasi session ID setelah login sukses (mencegah session fixation), 2) Timeout sesi yang pendek untuk aktivitas sensitif (misalnya 15 menit untuk banking), 3) Invalidasi sesi di server saat logout, 4) Binding sesi ke atribut klien seperti User-Agent atau IP (dengan toleransi untuk NAT/mobile network). Namun, binding ke IP dapat bermasalah untuk pengguna mobile yang sering berganti jaringan.",
-            "Behavioral analytics dan risk-based authentication adalah lapisan pertahanan proaktif. Sistem memonitor pola penggunaan normal pengguna (lokasi, waktu, device fingerprint, kecepatan ketik) dan mendeteksi anomali yang mungkin mengindikasikan session hijacking. Jika risiko terdeteksi, sistem dapat meminta re-authentication, mengirim notifikasi, atau memblokir sesi secara otomatis. Tools seperti FingerprintJS atau perangkat komersial seperti Riskified menyediakan library untuk implementasi ini."
+            "Behavioral analytics dan risk-based authentication adalah lapisan pertahanan proaktif. Sistem mempelajari pola penggunaan normal (lokasi, waktu, perangkat, browser) dan mendeteksi anomali yang mungkin menandakan sesi dibajak, misalnya sesi yang sama tiba-tiba dipakai dari negara lain. Jika risiko terdeteksi, sistem dapat meminta login ulang, mengirim notifikasi, atau memutus sesi secara otomatis."
+          ]
+        },
+        {
+          "title": "Pass-the-Cookie: Mengapa MFA Saja Tidak Cukup",
+          "content": [
+            "MFA melindungi proses login, tetapi cookie sesi dibuat setelah login berhasil. Jika cookie itu dicuri, misalnya oleh malware pencuri data (infostealer) atau oleh situs phishing AiTM, penyerang dapat memasukkannya ke browser sendiri dan langsung masuk sebagai korban tanpa diminta password maupun kode MFA. Teknik ini disebut 'pass-the-cookie' dan tercatat dalam MITRE ATT&CK sebagai T1539 (Steal Web Session Cookie).",
+            "Pertahanannya berlapis: masa berlaku sesi yang wajar dan pencabutan sesi dari server saat ada aktivitas mencurigakan; meminta autentikasi ulang untuk tindakan sensitif seperti mengganti email, menarik dana, atau mengubah pengaturan keamanan; serta mendeteksi sesi yang tiba-tiba berpindah perangkat atau lokasi. Bagi pengguna, langkah terpentingnya adalah tidak menjalankan file dari sumber tidak jelas, karena satu file berbahaya bisa mencuri semua sesi login di browser sekaligus."
           ]
         }
       ],
       "case_study": {
-        "title": "Kampanye XSS + Session Hijacking Targeting Pengguna E-Commerce Indonesia 2024",
-        "story": "Pada pertengahan 2024, sebuah platform e-commerce besar di Indonesia menjadi target kampanye terkoordinasi yang menggabungkan XSS vulnerability dan session hijacking. Penyerang menemukan celah XSS reflected pada fitur pencarian produk, yang memungkinkan penyisipan script JavaScript malicious melalui URL. Script ini dieksekusi di browser korban yang mengklik tautan phishing (dikirim via WhatsApp dengan kedok 'promo eksklusif'), mencuri cookie sesi, dan mengirimkannya ke server penyerang. Dengan session ID yang dicuri, penyerang dapat mengakses akun korban, melihat riwayat pesanan, dan yang paling berbahaya: menggunakan fitur 'one-click checkout' dengan kartu kredit yang tersimpan untuk melakukan pembelian fiktif ke alamat pengiriman yang dikendalikan penyerang. Dalam 2 minggu, lebih dari 1.200 akun dikompromikan dengan total kerugian transaksi fiktif mencapai 3,8 miliar rupiah. Platform berhasil memitigasi dengan segera mempatch XSS vulnerability, mengimplementasi CSP header, dan memaksa re-authentication untuk semua sesi aktif.",
-        "lesson": "Kasus ini menunjukkan bahwa satu celah keamanan (XSS) dapat menjadi pintu masuk untuk serangan berantai yang jauh lebih merusak (session hijacking + financial fraud). Pelajaran kritis: 1) Developer: terapkan input sanitization dan output encoding di semua titik input pengguna, implementasi CSP header dengan policy yang ketat, dan audit keamanan rutin dengan tools seperti OWASP ZAP atau Burp Suite. 2) Platform: implementasi behavioral analytics untuk mendeteksi transaksi tidak biasa (misalnya pembelian dari lokasi/device baru dengan nilai tinggi), dan notifikasi real-time ke pengguna untuk aktivitas sensitif. 3) Pengguna: waspadai tautan mencurigakan bahkan dari kontak yang dikenal (WhatsApp mereka mungkin dikompromikan), gunakan password unik untuk setiap layanan, dan aktifkan MFA di mana tersedia."
+        "type": "nyata",
+        "title": "Firesheep (2010): Membajak Sesi Facebook dan Twitter di WiFi Publik dengan Satu Klik",
+        "story": "Pada Oktober 2010, peneliti keamanan Eric Butler merilis Firesheep, sebuah add-on untuk browser Firefox, di konferensi ToorCon di San Diego. Saat itu banyak situs besar seperti Facebook dan Twitter hanya mengenkripsi proses login, sedangkan cookie sesi yang dikirim sesudahnya berjalan tanpa enkripsi. Firesheep menangkap lalu lintas di jaringan yang sama, misalnya WiFi kafe yang terbuka, mengumpulkan cookie sesi milik pengguna lain, lalu menampilkannya sebagai daftar akun. Dengan satu klik, pemakai Firesheep bisa masuk ke akun orang lain tanpa mengetahui password-nya. Teknik session hijacking ini sebenarnya sudah lama dikenal; Firesheep membuatnya bisa dipakai siapa saja, dan karena itu memicu perhatian luas terhadap bahaya situs yang tidak memakai HTTPS di seluruh halamannya.",
+        "lesson": "Cookie sesi sama berharganya dengan password. Pelajarannya: 1) situs wajib memakai HTTPS di seluruh halaman, bukan hanya halaman login, dan menandai cookie sesi dengan atribut Secure dan HttpOnly; 2) HSTS mencegah browser kembali memakai HTTP; 3) di WiFi publik, pastikan situs memakai HTTPS dan pertimbangkan VPN tepercaya; 4) logout dari layanan penting setelah memakai jaringan umum agar sesi lama tidak bisa dipakai ulang.",
+        "sources": [
+          {
+            "label": "Krebs on Security (27 Okt 2010) — Firesheep: Baaaaad News for the Unwary",
+            "url": "https://krebsonsecurity.com/2010/10/firesheep-baaaaad-news-for-the-unwary/"
+          },
+          {
+            "label": "TechCrunch (24 Okt 2010) — Firesheep in wolves' clothing: app lets you hack into Twitter, Facebook accounts easily",
+            "url": "https://techcrunch.com/2010/10/24/firesheep-in-wolves-clothing-app-lets-you-hack-into-twitter-facebook-accounts-easily"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1563/ - MITRE ATT&CK — T1563: Remote Service Session Hijacking",
-        "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/06-Session_Management_Testing/09-Testing_for_Session_Hijacking - OWASP WSTG — Testing for Session Hijacking"
+        "https://attack.mitre.org/techniques/T1539/ - MITRE ATT&CK — T1539: Steal Web Session Cookie",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html - OWASP Cheat Sheet Series — Session Management",
+        "https://krebsonsecurity.com/2010/10/firesheep-baaaaad-news-for-the-unwary/ - Krebs on Security (Okt 2010) — Firesheep: Baaaaad News for the Unwary"
       ]
     }
   }

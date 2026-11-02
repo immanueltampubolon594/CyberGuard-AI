@@ -1,28 +1,54 @@
 {
   "slug": "ddos",
   "title": "DDoS / DoS Attack",
-  "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
+  "categories": [
+    "Serangan Jaringan",
+    "Sistem & Infrastruktur"
+  ],
   "navigation": [
-    { "id": 0, "label": "APA ITU DDOS / DOS ATTACK?", "icon": "ShieldAlert" },
-    { "id": 1, "label": "PING FLOOD & UDP FLOOD", "icon": "Zap" },
-    { "id": 2, "label": "HTTP FLOOD", "icon": "Globe" },
-    { "id": 3, "label": "SYN FLOOD", "icon": "Network" },
-    { "id": 4, "label": "SLOWLORIS ATTACK", "icon": "Timer" },
-    { "id": 5, "label": "BOTNET DDOS", "icon": "Server" }
+    {
+      "id": 0,
+      "label": "APA ITU DDOS / DOS ATTACK?",
+      "icon": "ShieldAlert"
+    },
+    {
+      "id": 1,
+      "label": "PING FLOOD & UDP FLOOD",
+      "icon": "Zap"
+    },
+    {
+      "id": 2,
+      "label": "HTTP FLOOD",
+      "icon": "Globe"
+    },
+    {
+      "id": 3,
+      "label": "SYN FLOOD",
+      "icon": "Network"
+    },
+    {
+      "id": 4,
+      "label": "SLOWLORIS ATTACK",
+      "icon": "Timer"
+    },
+    {
+      "id": 5,
+      "label": "BOTNET DDOS",
+      "icon": "Server"
+    }
   ],
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu DDoS / DoS Attack?",
-      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Di dunia digital, traffic yang seharusnya menjadi tanda kesuksesan bisnis bisa dengan mudah diubah menjadi senjata pemusnah massal oleh mereka yang berniat jahat.",
-      "definition": "Denial of Service (DoS) dan Distributed Denial of Service (DDoS) adalah serangan siber yang bertujuan untuk membuat layanan, server, atau jaringan tidak dapat diakses oleh pengguna yang sah. Serangan ini tidak dirancang untuk mencuri data atau membobol enkripsi, melainkan untuk melumpuhkan ketersediaan (availability) sistem. Dalam serangan DoS tradisional, satu komputer mengirimkan jutaan permintaan palsu ke server target hingga server tersebut kehabisan sumber daya dan crash. Namun, di era modern, serangan ini telah berevolusi menjadi DDoS, di mana penyerang menggunakan jaringan ribuan hingga jutaan komputer yang terinfeksi (botnet) untuk membanjiri target secara bersamaan dari berbagai penjuru dunia, membuat serangan ini hampir mustahil untuk dihentikan hanya dengan memblokir satu alamat IP.\n\nDampak dari serangan DDoS sangat merusak, terutama bagi bisnis yang bergantung pada ketersediaan online seperti e-commerce, perbankan, dan layanan kesehatan. Setiap menit downtime akibat DDoS dapat merugikan perusahaan puluhan hingga ratusan juta rupiah akibat hilangnya transaksi, rusaknya reputasi, dan biaya pemulihan infrastruktur. Lebih berbahaya lagi, DDoS sering digunakan sebagai 'tabir asap' (smokescreen) oleh peretas canggih; sementara tim IT sibuk menangani lonjakan traffic yang melumpuhkan server, peretas diam-diam menyusup ke celah keamanan lain untuk mencuri data sensitif atau menanamkan ransomware.",
+      "definition": "Denial of Service (DoS) dan Distributed Denial of Service (DDoS) adalah serangan siber yang bertujuan untuk membuat layanan, server, atau jaringan tidak dapat diakses oleh pengguna yang sah. Serangan ini tidak dirancang untuk mencuri data atau membobol enkripsi, melainkan untuk melumpuhkan ketersediaan (availability) sistem. Dalam serangan DoS tradisional, satu komputer mengirimkan jutaan permintaan palsu ke server target hingga server tersebut kehabisan sumber daya dan crash. Namun, di era modern, serangan ini telah berevolusi menjadi DDoS, di mana penyerang menggunakan jaringan ribuan hingga jutaan komputer yang terinfeksi (botnet) untuk membanjiri target secara bersamaan dari berbagai penjuru dunia, membuat serangan ini hampir mustahil untuk dihentikan hanya dengan memblokir satu alamat IP.\n\nDampak DDoS paling terasa bagi layanan yang harus selalu tersedia, seperti e-commerce, perbankan, layanan publik, dan game online. Selama serangan berlangsung, transaksi gagal, pelanggan kecewa, dan tim IT harus bekerja di bawah tekanan. Panduan bersama CISA, FBI, dan MS-ISAC (2024) juga mengingatkan bahwa DDoS bisa dipakai sebagai pengalih perhatian: saat tim sibuk memulihkan layanan, penyerang dapat mencoba menyusup lewat celah lain. Karena itu, DDoS perlu ditangani sebagai insiden keamanan, bukan sekadar 'server sedang lambat'.",
       "sections": [
         {
           "title": "Mengapa DDoS Menjadi Ancaman yang Sangat Berbahaya?",
           "content": [
             "Serangan DDoS mengeksploitasi kelemahan fundamental dari arsitektur internet yang dibangun di atas prinsip kepercayaan dan keterbukaan. Protokol jaringan seperti TCP/IP pada dasarnya tidak memiliki mekanisme bawaan untuk memverifikasi apakah permintaan koneksi berasal dari pengguna asli atau dari mesin yang dikendalikan oleh peretas. Penyerang dapat dengan mudah memalsukan (spoofing) alamat IP pengirim, membuat pelacakan asal-usul serangan menjadi sangat sulit dan memakan waktu, sementara server korban terus kewalahan menangani permintaan palsu tersebut.",
             "Motivasi di balik serangan DDoS sangat beragam, mulai dari hacktivism (protes politik), persaingan bisnis yang tidak sehat, pemerasan (extortion), hingga cyber warfare antar negara. Kelompok hacktivist seperti Killnet atau Anonymous sering menggunakan DDoS untuk melumpuhkan situs web pemerintah atau institusi keuangan sebagai bentuk protes terhadap kebijakan tertentu. Di sisi lain, sindikat kejahatan terorganisir akan meluncurkan serangan DDoS singkat ke situs e-commerce atau kasino online, lalu mengirimkan email pemerasan yang menuntut pembayaran dalam bentuk cryptocurrency jika korban tidak ingin server mereka dilumpuhkan selama musim belanja sibuk.",
-            "Ketersediaan layanan DDoS-for-hire atau yang dikenal sebagai 'Booter' dan 'Stresser' di dark web dan Telegram telah mendemokratisasi serangan siber ini. Siapa saja, bahkan seorang remaja tanpa keahlian teknis, dapat menyewa botnet raksasa seharga 10 dolar AS untuk melumpuhkan server sekolah, situs web kompetitor game online, atau bahkan infrastruktur rumah sakit. Kemudahan akses ini membuat volume serangan DDoS global meningkat secara eksponensial setiap tahunnya, dengan ukuran serangan yang kini rutin mencapai ratusan Gigabit hingga Terabit per detik."
+            "Layanan DDoS-for-hire yang dikenal sebagai 'booter' atau 'stresser' membuat serangan ini bisa dilakukan oleh orang tanpa keahlian teknis. Pelaku cukup mendaftar, membayar paket langganan, lalu memasukkan alamat target. Europol mencatat bahwa satu situs booter yang ditutup dalam Operasi PowerOFF (Desember 2022) telah dipakai untuk lebih dari 30 juta serangan. Skalanya juga terus naik: Cloudflare melaporkan memitigasi 8,3 juta serangan DDoS pada kuartal III 2025 saja, atau sekitar 3.780 serangan per jam."
           ]
         },
         {
@@ -42,22 +68,41 @@
             "4. Slowloris Attack - Serangan 'low-and-slow' yang menggunakan sangat sedikit bandwidth namun menjaga koneksi tetap terbuka selama mungkin, melumpuhkan server web yang tidak dikonfigurasi untuk menangani koneksi idle.",
             "5. Botnet DDoS - Mesin penggerak di balik serangan masif modern, memanfaatkan jutaan perangkat IoT yang diretas seperti CCTV dan router rumahan untuk membentuk pasukan zombie digital."
           ]
+        },
+        {
+          "title": "Langkah Respons Saat Terkena DDoS (Panduan CISA–FBI–MS-ISAC)",
+          "content": [
+            "Sebelum serangan: kenali pola traffic normal (baseline) agar lonjakan aneh cepat terlihat, siapkan rencana respons insiden beserta daftar kontak ISP atau penyedia hosting, dan pertimbangkan layanan mitigasi DDoS atau CDN. Firewall sebaiknya sudah diberi rate limit, sistem selalu di-patch, dan CAPTCHA disiapkan untuk membedakan manusia dari bot.",
+            "Saat serangan: pastikan dulu bahwa ini benar serangan, bukan lonjakan pengunjung yang wajar. Setelah itu, jalankan rencana respons, hubungi ISP atau penyedia hosting untuk memfilter traffic, aktifkan layanan mitigasi, dan kumpulkan bukti seperti waktu kejadian, alamat IP, serta rekaman paket (packet capture).",
+            "Setelah serangan: ukur dampaknya, pulihkan layanan, analisis cara serangan bekerja, lalu perbarui kontrol keamanan dan rencana respons. Laporkan insiden ke pihak berwenang. Di Indonesia, insiden siber dapat dilaporkan ke BSSN atau ke Direktorat Tindak Pidana Siber Bareskrim Polri (patrolisiber.id)."
+          ]
         }
       ],
       "case_study": {
-        "title": "Serangan DDoS Dyn DNS 2016: Internet Lumpuh oleh Mirai Botnet",
-        "story": "Pada bulan Oktober 2016, pengguna internet di Amerika Serikat dan Eropa mengalami gangguan masif ketika situs-situs raksasa seperti Twitter, Netflix, Reddit, Spotify, dan GitHub tiba-tiba tidak dapat diakses. Serangan ini tidak menargetkan situs-situs tersebut secara langsung, melainkan menargetkan Dyn, sebuah penyedia layanan DNS (Domain Name System) terkemuka yang digunakan oleh perusahaan-perusahaan tersebut. Serangan DDoS volumetrik ini mencapai puncak 1.2 Terabit per detik, sebuah angka yang belum pernah dilihat sebelumnya pada masa itu. Investigasi mengungkapkan bahwa serangan diluncurkan oleh Botnet Mirai, yang terdiri dari ratusan ribu perangkat IoT seperti kamera keamanan IP dan DVR yang diretas menggunakan password default pabrik. Pembuat Mirai, yang ternyata adalah tiga orang mahasiswa, melepaskan kode sumber malware tersebut ke internet, memicu lahirnya puluhan varian botnet baru yang terus meneror infrastruktur internet hingga hari ini.",
-        "lesson": "Serangan DDoS tidak selalu menargetkan Anda secara langsung; menyerang penyedia layanan pihak ketiga (supply chain) yang Anda andalkan bisa sama fatalnya. Kasus ini juga menyoroti bahaya luar biasa dari perangkat IoT yang tidak aman. Produsen perangkat keras wajib menghapus password default dan memaksa pengguna membuat kredensial unik saat setup awal. Bagi perusahaan, mengandalkan satu penyedia DNS adalah single point of failure; menggunakan arsitektur DNS multi-provider dan layanan mitigasi DDoS berbasis Anycast adalah keharusan untuk memastikan ketahanan bisnis di era di mana serangan berukuran Terabit menjadi hal yang lumrah."
+        "type": "nyata",
+        "title": "Indonesia Jadi Sumber Serangan DDoS Terbesar di Dunia dan Rekor 29,7 Tbps dari Botnet Aisuru (2025)",
+        "story": "Dalam DDoS Threat Report kuartal III 2025, Cloudflare melaporkan bahwa Indonesia menjadi sumber serangan DDoS terbesar di dunia, dan sudah menempati posisi pertama selama setahun penuh sejak kuartal III 2024. Porsi permintaan HTTP DDoS yang berasal dari Indonesia tumbuh sekitar 31.900% dalam lima tahun. Penting dipahami: 'sumber' berarti lokasi alamat IP yang mengirim traffic serangan. Artinya, banyak perangkat di Indonesia, seperti router, server, atau perangkat IoT yang tidak aman, yang ikut dimanfaatkan untuk menyerang, sering kali tanpa disadari pemiliknya. Pada laporan yang sama, Cloudflare mencatat rekor dunia saat itu, yaitu serangan 29,7 Tbps dan 14,1 miliar paket per detik dari botnet Aisuru, yang diperkirakan terdiri dari 1–4 juta perangkat terinfeksi. Meski sangat besar, 89% serangan lapisan jaringan selesai dalam waktu kurang dari 10 menit, terlalu cepat untuk ditangani secara manual.",
+        "lesson": "Kasus ini menunjukkan bahwa DDoS bukan hanya urusan perusahaan besar di luar negeri. Perangkat di rumah dan kantor di Indonesia bisa menjadi bagian dari 'pasukan' penyerang. Pelajarannya: 1) ganti password bawaan router dan perangkat IoT, serta rutin perbarui firmware; 2) organisasi perlu mitigasi otomatis yang selalu aktif, karena kebanyakan serangan berlangsung sangat singkat; 3) pantau traffic keluar dari jaringan sendiri, karena perangkat yang terinfeksi juga menjadi tanggung jawab pemiliknya.",
+        "sources": [
+          {
+            "label": "Cloudflare (2025) — DDoS Threat Report for 2025 Q3",
+            "url": "https://blog.cloudflare.com/ddos-threat-report-2025-q3/"
+          },
+          {
+            "label": "CNBC Indonesia (9 Des 2025) — Indonesia Negara Nomor 1, Sarang Hacker Terbesar di Dunia",
+            "url": "https://www.cnbcindonesia.com/tech/20251209123148-37-692473/indonesia-negara-nomor-1-sarang-hacker-terbesar-di-dunia"
+          }
+        ]
       },
       "references": [
-        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10422513/ - PMC/MDPI Sensors (2023) — High-Speed Network DDoS Attack Detection: A Survey [DOI: 10.3390/s23156850]",
-        "https://www.cisa.gov/topics/cyber-threats-and-advisories/distributed-denial-service - CISA — DDoS Quick Guide (Official Government Resource)",
-        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange: Mitigating DDoS"
+        "https://www.cisa.gov/sites/default/files/2024-03/UPDATED_Joint-DDoS_Guide_03192024_508c%20%281%29.pdf - CISA, FBI & MS-ISAC (Mar 2024) — Understanding and Responding to Distributed Denial-of-Service Attacks v2.0",
+        "https://blog.cloudflare.com/ddos-threat-report-2025-q3/ - Cloudflare — DDoS Threat Report 2025 Q3",
+        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange: BGP Security and DDoS Mitigation",
+        "https://attack.mitre.org/techniques/T1498/ - MITRE ATT&CK — T1498: Network Denial of Service"
       ]
     },
     "1": {
       "subtitle": "Ping Flood & UDP Flood",
-      "categories": ["Serangan Jaringan"],
       "quote": "Ketika bandwidth jaringan Anda dibanjiri oleh tsunami data sampah, tidak ada permintaan sah yang bisa melewati pintu masuk.",
       "definition": "Ping Flood (ICMP Flood) dan UDP Flood adalah bentuk serangan DDoS volumetrik yang bertujuan untuk menjenuhkan seluruh kapasitas bandwidth jaringan target. Dalam serangan ini, penyerang mengirimkan jutaan paket data ke server korban secepat mungkin, menciptakan kemacetan jaringan yang parah. Karena pipa internet yang menghubungkan server ke dunia luar sepenuhnya tersumbat oleh traffic serangan, pengguna asli tidak dapat mengirim atau menerima data, mengakibatkan downtime total. Meskipun terdengar sederhana, serangan ini sangat efektif dan sering diperkuat menggunakan teknik 'Amplification' yang memungkinkan penyerang dengan bandwidth kecil untuk menghasilkan serangan berukuran raksasa.",
       "sections": [
@@ -73,32 +118,44 @@
           "title": "Senjata Mematikan: Amplification dan Reflection Attacks",
           "content": [
             "Amplification attack exploiting protokol UDP yang tidak memerlukan handshake atau verifikasi alamat IP pengirim. Penyerang memalsukan (spoof) alamat IP pengirim pada paket permintaan sehingga terlihat seolah-olah berasal dari IP korban. Permintaan ini kemudian dikirim ke server publik yang rentan, seperti server DNS, NTP (Network Time Protocol), atau Memcached. Server publik tersebut akan memproses permintaan dan mengirimkan balasan yang ukurannya berkali-kali lipat lebih besar langsung ke IP korban.",
-            "DNS Amplification adalah teknik klasik di mana penyerang mengirimkan permintaan DNS kecil (sekitar 60 byte) yang meminta catatan TXT untuk domain tertentu, namun memalsukan IP pengirim menjadi IP korban. Server DNS akan membalas dengan respons berukuran ribuan byte. Ini menciptakan faktor amplifikasi sekitar 50x hingga 70x. Artinya, botnet dengan kapasitas 1 Gbps dapat dengan mudah menghasilkan serangan 50 Gbps ke arah korban tanpa memerlukan infrastruktur yang besar.",
-            "Memcached Amplification adalah varian yang jauh lebih menghancurkan dan muncul dalam beberapa tahun terakhir. Server database Memcached yang secara tidak sengaja terekspos ke internet publik dapat memberikan faktor amplifikasi hingga 50.000x. Sebuah permintaan UDP berukuran 15 byte dapat memicu balasan berukuran ratusan kilobyte. Dengan teknik ini, penyerang solo atau botnet kecil dapat dengan mudah meluncurkan serangan berukuran ratusan Gigabit hingga lebih dari 1 Terabit per detik, melumpuhkan bahkan infrastruktur jaringan enterprise yang paling kuat sekalipun dalam hitungan detik."
+            "DNS Amplification adalah teknik klasik: penyerang mengirim permintaan DNS berukuran kecil yang memicu jawaban jauh lebih besar, sambil memalsukan IP pengirim menjadi IP korban. Menurut CISA (Alert TA14-017A), faktor amplifikasi DNS berkisar 28 hingga 54 kali. Protokol lain bahkan lebih parah: NTP sekitar 556,9 kali dan CharGEN sekitar 358,8 kali. Artinya, penyerang dengan bandwidth kecil bisa menghasilkan banjir traffic puluhan hingga ratusan kali lipat ke arah korban.",
+            "Memcached Amplification adalah varian yang paling menghancurkan. Server Memcached (sistem cache database) yang tidak sengaja terbuka ke internet lewat UDP dapat memberikan faktor amplifikasi 10.000 hingga 51.000 kali menurut CISA. GitHub menjelaskan bahwa pada serangan yang menimpanya, setiap 1 byte yang dikirim penyerang bisa menghasilkan hingga 51 KB traffic ke target. Dengan teknik ini, segelintir mesin saja sudah cukup untuk menghasilkan serangan berukuran Terabit per detik."
           ]
         },
         {
           "title": "Strategi Mitigasi dan Pertahanan Jaringan",
           "content": [
             "Pertahanan pertama melawan serangan volumetrik adalah over-provisioning bandwidth dan menggunakan jaringan Anycast. Jaringan Anycast menyebarkan traffic masuk ke berbagai pusat data (data center) yang tersebar di seluruh dunia berdasarkan kedekatan geografis. Ketika serangan DDoS terjadi, traffic tersebut dipecah dan diserap oleh banyak server di berbagai lokasi, mencegah satu titik pusat dari kewalahan (bottleneck). Provider mitigasi seperti Cloudflare dan Akamai menggunakan arsitektur Anycast ini untuk menyerap serangan berukuran Terabit.",
-            "Implementasi BCP38 (Best Current Practice 38) di tingkat ISP adalah solusi fundamental untuk menghentikan IP Spoofing, yang merupakan akar dari amplification attacks. Jika semua penyedia layanan internet memfilter paket keluar yang alamat IP pengirimnya tidak berasal dari jaringan mereka, penyerang tidak akan bisa memalsukan IP korban, sehingga memotong efektivitas amplification attacks secara drastis. Sayangnya, adopsi BCP38 secara global masih belum merata karena memerlukan koordinasi antar ISP.",
+            "Penerapan BCP38 (RFC 2827, Network Ingress Filtering) di tingkat ISP adalah solusi mendasar untuk menghentikan pemalsuan IP (IP spoofing), yang menjadi akar serangan amplifikasi. Jika setiap penyedia internet membuang paket keluar yang alamat pengirimnya bukan milik jaringannya, penyerang tidak bisa menyamar sebagai IP korban. Selain itu, pemilik server wajib menutup layanan yang tidak perlu diakses publik, misalnya mematikan UDP pada Memcached dan tidak menjalankan DNS resolver terbuka (open resolver).",
             "Di tingkat server dan firewall lokal, administrator harus memblokir traffic ICMP dan UDP yang tidak perlu dari internet publik. Traffic scrubbing centers juga dapat diaktifkan melalui BGP routing ketika serangan terdeteksi. Traffic dialihkan ke pusat scrubbing di mana mesin khusus memisahkan paket sampah dari paket legitimat menggunakan analisis heuristik, sebelum meneruskan traffic yang bersih kembali ke jaringan perusahaan. Tanpa mitigasi tingkat ISP atau CDN, firewall lokal perusahaan pasti akan hancur oleh serangan volumetrik skala besar."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan Memcached Amplification ke GitHub (2018)",
-        "story": "Pada akhir Februari 2018, GitHub, platform hosting kode terbesar di dunia, menjadi target dari serangan DDoS terbesar yang pernah tercatat pada saat itu. Serangan ini tidak menggunakan botnet tradisional, melainkan mengeksploitasi ribuan server Memcached yang salah konfigurasi dan terekspos ke internet publik. Penyerang mengirimkan permintaan UDP kecil yang memalsukan IP GitHub ke server-server Memcached tersebut. Server Memcached membalas dengan payload data yang sangat besar, menghasilkan traffic masuk ke jaringan GitHub yang memuncak pada angka fantastis 1.35 Terabit per detik. Beruntung, GitHub telah berlangganan layanan mitigasi DDoS dari Akamai. Sistem deteksi otomatis Akamai langsung mendeteksi anomali traffic dalam hitungan milidetik dan secara otomatis mengalihkan semua traffic masuk ke edge server mereka yang memiliki kapasitas masif untuk menyerap serangan tersebut. Meskipun traffic mencapai rekor dunia, GitHub hanya mengalami downtime selama kurang dari 10 menit sebelum layanan pulih sepenuhnya.",
-        "lesson": "Serangan amplification membuktikan bahwa Anda tidak perlu memiliki botnet raksasa untuk melumpuhkan perusahaan teknologi besar; Anda hanya perlu menemukan server-server yang salah konfigurasi di internet. Bagi administrator sistem, ini adalah pengingat keras untuk tidak pernah membiarkan layanan database atau caching seperti Memcached, Redis, atau Elasticsearch terekspos langsung ke internet publik tanpa autentikasi dan firewall yang ketat. Bagi perusahaan, insiden ini membuktikan bahwa berlangganan layanan mitigasi DDoS berbasis cloud dengan kapasitas multi-Terabit bukanlah kemewahan, melainkan asuransi bisnis yang mutlak diperlukan di era modern."
+        "type": "nyata",
+        "title": "Serangan Memcached Amplification 1,35 Tbps ke GitHub (28 Februari 2018)",
+        "story": "Pada 28 Februari 2018, GitHub mengalami serangan DDoS yang saat itu merupakan yang terbesar yang pernah tercatat. Menurut laporan insiden resmi GitHub, antara pukul 17.21 dan 17.30 UTC traffic serangan memuncak di 1,35 Tbps dengan 126,9 juta paket per detik, disusul lonjakan kedua sekitar 400 Gbps setelah pukul 18.00 UTC. Serangan ini tidak memakai botnet biasa, melainkan menyalahgunakan server Memcached yang terbuka ke internet lewat UDP, dengan faktor amplifikasi hingga 51.000 kali. GitHub sepenuhnya tidak dapat diakses selama sekitar 5 menit (17.21–17.26 UTC) dan terganggu secara berkala hingga 17.30 UTC. Setelah mendeteksi anomali, GitHub mengalihkan traffic ke Akamai, yang memiliki kapasitas jaringan sangat besar untuk menyerap dan menyaring serangan.",
+        "lesson": "Kasus ini menunjukkan bahaya server yang salah konfigurasi: ribuan server Memcached milik pihak lain yang tidak bersalah 'dipinjam' menjadi senjata. Pelajarannya: 1) jangan buka layanan internal seperti Memcached ke internet, dan matikan UDP jika tidak diperlukan; 2) siapkan kerja sama mitigasi DDoS sebelum serangan terjadi, karena GitHub pulih dalam hitungan menit berkat rencana yang sudah siap; 3) dukung penerapan BCP38 agar pemalsuan IP tidak bisa dipakai untuk amplifikasi.",
+        "sources": [
+          {
+            "label": "GitHub Blog (1 Mar 2018) — February 28th DDoS Incident Report",
+            "url": "https://github.blog/news-insights/company-news/ddos-incident-report/"
+          },
+          {
+            "label": "CISA Alert TA14-017A — UDP-Based Amplification Attacks",
+            "url": "https://www.cisa.gov/news-events/alerts/2014/01/17/udp-based-amplification-attacks"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1498/ - MITRE ATT&CK — T1498: Network Denial of Service (Flood Techniques)",
-        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10422513/ - PMC/MDPI Sensors (2023) — High-Speed Network DDoS Detection (UDP/ICMP Flood)"
+        "https://www.cisa.gov/news-events/alerts/2014/01/17/udp-based-amplification-attacks - CISA Alert TA14-017A — UDP-Based Amplification Attacks (tabel faktor amplifikasi)",
+        "https://attack.mitre.org/techniques/T1498/002/ - MITRE ATT&CK — T1498.002: Reflection Amplification",
+        "https://www.rfc-editor.org/rfc/rfc2827 - IETF RFC 2827 / BCP 38 — Network Ingress Filtering",
+        "https://github.blog/news-insights/company-news/ddos-incident-report/ - GitHub Blog (Mar 2018) — February 28th DDoS Incident Report"
       ]
     },
     "2": {
       "subtitle": "HTTP Flood",
-      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Serangan paling berbahaya bukanlah yang datang dengan suara keras, melainkan yang menyamar sebagai pelanggan setia Anda.",
       "definition": "HTTP Flood adalah serangan DDoS Lapisan 7 (Application Layer) yang menargetkan server web dengan membanjirinya dengan permintaan HTTP GET atau POST yang tampak sah. Berbeda dengan serangan volumetrik yang mencoba menyumbat pipa jaringan dengan data sampah, HTTP Flood dirancang untuk menguras sumber daya komputasi server, seperti CPU, RAM, dan koneksi database. Karena permintaan ini meniru perilaku penjelajahan web manusia yang normal, serangan ini sangat sulit dideteksi oleh firewall jaringan tradisional dan sering kali bypass sistem pertahanan perimeter, langsung menghantam aplikasi inti bisnis.",
       "sections": [
@@ -115,7 +172,8 @@
           "content": [
             "Tantangan terbesar dalam menghentikan HTTP Flood adalah membedakan antara 'bot jahat' dan 'pengguna asli'. Jika sebuah situs web e-commerce tiba-tiba menerima 10.000 permintaan per detik ke halaman produk, apakah itu karena influencer baru saja mempromosikan produk tersebut, atau apakah itu serangan DDoS? Memblokir traffic secara membabi buta berdasarkan volume akan berisiko memblokir pelanggan asli yang justru ingin membelanjakan uang mereka, yang pada akhirnya mencapai tujuan penyerang untuk mematikan bisnis.",
             "Firewall tradisional dan Intrusion Prevention Systems (IPS) yang beroperasi di Lapisan 3 dan 4 (Network dan Transport) tidak dapat melihat isi dari payload HTTP yang terenkripsi (HTTPS). Mereka hanya melihat koneksi TCP yang sah. Untuk menganalisis permintaan HTTP, traffic harus didekripsi (SSL/TLS termination), yang merupakan proses yang sangat intensif secara komputasi. Jika server firewall kewalahan mendekripsi jutaan koneksi HTTPS, firewall itu sendiri akan menjadi bottleneck dan crash sebelum sempat memblokir serangan.",
-            "Penyerang modern juga menggunakan 'Low-and-Slow HTTP Flood' atau serangan yang meniru perilaku manusia (behavioral mimicry). Bot canggih tidak hanya memukul satu endpoint; mereka menavigasi situs web secara acak, menambahkan item ke keranjang belanja, dan bergerak dari halaman ke halaman dengan jeda waktu yang acak. Analisis statistik sederhana akan gagal mendeteksi anomali ini karena pola traffic secara keseluruhan terlihat sangat organik dan natural."
+            "Penyerang modern juga menggunakan 'Low-and-Slow HTTP Flood' atau serangan yang meniru perilaku manusia (behavioral mimicry). Bot canggih tidak hanya memukul satu endpoint; mereka menavigasi situs web secara acak, menambahkan item ke keranjang belanja, dan bergerak dari halaman ke halaman dengan jeda waktu yang acak. Analisis statistik sederhana akan gagal mendeteksi anomali ini karena pola traffic secara keseluruhan terlihat sangat organik dan natural.",
+            "Penyerang juga bisa menyalahgunakan fitur protokol itu sendiri. Pada HTTP/2, satu koneksi dapat membawa banyak 'stream' permintaan sekaligus (multiplexing). Teknik HTTP/2 Rapid Reset (CVE-2023-44487) mengirim permintaan lalu langsung membatalkannya dengan frame RST_STREAM, berulang-ulang dengan sangat cepat. Server tetap bekerja memulai setiap permintaan, sementara batas jumlah stream tidak pernah tercapai karena stream terus dibatalkan."
           ]
         },
         {
@@ -128,18 +186,30 @@
         }
       ],
       "case_study": {
-        "title": "Kelumpuhan Platform Tiket Konser Akibat HTTP Flood Bot",
-        "story": "Pada tahun 2023, sebuah platform penjualan tiket konser resmi di Asia Tenggara mengalami insiden yang memalukan dan merugikan secara finansial saat membuka penjualan tiket untuk tur artis internasional yang sangat dinantikan. Dalam hitungan detik setelah penjualan dibuka, server mereka menerima jutaan permintaan HTTP POST ke endpoint 'checkout' dan 'add to cart'. Tim IT awalnya mengira ini adalah lonjakan traffic organik dari jutaan penggemar yang antusias. Namun, mereka segera menyadari bahwa server database mereka terkunci (deadlock) dan CPU mencapai 100%. Investigasi forensik pasca-insiden mengungkap bahwa platform tersebut telah menjadi target HTTP Flood yang dilancarkan oleh sindikat calo tiket (scalpers) menggunakan bot canggih. Bot ini tidak bertujuan untuk melumpuhkan situs selamanya, melainkan untuk memonopoli antrian checkout, mengunci ribuan kursi terbaik di dalam 'keranjang' virtual mereka, dan mencegah penggemar asli untuk membeli. Sindikat ini kemudian menjual tiket yang dikunci tersebut di pasar gelap dengan harga berkali-kali lipat.",
-        "lesson": "Tidak semua serangan DDoS bertujuan untuk menghancurkan ketersediaan layanan secara total; beberapa dirancang untuk memanipulasi logika bisnis dan memonopoli sumber daya (Resource Exhaustion). Platform yang menangani acara berkapasitas tinggi atau barang langka tidak bisa hanya mengandalkan skalabilitas server (auto-scaling). Mereka harus mengimplementasikan sistem 'Virtual Waiting Room' (Ruang Tunggu Virtual) yang mengantri pengguna di lapisan tepi (edge) sebelum mereka diizinkan masuk ke aplikasi inti. Selain itu, integrasi CAPTCHA tingkat lanjut dan analisis perilaku bot pada titik-titik krusial seperti checkout sangat penting untuk memastikan bahwa sumber daya server hanya dikonsumsi oleh manusia asli, bukan oleh skrip otomatis yang mencari keuntungan ilegal."
+        "type": "nyata",
+        "title": "HTTP/2 Rapid Reset: Rekor HTTP Flood 398 Juta Permintaan per Detik (Agustus–Oktober 2023)",
+        "story": "Sejak akhir Agustus 2023, Google, Cloudflare, dan Amazon Web Services menghadapi gelombang HTTP flood dengan teknik baru yang memanfaatkan fitur pembatalan stream pada HTTP/2. Google melaporkan puncak serangan 398 juta permintaan per detik (rps) dalam serangan berdurasi dua menit, sekitar 7,5 kali lipat dari rekor sebelumnya (46 juta rps). Cloudflare mencatat puncak lebih dari 201 juta rps, hampir tiga kali rekor lamanya, yang dihasilkan oleh botnet berukuran hanya sekitar 20.000 mesin. Caranya: klien mengirim frame HEADERS untuk membuka permintaan, lalu segera mengirim RST_STREAM untuk membatalkannya, dan mengulanginya terus-menerus. Celah ini dicatat sebagai CVE-2023-44487 (CVSS 7,5) dan diumumkan secara terkoordinasi pada 10 Oktober 2023 agar vendor server web, proxy, dan load balancer dapat merilis patch bersamaan.",
+        "lesson": "Kasus ini membuktikan bahwa HTTP flood tidak selalu butuh botnet raksasa; sekitar 20.000 mesin sudah cukup jika penyerang menemukan celah pada cara protokol bekerja. Pelajarannya: 1) segera perbarui server web, reverse proxy, dan load balancer saat ada patch keamanan; 2) pasang WAF atau layanan mitigasi Layer 7 yang dapat memutus koneksi yang berperilaku tidak wajar; 3) koordinasi dan berbagi informasi antarperusahaan, seperti yang dilakukan Google, Cloudflare, dan AWS, sangat penting untuk menghadapi serangan baru.",
+        "sources": [
+          {
+            "label": "Google Cloud Blog (10 Okt 2023) — Google cloud mitigated largest DDoS attack, peaking above 398 million rps",
+            "url": "https://cloud.google.com/blog/products/identity-security/google-cloud-mitigated-largest-ddos-attack-peaking-above-398-million-rps"
+          },
+          {
+            "label": "Cloudflare Blog (10 Okt 2023) — HTTP/2 Rapid Reset: deconstructing the record-breaking attack",
+            "url": "https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack/"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1499/ - MITRE ATT&CK — T1499: Endpoint Denial of Service (Application Layer)",
-        "https://www.mdpi.com/2079-9292/13/18/3583 - MDPI Electronics (2024) — Research on Multi-Layer Defense against DDoS Attacks [DOI: 10.3390/electronics13183583]"
+        "https://attack.mitre.org/techniques/T1499/002/ - MITRE ATT&CK — T1499.002: Service Exhaustion Flood",
+        "https://cloud.google.com/blog/products/identity-security/google-cloud-mitigated-largest-ddos-attack-peaking-above-398-million-rps - Google Cloud (Okt 2023) — Mitigasi serangan DDoS 398 juta rps (HTTP/2 Rapid Reset)",
+        "https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack/ - Cloudflare (Okt 2023) — HTTP/2 Rapid Reset: deconstructing the record-breaking attack",
+        "https://www.cisa.gov/sites/default/files/2024-03/UPDATED_Joint-DDoS_Guide_03192024_508c%20%281%29.pdf - CISA, FBI & MS-ISAC (Mar 2024) — Understanding and Responding to Distributed Denial-of-Service Attacks v2.0"
       ]
     },
     "3": {
       "subtitle": "SYN Flood",
-      "categories": ["Serangan Jaringan"],
       "quote": "Menyerang fondasi kepercayaan internet: membiarkan server menunggu selamanya pada janji koneksi yang tidak pernah ditepati.",
       "definition": "SYN Flood adalah serangan DDoS tipe Protocol Exhaustion yang mengeksploitasi kelemahan dalam mekanisme jabat tangan tiga arah (3-way handshake) dari protokol TCP (Transmission Control Protocol). TCP adalah protokol yang mendasari sebagian besar komunikasi internet yang andal, termasuk web (HTTP), email, dan transfer file. Serangan ini tidak bertujuan menghabiskan bandwidth, melainkan menghabiskan 'state table' atau memori server yang dialokasikan untuk melacak koneksi jaringan yang sedang dibangun. Dengan membanjiri server dengan permintaan koneksi yang tidak pernah diselesaikan, penyerang membuat server menolak semua koneksi baru yang sah.",
       "sections": [
@@ -162,25 +232,41 @@
         {
           "title": "Solusi Elegan: SYN Cookies dan TCP Proxy",
           "content": [
-            "Pertahanan paling elegan dan standar industri terhadap SYN Flood adalah implementasi 'SYN Cookies'. Ditemukan oleh matematikawan Daniel J. Bernstein pada tahun 1996, SYN Cookies mengubah cara server menangani koneksi. Alih-alih mengalokasikan memori segera setelah menerima paket SYN, server menghitung nilai kriptografi (cookie) berdasarkan IP klien, port, dan timestamp. Nilai cookie ini disisipkan ke dalam nomor urutan (sequence number) dari paket SYN-ACK yang dikirimkan kembali ke klien.",
-            "Dengan SYN Cookies aktif, server tidak menyimpan status koneksi apa pun di memorinya. Server sepenuhnya 'stateless' pada tahap ini. Hanya ketika server menerima paket ACK terakhir dari klien, server akan mendekripsi nomor urutan tersebut untuk memverifikasi cookie. Jika valid, barulah server mengalokasikan memori dan membangun koneksi secara resmi. Teknik ini membuat server kebal terhadap SYN Flood, karena jutaan SYN palsu tidak akan pernah memicu alokasi memori.",
+            "Pertahanan standar terhadap SYN Flood adalah 'SYN Cookies', yang diperkenalkan oleh Daniel J. Bernstein dan Eric Schenk pada 1996, tidak lama setelah serangan SYN flood mulai marak. Alih-alih langsung mengalokasikan memori saat menerima paket SYN, server menghitung nilai kriptografi (cookie) dari alamat IP klien, port, dan waktu. Nilai ini disisipkan ke dalam nomor urut (sequence number) pada paket SYN-ACK yang dikirim balik ke klien.",
+            "Dengan SYN Cookies aktif, server tidak menyimpan status koneksi apa pun pada tahap awal (stateless). Hanya ketika paket ACK terakhir dari klien tiba, server memeriksa nomor urut tersebut untuk memastikan cookie-nya valid. Jika valid, barulah server membangun koneksi. Hasilnya, jutaan SYN palsu tidak menghabiskan memori. Dokumen IETF RFC 4987 merangkum SYN Cookies bersama teknik lain seperti memperbesar backlog, memperpendek timeout, dan SYN cache. Di Linux, fitur ini diaktifkan lewat parameter net.ipv4.tcp_syncookies.",
             "Untuk lingkungan enterprise yang lebih kompleks, penggunaan TCP Proxy atau Load Balancer yang bertindak sebagai penengah (middlebox) sangat disarankan. Perangkat ini melakukan 'TCP Splicing' atau terminasi koneksi. Mereka menyelesaikan 3-way handshake dengan klien di satu sisi, dan membuka koneksi terpisah ke server backend di sisi lain. Jika perangkat proxy mendeteksi bahwa klien tidak pernah menyelesaikan handshake atau mengirimkan data yang tidak wajar, koneksi tersebut dibuang di tingkat proxy, sehingga server backend yang berharga tidak pernah tersentuh oleh traffic jahat tersebut."
           ]
         }
       ],
       "case_study": {
-        "title": "Serangan SYN Flood Bersejarah pada ISP Panix (1996)",
-        "story": "Pada bulan September 1996, penyedia layanan internet (ISP) terkemuka di New York bernama Panix menjadi korban dari salah satu serangan DDoS pertama yang pernah tercatat dalam sejarah internet. Seorang peretas yang tidak dikenal meluncurkan serangan SYN Flood masif terhadap router dan server email Panix. Pada masa itu, sistem operasi dan perangkat keras jaringan belum memiliki mekanisme pertahanan bawaan terhadap eksploitasi 3-way handshake ini. Tabel koneksi router Panix dengan cepat terisi penuh oleh jutaan koneksi setengah terbuka (half-open connections). Akibatnya, seluruh jaringan Panix lumpuh total selama beberapa hari, memutus akses internet dan email bagi ribuan pelanggan bisnis dan individu. Insiden ini memicu kepanikan di komunitas teknik global karena menunjukkan kerentanan fundamental dari protokol TCP yang menjadi tulang punggung internet.",
-        "lesson": "Serangan Panix adalah momen 'Sputnik' bagi keamanan jaringan. Insiden ini memaksa para insinyur sistem operasi dan vendor perangkat keras jaringan untuk segera merancang ulang cara mereka menangani koneksi masuk. Dari krisis inilah konsep SYN Cookies lahir dan akhirnya diintegrasikan ke dalam kernel Linux, Windows, dan BSD sebagai fitur keamanan standar. Kasus ini mengajarkan kita bahwa protokol yang dibangun di atas asumsi 'lingkungan yang saling percaya' akan selalu dieksploitasi ketika internet berkembang menjadi ruang publik yang bermusuhan. Selalu pastikan bahwa fitur mitigasi SYN Cookies diaktifkan pada level sistem operasi server Anda dan pada perimeter firewall."
+        "type": "nyata",
+        "title": "Serangan SYN Flood Bersejarah pada ISP Panix, New York (September 1996)",
+        "story": "Pada 6 September 1996, Panix, salah satu penyedia layanan internet tertua di New York, diserang SYN flood. Panix menjadi korban pertama serangan jenis ini yang diungkap ke publik. Menurut majalah TIME (30 September 1996), server Panix dibanjiri sekitar 210 permintaan koneksi palsu per detik, sehingga sekitar 6.000 pelanggan tidak bisa menerima email ketika server email tumbang. Serangan berlangsung berminggu-minggu, dan pemilik Panix, Alexis Rosen, harus bekerja siang dan malam agar layanan tidak lumpuh. Pelaku memodifikasi kode serangan yang sebelumnya dipublikasikan di majalah 2600 dan Phrack. Saat itu belum ada pertahanan bawaan, karena kelemahan ini sebenarnya sudah disebut dalam buku tahun 1994 tetapi belum ditindaklanjuti. Insiden ini mendorong CERT menerbitkan advisori pada September 1996 dan memicu lahirnya SYN Cookies.",
+        "lesson": "Serangan dengan kecepatan 'hanya' ratusan paket per detik sudah cukup melumpuhkan sebuah ISP, karena yang diserang adalah tabel koneksi, bukan bandwidth. Pelajarannya: 1) kelemahan protokol yang sudah diketahui harus segera dimitigasi sebelum dieksploitasi; 2) aktifkan SYN Cookies dan atur ukuran backlog serta timeout dengan benar; 3) publikasi kode serangan dapat mempercepat penyalahgunaan, sehingga pembela juga harus bergerak cepat.",
+        "sources": [
+          {
+            "label": "TIME (30 Sep 1996) — PANIX ATTACK",
+            "url": "https://content.time.com/time/subscriber/article/0,33009,985249,00.html"
+          },
+          {
+            "label": "DIMACS Rutgers — Alexis Rosen: The PANIX Attack (ringkasan presentasi)",
+            "url": "https://archive.dimacs.rutgers.edu/Workshops/Threats/Rosen.html"
+          },
+          {
+            "label": "IETF RFC 4987 (2007) — TCP SYN Flooding Attacks and Common Mitigations",
+            "url": "https://www.rfc-editor.org/rfc/rfc4987"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1498/001/ - MITRE ATT&CK — T1498.001: Network DoS — Direct Network Flood (SYN Flood)",
-        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — SYN Cookie & TCP SYN Flood Mitigation"
+        "https://www.rfc-editor.org/rfc/rfc4987 - IETF RFC 4987 — TCP SYN Flooding Attacks and Common Mitigations",
+        "https://attack.mitre.org/techniques/T1498/001/ - MITRE ATT&CK — T1498.001: Direct Network Flood",
+        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange: BGP Security and DDoS Mitigation",
+        "https://www.cisa.gov/sites/default/files/2024-03/UPDATED_Joint-DDoS_Guide_03192024_508c%20%281%29.pdf - CISA, FBI & MS-ISAC (Mar 2024) — Understanding and Responding to Distributed Denial-of-Service Attacks v2.0"
       ]
     },
     "4": {
       "subtitle": "Slowloris Attack",
-      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Kekuatan sejati tidak selalu tentang seberapa keras Anda memukul, tetapi seberapa lama Anda bisa menahan napas lawan Anda.",
       "definition": "Slowloris adalah jenis serangan DDoS Lapisan 7 (Application Layer) yang sangat unik karena menggunakan pendekatan 'low-and-slow' (rendah dan lambat). Berbeda dengan serangan flood yang mencoba membanjiri server dengan jutaan permintaan per detik, Slowloris hanya menggunakan satu atau beberapa komputer dengan koneksi internet yang sangat lambat untuk melumpuhkan server web target. Serangan ini bekerja dengan membuka banyak koneksi ke server dan menahannya tetap terbuka selama mungkin dengan mengirimkan header HTTP parsial secara berkala, menguras pool koneksi konkuren server hingga tidak ada slot yang tersisa untuk pengguna asli.",
       "sections": [
@@ -196,7 +282,7 @@
           "title": "Kerentanan Arsitektur Server Web",
           "content": [
             "Slowloris sangat efektif melawan server web yang menggunakan arsitektur 'thread-based' atau 'process-based', seperti konfigurasi default Apache HTTP Server (mod_prefork). Dalam arsitektur ini, setiap koneksi baru membutuhkan proses atau thread sistem operasi yang terpisah, yang mengonsumsi sejumlah memori RAM. Jika server kehabisan thread, ia tidak bisa menerima koneksi baru. Bahkan pada arsitektur event-driven modern, jika aplikasi backend memblokir thread utama sambil menunggu database, serangan koneksi lambat dapat menyebabkan antrian permintaan menumpuk dan menyebabkan penolakan layanan.",
-            "Kejahatan serangan ini terletak pada kesederhanaannya. Skrip Slowloris asli yang ditulis oleh Robert 'RSnake' Hansen pada tahun 2009 hanya terdiri dari beberapa baris kode Perl. Tidak diperlukan botnet, tidak diperlukan bandwidth besar, dan tidak diperlukan kerentanan perangkat lunak (zero-day). Ini murni mengeksploitasi logika bisnis dari bagaimana protokol HTTP dan server web dirancang untuk bersikap sopan dan menunggu klien yang lambat.",
+            "Bahaya serangan ini terletak pada kesederhanaannya. Skrip Slowloris yang dirilis peneliti Robert 'RSnake' Hansen pada 2009 hanya berupa skrip Perl sederhana. Tidak diperlukan botnet, bandwidth besar, ataupun celah zero-day. Slowloris murni memanfaatkan sifat protokol HTTP dan server web yang dirancang 'sopan', yaitu mau menunggu klien yang lambat. Basis data kerentanan NIST NVD mencatat kelemahan ini pada Apache HTTP Server 1.x dan 2.x sebagai CVE-2007-6750, dengan Slowloris sebagai contoh serangannya.",
             "Karena traffic yang dihasilkan terlihat seperti koneksi HTTP yang sah namun sangat lambat (seperti pengguna yang mengakses internet dari koneksi seluler yang buruk di daerah terpencil), memblokir serangan ini berdasarkan signature atau IP address sangat sulit. Memblokir IP yang membuka koneksi terlalu lama berisiko memblokir pengguna asli yang sedang mengunduh file besar melalui koneksi yang tidak stabil."
           ]
         },
@@ -204,40 +290,52 @@
           "title": "Mitigasi: Reverse Proxy dan Timeout Agresif",
           "content": [
             "Pertahanan paling efektif melawan Slowloris dan serangan low-and-slow lainnya adalah menempatkan Reverse Proxy (seperti Nginx, HAProxy, atau layanan CDN seperti Cloudflare) di depan server aplikasi utama. Reverse proxy modern menggunakan arsitektur 'asynchronous event-driven' yang mampu menangani ratusan ribu koneksi idle secara bersamaan dengan penggunaan memori yang sangat kecil. Proxy ini akan menahan koneksi lambat dari klien, dan hanya akan meneruskan permintaan ke server backend setelah permintaan tersebut diterima secara utuh dan lengkap.",
-            "Konfigurasi timeout yang agresif pada server web juga sangat penting. Administrator harus menurunkan nilai 'RequestReadTimeout' atau 'KeepAliveTimeout' secara signifikan. Jika server tidak menerima header lengkap atau data dalam waktu yang sangat singkat (misalnya 5 hingga 10 detik), server harus segera memutus koneksi tersebut dan membebaskan thread. Meskipun ini mungkin mempengaruhi pengguna dengan koneksi internet yang sangat buruk, ini adalah kompromi yang diperlukan untuk menjaga ketersediaan layanan bagi mayoritas pengguna.",
+            "Konfigurasi timeout yang ketat pada server web juga sangat penting. Di Apache, modul mod_reqtimeout mengatur batas waktu dan kecepatan minimum pengiriman header dan body. Pengaturan bawaannya, header=20-40,MinRate=500, berarti klien diberi 20 detik untuk mengirim header, bisa diperpanjang hingga maksimal 40 detik asalkan data mengalir minimal 500 byte per detik. Jika lebih lambat, koneksi diputus dengan kode 408 Request Timeout. Pengguna dengan koneksi sangat buruk mungkin ikut terdampak, tetapi kompromi ini perlu demi menjaga layanan bagi mayoritas pengguna.",
             "Membatasi jumlah koneksi konkuren dari satu alamat IP tunggal (Rate Limiting per IP) di tingkat firewall atau load balancer juga dapat membatasi dampak serangan. Jika sebuah IP hanya diizinkan membuka maksimal 20 koneksi bersamaan ke server web, penyerang yang menggunakan satu mesin tidak akan bisa mengisi pool koneksi server yang berkapasitas ribuan. Namun, jika penyerang menggunakan botnet terdistribusi, pertahanan ini harus dikombinasikan dengan analisis reputasi IP dan behavioral analysis di tingkat WAF."
           ]
         }
       ],
       "case_study": {
-        "title": "Demonstrasi Slowloris dan Dampaknya pada Infrastruktur Apache",
-        "story": "Pada konferensi keamanan DefCon di tahun 2009, peneliti keamanan Robert Hansen (dikenal sebagai RSnake) mendemonstrasikan tool buatannya yang bernama Slowloris. Dalam demonstrasi langsung, ia menunjukkan bagaimana hanya dengan satu laptop yang terhubung ke jaringan WiFi konferensi, ia dapat melumpuhkan seluruh server web yang menjalankan Apache di jaringan lokal hanya dalam hitungan menit. Tool ini tidak mengirim paket jahat atau mengeksploitasi bug memori; ia hanya 'berbicara' sangat lambat kepada server. Rilis publik dari skrip Slowloris memicu gelombang serangan terhadap berbagai situs web pemerintah dan korporasi pada masa itu, karena siapa saja bisa mengunduh skrip tersebut dan menjatuhkan situs web yang tidak dipatch dengan konfigurasi timeout yang tepat. Banyak administrator sistem yang panik karena firewall dan IDS mereka tidak mendeteksi adanya 'serangan' karena volume trafficnya hampir nol.",
-        "lesson": "Slowloris mengajarkan industri keamanan siber bahwa ketersediaan (availability) tidak hanya bisa dirusak oleh banjir data, tetapi juga oleh kelumpuhan logika (logic exhaustion). Anda tidak bisa hanya mengandalkan bandwidth besar dan firewall canggih; Anda harus memahami bagaimana aplikasi Anda menangani sumber daya pada level kode dan konfigurasi. Migrasi dari server web thread-based ke event-driven server seperti Nginx, atau penggunaan CDN yang bertindak sebagai buffer, telah menjadi standar arsitektur web modern sebagian besar sebagai respons langsung terhadap popularitas serangan low-and-slow seperti Slowloris dan R-U-Dead-Yet (RUDY)."
+        "type": "nyata",
+        "title": "CVE-2007-6750: Apache Rentan terhadap Permintaan HTTP Parsial (Slowloris)",
+        "story": "NIST National Vulnerability Database mencatat CVE-2007-6750: Apache HTTP Server versi 1.x dan 2.x dapat dilumpuhkan dari jarak jauh (daemon outage) hanya dengan mengirim permintaan HTTP parsial, dengan Slowloris sebagai contohnya. Menurut NVD, kelemahan ini terkait dengan belum adanya modul mod_reqtimeout pada versi sebelum 2.2.15. Masalahnya bukan bug memori, melainkan cara server menunggu: setiap koneksi yang belum selesai mengirim header tetap memegang satu slot pekerja (worker). Ketika ratusan koneksi lambat dibuka bersamaan, semua slot terisi dan pengunjung asli tidak bisa masuk. Apache kemudian menyediakan mod_reqtimeout, yang memutus klien yang mengirim header terlalu lambat. Kini modul tersebut punya pengaturan bawaan header=20-40,MinRate=500, sehingga koneksi yang 'berbicara terlalu pelan' otomatis ditutup dengan kode 408.",
+        "lesson": "Kasus ini menunjukkan bahwa DoS tidak selalu butuh traffic besar; cukup memanfaatkan perilaku server yang terlalu sabar. Pelajarannya: 1) pastikan modul pembatas waktu seperti mod_reqtimeout aktif dan dikonfigurasi dengan benar; 2) tempatkan reverse proxy event-driven (misalnya Nginx atau HAProxy) di depan server berbasis thread; 3) batasi jumlah koneksi bersamaan per IP dan pantau koneksi yang lama terbuka tetapi hampir tidak mengirim data.",
+        "sources": [
+          {
+            "label": "NIST NVD — CVE-2007-6750 Detail",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2007-6750"
+          },
+          {
+            "label": "Apache HTTP Server 2.4 — Dokumentasi mod_reqtimeout",
+            "url": "https://httpd.apache.org/docs/2.4/mod/mod_reqtimeout.html"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1499/001/ - MITRE ATT&CK — T1499.001: Endpoint DoS — OS Exhaustion Flood (Slowloris)",
-        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10422513/ - PMC/MDPI Sensors (2023) — High-Speed Network DDoS Detection (Slow Rate Attacks)"
+        "https://nvd.nist.gov/vuln/detail/CVE-2007-6750 - NIST NVD — CVE-2007-6750 (Apache, permintaan HTTP parsial / Slowloris)",
+        "https://httpd.apache.org/docs/2.4/mod/mod_reqtimeout.html - Apache HTTP Server 2.4 — Dokumentasi mod_reqtimeout",
+        "https://attack.mitre.org/techniques/T1499/ - MITRE ATT&CK — T1499: Endpoint Denial of Service",
+        "https://www.cisa.gov/sites/default/files/2024-03/UPDATED_Joint-DDoS_Guide_03192024_508c%20%281%29.pdf - CISA, FBI & MS-ISAC (Mar 2024) — Understanding and Responding to Distributed Denial-of-Service Attacks v2.0"
       ]
     },
     "5": {
       "subtitle": "Botnet DDoS",
-      "categories": ["Serangan Jaringan", "Sistem & Infrastruktur"],
       "quote": "Pasukan hantu digital yang terdiri dari jutaan perangkat tak berdosa, menunggu satu perintah untuk melumpuhkan infrastruktur negara.",
       "definition": "Botnet DDoS adalah infrastruktur inti yang memungkinkan terjadinya serangan DDoS berskala masif di era modern. Botnet (robot network) adalah kumpulan perangkat yang terhubung ke internet - mulai dari komputer pribadi, server, hingga perangkat Internet of Things (IoT) seperti kamera CCTV, router, dan smart TV - yang telah terinfeksi malware dan dikendalikan secara diam-diam oleh penyerang (botmaster) melalui server Command and Control (C2). Ketika botmaster memberikan perintah, jutaan perangkat 'zombie' ini secara serentak menembakkan traffic ke satu target, menghasilkan kekuatan komputasi dan bandwidth yang tidak dapat ditandingi oleh infrastruktur pertahanan perusahaan manapun.",
       "sections": [
         {
           "title": "Evolusi Botnet: Dari PC Windows ke Ekosistem IoT",
           "content": [
-            "Di awal tahun 2000-an, botnet seperti Conficker atau Zeus terutama menginfeksi komputer pribadi berbasis Windows melalui lampiran email phishing dan exploit drive-by download. Namun, seiring dengan meningkatnya keamanan sistem operasi modern dan adopsi antivirus, pembuat botnet beralih ke target yang jauh lebih rentan: perangkat Internet of Things (IoT). Perangkat IoT diproduksi dengan margin keuntungan yang sangat tipis, sehingga pabrikan seringkali mengorbankan keamanan, menggunakan password default yang keras (hardcoded), dan tidak menyediakan mekanisme pembaruan firmware (OTA updates).",
+            "Pada tahun 2000-an, botnet terutama menginfeksi komputer pribadi berbasis Windows melalui lampiran email phishing, celah keamanan yang belum di-patch, dan unduhan berbahaya. Seiring meningkatnya keamanan sistem operasi dan antivirus, pembuat botnet beralih ke target yang jauh lebih rentan: perangkat Internet of Things (IoT). Banyak perangkat IoT diproduksi dengan biaya serendah mungkin, sehingga keamanannya dikorbankan: memakai password bawaan yang sama untuk semua unit dan jarang menerima pembaruan firmware.",
             "Kamera IP, DVR, router rumahan, dan bahkan kulkas pintar kini menjadi rekrutan utama untuk botnet. Perangkat-perangkat ini selalu menyala, terhubung ke internet berkecepatan tinggi, dan memiliki daya komputasi yang cukup untuk mengirimkan ribuan paket per detik. Yang lebih berbahaya, perangkat IoT jarang dipantau oleh pengguna atau perangkat lunak keamanan, sehingga malware dapat beroperasi di latar belakang selama bertahun-tahun tanpa disadari oleh pemiliknya, hanya menunggu perintah dari C2 server.",
-            "Malware botnet IoT modern seperti Mirai, Gafgyt, dan Moobot menyebar secara otomatis melalui worm. Mereka terus-menerus memindai seluruh ruang alamat IPv4 internet, mencari perangkat yang mengekspos port Telnet atau SSH, dan mencoba masuk menggunakan kamus password default (seperti admin/admin, root/12345). Begitu berhasil masuk, malware mengunduh payload biner yang sesuai dengan arsitektur prosesor perangkat (ARM, MIPS), menginfeksi sistem, dan mulai memindai korban baru secara eksponensial, membentuk botnet raksasa dalam hitungan jam."
+            "Malware botnet IoT seperti Mirai, Gafgyt, dan Moobot menyebar otomatis seperti worm. Mereka terus memindai internet untuk mencari perangkat yang membuka port Telnet atau SSH, lalu mencoba masuk dengan daftar password bawaan (seperti admin/admin). Setelah berhasil, malware mengunduh program yang sesuai dengan jenis prosesor perangkat (ARM, MIPS), lalu mulai memindai korban baru. Skalanya kini sangat besar: Cloudflare memperkirakan botnet Aisuru terdiri dari 1–4 juta perangkat terinfeksi di seluruh dunia."
           ]
         },
         {
           "title": "Industri DDoS-for-Hire (Booter dan Stresser)",
           "content": [
             "Pembentukan botnet raksasa telah melahirkan ekonomi bawah tanah yang sangat menguntungkan yang dikenal sebagai layanan Booter atau Stresser. Operator botnet menyewakan akses ke jaringan zombie mereka melalui situs web yang terlihat seperti layanan SaaS (Software as a Service) biasa, lengkap dengan dashboard pengguna, paket langganan bulanan, dan dukungan pelanggan via Telegram. Siapa pun dapat mendaftar, mengisi saldo dengan Bitcoin, memasukkan URL atau IP target, memilih jenis serangan (UDP flood, SYN flood, HTTP flood), dan meluncurkan DDoS hanya dengan beberapa klik mouse.",
-            "Layanan ini dipasarkan secara ilegal dengan kedok 'Stress Testing' atau 'Uji Beban Server'. Operator mengklaim bahwa layanan mereka hanya boleh digunakan untuk menguji ketahanan server milik sendiri. Namun, pada kenyataannya, tidak ada verifikasi kepemilikan IP atau domain. Seorang gamer yang marah karena kalah dalam game online dapat membayar 5 dolar untuk melumpuhkan server lawan. Seorang siswa yang tidak ingin mengikuti ujian dapat membayar 20 dolar untuk melumpuhkan portal ujian sekolahnya. Demokratisasi senjata siber ini membuat serangan DDoS menjadi gangguan harian yang konstan bagi penyedia layanan internet di seluruh dunia.",
+            "Layanan ini dipasarkan dengan kedok 'stress testing' atau 'uji beban server'. Operator mengklaim layanannya hanya boleh dipakai untuk menguji server milik sendiri, tetapi pada kenyataannya tidak ada verifikasi kepemilikan target. Akibatnya, pelanggannya beragam: pemain game yang kesal pada lawan, pelajar yang ingin mengganggu portal ujian, hingga pesaing bisnis. Karena murah dan mudah, serangan kecil seperti ini menjadi gangguan harian bagi penyedia internet di seluruh dunia.",
             "Di tingkat yang lebih tinggi, sindikat kejahatan siber menyewakan botnet mereka untuk serangan yang ditargetkan dan pemerasan (Ransom DDoS). Mereka akan mengirimkan email ancaman ke perusahaan kasino, bursa kripto, atau e-commerce, menuntut pembayaran tebusan berupa Bitcoin dengan ancaman akan melumpuhkan operasi mereka selama periode bisnis tersibuk. Jika tebusan tidak dibayar, mereka akan meluncurkan serangan multi-vektor yang menggabungkan volumetrik, protokol, dan serangan Lapisan 7 secara bersamaan untuk memaksimalkan kerusakan dan mengacaukan upaya mitigasi korban."
           ]
         },
@@ -248,16 +346,36 @@
             "Di tingkat pengguna dan enterprise, pencegahan infeksi botnet IoT sangat krusial. Pengguna rumahan harus segera mengubah password default pada router dan semua perangkat pintar, menonaktifkan fitur manajemen jarak jauh (seperti UPnP, Telnet, dan SSH dari WAN), dan mengisolasi perangkat IoT di jaringan VLAN terpisah (Guest Network) agar jika perangkat tersebut diretas, peretas tidak bisa bergerak lateral ke komputer utama atau NAS yang berisi data sensitif.",
             "Bagi perusahaan yang menjadi target, mengandalkan pertahanan on-premise untuk melawan botnet masif adalah tindakan sia-sia karena bandwidth pipa internet akan tersumbat sebelum traffic mencapai firewall perusahaan. Solusi mutlak adalah menggunakan layanan mitigasi DDoS berbasis cloud (seperti Cloudflare, AWS Shield Advanced, atau Akamai Prolexic). Layanan ini memiliki kapasitas bandwidth multi-Terabit dan menggunakan mesin AI untuk menganalisis pola traffic, memfilter traffic botnet di tepi jaringan global mereka, dan hanya meneruskan traffic bersih ke server perusahaan melalui koneksi terowongan (GRE tunnel) yang aman."
           ]
+        },
+        {
+          "title": "Aspek Hukum: Menyewa 'Stresser' Bukan Uji Coba yang Legal",
+          "content": [
+            "Menyerang sistem milik orang lain tetap merupakan kejahatan, meskipun dilakukan lewat layanan yang menyebut dirinya 'stresser'. Dalam Operasi PowerOFF, aparat penegak hukum Amerika Serikat, Inggris, Belanda, Polandia, dan Jerman bersama Europol menindak layanan booter. Pada Desember 2022, FBI menyita 48 domain booter populer, enam orang didakwa di AS, dan Badan Kejahatan Nasional Inggris (NCA) menangkap seorang remaja berusia 18 tahun.",
+            "Operator dan pelanggan sama-sama dapat dimintai pertanggungjawaban hukum, dan data yang tersimpan di situs yang disita dapat menjadi petunjuk bagi penyidik. Di Indonesia, perbuatan yang membuat sistem elektronik terganggu atau tidak bekerja sebagaimana mestinya dilarang oleh UU ITE (Pasal 33). Uji beban (load testing) yang sah hanya boleh dilakukan terhadap sistem sendiri atau dengan izin tertulis pemiliknya."
+          ]
         }
       ],
       "case_study": {
-        "title": "Mirai Botnet: Malware Buatan Mahasiswa yang Mengacaukan Internet Global",
-        "story": "Pada tahun 2016, tiga mahasiswa perguruan tinggi di Amerika Serikat (Paras Jha, Josiah White, dan Dalton Norman) menciptakan malware bernama Mirai, dinamai dari anime 'The Future of Mirai'. Awalnya, mereka membuat Mirai untuk melancarkan serangan DDoS terhadap server game Minecraft pesaing demi memonopoli pasar server game dan mendapatkan keuntungan finansial dari layanan mitigasi DDoS yang mereka dirikan. Namun, ketika mereka menyadari potensi destruktif dari botnet IoT mereka yang berjumlah ratusan ribu perangkat, mereka mulai menyewakannya untuk serangan balasan terhadap peneliti keamanan yang mencoba membongkar operasi mereka. Puncaknya adalah serangan 1.2 Tbps ke Dyn DNS yang melumpuhkan internet global. Takut ditangkap oleh FBI, ketiga mahasiswa tersebut melepaskan kode sumber (source code) Mirai ke forum peretas HackForums. Tindakan ini membuka kotak Pandora; ribuan peretas di seluruh dunia memodifikasi kode tersebut, melahirkan puluhan varian baru yang hingga hari ini terus menginfeksi jutaan router dan kamera IP, menjadikannya ancaman endemik yang permanen di internet.",
-        "lesson": "Kasus Mirai membuktikan bahwa perangkat IoT yang tidak aman adalah ancaman eksistensial bagi stabilitas internet global. Kode yang dilepaskan ke alam liar tidak bisa ditarik kembali dan akan terus berevolusi di tangan aktor yang lebih jahat. Ini memicu dorongan regulasi global, seperti undang-undang di California dan Inggris yang melarang penjualan perangkat IoT dengan password default yang universal. Bagi konsumen dan bisnis, ini adalah pengingat keras bahwa setiap perangkat yang terhubung ke internet adalah potensi senjata yang bisa digunakan melawan Anda atau orang lain. Keamanan jaringan harus mengasumsikan bahwa perangkat IoT akan dikompromikan, sehingga segmentasi jaringan dan pemantauan anomali traffic keluar (egress monitoring) adalah praktik higienis yang tidak bisa ditawar."
+        "type": "nyata",
+        "title": "Operasi PowerOFF: FBI Menyita 48 Domain Layanan DDoS-for-Hire (Desember 2022)",
+        "story": "Pada Desember 2022, Departemen Kehakiman Amerika Serikat mengumumkan penyitaan 48 domain yang terkait dengan beberapa layanan booter (DDoS-for-hire) paling populer. Langkah ini merupakan bagian dari Operasi PowerOFF, operasi gabungan yang melibatkan FBI, Badan Kejahatan Nasional Inggris (NCA), kepolisian Belanda, dan Europol. Enam orang didakwa di AS karena mengoperasikan situs-situs tersebut, sementara NCA menangkap seorang remaja 18 tahun di Devon, Inggris. Menurut Europol, salah satu situs yang disita saja telah dipakai untuk melancarkan lebih dari 30 juta serangan. Domain yang disita kemudian menampilkan halaman pemberitahuan penyitaan dari FBI, meskipun TechCrunch mencatat beberapa situs sempat masih bisa diakses sesaat setelah pengumuman.",
+        "lesson": "Kasus ini meruntuhkan mitos bahwa menyewa serangan DDoS itu anonim dan aman. Pelajarannya: 1) layanan 'stresser' adalah alat kejahatan, dan baik operator maupun pelanggannya dapat dilacak serta dipidana; 2) satu layanan murah bisa menghasilkan puluhan juta serangan, sehingga menutup penyedianya sangat efektif mengurangi serangan; 3) bagi pelajar dan mahasiswa, rasa penasaran mencoba 'stress test' ke server orang lain bisa berujung pada catatan kriminal.",
+        "sources": [
+          {
+            "label": "TechCrunch (15 Des 2022) — DOJ seizes dozens of DDoS-for-hire websites",
+            "url": "https://techcrunch.com/2022/12/15/ddos-booter-justice-department-seized"
+          },
+          {
+            "label": "Europol — Global crackdown against DDoS services shuts down most popular platforms",
+            "url": "https://www.europol.europa.eu/media-press/newsroom/news/global-crackdown-against-ddos-services-shuts-down-most-popular-platforms"
+          }
+        ]
       },
       "references": [
         "https://attack.mitre.org/techniques/T1583/005/ - MITRE ATT&CK — T1583.005: Acquire Infrastructure — Botnet",
-        "https://www.cisa.gov/topics/cyber-threats-and-advisories/distributed-denial-service - CISA — Botnet & DDoS Mitigation Advisory"
+        "https://blog.cloudflare.com/ddos-threat-report-2025-q3/ - Cloudflare — DDoS Threat Report 2025 Q3",
+        "https://www.cisa.gov/sites/default/files/2024-03/UPDATED_Joint-DDoS_Guide_03192024_508c%20%281%29.pdf - CISA, FBI & MS-ISAC (Mar 2024) — Understanding and Responding to Distributed Denial-of-Service Attacks v2.0",
+        "https://csrc.nist.gov/pubs/sp/800/189/final - NIST SP 800-189 — Resilient Interdomain Traffic Exchange: BGP Security and DDoS Mitigation"
       ]
     }
   }

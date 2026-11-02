@@ -6,6 +6,14 @@ import { malwareQuiz } from "./malware";
 import { qrCodeAttackQuiz } from "./qr-code-attack";
 import { ecommerceFraudQuiz } from "./ecommerce-fraud";
 import { mobileBankingQuiz } from "./mobile-banking";
+import { accountTakeoverQuiz } from "./account-takeover";
+import { dataBreachQuiz } from "./data-breach";
+import { aiAttackQuiz } from "./ai-attack";
+import { advancedAttacksQuiz } from "./advanced-attacks";
+import { ddosQuiz } from "./ddos";
+import { networkAttackQuiz } from "./network-attack";
+import { webAttackQuiz } from "./web-attack";
+import { wifiAttackQuiz } from "./wifi-attack";
 import { STAGE_ORDER, type ModuleQuiz, type StageKey } from "./types";
 
 export * from "./types";
@@ -21,6 +29,14 @@ const quizzes: Record<string, ModuleQuiz> = {
   "qr-code-attack": qrCodeAttackQuiz,
   "ecommerce-fraud": ecommerceFraudQuiz,
   "mobile-banking" : mobileBankingQuiz,
+  "account-takeover": accountTakeoverQuiz,
+  "data-breach": dataBreachQuiz,
+  "ai-attack": aiAttackQuiz,
+  "advanced-attacks": advancedAttacksQuiz,
+  ddos: ddosQuiz,
+  "network-attack": networkAttackQuiz,
+  "web-attack": webAttackQuiz,
+  "wifi-attack": wifiAttackQuiz,
 };
 
 export function getQuiz(slug: string): ModuleQuiz {
