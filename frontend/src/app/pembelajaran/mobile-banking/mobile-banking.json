@@ -1,28 +1,55 @@
 {
   "slug": "mobile-banking",
   "title": "Mobile Banking Attack",
-  "categories": ["Serangan Finansial", "Serangan Identitas"],
+  "categories": [
+    "Serangan Finansial",
+    "Serangan Identitas"
+  ],
   "level": "Menengah",
   "navigation": [
-    { "id": 0, "label": "APA ITU MOBILE BANKING ATTACK?", "icon": "ShieldAlert" },
-    { "id": 1, "label": "FAKE BANKING APP", "icon": "Smartphone" },
-    { "id": 2, "label": "OTP THEFT", "icon": "Key" },
-    { "id": 3, "label": "SIM SWAPPING", "icon": "PhoneCall" },
-    { "id": 4, "label": "OVERLAY ATTACK", "icon": "Layers" },
-    { "id": 5, "label": "BANKING TROJAN & ACCESSIBILITY ABUSE", "icon": "Bug" }
+    {
+      "id": 0,
+      "label": "APA ITU MOBILE BANKING ATTACK?",
+      "icon": "ShieldAlert"
+    },
+    {
+      "id": 1,
+      "label": "FAKE BANKING APP",
+      "icon": "Smartphone"
+    },
+    {
+      "id": 2,
+      "label": "OTP THEFT",
+      "icon": "Key"
+    },
+    {
+      "id": 3,
+      "label": "SIM SWAPPING",
+      "icon": "PhoneCall"
+    },
+    {
+      "id": 4,
+      "label": "OVERLAY ATTACK",
+      "icon": "Layers"
+    },
+    {
+      "id": 5,
+      "label": "BANKING TROJAN & ACCESSIBILITY ABUSE",
+      "icon": "Bug"
+    }
   ],
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu Mobile Banking Attack?",
       "quote": "Di era di mana smartphone adalah dompet, kunci rumah, dan kantor Anda, perangkat yang ada di saku Anda kini menjadi target paling menguntungkan bagi para peretas di seluruh dunia.",
-      "definition": "Mobile Banking Attack adalah kategori serangan siber yang secara khusus menargetkan aplikasi perbankan dan finansial yang berjalan di perangkat seluler (Android dan iOS). Serangan ini tidak mencoba menembus server bank secara langsung, yang biasanya dilindungi dengan infrastruktur keamanan berlapis, melainkan mengeksploitasi sisi paling lemah dari rantai keamanan: perangkat dan perilaku pengguna akhir. Dengan lebih dari 85% transaksi perbankan di Indonesia kini dilakukan melalui aplikasi mobile, perangkat seluler telah menjadi mesin ATM virtual yang dibawa kemana-mana, menjadikannya sasaran empuk bagi sindikat kejahatan siber yang semakin terorganisir.\n\nDampak serangan mobile banking jauh lebih fatal dibandingkan pencurian data biasa, karena penyerang tidak hanya mendapatkan informasi, tetapi juga kemampuan untuk melakukan transaksi finansial secara langsung. Dalam hitungan menit setelah perangkat dikompromikan, rekening korban dapat dikuras habis, pinjaman online ilegal dapat didaftarkan atas nama korban (pinjol fiktif), dan kartu kredit virtual dapat dibuat dan langsung digunakan. Data dari Badan Siber dan Sandi Negara (BSSN) mencatat bahwa kerugian akibat serangan mobile banking di Indonesia pada tahun 2024 mencapai lebih dari 2,5 triliun rupiah, menjadikannya salah satu jenis kejahatan siber dengan kerugian finansial tertinggi di tanah air.",
+      "definition": "Mobile Banking Attack adalah kategori serangan siber yang secara khusus menargetkan aplikasi perbankan dan keuangan di perangkat seluler (Android dan iOS). Serangan ini biasanya tidak mencoba menembus server bank yang dilindungi pengamanan berlapis, melainkan menyasar titik yang lebih lemah: perangkat dan perilaku pengguna. Karena hampir semua urusan keuangan kini bisa dilakukan lewat ponsel, ponsel ibarat dompet dan mesin ATM yang dibawa ke mana-mana, sehingga menjadi sasaran utama sindikat kejahatan.\n\nDampaknya lebih berat daripada pencurian data biasa, karena penyerang tidak hanya mendapat informasi, tetapi juga kemampuan melakukan transaksi. Dalam hitungan menit setelah ponsel dikuasai, rekening bisa dikuras atau dipakai untuk kejahatan lain. Data Indonesia Anti-Scam Centre (IASC) OJK periode November 2024–November 2025 menunjukkan modus 'mengaku pihak lain' (fake call) menimbulkan kerugian sekitar Rp1,54 triliun, dan penipuan lewat file APK berbahaya di WhatsApp menimbulkan kerugian sekitar Rp137,45 miliar.",
       "sections": [
         {
           "title": "Mengapa Mobile Banking Menjadi Target Paling Menggiurkan?",
           "content": [
             "Smartphone adalah perangkat paling personal yang pernah dimiliki manusia. Di dalamnya tersimpan kombinasi paling mematikan bagi seorang penyerang: kredensial perbankan, kode OTP via SMS, sidik jari atau wajah untuk autentikasi biometrik, riwayat transaksi, kontak sosial, dan akses ke aplikasi lain seperti email dan media sosial. Ketika sebuah malware banking berhasil menembus perangkat, ia mendapatkan 'kingdom access' — akses total ke seluruh identitas digital korban. Tidak seperti serangan pada server bank yang harus melawan WAF, enkripsi HSM, dan tim SOC 24/7, serangan pada smartphone cukup meyakinkan satu orang untuk mengklik satu tautan atau menginstal satu APK.",
-            "Ekosistem Android yang terbuka, terutama di negara berkembang seperti Indonesia, menjadi ladang subur bagi malware banking. Mayoritas pengguna Android di Indonesia menginstal aplikasi dari luar Google Play Store (sideloading) melalui tautan WhatsApp, SMS, atau website tidak resmi. Fitur 'Install from Unknown Sources' sering kali diaktifkan tanpa kesadaran risiko. Sementara itu, fragmentasi versi Android yang sangat luas — banyak pengguna masih menggunakan Android 8 atau 9 yang tidak lagi menerima patch keamanan — membuat jutaan perangkat seluler memiliki kerentanan yang sudah lama diketahui namun belum ditambal.",
-            "Sindikat kejahatan siber modern beroperasi seperti perusahaan startup profesional. Mereka memiliki tim R&D yang secara khusus memodifikasi malware banking setiap minggu untuk menghindari deteksi Google Play Protect, tim marketing yang merancang kampanye phishing yang meyakinkan, tim operator botnet, dan bahkan customer service untuk menjual 'Banking-as-a-Service' kepada penjahat tingkat rendah di Telegram dan forum dark web. Industri kejahatan ini begitu maju sehingga Anda dapat berlangganan paket malware banking lengkap dengan dashboard, tutorial, dan dukungan teknis seharga 500 dolar AS per bulan."
+            "Ekosistem Android yang terbuka memberi celah tambahan. Banyak pengguna menginstal aplikasi dari luar Google Play Store (sideloading) lewat tautan WhatsApp, SMS, atau situs tidak resmi, dan mengizinkan 'Install from Unknown Sources' tanpa memahami risikonya. Selain itu, banyak ponsel lama yang sudah tidak menerima update keamanan, sehingga celah yang sudah lama diketahui tetap terbuka.",
+            "Sindikat kejahatan kini bekerja seperti bisnis. Ada yang membuat dan memperbarui malware agar lolos deteksi, ada yang merancang kampanye penipuan, dan ada yang menjual atau menyewakan malware perbankan sebagai layanan (Malware-as-a-Service) di Telegram atau forum gelap, lengkap dengan panel kendali dan panduan."
           ]
         },
         {
@@ -38,20 +65,33 @@
         {
           "title": "Ekosistem Kejahatan Mobile Banking di Indonesia",
           "content": [
-            "Indonesia memiliki karakteristik unik yang membuatnya menjadi surga bagi serangan mobile banking. Tingkat literasi digital yang belum merata, kebiasaan berbagi file APK melalui grup WhatsApp keluarga, serta kepercayaan berlebihan pada figur otoritas palsu (palsu menyamar sebagai polisi, jaksa, atau pegawai bank) menciptakan kombinasi yang mematikan. Modus 'sniffing' yang viral pada tahun 2024 berhasil menipu puluhan ribu korban dengan skrip yang sama berulang kali: menelepon korban, mengaku dari bank, meminta korban menginstal APK 'pembaharuan sistem' yang sebenarnya adalah malware, lalu menguras seluruh saldo rekening dalam hitungan jam.",
-            "Platform komunikasi seperti Telegram telah menjadi pasar utama untuk jual-beli malware banking. Channel-channel dengan nama seperti 'APK Toolkit Indonesia' atau 'Tools Sakti Mbanking' menjual paket lengkap berisi source code malware, server Command and Control yang siap pakai, database target (nomor HP dan nama lengkap hasil kebocoran data), serta video tutorial step-by-step. Harga berkisar dari 500 ribu rupiah untuk versi dasar hingga puluhan juta rupiah untuk varian premium dengan fitur bypass antivirus canggih. Yang lebih mengkhawatirkan, banyak pelaku adalah remaja atau mahasiswa yang tergiur uang cepat tanpa menyadari hukuman pidana berat yang menanti mereka.",
+            "Indonesia memiliki beberapa faktor yang memudahkan serangan mobile banking: literasi digital yang belum merata, kebiasaan menerima dan membuka file dari grup WhatsApp, serta mudahnya orang percaya pada pihak yang mengaku petugas bank, polisi, atau kurir. Pada Juli 2023, OJK Malang memperingatkan modus yang populer disebut 'sniffing': pelaku mengirim file APK berkedok undangan, tagihan, atau paket kurir, lalu aplikasi itu mencuri data dari ponsel korban, termasuk data login mobile banking.",
+            "Pelakunya pun beragam, termasuk anak muda. Pada Februari 2023, polisi menangkap seorang mahasiswa berusia 20 tahun di Sulawesi Selatan yang membuat aplikasi 'undangan pernikahan' berbahaya dan menjualnya kepada orang lain lewat media sosial. Pada September 2023, Polda Sumatera Selatan menangkap pemuda 23 tahun yang menguras Rp2,3 miliar dari rekening korban lewat APK 'surat tilang' palsu. Mereka kini menghadapi ancaman pidana berat.",
             "Di sisi pertahanan, bank-bank di Indonesia telah mulai mengadopsi teknologi deteksi perilaku perangkat (device fingerprinting), analisis biometrik perilaku (behavioral biometrics), dan autentikasi tanpa password (FIDO2). Namun, solusi teknis saja tidak akan pernah cukup. Pertahanan terkuat melawan mobile banking attack adalah kesadaran pengguna. Memahami bagaimana setiap jenis serangan bekerja, mengenali tanda-tanda peringatan dini, dan membangun kebiasaan keamanan digital yang kuat adalah satu-satunya cara untuk benar-benar melindungi aset finansial Anda di era di mana smartphone Anda adalah dompet Anda."
           ]
         }
       ],
       "case_study": {
-        "title": "Wabah APK 'Undangan Pernikahan' 2023-2024: Triliunan Rupiah Menguap",
-        "story": "Sepanjang tahun 2023 hingga 2024, Indonesia diguncang oleh gelombang penipuan massal menggunakan APK (Android Package) yang dikirim melalui WhatsApp dengan kedok 'Undangan Pernikahan Digital', 'Surat Tilang Elektronik', atau 'Resi Kurir Paket'. Modus operasinya sangat terstruktur: korban menerima pesan WhatsApp dari nomor tidak dikenal berisi file APK dengan ikon yang meyakinkan. Ketika diklik dan diinstal, aplikasi meminta izin Accessibility Service yang berbahaya dengan alasan 'memudahkan navigasi'. Begitu izin diberikan, malware langsung mengambil alih perangkat, membaca semua SMS termasuk OTP, dan dalam banyak kasus memiliki fitur Automated Transfer System (ATS) yang secara otomatis melakukan transfer dana ke rekening penampung (mule account) di tengah malam ketika korban tertidur. Bareskrim Polri mencatat lebih dari 36.000 korban dengan total kerugian diperkirakan melebihi 1,2 triliun rupiah hanya dari varian 'undangan pernikahan' saja.",
-        "lesson": "Kasus ini membuktikan bahwa serangan mobile banking paling efektif bukanlah yang paling teknis, melainkan yang paling pandai memanipulasi psikologi korban. Rasa ingin tahu terhadap undangan pernikahan atau kepanikan terhadap surat tilang membuat orang mengabaikan warning sistem Android tentang instalasi dari sumber tidak dikenal. Pelajaran kritis lainnya: JANGAN PERNAH memberikan izin Accessibility Service kepada aplikasi yang tidak Anda instal dari Google Play Store resmi. Izin ini adalah 'kunci master' yang memberikan kendali penuh atas perangkat Anda. Selalu verifikasi file APK apa pun yang dikirim via chat dengan menghubungi pengirim melalui kanal lain (telepon langsung) sebelum menginstal."
+        "type": "nyata",
+        "title": "Pembuat APK 'Undangan Pernikahan' Berbahaya Ditangkap (Februari 2023)",
+        "story": "Pada awal 2023, pesan WhatsApp berisi file 'undangan pernikahan digital' dalam format APK ramai beredar, dan banyak warga melaporkan rekeningnya terkuras setelah membuka file tersebut. Pada 1 Februari 2023, Ditreskrimsus Polda Sulawesi Selatan menyampaikan bahwa Tim Cyber Mabes Polri telah menangkap seorang mahasiswa berinisial AI (20) asal Kabupaten Pinrang. Menurut polisi, AI adalah pembuat aplikasi tersebut dan menjualnya kepada pembeli melalui media sosial. Para pembeli kemudian memakai aplikasi itu untuk menipu korban di berbagai daerah. Polisi juga mengamankan pihak lain di Sumatera dan di Kabupaten Wajo. Di Sulawesi Selatan saja, dua korban melapor dengan kerugian hingga puluhan juta rupiah. Modus serupa terus berlanjut dengan kedok berbeda, seperti tagihan, surat tilang, dan resi kurir.",
+        "lesson": "Kasus ini menunjukkan rantai kejahatan mobile banking: ada pembuat malware, ada pembeli yang menyebarkannya, dan ada korban yang terpancing rasa ingin tahu. Pelajarannya: 1) undangan, tagihan, atau surat resmi tidak pernah dikirim dalam bentuk file .apk; 2) jangan pernah memasang aplikasi dari chat, dan jangan aktifkan 'Install from Unknown Sources'; 3) jangan berikan izin Accessibility atau akses SMS kepada aplikasi yang tidak jelas; 4) membuat atau menjual aplikasi seperti ini adalah tindak pidana, bukan sekadar 'cari uang sampingan'.",
+        "sources": [
+          {
+            "label": "iNews.id (1 Feb 2023) — Tim Cyber Polri Tangkap Pelaku Penipuan Modus Aplikasi Undangan Pernikahan Digital",
+            "url": "https://www.inews.id/regional/sulsel/tim-cyber-polri-tangkap-pelaku-penipuan-modus-aplikasi-undangan-pernikahan-digital/all"
+          },
+          {
+            "label": "Bisnis.com (30 Jan 2023) — Ini Sikap Kemenkominfo Soal Undangan Nikah Format APK di WhatsApp",
+            "url": "https://teknologi.bisnis.com/read/20230130/84/1622798/ini-sikap-kemenkominfo-soal-undangan-nikah-format-apk-di-whatsapp"
+          }
+        ]
       },
       "references": [
-        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Guidelines for Managing Mobile Device Security",
-        "https://owasp.org/www-project-mobile-security-testing-guide/ - OWASP Mobile Security Testing Guide — Mobile Banking Threats"
+        "https://www.cnbcindonesia.com/tech/20251218063318-37-695229/10-modus-penipuan-terbanyak-di-ri-nomor-satu-banyak-yang-tak-sadar - CNBC Indonesia (Des 2025) — 10 Modus Penipuan Terbanyak di RI (data IASC OJK)",
+        "https://finansial.bisnis.com/read/20230712/90/1673998/ojk-ingatkan-modus-penipuan-sniffing-bisa-kuras-isi-rekening - Bisnis.com (12 Jul 2023) — OJK Ingatkan Modus Penipuan Sniffing Bisa Kuras Isi Rekening",
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Guidelines for Managing the Security of Mobile Devices in the Enterprise",
+        "https://owasp.org/www-project-mobile-security-testing-guide/ - OWASP Mobile Application Security Testing Guide (MASTG)"
       ]
     },
     "1": {
@@ -62,9 +102,9 @@
         {
           "title": "Anatomi dan Distribusi Aplikasi Palsu",
           "content": [
-            "Pembuatan aplikasi perbankan palsu telah menjadi sangat mudah berkat tersedianya tools dan template di pasar gelap. Penyerang cukup mengunduh APK asli dari bank target (tersedia gratis di APKMirror atau situs mirror lain), melakukan 'decompile' menggunakan tools seperti JADX atau apktool, memodifikasi kode untuk menyisipkan keylogger dan pengirim data ke server C2, lalu 'recompile' kembali dengan sertifikat digital mereka sendiri. Proses ini dapat dilakukan oleh seseorang dengan pengetahuan pemrograman Java dasar dalam waktu kurang dari satu hari. Hasilnya adalah aplikasi yang terlihat 99% identik dengan versi asli.",
+            "Membuat aplikasi palsu kini relatif mudah. Pelaku bisa meniru tampilan aplikasi asli, atau mengambil aplikasi asli lalu menyisipkan kode jahat dan menandatanganinya ulang dengan sertifikat milik mereka sendiri. Bagi orang awam, hasilnya bisa terlihat hampir sama persis dengan aplikasi resmi. Ada pula 'aplikasi' yang tidak meniru bank sama sekali, melainkan menyamar sebagai undangan, surat tilang, atau resi kurir, padahal fungsi utamanya mencuri SMS dan data perbankan.",
             "Distribusi aplikasi palsu sangat bergantung pada rekayasa sosial (social engineering). Penyerang tidak mencoba mempublikasikan aplikasi mereka di Google Play Store — yang akan langsung dideteksi oleh Google Play Protect — melainkan mengirimkannya langsung ke korban melalui berbagai saluran: file APK via WhatsApp, tautan unduhan di SMS phishing (smishing), website tiruan yang dioptimalkan untuk SEO (seperti 'bca-update-resmi.com'), atau bahkan melalui iklan di aplikasi gratisan. Pesan yang menyertai selalu dirancang untuk memicu emosi: urgensi ('akun Anda akan diblokir dalam 24 jam jika tidak update'), rasa ingin tahu ('lihat foto mesra Anda'), atau otoritas palsu ('surat dari Kejaksaan Agung').",
-            "Varian paling berbahaya dari fake banking app adalah yang meniru aplikasi fintech dan e-wallet populer seperti DANA, OVO, GoPay, atau ShopeePay, bukan hanya aplikasi bank konvensional. Karena pengguna sering mengisi saldo dan mentransfer uang antar e-wallet, penyerang dapat menguras seluruh ekosistem finansial digital korban. Beberapa varian bahkan menyamar sebagai aplikasi 'pembaruan sistem' dari operator seluler atau pemerintah (seperti 'PeduliLindungi' atau 'APK Satpol PP'), memanfaatkan kepercayaan masyarakat terhadap institusi resmi."
+            "Varian lain meniru aplikasi dompet digital, ekspedisi, atau instansi pemerintah, memanfaatkan kepercayaan masyarakat terhadap lembaga resmi. Karena banyak orang memakai beberapa aplikasi keuangan sekaligus, satu aplikasi palsu yang berhasil dipasang bisa membuka akses ke banyak akun."
           ]
         },
         {
@@ -72,26 +112,35 @@
           "content": [
             "Fake banking app modern dilengkapi dengan arsenal fitur pengumpulan data yang sangat komprehensif. Fitur paling dasar adalah 'credential phishing' — ketika korban membuka aplikasi dan melihat layar login palsu yang identik dengan aslinya, setiap karakter yang diketik langsung direkam dan dikirim ke server C2. Namun malware modern tidak berhenti di situ. Mereka juga melakukan 'screenshot capture' otomatis setiap kali aplikasi berada di latar depan, sehingga bahkan jika korban menggunakan virtual keyboard yang aman, informasi tetap bocor melalui tangkapan layar.",
             "Teknik yang lebih canggih adalah 'screen recording' yang berjalan diam-diam di latar belakang, merekam seluruh aktivitas korban termasuk saat mereka membuka aplikasi banking asli. Rekaman video ini kemudian diunggah secara berkala ke server penyerang. Beberapa varian juga dilengkapi dengan 'keylogger' sistem-wide yang merekam setiap ketukan keyboard di seluruh perangkat, bukan hanya di dalam aplikasi palsu. Ini berarti password untuk aplikasi lain, pesan WhatsApp, dan bahkan pencarian Google pun terekam.",
-            "Data yang dicuri tidak langsung digunakan untuk mencuri uang secara langsung — penyerang yang cerdas akan terlebih dahulu menjual data login ini di pasar gelap dengan harga yang jauh lebih tinggi. Satu set kredensial banking aktif dengan saldo tinggi dapat dihargai 10 hingga 50 dolar AS di forum seperti Russian Market atau Genesis Market. Penjualannya biasanya dikemas dalam 'fullz' — paket lengkap berisi username, password, PIN, nomor KTP, nama ibu kandung, dan data pribadi lainnya yang cukup untuk mengambil alih seluruh identitas korban secara permanen."
+            "Data curian tidak selalu langsung dipakai menguras rekening. Sebagian dijual di pasar gelap, sering dalam bentuk paket lengkap berisi username, password, data pribadi, hingga cookie sesi. Salah satu pasar gelap terkenal untuk data seperti ini, Genesis Market, dilumpuhkan oleh operasi penegakan hukum internasional pada April 2023, tetapi pasar sejenis terus bermunculan."
           ]
         },
         {
           "title": "Strategi Deteksi dan Pencegahan",
           "content": [
             "Deteksi fake banking app memerlukan pendekatan berlapis. Langkah pertama dan paling efektif adalah hanya menginstal aplikasi dari toko resmi (Google Play Store atau Apple App Store). Meskipun tidak 100% bebas dari malware, kedua toko ini memiliki mekanisme review otomatis dan manual, serta Google Play Protect yang memindai miliaran aplikasi setiap hari. Jika Anda menemukan aplikasi banking yang hanya tersedia sebagai file APK dari website atau chat, itu adalah red flag besar yang tidak boleh diabaikan.",
-            "Verifikasi integritas aplikasi juga dapat dilakukan dengan memeriksa sertifikat digital pengembang. Setiap aplikasi Android ditandatangani dengan sertifikat digital yang unik. Aplikasi resmi BCA, misalnya, selalu ditandatangani dengan sertifikat milik PT Bank Central Asia Tbk. Jika Anda melihat sertifikat yang berbeda (misalnya nama pengembang acak atau 'Android Debug Bridge'), itu adalah tanda pasti aplikasi palsu. Tools seperti 'AppBrain' atau 'APK Analyzer' bawaan Android Studio dapat menampilkan informasi ini kepada pengguna awam.",
+            "Periksa identitas pengembang sebelum menginstal. Di Play Store atau App Store, aplikasi bank resmi diterbitkan atas nama bank tersebut, bukan nama perorangan atau pengembang tak dikenal. Cara paling aman adalah membuka toko aplikasi resmi sendiri dan mencari nama bank, atau mengikuti tautan dari situs resmi bank, bukan dari pesan chat atau SMS.",
             "Di tingkat perangkat, aktifkan fitur Google Play Protect dan jangan pernah mematikan peringatan 'Install from Unknown Sources'. Jika Anda harus menginstal APK dari luar Play Store (misalnya aplikasi internal perusahaan), pastikan Anda benar-benar memverifikasi sumbernya dengan menghubungi admin IT melalui kanal resmi. Bagi perusahaan, implementasi Mobile Device Management (MDM) seperti Microsoft Intune atau VMware Workspace ONE dapat memblokir instalasi aplikasi di luar whitelist perusahaan, memaksa enkripsi device, dan memungkinkan penghapusan data jarak jauh (remote wipe) jika perangkat hilang atau terinfeksi."
           ]
         }
       ],
       "case_study": {
-        "title": "Kasus 'APK Kurir Paket' dan Sindikat Internasional 2024",
-        "story": "Pada pertengahan 2024, Bareskrim Polri bekerja sama dengan Europol dan FBI berhasil membongkar sindikat internasional di balik distribusi fake banking app berkedok 'APK Kurir Paket'. Sindikat yang beroperasi dari beberapa negara Asia Tenggara ini telah menyebar lebih dari 50 varian APK palsu yang meniru aplikasi dari 7 bank besar Indonesia, 3 e-wallet populer, dan 2 aplikasi ekspedisi. Modus operandinya sangat sistematis: korban menerima SMS berisi tautan 'lacak paket Anda' yang mengarah ke website tiruan. Website tersebut meminta korban mengunduh APK dengan alasan 'untuk melacak paket secara real-time'. Setelah diinstal, aplikasi menampilkan UI yang identik dengan aplikasi ekspedisi resmi, namun di latar belakang ia secara diam-diam mencuri data SMS, kontak, dan kredensial banking. Total kerugian diperkirakan mencapai 300 miliar rupiah dengan lebih dari 12.000 korban teridentifikasi.",
-        "lesson": "Kasus ini menyoroti dua kelemahan fundamental pengguna Indonesia: kepercayaan berlebihan pada SMS dan kecenderungan untuk menginstal aplikasi untuk 'memudahkan' aktivitas sehari-hari. Penyerang tahu bahwa orang yang menunggu paket akan lebih mudah terpancing dengan pesan yang relevan dengan kebutuhan mereka saat itu. Pelajaran penting: JANGAN PERNAH klik tautan lacak paket dari SMS. Selalu lacak paket langsung melalui aplikasi resmi ekspedisi atau website resmi mereka. Untuk bisnis, migrasi dari SMS notifikasi ke notifikasi dalam aplikasi (in-app notification) atau WhatsApp Business API yang terverifikasi dapat secara signifikan mengurangi efektivitas kampanye smishing seperti ini."
+        "type": "nyata",
+        "title": "APK 'Surat Tilang' Palsu: Rp2,3 Miliar Raib dari Rekening Warga Palembang (2023)",
+        "story": "Antara 30 Mei dan 1 Juni 2023, seorang warga Palembang berusia 58 tahun kehilangan Rp2,3 miliar dari rekeningnya. Menurut Polda Sumatera Selatan, pelaku berinisial ES (23) memilih korban secara acak dari nomor WhatsApp, memastikan saldonya besar, lalu menyamar sebagai polisi dan mengirim file 'surat tilang' dalam format APK. Setelah aplikasi itu dipasang, pelaku mendapat akses ke ponsel korban dan bisa menyadap kode OTP yang dikirim lewat SMS. Pelaku kemudian membobol email korban dan memakai alamat email itu sebagai username untuk masuk ke mobile banking. Selama tiga hari, pelaku menguras saldo korban melalui lebih dari 100 transaksi ke 20 rekening penampung. Pelaku ditangkap di Jakarta dan kasusnya diumumkan pada 27 September 2023.",
+        "lesson": "Kasus ini menunjukkan bagaimana satu file APK bisa membuka seluruh 'kunci' keuangan: SMS berisi OTP, email, lalu mobile banking. Pelajarannya: 1) polisi tidak mengirim surat tilang dalam bentuk file APK lewat WhatsApp; tilang elektronik resmi bisa dicek di situs resmi kepolisian; 2) jangan pernah memasang aplikasi yang dikirim lewat chat; 3) amankan email dengan password unik dan 2FA, karena email sering menjadi pintu masuk akun lain; 4) aktifkan notifikasi transaksi agar transaksi asing segera ketahuan.",
+        "sources": [
+          {
+            "label": "JPNN.com (27 Sep 2023) — Warga Palembang Terima APK Surat Tilang, Rp2,3 Miliar Melayang",
+            "url": "https://m.jpnn.com/news/warga-palembang-terima-apk-surat-tilang-rp-23-miliar-melayang"
+          }
+        ]
       },
       "references": [
-        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Malicious Apps & Mobile Threat Defense",
-        "https://attack.mitre.org/techniques/T1476/ - MITRE ATT&CK — T1476: Deliver Malicious App via Authorized App Store"
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Guidelines for Managing the Security of Mobile Devices in the Enterprise",
+        "https://owasp.org/www-project-mobile-security-testing-guide/ - OWASP Mobile Application Security Testing Guide (MASTG)",
+        "https://attack.mitre.org/techniques/T1417/ - MITRE ATT&CK (Mobile) — T1417: Input Capture",
+        "https://finansial.bisnis.com/read/20230712/90/1673998/ojk-ingatkan-modus-penipuan-sniffing-bisa-kuras-isi-rekening - Bisnis.com (12 Jul 2023) — OJK Ingatkan Modus Penipuan Sniffing Bisa Kuras Isi Rekening"
       ]
     },
     "2": {
@@ -100,11 +149,11 @@
       "definition": "OTP Theft (Pencurian One-Time Password) adalah teknik serangan yang bertujuan mendapatkan kode verifikasi sekali pakai yang dikirimkan oleh bank atau layanan ke nomor ponsel korban. OTP dirancang sebagai lapisan keamanan kedua (2FA) yang seharusnya melindungi akun bahkan jika password utama telah bocor. Namun, implementasi OTP melalui SMS yang tidak terenkripsi, dikombinasikan dengan teknik social engineering yang canggih, telah membuat kode enam digit ini menjadi salah satu titik lemah terbesar dalam keamanan perbankan modern.",
       "sections": [
         {
-          "title": "Mengapa OTP via SMS Sangat Rentan?",
+          "title": "Mengapa OTP via SMS Rentan?",
           "content": [
             "OTP yang dikirim melalui SMS memiliki kelemahan mendasar: SMS adalah protokol yang dibangun pada tahun 1990-an tanpa enkripsi end-to-end. Setiap pesan SMS melewati banyak node jaringan — dari SMSC (Short Message Service Center) operator, melalui gateway, hingga ke ponsel — dan di setiap titik ini, pesan dapat dibaca oleh operator jaringan, disadap oleh pihak ketiga, atau bahkan disalahgunakan oleh oknum internal. Penelitian keamanan berulang kali menunjukkan bahwa karyawan operator seluler di berbagai negara telah tertangkap menjual akses ke sistem SMS mereka kepada sindikat kejahatan siber.",
-            "Selain kelemahan teknis, protokol SS7 (Signaling System No. 7) yang mendasari jaringan telekomunikasi global memiliki kerentanan kritis yang memungkinkan penyerang jarak jauh untuk membelokkan (redirect) SMS OTP ke nomor mereka sendiri tanpa sepengetahuan korban atau operator. Serangan SS7 hanya memerlukan akses ke jaringan SS7, yang dapat diperoleh dengan menyewa dari penyedia telekomunikasi nakal atau mengeksploitasi konfigurasi yang lemah pada operator kecil. Meskipun mahal (ribuan dolar per serangan), metode ini digunakan secara rutin oleh sindikat kejahatan tingkat tinggi untuk target bernilai tinggi.",
-            "Di Indonesia, OTP via SMS masih menjadi metode autentikasi standar untuk sebagian besar bank karena alasan kompatibilitas — tidak semua pengguna memiliki smartphone atau mengerti cara menggunakan authenticator app. Ketergantungan pada teknologi yang sudah usang ini, dikombinasikan dengan tingkat kesadaran keamanan yang rendah, menciptakan lingkungan yang sempurna bagi OTP theft. Bahkan bank-bank besar pun mengakui bahwa mayoritas kasus fraud mobile banking melibatkan OTP yang berhasil dicuri, bukan kelemahan pada sistem bank itu sendiri."
+            "Selain itu, protokol SS7 (Signaling System No. 7) yang menghubungkan jaringan telekomunikasi dunia memiliki kelemahan yang memungkinkan pihak yang punya akses ke jaringan tersebut membelokkan SMS ke nomor lain. Serangan ini mahal dan jarang, biasanya dipakai untuk target bernilai tinggi, tetapi menunjukkan bahwa SMS bukan saluran yang dirancang untuk keamanan.",
+            "Di Indonesia, OTP lewat SMS masih banyak dipakai karena hampir semua orang bisa menerimanya. Namun, pada kenyataannya cara paling umum untuk mencuri OTP bukanlah teknik canggih, melainkan menipu korban agar menyebutkan kodenya sendiri atau memasang aplikasi yang membaca SMS. Pedoman NIST juga menyebut autentikasi lewat SMS atau telepon memiliki risiko khusus, seperti SIM swap, sehingga perlu kehati-hatian ekstra."
           ]
         },
         {
@@ -112,26 +161,40 @@
           "content": [
             "Metode paling umum dan paling mudah adalah Social Engineering via telepon atau WhatsApp. Penyerang menelepon korban dengan menyamar sebagai call center bank, polisi, atau jaksa, menciptakan situasi darurat palsu ('rekening Anda dibobol, kami perlu verifikasi sekarang'). Korban yang panik akan dengan sukarela menyebutkan kode OTP yang baru saja mereka terima. Varian yang lebih canggih menggunakan deepfake audio — suara AI yang meniru suara manajer bank yang dikenal korban — untuk meningkatkan kredibilitas penipuan. Teknik ini sangat efektif karena mengeksploitasi otoritas dan urgensi, bukan kelemahan teknis.",
             "Metode kedua adalah Malware SMS Interceptor — aplikasi jahat yang meminta izin 'Read SMS' atau 'Receive SMS' saat instalasi. Begitu izin diberikan, malware akan diam-diam membaca setiap SMS yang masuk, termasuk OTP, lalu meneruskannya ke server penyerang tanpa menampilkan notifikasi kepada korban. Teknik ini sering dikombinasikan dengan teknik 'notification hijacking' di mana malware memblokir notifikasi SMS asli sehingga korban tidak pernah tahu ada OTP yang dikirim, sementara malware menggunakannya untuk menyetujui transaksi di latar belakang.",
-            "Metode ketiga adalah SIM Swapping (akan dibahas detail di Topik 03), di mana penyerang mengambil alih nomor telepon korban secara fisik dengan memalsukan identitas di operator seluler. Ketika SIM card korban tidak aktif dan SIM card baru dipegang penyerang, semua SMS OTP akan masuk ke perangkat penyerang. Metode keempat adalah Intercept via Fake BTS (Base Transceiver Station) atau 'IMSI Catcher' — perangkat yang berpura-pura menjadi menara seluler resmi, memaksa ponsel korban untuk terhubung dan memungkinkan penyerang membaca semua komunikasi termasuk SMS dan panggilan. Meskipun mahal dan biasanya digunakan oleh aktor negara, versi murah IMSI Catcher ('Stingray tiruan') dapat dibuat dengan hardware seharga beberapa juta rupiah."
+            "Metode ketiga adalah SIM swapping (dibahas di Topik 03): penyerang mengambil alih nomor telepon korban di operator seluler, sehingga semua SMS OTP masuk ke tangan penyerang. Metode keempat adalah menyadap jaringan, misalnya lewat celah SS7 atau BTS palsu (IMSI catcher) yang berpura-pura menjadi menara seluler. Metode keempat ini jauh lebih mahal dan jarang ditemui pada penipuan sehari-hari."
           ]
         },
         {
           "title": "Alternatif yang Lebih Aman: Beyond SMS OTP",
           "content": [
             "Solusi terbaik untuk masalah OTP via SMS adalah tidak menggunakannya sama sekali. Authenticator apps seperti Google Authenticator, Microsoft Authenticator, atau Authy menghasilkan kode OTP secara lokal di perangkat menggunakan algoritma TOTP (Time-based One-Time Password) yang tidak pernah melewati jaringan. Karena kode dihasilkan di perangkat dan tidak pernah dikirim melalui SMS atau email, metode ini kebal terhadap intersepsi jaringan, SS7 attack, dan SIM swapping. Kelemahannya adalah pengguna harus menginstal aplikasi tambahan dan mem-backup recovery codes dengan aman.",
-            "Standar FIDO2/WebAuthn adalah evolusi berikutnya dalam autentikasi tanpa password. Menggunakan perangkat keras seperti YubiKey atau sidik jari/wajah yang sudah tertanam di smartphone modern, FIDO2 menggunakan kriptografi kunci publik-privat di mana kunci privat tidak pernah meninggalkan perangkat. Ini secara fundamental menghilangkan kemungkinan phishing karena setiap autentikasi terikat secara kriptografis ke domain spesifik (misalnya 'bca.co.id') — tidak mungkin digunakan di website tiruan. Bank-bank besar seperti BCA dan Mandiri telah mulai mengadopsi FIDO2 untuk nasabah prioritas.",
-            "Push Notification-based 2FA adalah kompromi yang baik antara keamanan dan user experience. Ketika pengguna mencoba login, notifikasi push dikirim ke aplikasi banking resmi di perangkat tepercaya mereka. Pengguna cukup menekan 'Setujui' atau 'Tolak' tanpa perlu mengetik kode. Karena notifikasi dikirim melalui channel yang sudah terotentikasi (aplikasi resmi yang terhubung ke server bank), metode ini jauh lebih aman daripada SMS. Namun, pengguna tetap harus waspada terhadap 'MFA fatigue attack' — di mana penyerang mengirim ratusan notifikasi push hoping korban akan menekan 'Setujui' karena frustrasi."
+            "Standar FIDO2/WebAuthn, termasuk passkey, adalah langkah berikutnya. Kunci rahasianya tersimpan di perangkat (misalnya dibuka dengan sidik jari atau wajah) dan tidak pernah dikirim ke server. Setiap login terikat pada alamat situs resmi, sehingga tidak bisa dipakai di situs tiruan. Inilah mengapa metode ini disebut tahan phishing.",
+            "Push Notification-based 2FA adalah kompromi yang baik antara keamanan dan user experience. Ketika pengguna mencoba login, notifikasi push dikirim ke aplikasi banking resmi di perangkat tepercaya mereka. Pengguna cukup menekan 'Setujui' atau 'Tolak' tanpa perlu mengetik kode. Karena notifikasi dikirim melalui channel yang sudah terotentikasi (aplikasi resmi yang terhubung ke server bank), metode ini jauh lebih aman daripada SMS. Namun, pengguna tetap harus waspada terhadap 'MFA fatigue attack' — di mana penyerang mengirim ratusan notifikasi push hoping korban akan menekan 'Setujui' karena frustrasi.",
+            "Apa pun metodenya, aturan paling penting tetap sama: OTP, PIN, dan password tidak boleh diberikan kepada siapa pun. Bank, OJK, dan polisi tidak pernah meminta kode tersebut lewat telepon, SMS, atau chat."
           ]
         }
       ],
       "case_study": {
-        "title": "Modus 'Sniffing' Viral di Indonesia 2024: Ribuan Korban Dalam Hitungan Bulan",
-        "story": "Pada awal 2024, istilah 'sniffing' menjadi viral di Indonesia setelah ribuan orang melaporkan kehilangan dana dari rekening mereka dengan modus yang sangat mirip. Modus operandinya dimulai dengan panggilan telepon dari orang yang mengaku sebagai customer service bank, polisi, atau bahkan jaksa agung. Penelpon dengan fasih menjelaskan bahwa rekening korban 'terdeteksi terlibat kasus pencucian uang' dan perlu 'diverifikasi'. Korban diarahkan untuk menginstal APK tertentu yang sebenarnya adalah malware, kemudian dipandu untuk melakukan transfer 'ke rekening penampungan resmi' yang sebenarnya rekening penampung komplotan. Yang membuat kasus ini unik adalah kombinasi manipulasi psikologis yang sangat terencana dan penggunaan malware yang menyamar sebagai 'tools verifikasi' resmi.",
-        "lesson": "Modus sniffing mengajarkan kita bahwa pertahanan teknis tercanggih pun tidak berguna jika pengguna sendiri yang menyerahkan kunci. Bank Indonesia, OJK, dan kepolisian telah berulang kali menegaskan bahwa TIDAK ADA institusi resmi yang akan meminta OTP, PIN, password, atau CVV melalui telepon atau chat. Jika Anda menerima panggilan seperti itu, MATIKAN telepon segera dan hubungi bank melalui nomor resmi yang tertera di belakang kartu ATM atau di website resmi bank. Untuk melindungi diri dari malware yang meminta izin SMS, tinjau secara berkala izin aplikasi di Settings > Apps > [App] > Permissions, dan cabut izin yang tidak perlu."
+        "type": "nyata",
+        "title": "OTP.Agency: Layanan Bot Pencuri Kode OTP di Inggris (2019–2021)",
+        "story": "OTP.Agency adalah layanan gelap di Inggris yang membantu penipu mencuri kode OTP. Penipu yang sudah memiliki data login korban cukup memasukkan nama dan nomor telepon korban ke panel OTP.Agency. Layanan itu lalu melakukan panggilan otomatis kepada korban, memperingatkan adanya 'aktivitas mencurigakan' di akunnya, dan meminta korban memasukkan kode OTP yang sebenarnya muncul karena penipu sedang mencoba login. Kode yang dimasukkan korban langsung tampil di panel penipu. Layanan ini disewakan mulai £30 per minggu untuk bank seperti HSBC, Monzo, dan Lloyds. Badan Kejahatan Nasional Inggris (NCA) memperkirakan lebih dari 12.500 orang menjadi sasaran, dan para pengelolanya mungkin meraup hingga £7,9 juta antara September 2019 dan Maret 2021. Ketiga pengelolanya ditangkap pada Maret 2021 dan pada 2024 mengaku bersalah di pengadilan.",
+        "lesson": "Kasus ini membuktikan bahwa OTP sering 'dicuri' bukan dengan meretas sistem, melainkan dengan membujuk korban menyerahkannya sendiri, bahkan oleh mesin. Pelajarannya: 1) jika menerima telepon tentang 'aktivitas mencurigakan' lalu diminta memasukkan atau menyebutkan kode, tutup teleponnya; 2) hubungi bank sendiri lewat nomor resmi di kartu atau aplikasi; 3) OTP yang datang tanpa Anda sedang login atau bertransaksi adalah tanda ada orang lain yang mencoba masuk ke akun Anda, jadi segera ganti password.",
+        "sources": [
+          {
+            "label": "The Register (3 Sep 2024) — UK trio pleads guilty to running MFA bypass service",
+            "url": "https://www.theregister.com/2024/09/03/uk_trio_pleads_guilty_mfa_bypass/"
+          },
+          {
+            "label": "KrebsOnSecurity (Sep 2024) — Owners of 1-Time Passcode Theft Service Plead Guilty",
+            "url": "https://krebsonsecurity.com/2024/09/owners-of-1-time-passcode-theft-service-plead-guilty/"
+          }
+        ]
       },
       "references": [
-        "https://pages.nist.gov/800-63-3/sp800-63b.html#sec52 - NIST SP 800-63B — Section 5: OTP Authenticator Security",
-        "https://attack.mitre.org/techniques/T1111/ - MITRE ATT&CK — T1111: Multi-Factor Authentication Interception"
+        "https://pages.nist.gov/800-63-4/sp800-63b.html - NIST SP 800-63B-4 (2025) — Authentication & Authenticator Management",
+        "https://attack.mitre.org/techniques/T1111/ - MITRE ATT&CK — T1111: Multi-Factor Authentication Interception",
+        "https://fidoalliance.org/passkeys/ - FIDO Alliance — Passkeys",
+        "https://www.cnbcindonesia.com/tech/20251218063318-37-695229/10-modus-penipuan-terbanyak-di-ri-nomor-satu-banyak-yang-tak-sadar - CNBC Indonesia (Des 2025) — 10 Modus Penipuan Terbanyak di RI (data IASC OJK)"
       ]
     },
     "3": {
@@ -143,7 +206,7 @@
           "title": "Mekanisme dan Modus Operandi",
           "content": [
             "Serangan SIM swap dimulai dengan tahap pengintaian (reconnaissance) yang ekstensif. Penyerang mengumpulkan data pribadi korban sebanyak mungkin: nama lengkap, tanggal lahir, alamat, nomor KTP, nama ibu kandung, dan pertanyaan keamanan lainnya. Data ini biasanya diperoleh dari kebocoran data (data breach) yang sudah dipublikasikan di dark web, profil media sosial yang terlalu terbuka, atau melalui phishing. Dengan data yang cukup, penyerang dapat menyamar sebagai korban dengan meyakinkan ketika menghubungi call center operator seluler.",
-            "Tahap eksekusi biasanya melibatkan panggilan telepon ke customer service operator dengan narasi yang dibuat sebelumnya: 'HP saya hilang kemarin, tolong aktifkan nomor saya di SIM card baru ini'. Penyerang memberikan nomor seri (ICCID) dari SIM card kosong yang mereka miliki, dan menjawab pertanyaan verifikasi menggunakan data pribadi korban yang sudah dikumpulkan. Banyak operator yang memiliki prosedur verifikasi yang lemah — hanya menanyakan beberapa pertanyaan dasar yang jawabannya dapat ditemukan dengan mudah melalui OSINT (Open Source Intelligence). Dalam beberapa kasus, oknum internal operator yang disuap akan memproses permintaan swap tanpa verifikasi apa pun.",
+            "Tahap eksekusi biasanya dilakukan dengan menyamar sebagai pemilik nomor, baik lewat call center maupun langsung datang ke gerai operator, dengan alasan seperti 'HP saya hilang, tolong ganti kartu SIM saya'. Penyerang menjawab pertanyaan verifikasi memakai data pribadi korban yang sudah dikumpulkan, bahkan membawa identitas palsu. Jika prosedur verifikasi operator lemah atau ada oknum yang bisa disuap, kartu SIM baru bisa diterbitkan untuk penyerang.",
             "Begitu swap berhasil diproses (biasanya dalam waktu kurang dari 30 menit), SIM card asli korban langsung kehilangan sinyal ('No Service' atau 'Emergency Calls Only'). Banyak korban tidak menyadari bahwa ini adalah tanda serangan hingga beberapa jam kemudian, ketika mereka mulai menerima keluhan dari teman tentang pesan aneh atau menyadari bahwa mereka tidak bisa menerima OTP. Pada saat korban menyadari, penyerang sudah menggunakan OTP yang diterima untuk mereset password email, masuk ke aplikasi banking, menguras cryptocurrency wallet, dan bahkan mengajukan pinjaman online baru atas nama korban."
           ]
         },
@@ -158,21 +221,32 @@
         {
           "title": "Pertahanan Berlapis Melawan SIM Swap",
           "content": [
-            "Pertahanan paling kuat melawan SIM swap adalah mengaktifkan PIN atau passcode khusus di akun operator seluler Anda. Semua operator besar di Indonesia (Telkomsel, Indosat, XL, Tri, Smartfren) menyediakan fitur ini, biasanya disebut 'PIN Pengaman', 'PIN Verifikasi', atau 'Account PIN'. Setelah diaktifkan, setiap perubahan pada akun — termasuk penggantian SIM card — memerlukan PIN ini. Hubungi call center atau kunjungi gerai resmi operator Anda untuk mengaktifkan fitur ini hari ini. Pastikan PIN yang Anda pilih tidak terkait dengan data publik seperti tanggal lahir.",
+            "Lindungi data pribadi yang biasa dipakai untuk verifikasi, seperti nomor KTP, tanggal lahir, dan nama ibu kandung. Jangan mengunggah foto KTP atau dokumen pribadi ke media sosial, dan jangan memberikannya kepada pihak yang tidak jelas. Tanyakan juga kepada operator seluler Anda apakah tersedia PIN atau verifikasi tambahan untuk penggantian kartu SIM, lalu aktifkan jika ada.",
             "Migrasi dari SMS-based 2FA ke authenticator app atau FIDO2/WebAuthn adalah langkah krusial. Untuk akun-akun penting seperti email utama, banking, dan cryptocurrency, gunakan Google Authenticator, Authy, atau YubiKey. Ini memastikan bahwa bahkan jika nomor telepon Anda dicuri, penyerang tidak dapat melewati lapisan keamanan kedua. Selain itu, selalu sediakan 'recovery codes' (kode cadangan) yang diberikan saat setup 2FA, dan simpan di tempat yang aman (offline, seperti di brankas atau dicetak dan disimpan bersama dokumen penting).",
-            "Pertimbangan untuk menggunakan eSIM (embedded SIM) juga patut dipertimbangkan. eSIM tertanam secara fisik di perangkat dan tidak dapat ditukar dengan mudah seperti SIM fisik. Proses migrasi eSIM biasanya memerlukan verifikasi tatap muka di gerai resmi operator, yang membuatnya lebih tahan terhadap serangan remote social engineering. Namun, eSIM bukan solusi ajaib — penyerang yang cukup terampil masih dapat memanipulasi operator untuk mentransfer eSIM, sehingga lapisan pertahanan lain (PIN akun, 2FA kuat) tetap diperlukan."
+            "Jika ponsel tiba-tiba kehilangan sinyal sama sekali ('No Service') padahal orang lain di sekitar Anda tidak mengalaminya, jangan anggap remeh. Segera hubungi operator dari telepon lain, minta pemblokiran, lalu periksa akun email dan perbankan Anda dari perangkat tepercaya. Hubungi juga bank untuk membekukan sementara akses mobile banking jika perlu."
           ]
         }
       ],
       "case_study": {
-        "title": "Kasus SIM Swap Eksekutif Fintech Indonesia 2023",
-        "story": "Pada pertengahan 2023, seorang eksekutif senior di perusahaan fintech besar Indonesia menjadi korban SIM swap yang sangat terencana. Penyerang, yang diduga bagian dari sindikat internasional, telah memantau media sosial korban selama berbulan-bulan dan mengumpulkan cukup data pribadi untuk meyakinkan call center operator seluler. Dalam waktu 4 jam setelah SIM swap berhasil, penyerang telah mengambil alih email Gmail utama korban (yang digunakan untuk recovery semua akun), reset password wallet cryptocurrency-nya, dan mentransfer Bitcoin senilai 3,2 miliar rupiah ke wallet anonim. Yang memperparah, korban tidak segera menyadari karena dia sedang dalam perjalanan internasional dan mengira 'No Service' adalah masalah roaming. Ketika dia akhirnya menghubungi operator dari telepon lain, dananya sudah berpindah tangan empat kali melalui mixer crypto yang tidak terlacak.",
-        "lesson": "Kasus ini menyoroti bahwa SIM swap bukan hanya ancaman bagi selebriti atau billionaire — siapa pun dengan aset digital signifikan adalah target potensial. Eksekutif ini memiliki 2FA aktif di banyak akun, tetapi semuanya berbasis SMS, yang ternyata tidak berguna ketika nomor telepon berpindah tangan. Pelajaran penting: 1) Aktifkan PIN keamanan di operator seluler hari ini, 2) Migrasi akun-akun penting ke authenticator app atau FIDO2, 3) Jangan pernah menggunakan nomor telepon sebagai satu-satunya recovery option, 4) Jika HP tiba-tiba kehilangan sinyal tanpa alasan jelas, segera hubungi operator dari telepon lain dan periksa semua akun penting dari perangkat tepercaya."
+        "type": "nyata",
+        "title": "Kasus Ilham Bintang: Rekening Dibobol Lewat Pengambilalihan Nomor HP (Januari 2020)",
+        "story": "Pada 3 Januari 2020, rekening wartawan senior Ilham Bintang dibobol. Ia baru menyadarinya pada 6 Januari ketika hendak menarik uang di ATM saat berada di Australia. Menurut Polda Metro Jaya, komplotan pelaku mendapatkan data nasabah dari seorang oknum pegawai BPR yang menjual data dari sistem informasi debitur, lalu memastikan calon korban aktif memakai kartu kredit. Salah satu pelaku kemudian datang ke gerai operator seluler, mengaku sebagai pemilik nomor, dan meminta kartu SIM baru; rekaman CCTV gerai menjadi salah satu bukti. Setelah menguasai nomor telepon Ilham, pelaku mengambil alih emailnya dengan meminta ulang kata sandi, lalu mentransfer uang ke rekening penampung dan berbelanja online. Rekening Ilham terkuras sekitar Rp300 juta, dan komplotan ini diduga merugikan para korbannya sekitar Rp1 miliar. Polda Metro Jaya menetapkan delapan tersangka. Regulator telekomunikasi saat itu juga menegur operator terkait karena dinilai tidak menjalankan prosedur dengan benar.",
+        "lesson": "Kasus ini menunjukkan bahwa SIM swap adalah gabungan kebocoran data, lemahnya verifikasi, dan ketergantungan pada nomor telepon sebagai 'kunci cadangan' semua akun. Pelajarannya: 1) waspadai jika ponsel tiba-tiba tidak ada sinyal tanpa alasan jelas; 2) jangan jadikan nomor telepon satu-satunya cara memulihkan email dan akun penting; 3) gunakan authenticator app atau passkey untuk akun penting; 4) lembaga keuangan dan operator wajib menjaga data dan memperketat verifikasi penggantian SIM.",
+        "sources": [
+          {
+            "label": "Katadata (6 Feb 2020) — Pembobol Rekening Ilham Bintang Tertangkap, Begini Cara Pelaku Beraksi",
+            "url": "https://katadata.co.id/berita/2020/02/06/pembobol-rekening-ilham-bintang-tertangkap-begini-cara-pelaku-beraksi"
+          },
+          {
+            "label": "CNN Indonesia (21 Jan 2020) — Regulator RI Tegur Indosat Salah SOP soal Ilham Bintang",
+            "url": "https://www.cnnindonesia.com/teknologi/20200121150939-185-467338/regulator-ri-tegur-indosat-salah-sop-soal-ilham-bintang"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — SIM Swapping Alert & Statistics",
-        "https://pages.nist.gov/800-63-3/sp800-63b.html - NIST SP 800-63B — Out-of-Band Authentication & SIM Swap Risk",
-        "https://attack.mitre.org/techniques/T1111/ - MITRE ATT&CK — T1111: Multi-Factor Authentication Interception (SIM Swap)"
+        "https://attack.mitre.org/techniques/T1451/ - MITRE ATT&CK (Mobile) — T1451: SIM Card Swap",
+        "https://pages.nist.gov/800-63-4/sp800-63b.html - NIST SP 800-63B-4 (2025) — Authentication & Authenticator Management",
+        "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf - FBI IC3 — Internet Crime Report 2024"
       ]
     },
     "4": {
@@ -193,26 +267,39 @@
           "content": [
             "Kunci keberhasilan overlay attack adalah mendapatkan izin 'Draw over other apps' dari korban. Malware tidak bisa mendapatkan izin ini secara diam-diam; pengguna harus secara eksplisit menyetujuinya melalui dialog sistem. Namun, malware menggunakan berbagai trik social engineering untuk meyakinkan korban. Aplikasi sering kali berpura-pura menjadi 'battery saver', 'file manager', 'game populer', atau 'tools produktivitas' yang memerlukan izin ini untuk fitur 'pop-up notifikasi' atau 'floating window'. Dialog izin disajikan pada saat korban sudah berkomitmen menggunakan aplikasi dan cenderung menekan 'Allow' tanpa membaca detail.",
             "Distribusi overlay malware sangat sering melalui Google Play Store, meskipun Google telah meningkatkan proses review. Penyerang menggunakan teknik seperti 'dropper' — aplikasi yang terlihat tidak berbahaya saat diinstal, tetapi kemudian mengunduh payload malware dari server C2 setelah beberapa hari atau minggu, ketika pemeriksaan otomatis Google Play Protect sudah selesai. Setelah payload terunduh dan dieksekusi, overlay capabilities aktif. Beberapa varian bahkan menggunakan teknik 'time-delayed activation' — menunggu hingga 30 hari sebelum mulai berperilaku jahat, melewati periode pemeriksaan awal.",
-            "Keluarga malware overlay terkenal termasuk Anubis, Godfather, Hydra, Xenomorph, dan Vultur. Masing-masing memiliki karakteristik khusus: Anubis terkenal karena daftar targetnya yang mencakup lebih dari 400 aplikasi finansial di seluruh dunia; Godfather meniru aplikasi resmi dengan sangat akurat; Hydra memiliki fitur Automated Transfer System (ATS) yang dapat melakukan transaksi secara otomatis; Vultur dapat merekam seluruh layar dan menggunakan VNC (Virtual Network Computing) untuk mengakses perangkat dari jarak jauh. Keluarga malware ini dijual sebagai layanan (Malware-as-a-Service) di dark web, dengan harga langganan bulanan yang terjangkau bagi penjahat tingkat menengah."
+            "Beberapa keluarga malware overlay yang terkenal antara lain Anubis, Godfather (pengembangan dari kode Anubis yang bocor pada 2019), Hydra, Xenomorph, dan Vultur. Godfather, misalnya, menurut Group-IB menargetkan pengguna lebih dari 400 aplikasi bank, dompet kripto, dan bursa kripto. Banyak dari malware ini dijual atau disewakan sebagai layanan (Malware-as-a-Service), sehingga penjahat yang tidak bisa membuat malware pun bisa memakainya."
           ]
         },
         {
           "title": "Deteksi dan Teknik Mitigasi",
           "content": [
-            "Di tingkat sistem, Android telah menambahkan perlindungan sejak Android 12 yang disebut ' obscured touch blocking'. Fitur ini mencegah aplikasi menerima input sentuhan ketika ada aplikasi lain yang menutupi jendela mereka secara mencurigakan. Namun, malware terus berkembang untuk menghindari deteksi ini dengan menggunakan overlay yang tidak sepenuhnya opaque atau dengan menggunakan timing attack. Pengguna harus selalu memperhatikan peringatan sistem 'This app is displaying over other apps' yang muncul saat membuka aplikasi sensitif — jika peringatan ini muncul padahal Anda tidak menginstal aplikasi yang memerlukan overlay, segera tutup dan investigasi.",
+            "Di tingkat sistem, Android telah menambahkan perlindungan sejak Android 12 yang disebut 'untrusted touch blocking'. Fitur ini mencegah aplikasi menerima input sentuhan ketika ada aplikasi lain yang menutupi jendela mereka secara mencurigakan. Namun, malware terus berkembang untuk menghindari deteksi ini dengan menggunakan overlay yang tidak sepenuhnya opaque atau dengan menggunakan timing attack. Pengguna harus selalu memperhatikan peringatan sistem 'This app is displaying over other apps' yang muncul saat membuka aplikasi sensitif — jika peringatan ini muncul padahal Anda tidak menginstal aplikasi yang memerlukan overlay, segera tutup dan investigasi.",
             "Solusi terbaik adalah tidak pernah memberikan izin 'Draw over other apps' kepada aplikasi yang tidak benar-benar membutuhkannya. Anda dapat meninjau aplikasi mana yang memiliki izin ini melalui Settings > Apps > Special app access > Display over other apps. Cabut izin dari aplikasi yang tidak Anda kenal atau yang tidak memiliki alasan sah untuk memerlukannya (seperti Facebook Messenger). Aplikasi banking, email, dan finansial lainnya tidak pernah memerlukan izin ini untuk berfungsi normal.",
-            "Beberapa bank telah mulai mengimplementasikan deteksi overlay di aplikasi mereka sendiri. Ketika aplikasi banking mendeteksi bahwa ada jendela lain yang menutupi layar mereka, mereka dapat memblokir input atau menampilkan peringatan kepada pengguna. Teknik yang lebih canggih adalah menggunakan 'FLAG_SECURE' untuk mencegah screenshot dan screen recording, serta memeriksa daftar aplikasi aktif melalui Accessibility Service untuk mendeteksi keberadaan malware yang dikenal. Untuk pertahanan enterprise, Mobile Threat Defense (MTD) solutions seperti Lookout, Zimperini, atau Microsoft Defender for Endpoint dapat mendeteksi dan memblokir overlay malware sebelum mereka melakukan aksi berbahaya."
+            "Beberapa bank telah mulai mengimplementasikan deteksi overlay di aplikasi mereka sendiri. Ketika aplikasi banking mendeteksi bahwa ada jendela lain yang menutupi layar mereka, mereka dapat memblokir input atau menampilkan peringatan kepada pengguna. Teknik yang lebih canggih adalah menggunakan 'FLAG_SECURE' untuk mencegah screenshot dan screen recording, serta memeriksa daftar aplikasi aktif melalui Accessibility Service untuk mendeteksi keberadaan malware yang dikenal. Untuk pertahanan enterprise, Mobile Threat Defense (MTD) solutions seperti Lookout, Zimperium, atau Microsoft Defender for Endpoint dapat mendeteksi dan memblokir overlay malware sebelum mereka melakukan aksi berbahaya."
           ]
         }
       ],
       "case_study": {
-        "title": "Godfather Malware: Menargetkan 400+ Aplikasi Banking Global Termasuk Indonesia",
-        "story": "Pada tahun 2023-2024, keluarga malware Godfather menjadi salah satu ancaman paling aktif yang menargetkan aplikasi perbankan di seluruh dunia, termasuk Indonesia. Malware ini didistribusikan melalui website phishing yang meniru situs resmi bank, aplikasi utility palsu di Play Store, dan kampanye SMS phishing. Yang membuat Godfather menonjol adalah kualitas UI overlay-nya yang luar biasa akurat — para peneliti dari Group-IB melaporkan bahwa overlay Godfather untuk aplikasi BCA, Mandiri, dan BNI memiliki tingkat kemiripan 99,8% dengan versi asli, termasuk animasi loading dan pesan error. Godfather juga dilengkapi dengan VNC (Virtual Network Computing) yang memungkinkan operator malware untuk mengambil alih layar korban secara real-time dan melakukan transaksi secara manual ketika ATS (Automated Transfer System) tidak dapat menyelesaikan transfer karena verifikasi tambahan. Total kerugian global dari kampanye Godfather diperkirakan melebihi 100 juta dolar AS.",
-        "lesson": "Kasus Godfather menunjukkan bahwa overlay attack telah berevolusi dari teknik yang relatif sederhana menjadi senjata siber tingkat militer yang digunakan oleh sindikat kejahatan terorganisir. Akurasi UI overlay yang hampir sempurna membuat deteksi visual oleh pengguna hampir mustahil. Yang paling penting untuk diingat: jika aplikasi banking Anda tiba-tiba meminta login ulang dengan tampilan yang sedikit berbeda atau pada waktu yang tidak biasa, berhati-hatilah. Verifikasi dengan menutup aplikasi sepenuhnya dan membukanya kembali melalui shortcut di home screen (bukan melalui notifikasi atau tautan). Aktifkan Google Play Protect, hindari sideloading APK, dan pertimbangkan untuk menginstal aplikasi antivirus mobile tepercaya seperti Bitdefender, Kaspersky, atau Malwarebytes yang dapat mendeteksi malware overlay sebelum mereka aktif."
+        "type": "nyata",
+        "title": "Godfather: Trojan Overlay yang Menargetkan 400+ Aplikasi Keuangan (2022)",
+        "story": "Pada 21 Desember 2022, perusahaan keamanan Group-IB melaporkan Godfather, banking trojan Android yang menargetkan pengguna lebih dari 400 aplikasi keuangan di 16 negara. Per Oktober 2022, targetnya mencakup 215 bank, 94 penyedia dompet kripto, dan 110 bursa kripto, terbanyak di Amerika Serikat, Turki, dan Spanyol. Godfather pertama kali terdeteksi pada Juni 2021 dan merupakan pengembangan dari Anubis, banking trojan yang kode sumbernya bocor pada 2019. Setelah terpasang, Godfather menyamar sebagai 'Google Protect', menyembunyikan ikonnya, dan menyalahgunakan Accessibility Service untuk memberi dirinya izin tambahan. Saat korban membuka aplikasi target, Godfather menampilkan halaman login palsu (overlay) untuk mencuri kredensial, serta menyadap notifikasi untuk mendapatkan kode verifikasi dua langkah. Malware ini juga bisa merekam layar dan memberi pelaku akses jarak jauh (VNC). Godfather didistribusikan dengan model Malware-as-a-Service, dan menariknya, ia otomatis berhenti bekerja jika bahasa perangkat diatur ke bahasa Rusia atau beberapa bahasa negara pecahan Uni Soviet.",
+        "lesson": "Godfather menunjukkan bahwa satu malware bisa menyerang ratusan aplikasi keuangan sekaligus dengan tampilan palsu yang meyakinkan. Pelajarannya: 1) jangan pernah memberikan izin Accessibility atau 'tampil di atas aplikasi lain' kepada aplikasi yang tidak jelas, apalagi yang mengaku 'Google Protect'; 2) waspadai jika aplikasi bank tiba-tiba meminta login ulang dengan tampilan sedikit berbeda; tutup aplikasi, lalu buka lagi dari ikon resminya; 3) aktifkan Google Play Protect dan hindari memasang APK dari luar toko resmi.",
+        "sources": [
+          {
+            "label": "Group-IB (21 Des 2022) — The Godfather enters: banking Trojan targets users of more than 400 apps in 16 countries",
+            "url": "https://www.group-ib.com/media-center/press-releases/godfather-trojan/"
+          },
+          {
+            "label": "The Register (22 Des 2022) — Godfather banking trojan",
+            "url": "https://theregister.com/2022/12/22/godfather_banking_trojan/"
+          }
+        ]
       },
       "references": [
-        "https://owasp.org/www-project-mobile-security-testing-guide/ - OWASP MSTG — Android Overlay Attack Testing Guide",
-        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Mobile UI Redressing & Overlay Defense"
+        "https://owasp.org/www-project-mobile-security-testing-guide/ - OWASP Mobile Application Security Testing Guide (MASTG)",
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Guidelines for Managing the Security of Mobile Devices in the Enterprise",
+        "https://attack.mitre.org/techniques/T1417/ - MITRE ATT&CK (Mobile) — T1417: Input Capture",
+        "https://www.group-ib.com/media-center/press-releases/godfather-trojan/ - Group-IB (2022) — Laporan Godfather"
       ]
     },
     "5": {
@@ -221,7 +308,7 @@
       "definition": "Banking Trojan dengan eksploitasi Accessibility Service adalah bentuk malware mobile banking paling canggih dan paling merusak yang ada saat ini. Accessibility Service adalah fitur Android yang dirancang untuk membantu pengguna dengan disabilitas — memungkinkan aplikasi membaca konten di layar, melakukan klik otomatis, mengetik teks, dan mengontrol perangkat secara penuh atas nama pengguna. Fitur ini sangat kuat dan dipercaya oleh sistem operasi. Malware banking mengeksploitasi kepercayaan ini dengan meminta izin Accessibility Service dengan dalih yang meyakinkan, dan begitu izin diberikan, malware mendapatkan kendali penuh atas perangkat untuk membaca data sensitif, memanipulasi UI, dan bahkan melakukan transfer dana secara otomatis tanpa interaksi pengguna.",
       "sections": [
         {
-          "title": "Kekuatan Mengerikan Accessibility Service",
+          "title": "Kekuatan Accessibility Service",
           "content": [
             "Accessibility Service di Android adalah salah satu API paling powerful yang tersedia untuk pengembang aplikasi. Fitur ini dirancang untuk memungkinkan aplikasi seperti screen reader (TalkBack), switch access, dan voice control berinteraksi dengan seluruh sistem. Dengan Accessibility Service aktif, sebuah aplikasi dapat: membaca semua teks yang ditampilkan di layar (termasuk password yang tersembunyi), mendeteksi aplikasi mana yang sedang aktif, melakukan klik pada tombol mana pun secara otomatis, mengetik teks ke kolom input, mengambil screenshot, merekam layar, dan bahkan memblokir notifikasi dari aplikasi lain. Ini adalah 'God Mode' untuk aplikasi Android.",
             "Sistem Android sangat berhati-hati dengan izin ini — dialog persetujuannya panjang, dengan warning yang jelas bahwa memberikan izin ini adalah keputusan berisiko. Namun, malware menggunakan social engineering tingkat tinggi untuk melewati kehati-hatian ini. Aplikasi berpura-pura menjadi 'Google Security Update', 'System Cleaner', 'Antivirus', atau bahkan 'Aplikasi Resmi dari Bank' yang memerlukan Accessibility untuk 'meningkatkan pengalaman pengguna' atau 'melindungi perangkat dari malware'. Korban yang tidak membaca warning dengan teliti akan menekan 'OK' berulang kali hingga izin diberikan.",
@@ -233,7 +320,7 @@
           "content": [
             "Automated Transfer System (ATS) adalah fitur paling canggih dari banking trojan modern. ATS adalah skrip otomatis yang dieksekusi oleh malware ketika kondisi tertentu terpenuhi — misalnya, ketika korban membuka aplikasi banking atau ketika saldo rekening melebihi ambang batas tertentu. ATS dapat melakukan seluruh alur transfer dana secara otomatis tanpa campur tangan penyerang manusia: membuka aplikasi, login, navigasi ke menu transfer, mengisi detail penerima, memasukkan jumlah, membaca OTP dari SMS, memasukkan OTP, dan mengkonfirmasi transaksi. Semua ini terjadi dalam 10-30 detik.",
             "Beberapa varian ATS bahkan lebih pintar — mereka dapat menunggu hingga korban tidur di malam hari (dengan mendeteksi waktu tidak aktif perangkat) sebelum menjalankan transfer. Atau mereka menunggu hingga korban memiliki saldo besar dengan memantau aplikasi banking secara periodik. ATS dapat dikonfigurasi dengan 'money mule' account yang berbeda untuk setiap transfer, membuat pelacakan menjadi sangat sulit bagi penegak hukum. Setelah dana berpindah, malware dapat secara otomatis menghapus log transaksi, menyembunyikan notifikasi SMS dari bank, dan bahkan menghapus aplikasi banking dari perangkat untuk memperlambat deteksi oleh korban.",
-            "Keluarga malware dengan ATS terkenal termasuk Hydra, Octo, Vultur, dan Xenomorph. Octo Trojan, yang pertama kali diidentifikasi pada 2022, terkenal karena kemampuan 'remote control'-nya yang memungkinkan operator malware menonton layar korban secara real-time dan mengambil alih sesi aktif. Vultur Trojan merekam seluruh sesi banking korban dan mengunggahnya ke server penyerang untuk analisis lebih lanjut. Hydra Trojan menargetkan lebih dari 30 bank di Eropa dan Asia, termasuk beberapa bank besar di Indonesia, dengan ATS yang sangat disesuaikan untuk setiap target."
+            "Beberapa keluarga banking trojan yang dikenal memiliki kemampuan ATS atau kendali jarak jauh antara lain Hydra, Octo, Vultur, Xenomorph, dan Anatsa (TeaBot). Octo, yang teridentifikasi pada 2022, memungkinkan operator melihat layar korban secara real-time dan mengambil alih sesi yang sedang aktif. Anatsa terkenal karena berhasil menyusup ke Google Play lewat aplikasi 'utilitas' palsu (lihat studi kasus)."
           ]
         },
         {
@@ -246,13 +333,26 @@
         }
       ],
       "case_study": {
-        "title": "Kasus 'APK Undangan Pernikahan' dengan ATS: Sindikat Terorganisir 2024",
-        "story": "Pada Agustus 2024, Direktorat Tindak Pidana Siber Bareskrim Polri berhasil mengungkap sindikat yang bertanggung jawab atas ratusan kasus penipuan menggunakan APK undangan pernikahan yang dilengkapi dengan Automated Transfer System (ATS). Sindikat yang beroperasi dari sebuah ruko di Jakarta Utara ini telah mengembangkan varian khusus dari malware Anubis yang disesuaikan untuk menargetkan 5 bank besar Indonesia. Malware disebar melalui kampanye WhatsApp massal dengan pesan 'Undangan Pernikahan [Nama Teman]'. Begitu APK diinstal dan korban memberikan izin Accessibility dengan dalih 'memudahkan buka undangan', malware langsung mengambil alih perangkat. ATS diprogram untuk menunggu hingga korban tidur (berdasarkan pola penggunaan perangkat), lalu membuka aplikasi banking, login dengan kredensial yang dicuri, dan mentransfer dana ke 47 rekening penampung (mule account) yang berbeda setiap malam. Total kerugian diperkirakan mencapai 85 miliar rupiah dengan 1.200+ korban sebelum sindikat dibekuk.",
-        "lesson": "Kasus ini adalah contoh sempurna dari evolusi ancaman mobile banking: dari phishing sederhana menjadi serangan otomatis berbasis AI yang beroperasi 24/7 tanpa campur tangan manusia. Sindikat ini bahkan memiliki 'customer support' di Telegram untuk membantu pelanggan baru (penjahat kecil) yang membeli malware mereka. Pelajaran paling penting: Accessibility Service adalah izin paling berbahaya yang dapat Anda berikan ke aplikasi apa pun. Perlakukan izin ini seperti memberikan kunci brankas rumah Anda — hanya berikan kepada aplikasi yang benar-benar Anda percayai 100% dan yang Anda instal dari Google Play Store resmi. Jika Anda menemukan APK undangan pernikahan, surat resmi, atau notifikasi kurir di WhatsApp, verifikasi dengan menelepon pengirim langsung melalui nomor telepon resmi mereka sebelum mengklik apa pun."
+        "type": "nyata",
+        "title": "Anatsa: Banking Trojan yang Menyusup ke Google Play Lewat Aplikasi PDF dan QR Reader (2024)",
+        "story": "Pada Mei 2024, peneliti Zscaler melaporkan lebih dari 90 aplikasi berbahaya di Google Play yang secara total telah diunduh lebih dari 5,5 juta kali. Aplikasi-aplikasi itu menyamar sebagai utilitas sehari-hari seperti pembaca PDF, pemindai QR, pengelola file, dan penerjemah. Ancaman utamanya adalah Anatsa (juga dikenal sebagai TeaBot), banking trojan Android yang disebarkan lewat aplikasi pembaca PDF dan QR palsu. Aplikasi ini bertindak sebagai dropper: saat diinstal tampak bersih, lalu belakangan mengunduh muatan berbahaya dari server penyerang dengan kedok 'update'. Setelah aktif, Anatsa memakai teknik overlay dan penyalahgunaan Accessibility Service untuk mencuri kredensial perbankan, dan dapat menargetkan lebih dari 650 aplikasi keuangan.",
+        "lesson": "Kasus Anatsa membuktikan bahwa Google Play pun tidak 100% bebas malware, terutama dari aplikasi yang tampak polos lalu 'berubah' setelah diinstal. Pelajarannya: 1) pasang hanya aplikasi yang benar-benar Anda butuhkan, dari pengembang yang jelas; 2) curigai aplikasi sederhana (pembaca PDF, senter, pemindai QR) yang meminta izin Accessibility atau meminta 'update' dari luar Play Store; 3) tinjau izin Accessibility secara berkala dan cabut yang tidak dikenal; 4) jika curiga, hapus aplikasinya, pindai perangkat, lalu ganti password mobile banking dari perangkat lain.",
+        "sources": [
+          {
+            "label": "Dark Reading (Mei 2024) — 90+ Malicious Apps Totaling 5.5M Downloads Lurk on Google Play",
+            "url": "https://www.darkreading.com/endpoint-security/90-malicious-apps-55-million-downloads-google-play"
+          },
+          {
+            "label": "Zscaler ThreatLabz (2024) — Technical Analysis of Anatsa Campaigns: An Android Banking Malware Active in the Google Play Store",
+            "url": "https://www.zscaler.com/jp/blogs/security-research/technical-analysis-anatsa-campaigns-android-banking-malware-active-google"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1417/ - MITRE ATT&CK — T1417: Input Capture (Banking Trojan Method)",
-        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Mobile Banking Trojan Defense"
+        "https://attack.mitre.org/techniques/T1417/ - MITRE ATT&CK (Mobile) — T1417: Input Capture",
+        "https://csrc.nist.gov/pubs/sp/800/124/r2/final - NIST SP 800-124 Rev.2 — Guidelines for Managing the Security of Mobile Devices in the Enterprise",
+        "https://owasp.org/www-project-mobile-security-testing-guide/ - OWASP Mobile Application Security Testing Guide (MASTG)",
+        "https://www.darkreading.com/endpoint-security/90-malicious-apps-55-million-downloads-google-play - Dark Reading (2024) — Anatsa di Google Play"
       ]
     }
   }

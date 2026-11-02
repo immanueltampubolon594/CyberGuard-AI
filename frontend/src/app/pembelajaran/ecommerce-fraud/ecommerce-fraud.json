@@ -2,19 +2,47 @@
   "slug": "ecommerce-fraud",
   "title": "E-Commerce Fraud",
   "navigation": [
-    { "id": 0, "label": "APA ITU E-COMMERCE FRAUD?", "icon": "ShieldAlert" },
-    { "id": 1, "label": "FAKE MARKETPLACE & TOKO ONLINE PALSU", "icon": "ShoppingCart" },
-    { "id": 2, "label": "PAYMENT FRAUD & CARDING", "icon": "CreditCard" },
-    { "id": 3, "label": "ACCOUNT TAKEOVER E-COMMERCE", "icon": "UserX" },
-    { "id": 4, "label": "TRIANGULATION FRAUD", "icon": "Package" },
-    { "id": 5, "label": "REFUND & RETURN FRAUD", "icon": "RotateCcw" },
-    { "id": 6, "label": "FRIENDLY FRAUD", "icon": "TrendingUp" }
+    {
+      "id": 0,
+      "label": "APA ITU E-COMMERCE FRAUD?",
+      "icon": "ShieldAlert"
+    },
+    {
+      "id": 1,
+      "label": "FAKE MARKETPLACE & TOKO ONLINE PALSU",
+      "icon": "ShoppingCart"
+    },
+    {
+      "id": 2,
+      "label": "PAYMENT FRAUD & CARDING",
+      "icon": "CreditCard"
+    },
+    {
+      "id": 3,
+      "label": "ACCOUNT TAKEOVER E-COMMERCE",
+      "icon": "UserX"
+    },
+    {
+      "id": 4,
+      "label": "TRIANGULATION FRAUD",
+      "icon": "Package"
+    },
+    {
+      "id": 5,
+      "label": "REFUND & RETURN FRAUD",
+      "icon": "RotateCcw"
+    },
+    {
+      "id": 6,
+      "label": "FRIENDLY FRAUD",
+      "icon": "TrendingUp"
+    }
   ],
   "tiers_content": {
     "0": {
       "subtitle": "Apa itu E-Commerce Fraud?",
       "quote": "E-commerce fraud adalah pencurian modern — ketika transaksi online yang seharusnya memudahkan hidup Anda justru menjadi alat untuk menguras rekening Anda.",
-      "definition": "E-Commerce Fraud adalah segala bentuk penipuan atau kecurangan yang terjadi dalam transaksi perdagangan elektronik (e-commerce), baik yang dilakukan oleh pembeli, penjual, maupun pihak ketiga yang menyusup ke dalam sistem. Fraud ini mencakup berbagai skema penipuan seperti pembayaran dengan kartu kredit curian, pembelian barang dengan identitas palsu, pengembalian dana yang curang, hingga toko online fiktif yang tidak pernah mengirimkan barang.\n\nDengan pertumbuhan e-commerce yang pesat di Indonesia — mencapai lebih dari 500 triliun rupiah pada tahun 2024 — fraud e-commerce juga meningkat secara eksponensial. Data dari Asosiasi E-Commerce Indonesia (idEA) mencatat bahwa kerugian akibat e-commerce fraud mencapai lebih dari 2 triliun rupiah per tahun, dengan ribuan laporan penipuan dari konsumen setiap bulannya.",
+      "definition": "E-Commerce Fraud adalah segala bentuk penipuan atau kecurangan yang terjadi dalam transaksi perdagangan elektronik (e-commerce), baik yang dilakukan oleh pembeli, penjual, maupun pihak ketiga yang menyusup ke dalam sistem. Fraud ini mencakup berbagai skema penipuan seperti pembayaran dengan kartu kredit curian, pembelian barang dengan identitas palsu, pengembalian dana yang curang, hingga toko online fiktif yang tidak pernah mengirimkan barang.\n\nDi Indonesia, penipuan yang berkaitan dengan belanja online adalah jenis penipuan yang paling sering dilaporkan. Menurut data Indonesia Anti-Scam Centre (IASC) OJK untuk periode November 2024 hingga 30 November 2025, 'penipuan transaksi belanja' menempati urutan pertama dengan 64.933 laporan dan kerugian sekitar Rp1,14 triliun. Di Amerika Serikat, FTC juga mencatat belanja online sebagai kategori penipuan kedua yang paling sering dilaporkan pada 2024.",
       "sections": [
         {
           "title": "Mengapa E-Commerce Fraud Semakin Marak?",
@@ -32,7 +60,16 @@
             "Fake Marketplace/Online Store — Pembuatan toko online palsu yang menawarkan barang dengan harga sangat murah untuk menarik korban. Setelah pembayaran diterima, barang tidak pernah dikirim atau barang yang dikirim berbeda/tidak sesuai.",
             "Account Takeover — Pengambilalihan akun pembeli di platform e-commerce untuk melakukan pembelian dengan kartu kredit yang tersimpan, atau mengambil alih akun penjual untuk menipu pembeli.",
             "Triangulation Fraud — Skema penipuan tiga pihak di mana fraudster menjual barang yang sebenarnya tidak mereka miliki, kemudian membelinya dari seller legitimate dan mengirimkannya ke pembeli mereka.",
-            "Refund/Return Fraud — Penipuan dalam proses pengembalian dana atau barang, seperti mengklaim barang tidak diterima padahal sudah, mengembalikan barang palsu/rusak, atau mengklaim refund ganda."
+            "Refund/Return Fraud — Penipuan dalam proses pengembalian dana atau barang, seperti mengklaim barang tidak diterima padahal sudah, mengembalikan barang palsu/rusak, atau mengklaim refund ganda.",
+            "Friendly Fraud — Pembeli asli yang sudah menerima barang dengan baik, tetapi kemudian mengajukan pembatalan transaksi (chargeback) ke bank atau komplain palsu ke platform agar uangnya kembali."
+          ]
+        },
+        {
+          "title": "Siapa Pelakunya? Pembeli, Penjual, atau Pihak Ketiga",
+          "content": [
+            "E-commerce fraud bisa dilakukan oleh tiga kelompok yang berbeda, dan memahami perbedaannya membantu kita memilih pertahanan yang tepat.",
+            "Pertama, penjual palsu yang menipu pembeli: toko online fiktif, barang tidak dikirim, atau barang palsu (Topik 01 dan 04). Kedua, pembeli yang menipu penjual: refund palsu, return barang yang berbeda, atau chargeback tanpa alasan (Topik 05 dan 06). Ketiga, pihak ketiga yang menyusup: pencuri data kartu, pengambil alih akun, atau pembuat situs palsu yang menyerang pembeli maupun penjual (Topik 02 dan 03).",
+            "Karena itu, perlindungan juga harus berlapis: pembeli memverifikasi toko dan memakai pembayaran resmi, penjual mendokumentasikan pengiriman dan menjaga keamanan akun, dan platform menyediakan deteksi penipuan, perlindungan pembeli, serta penyelesaian sengketa yang adil."
           ]
         },
         {
@@ -46,13 +83,26 @@
         }
       ],
       "case_study": {
-        "title": "Kasus Fake Marketplace terbesar di Indonesia 2024",
-        "story": "Pada awal 2024, sebuah sindikat penipuan e-commerce internasional menargetkan konsumen Indonesia melalui puluhan website toko online palsu. Mereka membuat website yang sangat profesional dengan domain yang mirip marketplace besar (seperti 'tokopedia-diskon.com', 'shopee-murah.net', dll). Website menawarkan produk elektronik dan fashion branded dengan diskon 70-90% — harga yang terlalu bagus untuk menjadi kenyataan. Sindikat ini menggunakan teknik SEO dan iklan di media sosial untuk menarik korban. Lebih dari 15,000 konsumen tertipu dengan total kerugian mencapai Rp 85 miliar. Modus yang sama juga menggunakan WhatsApp untuk mengirim link toko palsu dengan iming-iming 'flash sale'. Setelah pembayaran diterima (biasanya via transfer bank atau e-wallet), barang tidak pernah dikirim dan website ditutup. Sindikat ini berhasil dibongkar setelah 6 bulan beroperasi dan 12 pelakunya ditangkap.",
-        "lesson": "Selalu verifikasi keaslian toko online sebelum bertransaksi. Periksa domain website (harus official domain), cek review dan reputasi, waspadai harga yang terlalu murah, dan gunakan payment gateway yang aman. Jangan pernah transfer langsung ke rekening pribadi untuk transaksi e-commerce."
+        "type": "nyata",
+        "title": "BogusBazaar: Jaringan 75.000 Domain Toko Online Palsu (2024)",
+        "story": "Pada 2024, lembaga riset keamanan Security Research Labs (SRLabs) bersama media Jerman mengungkap 'BogusBazaar', jaringan toko online palsu yang telah memakai lebih dari 75.000 domain, dengan sekitar 22.500 toko masih aktif pada April 2024. Toko-toko ini menawarkan barang bermerek dengan diskon besar, menarik pembeli lewat iklan dan hasil pencarian. Saat pembeli membayar, halaman pembayaran palsu mencuri data kartu kreditnya, dan barang yang dipesan biasanya tidak pernah dikirim. Menurut SRLabs, lebih dari 850.000 pembeli, sebagian besar di Eropa Barat dan Amerika Serikat, menjadi korban, dengan lebih dari satu juta pesanan sejak 2021 dan nilai pesanan diperkirakan lebih dari US$50 juta. Jaringan ini sebagian besar dijalankan dari Tiongkok dengan model 'fraud-as-a-service': tim inti menyediakan infrastruktur, sedangkan 'pewaralaba' menjalankan toko sehari-hari.",
+        "lesson": "BogusBazaar menunjukkan bahwa toko palsu kini dibuat dalam skala industri, dan satu toko yang ditutup bisa langsung diganti ribuan toko baru. Korban rugi dua kali: uang belanja hilang dan data kartu dicuri untuk dipakai lagi. Pelajarannya: 1) curigai diskon yang terlalu besar untuk barang bermerek; 2) periksa nama domain dan usia situs sebelum membayar; 3) belanja di platform atau situs resmi yang punya perlindungan pembeli; 4) aktifkan notifikasi transaksi kartu agar penyalahgunaan cepat ketahuan.",
+        "sources": [
+          {
+            "label": "SRLabs (2024) — BogusBazaar: A criminal network of webshop fraudsters",
+            "url": "https://srlabs.de/blog/bogusbazaar"
+          },
+          {
+            "label": "Infosecurity Magazine — Fake Online Stores Scam Over 850,000 Shoppers",
+            "url": "https://infosecurity-magazine.com/news/online-stores-scams-shoppers"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Non-Payment/Non-Delivery & E-Commerce Fraud",
-        "https://owasp.org/Top10/ - OWASP Top 10 2021 — Security Risks Affecting E-Commerce Platforms"
+        "https://www.cnbcindonesia.com/tech/20251218063318-37-695229/10-modus-penipuan-terbanyak-di-ri-nomor-satu-banyak-yang-tak-sadar - CNBC Indonesia (Des 2025) — 10 Modus Penipuan Terbanyak di RI (data IASC OJK)",
+        "https://www.ftc.gov/news-events/news/press-releases/2025/03/new-ftc-data-show-big-jump-reported-losses-fraud-125-billion-2024 - FTC (Mar 2025) — Data penipuan konsumen 2024",
+        "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf - FBI IC3 — Internet Crime Report 2024",
+        "https://owasp.org/www-project-automated-threats-to-web-applications/ - OWASP — Automated Threats to Web Applications (termasuk Carding dan Credential Stuffing)"
       ]
     },
     "1": {
@@ -72,7 +122,7 @@
         {
           "title": "Tanda-tanda Toko Online Palsu",
           "content": [
-            "Harga terlalu murah untuk menjadi kenyataan. Jika harga iPhone 15 Pro ditawarkan Rp 5 juta (padahal harga resmi Rp 20 juta), itu pasti penipuan. Prinsip 'too good to be true' sangat berlaku di sini.",
+            "Harga terlalu murah untuk menjadi kenyataan. Jika ponsel kelas atas ditawarkan dengan potongan 70–90% dari harga resmi, hampir pasti itu penipuan. Prinsip 'too good to be true' sangat berlaku di sini.",
             "Domain website mencurigakan. Periksa URL website dengan teliti. Website legitimate biasanya menggunakan domain utama (.com, .co.id, .id) tanpa tambahan kata-kata aneh. Waspadai domain seperti 'tokopedia-diskon.com', 'shopee-murah.net', atau domain gratisan (.tk, .ml, .ga).",
             "Website baru dibuat dan tidak ada reputasi. Cek usia domain menggunakan tools seperti whois.com. Website yang baru dibuat beberapa minggu atau bulan lalu sangat mencurigakan, terutama jika menawarkan produk-produk mahal.",
             "Tidak ada informasi kontak yang valid. Website legitimate selalu mencantumkan alamat kantor, nomor telepon yang bisa dihubungi, dan email customer service. Jika website hanya menyediakan WhatsApp atau email gratisan (gmail.com, yahoo.com), itu tanda bahaya.",
@@ -89,30 +139,33 @@
             "Gunakan metode pembayaran yang aman. Selalu gunakan payment gateway atau escrow service yang disediakan marketplace. Jangan pernah transfer langsung ke rekening pribadi, terutama jika rekening tersebut atas nama individu yang tidak terkait dengan toko. Payment gateway memberikan perlindungan karena uang ditahan sampai barang diterima.",
             "Cek reputasi seller/toko. Di marketplace, periksa rating toko, jumlah transaksi, dan review dari pembeli sebelumnya. Toko dengan rating rendah, sedikit review, atau banyak review negatif harus dihindari.",
             "Dokumentasikan semua transaksi. Simpan screenshot produk, chat dengan seller, bukti pembayaran, dan nomor resi. Ini penting untuk bukti jika terjadi masalah dan Anda perlu melaporkan ke marketplace, bank, atau pihak berwenang.",
-            "Gunakan fitur Buyer Protection yang disediakan marketplace. Platform seperti Tokopedia, Shopee, dan Bukalapak memiliki program perlindungan pembeli yang akan mengembalikan uang Anda jika barang tidak dikirim atau tidak sesuai.",
-            "Laporkan website/toko palsu yang Anda temukan. Laporkan ke marketplace official (jika mereka meniru brand tersebut), ke Kementerian Komunikasi dan Informatika (Kominfo) untuk pemblokiran website, dan ke polisi jika Anda sudah menjadi korban."
+            "Gunakan fitur perlindungan pembeli dari marketplace resmi. Selama transaksi dilakukan dan dibayar di dalam platform, dana ditahan sampai pesanan dikonfirmasi, dan ada jalur komplain resmi jika barang tidak dikirim atau tidak sesuai.",
+            "Laporkan situs atau toko palsu yang Anda temukan: ke marketplace resmi jika situs meniru merek mereka, ke Kementerian Komunikasi dan Digital (Komdigi) untuk pemblokiran situs, cek dan laporkan rekeningnya di cekrekening.id, lalu ke IASC (iasc.ojk.go.id) dan polisi jika sudah menjadi korban."
           ]
         }
       ],
       "case_study": {
-        "title": "Fake iPhone Store di Instagram - 2,000 Korban Rugi Rp 30 Miliar",
-        "story": "Sebuah sindikat penipuan membuat toko online palsu yang menjual iPhone dengan harga 60% lebih murah dari harga resmi. Mereka mempromosikan toko ini melalui iklan Instagram yang sangat profesional dengan foto-foto produk berkualitas tinggi dan testimonial palsu. Website terlihat sangat legitimate dengan desain modern, domain .com, dan bahkan memiliki fitur live chat. Lebih dari 2,000 orang tertipu dengan total kerugian Rp 30 miliar. Modus yang digunakan: setelah pembayaran diterima (via transfer bank dan e-wallet), mereka mengirim nomor resi palsu atau tidak mengirim sama sekali. Website ditutup setelah 3 bulan beroperasi dan banyak komplain di media sosial. Sindikat ini kemudian membuat website baru dengan nama berbeda dan mengulangi modus yang sama. Baru setelah 8 bulan dan total kerugian mencapai Rp 30 miliar, polisi berhasil menangkap 5 pelaku utama. Uang korban sebagian besar tidak bisa dikembalikan karena sudah ditarik dan digunakan pelaku.",
-        "lesson": "Jangan tergiur harga yang terlalu murah. Selalu verifikasi keaslian toko online melalui berbagai sumber. Gunakan metode pembayaran yang aman (payment gateway/escrow) dan jangan transfer langsung ke rekening pribadi. Periksa reputasi toko melalui review dan rating. Jika ragu, lebih baik berbelanja di marketplace besar yang memiliki buyer protection."
+        "type": "ilustrasi",
+        "title": "Skenario: Toko iPhone 'Distributor Resmi' di Instagram",
+        "story": "Bayangkan sebuah akun Instagram bernama 'iPhone Official Store ID' rutin memasang iklan berbayar: 'iPhone terbaru diskon 60%, stok cuci gudang, hanya hari ini!'. Akunnya punya puluhan ribu pengikut (yang ternyata dibeli), foto produk curian dari situs resmi, dan kolom komentar penuh testimoni dari akun-akun baru. Pembeli diarahkan ke situs dengan domain mirip merek resmi dan diminta transfer ke rekening atas nama perorangan agar 'proses lebih cepat'. Setelah membayar, pembeli menerima nomor resi palsu yang tidak bisa dilacak. Ketika komplain mulai ramai, akun dan situs menghilang, lalu muncul kembali beberapa minggu kemudian dengan nama baru.",
+        "lesson": "Skenario ini menggabungkan hampir semua tanda toko palsu: harga terlalu murah, urgensi 'hari ini saja', pengikut dan testimoni palsu, domain tiruan, dan rekening perorangan. Pelajarannya: 1) beli di toko resmi merek atau marketplace dengan perlindungan pembeli; 2) cek rekening di cekrekening.id sebelum transfer; 3) periksa usia domain dan keaslian akun; 4) jangan percaya resi yang tidak bisa dilacak di situs resmi kurir."
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Non-Delivery Fraud & Fake Stores",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC — Online Shopping Fraud Data"
+        "https://consumer.ftc.gov/articles/online-shopping - FTC Consumer Advice — Online Shopping",
+        "https://www.cnbcindonesia.com/tech/20251218063318-37-695229/10-modus-penipuan-terbanyak-di-ri-nomor-satu-banyak-yang-tak-sadar - CNBC Indonesia (Des 2025) — 10 Modus Penipuan Terbanyak di RI (data IASC OJK)",
+        "https://cekrekening.id - CekRekening.id — cek dan lapor rekening terindikasi penipuan",
+        "https://www.ojk.go.id/id/berita-dan-kegiatan/info-terkini/Documents/Pages/Tingkatkan-Pelindungan-Konsumen-Satgas-Pasti-Lakukan-Soft-Launching-IASC/SP%20Satgas%20Pasti%20Soft%20Launching%20IASC.pdf - OJK (2024) — Indonesia Anti-Scam Centre (IASC)"
       ]
     },
     "2": {
       "subtitle": "Payment Fraud & Carding",
       "quote": "Ketika kartu kredit orang lain digunakan untuk berbelanja atas nama Anda, Anda bukan hanya kehilangan uang — Anda kehilangan kepercayaan.",
-      "definition": "Payment Fraud adalah segala bentuk penipuan yang melibatkan metode pembayaran dalam transaksi e-commerce. Ini mencakup penggunaan kartu kredit/debit curian (carding), akun e-wallet yang di-hack, rekening bank hasil penipuan, atau metode pembayaran lain yang tidak sah. Carding khususnya adalah praktik menggunakan informasi kartu kredit orang lain tanpa izin untuk melakukan pembelian online.\n\nPayment fraud adalah salah satu bentuk e-commerce fraud paling merugikan secara finansial. Di Indonesia, kerugian akibat payment fraud (terutama carding) diperkirakan mencapai lebih dari 1 triliun rupiah per tahun. Meskipun bank dan payment gateway telah mengimplementasi berbagai sistem keamanan, fraudster terus mengembangkan teknik baru untuk melewati sistem tersebut.",
+      "definition": "Payment Fraud adalah segala bentuk penipuan yang melibatkan metode pembayaran dalam transaksi e-commerce. Ini mencakup penggunaan kartu kredit/debit curian (carding), akun e-wallet yang di-hack, rekening bank hasil penipuan, atau metode pembayaran lain yang tidak sah. Carding khususnya adalah praktik menggunakan informasi kartu kredit orang lain tanpa izin untuk melakukan pembelian online.\n\nPayment fraud termasuk bentuk e-commerce fraud yang paling merugikan karena kerugiannya menyebar ke banyak pihak: pemilik kartu, merchant yang harus menanggung chargeback, dan bank. Meskipun bank dan payment gateway sudah menerapkan berbagai lapisan keamanan, pelaku terus mencari celah baru, misalnya dengan mencuri data kartu langsung dari halaman pembayaran situs yang sah.",
       "sections": [
         {
           "title": "Bagaimana Carding Bekerja?",
           "content": [
-            "Fraudster mendapatkan data kartu kredit korban melalui berbagai cara: (1) Data breach dari website atau merchant yang menyimpan data kartu kredit dengan tidak aman, (2) Phishing yang mencuri informasi kartu kredit, (3) Skimming di ATM atau mesin EDC, (4) Malware di perangkat korban yang mencuri data kartu, (5) Membeli data kartu kredit di dark web (harga bervariasi dari $5-$100 per kartu tergantung limit dan negara).",
+            "Pelaku mendapatkan data kartu melalui berbagai cara: (1) kebocoran data dari situs atau merchant yang menyimpan data kartu dengan tidak aman, (2) phishing yang meminta data kartu, (3) skimming di ATM atau mesin EDC, (4) malware atau script jahat yang mencuri data kartu, termasuk script yang disisipkan ke halaman pembayaran situs sah (dikenal sebagai serangan Magecart), dan (5) membeli data kartu curian di pasar gelap.",
             "Data kartu kredit yang didapat biasanya berisi: nomor kartu (16 digit), nama pemilik, tanggal kadaluarsa, dan CVV (3 digit di belakang kartu). Dengan informasi ini, fraudster bisa melakukan transaksi online di website yang tidak memerlukan verifikasi tambahan (3D Secure).",
             "Fraudster menguji kartu kredit tersebut dengan melakukan transaksi kecil di website yang mudah (biasanya website donation atau pembelian produk digital). Jika transaksi berhasil, kartu tersebut 'valid' dan siap digunakan untuk transaksi yang lebih besar.",
             "Untuk menghindari deteksi, fraudster menggunakan berbagai teknik: (1) Menggunakan VPN atau proxy untuk menyembunyikan lokasi asli, (2) Menggunakan informasi pengiriman yang berbeda dari billing address, (3) Melakukan transaksi di berbagai merchant untuk tidak mencurigakan, (4) Menggunakan bot untuk melakukan transaksi otomatis dalam jumlah besar."
@@ -122,7 +175,7 @@
           "title": "Dampak Carding bagi Berbagai Pihak",
           "content": [
             "Bagi pemilik kartu kredit: Meskipun bank biasanya menanggung kerugian finansial (jika dilaporkan tepat waktu), pemilik kartu mengalami stress, harus mengurus pemblokiran dan penggantian kartu, dan reputasi kredit bisa terpengaruh. Proses dispute chargeback juga memakan waktu dan merepotkan.",
-            "Bagi merchant/e-commerce: Merchant menanggung kerugian terbesar dari carding. Ketika terjadi chargeback (pembeli legitimate melaporkan transaksi tidak sah), merchant tidak hanya kehilangan uang transaksi, tapi juga kehilangan barang yang sudah dikirim, ditambah biaya chargeback fee (biasanya $15-$25 per transaksi). Merchant dengan rasio chargeback tinggi juga bisa di-blacklist oleh payment processor.",
+            "Bagi merchant atau toko online: merchant sering menanggung kerugian terbesar. Ketika pemilik kartu asli melaporkan transaksi tidak sah (chargeback), merchant kehilangan uang transaksi sekaligus barang yang sudah dikirim, dan biasanya dikenai biaya chargeback. Merchant dengan rasio chargeback tinggi juga bisa dikenai sanksi oleh payment processor.",
             "Bagi bank dan payment gateway: Biaya untuk menangani dispute dan chargeback, investasi dalam sistem deteksi fraud yang mahal, dan kerusakan reputasi jika sistem keamanan dianggap lemah.",
             "Bagi ekosistem e-commerce: Meningkatnya biaya transaksi untuk semua merchant (karena biaya fraud ditransfer ke konsumen), regulasi yang lebih ketat yang bisa menghambat inovasi, dan menurunnya kepercayaan konsumen terhadap transaksi online."
           ]
@@ -130,13 +183,13 @@
         {
           "title": "Cara Merchant Melindungi Diri dari Payment Fraud",
           "content": [
-            "Implementasi 3D Secure (Verified by Visa, Mastercard SecureCode). Ini menambahkan lapisan verifikasi di mana pembeli harus memasukkan kode OTP yang dikirim ke nomor telepon terdaftar. Meskipun bisa menurunkan conversion rate (karena friksi tambahan), 3D Secure sangat efektif mencegah carding.",
+            "Terapkan 3-D Secure (versi terbarunya dikenal sebagai Visa Secure dan Mastercard Identity Check). Teknologi ini menambahkan verifikasi oleh bank penerbit, misalnya kode OTP atau persetujuan di aplikasi bank. Meskipun menambah sedikit langkah, 3-D Secure sangat efektif mencegah pemakaian kartu curian.",
             "Gunakan fraud detection system yang canggih. Tools seperti Sift, Riskified, atau Kount menggunakan machine learning untuk menganalisis ratusan faktor risiko dalam real-time: lokasi IP, device fingerprint, velocity checking (berapa banyak transaksi dari sumber yang sama), dan behavioral analysis. Sistem ini bisa otomatis approve, reject, atau flag untuk manual review.",
             "Terapkan Address Verification Service (AVS). AVS memverifikasi apakah billing address yang dimasukkan pembeli cocok dengan alamat yang terdaftar di bank penerbit kartu. Meskipun tidak 100% efektif (terutama untuk kartu internasional), AVS bisa mengurangi fraud secara signifikan.",
             "Monitor transaksi mencurigakan secara manual. Untuk transaksi dengan nilai tinggi, transaksi dari lokasi yang tidak biasa, atau pola pembelian yang mencurigakan (misalnya membeli banyak produk mahal dalam waktu singkat), lakukan verifikasi manual dengan menghubungi pembeli.",
             "Batasi jumlah transaksi per kartu/IP/device. Implementasi velocity checking untuk mendeteksi jika ada terlalu banyak transaksi dari sumber yang sama dalam waktu singkat — ini adalah tanda carding yang jelas.",
             "Gunakan CVV verification. Selalu minta CVV (3 digit di belakang kartu) untuk transaksi online. Meskipun CVV bisa dicuri bersama data kartu, ini menambah lapisan keamanan tambahan.",
-            "Simpan bukti transaksi dengan baik. Screenshot order, log IP address, device fingerprint, dan komunikasi dengan pembeli. Ini penting untuk evidence jika terjadi chargeback dispute."
+            "Jaga keamanan halaman pembayaran Anda sendiri. Ikuti standar PCI DSS, batasi script pihak ketiga di halaman checkout, pantau perubahan kode secara berkala, dan wajibkan MFA untuk semua akses admin. Kasus British Airways menunjukkan bahwa penjahat bisa mencuri data kartu langsung dari halaman pembayaran situs yang sah."
           ]
         },
         {
@@ -153,13 +206,26 @@
         }
       ],
       "case_study": {
-        "title": "Carding Ring di Indonesia - 50,000 Kartu Kredit Dicuri",
-        "story": "Pada tahun 2023, polisi cyber Indonesia membongkar sindikat carding internasional yang beroperasi dari Jakarta. Sindikat ini berhasil mencuri data lebih dari 50,000 kartu kredit dari berbagai negara (terutama AS dan Eropa) melalui malware yang disisipkan di website-website yang di-hack. Data kartu kredit kemudian dijual di forum dark web dengan harga $10-$50 per kartu. Anggota sindikat juga menggunakan kartu-kartu curian ini untuk berbelanja di e-commerce Indonesia — terutama produk elektronik dan fashion branded yang kemudian dijual kembali dengan harga diskon. Total transaksi fraud mencapai Rp 150 miliar dalam 18 bulan operasi. Polisi menangkap 8 pelaku utama dan menyita aset senilai Rp 50 miliar. Kasus ini juga mengungkap bahwa beberapa merchant e-commerce di Indonesia tidak memiliki sistem deteksi fraud yang memadai, sehingga mudah menjadi target carding.",
-        "lesson": "Merchant harus mengimplementasi sistem deteksi fraud yang canggih (3D Secure, fraud scoring, velocity checking). Konsumen harus aktif monitor transaksi kartu kredit, gunakan virtual card untuk transaksi online, dan segera laporkan transaksi mencurigakan. Kolaborasi antara bank, merchant, dan penegak hukum sangat penting untuk memerangi carding."
+        "type": "nyata",
+        "title": "British Airways (2018): Data Kartu Dicuri dari Halaman Pembayaran Resmi",
+        "story": "Pada Juni 2018, penyerang masuk ke jaringan British Airways memakai akun milik karyawan mitra (Swissport) yang tidak dilindungi MFA. Dari sana mereka bergerak ke jaringan yang lebih luas dan menemukan password admin yang tersimpan dalam teks biasa. Penyerang kemudian menanam script pencuri data kartu (card skimmer) di halaman pembayaran resmi British Airways. Perusahaan keamanan RiskIQ mengaitkan serangan ini dengan kelompok Magecart. Pelanggan yang membayar di situs asli tanpa sadar mengirim data kartunya, termasuk kode CVV, kepada penyerang. Data sekitar 400 ribu pelanggan terdampak. Lembaga perlindungan data Inggris (ICO) juga menemukan bahwa data kartu tercatat dalam log tanpa enkripsi. Pada 16 Oktober 2020, ICO menjatuhkan denda £20 juta kepada British Airways, turun dari usulan awal £183 juta.",
+        "lesson": "Kasus ini menunjukkan bahwa pembeli bisa menjadi korban carding meskipun berbelanja di situs resmi dan ber-HTTPS. Celahnya ada di sisi perusahaan: akun tanpa MFA, password admin yang tersimpan sembarangan, dan halaman pembayaran yang bisa diubah tanpa ketahuan. Pelajarannya: 1) merchant wajib menerapkan MFA, mengikuti PCI DSS, dan memantau script di halaman checkout; 2) konsumen sebaiknya memakai kartu virtual atau dompet digital untuk belanja online, mengaktifkan notifikasi transaksi, dan segera memblokir kartu jika ada transaksi asing.",
+        "sources": [
+          {
+            "label": "The Register (16 Okt 2020) — British Airways fined £20m by ICO over 2018 data breach",
+            "url": "https://www.theregister.com/2020/10/16/british_airways_ico_fine_20m/"
+          },
+          {
+            "label": "CNBC (16 Okt 2020) — British Airways fined £20 million for data breach by ICO",
+            "url": "https://www.cnbc.com/2020/10/16/british-airways-fined-20-million-for-data-breach-by-ico.html"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — Credit Card & Payment Fraud Statistics",
-        "https://attack.mitre.org/techniques/T1539/ - MITRE ATT&CK — T1539: Steal Web Session Cookie (Carding context)"
+        "https://www.pcisecuritystandards.org/ - PCI Security Standards Council — standar keamanan data kartu pembayaran (PCI DSS)",
+        "https://owasp.org/www-project-automated-threats-to-web-applications/ - OWASP — Automated Threats to Web Applications (termasuk Carding dan Credential Stuffing)",
+        "https://www.ic3.gov/AnnualReport/Reports/2024_IC3Report.pdf - FBI IC3 — Internet Crime Report 2024",
+        "https://www.theregister.com/2020/10/16/british_airways_ico_fine_20m/ - The Register (2020) — Kasus Magecart British Airways"
       ]
     },
     "3": {
@@ -194,19 +260,33 @@
             "Jangan simpan kartu kredit di akun e-commerce. Meskipun fitur 'save card for faster checkout' nyaman, ini berisiko jika akun Anda diretas. Lebih baik masukkan data kartu setiap kali bertransaksi, atau gunakan payment gateway yang tidak menyimpan data kartu di merchant.",
             "Periksa aktivitas akun secara berkala. Cek riwayat pesanan, alamat pengiriman yang tersimpan, dan pengaturan akun. Jika ada pesanan yang tidak Anda buat atau pengaturan yang berubah, segera hubungi customer service.",
             "Waspada email atau SMS phishing. Jangan pernah klik link di email/SMS yang meminta Anda login atau verifikasi akun. Jika ragu, buka aplikasi e-commerce langsung atau ketik URL website sendiri.",
-            "Gunakan email dan nomor telepon yang aman untuk registrasi. Jangan gunakan email atau nomor telepon yang sudah pernah bocor di data breach. Lebih baik buat email khusus untuk e-commerce.",
-            "Segera ubah password jika mendeteksi aktivitas mencurigakan. Jika Anda menerima notifikasi login dari perangkat/lokasi yang tidak dikenal, atau email 'password changed' yang tidak Anda minta, segera ubah password dan hubungi customer service."
+            "Periksa apakah email Anda pernah bocor di Have I Been Pwned (haveibeenpwned.com). Jika pernah, segera ganti password di semua akun yang memakai password yang sama dan aktifkan 2FA.",
+            "Segera ubah password jika mendeteksi aktivitas mencurigakan. Jika Anda menerima notifikasi login dari perangkat/lokasi yang tidak dikenal, atau email 'password changed' yang tidak Anda minta, segera ubah password dan hubungi customer service.",
+            "Jangan pernah memberikan kode OTP kepada siapa pun, termasuk orang yang mengaku sebagai customer service marketplace. Platform resmi tidak pernah meminta OTP lewat telepon atau chat."
           ]
         }
       ],
       "case_study": {
-        "title": "ATO Seller Tokopedia - Penipuan Massal 5,000 Pembeli",
-        "story": "Seorang seller terpercaya di Tokopedia dengan rating 4.9 dan lebih dari 50,000 transaksi menjadi korban account takeover. Penyerang berhasil mendapatkan password seller melalui phishing email yang mengaku dari Tokopedia. Setelah menguasai akun, penyerang mengubah metode pembayaran dan membuat listing produk palsu — iPhone dan MacBook dengan harga 50% lebih murah dari pasar. Karena seller ini sudah terpercaya dengan rating tinggi, lebih dari 5,000 pembeli tertipu dan melakukan pembelian dalam 48 jam. Total transaksi mencapai Rp 75 miliar. Penyerang kemudian mengubah alamat email dan nomor telepon di akun, mengunci seller asli keluar. Ketika seller menyadari dan melaporkan ke Tokopedia, sudah terlambat — uang sudah ditarik ke rekening yang sudah diubah penyerang. Tokopedia akhirnya mengganti kerugian pembeli (total Rp 75 miliar), namun reputasi seller hancur dan akun di-suspend permanen. Seller asli harus berjuang selama 6 bulan untuk membuktikan bahwa dia bukan pelaku penipuan.",
-        "lesson": "Seller e-commerce harus mengaktifkan 2FA, waspada email phishing, dan monitor aktivitas akun secara berkala. Platform e-commerce perlu implementasi sistem deteksi ATO yang canggih dan prosedur verifikasi yang ketat untuk perubahan pengaturan sensitif (rekening bank, email, nomor telepon)."
+        "type": "nyata",
+        "title": "Kebocoran Data Tokopedia (2020): 91 Juta Data Akun Beredar di Dark Web",
+        "story": "Pada awal Mei 2020, beredar kabar bahwa data pengguna Tokopedia diperjualbelikan di dark web. Awalnya disebut 15 juta akun, lalu menurut pengamat keamanan Alfons Tanujaya dari Vaksincom, sekitar 91 juta data beredar dan ditawarkan seharga sekitar US$5.000. Pembobolan diduga terjadi pada Maret 2020. Data yang bocor antara lain username, alamat email, nama lengkap, tanggal lahir, dan nomor telepon, sementara password tersimpan dalam bentuk hash. Tokopedia mengonfirmasi adanya upaya pencurian data, menyatakan password dan informasi penting lainnya tetap terlindungi, dan mengimbau pengguna rutin mengganti password. Tokopedia juga mengingatkan bahwa kode OTP hanya diketahui pemilik akun secara real time.",
+        "lesson": "Kebocoran data seperti ini menjadi 'bahan bakar' account takeover: email dan nomor telepon yang bocor dipakai untuk credential stuffing, phishing yang sangat meyakinkan, atau penipuan yang mengaku sebagai customer service. Pelajarannya: 1) gunakan password unik untuk setiap marketplace; 2) aktifkan 2FA atau PIN tambahan; 3) jangan pernah memberikan OTP kepada siapa pun; 4) waspadai telepon atau pesan yang 'tahu banyak' tentang data Anda, karena data itu bisa berasal dari kebocoran.",
+        "sources": [
+          {
+            "label": "detikInet (3 Mei 2020) — Pengamat: 91 Juta Informasi Akun Tokopedia Dijual di Dark Web",
+            "url": "https://inet.detik.com/security/d-5000330/pengamat-91-juta-informasi-akun-tokopedia-dijual-di-dark-web"
+          },
+          {
+            "label": "CNBC Indonesia (3 Mei 2020) — Tokopedia: Data Kartu Debit, Kartu Kredit, OVO Aman",
+            "url": "https://www.cnbcindonesia.com/tech/20200503132511-37-155888/tokopedia-data-kartu-debit-kartu-kredit-ovo-aman"
+          }
+        ]
       },
       "references": [
-        "https://attack.mitre.org/techniques/T1110/ - MITRE ATT&CK — T1110: Brute Force (ATO Method)",
-        "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html - OWASP — Authentication Cheat Sheet (ATO Prevention)"
+        "https://attack.mitre.org/techniques/T1110/004/ - MITRE ATT&CK — T1110.004: Credential Stuffing",
+        "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html - OWASP — Authentication Cheat Sheet",
+        "https://owasp.org/www-project-automated-threats-to-web-applications/ - OWASP — Automated Threats to Web Applications (termasuk Carding dan Credential Stuffing)",
+        "https://haveibeenpwned.com/ - Have I Been Pwned — cek apakah email pernah bocor"
       ]
     },
     "4": {
@@ -221,8 +301,8 @@
             "Fase 2 - Pembeli Order: Pembeli yang tidak curiga melihat listing fraudster, tertarik dengan harga dan/atau reputasi (bisa jadi fraudster menggunakan akun yang sudah established atau hasil takeover), dan melakukan pembelian. Pembeli membayar ke fraudster melalui platform e-commerce.",
             "Fase 3 - Fraudster Order dari Seller Legitimate: Setelah menerima order dari pembeli, fraudster kemudian pergi ke seller legitimate (bisa di platform yang sama atau platform berbeda) dan membeli barang yang sama. Fraudster menggunakan kartu kredit curian (carding) atau metode pembayaran curang lainnya untuk membayar seller legitimate. Yang penting, fraudster memasukkan alamat pengiriman pembeli (bukan alamat fraudster).",
             "Fase 4 - Pengiriman: Seller legitimate mengirim barang langsung ke pembeli. Pembeli menerima barang dan merasa puas (karena barang asli dari seller legitimate). Pembeli memberikan review positif ke fraudster.",
-            "Fase 5 - Konsekuensi: Beberapa waktu kemudian, pemilik kartu kredit curian melaporkan transaksi tidak sah dan melakukan chargeback. Seller legitimate kehilangan uang (harus refund ke bank) DAN kehilangan barang (sudah dikirim ke pembeli). Pembeli mungkin tidak tahu-menahu, tapi bisa saja barangnya disita jika investigationshow itu hasil carding. Fraudster menghilang dengan uang dari pembeli.",
-            "Variasi: Ada variasi di mana fraudster tidak menggunakan carding, tapi hanya mengambil untung dari selisih harga (arbitrage). Ini sebenarnya tidak illegal, tapi melanggar terms of service kebanyakan platform e-commerce."
+            "Fase 5 - Konsekuensi: Beberapa waktu kemudian, pemilik kartu kredit curian melaporkan transaksi tidak sah dan melakukan chargeback. Seller legitimate kehilangan uang (harus refund ke bank) DAN kehilangan barang (sudah dikirim ke pembeli). Pembeli mungkin tidak tahu-menahu, tapi bisa saja barangnya disita jika hasil penyelidikan menunjukkan itu hasil carding. Fraudster menghilang dengan uang dari pembeli.",
+            "Variasi: ada pula perantara yang tidak memakai kartu curian, melainkan hanya menjual ulang barang dari toko lain dengan harga lebih tinggi (mirip dropship). Praktik seperti ini tidak selalu ilegal, tetapi bisa melanggar ketentuan platform jika tidak transparan. Yang menjadikannya triangulation fraud adalah pembayaran ke penjual asli memakai kartu curian atau cara curang lainnya."
           ]
         },
         {
@@ -238,7 +318,7 @@
           "title": "Dampak Triangulation Fraud",
           "content": [
             "Seller legitimate menanggung kerugian terbesar: Kehilangan barang (sudah dikirim) DAN kehilangan uang (chargeback). Seller juga bisa kena penalty dari platform (suspend atau ban) jika rasio chargeback terlalu tinggi, padahal mereka korban.",
-            "Pembeli bisa terkena imbas: Meskipun pembeli menerima barang, barang tersebut bisa disita oleh pihak berwenang jika investigationshow itu hasil carding. Pembeli juga bisa dianggap terlibat fraud meskipun tidak tahu-menahu.",
+            "Pembeli bisa terkena imbas: Meskipun pembeli menerima barang, barang tersebut bisa disita oleh pihak berwenang jika hasil penyelidikan menunjukkan itu hasil carding. Pembeli juga bisa dianggap terlibat fraud meskipun tidak tahu-menahu.",
             "Platform e-commerce kehilangan kepercayaan: Ketika buyer dan seller mengalami masalah, mereka menyalahkan platform. Platform juga harus menanggung biaya dispute resolution dan potensi regulasi yang lebih ketat.",
             "Ekosistem e-commerce rusak: Seller legitimate menjadi takut berjualan online, buyer menjadi skeptis, dan biaya transaksi naik untuk semua pihak."
           ]
@@ -253,13 +333,15 @@
         }
       ],
       "case_study": {
-        "title": "Triangulation Fraud Laptop Gaming - 200 Seller Korban",
-        "story": "Sebuah sindikat triangulation fraud menargetkan seller laptop gaming di berbagai platform e-commerce Indonesia. Fraudster membuat ratusan akun seller palsu dan listing laptop gaming (ASUS ROG, MSI, Acer Predator) dengan harga 10-15% lebih murah dari pasar. Ketika ada pembeli order, fraudster membeli laptop yang sama dari seller legitimate di platform lain menggunakan kartu kredit curian, dengan alamat pengiriman pembeli. Dalam 6 bulan, lebih dari 200 seller legitimate menjadi korban dengan total kerugian Rp 120 miliar (barang hilang + chargeback). Pembeli yang menerima laptop tidak tahu-menahu dan memberikan review positif ke fraudster. Baru ketika chargeback mulai berdatangan massal, platform e-commerce menyadari ada fraud sistematis. Platform kemudian suspend ratusan akun fraudster dan cooperate dengan polisi untuk investigations. Namun uang dan barang sudah tidak bisa dikembalikan. Seller yang menjadi korban harus berjuang membuktikan bahwa mereka legitimate seller dan korban carding.",
-        "lesson": "Seller harus waspada terhadap order dengan alamat pengiriman yang berbeda jauh, terutama untuk produk bernilai tinggi. Platform perlu implementasi sistem deteksi triangulation fraud yang canggih. Pembeli harus berbelanja dari seller yang verified dan terpercaya. Kolaborasi antar platform e-commerce penting untuk mengidentifikasi fraudster yang beroperasi di multiple platform."
+        "type": "ilustrasi",
+        "title": "Skenario: Laptop Gaming Murah yang Dibayar dengan Kartu Curian",
+        "story": "Bayangkan Rina membeli laptop gaming di sebuah toko marketplace yang harganya 10% lebih murah dari toko lain. Toko itu sebenarnya tidak punya stok. Begitu Rina membayar lewat platform, pemilik toko memesan laptop yang sama di sebuah toko online resmi lain, membayar dengan data kartu kredit curian, dan menulis alamat Rina sebagai alamat pengiriman. Laptop asli sampai dengan selamat, Rina memberi bintang lima, dan dana pembayaran Rina cair ke pelaku. Tiga minggu kemudian, pemilik kartu asli di luar negeri melihat tagihan asing dan mengajukan chargeback. Toko online resmi kehilangan uang sekaligus laptopnya. Saat ditelusuri, alamat pengiriman mengarah ke rumah Rina, sehingga Rina ikut dimintai keterangan meskipun ia sama sekali tidak tahu.",
+        "lesson": "Dalam triangulation fraud, semua pihak bisa dirugikan kecuali pelaku. Pelajarannya: 1) penjual perlu waspada terhadap pesanan bernilai tinggi dengan alamat pengiriman yang tidak cocok dengan pemilik kartu, dan memakai 3-D Secure; 2) pembeli sebaiknya membeli dari toko terverifikasi dengan riwayat yang jelas, bukan hanya karena harga paling murah; 3) platform perlu memantau toko baru yang menjual barang mahal tanpa riwayat stok."
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — E-Commerce Fraud Statistics",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC — Chargeback & Return Fraud Consumer Data"
+        "https://owasp.org/www-project-automated-threats-to-web-applications/ - OWASP — Automated Threats to Web Applications (termasuk Carding dan Credential Stuffing)",
+        "https://www.pcisecuritystandards.org/ - PCI Security Standards Council — standar keamanan data kartu pembayaran (PCI DSS)",
+        "https://consumer.ftc.gov/articles/online-shopping - FTC Consumer Advice — Online Shopping"
       ]
     },
     "5": {
@@ -275,7 +357,8 @@
             "Wardrobing/Renting: Pembeli membeli barang (biasanya fashion atau produk mahal), menggunakan barang tersebut untuk keperluan tertentu (misalnya pakai gaun untuk pesta, pakai kamera untuk event), lalu mengembalikan barang dengan alasan 'tidak cocok' atau 'berubah pikiran'. Pembeli mendapat refund penuh tapi barang sudah terpakai dan nilainya turun.",
             "Double Dip Fraud: Pembeli mengklaim refund dari seller DAN chargeback dari bank/kartu kredit untuk transaksi yang sama. Pembeli mendapat uang dua kali.",
             "Empty Box Fraud: Pembeli mengklaim menerima paket kosong atau barang yang berbeda (misalnya order iPhone, terima batu). Pembeli meminta refund penuh. Ini sulit dibuktikan karena tidak ada bukti fisik.",
-            "Seller Refund Fraud: Seller menerima pembayaran tapi tidak mengirim barang, atau mengirim barang palsu/tidak sesuai, dan menolak memberikan refund ketika pembeli komplain."
+            "Seller Refund Fraud: Seller menerima pembayaran tapi tidak mengirim barang, atau mengirim barang palsu/tidak sesuai, dan menolak memberikan refund ketika pembeli komplain.",
+            "Refund-as-a-service: kelompok penjahat yang menawarkan 'jasa refund' kepada pembeli. Pembeli membayar fee, lalu kelompok itu memanipulasi proses refund platform, bahkan menyuap orang dalam, agar uang dikembalikan tanpa barang benar-benar dikembalikan."
           ]
         },
         {
@@ -290,13 +373,13 @@
         {
           "title": "Cara Seller Melindungi Diri dari Refund Fraud",
           "content": [
-            "Dokumentasikan proses packing dengan video. Untuk produk bernilai tinggi, rekam video saat packing barang, tunjukkan kondisi barang, nomor resi, dan alamat pengiriman. Ini bisa jadi bukti jika pembeli mengklaim barang tidak sesuai atau paket kosong.",
+            "Dokumentasikan proses packing dengan video. Rekam saat barang dikemas, perlihatkan kondisi barang, nomor pesanan, dan label pengiriman. Di Indonesia, banyak penjual juga meminta pembeli merekam video unboxing sebagai syarat komplain; keduanya menjadi bukti kuat saat terjadi sengketa.",
             "Gunakan jasa pengiriman yang menyediakan asuransi dan tracking. Pastikan ada proof of delivery (POD) yang menunjukkan barang sudah diterima. Untuk produk mahal, gunakan pengiriman dengan signature confirmation (harus tanda tangan saat terima).",
             "Terapkan kebijakan return yang jelas dan ketat. Tentukan dengan jelas kondisi barang yang bisa direturn, batas waktu return, dan siapa yang menanggung biaya pengiriman return. Komunikasikan kebijakan ini dengan jelas di product page.",
             "Periksa barang yang direturn dengan teliti. Sebelum memberikan refund, periksa apakah barang yang dikembalikan adalah barang yang sama dan dalam kondisi yang sama seperti saat dikirim. Foto/video kondisi barang yang direturn sebagai bukti.",
             "Blacklist pembeli yang mencurigakan. Jika ada pembeli yang sering melakukan return atau komplain, catat dan pertimbangkan untuk menolak order dari pembeli tersebut di masa depan. Beberapa platform menyediakan fitur untuk share informasi tentang buyer yang bermasalah.",
             "Gunakan platform yang menyediakan seller protection. Platform seperti Tokopedia, Shopee, atau Bukalapak memiliki program perlindungan seller yang akan membantu jika terjadi dispute yang tidak adil. Jangan bertransaksi di luar platform (direct transfer) karena tidak ada protection.",
-            "Untuk produk digital atau high-value, pertimbangkan untuk tidak menerima return kecuali ada defect yang jelas. Atau terapkan restocking fee (potongan 10-20%) untuk return yang bukan karena defect."
+            "Untuk produk digital atau bernilai tinggi, buat aturan return yang jelas sejak awal, misalnya hanya menerima return jika ada cacat produksi, dan cantumkan kondisi itu di halaman produk."
           ]
         },
         {
@@ -304,26 +387,38 @@
           "content": [
             "Implementasi sistem fraud detection untuk mengidentifikasi buyer yang sering melakukan return atau claim. Buyer dengan pattern mencurigakan bisa di-flag untuk manual review atau dibatasi hak return-nya.",
             "Sediakan mediation service yang fair untuk dispute. Platform harus memiliki tim yang memeriksa bukti dari kedua belah pihak (seller dan buyer) sebelum memutuskan siapa yang benar. Jangan selalu memihak buyer hanya karena policy 'customer is always right'.",
-            "Gunakan teknologi untuk tracking dan verification. Misalnya, require foto/video saat delivery untuk produk mahal, atau gunakan blockchain untuk tracking provenance produk luxury.",
+            "Gunakan teknologi untuk pelacakan dan verifikasi, misalnya foto bukti serah terima dari kurir untuk produk mahal, dan pengecekan nomor seri barang yang dikembalikan.",
             "Berikan seller protection yang memadai. Platform harus melindungi seller dari refund fraud yang jelas-jelas tidak adil. Seller yang menjadi korban fraud berulang kali bisa meninggalkan platform, yang merugikan platform dalam jangka panjang.",
             "Edukasi buyer dan seller tentang refund fraud. Banyak buyer yang melakukan refund fraud sebenarnya tidak sadar bahwa itu adalah fraud dan illegal. Platform perlu edukasi tentang apa yang boleh dan tidak boleh dilakukan dalam proses return."
           ]
         }
       ],
       "case_study": {
-        "title": "Wardrobing Massal Gaun Pesta - Seller Fashion Rugi Rp 5 Miliar",
-        "story": "Seorang buyer melakukan wardrobing fraud terhadap seller gaun pesta di Tokopedia. Buyer membeli 47 gaun pesta branded (total Rp 850 juta) dalam 3 bulan, menggunakan gaun-gaun tersebut untuk berbagai event pesta (terlihat dari tag Instagram buyer yang memakai gaun yang sama persis), lalu mengembalikan semua gaun dengan alasan 'tidak cocok' atau 'berubah pikiran'. Karena seller memiliki kebijakan return 30 hari yang longgar, semua return diterima dan buyer mendapat refund penuh. Namun, gaun-gaun yang kembali sudah terpakai, ada yang bernoda, ada yang sobek, dan tidak bisa dijual ulang sebagai barang baru. Seller mengalami kerugian total Rp 5 miliar (termasuk opportunity cost dan penurunan nilai barang). Ketika seller menyadari pola ini dan melaporkan ke Tokopedia, buyer sudah membuat akun baru dan mengulangi modus yang sama ke seller lain. Platform akhirnya ban akun buyer tersebut, tapi kerugian seller tidak bisa dikembalikan. Kasus ini memicu seller-seller fashion untuk memperketat kebijakan return dan require deposit untuk gaun mahal.",
-        "lesson": "Seller harus waspada terhadap buyer yang sering return barang, terutama untuk produk yang mudah dipakai dan dikembalikan (fashion, kamera, alat pesta). Terapkan kebijakan return yang lebih ketat untuk produk tertentu (misalnya tidak terima return untuk gaun yang sudah dipakai, atau require deposit). Dokumentasikan kondisi barang sebelum kirim dan setelah return. Platform perlu sistem untuk mendeteksi buyer dengan pattern return yang mencurigakan."
+        "type": "nyata",
+        "title": "Amazon Menggugat Jaringan 'Jasa Refund' REKK (Desember 2023)",
+        "story": "Pada Desember 2023, Amazon mengajukan gugatan di pengadilan federal Western District of Washington, AS, terhadap kelompok bernama REKK dan hampir 30 orang dari Amerika Serikat dan lima negara lain. Menurut Amazon, REKK secara terbuka mengiklankan 'jasa refund' di Reddit dan Discord: pembeli membayar fee, lalu REKK membuat Amazon mengembalikan uang untuk barang yang tidak pernah dikembalikan, seperti konsol game, koin emas 24 karat, ban mobil, dan laptop MacBook Pro. Amazon menuduh kelompok ini membobol sistem internalnya dan menyuap setidaknya tujuh mantan karyawan Amazon agar menyetujui refund palsu. Amazon menyebut kerugiannya mencapai jutaan dolar, dengan lebih dari selusin refund palsu dikeluarkan antara Juni 2022 dan Mei 2023. Amazon juga menyatakan telah menutup akun dan memblokir pihak yang terlibat agar tidak membuat akun baru.",
+        "lesson": "Refund fraud bukan selalu ulah perorangan yang iseng; ada yang dijalankan sebagai 'bisnis' terorganisir, bahkan melibatkan orang dalam. Pelajarannya: 1) kebijakan refund yang longgar perlu diimbangi verifikasi barang yang dikembalikan; 2) platform perlu membatasi dan memantau kewenangan karyawan yang bisa menyetujui refund; 3) pembeli yang memakai 'jasa refund' sebenarnya ikut melakukan penipuan dan bisa terkena konsekuensi hukum.",
+        "sources": [
+          {
+            "label": "CBS News (8 Des 2023) — Amazon says scammers stole millions through phony product returns",
+            "url": "https://www.cbsnews.com/amp/sanfrancisco/news/amazon-scam-fake-returns-lawsuit"
+          },
+          {
+            "label": "Bloomberg (7 Des 2023) — Amazon Says Thieves Swiped Millions by Faking Product Refunds",
+            "url": "https://www.bloomberg.com/news/articles/2023-12-07/amazon-says-global-theft-ring-swiped-millions-in-fake-refunds"
+          }
+        ]
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — E-Commerce Fraud Statistics",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC — Chargeback & Return Fraud Consumer Data"
+        "https://www.cbsnews.com/amp/sanfrancisco/news/amazon-scam-fake-returns-lawsuit - CBS News (2023) — Gugatan Amazon terhadap jaringan refund REKK",
+        "https://owasp.org/www-project-automated-threats-to-web-applications/ - OWASP — Automated Threats to Web Applications (termasuk Carding dan Credential Stuffing)",
+        "https://consumer.ftc.gov/articles/online-shopping - FTC Consumer Advice — Online Shopping"
       ]
     },
     "6": {
       "subtitle": "Friendly Fraud",
       "quote": "Ketika pembeli yang sebenarnya puas dengan produk tetap melakukan chargeback — bukan karena fraud, tapi karena ketidakjujuran.",
-      "definition": "Friendly Fraud (juga dikenal sebagai Chargeback Fraud atau First-Party Fraud) adalah ketika pembeli yang sah melakukan pembelian secara legitimate, menerima barang/jasa yang sesuai, tapi kemudian menghubungi bank atau penerbit kartu kredit untuk membatalkan transaksi dan meminta uang kembali (chargeback) dengan alasan yang tidak benar — seperti mengklaim transaksi tidak sah, barang tidak diterima, atau barang tidak sesuai — padahal sebenarnya pembeli puas dan tidak ada masalah.\n\nIstilah 'friendly' di sini ironis — ini bukan fraud yang 'ramah', tapi fraud yang sulit dibedakan dari chargeback legitimate karena dilakukan oleh pembeli yang sah (bukan fraudster yang mencuri kartu). Friendly fraud sangat sulit dilawan karena buyer menggunakan mekanisme perlindungan konsumen yang legitimate untuk tujuan yang tidak legitimate.",
+      "definition": "Friendly Fraud (juga dikenal sebagai Chargeback Fraud atau First-Party Fraud) adalah ketika pembeli yang sah melakukan pembelian secara legitimate, menerima barang/jasa yang sesuai, tapi kemudian menghubungi bank atau penerbit kartu kredit untuk membatalkan transaksi dan meminta uang kembali (chargeback) dengan alasan yang tidak benar — seperti mengklaim transaksi tidak sah, barang tidak diterima, atau barang tidak sesuai — padahal sebenarnya pembeli puas dan tidak ada masalah.\n\nIstilah 'friendly' di sini ironis — ini bukan fraud yang 'ramah', tapi fraud yang sulit dibedakan dari chargeback legitimate karena dilakukan oleh pembeli yang sah (bukan fraudster yang mencuri kartu). Friendly fraud sangat sulit dilawan karena buyer menggunakan mekanisme perlindungan konsumen yang legitimate untuk tujuan yang tidak legitimate.\n\nDi Indonesia, sebagian besar belanja online dibayar lewat transfer, virtual account, dompet digital, atau QRIS, bukan kartu kredit. Karena itu, friendly fraud di sini lebih sering muncul sebagai komplain palsu ke platform, misalnya mengaku 'barang tidak sampai' atau 'barang tidak sesuai', daripada chargeback ke bank. Prinsipnya sama: pembeli memakai mekanisme perlindungan konsumen untuk tujuan yang tidak jujur.",
       "sections": [
         {
           "title": "Mengapa Pembeli Melakukan Friendly Fraud?",
@@ -338,8 +433,8 @@
         {
           "title": "Dampak Friendly Fraud yang Merusak",
           "content": [
-            "Seller kehilangan uang DAN barang. Ketika chargeback disetujui, seller harus refund penuh ke buyer, plus bayar chargeback fee (biasanya $15-$25). Barang yang sudah dikirim tidak bisa dikembalikan. Seller menanggung kerugian 100%.",
-            "Rasio chargeback yang tinggi bisa fatal. Payment processor (Midtrans, Xendit, Stripe, dll) memiliki threshold untuk rasio chargeback (biasanya 1%). Jika seller melebihi threshold ini, mereka bisa kena penalty, fee lebih tinggi, atau bahkan di-terminate — tidak bisa terima pembayaran kartu kredit lagi.",
+            "Penjual kehilangan uang sekaligus barang. Ketika chargeback atau komplain disetujui, penjual harus mengembalikan dana, sementara barang yang sudah dikirim tidak kembali. Untuk chargeback kartu, penjual biasanya juga dikenai biaya tambahan.",
+            "Rasio chargeback atau komplain yang tinggi bisa berakibat fatal. Payment processor dan marketplace memiliki ambang batas tertentu; jika terlampaui, penjual bisa dikenai biaya lebih tinggi, pembatasan, atau bahkan diputus kerja samanya.",
             "Biaya operasional meningkat. Seller harus mengalokasikan waktu dan sumber daya untuk menangani dispute chargeback — mengumpulkan bukti, menulis representment letter, follow-up ke bank. Ini waktu yang seharusnya bisa dipakai untuk bisnis.",
             "Reputasi seller rusak. Meskipun bukan salah seller, chargeback yang tinggi bisa mempengaruhi reputasi seller di mata payment processor dan platform e-commerce.",
             "Biaya ditransfer ke konsumen legitimate. Untuk menutupi kerugian dari fraud, seller menaikkan harga untuk semua konsumen. Konsumen jujur yang tidak pernah melakukan fraud ikut menanggung beban."
@@ -353,7 +448,7 @@
             "Komunikasi proaktif dengan buyer. Setelah barang dikirim, kirim tracking number ke buyer. Konfirmasi apakah barang sudah diterima dan apakah sesuai. Jika ada masalah, selesaikan langsung dengan buyer sebelum mereka escalate ke chargeback. Buyer yang puas jarang melakukan chargeback.",
             "Gunakan descriptor yang jelas di tagihan kartu kredit. Pastikan nama yang muncul di statement kartu kredit buyer jelas dan recognizable (misalnya 'TOKO ABC - Jakarta' bukan 'PT XYZ 123'). Buyer yang tidak recognize transaksi di statement mereka lebih mungkin melakukan chargeback dengan alasan 'tidak kenal transaksi ini'.",
             "Respon cepat dan profesional terhadap inquiry buyer. Banyak chargeback terjadi karena buyer frustrasi tidak dapat response dari seller. Sediakan customer service yang responsif dan selesaikan komplain dengan cepat. Buyer yang merasa didengar jarang melakukan chargeback.",
-            "Fight chargeback dengan representment. Ketika dapat chargeback, JANGAN langsung terima. Kumpulkan semua bukti dan submit representment (dispute balik) ke bank. Meskipun prosesnya ribet dan tidak selalu berhasil, setidaknya Anda mencoba. Statistik menunjukkan seller yang fight chargeback memiliki win rate 30-40% — lebih baik daripada 0% jika tidak fight sama sekali.",
+            "Ajukan bantahan (representment) atau banding jika punya bukti. Ketika menerima chargeback atau komplain yang tidak benar, jangan langsung menerima. Kumpulkan bukti pengiriman, video packing, dan riwayat percakapan, lalu ajukan bantahan melalui bank atau fitur sengketa platform. Tidak selalu menang, tetapi tanpa bukti peluangnya hampir nol.",
             "Blacklist buyer yang melakukan friendly fraud. Jika buyer melakukan chargeback tanpa alasan yang valid, catat dan blacklist buyer tersebut. Tolak order dari buyer yang sama di masa depan. Beberapa platform menyediakan fitur untuk share informasi tentang buyer yang bermasalah."
           ]
         },
@@ -368,13 +463,15 @@
         }
       ],
       "case_study": {
-        "title": "Friendly Fraud Elektronik - Seller Kecil Hampir Bangkrut",
-        "story": "Seorang seller kecil yang menjual aksesori iPhone (case, screen protector, charger) di Shopee mengalami gelombang friendly fraud dari 23 buyer dalam 2 bulan. Total nilai transaksi Rp 45 juta dengan 23 chargeback. Modusnya: buyer order aksesori, terima barang, lalu 2-3 minggu kemudian melakukan chargeback dengan alasan 'barang tidak sesuai' atau 'tidak terima barang' meskipun tracking menunjukkan sudah diterima. Karena seller tidak punya dokumentasi yang kuat (hanya foto produk dari supplier, tidak ada foto barang sebelum kirim, tidak ada signature confirmation), seller kalah di 18 dari 23 dispute. Total kerugian Rp 38 juta plus chargeback fee Rp 1.15 juta. Seller yang awalnya untung Rp 5-10 juta per bulan hampir bangkrut. Rasio chargeback seller melonjak ke 3.5% (di atas threshold 1%), dan payment processor mengancam akan terminate akun. Seller kemudian memperbaiki sistem: wajibkan signature confirmation untuk semua order, foto setiap barang sebelum kirim dengan nomor order terlihat, dan fight semua chargeback dengan bukti lengkap. Dalam 3 bulan, rasio chargeback turun ke 0.8% dan seller bisa pertahankan akun. Seller juga blacklist 23 buyer tersebut dan share informasi ke komunitas seller untuk waspada.",
-        "lesson": "Friendly fraud bisa menghancurkan seller kecil yang tidak siap. Dokumentasi yang kuat (proof of delivery dengan signature, foto barang sebelum kirim, komunikasi tercatat) adalah kunci untuk fight chargeback. Jangan terima chargeback tanpa fight — statistik menunjukkan win rate 30-40% jika ada bukti kuat. Blacklist buyer yang melakukan friendly fraud dan share informasi ke komunitas seller."
+        "type": "ilustrasi",
+        "title": "Skenario: Gelombang Komplain 'Barang Tidak Sampai' di Toko Aksesori HP",
+        "story": "Bayangkan sebuah toko kecil penjual aksesori HP di marketplace yang dalam dua bulan menerima 20 komplain 'barang tidak sampai' atau 'barang tidak sesuai', padahal pelacakan kurir menunjukkan semua paket sudah diterima. Karena penjual tidak punya video packing dan hanya memakai foto produk dari supplier, sebagian besar sengketa dimenangkan pembeli dan dana dikembalikan. Rasio komplain toko melonjak, dan platform memberi peringatan. Penjual lalu mengubah kebiasaan: merekam video setiap kali mengemas pesanan dengan nomor pesanan terlihat, memakai kurir dengan foto bukti serah terima, membalas setiap pertanyaan pembeli dengan cepat, dan selalu mengajukan banding dengan bukti lengkap. Dalam beberapa bulan, rasio komplain turun dan toko kembali aman.",
+        "lesson": "Friendly fraud sulit dicegah sepenuhnya, tetapi dokumentasi yang rapi membuat penjual jauh lebih kuat saat sengketa. Pelajarannya: 1) rekam video packing dengan nomor pesanan terlihat; 2) pakai pengiriman dengan bukti serah terima; 3) layani pembeli dengan cepat agar masalah selesai sebelum menjadi komplain resmi; 4) catat pembeli yang berulang kali mengajukan komplain tidak wajar."
       },
       "references": [
-        "https://www.ic3.gov/AnnualReport/Reports/2023_IC3Report.pdf - FBI IC3 2023 — E-Commerce Fraud Statistics",
-        "https://www.ftc.gov/reports/consumer-sentinel-network - FTC — Chargeback & Return Fraud Consumer Data"
+        "https://owasp.org/www-project-automated-threats-to-web-applications/ - OWASP — Automated Threats to Web Applications (termasuk Carding dan Credential Stuffing)",
+        "https://consumer.ftc.gov/articles/online-shopping - FTC Consumer Advice — Online Shopping",
+        "https://www.pcisecuritystandards.org/ - PCI Security Standards Council — standar keamanan data kartu pembayaran (PCI DSS)"
       ]
     }
   }

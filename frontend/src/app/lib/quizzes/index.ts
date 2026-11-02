@@ -3,6 +3,9 @@ import { passwordQuiz } from "./password";
 import { socialEngineeringQuiz } from "./social-engineering";
 import { scamOnlineQuiz } from "./scam-online";
 import { malwareQuiz } from "./malware";
+import { qrCodeAttackQuiz } from "./qr-code-attack";
+import { ecommerceFraudQuiz } from "./ecommerce-fraud";
+import { mobileBankingQuiz } from "./mobile-banking";
 import { STAGE_ORDER, type ModuleQuiz, type StageKey } from "./types";
 
 export * from "./types";
@@ -15,6 +18,9 @@ const quizzes: Record<string, ModuleQuiz> = {
   "social-engineering": socialEngineeringQuiz,
   "scam-online": scamOnlineQuiz,
   malware: malwareQuiz,
+  "qr-code-attack": qrCodeAttackQuiz,
+  "ecommerce-fraud": ecommerceFraudQuiz,
+  "mobile-banking" : mobileBankingQuiz,
 };
 
 export function getQuiz(slug: string): ModuleQuiz {
