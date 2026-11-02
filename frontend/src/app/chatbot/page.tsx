@@ -1,4 +1,4 @@
-  "use client";
+"use client";
 
   import Navbar from "@/components/Navbar";
   import ReactMarkdown from "react-markdown";
@@ -11,23 +11,11 @@
         AlertTriangle, Zap, Shield, Clock, Mic
   } from "lucide-react";
 
-  interface Message {
-    role: string;
-    text: string;
-    timestamp?: number;
-  }
-
-  interface ChatSession {
-    id: string;
-    title: string;
-    messages: Message[];
-    isPinned?: boolean;
-    createdAt?: number;
-    updatedAt?: number;
-  }
-
-  const STORAGE_KEY = "cyberguard_history";
-  const STATS_KEY   = "cyberguard_topic_stats";
+  import {
+    readSessions, writeSessions, attachSyncListener, loadFromServer,
+    clearLegacyHistory, statsKey,
+    type Message, type ChatSession,
+  } from "@/app/lib/chatSync";
 
 export default function ChatbotPage() {
   return (
@@ -68,43 +56,8 @@ function ChatbotContent() {
       "Apa itu SIM Swap?",
     ];
 
-    // ── Baca sessions dari localStorage ──────────────────
-    const readSessions = useCallback((): ChatSession[] => {
-      try {
-        const raw = localStorage.getItem(STORAGE_KEY);
-        return raw ? JSON.parse(raw) : [];
-      } catch { return []; }
-    }, []);
-
-    // ── Tulis sessions ke localStorage ───────────────────
- const writeSessions = useCallback(async (data: ChatSession[]) => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  window.dispatchEvent(new CustomEvent("cyberguard_sync", { detail: data }));
-
-  // Sync ke Supabase
-  const saved = localStorage.getItem("user");
-  if (!saved) return;
-  const user = JSON.parse(saved);
-
-try {
-  for (const session of data) {
-    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/chat/save`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_email: user.email,
-        session_id: session.id,
-        title     : session.title,
-        messages  : session.messages
-      })
-    });
-  }
-} catch {
-  // Backend tidak bisa dihubungi: chat tetap aman di localStorage
-  console.warn("Gagal sinkron chat ke server, disimpan lokal saja.");
-}
-
-}, []);
+    // Baca/tulis riwayat chat memakai chatSync.ts (dipisah per akun,
+    // dipakai bersama ChatWidget, dan disinkronkan ke Supabase).
 
     // ── Buat sesi baru ────────────────────────────────────
     const createNewChat = useCallback((autoActivate = true): ChatSession => {
@@ -136,7 +89,7 @@ try {
 
     // ── Trending topics ───────────────────────────────────
     const updateTopicFrequency = useCallback((msg: string) => {
-      const raw = localStorage.getItem(STATS_KEY);
+      const raw = localStorage.getItem(statsKey());
       const stats = raw ? JSON.parse(raw) : {};
       const map: Record<string, string> = {
         "phishing":  "Apa itu Phishing?",
@@ -151,7 +104,7 @@ try {
       Object.keys(map).forEach(k => {
         if (msg.toLowerCase().includes(k)) stats[map[k]] = (stats[map[k]] || 0) + 1;
       });
-      localStorage.setItem(STATS_KEY, JSON.stringify(stats));
+      localStorage.setItem(statsKey(), JSON.stringify(stats));
 
       const sorted = Object.entries(stats)
         .sort(([, a]: any, [, b]: any) => b - a)
@@ -160,7 +113,7 @@ try {
     }, []);
 
     const loadTrendingTopics = useCallback(() => {
-      const raw = localStorage.getItem(STATS_KEY);
+      const raw = localStorage.getItem(statsKey());
       if (!raw) { setDynamicRecs(defaultRecs); return; }
       const stats = JSON.parse(raw);
       const sorted = Object.entries(stats)
@@ -169,44 +122,50 @@ try {
       setDynamicRecs(Array.from(new Set([...sorted, ...defaultRecs])).slice(0, 10));
     }, []);
 
-    // ── INISIALISASI — baca localStorage & sync dari widget ──
+    // ── INISIALISASI — cache lokal dulu, lalu riwayat dari Supabase ──
     useEffect(() => {
-      const existing = readSessions();
+      clearLegacyHistory();
       const sessionFromWidget = searchParams.get("session");
 
+      const pickActive = (list: ChatSession[], prev: string) => {
+        if (sessionFromWidget && list.find(s => s.id === sessionFromWidget)) return sessionFromWidget;
+        if (prev && list.find(s => s.id === prev)) return prev;
+        return list[0].id;
+      };
+
+      // 1. Tampilkan cache lokal akun ini agar halaman langsung terisi
+      const existing = readSessions();
       if (existing.length > 0) {
         setSessions(existing);
-        // Jika widget mengirim session ID tertentu → aktifkan itu
-        if (sessionFromWidget && existing.find(s => s.id === sessionFromWidget)) {
-          setActiveSessionId(sessionFromWidget);
-        } else {
-          setActiveSessionId(existing[0].id);
-        }
-      } else {
-        createNewChat(true);
+        setActiveSessionId(prev => pickActive(existing, prev));
       }
 
+      // 2. Ambil riwayat dari Supabase (bisa berisi chat dari perangkat lain)
+      let cancelled = false;
+      loadFromServer().then(server => {
+        if (cancelled) return;
+        const list = server ?? readSessions();
+        if (list.length > 0) {
+          setSessions(list);
+          setActiveSessionId(prev => pickActive(list, prev));
+        } else {
+          createNewChat(true);
+        }
+        setIsInitialized(true);
+      });
+
       loadTrendingTopics();
-      setIsInitialized(true);
 
       // Bersihkan URL param setelah dibaca
       if (sessionFromWidget) {
         router.replace("/chatbot", { scroll: false });
       }
+      return () => { cancelled = true; };
     }, []);
 
-    // ── Dengarkan perubahan localStorage dari tab/widget lain ──
+    // ── Dengarkan perubahan dari tab lain (akun yang sama saja) ──
     useEffect(() => {
-      const handleStorage = (e: StorageEvent) => {
-        if (e.key === STORAGE_KEY && e.newValue) {
-          try {
-            const updated: ChatSession[] = JSON.parse(e.newValue);
-            setSessions(updated);
-          } catch {}
-        }
-      };
-      window.addEventListener("storage", handleStorage);
-      return () => window.removeEventListener("storage", handleStorage);
+      return attachSyncListener(updated => setSessions(updated), false);
     }, []);
 
     // ── Auto scroll ───────────────────────────────────────

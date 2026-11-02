@@ -8,26 +8,24 @@ import {
   Search, MoreVertical, AlertTriangle, Mic
 } from "lucide-react";
 
-interface Message  { role: string; text: string; }
-interface ChatSession { id: string; title: string; messages: Message[]; isPinned?: boolean; }
+import { getUserEmail } from "@/app/lib/user";
+import {
+  readSessions as readStorage,
+  writeSessions as writeStorage,
+  attachSyncListener, loadFromServer, clearLegacyHistory, statsKey,
+  type Message, type ChatSession,
+} from "@/app/lib/chatSync";
 
-const STORAGE_KEY = "cyberguard_history";
-const SYNC_EVENT  = "cyberguard_sync"; // custom event untuk same-tab sync
+// Riwayat chat dibaca/ditulis lewat chatSync.ts — sama dengan halaman chatbot,
+// dipisah per akun, dan disinkronkan ke Supabase.
 
-// ── Helper: baca dari localStorage ────────────────────
-function readStorage(): ChatSession[] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch { return []; }
-}
-
-// ── Helper: tulis ke localStorage + broadcast ke semua listener ──
-function writeStorage(data: ChatSession[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  // Kirim custom event agar komponen lain di tab YANG SAMA ikut update
-  window.dispatchEvent(new CustomEvent(SYNC_EVENT, { detail: data }));
-}
+const newWidgetSession = (): ChatSession => ({
+  id: Date.now().toString(),
+  title: "Chat Baru",
+  createdAt: Date.now(),
+  updatedAt: Date.now(),
+  messages: [{ role: "bot", text: "Sesi Baru Aktif. Saya CyberGuard AI, ada yang bisa saya bantu?", timestamp: Date.now() }],
+});
 
 export default function ChatWidget() {
   const pathname = usePathname();
@@ -45,6 +43,7 @@ export default function ChatWidget() {
   const [deleteConfirmId,  setDeleteConfirmId]   = useState<string | null>(null);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const ownerRef       = useRef<string | null>(null); // akun yang datanya sedang ditampilkan
   const inputRef       = useRef<HTMLInputElement>(null);
   const fileRef        = useRef<HTMLInputElement>(null);
 
@@ -64,7 +63,7 @@ export default function ChatWidget() {
 
     // Trending topics
     try {
-      const raw = localStorage.getItem("cyberguard_topic_stats");
+      const raw = localStorage.getItem(statsKey());
       if (raw) {
         const stats = JSON.parse(raw);
         const sorted = Object.entries(stats)
@@ -77,51 +76,54 @@ export default function ChatWidget() {
     } catch { setDynamicRecs(defaultRecs); }
   }, []);
 
-  // ── Inisialisasi + pasang listener sync ──────────────
-  useEffect(() => {
-    const data = readStorage();
-    if (data.length > 0) {
-      setSessions(data);
-      setActiveId(data[0].id);
-    } else {
-      // Buat sesi pertama tanpa perlu state sessions (avoid stale closure)
-      const newSession: ChatSession = {
-        id: Date.now().toString(),
-        title: "Chat Baru",
-        messages: [{ role: "bot", text: "Sesi Baru Aktif. Saya CyberGuard AI, ada yang bisa saya bantu?" }],
-      };
-      writeStorage([newSession]);
-      setSessions([newSession]);
-      setActiveId(newSession.id);
+  // ── Muat riwayat milik akun yang sedang login ────
+  const initForUser = useCallback(() => {
+    const email = getUserEmail();
+    ownerRef.current = email;
+    clearLegacyHistory();
+
+    // Belum login (halaman login/register) → kosongkan, jangan buat sesi
+    if (email === "guest") {
+      setSessions([]);
+      setActiveId("");
+      setShowHistory(false);
+      return;
     }
+
+    // 1. Cache lokal akun ini
     loadData();
 
-    // cross-tab sync (storage event HANYA aktif di tab lain)
-    const handleStorageEvent = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY) loadData();
-    };
+    // 2. Riwayat dari Supabase; buat sesi pertama jika benar-benar kosong
+    loadFromServer().then(server => {
+      if (ownerRef.current !== email) return; // akun sudah berganti
+      const list = server ?? readStorage();
+      if (list.length === 0) {
+        const s = newWidgetSession();
+        writeStorage([s]);
+        setSessions([s]);
+        setActiveId(s.id);
+      }
+    });
+  }, [loadData]);
 
-    // same-tab sync (custom event dari halaman chatbot atau widget sendiri)
-    const handleSyncEvent = (e: Event) => {
-      const detail = (e as CustomEvent<ChatSession[]>).detail;
-      if (detail) {
-         setTimeout(() => {
+  // Jalankan saat pertama kali tampil dan setiap pindah halaman jika akunnya
+  // berganti (widget tetap hidup di layout, jadi login/logout tidak me-reset-nya)
+  useEffect(() => {
+    if (getUserEmail() !== ownerRef.current) initForUser();
+  }, [pathname, initForUser]);
+
+  // ── Listener sync (halaman chatbot / tab lain, akun yang sama) ──
+  useEffect(() => {
+    return attachSyncListener(detail => {
+      setTimeout(() => {
         setSessions(detail);
         setActiveId(prev => {
           if (prev && detail.find(s => s.id === prev)) return prev;
           return detail[0]?.id ?? "";
         });
-         }, 0);
-      }
-    };
-
-    window.addEventListener("storage",   handleStorageEvent);
-    window.addEventListener(SYNC_EVENT,  handleSyncEvent);
-    return () => {
-      window.removeEventListener("storage",  handleStorageEvent);
-      window.removeEventListener(SYNC_EVENT, handleSyncEvent);
-    };
-  }, [loadData]);
+      }, 0);
+    });
+  }, []);
 
   // ── Auto scroll ──────────────────────────────────────
   useEffect(() => {
@@ -142,11 +144,7 @@ export default function ChatWidget() {
   // ── CRUD helpers ─────────────────────────────────────
   const createNewChat = useCallback(() => {
     const existing = readStorage();
-    const newSession: ChatSession = {
-      id: Date.now().toString(),
-      title: "Chat Baru",
-      messages: [{ role: "bot", text: "Sesi Baru Aktif. Saya CyberGuard AI, ada yang bisa saya bantu?" }],
-    };
+    const newSession = newWidgetSession();
     const updated = [newSession, ...existing];
     writeStorage(updated);
     setSessions(updated);
@@ -178,11 +176,7 @@ export default function ChatWidget() {
       const filtered = prev.filter(s => s.id !== id);
       writeStorage(filtered);
       if (filtered.length === 0) {
-        const newSession: ChatSession = {
-          id: Date.now().toString(),
-          title: "Chat Baru",
-          messages: [{ role: "bot", text: "Sesi Baru Aktif. Saya CyberGuard AI, ada yang bisa saya bantu?" }],
-        };
+        const newSession = newWidgetSession();
         const fresh = [newSession];
         writeStorage(fresh);
         setActiveId(newSession.id);
@@ -203,11 +197,11 @@ export default function ChatWidget() {
     if (!msgText.trim() || !activeId || isTyping) return;
     setIsTyping(true);
 
-    const userMsg: Message = { role: "user", text: msgText };
+    const userMsg: Message = { role: "user", text: msgText, timestamp: Date.now() };
 
     // Update stats
     try {
-      const raw = localStorage.getItem("cyberguard_topic_stats");
+      const raw = localStorage.getItem(statsKey());
       const stats = raw ? JSON.parse(raw) : {};
       const map: Record<string, string> = {
         "phishing": "Apa itu Phishing?", "malware": "Cara mencegah Malware?",
@@ -216,14 +210,14 @@ export default function ChatWidget() {
       Object.keys(map).forEach(k => {
         if (msgText.toLowerCase().includes(k)) stats[map[k]] = (stats[map[k]] || 0) + 1;
       });
-      localStorage.setItem("cyberguard_topic_stats", JSON.stringify(stats));
+      localStorage.setItem(statsKey(), JSON.stringify(stats));
     } catch {}
 
     // Tambah pesan user terlebih dahulu
     let latestSessions: ChatSession[] = [];
     setSessions(prev => {
       const updated = prev.map(s =>
-        s.id === activeId ? { ...s, messages: [...s.messages, userMsg] } : s
+        s.id === activeId ? { ...s, messages: [...s.messages, userMsg], updatedAt: Date.now() } : s
       );
       writeStorage(updated);
       latestSessions = updated;
@@ -251,7 +245,7 @@ export default function ChatWidget() {
           const title = s.title === "Chat Baru"
             ? msgText.split(" ").slice(0, 5).join(" ")
             : s.title;
-          return { ...s, title, messages: [...s.messages, { role: "bot", text: reply }] };
+          return { ...s, title, updatedAt: Date.now(), messages: [...s.messages, { role: "bot", text: reply, timestamp: Date.now() }] };
         });
         writeStorage(updated);
         return updated;
@@ -260,7 +254,7 @@ export default function ChatWidget() {
       setSessions(prev => {
         const updated = prev.map(s =>
           s.id === activeId
-            ? { ...s, messages: [...s.messages, { role: "bot", text: "⚠️ Server tidak dapat dijangkau." }] }
+            ? { ...s, updatedAt: Date.now(), messages: [...s.messages, { role: "bot", text: "⚠️ Server tidak dapat dijangkau.", timestamp: Date.now() }] }
             : s
         );
         writeStorage(updated);
@@ -277,10 +271,10 @@ export default function ChatWidget() {
     setIsTyping(true);
 
     // 1. Tampilkan pesan pengguna: "Periksa suara: nama_file"
-    const userMsg: Message = { role: "user", text: `🎤 Periksa suara: ${file.name}` };
+    const userMsg: Message = { role: "user", text: `🎤 Periksa suara: ${file.name}`, timestamp: Date.now() };
     setSessions(prev => {
       const updated = prev.map(s =>
-        s.id === activeId ? { ...s, messages: [...s.messages, userMsg] } : s
+        s.id === activeId ? { ...s, messages: [...s.messages, userMsg], updatedAt: Date.now() } : s
       );
       writeStorage(updated);
       return updated;
@@ -317,7 +311,7 @@ export default function ChatWidget() {
     setSessions(prev => {
       const updated = prev.map(s =>
         s.id === activeId
-          ? { ...s, messages: [...s.messages, { role: "bot", text: reply }] }
+          ? { ...s, updatedAt: Date.now(), messages: [...s.messages, { role: "bot", text: reply, timestamp: Date.now() }] }
           : s
       );
       writeStorage(updated);

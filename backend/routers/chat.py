@@ -90,6 +90,7 @@ async def save_session(data: dict):
         existing = supabase.table("chat_sessions") \
             .select("id") \
             .eq("session_id", data["session_id"]) \
+            .eq("user_email", data["user_email"]) \
             .execute()
 
         # Jika session sudah ada
@@ -105,6 +106,9 @@ async def save_session(data: dict):
             }).eq(
                 "session_id",
                 data["session_id"]
+            ).eq(
+                "user_email",
+                data["user_email"]
             ).execute()
 
         else:
@@ -126,6 +130,32 @@ async def save_session(data: dict):
 
         # Print error save
         print(f"[SAVE ERROR]: {e}")
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(e)
+        )
+
+
+# Endpoint hapus chat
+@router.post("/chat/delete")
+async def delete_session(data: dict):
+    """Hapus satu session chat milik user"""
+
+    try:
+
+        # Hapus hanya jika session_id DAN user_email cocok
+        supabase.table("chat_sessions") \
+            .delete() \
+            .eq("session_id", data["session_id"]) \
+            .eq("user_email", data["user_email"]) \
+            .execute()
+
+        return {"status": "success"}
+
+    except Exception as e:
+
+        print(f"[DELETE ERROR]: {e}")
 
         raise HTTPException(
             status_code=500,

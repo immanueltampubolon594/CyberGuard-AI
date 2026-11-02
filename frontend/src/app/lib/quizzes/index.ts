@@ -28,7 +28,7 @@ const quizzes: Record<string, ModuleQuiz> = {
   malware: malwareQuiz,
   "qr-code-attack": qrCodeAttackQuiz,
   "ecommerce-fraud": ecommerceFraudQuiz,
-  "mobile-banking" : mobileBankingQuiz,
+  "mobile-banking": mobileBankingQuiz,
   "account-takeover": accountTakeoverQuiz,
   "data-breach": dataBreachQuiz,
   "ai-attack": aiAttackQuiz,
