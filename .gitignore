@@ -14,3 +14,4 @@ pemetaan_nama.csv
 backend/voice/results/**/skor_per_klip*.csv
 backend/voice/data_uji/
 backend/voice/results/transkrip/
+backend/voice/results/analisis_audio/
