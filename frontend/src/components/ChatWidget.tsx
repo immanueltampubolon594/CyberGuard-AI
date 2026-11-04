@@ -15,6 +15,7 @@ import {
   attachSyncListener, loadFromServer, clearLegacyHistory, statsKey,
   type Message, type ChatSession,
 } from "@/app/lib/chatSync";
+import { analisisSuara } from "@/app/lib/voiceAnalysis";
 
 // Riwayat chat dibaca/ditulis lewat chatSync.ts — sama dengan halaman chatbot,
 // dipisah per akun, dan disinkronkan ke Supabase.
@@ -265,13 +266,13 @@ export default function ChatWidget() {
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [activeId, isTyping]);
-  // ── Kirim file suara untuk diperiksa keasliannya ─────
+  // ── Kirim file suara untuk dianalisis (suara AI/asli + isi percakapan) ─────
   const sendVoice = useCallback(async (file: File) => {
     if (!activeId || isTyping) return;
     setIsTyping(true);
 
     // 1. Tampilkan pesan pengguna: "Periksa suara: nama_file"
-    const userMsg: Message = { role: "user", text: `🎤 Periksa suara: ${file.name}`, timestamp: Date.now() };
+    const userMsg: Message = { role: "user", text: `🎤 Analisis suara: ${file.name}`, timestamp: Date.now() };
     setSessions(prev => {
       const updated = prev.map(s =>
         s.id === activeId ? { ...s, messages: [...s.messages, userMsg], updatedAt: Date.now() } : s
@@ -280,32 +281,8 @@ export default function ChatWidget() {
       return updated;
     });
 
-    // 2. Kirim file ke backend, lalu susun kalimat balasan
-    let reply = "";
-    try {
-      const form = new FormData();
-      form.append("file", file);
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/voice/check`, {
-        method: "POST",
-        body: form,
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        reply = `⚠️ ${data.detail || "Gagal memeriksa suara."}`;
-      } else {
-        const h = data.hasil;
-        const kesimpulan = h.label === "asli"
-          ? "Suara ini terindikasi ASLI (rekaman suara manusia)."
-          : "Suara ini terindikasi SINTETIS (kemungkinan dihasilkan AI).";
-        reply =
-          `${kesimpulan}\n` +
-          `Skor keaslian: ${Math.round(h.skor_asli * 100)}% ` +
-          `(batas ${Math.round(h.ambang * 100)}%), dari ${h.jumlah_segmen} potongan suara.\n` +
-          `${h.catatan}`;
-      }
-    } catch {
-      reply = "⚠️ Server tidak dapat dijangkau.";
-    }
+    // 2. Kirim file ke backend, lalu susun penjelasan yang mudah dimengerti
+    const reply = await analisisSuara(file);
 
     // 3. Tampilkan balasan bot
     setSessions(prev => {

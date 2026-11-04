@@ -19,6 +19,7 @@ Prinsip:
 
 import time
 
+from .materi import rekomendasi
 from .scam_llm import AnalisisLLMError, analisis_llm
 from .scam_rules import analisis_aturan
 from .transcriber import MODEL_DEFAULT, TranskripsiError, transkripsi
@@ -187,8 +188,6 @@ def analisis_audio(path_audio, periksa_suara=None, model_asr: str = MODEL_DEFAUL
         tingkat = _tingkat_risiko(isi["label"], label_suara)
         ringkasan = _ringkasan(isi["label"], label_suara, isi["modus"], True)
         saran = (llm["saran"] if (transkrip is not None and llm and llm["saran"]) else SARAN_DEFAULT[isi["label"]])
-        if isi["label"] == "aman" and label_suara == "sintetis":
-            saran += " Suara terindikasi buatan AI; tetap verifikasi identitas penelepon bila diminta data atau uang."
     else:
         # hanya hasil suara
         # Isi tidak diketahui: suara asli BUKAN bukti aman, jadi jangan diberi "rendah"
@@ -196,12 +195,21 @@ def analisis_audio(path_audio, periksa_suara=None, model_asr: str = MODEL_DEFAUL
         ringkasan = _ringkasan("aman", label_suara, "", False)
         saran = "Isi percakapan belum bisa dianalisis. Jangan berikan data atau uang sebelum identitas penelepon terverifikasi."
 
+    # 5c. Materi pembelajaran yang cocok dengan isi audio
+    materi = rekomendasi(
+        llm.get("materi") if (transkrip is not None and llm) else None,
+        isi.get("temuan_aturan") if isi["tersedia"] else None,
+        isi["label"] if isi["tersedia"] else None,
+        label_suara,
+    )
+
     return {
         "tingkat_risiko": tingkat,
         "ringkasan": ringkasan,
         "saran": saran,
         "suara": suara,
         "isi": isi,
+        "rekomendasi_materi": materi,
         "transkrip": None if transkrip is None else {
             "teks": transkrip["teks"],
             "potongan": transkrip["potongan"],
