@@ -5,6 +5,7 @@ Cara pakai (dari folder backend, venv aktif):
   python voice\\scripts\\uji_transkripsi.py voice\\data_uji\\penipuan_01.m4a
   python voice\\scripts\\uji_transkripsi.py voice\\data_uji\\*.m4a --model whisper-large-v3
   python voice\\scripts\\uji_transkripsi.py voice\\data_uji\\penipuan_01.m4a --aturan
+  python voice\\scripts\\uji_transkripsi.py voice\\data_uji\\penipuan_01.m4a --aturan --llm
 
 Hasil ditampilkan di terminal dan disimpan ke:
   voice/results/transkrip/<model>/<nama_file>.json
@@ -22,6 +23,7 @@ sys.path.insert(0, str(AKAR_BACKEND))
 
 from services.audio.transcriber import MODEL_DEFAULT, TranskripsiError, transkripsi  # noqa: E402
 from services.audio.scam_rules import analisis_aturan  # noqa: E402
+from services.audio.scam_llm import AnalisisLLMError, analisis_llm  # noqa: E402
 
 
 def main():
@@ -31,6 +33,8 @@ def main():
                         help="whisper-large-v3-turbo (default) atau whisper-large-v3")
     parser.add_argument("--aturan", action="store_true",
                         help="sekalian jalankan aturan pola penipuan (tahap 3)")
+    parser.add_argument("--llm", action="store_true",
+                        help="sekalian jalankan analisis Gemini (tahap 4)")
     args = parser.parse_args()
 
     # Windows tidak mengembangkan *.m4a otomatis, jadi dikembangkan di sini
@@ -71,6 +75,25 @@ def main():
                 print(f"  +{t['bobot']:>2} {t['deskripsi']}")
                 print(f"      {waktu}\"{t['kutipan']}\"")
             hasil["aturan"] = a
+
+        if args.llm:
+            print("-" * 70)
+            try:
+                g = analisis_llm(hasil)
+            except AnalisisLLMError as e:
+                print(f"ANALISIS GEMINI GAGAL: {e}")
+            else:
+                print(f"ANALISIS GEMINI: {g['label'].upper()} (skor {g['skor']}) "
+                      f"| proses {g['waktu_proses_detik']} detik")
+                print(f"  Modus : {g['modus']}")
+                print(f"  Alasan: {g['alasan']}")
+                for b in g["bukti"]:
+                    waktu = f"[{b['mulai']:.1f}s] " if b["mulai"] is not None else ""
+                    print(f"  Bukti : {waktu}\"{b['kutipan']}\"")
+                if g["bukti_dibuang"]:
+                    print(f"  ({g['bukti_dibuang']} kutipan dibuang karena tidak ada di transkrip)")
+                print(f"  Saran : {g['saran']}")
+                hasil["llm"] = g
 
         tujuan = folder_hasil / (Path(path).stem + ".json")
         tujuan.write_text(json.dumps(hasil, indent=2, ensure_ascii=False), encoding="utf-8")
