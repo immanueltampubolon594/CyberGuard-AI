@@ -1,8 +1,9 @@
 // Analisis audio (Tugas B): kirim rekaman ke backend (/voice/analyze),
-// lalu ubah hasilnya menjadi teks yang mudah dimengerti pengguna.
+// lalu ubah hasilnya menjadi balasan yang rapi dan mudah dimengerti pengguna awam.
 //
-// Dipakai bersama oleh halaman chatbot dan widget supaya tampilannya sama.
-// Hasilnya berupa TEKS BIASA (emoji + baris baru) karena widget tidak merender markdown.
+// Dipakai bersama oleh halaman chatbot dan widget supaya isinya sama.
+// Balasan berupa teks dengan format ringan (judul "###", tebal "**", kutipan ">", daftar "-",
+// dan tautan "[teks](alamat)"). Tampilannya digambar oleh komponen PesanSuara.tsx.
 //
 // Yang sengaja TIDAK ditampilkan ke pengguna: skor suara, detik, dan label teknis.
 
@@ -21,6 +22,7 @@ export interface HasilAnalisisAudio {
   isi: {
     tersedia: boolean;
     label?: string;
+    modus?: string;
     alasan?: string;
     bukti?: { kutipan: string }[];
   };
@@ -30,50 +32,144 @@ export interface HasilAnalisisAudio {
 // Proses pertama bisa 15-30 detik (memuat model + Gemini), jadi batasnya dibuat longgar
 const BATAS_WAKTU_MS = 120_000;
 const MAKS_KUTIPAN = 3;
+const MAKS_HURUF_KUTIPAN = 160;
+const KODE_SUARA_AI = "ai-attack:2"; // materi Voice Cloning (ditambahkan otomatis jika suara buatan AI)
+
+// Judul ini menjadi penanda bahwa sebuah pesan adalah hasil analisis suara.
+// Chatbot dan widget memakainya untuk memilih tampilan yang tepat.
+export const PENANDA_BALASAN_SUARA = "### 🎙️ Hasil Analisis Rekaman";
+
+export function adalahBalasanSuara(teks: string): boolean {
+  return typeof teks === "string" && teks.trimStart().startsWith(PENANDA_BALASAN_SUARA);
+}
+
+/** Alamat halaman materi. Contoh: /pembelajaran/scam-online?step=topic-2 */
+export function tautanMateri(m: MateriRekomendasi): string | null {
+  if (!/^[a-z0-9-]+$/.test(m.slug) || !Number.isInteger(m.nomor_topik)) return null;
+  return `/pembelajaran/${m.slug}?step=topic-${m.nomor_topik}`;
+}
+
+// Teks dari AI/transkrip dibersihkan dulu supaya tidak bisa menyelipkan format
+// (tebal, tautan, daftar) atau tautan berbahaya ke dalam balasan.
+function bersihkan(teks: unknown, maks = 0): string {
+  let t = String(teks ?? "")
+    .replace(/[\r\n]+/g, " ")
+    .replace(/[*_`\[\]<>\\]/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+  t = t.replace(/^([#>+-]|\d+[.)])\s*/, ""); // jangan diawali penanda judul/daftar
+  if (maks > 0 && t.length > maks) t = t.slice(0, maks).replace(/\s+\S*$/, "") + "…";
+  return t;
+}
+
+// Pecah beberapa kalimat menjadi daftar (tidak memecah angka seperti "Rp 50.000")
+function pecahKalimat(teks: string): string[] {
+  const bagian = teks.split(/([.!?])\s+(?=[A-Z"“])/);
+  const hasil: string[] = [];
+  for (let i = 0; i < bagian.length; i += 2) {
+    const kalimat = (bagian[i] + (bagian[i + 1] ?? "")).trim();
+    if (kalimat) hasil.push(kalimat);
+  }
+  return hasil;
+}
+
+// Jenis penipuan diambil dari materi paling cocok (selain materi Voice Cloning tambahan)
+function pilihJenis(materi: MateriRekomendasi[]): { nama: string; kelompok: string } | null {
+  const m = materi.find(x => x.kode !== KODE_SUARA_AI);
+  if (!m) return null;
+  const umum = m.topik.includes("?"); // mis. "Apa itu Scam Online?" -> pakai nama materinya saja
+  const nama = umum ? m.judul : m.topik;
+  return { nama, kelompok: umum || m.topik === m.judul ? "" : m.judul };
+}
 
 export function susunBalasan(h: HasilAnalisisAudio): string {
-  const bagian: string[] = [];
+  const bagian: string[] = [PENANDA_BALASAN_SUARA];
   const isiAda = !!h.isi?.tersedia;
-  const berisiko = isiAda && h.isi.label !== "aman";
+  const label = h.isi?.label;
+  const berisiko = isiAda && label !== "aman";
   const suaraAI = !!h.suara?.tersedia && h.suara.label === "sintetis";
+  const materi = h.rekomendasi_materi ?? [];
 
-  // 1. Penjelasan isi percakapan (bahasa sehari-hari dari Gemini)
+  // 1. Kesimpulan singkat + jenis penipuan + penjelasan
   if (isiAda) {
+    if (label === "penipuan") bagian.push("**⚠️ Rekaman ini terindikasi penipuan**");
+    else if (berisiko) bagian.push("**⚠️ Rekaman ini mencurigakan, harap berhati-hati**");
+    else bagian.push("**✅ Isi rekaman tampak wajar**");
+
+    if (berisiko) {
+      const jenis = pilihJenis(materi);
+      const modus = bersihkan(h.isi.modus, 120);
+      const modusAda = modus !== "" && !/^tidak ada/i.test(modus);
+      if (jenis) {
+        const kelompok = jenis.kelompok ? ` (masuk kelompok _${bersihkan(jenis.kelompok)}_)` : "";
+        bagian.push(
+          label === "penipuan"
+            ? `Sepertinya isi rekaman ini adalah penipuan jenis **${bersihkan(jenis.nama)}**${kelompok}.`
+            : `Pola percakapan ini mirip dengan penipuan jenis **${bersihkan(jenis.nama)}**${kelompok}.`
+        );
+      } else if (modusAda) {
+        bagian.push(`Modus yang terlihat: **${modus}**.`);
+      }
+    }
+
     const cadangan = berisiko
       ? "Percakapan dalam rekaman ini mengandung tanda-tanda penipuan."
       : "Percakapan dalam rekaman ini tampak wajar.";
-    bagian.push(`${berisiko ? "⚠️" : "✅"} ${h.isi.alasan?.trim() || cadangan}`);
+    bagian.push(bersihkan(h.isi.alasan) || cadangan);
 
-    const kutipan = (h.isi.bukti ?? []).slice(0, MAKS_KUTIPAN);
+    const kutipan = (h.isi.bukti ?? [])
+      .map(b => bersihkan(b?.kutipan, MAKS_HURUF_KUTIPAN).replace(/["“”]/g, "'"))
+      .filter(Boolean)
+      .slice(0, MAKS_KUTIPAN);
     if (berisiko && kutipan.length > 0) {
       bagian.push(
-        "🔎 Kalimat yang patut diwaspadai:\n" +
-          kutipan.map(b => `• "${b.kutipan}"`).join("\n")
+        "**🔎 Kalimat yang patut diwaspadai**\n" + kutipan.map(k => `> "${k}"`).join("\n")
       );
     }
   } else {
-    bagian.push("ℹ️ Isi percakapan dalam rekaman ini belum bisa dianalisis saat ini.");
+    bagian.push("**ℹ️ Isi rekaman belum bisa dianalisis**");
+    bagian.push(
+      "Isi percakapan dalam rekaman ini belum bisa dianalisis saat ini. " +
+        "Silakan coba lagi nanti, atau gunakan rekaman dengan suara yang lebih jelas."
+    );
   }
 
-  // 2. Suara buatan AI (hanya dijelaskan jika terindikasi, tanpa angka)
+  // 2. Suara buatan AI (tanpa angka)
   if (suaraAI) {
     bagian.push(
-      "🤖 Suara dalam rekaman ini terindikasi buatan AI, bukan suara manusia asli. " +
-        "Hati-hati bila penelepon meminta data pribadi atau uang, dan pastikan dulu siapa yang sebenarnya berbicara."
+      "**🤖 Suara terindikasi buatan AI**\n" +
+        (berisiko
+          ? "Suara ini kemungkinan bukan manusia asli, misalnya suara tiruan (voice cloning). " +
+            "Ini baru indikasi dan bisa keliru, jadi pastikan dulu siapa yang sebenarnya berbicara sebelum memberikan data pribadi atau uang."
+          : "Suara ini terdengar seperti buatan AI. Itu belum tentu berbahaya karena banyak layanan resmi memakai suara AI, " +
+            "dan hasil ini baru indikasi yang bisa keliru. Tetap pastikan siapa yang berbicara sebelum membagikan data pribadi atau uang.")
     );
   }
 
   // 3. Saran tindakan
-  if (h.saran?.trim()) {
-    bagian.push(`💡 Yang sebaiknya dilakukan:\n${h.saran.trim()}`);
+  const saran = bersihkan(h.saran);
+  if (saran) {
+    const langkah = pecahKalimat(saran);
+    bagian.push(
+      "**💡 Yang sebaiknya Anda lakukan**\n" +
+        (langkah.length >= 2 ? langkah.map(s => `- ${s}`).join("\n") : saran)
+    );
   }
 
-  // 4. Materi pembelajaran yang cocok dengan isi rekaman
-  const materi = h.rekomendasi_materi ?? [];
-  if (materi.length > 0) {
+  // 4. Materi pembelajaran (berupa tautan yang bisa diklik)
+  const daftarMateri = materi
+    .map(m => ({ m, url: tautanMateri(m) }))
+    .filter(x => x.url !== null)
+    .map(({ m, url }) => `- [${m.topik}](${url}) · ${m.judul}`);
+  if (daftarMateri.length > 0) {
+    const pengantar = berisiko
+      ? "Ingin paham lebih dalam tentang penipuan seperti ini? Klik materi di bawah (terbuka di tab baru):"
+      : "Ingin tahu lebih banyak? Klik materi di bawah (terbuka di tab baru):";
     bagian.push(
-      "📚 Materi yang bisa Anda pelajari di menu Pembelajaran:\n" +
-        materi.map(m => `• ${m.judul}: ${m.topik}`).join("\n")
+      "**📚 Pelajari lebih lanjut**\n" +
+        pengantar + "\n\n" +
+        daftarMateri.join("\n") + "\n\n" +
+        "_Materi dipelajari berurutan, jadi tautan akan membuka bagian terdekat yang sudah bisa Anda akses._"
     );
   }
 

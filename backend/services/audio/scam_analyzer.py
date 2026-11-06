@@ -32,6 +32,16 @@ AMBANG_PENIPUAN = 60
 AMBANG_MENCURIGAKAN = 30
 DETIK_ANALISIS_SUARA = 30        # pendeteksi suara hanya membaca 30 detik pertama
 
+# "Gerbang permintaan": penipuan selalu meminta/menekan pendengar. Jika Gemini menilai TIDAK ADA
+# permintaan berisiko dan aturan pola juga tidak menemukan ciri permintaan di bawah ini, isi tidak
+# boleh berlabel mencurigakan/penipuan (mis. pidato atau berita yang hanya menyebut pejabat/laporan).
+# Kategori "mengaku_pihak_resmi", "desakan_waktu", "iming_iming", dan "darurat_keluarga" sengaja tidak
+# termasuk: sendirian, semuanya bisa muncul di percakapan biasa.
+KATEGORI_PERMINTAAN = {
+    "minta_data_rahasia", "instal_aplikasi_atau_link", "perintah_transfer", "isolasi_korban", "ancaman",
+}
+SKOR_MAKS_TANPA_PERMINTAAN = AMBANG_MENCURIGAKAN - 1
+
 # Tingkat risiko = gabungan label isi percakapan x hasil deteksi suara.
 # Suara sintetis SAJA bukan penipuan (banyak suara AI yang sah, misalnya asisten
 # suara), tetapi suara sintetis + isi menipu adalah kombinasi paling berbahaya.
@@ -154,6 +164,16 @@ def analisis_audio(path_audio, periksa_suara=None, model_asr: str = MODEL_DEFAUL
             metode = "aturan saja"
         label = _label_dari_skor(skor)
 
+        # Gerbang permintaan: turun ke "aman" hanya jika Gemini DAN aturan sama-sama tidak menemukan permintaan
+        ada_permintaan_llm = llm.get("ada_permintaan") if llm else None
+        aturan_minta = bool(set(aturan["kategori_terdeteksi"]) & KATEGORI_PERMINTAAN)
+        diturunkan = False
+        if ada_permintaan_llm is False and not aturan_minta and label != "aman":
+            label = "aman"
+            skor = min(skor, SKOR_MAKS_TANPA_PERMINTAAN)
+            diturunkan = True
+            catatan.append("Tidak ada permintaan atau tekanan kepada pendengar, jadi isi dinilai wajar.")
+
         # Pengaman: indikator kritis (OTP/PIN, instal APK, rahasiakan) minimal "mencurigakan"
         if aturan["ada_indikator_kritis"] and label == "aman":
             label = "mencurigakan"
@@ -180,6 +200,10 @@ def analisis_audio(path_audio, periksa_suara=None, model_asr: str = MODEL_DEFAUL
             "label_llm": llm["label"] if llm else None,
             "llm_error": llm_error,
             "bukti_terverifikasi": llm["bukti_terverifikasi"] if llm else None,
+            "jenis_rekaman": llm.get("jenis_rekaman") if llm else None,
+            "ada_permintaan": ada_permintaan_llm,
+            "permintaan": llm.get("permintaan") if llm else None,
+            "diturunkan_gerbang": diturunkan,
         }
 
     # 5b. Kesimpulan akhir

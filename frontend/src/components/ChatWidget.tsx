@@ -3,9 +3,9 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import { 
-  X, Send, Loader2, Plus, Trash2, Pencil, Pin, PinOff,
+  X, Plus, Trash2, Pencil, Pin, PinOff,
   History, ChevronLeft, Terminal, MessageSquare,
-  Search, MoreVertical, AlertTriangle, Mic
+  Search, MoreVertical, AlertTriangle
 } from "lucide-react";
 
 import { getUserEmail } from "@/app/lib/user";
@@ -15,7 +15,9 @@ import {
   attachSyncListener, loadFromServer, clearLegacyHistory, statsKey,
   type Message, type ChatSession,
 } from "@/app/lib/chatSync";
-import { analisisSuara } from "@/app/lib/voiceAnalysis";
+import { analisisSuara, adalahBalasanSuara } from "@/app/lib/voiceAnalysis";
+import PesanSuara from "@/components/PesanSuara";
+import KotakInputChat from "@/components/KotakInputChat";
 
 // Riwayat chat dibaca/ditulis lewat chatSync.ts — sama dengan halaman chatbot,
 // dipisah per akun, dan disinkronkan ke Supabase.
@@ -46,7 +48,6 @@ export default function ChatWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const ownerRef       = useRef<string | null>(null); // akun yang datanya sedang ditampilkan
   const inputRef       = useRef<HTMLInputElement>(null);
-  const fileRef        = useRef<HTMLInputElement>(null);
 
   const defaultRecs = [
     "Apa itu Phishing?", "Cara mencegah Malware?",
@@ -428,7 +429,9 @@ export default function ChatWidget() {
                       ? "bg-blue-600 text-white rounded-tr-none"
                       : "bg-white/[0.06] border border-white/8 text-gray-300 rounded-tl-none"
                   }`}>
-                    {msg.text}
+                    {msg.role === "bot" && adalahBalasanSuara(msg.text)
+                      ? <PesanSuara teks={msg.text} gelap />
+                      : msg.text}
                   </div>
                 </div>
               ))}
@@ -461,50 +464,17 @@ export default function ChatWidget() {
                   ))}
                 </div>
 
-                {/* Input */}
-                <form
-                  onSubmit={e => { e.preventDefault(); if (input.trim()) { sendMessage(input); setInput(""); } }}
-                  className="relative"
-                >
-                  <input
-                    ref={inputRef}
-                    value={input}
-                    onChange={e => setInput(e.target.value)}
-                    placeholder="Tanyakan teknis..."
-                    className="w-full bg-white/[0.04] border border-white/10 focus:border-blue-500/50 rounded-2xl py-3.5 pl-4 pr-24 text-xs font-medium text-white placeholder-gray-600 outline-none transition-all focus:bg-white/[0.06]"
-                  />
-                  <input
-                    ref={fileRef}
-                    type="file"
-                    accept=".wav,.mp3,.flac,.m4a,.ogg,.opus,audio/*"
-                    className="hidden"
-                    onChange={e => {
-                      const f = e.target.files?.[0];
-                      if (f) sendVoice(f);
-                      e.target.value = "";
-                    }}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => fileRef.current?.click()}
-                    disabled={isTyping}
-                    title="Periksa keaslian suara"
-                    className="absolute right-12 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/5 hover:bg-white/10 text-blue-400 rounded-xl flex items-center justify-center transition-all active:scale-95 disabled:opacity-30"
-                  >
-                    <Mic size={14} />
-                  </button>
-
-                  <button
-                    type="submit"
-                    disabled={isTyping || !input.trim()}
-                    className="absolute right-1.5 top-1/2 -translate-y-1/2 w-9 h-9 bg-blue-600 hover:bg-blue-500 text-white rounded-xl flex items-center justify-center transition-all active:scale-95 disabled:opacity-30"
-                  >
-                    {isTyping
-                      ? <Loader2 size={14} className="animate-spin" />
-                      : <Send size={14} />
-                    }
-                  </button>
-                </form>
+                {/* Input: teks, tombol + (upload audio), dan kirim */}
+                <KotakInputChat
+                  nilai={input}
+                  onUbah={setInput}
+                  onKirimTeks={() => { if (input.trim()) { sendMessage(input); setInput(""); } }}
+                  onKirimAudio={sendVoice}
+                  sedangMemproses={isTyping}
+                  placeholder="Tanyakan teknis..."
+                  inputRef={inputRef}
+                  varian="widget"
+                />
               </div>
             </div>
           </div>

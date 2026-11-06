@@ -29,6 +29,7 @@ load_dotenv()
 
 MODEL_LLM = "gemini-2.5-flash"
 LABEL_VALID = ("penipuan", "mencurigakan", "aman")
+JENIS_REKAMAN_VALID = ("percakapan_telepon", "pidato_atau_berita", "obrolan_biasa", "lainnya")
 MAKS_HURUF_TRANSKRIP = 20000     # sekitar 10 menit bicara masih muat
 MAKS_BUKTI = 6
 
@@ -39,16 +40,38 @@ class AnalisisLLMError(Exception):
 
 # ── Prompt ───────────────────────────────────────────────────────
 
-PROMPT_SISTEM = """Kamu adalah analis penipuan telepon untuk pengguna di Indonesia.
-Tugasmu: membaca TRANSKRIP percakapan telepon/rekaman suara, lalu menilai apakah isinya penipuan.
+PROMPT_SISTEM = """Kamu adalah analis penipuan untuk pengguna di Indonesia.
+Tugasmu: membaca TRANSKRIP sebuah rekaman suara, lalu menilai apakah isinya penipuan.
+Rekaman bisa berupa telepon, voice note, pidato, berita, wawancara, kuliah, atau obrolan biasa.
+Jangan menganggap semua rekaman sebagai telepon penipuan. Tentukan dulu jenis rekamannya.
+
+PRINSIP UTAMA:
+Penipuan selalu berusaha MENGAMBIL sesuatu dari pendengar lewat tipuan: uang, data rahasia,
+akses perangkat atau akun, atau membuat pendengar bertindak yang merugikan dirinya.
+Karena itu tanyakan: "Apakah pembicara MEMINTA atau MENDORONG pendengar melakukan sesuatu yang berisiko?"
+- Menyebut nama lembaga, pejabat, aparat, bank, atau kata "laporan", menyampaikan informasi atau berita,
+  memberi pernyataan, atau melapor TANPA meminta apa pun dari pendengar = "aman".
+- Informasi yang singkat, kurang lengkap, atau belum jelas maksudnya BUKAN alasan untuk curiga.
+  Jangan menebak niat buruk dari hal yang tidak diucapkan.
+- Mengaku dari lembaga atau menyebut pejabat baru mencurigakan jika dipakai untuk menekan pendengar
+  agar menuruti sesuatu (transfer, beri kode/data, instal aplikasi, rahasiakan, datang atau bayar).
 
 DEFINISI LABEL:
-- "penipuan": ada permintaan atau tekanan yang khas penipuan, misalnya meminta OTP/PIN/password,
+- "penipuan": ada permintaan atau tekanan yang khas penipuan kepada pendengar, misalnya meminta OTP/PIN/password,
   meminta transfer atau pembayaran di muka (biaya admin, pajak hadiah, deposit),
   menyuruh memasang APK atau membuka link, mengaku pihak resmi lalu mengancam/mendesak,
   hadiah/untung tidak wajar, menyuruh merahasiakan dari keluarga, atau mengaku keluarga yang butuh uang darurat.
-- "mencurigakan": ada sebagian ciri penipuan tetapi belum cukup jelas, atau informasinya kurang.
-- "aman": percakapan wajar sehari-hari.
+- "mencurigakan": ada permintaan atau dorongan berisiko kepada pendengar dan sebagian ciri penipuan,
+  tetapi belum cukup jelas. Syaratnya: harus ada permintaan atau dorongan yang bisa dikutip dari transkrip.
+- "aman": tidak ada permintaan berisiko kepada pendengar. Termasuk percakapan wajar, pidato, berita,
+  wawancara, kuliah, dan laporan atau informasi biasa.
+
+CONTOH PEMBEDA (hanya untuk memahami pola, jangan dikutip):
+- "Saya mendapat laporan dari kepolisian bahwa jalan tol ditutup karena banjir." -> aman (informasi, tidak meminta apa pun).
+- "Kami dari kepolisian, ada kasus atas nama Anda, transfer uang damai sekarang atau Anda ditangkap." -> penipuan.
+- "Kurir kami sudah di depan rumah, silakan diterima ya." -> aman.
+- "Kurir kami tidak bisa mengantar, klik link ini lalu isi data kartu Anda." -> penipuan.
+- Pidato pejabat yang menyebut laporan, anggaran, atau situasi keamanan -> aman.
 
 PENTING (hindari salah tuduh):
 - Kata seperti "OTP", "bank", "transfer", atau "kurir" TIDAK otomatis berarti penipuan.
@@ -65,14 +88,19 @@ ATURAN KERAS:
 
 FORMAT KELUARAN: hanya satu objek JSON, tanpa teks lain, tanpa ```.
 {
+  "jenis_rekaman": "percakapan_telepon" | "pidato_atau_berita" | "obrolan_biasa" | "lainnya",
+  "ada_permintaan": true jika pembicara meminta atau mendorong pendengar melakukan sesuatu yang berisiko (kirim uang, beri OTP/PIN/data, klik/instal, rahasiakan, datang atau bayar), selain itu false,
+  "permintaan": "ringkas permintaan itu dalam satu kalimat, atau 'tidak ada'",
   "label": "penipuan" | "mencurigakan" | "aman",
   "skor": angka bulat 0-100 (makin tinggi makin besar kemungkinan penipuan),
   "modus": "nama singkat modus, misalnya 'mengaku CS bank minta OTP'; isi 'tidak ada' jika aman",
   "bukti": ["kutipan persis dari transkrip", ...],
-  "alasan": "2-3 kalimat dalam bahasa sehari-hari yang mudah dipahami orang awam, tanpa istilah teknis: apa yang terjadi dalam percakapan dan mengapa itu berbahaya (atau mengapa tampak wajar). Sapa pengguna dengan 'Anda'. Jangan memberi saran dan jangan menulis kesimpulan 'aman' di sini, karena saran ada di field terpisah",
+  "alasan": "2-3 kalimat dalam bahasa sehari-hari yang mudah dipahami orang awam, tanpa istilah teknis: apa yang terjadi dalam percakapan dan mengapa itu berbahaya (atau mengapa tampak wajar). Sapa pengguna dengan 'Anda'. Sebut 'pembicara' kecuali jelas ini percakapan telepon (baru boleh 'penelepon'). Jangan memberi saran dan jangan menulis kesimpulan 'aman' di sini, karena saran ada di field terpisah",
   "saran": "1-2 kalimat langkah konkret yang sebaiknya dilakukan pengguna, bahasa Indonesia sederhana, sapa pengguna dengan 'Anda'",
   "materi": ["kode dari DAFTAR MATERI di bawah", ...]
 }
+
+KONSISTENSI: jika "ada_permintaan" false maka "label" WAJIB "aman" dan "skor" paling tinggi 20.
 
 TENTANG "materi": pilih maksimal 2 kode dari DAFTAR MATERI yang paling cocok untuk dipelajari
 pengguna agar mengenali modus yang muncul di percakapan ini. Tulis kodenya persis seperti di daftar.
@@ -142,6 +170,19 @@ def _ambil_json(teks: str) -> dict:
         return json.loads(m.group(0))
 
 
+def _ke_bool(nilai):
+    """True / False bila jelas, None bila tidak dijawab atau tidak dikenali."""
+    if isinstance(nilai, bool):
+        return nilai
+    if isinstance(nilai, str):
+        t = nilai.strip().lower()
+        if t in ("true", "ya", "iya", "benar"):
+            return True
+        if t in ("false", "tidak", "bukan", "salah"):
+            return False
+    return None
+
+
 def _bersihkan(data: dict, transkrip, polos: str) -> dict:
     """Validasi bentuk JSON dan verifikasi kutipan bukti terhadap transkrip."""
     label = str(data.get("label", "")).strip().lower()
@@ -177,9 +218,16 @@ def _bersihkan(data: dict, transkrip, polos: str) -> dict:
     if label == "aman":
         materi = []
 
+    jenis = str(data.get("jenis_rekaman") or "").strip().lower()
+    if jenis not in JENIS_REKAMAN_VALID:
+        jenis = "lainnya"
+
     return {
         "label": label,
         "skor": skor,
+        "jenis_rekaman": jenis,
+        "ada_permintaan": _ke_bool(data.get("ada_permintaan")),   # True / False / None (tidak dijawab)
+        "permintaan": str(data.get("permintaan") or "tidak ada").strip(),
         "modus": str(data.get("modus") or "tidak ada").strip(),
         "bukti": bukti,
         "alasan": str(data.get("alasan") or "").strip(),
@@ -216,6 +264,8 @@ def analisis_llm(transkrip) -> dict:
     Kembalikan:
     {
       "label": "penipuan|mencurigakan|aman", "skor": 0-100, "modus": "...",
+      "jenis_rekaman": "percakapan_telepon|pidato_atau_berita|obrolan_biasa|lainnya",
+      "ada_permintaan": True|False|None, "permintaan": "...",
       "bukti": [{"kutipan": "...", "mulai": 3.2}], "alasan": "...", "saran": "...",
       "materi": ["scam-online:2"],   # kode dari materi.KATALOG, sudah divalidasi
       "bukti_dibuang": 0, "bukti_terverifikasi": True,

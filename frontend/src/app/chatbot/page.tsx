@@ -5,10 +5,10 @@
   import { useState, useEffect, useRef, useCallback, Suspense } from "react";
   import { useSearchParams, useRouter } from "next/navigation";
   import { 
-    Plus, MessageSquare, Send, Bot, Menu, X, 
-    User, Loader2, MoreVertical, Trash2, Pencil,
+    Plus, MessageSquare, Bot, Menu, X, 
+    User, MoreVertical, Trash2, Pencil,
     ShieldCheck, Search, Pin, PinOff, Sparkles,
-        AlertTriangle, Zap, Shield, Clock, Mic
+        AlertTriangle, Zap, Shield, Clock
   } from "lucide-react";
 
   import {
@@ -16,7 +16,9 @@
     clearLegacyHistory, statsKey,
     type Message, type ChatSession,
   } from "@/app/lib/chatSync";
-import { analisisSuara } from "@/app/lib/voiceAnalysis";
+import { analisisSuara, adalahBalasanSuara } from "@/app/lib/voiceAnalysis";
+import PesanSuara from "@/components/PesanSuara";
+import KotakInputChat from "@/components/KotakInputChat";
 
 export default function ChatbotPage() {
   return (
@@ -44,7 +46,6 @@ function ChatbotContent() {
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const inputRef       = useRef<HTMLInputElement>(null);
-        const fileRef        = useRef<HTMLInputElement>(null);
 
     const defaultRecs = [
       "Apa itu Phishing?",
@@ -471,7 +472,11 @@ function ChatbotContent() {
   }`}
     >
     
-  {msg.role === "bot" ? <ReactMarkdown>{msg.text.replace(/\n/g, '\n\n')}</ReactMarkdown> : msg.text}
+  {msg.role === "bot"
+    ? (adalahBalasanSuara(msg.text)
+        ? <PesanSuara teks={msg.text} />
+        : <ReactMarkdown>{msg.text.replace(/\n/g, '\n\n')}</ReactMarkdown>)
+    : msg.text}
     </div>
 
     {/* Timestamp */}
@@ -525,48 +530,17 @@ function ChatbotContent() {
                   </div>
                 </div>
 
-                {/* Input */}
-                <form
-                  onSubmit={e => { e.preventDefault(); if (input.trim()) { sendMessage(input); setInput(""); } }}
-                  className="relative"
-                >
-                <input
-    ref={inputRef}
-    value={input}
-    onChange={e => setInput(e.target.value)}
-    placeholder="Tanyakan seputar keamanan siber..."
- className="w-full bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 focus:border-blue-500/50 rounded-2xl pl-5 pr-14 py-3 text-[15px] font-bold text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-gray-600 outline-none transition-all focus:bg-white dark:focus:bg-white/[0.08] shadow-inner"
-  />
-
-                  <input
-                    ref={fileRef}
-                    type="file"
-                    accept=".wav,.mp3,.flac,.m4a,.ogg,.opus,audio/*"
-                    className="hidden"
-                    onChange={e => {
-                      const f = e.target.files?.[0];
-                      if (f) sendVoice(f);
-                      e.target.value = "";
-                    }}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => fileRef.current?.click()}
-                    disabled={isTyping}
-                    title="Periksa keaslian suara"
-                    className="absolute right-14 top-1/2 -translate-y-1/2 w-11 h-11 bg-slate-200 hover:bg-slate-300 dark:bg-white/5 dark:hover:bg-white/10 text-blue-600 dark:text-blue-400 rounded-xl flex items-center justify-center transition-all active:scale-95 disabled:opacity-30"
-                  >
-                    <Mic size={16} />
-                  </button>
-
-                  <button
-                    type="submit"
-                    disabled={isTyping || !input.trim()}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 bg-blue-600 hover:bg-blue-700 dark:hover:bg-blue-500 text-white rounded-xl flex items-center justify-center transition-all active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed shadow-[0_4px_20px_rgba(37,99,235,0.3)] dark:shadow-blue-500/20"
-                  >
-                    {isTyping ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
-                  </button>
-                </form>
+                {/* Input: teks, tombol + (upload audio), dan kirim */}
+                <KotakInputChat
+                  nilai={input}
+                  onUbah={setInput}
+                  onKirimTeks={() => { if (input.trim()) { sendMessage(input); setInput(""); } }}
+                  onKirimAudio={sendVoice}
+                  sedangMemproses={isTyping}
+                  placeholder="Tanyakan seputar keamanan siber..."
+                  inputRef={inputRef}
+                  varian="halaman"
+                />
 
                 <p className="text-center text-[10px] text-slate-500 dark:text-slate-600 font-black uppercase tracking-wider">
     CyberGuard AI • Berbasis RAG • Trusted Intelligence Source
