@@ -40,6 +40,7 @@ type InfoLink = {
   dapat_dijangkau: boolean;
   jenis_situs: string | null;
   jenis_singkat: string;
+  jenis_domain: string | null;
   kode_jenis: string;
   keyakinan_jenis: string;
   perlu_waspada: boolean;
@@ -59,6 +60,7 @@ type InfoLink = {
     usia_teks: string | null;
     usia_hari: number | null;
     diperbarui_teks: string | null;
+    negara_pendaftar: string | null;
     registrar: string | null;
   } | null;
   screenshot: string | null;
@@ -316,6 +318,13 @@ export default function VerifikasiHalaman() {
 
                   {info.dapat_dijangkau && (
                     <dl className="border-t border-slate-200 dark:border-white/10 pt-4 space-y-3 text-sm">
+                      {info.jenis_domain && (
+                        <div className="flex items-center gap-3">
+                          <Tag size={20} className="text-blue-500 flex-shrink-0" />
+                          <dt className="w-40 text-slate-500 dark:text-gray-400">Jenis Domain</dt>
+                          <dd className="font-bold text-slate-900 dark:text-white">{info.jenis_domain}</dd>
+                        </div>
+                      )}
                       <div className="flex items-center gap-3">
                         <Globe size={20} className="text-blue-500 flex-shrink-0" />
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Negara Server</dt>
@@ -358,6 +367,13 @@ export default function VerifikasiHalaman() {
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Pendaftar Domain</dt>
                         <dd className="font-bold text-slate-900 dark:text-white">{info.domain_info?.registrar ?? "Tidak diketahui"}</dd>
                       </div>
+                      {info.domain_info?.negara_pendaftar && (
+                        <div className="flex items-center gap-3">
+                          <Globe size={20} className="text-blue-500 flex-shrink-0" />
+                          <dt className="w-40 text-slate-500 dark:text-gray-400">Negara Pendaftar</dt>
+                          <dd className="font-bold text-slate-900 dark:text-white">{info.domain_info.negara_pendaftar}</dd>
+                        </div>
+                      )}
                       <div className="flex items-center gap-3">
                         <Server size={20} className="text-blue-500 flex-shrink-0" />
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Penyedia Hosting</dt>

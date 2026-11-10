@@ -18,6 +18,24 @@
   } from "@/app/lib/chatSync";
 import { analisisSuara, adalahBalasanSuara } from "@/app/lib/voiceAnalysis";
 import PesanSuara from "@/components/PesanSuara";
+// Pesan suara dari pengguna ditampilkan sebagai kartu berkas (jenis file + nama file)
+const AWALAN_SUARA = "🎤 Analisis suara: ";
+
+function KartuBerkasSuara({ teks }: { teks: string }) {
+  const namaLengkap = teks.slice(AWALAN_SUARA.length).trim();
+  const titik = namaLengkap.lastIndexOf(".");
+  const nama = titik > 0 ? namaLengkap.slice(0, titik) : namaLengkap;
+  const jenis = titik > 0 ? namaLengkap.slice(titik + 1).toUpperCase() : "AUDIO";
+  return (
+    <div
+      title={namaLengkap}
+      className="w-40 h-28 p-4 rounded-2xl rounded-tr-none flex flex-col justify-between bg-slate-200 dark:bg-[#1b2333] border border-slate-300 dark:border-white/10 shadow-sm"
+    >
+      <span className="text-xs font-bold tracking-wider text-slate-500 dark:text-gray-400">{jenis}</span>
+      <span className="text-sm font-bold text-slate-900 dark:text-white truncate">{nama}</span>
+    </div>
+  );
+}
 import KotakInputChat from "@/components/KotakInputChat";
 
 export default function ChatbotPage() {
@@ -463,7 +481,11 @@ function ChatbotContent() {
 
   {/* Bubble & Timestamp Container */}
   <div className={`flex flex-col gap-1 max-w-[78%] ${msg.role === "user" ? "items-end" : "items-start"}`}>
-    {/* Bubble */}
+    
+        {/* Bubble */}
+    {msg.role === "user" && msg.text.startsWith(AWALAN_SUARA) ? (
+      <KartuBerkasSuara teks={msg.text} />
+    ) : (
     <div 
   className={`px-5 py-3.5 rounded-2xl text-[15px] leading-relaxed font-semibold shadow-sm transition-all ${
     msg.role === "user"
@@ -478,6 +500,7 @@ function ChatbotContent() {
         : <ReactMarkdown>{msg.text.replace(/\n/g, '\n\n')}</ReactMarkdown>)
     : msg.text}
     </div>
+    )}
 
     {/* Timestamp */}
     {msg.timestamp && (
