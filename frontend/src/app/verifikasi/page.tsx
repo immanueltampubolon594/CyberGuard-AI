@@ -1,125 +1,106 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import { useState, useEffect } from "react";
-import { 
-  ShieldAlert, 
-  ShieldCheck, 
-  Search, 
-  AlertCircle, 
+import { useState } from "react";
+import {
+  Search,
+  AlertCircle,
   Loader2,
-  Info,
-  ShieldX,
   Lock,
   ArrowRight,
-  Activity,
   Cpu,
   Terminal,
   HelpCircle,
-  Image as ImageIcon,
-  CheckCircle2,
-  XCircle,
   AlertTriangle,
   Globe,
   FileText,
-  ThumbsUp,
-  ArrowLeft
+  ArrowLeft,
+  Server,
+  CalendarDays,
+  RefreshCw,
+  Network,
+  Building2,
+  Layers,
+  Link2,
+  Copy,
+  Check,
+  ExternalLink,
+  Info,
+  ImageOff,
+  Tag
 } from "lucide-react";
 import Link from "next/link";
+
+// Bentuk data dari backend: POST /verify-link -> { success, info }
+type InfoLink = {
+  url: string;
+  url_awal: string;
+  diperpendek: boolean;
+  domain: string;
+  dapat_dijangkau: boolean;
+  jenis_situs: string | null;
+  jenis_singkat: string;
+  kode_jenis: string;
+  keyakinan_jenis: string;
+  perlu_waspada: boolean;
+  ciri: string[];
+  judul_halaman: string | null;
+  deskripsi_halaman: string | null;
+  server: {
+    ip: string | null;
+    negara: string | null;
+    kode_negara: string | null;
+    kota: string | null;
+    penyedia: string | null;
+  } | null;
+  domain_info: {
+    tanggal_daftar: string | null;
+    tanggal_daftar_teks: string | null;
+    usia_teks: string | null;
+    usia_hari: number | null;
+    diperbarui_teks: string | null;
+    registrar: string | null;
+  } | null;
+  screenshot: string | null;
+  deskripsi: string;
+  catatan: string[];
+};
 
 export default function VerifikasiHalaman() {
   const [url, setUrl] = useState("");
   const [loading, setLoading] = useState(false);
-    const [errorMsg, setErrorMsg] = useState("");
-  const [analyzedUrl, setAnalyzedUrl] = useState("");
-  const [screenshot, setScreenshot] = useState<string | null>(null);
-  const [animatedScore, setAnimatedScore] = useState(0);
-  
-  const [result, setResult] = useState<{
-    score: number;
-    level: string;
-    reasons: string[];
-    summary?: string;
-    recommendation?: string;
-    is_valid_url?: boolean;
-  } | null>(null);
-
-  // Smooth animation dengan easing (dari File 1)
-  useEffect(() => {
-    if (result && result.score !== animatedScore) {
-      const duration = 2000;
-      const startTime = performance.now();
-      const startValue = 0;
-      const endValue = result.score;
-      
-      const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
-      
-      const animate = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easedProgress = easeOutCubic(progress);
-        const currentValue = Math.floor(startValue + (endValue - startValue) * easedProgress);
-        
-        setAnimatedScore(currentValue);
-        
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        }
-      };
-      
-      requestAnimationFrame(animate);
-    }
-  }, [result]);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [info, setInfo] = useState<InfoLink | null>(null);
+  const [tersalin, setTersalin] = useState(false);
 
   const handleVerify = async () => {
     if (!url) return;
-    
-    let formattedUrl = url;
-    if (!url.startsWith("http")) {
-      formattedUrl = "https://" + url;
+
+    let formattedUrl = url.trim();
+    if (!formattedUrl.startsWith("http")) {
+      formattedUrl = "https://" + formattedUrl;
     }
 
     setLoading(true);
-    setResult(null);
-    setAnimatedScore(0);
-    setAnalyzedUrl(formattedUrl);
-    setScreenshot(null);
+    setInfo(null);
     setErrorMsg("");
     try {
-   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verify-link`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/verify-link`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url: formattedUrl }), 
+        body: JSON.stringify({ url: formattedUrl }),
       });
 
       if (!response.ok) throw new Error("Gagal terhubung ke backend");
 
       const data = await response.json();
 
-      if (!data.success) {
-        throw new Error(data.risk?.reasons?.[0] || "Analisis gagal");
+      if (!data.success || !data.info) {
+        throw new Error(data.error || "Analisis gagal");
       }
 
-      const risk = data.risk;
-      
-      if (risk.screenshot) {
-        setScreenshot(risk.screenshot);
-      }
-
-      const reasons = Array.isArray(risk.reasons) ? risk.reasons : [];
-      
-      setTimeout(() => {
-        setResult({
-          score: risk.score ?? 0,
-          level: risk.level ?? "SAFE",
-          reasons: reasons,
-          summary: risk.summary ?? "",
-          recommendation: risk.recommendation ?? "",
-          is_valid_url: risk.is_valid_url ?? true
-        });
-        setLoading(false);
-      }, 500);
-
+      setInfo(data.info as InfoLink);
+      setLoading(false);
     } catch (error: any) {
       // "Failed to fetch" = server tidak bisa dihubungi sama sekali
       const offline = error instanceof TypeError;
@@ -134,57 +115,30 @@ export default function VerifikasiHalaman() {
   };
 
   const openUrlSafely = () => {
-    window.open(analyzedUrl, '_blank', 'noopener,noreferrer');
+    if (info) window.open(info.url, "_blank", "noopener,noreferrer");
   };
 
   const resetAnalysis = () => {
-    setResult(null);
+    setInfo(null);
     setUrl("");
-    setScreenshot(null);
-    setAnimatedScore(0);
   };
 
-  // Color configuration (dari File 1, disesuaikan dengan theme File 2)
-  const getScoreConfig = (score: number) => {
-    if (score >= 75) return { 
-      stroke: "#ef4444", 
-      text: "text-red-500",
-      bg: "bg-red-500/10",
-      border: "border-red-500/30",
-      status: "BERBAHAYA",
-      icon: ShieldX,
-      message: "Link ini berbahaya! Jangan kunjungi."
-    };
-    if (score >= 40) return { 
-      stroke: "#f97316", 
-      text: "text-orange-500",
-      bg: "bg-orange-500/10",
-      border: "border-orange-500/30",
-      status: "MENCURIGAKAN",
-      icon: ShieldAlert,
-      message: "Link ini mencurigakan. Hati-hati!"
-    };
-    if (score >= 25) return { 
-      stroke: "#eab308", 
-      text: "text-yellow-500",
-      bg: "bg-yellow-500/10",
-      border: "border-yellow-500/30",
-      status: "WASPADA",
-      icon: AlertTriangle,
-      message: "Perlu kewaspadaan."
-    };
-    return { 
-      stroke: "#22c55e", 
-      text: "text-green-500",
-      bg: "bg-green-500/10",
-      border: "border-green-500/30",
-      status: "AMAN",
-      icon: ShieldCheck,
-      message: "Link ini aman untuk dikunjungi."
-    };
+  const salinUrl = async () => {
+    if (!info) return;
+    try {
+      await navigator.clipboard.writeText(info.url);
+      setTersalin(true);
+      setTimeout(() => setTersalin(false), 1500);
+    } catch {
+      // abaikan: salin tidak didukung di browser ini
+    }
   };
 
-  const scoreConfig = result ? getScoreConfig(result.score) : null;
+  // Teks lokasi server, mis. "Indonesia (Jakarta)"
+  const teksServer = (srv: InfoLink["server"]) => {
+    if (!srv || !srv.negara) return "Tidak diketahui";
+    return srv.kota ? `${srv.negara} (${srv.kota})` : srv.negara;
+  };
 
   return (
     <main className="h-screen flex flex-col overflow-hidden bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-white font-sans selection:bg-blue-500/30 transition-colors duration-500">
@@ -204,16 +158,16 @@ export default function VerifikasiHalaman() {
         <div className="max-w-5xl mx-auto relative z-10 animate-in fade-in slide-in-from-top-8 duration-1000">
           <div className="inline-flex items-center gap-3 bg-slate-100 dark:bg-white/5 backdrop-blur-md px-6 py-2 rounded-xl border border-slate-200 dark:border-white/10 shadow-lg mb-5 transition-colors">
             <Cpu size={16} className="text-blue-600 dark:text-blue-500" />
-            <span className="text-[10px] font-[1000] uppercase tracking-[4px] text-slate-500 dark:text-gray-400">Neural Link Verification System</span>
+            <span className="text-[10px] font-[1000] uppercase tracking-[4px] text-slate-500 dark:text-gray-400">Link Information System</span>
           </div>
           
           <h1 className="text-4xl md:text-6xl font-[1000] tracking-[2px] uppercase mb-5 leading-[0.9]">
-            <span className="text-slate-900 dark:text-white">Verifikasi </span><span className="text-blue-600">Ancaman</span><br />
-            <span className="text-blue-600">URL </span><span className="text-slate-900 dark:text-white">Real-Time</span>
+            <span className="text-slate-900 dark:text-white">Kenali </span><span className="text-blue-600">Link</span><br />
+            <span className="text-slate-900 dark:text-white">Sebelum </span><span className="text-blue-600">Dibuka</span>
           </h1>
 
           <p className="text-lg text-slate-600 dark:text-gray-200 max-w-3xl mx-auto leading-relaxed font-semibold">
-            Gunakan mesin deteksi berbasis AI untuk membedah anatomi link mencurigakan dan mendapatkan laporan risiko instan sebelum melakukan interaksi.
+            Masukkan sebuah link untuk mengetahui jenis situsnya, di negara mana servernya berada, dan kapan domainnya didaftarkan.
           </p>
         </div>
       </section>
@@ -231,7 +185,7 @@ export default function VerifikasiHalaman() {
               onChange={(e) => setUrl(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleVerify()}
               type="text" 
-              placeholder="MASUKKAN URL UNTUK DIANALISIS..." 
+              placeholder="MASUKKAN LINK YANG INGIN DIKENALI..." 
               className="w-full bg-white dark:bg-white/5 border-2 border-slate-200 dark:border-white/10 rounded-[20px] pl-14 pr-36 py-4 focus:outline-none focus:border-blue-600 dark:focus:border-blue-500 focus:bg-slate-50 dark:focus:bg-white/10 transition-all text-sm font-black text-slate-900 dark:text-white placeholder:text-slate-300 dark:placeholder:text-white/40 shadow-xl dark:shadow-inner tracking-tight"
             />
             <button 
@@ -240,7 +194,7 @@ export default function VerifikasiHalaman() {
               className="absolute right-2 top-2 bottom-2 px-8 bg-blue-600 text-white rounded-[16px] font-[1000] uppercase tracking-widest text-xs hover:bg-blue-500 transition-all flex items-center gap-3 disabled:opacity-40 shadow-lg shadow-blue-500/20 active:scale-95"
             >
               {loading ? <Loader2 className="animate-spin" size={20} /> : <Search size={20} strokeWidth={3} />}
-              Mulai Analisis
+              Cek Link
             </button>
           </div>
         </div>
@@ -262,276 +216,219 @@ export default function VerifikasiHalaman() {
           </div>
         )}
 
-        {/* RESULT SECTION - Dari File 1, disesuaikan dengan theme File 2 */}
-        {result && scoreConfig && (
-          <div className="mt-12 animate-in fade-in zoom-in duration-700">
-            <div className="grid md:grid-cols-3 gap-6">
-              
-              {/* LEFT: SCORE CIRCLE - Dari File 1 */}
-              <div className="md:col-span-1">
-                <div className={`rounded-3xl border-2 ${scoreConfig.border} ${scoreConfig.bg} p-8 text-center shadow-2xl`}>
-                  {/* Circular Progress */}
-                  <div className="relative w-48 h-48 mx-auto mb-6">
-                    <svg className="w-full h-full transform -rotate-90">
-                      {/* Background circle */}
-                      <circle
-                        cx="96"
-                        cy="96"
-                        r="88"
-                        stroke="currentColor"
-                        strokeWidth="12"
-                        fill="none"
-                        className="text-white/5"
-                      />
-                      {/* Progress circle with smooth animation */}
-                      <circle
-                        cx="96"
-                        cy="96"
-                        r="88"
-                        stroke={scoreConfig.stroke}
-                        strokeWidth="12"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeDasharray={`${2 * Math.PI * 88}`}
-                        strokeDashoffset={`${2 * Math.PI * 88 * (1 - animatedScore / 100)}`}
-                        className="transition-all duration-300"
-                        style={{
-                          transition: 'stroke-dashoffset 0.3s ease-out'
-                        }}
-                      />
-                    </svg>
-                    
-                    {/* Score text */}
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                      <span className={`text-6xl font-black ${scoreConfig.text}`}>
-                        {animatedScore}%
-                      </span>
-                      <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-1">
-                        Risk Score
-                      </span>
-                    </div>
-                  </div>
+        {/* HASIL: DESKRIPSI LINK */}
+        {info && (
+          <div className="mt-12 animate-in fade-in zoom-in duration-700 space-y-5">
 
-                  {/* Status */}
-                  <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${scoreConfig.bg} ${scoreConfig.text} border ${scoreConfig.border}`}>
-                    <scoreConfig.icon size={18} />
-                    <span className="font-bold text-sm">{scoreConfig.status}</span>
+            {/* KARTU UTAMA */}
+            <div className="rounded-[28px] border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f172a]/40 p-5 md:p-7 shadow-xl backdrop-blur-xl">
+
+              {/* Judul kartu + lencana jenis situs */}
+              <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-full bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <Info size={28} className="text-white" />
                   </div>
-                  
-                  <p className="text-xs text-gray-400 mt-3">
-                    {scoreConfig.message}
-                  </p>
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white leading-tight">Hasil Pengecekan Link</h2>
+                    <p className="text-sm text-slate-500 dark:text-gray-400">Informasi tentang link yang Anda masukkan</p>
+                  </div>
+                </div>
+                <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-2 font-black text-sm uppercase tracking-wide ${
+                  info.perlu_waspada
+                    ? "border-orange-500/40 bg-orange-500/10 text-orange-500"
+                    : "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                }`}>
+                  {info.perlu_waspada ? <AlertTriangle size={16} /> : <Tag size={16} />}
+                  {info.jenis_singkat}
                 </div>
               </div>
 
-              {/* RIGHT: DETAILS - Dari File 1 */}
-              <div className="md:col-span-2 space-y-4">
-                
-                {/* URL Info */}
-                <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-4">
-                  <div className="flex items-center gap-2 text-sm">
-                    <span className="text-slate-500 dark:text-gray-400">URL:</span>
-                    <span className="text-slate-900 dark:text-white font-mono truncate">{analyzedUrl}</span>
-                  </div>
-                </div>
-                
-                {/* Screenshot - Dari File 1 */}
-                {screenshot && (
-                  <div className="rounded-2xl border border-slate-200 dark:border-white/10 overflow-hidden bg-black">
-                    <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200 dark:border-white/10 bg-white dark:bg-white/5">
-                      <ImageIcon size={16} className="text-blue-500" />
-                      <span className="text-sm font-bold text-slate-900 dark:text-white">Preview Website</span>
-                    </div>
-                    <div className="relative">
-                      <img 
-                        src={screenshot} 
-                        alt="Website preview" 
-                        className="w-full h-48 object-cover"
-                        onError={(e) => {
-                          console.error("❌ Gagal load screenshot");
-                        }}
+              <div className="grid md:grid-cols-5 gap-6">
+
+                {/* KIRI: preview + tombol buka */}
+                <div className="md:col-span-2 space-y-4">
+                  <div className="rounded-2xl border border-slate-200 dark:border-white/10 overflow-hidden bg-white">
+                    {info.screenshot ? (
+                      <img
+                        src={info.screenshot}
+                        alt="Preview website"
+                        className="w-full aspect-[4/3] object-cover object-top"
+                        onError={() => console.error("Gagal load screenshot")}
                       />
+                    ) : (
+                      <div className="w-full aspect-[4/3] flex flex-col items-center justify-center gap-2 bg-slate-100 dark:bg-white/5 text-slate-400">
+                        <ImageOff size={32} />
+                        <span className="text-xs font-bold">Preview tidak tersedia</span>
+                      </div>
+                    )}
+                  </div>
+                  {info.dapat_dijangkau && (
+                    <button
+                      onClick={openUrlSafely}
+                      className={`w-full font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all border-2 ${
+                        info.perlu_waspada
+                          ? "border-orange-400 bg-orange-500/10 text-orange-500 hover:bg-orange-500/20"
+                          : "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20"
+                      }`}
+                    >
+                      <ExternalLink size={18} />
+                      {info.perlu_waspada ? "Saya Paham Risikonya, Buka" : "Buka Website"}
+                    </button>
+                  )}
+                </div>
+
+                {/* KANAN: URL + jenis + daftar detail */}
+                <div className="md:col-span-3 space-y-4">
+
+                  <div className="flex items-center gap-3 rounded-2xl bg-slate-100 dark:bg-white/5 px-4 py-3">
+                    <Link2 size={22} className="text-blue-500 flex-shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-400">Link</p>
+                      <p className="font-mono text-sm text-slate-900 dark:text-white truncate">{info.url}</p>
+                    </div>
+                    <button
+                      onClick={salinUrl}
+                      title="Salin link"
+                      className="p-2 rounded-lg text-slate-500 hover:text-blue-500 hover:bg-blue-500/10 transition-all"
+                    >
+                      {tersalin ? <Check size={18} className="text-blue-500" /> : <Copy size={18} />}
+                    </button>
+                  </div>
+                  {info.diperpendek && (
+                    <p className="text-xs text-slate-500 dark:text-gray-400 -mt-2 px-1">
+                      Link pendek <span className="font-mono">{info.url_awal}</span> diarahkan ke alamat di atas.
+                    </p>
+                  )}
+
+                  <div className="flex items-start gap-3 px-1">
+                    <Layers size={22} className="text-blue-500 mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-400">Jenis Situs</p>
+                      <p className={`text-lg font-black ${info.perlu_waspada ? "text-orange-500" : "text-slate-900 dark:text-white"}`}>
+                        {info.jenis_situs ?? "Tidak diketahui"}
+                      </p>
+                      {info.keyakinan_jenis !== "-" && (
+                        <p className="text-xs text-slate-500 dark:text-gray-400">Tingkat keyakinan: <strong>{info.keyakinan_jenis}</strong></p>
+                      )}
                     </div>
                   </div>
-                )}
 
-                {/* Reasons - Dari File 1 */}
-                <div className="rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 p-5">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Activity size={18} className="text-blue-500" />
-                    <span className="font-bold text-slate-900 dark:text-white">Hasil Analisis</span>
-                  </div>
-                  
-                  {result.reasons.length > 0 ? (
-                    <div className="space-y-2">
-                      {result.reasons.map((reason, i) => (
-                        <div key={i} className="flex items-start gap-3 text-sm">
-                          <CheckCircle2 size={16} className="text-green-500 mt-0.5 flex-shrink-0" />
-                          <span className="text-slate-600 dark:text-gray-300">{reason}</span>
+                  {info.dapat_dijangkau && (
+                    <dl className="border-t border-slate-200 dark:border-white/10 pt-4 space-y-3 text-sm">
+                      <div className="flex items-center gap-3">
+                        <Globe size={20} className="text-blue-500 flex-shrink-0" />
+                        <dt className="w-40 text-slate-500 dark:text-gray-400">Negara Server</dt>
+                        <dd className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
+                          {info.server?.kode_negara && (
+                            <img
+                              src={`https://flagcdn.com/w40/${info.server.kode_negara.toLowerCase()}.png`}
+                              alt={info.server.kode_negara}
+                              className="h-4 w-6 rounded-sm object-cover"
+                              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+                            />
+                          )}
+                          {teksServer(info.server)}
+                        </dd>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CalendarDays size={20} className="text-blue-500 flex-shrink-0" />
+                        <dt className="w-40 text-slate-500 dark:text-gray-400">Domain Terdaftar</dt>
+                        <dd className="font-bold text-slate-900 dark:text-white flex flex-wrap items-center gap-2">
+                          {info.domain_info?.tanggal_daftar_teks ?? "Tidak diketahui"}
+                          {info.domain_info?.usia_teks && (
+                            <span className="text-xs font-semibold text-slate-500 dark:text-gray-400">({info.domain_info.usia_teks} yang lalu)</span>
+                          )}
+                          {info.domain_info?.usia_hari != null && info.domain_info.usia_hari < 180 && (
+                            <span className="text-[11px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 border border-amber-500/30">
+                              Domain baru
+                            </span>
+                          )}
+                        </dd>
+                      </div>
+                      {info.domain_info?.diperbarui_teks && (
+                        <div className="flex items-center gap-3">
+                          <RefreshCw size={20} className="text-blue-500 flex-shrink-0" />
+                          <dt className="w-40 text-slate-500 dark:text-gray-400">Terakhir Diperbarui</dt>
+                          <dd className="font-bold text-slate-900 dark:text-white">{info.domain_info.diperbarui_teks}</dd>
                         </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center gap-2 text-slate-500 dark:text-gray-400 py-4">
-                      <ThumbsUp size={16} />
-                      <span>Tidak ada risiko yang terdeteksi</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Summary & Recommendation - Dari File 1 */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <FileText size={16} className="text-blue-500" />
-                      <span className="font-bold text-sm text-slate-900 dark:text-white">Kesimpulan</span>
-                    </div>
-                    <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                      {result.summary || "URL ini tidak menunjukkan ancaman yang signifikan."}
-                    </p>
-                  </div>
-                  
-                  <div className="rounded-2xl border border-green-500/20 bg-green-500/5 p-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <AlertCircle size={16} className="text-green-500" />
-                      <span className="font-bold text-sm text-slate-900 dark:text-white">Saran</span>
-                    </div>
-                    <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                      {result.recommendation || "URL ini tampak aman, namun tetap waspada."}
-                    </p>
-                  </div>
-                </div>
-
-                {/* ACTION BUTTONS - Dari File 1 */}
-                <div className="flex gap-3 pt-2">
-                  
-                  {/* URL TIDAK VALID */}
-                  {result.is_valid_url === false && (
-                    <button 
-                      onClick={resetAnalysis}
-                      className="w-full bg-slate-600 hover:bg-slate-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
-                    >
-                      <ArrowLeft size={18} />
-                      Analisis Ulang
-                    </button>
-                  )}
-                  
-                  {/* AMAN (0-24%) */}
-                  {result.is_valid_url !== false && result.score < 25 && (
-                    <>
-                      <button 
-                        onClick={resetAnalysis}
-                        className="flex-1 bg-slate-600 hover:bg-slate-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
-                      >
-                        <ArrowLeft size={18} />
-                        Analisis Ulang
-                      </button>
-                      <button 
-                        onClick={openUrlSafely}
-                        className="flex-1 bg-green-600 hover:bg-green-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-green-500/20"
-                      >
-                        <Globe size={18} />
-                        Kunjungi Website
-                      </button>
-                    </>
-                  )}
-                  
-                  {/* WASPADA (25-39%) */}
-                  {result.is_valid_url !== false && result.score >= 25 && result.score < 40 && (
-                    <>
-                      <button 
-                        onClick={resetAnalysis}
-                        className="flex-1 bg-slate-600 hover:bg-slate-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
-                      >
-                        <ArrowLeft size={18} />
-                        Analisis Ulang
-                      </button>
-                      <button 
-                        onClick={openUrlSafely}
-                        className="flex-1 bg-yellow-600 hover:bg-yellow-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all border-2 border-yellow-400 shadow-lg shadow-yellow-500/20"
-                      >
-                        <AlertTriangle size={18} />
-                        Tetap Buka (Risiko)
-                      </button>
-                    </>
-                  )}
-                  
-                  {/* MENCURIGAKAN (40-74%) */}
-                  {result.is_valid_url !== false && result.score >= 40 && result.score < 75 && (
-                    <>
-                      <button 
-                        onClick={resetAnalysis}
-                        className="flex-1 bg-slate-600 hover:bg-slate-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
-                      >
-                        <ArrowLeft size={18} />
-                        Analisis Ulang
-                      </button>
-                      <button 
-                        onClick={openUrlSafely}
-                        className="flex-1 bg-orange-600 hover:bg-orange-500 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all border-2 border-orange-400 shadow-lg shadow-orange-500/20"
-                      >
-                        <ShieldAlert size={18} />
-                        Saya Paham Risikonya
-                      </button>
-                    </>
-                  )}
-                  
-                  {/* BERBAHAYA (75-100%) */}
-                  {result.is_valid_url !== false && result.score >= 75 && (
-                    <button 
-                      onClick={resetAnalysis}
-                      className="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-red-500/30"
-                    >
-                      <ShieldX size={20} />
-                      Kembali ke Halaman Utama
-                    </button>
-                  )}
-                </div>
-
-                {/* Warning for Invalid URL - Dari File 1 */}
-                {result.is_valid_url === false && (
-                  <div className="rounded-2xl border-2 border-slate-500/50 bg-slate-500/10 p-4 mt-2">
-                    <div className="flex items-start gap-3">
-                      <HelpCircle size={24} className="text-slate-400 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-bold text-slate-400 mb-1">⚠️ URL TIDAK VALID</p>
-                        <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                          Domain yang Anda masukkan tidak dapat ditemukan di internet. 
-                          Periksa kembali ejaan URL Anda dan pastikan domain tersebut ada.
-                        </p>
+                      )}
+                      <div className="flex items-center gap-3">
+                        <Building2 size={20} className="text-blue-500 flex-shrink-0" />
+                        <dt className="w-40 text-slate-500 dark:text-gray-400">Pendaftar Domain</dt>
+                        <dd className="font-bold text-slate-900 dark:text-white">{info.domain_info?.registrar ?? "Tidak diketahui"}</dd>
                       </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Warning for Dangerous Links - Dari File 1 */}
-                {result.is_valid_url !== false && result.score >= 75 && (
-                  <div className="rounded-2xl border-2 border-red-500/50 bg-red-500/10 p-4 mt-2">
-                    <div className="flex items-start gap-3">
-                      <ShieldX size={24} className="text-red-500 flex-shrink-0 mt-0.5" />
-                      <div>
-                        <p className="font-bold text-red-400 mb-1">⚠️ PERINGATAN KEAMANAN</p>
-                        <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                          Sistem kami telah mendeteksi ancaman serius pada URL ini. 
-                          Untuk keamanan Anda, akses ke website ini <strong className="text-red-400">DIBLOKIR</strong>. 
-                          Jangan mencoba mengakses secara manual melalui browser.
-                        </p>
+                      <div className="flex items-center gap-3">
+                        <Server size={20} className="text-blue-500 flex-shrink-0" />
+                        <dt className="w-40 text-slate-500 dark:text-gray-400">Penyedia Hosting</dt>
+                        <dd className="font-bold text-slate-900 dark:text-white">{info.server?.penyedia ?? "Tidak diketahui"}</dd>
                       </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Warning for Suspicious Links - Dari File 1 */}
-                {result.is_valid_url !== false && result.score >= 40 && result.score < 75 && (
-                  <div className="rounded-2xl border border-orange-500/30 bg-orange-500/5 p-3 mt-2">
-                    <div className="flex items-center gap-2 text-xs text-orange-400">
-                      <AlertTriangle size={14} />
-                      <span>Dengan membuka link ini, Anda bertanggung jawab penuh atas risiko yang mungkin terjadi.</span>
-                    </div>
-                  </div>
-                )}
+                      <div className="flex items-center gap-3">
+                        <Network size={20} className="text-blue-500 flex-shrink-0" />
+                        <dt className="w-40 text-slate-500 dark:text-gray-400">Alamat IP</dt>
+                        <dd className="font-mono font-bold text-slate-900 dark:text-white">{info.server?.ip ?? "Tidak diketahui"}</dd>
+                      </div>
+                    </dl>
+                  )}
+                </div>
               </div>
             </div>
+
+            {/* RINGKASAN + INFORMASI TAMBAHAN */}
+            <div className="rounded-[28px] border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0f172a]/40 p-5 md:p-7 shadow-xl backdrop-blur-xl">
+              <div className="grid md:grid-cols-5 gap-6">
+                <div className="md:col-span-3">
+                  <div className="flex items-center gap-2 mb-3">
+                    <FileText size={20} className="text-blue-500" />
+                    <h3 className="text-lg font-black text-slate-900 dark:text-white">Ringkasan</h3>
+                  </div>
+                  <p className="text-sm md:text-base leading-relaxed text-slate-700 dark:text-gray-200">{info.deskripsi}</p>
+                </div>
+
+                <div className="md:col-span-2 md:border-l md:border-slate-200 md:dark:border-white/10 md:pl-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <HelpCircle size={20} className="text-blue-500" />
+                    <h3 className="text-lg font-black text-slate-900 dark:text-white">Informasi Tambahan</h3>
+                  </div>
+                  <ul className="space-y-2 text-sm text-slate-600 dark:text-gray-300">
+                    {info.judul_halaman && (
+                      <li className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                        <span>Judul halaman: <strong className="text-slate-900 dark:text-white">{info.judul_halaman}</strong></span>
+                      </li>
+                    )}
+                    {info.ciri.map((c, i) => (
+                      <li key={`ciri-${i}`} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-orange-500 flex-shrink-0" />
+                        <span>Ciri di halaman: {c}</span>
+                      </li>
+                    ))}
+                    {info.catatan.map((c, i) => (
+                      <li key={`cat-${i}`} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-slate-400 flex-shrink-0" />
+                        <span>{c}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {info.perlu_waspada && (
+                <div className="mt-5 flex items-center gap-2 rounded-xl border border-orange-500/30 bg-orange-500/5 px-4 py-3 text-xs text-orange-500">
+                  <AlertTriangle size={14} className="flex-shrink-0" />
+                  <span>Jenis situs ini perlu diwaspadai. Dengan membuka link ini, Anda bertanggung jawab atas risiko yang mungkin terjadi.</span>
+                </div>
+              )}
+            </div>
+
+            {/* CEK LINK LAIN */}
+            <button
+              onClick={resetAnalysis}
+              className="w-full rounded-2xl border-2 border-blue-500/30 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 font-black py-4 flex items-center justify-center gap-2 transition-all"
+            >
+              <ArrowLeft size={18} />
+              Cek Link Lain
+            </button>
           </div>
         )}
 
@@ -541,9 +438,9 @@ export default function VerifikasiHalaman() {
             <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-5 border border-blue-500/20 group-hover:scale-110 transition-transform">
                <Lock size={32} />
             </div>
-            <h3 className="text-2xl font-black mb-5 text-slate-900 dark:text-white uppercase tracking-tight">Protokol Keamanan</h3>
+            <h3 className="text-2xl font-black mb-5 text-slate-900 dark:text-white uppercase tracking-tight">Informasi yang Ditampilkan</h3>
             <ul className="space-y-3">
-              {["Analisis Reputasi Domain", "Enkripsi SSL Validation", "Phishing Pattern Matching", "Global Threat Database"].map((item, i) => (
+              {["Jenis Situs dari Isi Halaman", "Lokasi Negara Server", "Tanggal Domain Terdaftar", "Pratinjau Tampilan Website"].map((item, i) => (
                 <li key={i} className="flex items-center gap-4 text-slate-600 dark:text-gray-200 text-[15px] font-bold tracking-wide">
                   <div className="flex-shrink-0 w-6 h-6 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
                     <span className="text-blue-400 text-sm">✓</span>

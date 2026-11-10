@@ -17,8 +17,8 @@ from pydantic import BaseModel
 from routers import auth, chat, voice
 
 
-# Import service verifikasi URL
-from services.analyzer_service import analyze_url
+# Import service deskripsi link (fitur Verifikasi)
+from services.threat.link_info import deskripsikan_link
 
 # Load file .env
 load_dotenv()
@@ -94,32 +94,26 @@ def health_check():
     }
 
 
-# Endpoint verifikasi URL
+# Endpoint verifikasi URL (versi deskripsi link)
+# Mengembalikan gambaran tentang link: jenis situs, negara server,
+# dan tanggal domain terdaftar. Tidak ada skor risiko.
 @app.post("/verify-link", tags=["Security Tools"])
 async def verify_link(data: URLRequest):
 
     try:
 
-        # Analisis ancaman URL
-        result = await analyze_url(data.url)
-
-        # Response hasil verifikasi
-        response = {
-            "success": True,
-            "url": data.url,
-            "risk": result
-        }
+        # Susun deskripsi link
+        info = await deskripsikan_link(data.url)
 
         # Log monitoring backend
-        score = result.get('score', 0)
-        level = result.get('level', 'UNKNOWN')
+        print(f"{data.url} → {info.get('kode_jenis')}")
 
-        print(
-            f"{data.url} → "
-            f"{score}% ({level})"
-        )
-
-        return response
+        # Response hasil
+        return {
+            "success": True,
+            "url": data.url,
+            "info": info
+        }
 
     except Exception as e:
 
@@ -130,32 +124,7 @@ async def verify_link(data: URLRequest):
         return {
             "success": False,
             "url": data.url,
-            "error": str(e),
-            "risk": {
-
-                # Default risk score
-                "score": 0,
-
-                # Default threat level
-                "level": "SAFE",
-
-                # Error detail
-                "reasons": [
-                    f"Error: {str(e)}"
-                ],
-
-                # Summary error
-                "summary": "Sistem mengalami masalah.",
-
-                # Rekomendasi user
-                "recommendation": "Silakan coba lagi.",
-
-                # Status validasi URL
-                "is_valid_url": None,
-
-                # Screenshot URL
-                "screenshot": None
-            }
+            "error": "Sistem mengalami masalah saat membaca link. Silakan coba lagi."
         }
 
 
@@ -176,4 +145,3 @@ if __name__ == "__main__":
         # Auto reload development
         reload=True
     )
-
