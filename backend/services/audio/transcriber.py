@@ -28,10 +28,10 @@ load_dotenv()
 
 # ── Pengaturan ───────────────────────────────────────────────────
 
-MODEL_DEFAULT = "whisper-large-v3-turbo"   # alternatif: "whisper-large-v3"
+MODEL_DEFAULT = "whisper-large-v3-turbo"   
 SAMPLE_RATE = 16000
 DURASI_MAKS_DETIK = 600                    # 10 menit
-UKURAN_MAKS_MB = 24                        # batas Groq gratis 25 MB, sisakan cadangan
+UKURAN_MAKS_MB = 24                        # batas Groq gratis 25 MB
 
 # Kosakata yang sering muncul di telepon penipuan, agar Whisper menulisnya dengan benar.
 # Batas prompt Groq: 224 token, jadi dibuat singkat.
