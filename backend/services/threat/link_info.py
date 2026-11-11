@@ -274,7 +274,11 @@ def baca_halaman(url: str) -> dict:
         hasil["url_akhir"] = url
         if r is None or r.status_code != 200:
             return hasil
+
+        if "charset" not in r.headers.get("Content-Type", "").lower():
+            r.encoding = "utf-8"
         html = r.text[:BATAS_HTML]
+        
         m = re.search(r"<title[^>]*>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
         judul = unescape(re.sub(r"\s+", " ", m.group(1))).strip() if m else None
         desk = _ambil_meta(html, "description") or _ambil_meta(html, "og:description")
@@ -323,7 +327,7 @@ def susun_deskripsi(domain: str, jenis: dict, server: dict, dom: dict) -> str:
         kalimat = [f"{domain} adalah {jenis['nama'][0].lower() + jenis['nama'][1:]}."]
     if server.get("negara"):
         tempat = server["negara"] + (f" (kota {server['kota']})" if server.get("kota") else "")
-        oleh = f", dikelola {server['penyedia']}" if server.get("penyedia") else ""
+        oleh = f", dikelola {server['penyedia'].rstrip('.')}" if server.get("penyedia") else ""
         kalimat.append(f"Servernya berada di {tempat}{oleh}.")
     else:
         kalimat.append("Lokasi server tidak berhasil diketahui.")
