@@ -315,14 +315,16 @@ def tentukan_jenis(url: str, halaman: dict, domain: str = "", jdomain: dict | No
     if not halaman["terbaca"]:
         return {"kode": "tidak_diketahui", "nama": "Tidak diketahui (isi situs tidak bisa dibaca)",
                 "singkat": "Tidak Diketahui", **dasar}
-    return {"kode": "umum", "nama": "Situs umum (tidak ada ciri jenis khusus yang terbaca)",
-            "singkat": "Situs Umum", **dasar}
+    return {"kode": "umum", "nama": "Jenis situs belum dikenali (tidak ditemukan ciri khusus)",
+            "singkat": "Belum Dikenali", **dasar}
 
 
 # ---------------------------------------------------------------- 4. kalimat deskripsi
 def susun_deskripsi(domain: str, jenis: dict, server: dict, dom: dict) -> str:
     if jenis["kode"] == "tidak_diketahui":
         kalimat = [f"Jenis situs {domain} belum dapat ditentukan."]
+    elif jenis["kode"] == "umum":
+        kalimat = [f"Jenis situs {domain} belum dikenali karena tidak ditemukan ciri khusus pada halamannya."]
     else:
         kalimat = [f"{domain} adalah {jenis['nama'][0].lower() + jenis['nama'][1:]}."]
     if server.get("negara"):
@@ -413,6 +415,8 @@ async def deskripsikan_link(url_awal: str) -> dict:
         catatan.append("Link ini dialihkan ke alamat internal, jadi isi halamannya tidak dibaca.")
     elif not halaman["terbaca"]:
         catatan.append("Isi halaman tidak bisa dibaca, jadi jenis situs hanya dilihat dari nama domainnya.")
+    if jenis["kode"] == "umum":
+        catatan.append("Tidak ditemukannya ciri khusus bukan berarti situs ini aman.")
     catatan.append("Ini hanya gambaran informasi link, bukan jaminan link aman.")
 
     hasil = {
