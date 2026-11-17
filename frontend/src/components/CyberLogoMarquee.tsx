@@ -35,7 +35,7 @@ const LOGOS: Logo[] = [
 ];
 
 // Jangan tulis "dipercaya oleh" atau "mitra" kecuali memang mitra resmi.
-const LEAD = "Dipelajari dari standar dan praktik organisasi keamanan siber dunia";
+const LEAD = "";
 
 const SPEED = 80; // piksel per detik (naikkan = lebih cepat)
 const GAP = 56; // jarak antar logo (px)

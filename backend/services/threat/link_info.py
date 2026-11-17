@@ -85,6 +85,37 @@ SITUS_POPULER = {
 }
 
 
+# kategori situs populer, agar jenisnya lebih jelas (mis. toko online, bank)
+KATEGORI_POPULER = {
+    "Toko online (e-commerce)": ["shopee.co.id", "tokopedia.com", "bukalapak.com", "blibli.com",
+                                 "lazada.co.id", "amazon.com", "ebay.com", "alibaba.com"],
+    "Media sosial": ["facebook.com", "instagram.com", "twitter.com", "x.com", "tiktok.com",
+                     "linkedin.com"],
+    "Aplikasi pesan": ["whatsapp.com", "telegram.org"],
+    "Layanan streaming": ["netflix.com", "spotify.com", "disneyplus.com", "hbo.com",
+                          "primevideo.com", "youtube.com", "twitch.tv"],
+    "Platform game": ["steampowered.com", "steamcommunity.com", "epicgames.com", "garena.co.id",
+                      "garena.com", "origin.com", "ea.com", "ubisoft.com", "blizzard.com",
+                      "battle.net", "playstation.com", "xbox.com", "nintendo.com",
+                      "riotgames.com", "leagueoflegends.com", "valorant.net", "minecraft.net",
+                      "roblox.com", "fortnite.com"],
+    "Layanan pembayaran": ["paypal.com", "stripe.com", "midtrans.com", "xendit.co"],
+    "Bank": ["bca.co.id", "bri.co.id", "bni.co.id", "bankmandiri.co.id"],
+    "Situs berita": ["detik.com", "kompas.com", "tempo.co", "cnnindonesia.com", "liputan6.com"],
+    "Layanan transportasi dan perjalanan": ["gojek.com", "grab.com", "traveloka.com", "tiket.com"],
+    "Layanan internet": ["google.com", "google.co.id", "gmail.com", "bing.com", "yahoo.com",
+                         "microsoft.com", "apple.com", "wikipedia.org", "github.com", "zoom.us",
+                         "canva.com", "openai.com"],
+}
+
+
+def kategori_populer(domain: str):
+    """Cari kategori situs populer, mis. 'shopee.co.id' -> 'Toko online (e-commerce)'."""
+    for kategori, daftar in KATEGORI_POPULER.items():
+        if domain in daftar:
+            return kategori
+    return None
+
 # ---------------------------------------------------------------- alat kecil
 def _tanggal_indo(dt: datetime) -> str:
     return f"{dt.day} {BULAN[dt.month - 1]} {dt.year}"
@@ -305,8 +336,9 @@ def tentukan_jenis(url: str, halaman: dict, domain: str = "", jdomain: dict | No
                 "keyakinan": keyakinan, "ciri": a.get("reasons", [])[:5]}
 
     if populer:
-        return {"kode": "resmi", "nama": "Platform / situs resmi yang populer",
-                "singkat": "Situs Resmi", **dasar}
+        kategori = kategori_populer(domain)
+        nama = f"{kategori} resmi" if kategori else "Platform / situs resmi yang populer"
+        return {"kode": "resmi", "nama": nama, "singkat": "Situs Resmi", **dasar}
     if jdomain["kode"] == "pemerintah":
         return {"kode": "pemerintah", "nama": "Situs pemerintah", "singkat": "Situs Pemerintah", **dasar}
     if jdomain["kode"] == "pendidikan":
@@ -417,7 +449,11 @@ async def deskripsikan_link(url_awal: str) -> dict:
         catatan.append("Isi halaman tidak bisa dibaca, jadi jenis situs hanya dilihat dari nama domainnya.")
     if jenis["kode"] == "umum":
         catatan.append("Tidak ditemukannya ciri khusus bukan berarti situs ini aman.")
-    catatan.append("Ini hanya gambaran informasi link, bukan jaminan link aman.")
+    if jenis["kode"] in ("resmi", "pemerintah", "pendidikan"):
+        catatan.append("Situs ini dikenal sebagai situs resmi. Pastikan alamatnya persis sama, "
+                       "karena penipu sering memakai alamat yang mirip.")
+    else:
+        catatan.append("Ini hanya gambaran informasi link, bukan jaminan link aman.")
 
     hasil = {
         "url": url, "url_awal": url_awal.strip(), "diperpendek": dasar["diperpendek"],
