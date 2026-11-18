@@ -4,42 +4,37 @@ Tugas B - Tahap 5: Penggabung seluruh alur analisis audio
 Urutan (sesuai alur yang disepakati, satu kali upload):
   1. Deteksi suara   : asli atau sintetis (XLS-R + AASIST milik tim)
   2. Transkripsi     : audio -> teks (Groq Whisper)
-  3. Aturan pola     : indikator penipuan di teks (scam_rules.py)
-  4. Analisis LLM    : penilaian isi oleh Gemini (scam_llm.py)
-  5. Kesimpulan      : gabungan suara + isi -> tingkat risiko
+  3. Analisis isi    : penilaian isi oleh Gemini (scam_llm.py)
+  4. Kesimpulan      : gabungan suara + isi -> tingkat risiko
+
+Catatan perubahan: aturan pola (scam_rules.py) tidak lagi dipakai dalam alur. Evaluasi
+120 audio menunjukkan skor Gemini saja lebih akurat (99,2%) daripada gabungan 60% Gemini +
+40% aturan (85%), dan aturan pola salah menilai kalimat peringatan resmi. File scam_rules.py
+tetap disimpan sebagai pembanding di skrip evaluasi.
 
 Prinsip:
   - Setiap bagian boleh gagal tanpa menjatuhkan seluruh hasil
-    (mis. kuota Gemini habis -> tetap ada hasil dari aturan).
+    (mis. kuota Gemini habis -> isi dinyatakan belum bisa dianalisis, hasil suara tetap ada).
   - Pendeteksi suara DIKIRIM dari luar (fungsi periksa_suara), supaya modul ini
     tidak bergantung pada torch dan mudah diuji.
-  - Bobot dan ambang di bawah bersifat AWAL; nilai akhirnya ditentukan dari
-    hasil evaluasi pada data uji (tahap 8).
+  - Ambang di bawah sudah dicek pada evaluasi data uji (tahap 8).
 """
 
 import time
 
 from .materi import rekomendasi
 from .scam_llm import AnalisisLLMError, analisis_llm
-from .scam_rules import analisis_aturan
 from .transcriber import MODEL_DEFAULT, TranskripsiError, transkripsi
 
 # ── Pengaturan awal (disetel ulang setelah evaluasi) ─────────────
 
-BOBOT_LLM = 0.6
-BOBOT_ATURAN = 0.4
 AMBANG_PENIPUAN = 60
 AMBANG_MENCURIGAKAN = 30
 DETIK_ANALISIS_SUARA = 30        # pendeteksi suara hanya membaca 30 detik pertama
 
 # "Gerbang permintaan": penipuan selalu meminta/menekan pendengar. Jika Gemini menilai TIDAK ADA
-# permintaan berisiko dan aturan pola juga tidak menemukan ciri permintaan di bawah ini, isi tidak
-# boleh berlabel mencurigakan/penipuan (mis. pidato atau berita yang hanya menyebut pejabat/laporan).
-# Kategori "mengaku_pihak_resmi", "desakan_waktu", "iming_iming", dan "darurat_keluarga" sengaja tidak
-# termasuk: sendirian, semuanya bisa muncul di percakapan biasa.
-KATEGORI_PERMINTAAN = {
-    "minta_data_rahasia", "instal_aplikasi_atau_link", "perintah_transfer", "isolasi_korban", "ancaman",
-}
+# permintaan berisiko, isi tidak boleh berlabel mencurigakan/penipuan
+# (mis. pidato atau berita yang hanya menyebut pejabat/laporan).
 SKOR_MAKS_TANPA_PERMINTAAN = AMBANG_MENCURIGAKAN - 1
 
 # Tingkat risiko = gabungan label isi percakapan x hasil deteksi suara.
@@ -124,7 +119,7 @@ def analisis_audio(path_audio, periksa_suara=None, model_asr: str = MODEL_DEFAUL
             catatan.append("Deteksi suara tidak berhasil; kesimpulan hanya berdasarkan isi percakapan.")
 
     # 2. Transkripsi
-    transkrip, isi = None, {"tersedia": False}
+    transkrip, isi, llm = None, {"tersedia": False}, None
     try:
         transkrip = transkripsi(path_audio, model=model_asr)
     except TranskripsiError as e:
@@ -144,65 +139,44 @@ def analisis_audio(path_audio, periksa_suara=None, model_asr: str = MODEL_DEFAUL
                 f"{transkrip['jumlah_ragu']} potongan transkrip kurang yakin (kualitas audio rendah)."
             )
 
-        # 3. Aturan pola penipuan
-        aturan = analisis_aturan(transkrip)
-
-        # 4. Analisis LLM (boleh gagal)
-        llm, llm_error = None, None
+        # 3. Analisis isi oleh Gemini (boleh gagal)
         try:
             llm = analisis_llm(transkrip)
         except AnalisisLLMError as e:
-            llm_error = str(e)
-            catatan.append(f"Analisis Gemini tidak tersedia ({llm_error}); memakai aturan pola saja.")
+            isi = {"tersedia": False, "error": str(e)}
+            if not suara["tersedia"]:
+                raise AnalisisAudioError(
+                    "Analisis isi sedang tidak tersedia. Silakan coba lagi beberapa saat lagi."
+                )
+            catatan.append("Analisis isi sedang tidak tersedia; kesimpulan hanya berdasarkan suara.")
 
-        # 5a. Gabungkan skor isi
-        if llm:
-            skor = round(BOBOT_LLM * llm["skor"] + BOBOT_ATURAN * aturan["skor"])
-            metode = "gabungan aturan + Gemini"
-        else:
-            skor = aturan["skor"]
-            metode = "aturan saja"
+    # 4. Skor dan label isi, sepenuhnya dari Gemini
+    if llm:
+        skor = llm["skor"]
         label = _label_dari_skor(skor)
 
-        # Gerbang permintaan: turun ke "aman" hanya jika Gemini DAN aturan sama-sama tidak menemukan permintaan
-        ada_permintaan_llm = llm.get("ada_permintaan") if llm else None
-        aturan_minta = bool(set(aturan["kategori_terdeteksi"]) & KATEGORI_PERMINTAAN)
+        # Gerbang permintaan: tanpa permintaan berisiko, isi dinilai wajar
         diturunkan = False
-        if ada_permintaan_llm is False and not aturan_minta and label != "aman":
+        if llm.get("ada_permintaan") is False and label != "aman":
             label = "aman"
             skor = min(skor, SKOR_MAKS_TANPA_PERMINTAAN)
             diturunkan = True
             catatan.append("Tidak ada permintaan atau tekanan kepada pendengar, jadi isi dinilai wajar.")
 
-        # Pengaman: indikator kritis (OTP/PIN, instal APK, rahasiakan) minimal "mencurigakan"
-        if aturan["ada_indikator_kritis"] and label == "aman":
-            label = "mencurigakan"
-            catatan.append("Ada indikator kritis (mis. permintaan OTP/PIN); label dinaikkan menjadi mencurigakan.")
-
-        # Bukti: pilih kutipan dari Gemini yang sudah diverifikasi, jika tidak ada pakai temuan aturan
-        if llm and llm["bukti"]:
-            bukti = [{"kutipan": b["kutipan"], "mulai": b["mulai"], "sumber": "gemini"} for b in llm["bukti"]]
-        else:
-            bukti = [{"kutipan": t["kutipan"], "mulai": t["mulai"], "sumber": "aturan"} for t in aturan["temuan"]]
-
         isi = {
             "tersedia": True,
             "label": label,
             "skor": skor,
-            "metode": metode,
-            "modus": (llm["modus"] if llm else (aturan["temuan"][0]["deskripsi"] if aturan["temuan"] else "tidak ada")),
-            "alasan": llm["alasan"] if llm else "",
-            "bukti": bukti,
-            "skor_aturan": aturan["skor"],
-            "label_aturan": aturan["label"],
-            "temuan_aturan": aturan["temuan"],
-            "skor_llm": llm["skor"] if llm else None,
-            "label_llm": llm["label"] if llm else None,
-            "llm_error": llm_error,
-            "bukti_terverifikasi": llm["bukti_terverifikasi"] if llm else None,
-            "jenis_rekaman": llm.get("jenis_rekaman") if llm else None,
-            "ada_permintaan": ada_permintaan_llm,
-            "permintaan": llm.get("permintaan") if llm else None,
+            "metode": f"Gemini ({llm['model']})",
+            "modus": llm["modus"],
+            "alasan": llm["alasan"],
+            "bukti": [{"kutipan": b["kutipan"], "mulai": b["mulai"], "sumber": "gemini"} for b in llm["bukti"]],
+            "skor_llm": llm["skor"],
+            "label_llm": llm["label"],
+            "bukti_terverifikasi": llm["bukti_terverifikasi"],
+            "jenis_rekaman": llm.get("jenis_rekaman"),
+            "ada_permintaan": llm.get("ada_permintaan"),
+            "permintaan": llm.get("permintaan"),
             "diturunkan_gerbang": diturunkan,
         }
 
@@ -211,7 +185,7 @@ def analisis_audio(path_audio, periksa_suara=None, model_asr: str = MODEL_DEFAUL
     if isi["tersedia"]:
         tingkat = _tingkat_risiko(isi["label"], label_suara)
         ringkasan = _ringkasan(isi["label"], label_suara, isi["modus"], True)
-        saran = (llm["saran"] if (transkrip is not None and llm and llm["saran"]) else SARAN_DEFAULT[isi["label"]])
+        saran = llm["saran"] if (llm and llm["saran"]) else SARAN_DEFAULT[isi["label"]]
     else:
         # hanya hasil suara
         # Isi tidak diketahui: suara asli BUKAN bukti aman, jadi jangan diberi "rendah"
@@ -221,8 +195,8 @@ def analisis_audio(path_audio, periksa_suara=None, model_asr: str = MODEL_DEFAUL
 
     # 5c. Materi pembelajaran yang cocok dengan isi audio
     materi = rekomendasi(
-        llm.get("materi") if (transkrip is not None and llm) else None,
-        isi.get("temuan_aturan") if isi["tersedia"] else None,
+        llm.get("materi") if llm else None,
+        None,  # aturan pola tidak lagi dipakai; materi dipilih Gemini (+ Voice Cloning bila suara sintetis)
         isi["label"] if isi["tersedia"] else None,
         label_suara,
     )

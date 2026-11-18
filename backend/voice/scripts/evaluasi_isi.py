@@ -58,16 +58,25 @@ sys.path.insert(0, str(AKAR_BACKEND))
 from services.audio.scam_analyzer import (  # noqa: E402
     AMBANG_MENCURIGAKAN,
     AMBANG_PENIPUAN,
-    BOBOT_LLM,
-    KATEGORI_PERMINTAAN,
 )
-from services.audio.scam_llm import AnalisisLLMError, analisis_llm  # noqa: E402
+from services.audio.scam_llm import MODEL_LLM, AnalisisLLMError, analisis_llm  # noqa: E402
 from services.audio.scam_rules import analisis_aturan  # noqa: E402
 from services.audio.transcriber import TranskripsiError, transkripsi  # noqa: E402
 
 FILE_LABEL = AKAR_VOICE / "data_uji" / "label_uji.csv"
-FOLDER_HASIL = AKAR_VOICE / "results" / "analisis_audio" / "evaluasi_isi"
+# Rancangan LAMA: skor isi = 60% Gemini + 40% aturan pola. Aplikasi tidak memakainya lagi;
+# disimpan di sini hanya agar laporan bisa membandingkannya dengan sistem sekarang.
+BOBOT_LLM = 0.6
+KATEGORI_PERMINTAAN = {
+    "minta_data_rahasia", "instal_aplikasi_atau_link", "perintah_transfer", "isolasi_korban", "ancaman",
+}
+
+# Hasil tiap model disimpan di folder sendiri agar tidak tercampur.
+# Hasil lama (gemini-2.5-flash) tetap di folder evaluasi_isi seperti sebelumnya.
+FOLDER_INDUK = AKAR_VOICE / "results" / "analisis_audio" / "evaluasi_isi"
+FOLDER_HASIL = FOLDER_INDUK if MODEL_LLM == "gemini-2.5-flash" else FOLDER_INDUK / f"model_{MODEL_LLM}"
 FOLDER_CACHE = FOLDER_HASIL / "cache"
+FOLDER_CACHE_LAMA = FOLDER_INDUK / "cache"   # sumber transkrip lama yang dipakai ulang
 
 LABEL_ISI_VALID = {"penipuan", "aman"}
 JENIS_SUARA_VALID = {"asli", "sintetis"}
@@ -135,8 +144,19 @@ def tetapkan_bagian(rows: list[dict]) -> dict:
 
 # ── Cache hasil per audio ────────────────────────────────────────
 
-def path_cache(id_: str) -> Path:
-    return FOLDER_CACHE / (re.sub(r"[^\w.-]", "_", id_) + ".json")
+def path_cache(id_: str, folder: Path = None) -> Path:
+    return (folder or FOLDER_CACHE) / (re.sub(r"[^\w.-]", "_", id_) + ".json")
+
+
+def transkrip_lama(id_: str):
+    """Transkrip dari cache model lama, supaya model baru menilai teks yang PERSIS sama."""
+    p = path_cache(id_, FOLDER_CACHE_LAMA)
+    if FOLDER_CACHE_LAMA == FOLDER_CACHE or not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8")).get("transkrip")
+    except (OSError, json.JSONDecodeError):
+        return None
 
 
 def muat_cache(id_: str):
@@ -186,9 +206,12 @@ def cmd_jalankan(a):
             try:
                 # transkripsi (dipakai ulang kalau sudah ada)
                 if not c.get("transkrip"):
-                    transkrip = transkripsi(r["path"])
-                    c["transkrip"] = transkrip
-                    memanggil_api = True
+                    lama = transkrip_lama(r["id"])
+                    if lama:
+                        c["transkrip"] = lama
+                    else:
+                        c["transkrip"] = transkripsi(r["path"])
+                        memanggil_api = True
                 transkrip = c["transkrip"]
                 c.update({"id": r["id"], "path": r["path"], "durasi_detik": transkrip.get("durasi_detik")})
 
@@ -259,9 +282,17 @@ def label_dari_skor(skor, ambang_pen, ambang_men):
     return "aman"
 
 
+def sistem_sekarang(llm, ambang_pen=AMBANG_PENIPUAN, ambang_men=AMBANG_MENCURIGAKAN):
+    """Label isi sistem sekarang: skor dari Gemini saja + gerbang permintaan (sama dengan scam_analyzer)."""
+    label = label_dari_skor(llm["skor"], ambang_pen, ambang_men)
+    if llm.get("ada_permintaan") is False and label != "aman":
+        label = "aman"
+    return label
+
+
 def gabungkan(aturan, llm, bobot_llm=BOBOT_LLM, ambang_pen=AMBANG_PENIPUAN,
               ambang_men=AMBANG_MENCURIGAKAN, gerbang=True):
-    """Label isi gabungan. Urutan langkahnya sama dengan scam_analyzer.analisis_audio."""
+    """Label isi rancangan LAMA (60/40 + gerbang + indikator kritis), hanya sebagai pembanding."""
     if llm is None:
         skor = aturan["skor"]
     else:
@@ -390,6 +421,7 @@ def cmd_hitung(a):
 
     md = []
     md.append("# Laporan evaluasi analisis isi audio\n")
+    md.append(f"Model analisis isi: **{MODEL_LLM}**\n")
     md.append(f"Audio dievaluasi: **{len(recs)}** dari {len(rows)} di label_uji.csv "
               f"(belum diproses atau Gemini gagal: {len(belum)}).\n")
     n_pen = sum(1 for r in recs if r["benar_pos"])
@@ -410,8 +442,9 @@ def cmd_hitung(a):
     metode = [
         ("Aturan saja", lambda r: r["aturan"]["label"]),
         ("Gemini saja", lambda r: r["llm"]["label"]),
-        ("Gabungan tanpa gerbang", lambda r: gabungkan(r["aturan"], r["llm"], gerbang=False)),
-        ("Gabungan + gerbang (sistem sekarang)", lambda r: gabungkan(r["aturan"], r["llm"], gerbang=True)),
+        ("Gabungan lama 60/40 tanpa gerbang", lambda r: gabungkan(r["aturan"], r["llm"], gerbang=False)),
+        ("Gabungan lama 60/40 + gerbang", lambda r: gabungkan(r["aturan"], r["llm"], gerbang=True)),
+        ("Skor Gemini + gerbang (sistem sekarang)", lambda r: sistem_sekarang(r["llm"])),
     ]
     md.append("## 2. Perbandingan metode (semua data)\n")
     md.append("**Ketat**: hanya label *penipuan* dihitung positif. *Mencurigakan* dianggap bukan penipuan.\n")
@@ -426,7 +459,7 @@ def cmd_hitung(a):
     cm = {}
     for r in recs:
         cm[(r["label_isi"], sistem(r))] = cm.get((r["label_isi"], sistem(r)), 0) + 1
-    md.append("## 3. Confusion matrix sistem sekarang (gabungan + gerbang)\n")
+    md.append("## 3. Confusion matrix sistem sekarang (skor Gemini + gerbang)\n")
     md.append(tabel(["Jawaban benar \\ Prediksi", "penipuan", "mencurigakan", "aman"],
                     [[b] + [cm.get((b, p), 0) for p in ("penipuan", "mencurigakan", "aman")]
                      for b in ("penipuan", "aman")]))
@@ -448,7 +481,7 @@ def cmd_hitung(a):
     md.append("")
 
     # 5. Penyetelan
-    md.append("## 5. Penyetelan bobot dan ambang\n")
+    md.append("## 5. Penyetelan bobot dan ambang (rancangan lama 60/40, sebagai pembanding)\n")
     dev = [r for r in recs if r["bagian_pakai"] == "dev"]
     uji = [r for r in recs if r["bagian_pakai"] == "uji"]
 
@@ -551,12 +584,13 @@ def cmd_hitung(a):
         w_ = csv.writer(f)
         w_.writerow(["id", "sumber", "bagian", "jenis_suara", "label_benar", "label_aturan", "skor_aturan",
                      "label_gemini", "skor_gemini", "ada_permintaan", "label_gabungan_gerbang",
-                     "wer", "durasi_detik"])
+                     "label_sistem", "wer", "durasi_detik"])
         for r in recs:
             x = wer(r["teks_acuan"], r["transkrip"].get("teks", "")) if r["teks_acuan"] else None
             w_.writerow([r["id"], r["sumber"], r["bagian_pakai"], r["jenis_suara"], r["label_isi"],
                          r["aturan"]["label"], r["aturan"]["skor"], r["llm"]["label"], r["llm"]["skor"],
-                         r["llm"].get("ada_permintaan"), sistem(r), "" if x is None else round(x, 4),
+                         r["llm"].get("ada_permintaan"), gabungkan(r["aturan"], r["llm"], gerbang=True), sistem(r),
+                         "" if x is None else round(x, 4),
                          r["transkrip"].get("durasi_detik")])
 
     print(teks)

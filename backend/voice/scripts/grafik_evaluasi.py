@@ -38,6 +38,7 @@ BIRU, ORANYE = "#2a78d6", "#eb6834"
 WARNA_LABEL = {"penipuan": "#d03b3b", "mencurigakan": "#fab219", "aman": "#0ca30c"}
 TEKS, TEKS_2, GARIS, LATAR = "#0b0b0b", "#52514e", "#e4e3df", "#fcfcfb"
 LABEL = ["penipuan", "mencurigakan", "aman"]
+KOLOM_SISTEM = "label_gabungan_gerbang"  # diganti di main() bila CSV punya kolom label_sistem
 
 plt.rcParams.update({
     "font.size": 11, "axes.edgecolor": GARIS, "axes.labelcolor": TEKS_2,
@@ -110,7 +111,7 @@ def simpan(fig, folder, nama):
 
 def g1_confusion(rows, folder):
     benar = ["penipuan", "aman"]
-    m = [[sum(r["label_benar"] == b and r["label_gabungan_gerbang"] == p for r in rows) for p in LABEL] for b in benar]
+    m = [[sum(r["label_benar"] == b and r[KOLOM_SISTEM] == p for r in rows) for p in LABEL] for b in benar]
     fig, ax = plt.subplots(figsize=(7, 3.6))
     maks = max(max(b) for b in m)
     ax.imshow(m, cmap="Blues", vmin=0, vmax=maks * 1.15, aspect="auto")
@@ -134,12 +135,14 @@ def g2_metode(rows, folder):
     benar = [r["label_benar"] for r in rows]
     metode = {
         "Aturan pola saja": [r["label_aturan"] for r in rows],
-        "Gemini saja": [r["label_gemini"] for r in rows],
-        "Sistem (gabungan)": [r["label_gabungan_gerbang"] for r in rows],
+        "Label Gemini": [r["label_gemini"] for r in rows],
+        "Gabungan 60/40": [r["label_gabungan_gerbang"] for r in rows],
     }
+    if KOLOM_SISTEM == "label_sistem":
+        metode["Skor Gemini\n(sistem sekarang)"] = [r["label_sistem"] for r in rows]
     ketat = [metrik(benar, p)["akurasi"] * 100 for p in metode.values()]
     longgar = [metrik(benar, p, True)["akurasi"] * 100 for p in metode.values()]
-    fig, ax = plt.subplots(figsize=(8, 4.2))
+    fig, ax = plt.subplots(figsize=(2.6 * len(metode) + 1, 4.2))
     x = range(len(metode))
     w = 0.36
     b1 = ax.bar([i - w / 2 - 0.01 for i in x], ketat, w, color=BIRU, label="Ketat (hanya label penipuan)")
@@ -161,7 +164,7 @@ def g2_metode(rows, folder):
 def g3_sumber(rows, folder):
     kelompok = {}
     for r in rows:
-        kelompok.setdefault((r["sumber"], r["label_benar"]), []).append(r["label_gabungan_gerbang"])
+        kelompok.setdefault((r["sumber"], r["label_benar"]), []).append(r[KOLOM_SISTEM])
     urut = sorted(kelompok, key=lambda k: (k[1] != "penipuan", k[0]))
     nama = [f"{s}\n(benar: {b}, n={len(kelompok[(s, b)])})" for s, b in urut]
     fig, ax = plt.subplots(figsize=(9, 0.75 * len(urut) + 1.4))
@@ -219,6 +222,9 @@ def main():
     a = ap.parse_args()
 
     rows = baca(a.csv)
+    global KOLOM_SISTEM
+    if rows and "label_sistem" in rows[0]:
+        KOLOM_SISTEM = "label_sistem"
     folder = Path(a.keluar) if a.keluar else Path(a.csv).parent / "grafik"
     folder.mkdir(parents=True, exist_ok=True)
     print(f"Membaca {len(rows)} audio dari {a.csv}")
@@ -226,7 +232,10 @@ def main():
     g1_confusion(rows, folder)
     g2_metode(rows, folder)
     g3_sumber(rows, folder)
-    g4_ambang(rows, folder)
+    if KOLOM_SISTEM == "label_gabungan_gerbang":
+        g4_ambang(rows, folder)   # hanya relevan untuk rancangan gabungan 60/40
+    else:
+        print("  (grafik 4 dilewati: ambang 60 vs 55 hanya untuk rancangan gabungan lama)")
     print("Selesai.")
 
 
