@@ -45,12 +45,8 @@ def is_official_domain(url: str) -> bool:
         return False
 
 
-def analyze_content(url: str) -> dict:
-    """
-    Advanced Content Analyzer - Membaca isi website untuk deteksi konten ilegal.
-    Menggunakan teknik Fingerprinting (kombinasi pola) untuk akurasi tinggi.
-    """
-    result = {
+def _hasil_kosong() -> dict:
+    return {
         "malicious": False,
         "score": 0,
         "category": "Clean",
@@ -58,7 +54,15 @@ def analyze_content(url: str) -> dict:
         "source": "Content Analyzer",
         "confidence": "low"
     }
-    
+
+
+def analyze_content(url: str) -> dict:
+    """
+    Ambil HTML sebuah URL lalu analisis isinya (dipakai chatbot / threat_analyzer).
+    Untuk HTML yang SUDAH diambil, pakai analyze_html() agar tidak mengambil ulang.
+    """
+    result = _hasil_kosong()
+
     # ==========================================
     # EARLY EXIT: Domain Resmi = SKIP ANALYSIS
     # ==========================================
@@ -66,22 +70,51 @@ def analyze_content(url: str) -> dict:
         result["category"] = "Official/Legal"
         result["reasons"].append("Domain resmi terpercaya (skip content analysis)")
         return result
-    
+
     try:
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
         }
-        
+
         # Fetch HTML website
         response = requests.get(url, headers=headers, timeout=8, allow_redirects=True)
-        
+
         if response.status_code != 200:
             return result
-        
+
+        return analyze_html(url, response.text)
+
+    except requests.exceptions.Timeout:
+        result["reasons"].append("Website timeout (tidak bisa dibaca)")
+    except requests.exceptions.ConnectionError:
+        result["reasons"].append("Koneksi gagal (situs mungkin down)")
+    except Exception as e:
+        result["reasons"].append(f"Error: {str(e)[:30]}")
+
+    return result
+
+
+def analyze_html(url: str, html: str) -> dict:
+    """
+    Advanced Content Analyzer - Membaca isi website untuk deteksi konten ilegal.
+    Menggunakan teknik Fingerprinting (kombinasi pola) untuk akurasi tinggi.
+
+    Tidak melakukan permintaan jaringan: HTML diberikan oleh pemanggil
+    (mis. link_info.baca_halaman yang sudah memeriksa setiap pengalihan).
+    """
+    result = _hasil_kosong()
+
+    if is_official_domain(url):
+        result["category"] = "Official/Legal"
+        result["reasons"].append("Domain resmi terpercaya (skip content analysis)")
+        return result
+
+    try:
+        response_text = html or ""
         # Prepare text
-        content = response.text.lower()
+        content = response_text.lower()
         text_only = re.sub(r'<[^>]+>', ' ', content)
         # Normalize whitespace
         text_only = re.sub(r'\s+', ' ', text_only)
@@ -302,11 +335,7 @@ def analyze_content(url: str) -> dict:
         result["category"] = category if category != "Clean" else "Clean"
         result["reasons"] = reasons[:5]  # Max 5 alasan
         
-    except requests.exceptions.Timeout:
-        result["reasons"].append("Website timeout (tidak bisa dibaca)")
-    except requests.exceptions.ConnectionError:
-        result["reasons"].append("Koneksi gagal (situs mungkin down)")
     except Exception as e:
         result["reasons"].append(f"Error: {str(e)[:30]}")
-    
+
     return result

@@ -74,6 +74,7 @@ langsmith==0.7.30
 Levenshtein==0.27.3
 markdown-it-py==4.0.0
 MarkupSafe==3.0.3
+maxminddb==3.3.0
 marshmallow==3.26.2
 mdurl==0.1.2
 mmh3==5.2.1

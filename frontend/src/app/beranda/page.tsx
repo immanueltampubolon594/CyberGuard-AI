@@ -41,9 +41,9 @@
         badge: "bg-violet-500/10 border-violet-500/20",
       },
       { 
-        title: "Verifikasi Ancaman", 
+        title: "Verifikasi Link", 
         cat: "SECURITY TOOL", 
-        desc: "Mesin deteksi URL berbahaya yang memberikan skor risiko instan untuk melindungi privasi data Anda.", 
+        desc: "Kenali sebuah link sebelum dibuka: jenis situs, ciri halamannya, negara server, dan sejak kapan domainnya terdaftar.", 
         icon: <ShieldAlert size={28} />, 
         link: "/verifikasi",
         color: "text-cyan-600 dark:text-cyan-400",
@@ -66,7 +66,7 @@
       {
         step: "02",
         title: "Verifikasi Link & URL",
-        desc: "Masukkan URL mencurigakan ke mesin deteksi kami. Sistem menganalisis menggunakan Google Safe Browsing API dan heuristik cerdas untuk menghasilkan skor risiko.",
+        desc: "Masukkan sebuah link. Sistem membaca halamannya, mencocokkan domainnya dengan daftar situs populer, lalu menampilkan deskripsi: jenis situs, negara server, dan tanggal domain terdaftar.",
         icon: <Search size={24} />,
         color: "text-cyan-600 dark:text-cyan-400",
         bg: "bg-cyan-500/10",

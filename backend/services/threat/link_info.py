@@ -1,12 +1,14 @@
 """
-Deskripsi link (fitur Verifikasi versi sederhana).
+Deskripsi link (fitur Verifikasi).
 
-Menjawab 4 pertanyaan tentang sebuah link, TANPA skor dan TANPA label aman/berbahaya:
-  1. Situs apa ini?            -> jenis situs (mis. judi online), dari isi halaman
-  2. Servernya di negara mana? -> IP server -> negara (ipwho.is, gratis, tanpa kunci)
-  3. Kapan domain terdaftar?   -> RDAP (gratis, tanpa kunci); WHOIS XML API melengkapi
-                                  negara pendaftar dan menjadi cadangan tanggal
-  4. Seperti apa tampilannya?  -> screenshot (Microlink, sudah ada)
+Menjawab beberapa pertanyaan FAKTA tentang sebuah link. Tidak ada skor, dan tidak ada
+penilaian seperti aman/berbahaya/waspada:
+  1. Situs apa ini?            -> daftar situs populer, isi halaman, lalu akhiran domain
+  2. Apa saja ciri halamannya? -> fakta dari HTML (kolom kata sandi, kata OTP/PIN,
+                                  tautan unduhan aplikasi, formulir yang dikirim ke domain lain)
+  3. Servernya di negara mana? -> database DB-IP Lite yang disimpan di server (tanpa API)
+  4. Kapan domain terdaftar?   -> RDAP (satu-satunya layanan data luar, gratis, tanpa kunci)
+  5. Seperti apa tampilannya?  -> screenshot (Microlink)
 
 Hasilnya satu kamus (dict) yang dikirim apa adanya oleh endpoint /verify-link.
 Setiap sumber data bersifat opsional: kalau gagal, bagiannya diisi "tidak diketahui"
@@ -15,7 +17,6 @@ dan sisanya tetap ditampilkan.
 
 import asyncio
 import ipaddress
-import os
 import re
 import socket
 import time
@@ -27,32 +28,40 @@ import requests
 import tldextract
 from dateutil import parser as date_parser
 
-from . import content_analyzer, microlink, url_resolver
+from . import content_analyzer, data_ip, microlink, url_resolver
 
 # ---------------------------------------------------------------- pengaturan
 TIMEOUT = 8                    # detik, untuk tiap permintaan ke luar
 BATAS_HTML = 600_000           # baca paling banyak ~600 KB halaman
-CACHE_DETIK = 3600             # simpan hasil 1 jam (hemat kuota API gratis)
+MAKS_PENGALIHAN = 5            # paling banyak 5 kali pengalihan (redirect)
+CACHE_DETIK = 3600             # simpan hasil 1 jam
+CACHE_MAKS = 500               # paling banyak 500 link disimpan, supaya memori tidak terus bertambah
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                     "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
       "Accept-Language": "id-ID,id;q=0.9,en;q=0.8"}
 
 _CACHE: dict = {}
+_PEMBACA_IP: dict = {}
 # suffix_list_urls=() -> pakai daftar bawaan paket, tidak mengunduh apa pun
 _EKSTRAK = tldextract.TLDExtract(suffix_list_urls=())
 
 BULAN = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli",
          "Agustus", "September", "Oktober", "November", "Desember"]
 
-# kategori dari content_analyzer -> (kode, nama untuk pengguna, perlu waspada?)
-KATEGORI = {
-    "Gambling": ("judi_online", "Situs judi online", "Judi Online", True),
-    "Piracy / Warez": ("pembajakan", "Situs pembajakan / unduhan bajakan", "Pembajakan", True),
-    "Adult / Pornography": ("dewasa", "Situs konten dewasa", "Konten Dewasa", True),
-    "Malware Distribution": ("malware", "Situs penyebar program berbahaya (malware)", "Penyebar Malware", True),
-    "Scam / Phishing": ("penipuan", "Situs penipuan / phishing", "Penipuan / Phishing", True),
-    "Illegal Marketplace": ("pasar_ilegal", "Pasar jual-beli ilegal", "Pasar Ilegal", True),
-    "Official/Legal": ("resmi", "Platform / situs resmi yang populer", "Situs Resmi", False),
+# Kategori isi halaman dari content_analyzer yang dipakai sebagai JENIS situs.
+# Hanya jenis konten yang bisa dikenali dari isinya. Kategori lama yang berupa penilaian
+# (penipuan, malware, pasar ilegal) tidak dipakai lagi; sebagai gantinya ada "ciri halaman".
+KATEGORI_KONTEN = {
+    "Gambling": ("judi_online", "Situs judi online", "Judi Online"),
+    "Adult / Pornography": ("dewasa", "Situs konten dewasa", "Konten Dewasa"),
+    "Piracy / Warez": ("unduhan_bajakan", "Situs unduhan film, game, atau aplikasi bajakan",
+                       "Unduhan Bajakan"),
+}
+
+# Alasan dari content_analyzer yang berbunyi penilaian diganti kalimat fakta
+# (content_analyzer juga dipakai chatbot, jadi teksnya tidak diubah di sana).
+GANTI_CIRI_KONTEN = {
+    "Tools ilegal": "Menyebut crack, keygen, repack, activator, atau patcher",
 }
 
 # jenis domain dari akhirannya (diperiksa dari yang paling panjang)
@@ -84,7 +93,6 @@ SITUS_POPULER = {
     "bca.co.id", "bri.co.id", "bni.co.id", "bankmandiri.co.id",
 }
 
-
 # kategori situs populer, agar jenisnya lebih jelas (mis. toko online, bank)
 KATEGORI_POPULER = {
     "Toko online (e-commerce)": ["shopee.co.id", "tokopedia.com", "bukalapak.com", "blibli.com",
@@ -115,6 +123,7 @@ def kategori_populer(domain: str):
         if domain in daftar:
             return kategori
     return None
+
 
 # ---------------------------------------------------------------- alat kecil
 def _tanggal_indo(dt: datetime) -> str:
@@ -162,23 +171,65 @@ def _cari_ip(host: str):
         return None
 
 
-# ---------------------------------------------------------------- 1. lokasi server
-def lokasi_server(ip: str) -> dict:
-    """IP -> negara, kota, penyedia hosting (ipwho.is, HTTPS, tanpa kunci)."""
-    kosong = {"ip": ip, "negara": None, "kode_negara": None, "kota": None, "penyedia": None}
+def _alamat_publik(url: str) -> bool:
+    """True bila host pada url mengarah ke alamat internet publik (bukan jaringan internal)."""
+    host = (urlparse(url).hostname or "").lower()
+    if not host or urlparse(url).scheme not in ("http", "https"):
+        return False
+    ip = host if re.fullmatch(r"\d{1,3}(\.\d{1,3}){3}", host) else _cari_ip(host)
+    return bool(ip) and _ip_publik(ip)
+
+
+# ---------------------------------------------------------------- 1. lokasi server (lokal)
+def _pembaca_ip(jenis: str):
+    """Buka file .mmdb (database DB-IP) dan pakai ulang.
+
+    Dibuka ulang otomatis bila filenya diperbarui (waktu ubahnya berbeda),
+    jadi server tidak perlu dinyalakan ulang setelah data_ip.perbarui().
+    None bila file belum ada.
+    """
+    path = data_ip.path_berkas(jenis)
     try:
-        r = requests.get(f"https://ipwho.is/{ip}", timeout=TIMEOUT)
-        d = r.json()
-        if not d.get("success"):
-            return kosong
-        koneksi = d.get("connection") or {}
-        return {"ip": ip, "negara": d.get("country"), "kode_negara": d.get("country_code"),
-                "kota": d.get("city"), "penyedia": koneksi.get("org") or koneksi.get("isp")}
+        waktu = path.stat().st_mtime
+    except OSError:
+        return None
+    lama = _PEMBACA_IP.get(jenis)
+    if lama and lama[0] == waktu:
+        return lama[1]
+    try:
+        import maxminddb
+        pembaca = maxminddb.open_database(str(path))
     except Exception:
-        return kosong
+        return None
+    _PEMBACA_IP[jenis] = (waktu, pembaca)
+    return pembaca
 
 
-# ---------------------------------------------------------------- 2. tanggal domain
+def data_ip_tersedia() -> bool:
+    return _pembaca_ip("negara") is not None
+
+
+def lokasi_server(ip: str) -> dict:
+    """IP -> negara + penyedia jaringan, dibaca dari database DB-IP Lite di server (tanpa API)."""
+    hasil = {"ip": ip, "negara": None, "kode_negara": None, "penyedia": None}
+    try:
+        db = _pembaca_ip("negara")
+        rec = db.get(ip) if db else None
+        negara = (rec or {}).get("country") or {}
+        hasil["negara"] = (negara.get("names") or {}).get("en")
+        hasil["kode_negara"] = negara.get("iso_code")
+    except Exception:
+        pass
+    try:
+        db = _pembaca_ip("asn")
+        rec = (db.get(ip) if db else None) or {}
+        hasil["penyedia"] = next((rec[k] for k in data_ip.KOLOM_PENYEDIA if rec.get(k)), None)
+    except Exception:
+        pass
+    return hasil
+
+
+# ---------------------------------------------------------------- 2. tanggal domain (RDAP)
 def _rdap(domain: str) -> dict | None:
     r = requests.get(f"https://rdap.org/domain/{domain}", timeout=TIMEOUT,
                      headers={"Accept": "application/rdap+json"})
@@ -200,72 +251,36 @@ def _rdap(domain: str) -> dict | None:
     return {"tanggal": tgl, "registrar": registrar, "diperbarui": ubah} if tgl else None
 
 
-def _whoisxml(domain: str) -> dict | None:
-    kunci = (os.getenv("WHOISXML_API_KEY") or "").strip()
-    if not kunci:
-        return None
-    r = requests.get("https://www.whoisxmlapi.com/whoisserver/WhoisService", timeout=TIMEOUT,
-                     params={"apiKey": kunci, "domainName": domain,
-                             "outputFormat": "JSON", "ignoreRawTexts": "1"})
-    if r.status_code != 200:
-        return None
-    rec = r.json().get("WhoisRecord", {})
-    tgl = rec.get("createdDate") or (rec.get("registryData") or {}).get("createdDate")
-    ubah = rec.get("updatedDate") or (rec.get("registryData") or {}).get("updatedDate")
-    negara = ((rec.get("registrant") or {}).get("country")
-              or ((rec.get("registryData") or {}).get("registrant") or {}).get("country") or "")
-    if re.search(r"redact|privacy|not disclosed|gdpr", negara, re.IGNORECASE):
-        negara = ""                               # disembunyikan pemilik domain
-    negara = negara.strip().title() or None
-    if not tgl and not negara:
-        return None
-    return {"tanggal": tgl, "registrar": rec.get("registrarName"),
-            "diperbarui": ubah, "negara_pendaftar": negara}
-
-
 def _ke_tanggal(teks):
     dt = date_parser.parse(teks)
     return dt if dt.tzinfo else dt.replace(tzinfo=timezone.utc)
 
 
 def info_domain(domain: str) -> dict:
-    """Tanggal pendaftaran domain, registrar, dan negara pendaftar.
-
-    RDAP (gratis) untuk tanggal + registrar. WHOIS XML (butuh kunci) melengkapi negara
-    pendaftar, dan menjadi cadangan tanggal bila RDAP tidak punya datanya.
-    """
+    """Tanggal pendaftaran domain dan registrar, dari RDAP (gratis, tanpa kunci)."""
     hasil = {"tanggal_daftar": None, "tanggal_daftar_teks": None, "usia_teks": None,
-             "usia_hari": None, "diperbarui_teks": None, "registrar": None,
-             "negara_pendaftar": None}
-    for sumber in (_rdap, _whoisxml):
-        try:
-            data = sumber(domain)
-        except Exception:
-            data = None
+             "usia_hari": None, "diperbarui_teks": None, "registrar": None}
+    try:
+        data = _rdap(domain)
         if not data:
-            continue
-        if data.get("negara_pendaftar") and not hasil["negara_pendaftar"]:
-            hasil["negara_pendaftar"] = data["negara_pendaftar"]
-        if hasil["tanggal_daftar"] or not data.get("tanggal"):
-            continue                              # tanggal sudah ada / sumber ini tak punya
-        try:
-            dt = _ke_tanggal(data["tanggal"])
-        except Exception:
-            continue
-        try:
-            diperbarui = _tanggal_indo(_ke_tanggal(data["diperbarui"])) if data.get("diperbarui") else None
-        except Exception:
-            diperbarui = None
-        hasil.update(tanggal_daftar=dt.date().isoformat(),
-                     tanggal_daftar_teks=_tanggal_indo(dt),
-                     usia_teks=_usia_teks(dt),
-                     usia_hari=max((datetime.now(timezone.utc) - dt).days, 0),
-                     diperbarui_teks=diperbarui,
-                     registrar=(data.get("registrar") or "").strip() or None)
+            return hasil
+        dt = _ke_tanggal(data["tanggal"])
+    except Exception:
+        return hasil
+    try:
+        diperbarui = _tanggal_indo(_ke_tanggal(data["diperbarui"])) if data.get("diperbarui") else None
+    except Exception:
+        diperbarui = None
+    hasil.update(tanggal_daftar=dt.date().isoformat(),
+                 tanggal_daftar_teks=_tanggal_indo(dt),
+                 usia_teks=_usia_teks(dt),
+                 usia_hari=max((datetime.now(timezone.utc) - dt).days, 0),
+                 diperbarui_teks=diperbarui,
+                 registrar=(data.get("registrar") or "").strip() or None)
     return hasil
 
 
-# ---------------------------------------------------------------- 3. jenis situs
+# ---------------------------------------------------------------- 3. membaca halaman
 def _ambil_meta(html: str, nama: str):
     for pola in (rf'<meta[^>]+(?:name|property)=["\']{nama}["\'][^>]*content=["\']([^"\']*)["\']',
                  rf'<meta[^>]+content=["\']([^"\']*)["\'][^>]*(?:name|property)=["\']{nama}["\']'):
@@ -275,70 +290,122 @@ def _ambil_meta(html: str, nama: str):
     return None
 
 
-def _alamat_publik(url: str) -> bool:
-    """True bila host pada url mengarah ke alamat internet publik (bukan jaringan internal)."""
-    host = (urlparse(url).hostname or "").lower()
-    if not host or urlparse(url).scheme not in ("http", "https"):
-        return False
-    ip = host if re.fullmatch(r"\d{1,3}(\.\d{1,3}){3}", host) else _cari_ip(host)
-    return bool(ip) and _ip_publik(ip)
+def _ikuti_pengalihan(url: str, metode: str = "GET"):
+    """Ikuti pengalihan satu per satu (paling banyak MAKS_PENGALIHAN kali).
+
+    Setiap alamat diperiksa dulu: kalau mengarah ke jaringan internal, berhenti.
+    Mengembalikan (respons_terakhir, url_terakhir, semua_publik).
+    """
+    r = None
+    for _ in range(MAKS_PENGALIHAN + 1):
+        if not _alamat_publik(url):
+            return None, url, False
+        r = requests.request(metode, url, headers=UA, timeout=TIMEOUT, allow_redirects=False)
+        tujuan = r.headers.get("Location") if r.status_code in (301, 302, 303, 307, 308) else None
+        if not tujuan:
+            break
+        url = urljoin(url, tujuan)
+    return r, url, True
 
 
 def baca_halaman(url: str) -> dict:
-    """Ambil judul + deskripsi halaman. 'terbaca' = False bila halaman tidak bisa dibuka.
+    """Ambil judul, deskripsi, dan HTML halaman. 'terbaca' = False bila halaman tidak bisa dibuka.
 
-    Pengalihan (redirect) diikuti satu per satu, paling banyak 5 kali, dan berhenti bila
-    tujuannya alamat internal. 'url_akhir' = alamat halaman yang benar-benar dibaca.
+    'url_akhir' = alamat halaman yang benar-benar dibaca (setelah pengalihan).
+    '_html' hanya dipakai di dalam modul ini dan tidak ikut dikirim ke frontend.
     """
-    hasil = {"terbaca": False, "judul": None, "deskripsi": None, "url_akhir": url, "aman": True}
+    hasil = {"terbaca": False, "judul": None, "deskripsi": None, "url_akhir": url,
+             "internal": False, "_html": ""}
     try:
-        r = None
-        for _ in range(6):
-            if not _alamat_publik(url):
-                hasil["aman"] = False
-                return hasil
-            r = requests.get(url, headers=UA, timeout=TIMEOUT, allow_redirects=False)
-            tujuan = r.headers.get("Location") if r.status_code in (301, 302, 303, 307, 308) else None
-            if not tujuan:
-                break
-            url = urljoin(url, tujuan)
-        hasil["url_akhir"] = url
+        r, url_akhir, publik = _ikuti_pengalihan(url)
+        hasil["url_akhir"] = url_akhir
+        if not publik:
+            hasil["internal"] = True
+            return hasil
         if r is None or r.status_code != 200:
             return hasil
 
         if "charset" not in r.headers.get("Content-Type", "").lower():
             r.encoding = "utf-8"
         html = r.text[:BATAS_HTML]
-        
+
         m = re.search(r"<title[^>]*>(.*?)</title>", html, re.IGNORECASE | re.DOTALL)
         judul = unescape(re.sub(r"\s+", " ", m.group(1))).strip() if m else None
         desk = _ambil_meta(html, "description") or _ambil_meta(html, "og:description")
         hasil.update(terbaca=True, judul=(judul or None),
-                     deskripsi=(desk[:200] if desk else None))
+                     deskripsi=(desk[:200] if desk else None), _html=html)
     except Exception:
         pass
     return hasil
 
 
+# ---------------------------------------------------------------- 4. ciri halaman (fakta)
+# Kata yang dicari di teks halaman. "pin" saja terlalu umum (mis. "pin" di Pinterest),
+# jadi PIN hanya dihitung bila muncul bersama kata seperti kode/nomor/masukkan/ATM.
+POLA_DATA_RAHASIA = [
+    (r"\b(?:kode\s+)?otp\b", "kode OTP"),
+    (r"\b(?:kode|nomor|masukkan|input)\s+pin\b|\bpin\s+(?:atm|anda|kamu|m-?banking)\b", "PIN"),
+    (r"\bcvv2?\b|\bcvc\b", "kode CVV/CVC kartu"),
+]
+
+def ciri_halaman(html: str, domain: str) -> list[str]:
+    """Fakta yang terlihat di HTML. Hanya menyebut apa yang ada, tanpa menilai."""
+    if not html:
+        return []
+    ciri = []
+    if re.search(r"<input[^>]+type\s*=\s*[\"']?password", html, re.IGNORECASE):
+        ciri.append("Halaman memuat kolom kata sandi (password).")
+
+    # teks yang terlihat saja: buang <script>/<style> dulu, lalu semua tag
+    teks = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", html, flags=re.IGNORECASE | re.DOTALL)
+    teks = re.sub(r"<[^>]+>", " ", teks)
+    disebut = [nama for pola, nama in POLA_DATA_RAHASIA if re.search(pola, teks, re.IGNORECASE)]
+    if disebut:
+        ciri.append(f"Halaman menyebut {', '.join(disebut)}.")
+
+    ekstensi = sorted({e.lower() for e in re.findall(
+        r"href\s*=\s*[\"'][^\"']+?\.(apk|exe|msi|scr|bat)(?:[?#][^\"']*)?[\"']", html, re.IGNORECASE)})
+    if ekstensi:
+        ciri.append("Halaman memuat tautan unduhan file " + ", ".join(f".{e}" for e in ekstensi) + ".")
+
+    tujuan_form = set()
+    for aksi in re.findall(r"<form[^>]+action\s*=\s*[\"'](https?://[^\"']+)[\"']", html, re.IGNORECASE):
+        host = (urlparse(aksi).hostname or "").lower()
+        if host and _domain_utama(host) != domain:
+            tujuan_form.add(_domain_utama(host))
+    if tujuan_form:
+        ciri.append("Formulir di halaman mengirim data ke domain lain: "
+                    + ", ".join(sorted(tujuan_form)) + ".")
+    return ciri
+
+
+# ---------------------------------------------------------------- 5. jenis situs
 def tentukan_jenis(url: str, halaman: dict, domain: str = "", jdomain: dict | None = None) -> dict:
-    """Jenis situs. Urutan: isi halaman (content_analyzer) -> situs populer -> jenis domain."""
+    """Jenis situs. Urutan: situs populer -> isi halaman -> jenis domain.
+
+    Situs populer diperiksa PERTAMA, supaya artikel berita/ensiklopedia yang membahas judi
+    tidak membuat situsnya (mis. detik.com) tercatat sebagai situs judi.
+    Situs .go.id dan .ac.id tetap dibaca isinya, karena halaman situs seperti ini
+    kadang disisipi konten judi.
+    """
     jdomain = jdomain or {"kode": "lain"}
-    populer = domain in SITUS_POPULER or content_analyzer.is_official_domain(url)
-    dasar = {"perlu_waspada": False, "keyakinan": "-", "ciri": []}
+    dasar = {"keyakinan": "-", "ciri_konten": []}
 
-    a = {"category": "Clean"}
-    if halaman["terbaca"] and halaman.get("aman", True):
-        a = content_analyzer.analyze_content(halaman.get("url_akhir") or url)
-    if a.get("category") in KATEGORI and a["category"] != "Official/Legal":
-        kode, nama, singkat, waspada = KATEGORI[a["category"]]
-        keyakinan = {"high": "tinggi", "medium": "sedang"}.get(a.get("confidence"), "rendah")
-        return {"kode": kode, "nama": nama, "singkat": singkat, "perlu_waspada": waspada,
-                "keyakinan": keyakinan, "ciri": a.get("reasons", [])[:5]}
-
-    if populer:
+    if domain in SITUS_POPULER or content_analyzer.is_official_domain(url):
         kategori = kategori_populer(domain)
         nama = f"{kategori} resmi" if kategori else "Platform / situs resmi yang populer"
         return {"kode": "resmi", "nama": nama, "singkat": "Situs Resmi", **dasar}
+
+    if halaman["terbaca"]:
+        # HTML yang SUDAH diambil dianalisis langsung: tidak ada permintaan jaringan kedua
+        a = content_analyzer.analyze_html(halaman.get("url_akhir") or url, halaman.get("_html", ""))
+        if a.get("category") in KATEGORI_KONTEN:
+            kode, nama, singkat = KATEGORI_KONTEN[a["category"]]
+            keyakinan = {"high": "tinggi", "medium": "sedang"}.get(a.get("confidence"), "rendah")
+            return {"kode": kode, "nama": nama, "singkat": singkat,
+                    "keyakinan": keyakinan,
+                    "ciri_konten": [GANTI_CIRI_KONTEN.get(r, r) for r in a.get("reasons", [])[:5]]}
+
     if jdomain["kode"] == "pemerintah":
         return {"kode": "pemerintah", "nama": "Situs pemerintah", "singkat": "Situs Pemerintah", **dasar}
     if jdomain["kode"] == "pendidikan":
@@ -351,22 +418,22 @@ def tentukan_jenis(url: str, halaman: dict, domain: str = "", jdomain: dict | No
             "singkat": "Belum Dikenali", **dasar}
 
 
-# ---------------------------------------------------------------- 4. kalimat deskripsi
-def susun_deskripsi(domain: str, jenis: dict, server: dict, dom: dict) -> str:
+# ---------------------------------------------------------------- 6. kalimat deskripsi
+def susun_deskripsi(domain: str, jenis: dict, server: dict, dom: dict,
+                    domain_akhir: str | None = None) -> str:
     if jenis["kode"] == "tidak_diketahui":
         kalimat = [f"Jenis situs {domain} belum dapat ditentukan."]
     elif jenis["kode"] == "umum":
         kalimat = [f"Jenis situs {domain} belum dikenali karena tidak ditemukan ciri khusus pada halamannya."]
     else:
         kalimat = [f"{domain} adalah {jenis['nama'][0].lower() + jenis['nama'][1:]}."]
+    if domain_akhir and domain_akhir != domain:
+        kalimat.append(f"Saat dibuka, link ini dialihkan ke {domain_akhir}.")
     if server.get("negara"):
-        tempat = server["negara"] + (f" (kota {server['kota']})" if server.get("kota") else "")
-        oleh = f", dikelola {server['penyedia'].rstrip('.')}" if server.get("penyedia") else ""
-        kalimat.append(f"Servernya berada di {tempat}{oleh}.")
+        oleh = f", jaringan milik {server['penyedia'].rstrip('.')}" if server.get("penyedia") else ""
+        kalimat.append(f"Servernya berada di {server['negara']}{oleh}.")
     else:
         kalimat.append("Lokasi server tidak berhasil diketahui.")
-    if dom.get("negara_pendaftar"):
-        kalimat.append(f"Pendaftar domain tercatat di {dom['negara_pendaftar']}.")
     if dom.get("tanggal_daftar_teks"):
         via = f" melalui {dom['registrar']}" if dom.get("registrar") else ""
         akhir = f"Domain ini terdaftar sejak {dom['tanggal_daftar_teks']} ({dom['usia_teks']} yang lalu){via}"
@@ -379,23 +446,29 @@ def susun_deskripsi(domain: str, jenis: dict, server: dict, dom: dict) -> str:
 # ---------------------------------------------------------------- fungsi utama
 def _cuplikan_tidak_terjangkau(url, host, pesan):
     return {"url": url, "url_awal": url, "diperpendek": False, "domain": host,
-            "dapat_dijangkau": False, "jenis_situs": None, "jenis_singkat": "Tidak Diketahui",
-            "kode_jenis": "tidak_diketahui", "jenis_domain": None,
-            "keyakinan_jenis": "-", "perlu_waspada": False, "ciri": [],
+            "domain_akhir": None, "dapat_dijangkau": False, "jenis_situs": None,
+            "jenis_singkat": "Tidak Diketahui", "kode_jenis": "tidak_diketahui",
+            "jenis_domain": None, "keyakinan_jenis": "-", "ciri": [],
             "judul_halaman": None, "deskripsi_halaman": None,
             "server": None, "domain_info": None, "screenshot": None,
             "deskripsi": pesan, "catatan": []}
 
 
 def _bangun(url_awal: str) -> dict:
-    """Bagian yang berjalan berurutan (bukan jaringan lambat): perluas shortener, cek DNS."""
+    """Rapikan URL dan buka link pendek (bit.ly, s.id, ...) dengan pemeriksaan tiap pengalihan."""
     url = url_awal.strip()
     if not re.match(r"^https?://", url, re.IGNORECASE):
         url = "https://" + url
     diperpendek = False
-    ex = url_resolver.expand_url(url)
-    if ex.get("is_shortened") and ex.get("expanded_url"):
-        diperpendek, url = True, ex["expanded_url"]
+    if url_resolver.is_shortened_url(url):
+        for metode in ("HEAD", "GET"):            # sebagian layanan menolak HEAD, coba GET
+            try:
+                _, tujuan, publik = _ikuti_pengalihan(url, metode=metode)
+            except Exception:
+                continue
+            if publik and tujuan != url:
+                diperpendek, url = True, tujuan
+                break
     host = (urlparse(url).hostname or "").lower()
     return {"url": url, "diperpendek": diperpendek, "host": host}
 
@@ -405,6 +478,15 @@ async def _screenshot(url: str):
         return await asyncio.wait_for(asyncio.to_thread(microlink.capture_screenshot, url), 22)
     except Exception:
         return None
+
+
+def _simpan_cache(kunci: str, hasil: dict):
+    sekarang = time.time()
+    for k in [k for k, (t, _) in _CACHE.items() if sekarang - t >= CACHE_DETIK]:
+        _CACHE.pop(k, None)                       # buang yang sudah kedaluwarsa
+    while len(_CACHE) >= CACHE_MAKS:
+        _CACHE.pop(next(iter(_CACHE)))            # buang yang paling lama disimpan
+    _CACHE[kunci] = (sekarang, hasil)
 
 
 async def deskripsikan_link(url_awal: str) -> dict:
@@ -438,32 +520,32 @@ async def deskripsikan_link(url_awal: str) -> dict:
     )
     jdomain = jenis_domain(domain)
     jenis = await asyncio.to_thread(tentukan_jenis, url, halaman, domain, jdomain)
+    ciri = jenis["ciri_konten"] + ciri_halaman(halaman.get("_html", ""), domain)
+
+    host_akhir = (urlparse(halaman.get("url_akhir") or url).hostname or "").lower()
+    domain_akhir = _domain_utama(host_akhir) if host_akhir else None
 
     catatan = []
     if "cloudflare" in (server.get("penyedia") or "").lower():
         catatan.append("Situs memakai Cloudflare, jadi lokasi server di atas adalah lokasi "
-                       "jaringan Cloudflare, bukan tentu lokasi server aslinya.")
-    if not halaman.get("aman", True):
-        catatan.append("Link ini dialihkan ke alamat internal, jadi isi halamannya tidak dibaca.")
+                       "jaringan Cloudflare, belum tentu lokasi server aslinya.")
+    if halaman.get("internal"):
+        catatan.append("Link ini dialihkan ke alamat internal, sehingga isi halamannya tidak dibaca.")
     elif not halaman["terbaca"]:
         catatan.append("Isi halaman tidak bisa dibaca, jadi jenis situs hanya dilihat dari nama domainnya.")
-    if jenis["kode"] == "umum":
-        catatan.append("Tidak ditemukannya ciri khusus bukan berarti situs ini aman.")
-    if jenis["kode"] in ("resmi", "pemerintah", "pendidikan"):
-        catatan.append("Situs ini dikenal sebagai situs resmi. Pastikan alamatnya persis sama, "
-                       "karena penipu sering memakai alamat yang mirip.")
-    else:
-        catatan.append("Ini hanya gambaran informasi link, bukan jaminan link aman.")
+    if not data_ip_tersedia():
+        catatan.append("Database lokasi IP belum tersedia di server, jadi lokasi server tidak ditampilkan.")
+    catatan.append("Deskripsi ini disusun dari data publik dan isi halaman pada saat pengecekan.")
 
     hasil = {
         "url": url, "url_awal": url_awal.strip(), "diperpendek": dasar["diperpendek"],
-        "domain": domain, "dapat_dijangkau": True,
+        "domain": domain, "domain_akhir": domain_akhir, "dapat_dijangkau": True,
         "jenis_situs": jenis["nama"], "jenis_singkat": jenis["singkat"], "kode_jenis": jenis["kode"],
-        "keyakinan_jenis": jenis["keyakinan"], "perlu_waspada": jenis["perlu_waspada"],
-        "ciri": jenis["ciri"], "jenis_domain": jdomain["nama"],
+        "keyakinan_jenis": jenis["keyakinan"], "ciri": ciri, "jenis_domain": jdomain["nama"],
         "judul_halaman": halaman["judul"], "deskripsi_halaman": halaman["deskripsi"],
         "server": server, "domain_info": dom, "screenshot": foto,
-        "deskripsi": susun_deskripsi(domain, jenis, server, dom), "catatan": catatan,
+        "deskripsi": susun_deskripsi(domain, jenis, server, dom, domain_akhir),
+        "catatan": catatan,
     }
-    _CACHE[kunci] = (time.time(), hasil)
+    _simpan_cache(kunci, hasil)
     return hasil

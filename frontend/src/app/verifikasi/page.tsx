@@ -11,7 +11,6 @@ import {
   Cpu,
   Terminal,
   HelpCircle,
-  AlertTriangle,
   Globe,
   FileText,
   ArrowLeft,
@@ -25,6 +24,7 @@ import {
   Copy,
   Check,
   ExternalLink,
+  CornerDownRight,
   Info,
   ImageOff,
   Tag
@@ -37,13 +37,13 @@ type InfoLink = {
   url_awal: string;
   diperpendek: boolean;
   domain: string;
+  domain_akhir: string | null;
   dapat_dijangkau: boolean;
   jenis_situs: string | null;
   jenis_singkat: string;
   jenis_domain: string | null;
   kode_jenis: string;
   keyakinan_jenis: string;
-  perlu_waspada: boolean;
   ciri: string[];
   judul_halaman: string | null;
   deskripsi_halaman: string | null;
@@ -51,7 +51,6 @@ type InfoLink = {
     ip: string | null;
     negara: string | null;
     kode_negara: string | null;
-    kota: string | null;
     penyedia: string | null;
   } | null;
   domain_info: {
@@ -60,7 +59,6 @@ type InfoLink = {
     usia_teks: string | null;
     usia_hari: number | null;
     diperbarui_teks: string | null;
-    negara_pendaftar: string | null;
     registrar: string | null;
   } | null;
   screenshot: string | null;
@@ -76,7 +74,7 @@ export default function VerifikasiHalaman() {
   const [tersalin, setTersalin] = useState(false);
 
   const handleVerify = async () => {
-    if (!url) return;
+    if (!url || loading) return;
 
     let formattedUrl = url.trim();
     if (!formattedUrl.startsWith("http")) {
@@ -136,10 +134,10 @@ export default function VerifikasiHalaman() {
     }
   };
 
-  // Teks lokasi server, mis. "Indonesia (Jakarta)"
+  // Teks lokasi server, mis. "Indonesia"
   const teksServer = (srv: InfoLink["server"]) => {
     if (!srv || !srv.negara) return "Tidak diketahui";
-    return srv.kota ? `${srv.negara} (${srv.kota})` : srv.negara;
+    return srv.negara;
   };
 
   return (
@@ -236,12 +234,8 @@ export default function VerifikasiHalaman() {
                     <p className="text-sm text-slate-500 dark:text-gray-400">Informasi tentang link yang Anda masukkan</p>
                   </div>
                 </div>
-                <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-2 font-black text-sm uppercase tracking-wide ${
-                  info.perlu_waspada
-                    ? "border-orange-500/40 bg-orange-500/10 text-orange-500"
-                    : "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400"
-                }`}>
-                  {info.perlu_waspada ? <AlertTriangle size={16} /> : <Tag size={16} />}
+                <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-2 font-black text-sm uppercase tracking-wide border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                  <Tag size={16} />
                   {info.jenis_singkat}
                 </div>
               </div>
@@ -268,14 +262,10 @@ export default function VerifikasiHalaman() {
                   {info.dapat_dijangkau && (
                     <button
                       onClick={openUrlSafely}
-                      className={`w-full font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all border-2 ${
-                        info.perlu_waspada
-                          ? "border-orange-400 bg-orange-500/10 text-orange-500 hover:bg-orange-500/20"
-                          : "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20"
-                      }`}
+                      className="w-full font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all border-2 border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 hover:bg-blue-500/20"
                     >
                       <ExternalLink size={18} />
-                      {info.perlu_waspada ? "Saya Paham Risikonya, Buka" : "Buka Website"}
+                      Buka Website
                     </button>
                   )}
                 </div>
@@ -302,12 +292,18 @@ export default function VerifikasiHalaman() {
                       Link pendek <span className="font-mono">{info.url_awal}</span> diarahkan ke alamat di atas.
                     </p>
                   )}
+                  {info.domain_akhir && info.domain_akhir !== info.domain && (
+                    <p className="flex items-center gap-1 text-xs text-slate-500 dark:text-gray-400 -mt-2 px-1">
+                      <CornerDownRight size={14} />
+                      Saat dibuka, link ini dialihkan ke <span className="font-mono font-bold">{info.domain_akhir}</span>
+                    </p>
+                  )}
 
                   <div className="flex items-start gap-3 px-1">
                     <Layers size={22} className="text-blue-500 mt-1 flex-shrink-0" />
                     <div>
                       <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500 dark:text-gray-400">Jenis Situs</p>
-                      <p className={`text-lg font-black ${info.perlu_waspada ? "text-orange-500" : "text-slate-900 dark:text-white"}`}>
+                      <p className="text-lg font-black text-slate-900 dark:text-white">
                         {info.jenis_situs ?? "Tidak diketahui"}
                       </p>
                       {info.keyakinan_jenis !== "-" && (
@@ -330,12 +326,9 @@ export default function VerifikasiHalaman() {
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Negara Server</dt>
                         <dd className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
                           {info.server?.kode_negara && (
-                            <img
-                              src={`https://flagcdn.com/w40/${info.server.kode_negara.toLowerCase()}.png`}
-                              alt={info.server.kode_negara}
-                              className="h-4 w-6 rounded-sm object-cover"
-                              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-                            />
+                            <span className="px-1.5 py-0.5 rounded-md bg-slate-200 dark:bg-white/10 text-[11px] font-mono font-black text-slate-600 dark:text-gray-300">
+                              {info.server.kode_negara}
+                            </span>
                           )}
                           {teksServer(info.server)}
                         </dd>
@@ -349,7 +342,7 @@ export default function VerifikasiHalaman() {
                             <span className="text-xs font-semibold text-slate-500 dark:text-gray-400">({info.domain_info.usia_teks} yang lalu)</span>
                           )}
                           {info.domain_info?.usia_hari != null && info.domain_info.usia_hari < 180 && (
-                            <span className="text-[11px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-500 border border-amber-500/30">
+                            <span className="text-[11px] font-black uppercase px-2 py-0.5 rounded-full bg-slate-500/10 text-slate-500 dark:text-gray-400 border border-slate-500/30">
                               Domain baru
                             </span>
                           )}
@@ -367,16 +360,9 @@ export default function VerifikasiHalaman() {
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Pendaftar Domain</dt>
                         <dd className="font-bold text-slate-900 dark:text-white">{info.domain_info?.registrar ?? "Tidak diketahui"}</dd>
                       </div>
-                      {info.domain_info?.negara_pendaftar && (
-                        <div className="flex items-center gap-3">
-                          <Globe size={20} className="text-blue-500 flex-shrink-0" />
-                          <dt className="w-40 text-slate-500 dark:text-gray-400">Negara Pendaftar</dt>
-                          <dd className="font-bold text-slate-900 dark:text-white">{info.domain_info.negara_pendaftar}</dd>
-                        </div>
-                      )}
                       <div className="flex items-center gap-3">
                         <Server size={20} className="text-blue-500 flex-shrink-0" />
-                        <dt className="w-40 text-slate-500 dark:text-gray-400">Penyedia Hosting</dt>
+                        <dt className="w-40 text-slate-500 dark:text-gray-400">Penyedia Jaringan</dt>
                         <dd className="font-bold text-slate-900 dark:text-white">{info.server?.penyedia ?? "Tidak diketahui"}</dd>
                       </div>
                       <div className="flex items-center gap-3">
@@ -384,6 +370,9 @@ export default function VerifikasiHalaman() {
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Alamat IP</dt>
                         <dd className="font-mono font-bold text-slate-900 dark:text-white">{info.server?.ip ?? "Tidak diketahui"}</dd>
                       </div>
+                      <p className="pt-1 text-[11px] text-slate-400 dark:text-gray-500">
+                        Data lokasi IP: <a href="https://db-ip.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-500">IP Geolocation by DB-IP</a>
+                      </p>
                     </dl>
                   )}
                 </div>
@@ -415,7 +404,7 @@ export default function VerifikasiHalaman() {
                     )}
                     {info.ciri.map((c, i) => (
                       <li key={`ciri-${i}`} className="flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-orange-500 flex-shrink-0" />
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-blue-500 flex-shrink-0" />
                         <span>Ciri di halaman: {c}</span>
                       </li>
                     ))}
@@ -429,12 +418,6 @@ export default function VerifikasiHalaman() {
                 </div>
               </div>
 
-              {info.perlu_waspada && (
-                <div className="mt-5 flex items-center gap-2 rounded-xl border border-orange-500/30 bg-orange-500/5 px-4 py-3 text-xs text-orange-500">
-                  <AlertTriangle size={14} className="flex-shrink-0" />
-                  <span>Jenis situs ini perlu diwaspadai. Dengan membuka link ini, Anda bertanggung jawab atas risiko yang mungkin terjadi.</span>
-                </div>
-              )}
             </div>
 
             {/* CEK LINK LAIN */}
@@ -469,7 +452,7 @@ export default function VerifikasiHalaman() {
           <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-blue-950 dark:from-blue-950/70 dark:via-slate-900/60 dark:to-slate-900/60 dark:backdrop-blur-xl rounded-[40px] p-8 shadow-xl dark:shadow-none border border-slate-800 dark:border-white/10 hover:border-blue-500/50 transition-all relative overflow-hidden group">
             <div className="relative z-10">
               <h3 className="text-3xl font-black mb-4 uppercase tracking-tight text-white">Konsultasi AI</h3>
-              <p className="text-gray-200 font-semibold text-lg md:text-xl mb-8 leading-relaxed max-w-md">Ingin diskusi lebih lanjut mengenai temuan <span className="text-blue-400">link mencurigakan</span> tersebut?</p>
+              <p className="text-gray-200 font-semibold text-lg md:text-xl mb-8 leading-relaxed max-w-md">Ingin diskusi lebih lanjut mengenai <span className="text-blue-400">informasi link</span> tersebut?</p>
               <Link href="/chatbot" className="inline-flex items-center gap-3 bg-white text-black px-8 py-4 rounded-2xl font-black text-lg hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-white/10 uppercase tracking-tighter">
                 Buka Chatbot AI <ArrowRight size={20} strokeWidth={3} />
               </Link>

@@ -1,6 +1,10 @@
 # Jalankan FastAPI server
 import uvicorn
 
+# Menjalankan pekerjaan di latar belakang saat server menyala
+import threading
+from contextlib import asynccontextmanager
+
 # Load environment variable
 from dotenv import load_dotenv
 
@@ -20,12 +24,26 @@ from routers import auth, chat, voice
 # Import service deskripsi link (fitur Verifikasi)
 from services.threat.link_info import deskripsikan_link
 
+# Database lokasi IP lokal untuk fitur Verifikasi (pengganti API ipwho.is)
+from services.threat import data_ip
+
 # Load file .env
 load_dotenv()
 
 
+# Saat server menyala: siapkan database lokasi IP di latar belakang.
+# Diunduh hanya bila belum ada atau sudah lebih dari 35 hari, jadi server tetap langsung siap.
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    threading.Thread(target=data_ip.perbarui, daemon=True).start()
+    yield
+
+
 # Inisialisasi aplikasi FastAPI
 app = FastAPI(
+
+    # Pekerjaan saat server menyala
+    lifespan=lifespan,
 
     # Nama backend system
     title="CyberGuard AI - Enterprise Security Backend",

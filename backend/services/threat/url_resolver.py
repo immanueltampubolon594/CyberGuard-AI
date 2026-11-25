@@ -11,9 +11,15 @@ KNOWN_SHORTENERS = [
 ]
 
 def is_shortened_url(url: str) -> bool:
-    """Cek apakah URL adalah shortener"""
-    domain = urlparse(url).netloc.lower()
-    return any(shortener in domain for shortener in KNOWN_SHORTENERS)
+    """Cek apakah URL adalah shortener.
+
+    Nama domain harus SAMA PERSIS dengan shortener (atau subdomainnya), bukan sekadar
+    mengandung teksnya. Dulu "t.co" ikut cocok dengan "microsoft.com" dan "s.id" dengan "kompas.id".
+    """
+    domain = (urlparse(url).hostname or "").lower()
+    if domain.startswith("www."):
+        domain = domain[4:]
+    return any(domain == s or domain.endswith("." + s) for s in KNOWN_SHORTENERS)
 
 def expand_url(url: str) -> dict:
     """

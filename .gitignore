@@ -15,3 +15,5 @@ backend/voice/results/**/skor_per_klip*.csv
 backend/voice/data_uji/
 backend/voice/results/transkrip/
 backend/voice/results/analisis_audio/
+# Database lokasi IP untuk fitur Verifikasi (diunduh otomatis, lihat services/threat/data_ip.py)
+backend/services/threat/data/
