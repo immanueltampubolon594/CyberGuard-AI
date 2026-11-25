@@ -43,6 +43,7 @@ type InfoLink = {
   jenis_singkat: string;
   jenis_domain: string | null;
   kode_jenis: string;
+  sumber_jenis: string | null;
   keyakinan_jenis: string;
   ciri: string[];
   judul_halaman: string | null;
@@ -52,6 +53,7 @@ type InfoLink = {
     negara: string | null;
     kode_negara: string | null;
     penyedia: string | null;
+    perantara: string | null;
   } | null;
   domain_info: {
     tanggal_daftar: string | null;
@@ -134,10 +136,12 @@ export default function VerifikasiHalaman() {
     }
   };
 
-  // Teks lokasi server, mis. "Indonesia"
+  // Teks lokasi server, mis. "Indonesia".
+  // Situs di belakang Cloudflare dkk.: IP yang terlihat milik perantara itu, jadi lokasi asli tersembunyi.
   const teksServer = (srv: InfoLink["server"]) => {
-    if (!srv || !srv.negara) return "Tidak diketahui";
-    return srv.negara;
+    if (!srv) return "Tidak diketahui";
+    if (srv.perantara) return `Tersembunyi (memakai ${srv.perantara})`;
+    return srv.negara ?? "Tidak diketahui";
   };
 
   return (
@@ -306,13 +310,16 @@ export default function VerifikasiHalaman() {
                       <p className="text-lg font-black text-slate-900 dark:text-white">
                         {info.jenis_situs ?? "Tidak diketahui"}
                       </p>
+                      {info.sumber_jenis && (
+                        <p className="text-xs text-slate-500 dark:text-gray-400">Dikenali dari: <strong>{info.sumber_jenis}</strong></p>
+                      )}
                       {info.keyakinan_jenis !== "-" && (
                         <p className="text-xs text-slate-500 dark:text-gray-400">Tingkat keyakinan: <strong>{info.keyakinan_jenis}</strong></p>
                       )}
                     </div>
                   </div>
 
-                  {info.dapat_dijangkau && (
+                  {(info.dapat_dijangkau || info.domain_info) && (
                     <dl className="border-t border-slate-200 dark:border-white/10 pt-4 space-y-3 text-sm">
                       {info.jenis_domain && (
                         <div className="flex items-center gap-3">
@@ -321,11 +328,12 @@ export default function VerifikasiHalaman() {
                           <dd className="font-bold text-slate-900 dark:text-white">{info.jenis_domain}</dd>
                         </div>
                       )}
+                      {info.server && (
                       <div className="flex items-center gap-3">
                         <Globe size={20} className="text-blue-500 flex-shrink-0" />
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Negara Server</dt>
                         <dd className="flex items-center gap-2 font-bold text-slate-900 dark:text-white">
-                          {info.server?.kode_negara && (
+                          {info.server.kode_negara && !info.server.perantara && (
                             <span className="px-1.5 py-0.5 rounded-md bg-slate-200 dark:bg-white/10 text-[11px] font-mono font-black text-slate-600 dark:text-gray-300">
                               {info.server.kode_negara}
                             </span>
@@ -333,6 +341,7 @@ export default function VerifikasiHalaman() {
                           {teksServer(info.server)}
                         </dd>
                       </div>
+                      )}
                       <div className="flex items-center gap-3">
                         <CalendarDays size={20} className="text-blue-500 flex-shrink-0" />
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Domain Terdaftar</dt>
@@ -360,6 +369,8 @@ export default function VerifikasiHalaman() {
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Pendaftar Domain</dt>
                         <dd className="font-bold text-slate-900 dark:text-white">{info.domain_info?.registrar ?? "Tidak diketahui"}</dd>
                       </div>
+                      {info.server && (
+                      <>
                       <div className="flex items-center gap-3">
                         <Server size={20} className="text-blue-500 flex-shrink-0" />
                         <dt className="w-40 text-slate-500 dark:text-gray-400">Penyedia Jaringan</dt>
@@ -373,6 +384,8 @@ export default function VerifikasiHalaman() {
                       <p className="pt-1 text-[11px] text-slate-400 dark:text-gray-500">
                         Data lokasi IP: <a href="https://db-ip.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-blue-500">IP Geolocation by DB-IP</a>
                       </p>
+                      </>
+                      )}
                     </dl>
                   )}
                 </div>

@@ -3,10 +3,12 @@ Deskripsi link (fitur Verifikasi).
 
 Menjawab beberapa pertanyaan FAKTA tentang sebuah link. Tidak ada skor, dan tidak ada
 penilaian seperti aman/berbahaya/waspada:
-  1. Situs apa ini?            -> daftar situs populer, isi halaman, lalu akhiran domain
+  1. Situs apa ini?            -> daftar situs populer, isi halaman, akhiran domain, lalu
+                                  keterangan yang ditulis situs itu sendiri (schema.org, judul)
   2. Apa saja ciri halamannya? -> fakta dari HTML (kolom kata sandi, kata OTP/PIN,
                                   tautan unduhan aplikasi, formulir yang dikirim ke domain lain)
-  3. Servernya di negara mana? -> database DB-IP Lite yang disimpan di server (tanpa API)
+  3. Servernya di negara mana? -> database DB-IP Lite yang disimpan di server (tanpa API).
+                                  Untuk situs di belakang Cloudflare dkk., lokasi asli disebut tersembunyi.
   4. Kapan domain terdaftar?   -> RDAP (satu-satunya layanan data luar, gratis, tanpa kunci)
   5. Seperti apa tampilannya?  -> screenshot (Microlink)
 
@@ -17,6 +19,7 @@ dan sisanya tetap ditampilkan.
 
 import asyncio
 import ipaddress
+import json
 import re
 import socket
 import time
@@ -63,6 +66,60 @@ KATEGORI_KONTEN = {
 GANTI_CIRI_KONTEN = {
     "Tools ilegal": "Menyebut crack, keygen, repack, activator, atau patcher",
 }
+
+# Kategori umum yang dikenali dari keterangan yang ditulis SITUS ITU SENDIRI.
+# kode: (nama untuk kalimat, nama pendek untuk lencana)
+# Sengaja TIDAK ada kategori pemerintah, bank, atau keuangan: keterangan ini bisa dipalsukan,
+# dan kategori itulah yang paling sering ditiru penipu. Kategori itu hanya dikenali dari
+# daftar situs resmi dan akhiran domain (.go.id, .ac.id), yang tidak bisa dipalsukan.
+KATEGORI_UMUM = {
+    "berita": ("Situs berita", "Situs Berita"),
+    "pendidikan_kursus": ("Situs pendidikan atau kursus online", "Pendidikan / Kursus"),
+    "toko_online": ("Toko online", "Toko Online"),
+    "kesehatan": ("Layanan kesehatan", "Kesehatan"),
+    "ekspedisi": ("Layanan pengiriman barang", "Ekspedisi"),
+    "transportasi": ("Layanan transportasi atau tiket perjalanan", "Transportasi"),
+    "forum": ("Forum atau komunitas online", "Forum"),
+    "blog": ("Blog", "Blog"),
+}
+
+# Tipe schema.org (https://schema.org) -> kategori. Urutan = prioritas bila ada beberapa tipe.
+SCHEMA_KATEGORI = [
+    ("berita", {"NewsMediaOrganization", "NewsArticle", "ReportageNewsArticle",
+                "AnalysisNewsArticle", "OpinionNewsArticle", "BackgroundNewsArticle"}),
+    ("pendidikan_kursus", {"EducationalOrganization", "CollegeOrUniversity", "School",
+                           "HighSchool", "MiddleSchool", "ElementarySchool", "Course",
+                           "CourseInstance", "EducationalOccupationalProgram"}),
+    ("kesehatan", {"MedicalOrganization", "Hospital", "MedicalClinic", "Physician",
+                   "Pharmacy", "Dentist", "DiagnosticLab", "MedicalWebPage"}),
+    ("transportasi", {"TrainTrip", "BusTrip", "Flight", "Airline", "TravelAgency",
+                      "TrainStation", "BusStation", "Airport"}),
+    ("ekspedisi", {"ParcelDelivery"}),
+    ("toko_online", {"OnlineStore", "Store", "Product"}),
+    ("forum", {"DiscussionForumPosting"}),
+    ("blog", {"Blog", "BlogPosting"}),
+]
+
+# Kata kunci di judul + deskripsi halaman, dipakai bila tidak ada keterangan schema.org.
+KATA_KATEGORI = [
+    ("berita", r"\b(?:berita|news|kabar terkini|portal berita|breaking news)\b"),
+    ("pendidikan_kursus", r"\b(?:kursus|bootcamp|bimbel|bimbingan belajar|pelatihan|e-?learning|"
+                          r"kelas online|belajar online|online course|sertifikasi)\b"),
+    ("kesehatan", r"\b(?:dokter|klinik|rumah sakit|apotek online|telemedicine|"
+                  r"konsultasi kesehatan|layanan kesehatan)\b"),
+    ("ekspedisi", r"\b(?:ekspedisi|kirim paket|pengiriman paket|jasa pengiriman|cek resi|"
+                  r"lacak paket|kurir)\b"),
+    ("transportasi", r"\b(?:tiket kereta|kereta api|tiket pesawat|tiket bus|transportasi)\b"),
+    ("toko_online", r"\b(?:belanja online|toko online|marketplace|jual beli online|"
+                    r"online shop|online store)\b"),
+    ("forum", r"\b(?:forum|komunitas online|online community)\b"),
+    ("blog", r"\bblog\b"),
+]
+
+# Penyedia yang berdiri DI DEPAN server asli (reverse proxy / CDN). Untuk situs seperti ini,
+# IP yang terlihat milik penyedia tersebut, jadi lokasi server aslinya tidak bisa diketahui.
+PENYEDIA_PERANTARA = {"cloudflare": "Cloudflare", "akamai": "Akamai", "fastly": "Fastly",
+                      "incapsula": "Imperva", "imperva": "Imperva", "sucuri": "Sucuri"}
 
 # jenis domain dari akhirannya (diperiksa dari yang paling panjang)
 AKHIRAN_DOMAIN = [
@@ -211,7 +268,7 @@ def data_ip_tersedia() -> bool:
 
 def lokasi_server(ip: str) -> dict:
     """IP -> negara + penyedia jaringan, dibaca dari database DB-IP Lite di server (tanpa API)."""
-    hasil = {"ip": ip, "negara": None, "kode_negara": None, "penyedia": None}
+    hasil = {"ip": ip, "negara": None, "kode_negara": None, "penyedia": None, "perantara": None}
     try:
         db = _pembaca_ip("negara")
         rec = db.get(ip) if db else None
@@ -226,6 +283,8 @@ def lokasi_server(ip: str) -> dict:
         hasil["penyedia"] = next((rec[k] for k in data_ip.KOLOM_PENYEDIA if rec.get(k)), None)
     except Exception:
         pass
+    penyedia = (hasil["penyedia"] or "").lower()
+    hasil["perantara"] = next((nama for kata, nama in PENYEDIA_PERANTARA.items() if kata in penyedia), None)
     return hasil
 
 
@@ -380,6 +439,53 @@ def ciri_halaman(html: str, domain: str) -> list[str]:
 
 
 # ---------------------------------------------------------------- 5. jenis situs
+def _tipe_schema(html: str) -> set[str]:
+    """Kumpulkan semua tipe schema.org di halaman (JSON-LD dan microdata)."""
+    tipe: set[str] = set()
+
+    def jelajah(x):
+        if isinstance(x, dict):
+            t = x.get("@type")
+            for satu in (t if isinstance(t, list) else [t]):
+                if isinstance(satu, str):
+                    tipe.add(satu.rsplit("/", 1)[-1])
+            for v in x.values():
+                jelajah(v)
+        elif isinstance(x, list):
+            for v in x:
+                jelajah(v)
+
+    for isi in re.findall(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+                          html, re.IGNORECASE | re.DOTALL):
+        try:
+            jelajah(json.loads(isi.strip(), strict=False))
+        except ValueError:
+            continue
+    for t in re.findall(r'itemtype=["\']https?://schema\.org/(\w+)', html, re.IGNORECASE):
+        tipe.add(t)
+    return tipe
+
+
+def kategori_dari_halaman(halaman: dict):
+    """Kategori umum dari keterangan yang ditulis situs itu sendiri.
+
+    1. Tipe schema.org di kode HTML (mis. NewsMediaOrganization -> berita).
+    2. Kalau tidak ada: kata kunci di judul + deskripsi halaman.
+    Mengembalikan (kode, sumber) atau None.
+    """
+    tipe = _tipe_schema(halaman.get("_html", ""))
+    for kode, daftar in SCHEMA_KATEGORI:
+        cocok = sorted(tipe & daftar)
+        if cocok:
+            return kode, f"keterangan schema.org di kode halaman ({', '.join(cocok[:2])})"
+    teks = " ".join(x for x in (halaman.get("judul"), halaman.get("deskripsi")) if x).lower()
+    for kode, pola in KATA_KATEGORI:
+        m = re.search(pola, teks)
+        if m:
+            return kode, f'kata "{m.group(0)}" di judul atau deskripsi halaman'
+    return None
+
+
 def tentukan_jenis(url: str, halaman: dict, domain: str = "", jdomain: dict | None = None) -> dict:
     """Jenis situs. Urutan: situs populer -> isi halaman -> jenis domain.
 
@@ -389,12 +495,13 @@ def tentukan_jenis(url: str, halaman: dict, domain: str = "", jdomain: dict | No
     kadang disisipi konten judi.
     """
     jdomain = jdomain or {"kode": "lain"}
-    dasar = {"keyakinan": "-", "ciri_konten": []}
+    dasar = {"keyakinan": "-", "ciri_konten": [], "sumber": None}
 
     if domain in SITUS_POPULER or content_analyzer.is_official_domain(url):
         kategori = kategori_populer(domain)
         nama = f"{kategori} resmi" if kategori else "Platform / situs resmi yang populer"
-        return {"kode": "resmi", "nama": nama, "singkat": "Situs Resmi", **dasar}
+        return {"kode": "resmi", "nama": nama, "singkat": "Situs Resmi",
+                **dasar, "sumber": "daftar situs populer"}
 
     if halaman["terbaca"]:
         # HTML yang SUDAH diambil dianalisis langsung: tidak ada permintaan jaringan kedua
@@ -403,14 +510,21 @@ def tentukan_jenis(url: str, halaman: dict, domain: str = "", jdomain: dict | No
             kode, nama, singkat = KATEGORI_KONTEN[a["category"]]
             keyakinan = {"high": "tinggi", "medium": "sedang"}.get(a.get("confidence"), "rendah")
             return {"kode": kode, "nama": nama, "singkat": singkat,
-                    "keyakinan": keyakinan,
+                    "keyakinan": keyakinan, "sumber": "ciri isi halaman",
                     "ciri_konten": [GANTI_CIRI_KONTEN.get(r, r) for r in a.get("reasons", [])[:5]]}
 
     if jdomain["kode"] == "pemerintah":
-        return {"kode": "pemerintah", "nama": "Situs pemerintah", "singkat": "Situs Pemerintah", **dasar}
+        return {"kode": "pemerintah", "nama": "Situs pemerintah", "singkat": "Situs Pemerintah",
+                **dasar, "sumber": "akhiran nama domain"}
     if jdomain["kode"] == "pendidikan":
         return {"kode": "pendidikan", "nama": "Situs lembaga pendidikan",
-                "singkat": "Situs Pendidikan", **dasar}
+                "singkat": "Situs Pendidikan", **dasar, "sumber": "akhiran nama domain"}
+    if halaman["terbaca"]:
+        temuan = kategori_dari_halaman(halaman)
+        if temuan:
+            kode, sumber = temuan
+            nama, singkat = KATEGORI_UMUM[kode]
+            return {"kode": kode, "nama": nama, "singkat": singkat, **dasar, "sumber": sumber}
     if not halaman["terbaca"]:
         return {"kode": "tidak_diketahui", "nama": "Tidak diketahui (isi situs tidak bisa dibaca)",
                 "singkat": "Tidak Diketahui", **dasar}
@@ -429,7 +543,11 @@ def susun_deskripsi(domain: str, jenis: dict, server: dict, dom: dict,
         kalimat = [f"{domain} adalah {jenis['nama'][0].lower() + jenis['nama'][1:]}."]
     if domain_akhir and domain_akhir != domain:
         kalimat.append(f"Saat dibuka, link ini dialihkan ke {domain_akhir}.")
-    if server.get("negara"):
+    if server.get("perantara"):
+        kalimat.append(f"Lokasi server aslinya tidak terlihat karena situs ini memakai "
+                       f"{server['perantara']}, sehingga alamat IP yang terlihat adalah milik "
+                       f"{server['perantara']}.")
+    elif server.get("negara"):
         oleh = f", jaringan milik {server['penyedia'].rstrip('.')}" if server.get("penyedia") else ""
         kalimat.append(f"Servernya berada di {server['negara']}{oleh}.")
     else:
@@ -448,10 +566,47 @@ def _cuplikan_tidak_terjangkau(url, host, pesan):
     return {"url": url, "url_awal": url, "diperpendek": False, "domain": host,
             "domain_akhir": None, "dapat_dijangkau": False, "jenis_situs": None,
             "jenis_singkat": "Tidak Diketahui", "kode_jenis": "tidak_diketahui",
-            "jenis_domain": None, "keyakinan_jenis": "-", "ciri": [],
+            "sumber_jenis": None, "jenis_domain": None, "keyakinan_jenis": "-", "ciri": [],
             "judul_halaman": None, "deskripsi_halaman": None,
             "server": None, "domain_info": None, "screenshot": None,
             "deskripsi": pesan, "catatan": []}
+
+
+def _domain_tidak_aktif(url: str, host: str) -> dict:
+    """Nama domain tidak mengarah ke server mana pun (DNS tidak menemukan alamat IP).
+
+    Situsnya memang tidak bisa dibuka, tapi data pendaftaran (RDAP) dan akhiran nama domain
+    tetap bisa dibaca, karena keduanya tidak bergantung pada situs itu sendiri.
+    """
+    domain = _domain_utama(host)
+    jdomain = jenis_domain(domain)
+    dom = info_domain(domain)
+    if not dom.get("tanggal_daftar"):
+        hasil = _cuplikan_tidak_terjangkau(
+            url, host, f"Domain {host} tidak ditemukan di internet. Periksa kembali ejaan link.")
+        hasil["jenis_domain"] = jdomain["nama"]
+        return hasil
+
+    if jdomain["kode"] in ("pemerintah", "pendidikan"):
+        kode = jdomain["kode"]
+        nama, singkat = {"pemerintah": ("Situs pemerintah", "Situs Pemerintah"),
+                         "pendidikan": ("Situs lembaga pendidikan", "Situs Pendidikan")}[kode]
+        jenis = (kode, f"{nama} (tidak bisa dibuka saat ini)", singkat, "akhiran nama domain")
+    else:
+        jenis = ("tidak_diketahui", "Tidak diketahui (situs tidak aktif)", "Tidak Aktif", None)
+
+    via = f" melalui {dom['registrar'].rstrip('.')}" if dom.get("registrar") else ""
+    kalimat = [f"Alamat {host} saat ini tidak mengarah ke server mana pun, jadi situsnya tidak bisa dibuka.",
+               f"Domain {domain} terdaftar sejak {dom['tanggal_daftar_teks']} ({dom['usia_teks']} yang lalu){via}."]
+    if jenis[0] != "tidak_diketahui":
+        kalimat.append(f"Dari akhiran namanya, ini adalah {jdomain['nama'][0].lower() + jdomain['nama'][1:]}.")
+
+    hasil = _cuplikan_tidak_terjangkau(url, host, " ".join(kalimat))
+    hasil.update(domain=domain, kode_jenis=jenis[0], jenis_situs=jenis[1], jenis_singkat=jenis[2],
+                 sumber_jenis=jenis[3], jenis_domain=jdomain["nama"], domain_info=dom,
+                 catatan=["Situs tidak aktif: tanggal domain diambil dari data pendaftaran domain (RDAP), "
+                          "bukan dari situsnya."])
+    return hasil
 
 
 def _bangun(url_awal: str) -> dict:
@@ -505,8 +660,7 @@ async def deskripsikan_link(url_awal: str) -> dict:
     else:
         ip = await asyncio.to_thread(_cari_ip, host)
     if not ip:
-        return _cuplikan_tidak_terjangkau(
-            url, host, f"Domain {host} tidak ditemukan di internet. Periksa kembali ejaan link.")
+        return await asyncio.to_thread(_domain_tidak_aktif, url, host)
     if not _ip_publik(ip):
         return _cuplikan_tidak_terjangkau(
             url, host, "Link ini menunjuk ke alamat internal/lokal, sehingga tidak dianalisis.")
@@ -526,9 +680,9 @@ async def deskripsikan_link(url_awal: str) -> dict:
     domain_akhir = _domain_utama(host_akhir) if host_akhir else None
 
     catatan = []
-    if "cloudflare" in (server.get("penyedia") or "").lower():
-        catatan.append("Situs memakai Cloudflare, jadi lokasi server di atas adalah lokasi "
-                       "jaringan Cloudflare, belum tentu lokasi server aslinya.")
+    if server.get("perantara"):
+        catatan.append(f"Situs memakai {server['perantara']}. Alamat IP yang terlihat milik "
+                       f"{server['perantara']}, jadi lokasi server aslinya tidak bisa diketahui.")
     if halaman.get("internal"):
         catatan.append("Link ini dialihkan ke alamat internal, sehingga isi halamannya tidak dibaca.")
     elif not halaman["terbaca"]:
@@ -541,6 +695,7 @@ async def deskripsikan_link(url_awal: str) -> dict:
         "url": url, "url_awal": url_awal.strip(), "diperpendek": dasar["diperpendek"],
         "domain": domain, "domain_akhir": domain_akhir, "dapat_dijangkau": True,
         "jenis_situs": jenis["nama"], "jenis_singkat": jenis["singkat"], "kode_jenis": jenis["kode"],
+        "sumber_jenis": jenis.get("sumber"),
         "keyakinan_jenis": jenis["keyakinan"], "ciri": ciri, "jenis_domain": jdomain["nama"],
         "judul_halaman": halaman["judul"], "deskripsi_halaman": halaman["deskripsi"],
         "server": server, "domain_info": dom, "screenshot": foto,
